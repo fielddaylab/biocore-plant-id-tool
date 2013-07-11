@@ -21,6 +21,8 @@
 		AAAC4F55178F3158001AB1D8 /* IncrementalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F54178F3158001AB1D8 /* IncrementalStore.m */; };
 		AAAC4F58178F31D6001AB1D8 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F57178F31D6001AB1D8 /* APIClient.m */; };
 		AAAC4F5D178F3EEE001AB1D8 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F5C178F3EEE001AB1D8 /* RootViewController.m */; };
+		AAAC4F60178F43A8001AB1D8 /* AccordionController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F5F178F43A8001AB1D8 /* AccordionController.m */; };
+		AAAC4F63178F445A001AB1D8 /* AccordionSection.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F62178F445A001AB1D8 /* AccordionSection.m */; };
 		AF90CA6408C44EE2A1B9A890 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B46BAE74A3264E519E21B16B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +49,11 @@
 		AAAC4F57178F31D6001AB1D8 /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
 		AAAC4F5B178F3EEE001AB1D8 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		AAAC4F5C178F3EEE001AB1D8 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		AAAC4F5E178F43A8001AB1D8 /* AccordionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccordionController.h; sourceTree = "<group>"; };
+		AAAC4F5F178F43A8001AB1D8 /* AccordionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccordionController.m; sourceTree = "<group>"; };
+		AAAC4F61178F445A001AB1D8 /* AccordionSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccordionSection.h; sourceTree = "<group>"; };
+		AAAC4F62178F445A001AB1D8 /* AccordionSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccordionSection.m; sourceTree = "<group>"; };
+		AAAC4F64178F472C001AB1D8 /* AccordionControllerVCProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccordionControllerVCProtocol.h; sourceTree = "<group>"; };
 		B46BAE74A3264E519E21B16B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -103,6 +110,11 @@
 				AAAC4F43178F1767001AB1D8 /* AppDelegate.m */,
 				AAAC4F5B178F3EEE001AB1D8 /* RootViewController.h */,
 				AAAC4F5C178F3EEE001AB1D8 /* RootViewController.m */,
+				AAAC4F64178F472C001AB1D8 /* AccordionControllerVCProtocol.h */,
+				AAAC4F5E178F43A8001AB1D8 /* AccordionController.h */,
+				AAAC4F5F178F43A8001AB1D8 /* AccordionController.m */,
+				AAAC4F61178F445A001AB1D8 /* AccordionSection.h */,
+				AAAC4F62178F445A001AB1D8 /* AccordionSection.m */,
 				AAAC4F59178F33D9001AB1D8 /* Incremental Store Models */,
 				AAAC4F3A178F1767001AB1D8 /* Supporting Files */,
 			);
@@ -241,6 +253,8 @@
 				AAAC4F55178F3158001AB1D8 /* IncrementalStore.m in Sources */,
 				AAAC4F58178F31D6001AB1D8 /* APIClient.m in Sources */,
 				AAAC4F5D178F3EEE001AB1D8 /* RootViewController.m in Sources */,
+				AAAC4F60178F43A8001AB1D8 /* AccordionController.m in Sources */,
+				AAAC4F63178F445A001AB1D8 /* AccordionSection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
