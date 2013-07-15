@@ -12,12 +12,6 @@
 #import "Project.h"
 #import "ProjectComponent.h"
 
-@interface AppDelegate(){
-    NSURL *storeURL;
-}
-
-@end
-
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -31,12 +25,11 @@
     [self.window makeKeyAndVisible];
     
     //setup example data
-    storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"FieldResearchTool.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"FieldResearchTool.sqlite"];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if(![fileManager fileExistsAtPath:[storeURL path]]){
         [self createSampleData];
     }
-    
     return YES;
 }
 
@@ -109,7 +102,7 @@
     
     //normal Core Data    
     NSError *error = nil;
-    
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"FieldResearchTool.sqlite"];
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
@@ -147,6 +140,9 @@
     leafType.required = @"YES"; //shouldn't this be a bool?
     leafType.title = @"Leaf Type";
     leafType.updated = [NSDate date];
+    leafType.projectComponentPossibilities = nil;
+    leafType.project = project;
+    leafType.userObservationComponentData = nil;
     
     ProjectComponent *leafLength = (ProjectComponent *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponent" inManagedObjectContext:[self managedObjectContext]];
     leafLength.created = [NSDate date];
@@ -155,6 +151,14 @@
     leafLength.required = @"YES"; //shouldn't this be a bool?
     leafLength.title = @"Leaf Length";
     leafLength.updated = [NSDate date];
+    leafLength.projectComponentPossibilities = nil;
+    leafLength.project = project;
+    leafLength.userObservationComponentData = nil;
+    
+    NSError *error = nil;
+    if(![[self managedObjectContext]save:&error]){
+        NSLog(@"An error! %@", error);
+    }
 }
 
 @end
