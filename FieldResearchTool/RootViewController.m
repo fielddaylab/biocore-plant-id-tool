@@ -7,6 +7,9 @@
 //
 
 #import "RootViewController.h"
+#import "FieldResearchNavigationController.h"
+#import "ObservationViewController.h"
+
 
 @interface RootViewController ()
 {
@@ -14,6 +17,8 @@
 }
 
 - (void) displayContentController:(UIViewController*)content;
+
+@property (nonatomic, strong) FieldResearchNavigationController *observationController;
 
 @end
 
@@ -23,7 +28,8 @@
 {
     if(self = [super init])
     {
-        
+        ObservationViewController *newObservation = [[ObservationViewController alloc]initWithNibName:@"ObservationViewController" bundle:nil];
+        self.observationController = [[FieldResearchNavigationController alloc]initWithRootViewController:newObservation];
     }
     return self;
 }
@@ -38,6 +44,9 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     self.view.frame = [UIScreen mainScreen].bounds;
+    
+    if(!currentChildViewController)
+        [self displayContentController:self.observationController];
 }
 
 // Container VC Functions pulled from Apple Docs 5/6/13
@@ -63,9 +72,26 @@
     currentChildViewController = nil;
 }
 
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        return YES;
+    }
+    else {
+        return [currentChildViewController shouldAutorotateToInterfaceOrientation:interfaceOrientation];
+    }
+}
+
+- (BOOL) shouldAutorotate
+{
+    return YES;
+}
+
 - (NSInteger) supportedInterfaceOrientations
 {
-    return UIInterfaceOrientationMaskAll;
+    //lock the orientation for now into portrait. simply uncomment to ask the child view controllers their orientation
+    //return [currentChildViewController supportedInterfaceOrientations];
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 @end
