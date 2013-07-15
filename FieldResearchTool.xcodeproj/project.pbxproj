@@ -39,6 +39,7 @@
 		71FF69C91794819300E2B411 /* UserObservationComponentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF69B91794819300E2B411 /* UserObservationComponentData.m */; };
 		71FF69CA1794819300E2B411 /* UserObservationComponentDataJudgement.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF69BB1794819300E2B411 /* UserObservationComponentDataJudgement.m */; };
 		71FF69CB1794819300E2B411 /* UserObservationIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF69BD1794819300E2B411 /* UserObservationIdentification.m */; };
+		71FF69CD1794A20B00E2B411 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FF69CC1794A20A00E2B411 /* MediaPlayer.framework */; };
 		AAAC4F32178F1767001AB1D8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC4F31178F1767001AB1D8 /* UIKit.framework */; };
 		AAAC4F34178F1767001AB1D8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC4F33178F1767001AB1D8 /* Foundation.framework */; };
 		AAAC4F36178F1767001AB1D8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC4F35178F1767001AB1D8 /* CoreGraphics.framework */; };
@@ -111,6 +112,7 @@
 		71FF69BB1794819300E2B411 /* UserObservationComponentDataJudgement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationComponentDataJudgement.m; sourceTree = "<group>"; };
 		71FF69BC1794819300E2B411 /* UserObservationIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationIdentification.h; sourceTree = "<group>"; };
 		71FF69BD1794819300E2B411 /* UserObservationIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationIdentification.m; sourceTree = "<group>"; };
+		71FF69CC1794A20A00E2B411 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		AAAC4F2E178F1767001AB1D8 /* FieldResearchTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FieldResearchTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAC4F31178F1767001AB1D8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AAAC4F33178F1767001AB1D8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -145,6 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71FF69CD1794A20B00E2B411 /* MediaPlayer.framework in Frameworks */,
 				AAAC4F32178F1767001AB1D8 /* UIKit.framework in Frameworks */,
 				AAAC4F34178F1767001AB1D8 /* Foundation.framework in Frameworks */,
 				AAAC4F36178F1767001AB1D8 /* CoreGraphics.framework in Frameworks */,
@@ -265,6 +268,7 @@
 		AAAC4F30178F1767001AB1D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71FF69CC1794A20A00E2B411 /* MediaPlayer.framework */,
 				AAAC4F31178F1767001AB1D8 /* UIKit.framework */,
 				AAAC4F33178F1767001AB1D8 /* Foundation.framework */,
 				AAAC4F35178F1767001AB1D8 /* CoreGraphics.framework */,

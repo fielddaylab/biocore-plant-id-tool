@@ -8,13 +8,16 @@
 
 #import "ObservationNumberViewController.h"
 
-@interface ObservationNumberViewController ()
+@interface ObservationNumberViewController (){
+    int unitCount;
+}
 
 @end
 
 @implementation ObservationNumberViewController
 
 @synthesize componentPossibilityDescription;
+@synthesize changeUnitButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,7 +34,9 @@
     // Do any additional setup after loading the view from its nib.
     
 #warning TODO
-
+    
+    unitCount = 0;
+    
     componentPossibilityDescription.text = @"WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN ";
 }
 
@@ -41,4 +46,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (IBAction)changeUnit:(id)sender {
+    unitCount ++;
+    if(unitCount % 2 == 0){
+        [changeUnitButton setTitle:@"CM" forState:UIControlStateNormal];
+    }
+    else if(unitCount % 2 == 1){
+        [changeUnitButton setTitle:@"Inches" forState:UIControlStateNormal];
+    }
+}
+- (IBAction)killKeyboard:(id)sender {
+    [self.view endEditing:YES];
+
+}
 @end

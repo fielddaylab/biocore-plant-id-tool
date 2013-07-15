@@ -11,5 +11,8 @@
 @interface ObservationNumberViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextView *componentPossibilityDescription;
+- (IBAction)changeUnit:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *changeUnitButton;
+- (IBAction)killKeyboard:(id)sender;
 
 @end
