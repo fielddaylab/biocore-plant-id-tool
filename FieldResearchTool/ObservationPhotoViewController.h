@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ObservationPhotoViewController : UIViewController
+@interface ObservationPhotoViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+- (IBAction)takePhoto:(id)sender;
+- (IBAction)selectPhoto:(id)sender;
 
 @end
