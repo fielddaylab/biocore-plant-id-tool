@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "RootViewController.h"
 #import "IncrementalStore.h"
+#import "ObservationBooleanViewController.h"
 
 @implementation AppDelegate
 
@@ -19,7 +20,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self.window setRootViewController:[[RootViewController alloc] init]];
+    ObservationBooleanViewController *vc = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
+    self.window.rootViewController = vc;
+
+    //[self.window setRootViewController:[[RootViewController alloc] init]];
     [self.window makeKeyAndVisible];
     return YES;
 }

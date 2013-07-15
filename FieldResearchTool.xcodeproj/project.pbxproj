@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		718AACFD179463B500AFE6DB /* ObservationBooleanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AACFB179463B500AFE6DB /* ObservationBooleanViewController.m */; };
+		718AACFE179463B500AFE6DB /* ObservationBooleanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AACFC179463B500AFE6DB /* ObservationBooleanViewController.xib */; };
+		718AAD071794666200AFE6DB /* SwitchNoBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD031794666200AFE6DB /* SwitchNoBig.png */; };
+		718AAD081794666200AFE6DB /* SwitchNoSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD041794666200AFE6DB /* SwitchNoSmall.png */; };
+		718AAD091794666200AFE6DB /* SwitchYesBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD051794666200AFE6DB /* SwitchYesBig.png */; };
+		718AAD0A1794666200AFE6DB /* SwitchYesSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD061794666200AFE6DB /* SwitchYesSmall.png */; };
+		718AAD0E1794761B00AFE6DB /* ObservationNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AAD0C1794761B00AFE6DB /* ObservationNumberViewController.m */; };
+		718AAD0F1794761B00AFE6DB /* ObservationNumberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD0D1794761B00AFE6DB /* ObservationNumberViewController.xib */; };
+		718AAD131794763600AFE6DB /* ObservationTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AAD111794763600AFE6DB /* ObservationTextViewController.m */; };
+		718AAD141794763600AFE6DB /* ObservationTextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD121794763600AFE6DB /* ObservationTextViewController.xib */; };
+		718AAD181794764100AFE6DB /* ObservationPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AAD161794764100AFE6DB /* ObservationPhotoViewController.m */; };
+		718AAD191794764100AFE6DB /* ObservationPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD171794764100AFE6DB /* ObservationPhotoViewController.xib */; };
+		718AAD1D1794765100AFE6DB /* ObservationAudioVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AAD1B1794765100AFE6DB /* ObservationAudioVideoViewController.m */; };
+		718AAD1E1794765100AFE6DB /* ObservationAudioVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD1C1794765100AFE6DB /* ObservationAudioVideoViewController.xib */; };
+		718AAD221794771300AFE6DB /* InterpretationChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AAD201794771300AFE6DB /* InterpretationChoiceViewController.m */; };
+		718AAD231794771300AFE6DB /* InterpretationChoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD211794771300AFE6DB /* InterpretationChoiceViewController.xib */; };
+		718AAD271794772300AFE6DB /* InterpretationSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AAD251794772300AFE6DB /* InterpretationSplitViewController.m */; };
+		718AAD281794772300AFE6DB /* InterpretationSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD261794772300AFE6DB /* InterpretationSplitViewController.xib */; };
 		AAAC4F32178F1767001AB1D8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC4F31178F1767001AB1D8 /* UIKit.framework */; };
 		AAAC4F34178F1767001AB1D8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC4F33178F1767001AB1D8 /* Foundation.framework */; };
 		AAAC4F36178F1767001AB1D8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC4F35178F1767001AB1D8 /* CoreGraphics.framework */; };
@@ -28,6 +46,31 @@
 
 /* Begin PBXFileReference section */
 		03237ECF5C5F485597FD7DAA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		718AACFA179463B500AFE6DB /* ObservationBooleanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationBooleanViewController.h; sourceTree = "<group>"; };
+		718AACFB179463B500AFE6DB /* ObservationBooleanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationBooleanViewController.m; sourceTree = "<group>"; };
+		718AACFC179463B500AFE6DB /* ObservationBooleanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationBooleanViewController.xib; sourceTree = "<group>"; };
+		718AAD031794666200AFE6DB /* SwitchNoBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwitchNoBig.png; sourceTree = "<group>"; };
+		718AAD041794666200AFE6DB /* SwitchNoSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwitchNoSmall.png; sourceTree = "<group>"; };
+		718AAD051794666200AFE6DB /* SwitchYesBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwitchYesBig.png; sourceTree = "<group>"; };
+		718AAD061794666200AFE6DB /* SwitchYesSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwitchYesSmall.png; sourceTree = "<group>"; };
+		718AAD0B1794761B00AFE6DB /* ObservationNumberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationNumberViewController.h; sourceTree = "<group>"; };
+		718AAD0C1794761B00AFE6DB /* ObservationNumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationNumberViewController.m; sourceTree = "<group>"; };
+		718AAD0D1794761B00AFE6DB /* ObservationNumberViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationNumberViewController.xib; sourceTree = "<group>"; };
+		718AAD101794763600AFE6DB /* ObservationTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationTextViewController.h; sourceTree = "<group>"; };
+		718AAD111794763600AFE6DB /* ObservationTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationTextViewController.m; sourceTree = "<group>"; };
+		718AAD121794763600AFE6DB /* ObservationTextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationTextViewController.xib; sourceTree = "<group>"; };
+		718AAD151794764100AFE6DB /* ObservationPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationPhotoViewController.h; sourceTree = "<group>"; };
+		718AAD161794764100AFE6DB /* ObservationPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationPhotoViewController.m; sourceTree = "<group>"; };
+		718AAD171794764100AFE6DB /* ObservationPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationPhotoViewController.xib; sourceTree = "<group>"; };
+		718AAD1A1794765100AFE6DB /* ObservationAudioVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationAudioVideoViewController.h; sourceTree = "<group>"; };
+		718AAD1B1794765100AFE6DB /* ObservationAudioVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationAudioVideoViewController.m; sourceTree = "<group>"; };
+		718AAD1C1794765100AFE6DB /* ObservationAudioVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationAudioVideoViewController.xib; sourceTree = "<group>"; };
+		718AAD1F1794771300AFE6DB /* InterpretationChoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterpretationChoiceViewController.h; sourceTree = "<group>"; };
+		718AAD201794771300AFE6DB /* InterpretationChoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterpretationChoiceViewController.m; sourceTree = "<group>"; };
+		718AAD211794771300AFE6DB /* InterpretationChoiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InterpretationChoiceViewController.xib; sourceTree = "<group>"; };
+		718AAD241794772300AFE6DB /* InterpretationSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterpretationSplitViewController.h; sourceTree = "<group>"; };
+		718AAD251794772300AFE6DB /* InterpretationSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterpretationSplitViewController.m; sourceTree = "<group>"; };
+		718AAD261794772300AFE6DB /* InterpretationSplitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InterpretationSplitViewController.xib; sourceTree = "<group>"; };
 		AAAC4F2E178F1767001AB1D8 /* FieldResearchTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FieldResearchTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAC4F31178F1767001AB1D8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AAAC4F33178F1767001AB1D8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -73,6 +116,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		718AAD00179463F200AFE6DB /* ObservationViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				718AAD0B1794761B00AFE6DB /* ObservationNumberViewController.h */,
+				718AAD0C1794761B00AFE6DB /* ObservationNumberViewController.m */,
+				718AAD0D1794761B00AFE6DB /* ObservationNumberViewController.xib */,
+				718AAD101794763600AFE6DB /* ObservationTextViewController.h */,
+				718AAD111794763600AFE6DB /* ObservationTextViewController.m */,
+				718AAD121794763600AFE6DB /* ObservationTextViewController.xib */,
+				718AAD151794764100AFE6DB /* ObservationPhotoViewController.h */,
+				718AAD161794764100AFE6DB /* ObservationPhotoViewController.m */,
+				718AAD171794764100AFE6DB /* ObservationPhotoViewController.xib */,
+				718AAD1A1794765100AFE6DB /* ObservationAudioVideoViewController.h */,
+				718AAD1B1794765100AFE6DB /* ObservationAudioVideoViewController.m */,
+				718AAD1C1794765100AFE6DB /* ObservationAudioVideoViewController.xib */,
+				718AACFA179463B500AFE6DB /* ObservationBooleanViewController.h */,
+				718AACFB179463B500AFE6DB /* ObservationBooleanViewController.m */,
+				718AACFC179463B500AFE6DB /* ObservationBooleanViewController.xib */,
+			);
+			name = ObservationViewControllers;
+			sourceTree = "<group>";
+		};
+		718AAD021794666200AFE6DB /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				718AAD031794666200AFE6DB /* SwitchNoBig.png */,
+				718AAD041794666200AFE6DB /* SwitchNoSmall.png */,
+				718AAD051794666200AFE6DB /* SwitchYesBig.png */,
+				718AAD061794666200AFE6DB /* SwitchYesSmall.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		718AAD291794773000AFE6DB /* InterpretationViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				718AAD1F1794771300AFE6DB /* InterpretationChoiceViewController.h */,
+				718AAD201794771300AFE6DB /* InterpretationChoiceViewController.m */,
+				718AAD211794771300AFE6DB /* InterpretationChoiceViewController.xib */,
+				718AAD241794772300AFE6DB /* InterpretationSplitViewController.h */,
+				718AAD251794772300AFE6DB /* InterpretationSplitViewController.m */,
+				718AAD261794772300AFE6DB /* InterpretationSplitViewController.xib */,
+			);
+			name = InterpretationViewControllers;
+			sourceTree = "<group>";
+		};
 		AAAC4F25178F1767001AB1D8 = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +195,7 @@
 		AAAC4F39178F1767001AB1D8 /* FieldResearchTool */ = {
 			isa = PBXGroup;
 			children = (
+				718AAD021794666200AFE6DB /* Assets */,
 				AAAC4F42178F1767001AB1D8 /* AppDelegate.h */,
 				AAAC4F43178F1767001AB1D8 /* AppDelegate.m */,
 				AAAC4F5B178F3EEE001AB1D8 /* RootViewController.h */,
@@ -113,6 +203,8 @@
 				AAAC4F64178F472C001AB1D8 /* AccordionControllerVCProtocol.h */,
 				AAAC4F5E178F43A8001AB1D8 /* AccordionController.h */,
 				AAAC4F5F178F43A8001AB1D8 /* AccordionController.m */,
+				718AAD291794773000AFE6DB /* InterpretationViewControllers */,
+				718AAD00179463F200AFE6DB /* ObservationViewControllers */,
 				AAAC4F61178F445A001AB1D8 /* AccordionSection.h */,
 				AAAC4F62178F445A001AB1D8 /* AccordionSection.m */,
 				AAAC4F59178F33D9001AB1D8 /* Incremental Store Models */,
@@ -204,6 +296,17 @@
 				AAAC4F46178F1767001AB1D8 /* Default.png in Resources */,
 				AAAC4F48178F1767001AB1D8 /* Default@2x.png in Resources */,
 				AAAC4F4A178F1767001AB1D8 /* Default-568h@2x.png in Resources */,
+				718AACFE179463B500AFE6DB /* ObservationBooleanViewController.xib in Resources */,
+				718AAD071794666200AFE6DB /* SwitchNoBig.png in Resources */,
+				718AAD081794666200AFE6DB /* SwitchNoSmall.png in Resources */,
+				718AAD091794666200AFE6DB /* SwitchYesBig.png in Resources */,
+				718AAD0A1794666200AFE6DB /* SwitchYesSmall.png in Resources */,
+				718AAD0F1794761B00AFE6DB /* ObservationNumberViewController.xib in Resources */,
+				718AAD141794763600AFE6DB /* ObservationTextViewController.xib in Resources */,
+				718AAD191794764100AFE6DB /* ObservationPhotoViewController.xib in Resources */,
+				718AAD1E1794765100AFE6DB /* ObservationAudioVideoViewController.xib in Resources */,
+				718AAD231794771300AFE6DB /* InterpretationChoiceViewController.xib in Resources */,
+				718AAD281794772300AFE6DB /* InterpretationSplitViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +358,13 @@
 				AAAC4F5D178F3EEE001AB1D8 /* RootViewController.m in Sources */,
 				AAAC4F60178F43A8001AB1D8 /* AccordionController.m in Sources */,
 				AAAC4F63178F445A001AB1D8 /* AccordionSection.m in Sources */,
+				718AACFD179463B500AFE6DB /* ObservationBooleanViewController.m in Sources */,
+				718AAD0E1794761B00AFE6DB /* ObservationNumberViewController.m in Sources */,
+				718AAD131794763600AFE6DB /* ObservationTextViewController.m in Sources */,
+				718AAD181794764100AFE6DB /* ObservationPhotoViewController.m in Sources */,
+				718AAD1D1794765100AFE6DB /* ObservationAudioVideoViewController.m in Sources */,
+				718AAD221794771300AFE6DB /* InterpretationChoiceViewController.m in Sources */,
+				718AAD271794772300AFE6DB /* InterpretationSplitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
