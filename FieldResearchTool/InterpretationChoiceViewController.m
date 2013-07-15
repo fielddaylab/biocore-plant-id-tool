@@ -8,6 +8,8 @@
 
 #import "InterpretationChoiceViewController.h"
 
+#import "InterpretationSplitViewController.h"
+
 @interface InterpretationChoiceViewController ()
 
 @end
@@ -29,6 +31,20 @@
     // Do any additional setup after loading the view from its nib.
 #warning TODO
 
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button addTarget:self
+               action:@selector(nextVC)
+     forControlEvents:UIControlEventTouchDown];
+    [button setTitle:@"Show View" forState:UIControlStateNormal];
+    button.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
+    [self.view addSubview:button];
+    
+}
+
+- (void)nextVC
+{
+    InterpretationSplitViewController *vc = [[InterpretationSplitViewController alloc]initWithNibName:@"InterpretationSplitViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
