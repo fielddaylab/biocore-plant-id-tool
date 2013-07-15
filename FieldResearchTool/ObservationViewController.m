@@ -7,6 +7,11 @@
 //
 
 #import "ObservationViewController.h"
+#import "ObservationBooleanViewController.h"
+#import "ObservationAudioVideoViewController.h"
+#import "ObservationNumberViewController.h"
+#import "ObservationPhotoViewController.h"
+#import "ObservationTextViewController.h"
 
 @interface ObservationViewController ()
 
@@ -26,6 +31,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+        [self.navigationItem setBackBarButtonItem:[[UIBarButtonItem alloc]initWithTitle:@"Backzz" style:UIBarButtonItemStyleBordered target:nil action:nil]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,7 +44,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -50,6 +57,8 @@
             return 2;
         case 2:
             return 2;
+        case 3:
+            return 5;
         default:
             return 0;
     };
@@ -78,6 +87,23 @@
                 cell.textLabel.text = @"Date Time";
             }
             break;
+        case 3:
+            if(indexPath.row == 0){
+                cell.textLabel.text = @"BOOL";
+            }
+            else if (indexPath.row == 1){
+                cell.textLabel.text = @"AV";
+            }
+            else if (indexPath.row == 2){
+                cell.textLabel.text = @"TEXT";
+            }
+            else if (indexPath.row == 3){
+                cell.textLabel.text = @"NUMBER";
+            }
+            else{
+                cell.textLabel.text = @"PICTURE";
+            }
+            break;
         default:
             cell.textLabel.text = @"Dummy Data";
             break;
@@ -87,6 +113,32 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    if(indexPath.section == 3 && indexPath.row == 0){
+        NSLog(@"TESTING OTHER OBSERVATION VCZZZZZZ");
+        ObservationBooleanViewController *vc = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if(indexPath.section == 3 && indexPath.row == 1){
+        NSLog(@"TESTING OTHER OBSERVATION VCZZZZZZ");
+        ObservationAudioVideoViewController *vc = [[ObservationAudioVideoViewController alloc]initWithNibName:@"ObservationAudioVideoViewController" bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if(indexPath.section == 3 && indexPath.row == 2){
+        NSLog(@"TESTING OTHER OBSERVATION VCZZZZZZ");
+        ObservationTextViewController *vc = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if(indexPath.section == 3 && indexPath.row == 3){
+        NSLog(@"TESTING OTHER OBSERVATION VCZZZZZZ");
+        ObservationNumberViewController *vc = [[ObservationNumberViewController alloc]initWithNibName:@"ObservationNumberViewController" bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if(indexPath.section == 3 && indexPath.row == 4){
+        NSLog(@"TESTING OTHER OBSERVATION VCZZZZZZ");
+        ObservationPhotoViewController *vc = [[ObservationPhotoViewController alloc]initWithNibName:@"ObservationPhotoViewController" bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
