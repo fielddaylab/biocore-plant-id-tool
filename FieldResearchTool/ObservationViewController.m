@@ -40,7 +40,7 @@
     
         [self.navigationItem setBackBarButtonItem:[[UIBarButtonItem alloc]initWithTitle:@"Backzz" style:UIBarButtonItemStyleBordered target:nil action:nil]];
     
-    
+    //this needs to be in a wrapper class
     NSManagedObjectContext *context = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"ProjectComponent" inManagedObjectContext:context];
@@ -53,9 +53,9 @@
     }
 
     projectComponents = fetchedObjects;
-//    for(ProjectComponent *com in projectComponents){
-//        NSLog(@"Component: %@", com.title);
-//    }
+    for(ProjectComponent *com in projectComponents){
+        NSLog(@"Component: %@", com.title);
+    }
 }
 
 - (void)didReceiveMemoryWarning
