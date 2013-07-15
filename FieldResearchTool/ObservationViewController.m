@@ -66,7 +66,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -78,9 +78,11 @@
             //number of project components
             return [projectComponents count];
         case 2:
-            return 2;
+            return 4;
         case 3:
             return 5;
+        case 4:
+            return 1;
         default:
             return 0;
     };
@@ -108,8 +110,14 @@
             if(indexPath.row == 0){
                 cell.textLabel.text = @"Location";
             }
-            else{
+            else if(indexPath.row == 1){
                 cell.textLabel.text = @"Date Time";
+            }
+            else if(indexPath.row == 2){
+                cell.textLabel.text = @"Weather";
+            }
+            else{
+                cell.textLabel.text = @"Author";
             }
             break;
         case 3:
@@ -126,8 +134,11 @@
                 cell.textLabel.text = @"NUMBER";
             }
             else{
-                cell.textLabel.text = @"PICTURE";
+                cell.textLabel.text = @"PHOTO";
             }
+            break;
+        case 4:
+            cell.textLabel.text = @"INTERPRETATION CHOICE";
             break;
         default:
             cell.textLabel.text = @"Dummy Data";
@@ -162,6 +173,11 @@
     if(indexPath.section == 3 && indexPath.row == 4){
         NSLog(@"TESTING OTHER OBSERVATION VCZZZZZZ");
         ObservationPhotoViewController *vc = [[ObservationPhotoViewController alloc]initWithNibName:@"ObservationPhotoViewController" bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if(indexPath.section == 4 && indexPath.row == 0){
+        NSLog(@"TESTING OTHER OBSERVATION VCZZZZZZ");
+        InterpretationChoiceViewController *vc = [[InterpretationChoiceViewController alloc]initWithNibName:@"InterpretationChoiceViewController" bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ObservationBooleanViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *componentPossibilityDescription;
 
 @end
