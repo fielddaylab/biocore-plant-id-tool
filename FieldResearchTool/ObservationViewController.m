@@ -12,8 +12,13 @@
 #import "ObservationNumberViewController.h"
 #import "ObservationPhotoViewController.h"
 #import "ObservationTextViewController.h"
+#import "AppDelegate.h"
+#import "ProjectComponent.h"
+#import "Project.h"
 
-@interface ObservationViewController ()
+@interface ObservationViewController (){
+    NSArray *projectComponents;
+}
 
 @end
 
@@ -33,6 +38,23 @@
     [super viewDidLoad];
     
         [self.navigationItem setBackBarButtonItem:[[UIBarButtonItem alloc]initWithTitle:@"Backzz" style:UIBarButtonItemStyleBordered target:nil action:nil]];
+    
+    
+    NSManagedObjectContext *context = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"ProjectComponent" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error = nil;
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    if (fetchedObjects == nil) {
+        NSLog(@"An error occurred! %@", error);
+    }
+
+    projectComponents = fetchedObjects;
+//    for(ProjectComponent *com in projectComponents){
+//        NSLog(@"Component: %@", com.title);
+//    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,7 +76,7 @@
             return 1;
         case 1:
             //number of project components
-            return 2;
+            return [projectComponents count];
         case 2:
             return 2;
         case 3:
@@ -72,12 +94,15 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
+    ProjectComponent *com;
+    
     switch (indexPath.section) {
         case 0:
             cell.textLabel.text = @"18 Interpretations";
             break;
         case 1:
-            cell.textLabel.text = @"Project Components";
+            com = (ProjectComponent *)[projectComponents objectAtIndex:indexPath.row];
+            cell.textLabel.text = com.title;
             break;
         case 2:
             if(indexPath.row == 0){
