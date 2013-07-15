@@ -12,7 +12,7 @@
 
 + (CoreDataWrapper *)sharedCoreData;
 
-//this will need to be called asyncronously
+//these will need to be called asyncronously
 -(NSArray *)getProjectComponentsForProjectName:(NSString *)project;
 -(NSArray *)getProjectIdentificationsForProjectName:(NSString *)project;
 

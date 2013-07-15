@@ -201,7 +201,7 @@
     equalToFiveInches.created = [NSDate date];
     equalToFiveInches.enumDescription = @"Leaf length must be equal to 5 inches";
     equalToFiveInches.mediaUrl = @"mediaURL";
-    equalToFiveInches.rangeOperator = [NSNumber numberWithInt:1]; //0 for equal to
+    equalToFiveInches.rangeOperator = [NSNumber numberWithInt:1]; //1 for equal to
     equalToFiveInches.rangeNumber1 = [NSNumber numberWithInt:5];
     equalToFiveInches.rangeNumber2 = [NSNumber numberWithInt:0];
     equalToFiveInches.updated = [NSDate date];
