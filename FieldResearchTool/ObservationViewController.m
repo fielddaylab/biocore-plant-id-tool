@@ -12,6 +12,7 @@
 #import "ObservationNumberViewController.h"
 #import "ObservationPhotoViewController.h"
 #import "ObservationTextViewController.h"
+#import "InterpretationChoiceViewController.h"
 #import "AppDelegate.h"
 #import "ProjectComponent.h"
 #import "Project.h"
