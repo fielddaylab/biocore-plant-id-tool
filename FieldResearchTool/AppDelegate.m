@@ -20,10 +20,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    ObservationBooleanViewController *vc = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
-    self.window.rootViewController = vc;
+    //ObservationBooleanViewController *vc = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
+    //self.window.rootViewController = vc;
 
-    //[self.window setRootViewController:[[RootViewController alloc] init]];
+    [self.window setRootViewController:[[RootViewController alloc] init]];
     [self.window makeKeyAndVisible];
     return YES;
 }
