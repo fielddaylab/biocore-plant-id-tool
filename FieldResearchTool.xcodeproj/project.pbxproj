@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5BFED1BA1794A49000648062 /* CoreDataWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFED1B91794A49000648062 /* CoreDataWrapper.m */; };
 		718AACFD179463B500AFE6DB /* ObservationBooleanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AACFB179463B500AFE6DB /* ObservationBooleanViewController.m */; };
 		718AACFE179463B500AFE6DB /* ObservationBooleanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AACFC179463B500AFE6DB /* ObservationBooleanViewController.xib */; };
 		718AAD071794666200AFE6DB /* SwitchNoBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD031794666200AFE6DB /* SwitchNoBig.png */; };
@@ -60,6 +61,8 @@
 
 /* Begin PBXFileReference section */
 		03237ECF5C5F485597FD7DAA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		5BFED1B81794A49000648062 /* CoreDataWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataWrapper.h; sourceTree = "<group>"; };
+		5BFED1B91794A49000648062 /* CoreDataWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataWrapper.m; sourceTree = "<group>"; };
 		718AACFA179463B500AFE6DB /* ObservationBooleanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationBooleanViewController.h; sourceTree = "<group>"; };
 		718AACFB179463B500AFE6DB /* ObservationBooleanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationBooleanViewController.m; sourceTree = "<group>"; };
 		718AACFC179463B500AFE6DB /* ObservationBooleanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationBooleanViewController.xib; sourceTree = "<group>"; };
@@ -277,6 +280,8 @@
 		AAAC4F39178F1767001AB1D8 /* FieldResearchTool */ = {
 			isa = PBXGroup;
 			children = (
+				5BFED1B81794A49000648062 /* CoreDataWrapper.h */,
+				5BFED1B91794A49000648062 /* CoreDataWrapper.m */,
 				71FF69A31794819200E2B411 /* FieldResearchNavigationController.h */,
 				71FF69A41794819200E2B411 /* FieldResearchNavigationController.m */,
 				71FF69A51794819200E2B411 /* FieldResearchTool.xcdatamodeld */,
@@ -461,6 +466,7 @@
 				71FF69C91794819300E2B411 /* UserObservationComponentData.m in Sources */,
 				71FF69CA1794819300E2B411 /* UserObservationComponentDataJudgement.m in Sources */,
 				71FF69CB1794819300E2B411 /* UserObservationIdentification.m in Sources */,
+				5BFED1BA1794A49000648062 /* CoreDataWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

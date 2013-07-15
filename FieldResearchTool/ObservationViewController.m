@@ -16,9 +16,11 @@
 #import "AppDelegate.h"
 #import "ProjectComponent.h"
 #import "Project.h"
+#import "CoreDataWrapper.h"
 
 @interface ObservationViewController (){
     NSArray *projectComponents;
+    NSArray *projectIdentifications;
 }
 
 @end
@@ -38,24 +40,11 @@
 {
     [super viewDidLoad];
     
-        [self.navigationItem setBackBarButtonItem:[[UIBarButtonItem alloc]initWithTitle:@"Backzz" style:UIBarButtonItemStyleBordered target:nil action:nil]];
+    [self.navigationItem setBackBarButtonItem:[[UIBarButtonItem alloc]initWithTitle:@"Backzz" style:UIBarButtonItemStyleBordered target:nil action:nil]];
     
-    //this needs to be in a wrapper class
-    NSManagedObjectContext *context = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"ProjectComponent" inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
-    
-    NSError *error = nil;
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    if (fetchedObjects == nil) {
-        NSLog(@"An error occurred! %@", error);
-    }
-
-    projectComponents = fetchedObjects;
-    for(ProjectComponent *com in projectComponents){
-        NSLog(@"Component: %@", com.title);
-    }
+    projectComponents = [[CoreDataWrapper sharedCoreData]
+                         getProjectComponentsForProjectName:@"Biocore"];
+    projectIdentifications = [[CoreDataWrapper sharedCoreData]getProjectIdentificationsForProjectName:@"Biocore"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,7 +65,6 @@
         case 0:
             return 1;
         case 1:
-            //number of project components
             return [projectComponents count];
         case 2:
             return 4;
@@ -101,7 +89,7 @@
     
     switch (indexPath.section) {
         case 0:
-            cell.textLabel.text = @"18 Interpretations";
+            cell.textLabel.text = [projectIdentifications count] != 0 ?[NSString stringWithFormat:@"%d identifications", [projectIdentifications count]] : [NSString stringWithFormat:@"%d identifications", 0];
             break;
         case 1:
             com = (ProjectComponent *)[projectComponents objectAtIndex:indexPath.row];
