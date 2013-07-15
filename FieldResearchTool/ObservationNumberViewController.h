@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ObservationNumberViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *componentPossibilityDescription;
+
+@property (weak, nonatomic) IBOutlet UITextView *componentPossibilityDescription;
 
 @end
