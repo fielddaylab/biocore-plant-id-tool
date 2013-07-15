@@ -12,6 +12,8 @@
 #import "Project.h"
 #import "ProjectComponent.h"
 #import "ProjectIdentification.h"
+#import "ProjectComponentPossibility.h"
+#import "ProjectIdentificationComponentPossibility.h"
 
 @implementation AppDelegate
 
@@ -25,7 +27,7 @@
     [self.window setRootViewController:[[RootViewController alloc] init]];
     [self.window makeKeyAndVisible];
     //setup example data
-    //[self createSampleData];
+    [self createSampleData];
     return YES;
 }
 
@@ -126,9 +128,6 @@
     project.name = @"Biocore";
     project.splashMediaUrl = @"splashMediaURL";
     project.updated = [NSDate date];
-    project.projectComponents = nil;
-    project.projectIdentifications = nil;
-    project.userObservations = nil;
     
     ProjectComponent *leafType = (ProjectComponent *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponent" inManagedObjectContext:[self managedObjectContext]];
     leafType.created = [NSDate date];
@@ -137,9 +136,7 @@
     leafType.required = @"YES"; //shouldn't this be a bool?
     leafType.title = @"Leaf Type";
     leafType.updated = [NSDate date];
-    leafType.projectComponentPossibilities = nil;
     leafType.project = project;
-    leafType.userObservationComponentData = nil;
     
     ProjectComponent *leafLength = (ProjectComponent *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponent" inManagedObjectContext:[self managedObjectContext]];
     leafLength.created = [NSDate date];
@@ -148,9 +145,7 @@
     leafLength.required = @"YES"; //shouldn't this be a bool?
     leafLength.title = @"Leaf Length";
     leafLength.updated = [NSDate date];
-    leafLength.projectComponentPossibilities = nil;
     leafLength.project = project;
-    leafLength.userObservationComponentData = nil;
     
     ProjectIdentification *maple = (ProjectIdentification *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentification" inManagedObjectContext:[self managedObjectContext]];
     maple.authorCreated = [NSNumber numberWithBool:YES];
@@ -159,8 +154,6 @@
     maple.title = @"Maple";
     maple.updated = [NSDate date];
     maple.project = project;
-    maple.projectIdentificationComponentPossibilities = nil;
-    maple.userObservationIdentifications = nil;
     
     ProjectIdentification *oak = (ProjectIdentification *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentification" inManagedObjectContext:[self managedObjectContext]];
     oak.authorCreated = [NSNumber numberWithBool:NO];
@@ -169,8 +162,75 @@
     oak.title = @"Oak";
     oak.updated = [NSDate date];
     oak.project = project;
-    oak.projectIdentificationComponentPossibilities = nil;
-    oak.userObservationIdentifications = nil;
+    
+    ProjectComponentPossibility *roundLeaf = (ProjectComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
+    roundLeaf.boolValue = [NSNumber numberWithBool:YES];
+    roundLeaf.created = [NSDate date];
+    roundLeaf.enumDescription = @"Round Leaft";
+    roundLeaf.mediaUrl = @"mediaURL";
+    roundLeaf.rangeOperator = [NSNumber numberWithInt:0]; //0 for no range
+    roundLeaf.rangeNumber1 = [NSNumber numberWithInt:0];
+    roundLeaf.rangeNumber2 = [NSNumber numberWithInt:0];
+    roundLeaf.updated = [NSDate date];
+    roundLeaf.projectComponent = leafType;
+    
+    ProjectComponentPossibility *heartLeaf = (ProjectComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
+    heartLeaf.boolValue = [NSNumber numberWithBool:YES];
+    heartLeaf.created = [NSDate date];
+    heartLeaf.enumDescription = @"Heart Leaf";
+    heartLeaf.mediaUrl = @"mediaURL";
+    heartLeaf.rangeOperator = [NSNumber numberWithInt:0]; //0 for no range
+    heartLeaf.rangeNumber1 = [NSNumber numberWithInt:0];
+    heartLeaf.rangeNumber2 = [NSNumber numberWithInt:0];
+    heartLeaf.updated = [NSDate date];
+    heartLeaf.projectComponent = leafType;
+    
+    ProjectComponentPossibility *squareLeaf = (ProjectComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
+    squareLeaf.boolValue = [NSNumber numberWithBool:YES];
+    squareLeaf.created = [NSDate date];
+    squareLeaf.enumDescription = @"Square Leaf";
+    squareLeaf.mediaUrl = @"mediaURL";
+    squareLeaf.rangeOperator = [NSNumber numberWithInt:0]; //0 for no range
+    squareLeaf.rangeNumber1 = [NSNumber numberWithInt:0];
+    squareLeaf.rangeNumber2 = [NSNumber numberWithInt:0];
+    squareLeaf.updated = [NSDate date];
+    squareLeaf.projectComponent = leafType;
+    
+    ProjectComponentPossibility *equalToFiveInches = (ProjectComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
+    equalToFiveInches.boolValue = [NSNumber numberWithBool:YES];
+    equalToFiveInches.created = [NSDate date];
+    equalToFiveInches.enumDescription = @"Leaf length must be equal to 5 inches";
+    equalToFiveInches.mediaUrl = @"mediaURL";
+    equalToFiveInches.rangeOperator = [NSNumber numberWithInt:1]; //0 for equal to
+    equalToFiveInches.rangeNumber1 = [NSNumber numberWithInt:5];
+    equalToFiveInches.rangeNumber2 = [NSNumber numberWithInt:0];
+    equalToFiveInches.updated = [NSDate date];
+    equalToFiveInches.projectComponent = leafLength;
+    
+    ProjectIdentificationComponentPossibility *heartLeafMaple = (ProjectIdentificationComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
+    heartLeafMaple.created = [NSDate date];
+    heartLeafMaple.updated = [NSDate date];
+    heartLeafMaple.projectComponentPossibility = heartLeaf;
+    heartLeafMaple.projectIdentification = maple;
+    
+    ProjectIdentificationComponentPossibility *squareLeafMaple = (ProjectIdentificationComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
+    squareLeafMaple.created = [NSDate date];
+    squareLeafMaple.updated = [NSDate date];
+    squareLeafMaple.projectComponentPossibility = squareLeaf;
+    squareLeafMaple.projectIdentification = maple;
+    
+    ProjectIdentificationComponentPossibility *roundLeafOak = (ProjectIdentificationComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
+    roundLeafOak.created = [NSDate date];
+    roundLeafOak.updated = [NSDate date];
+    roundLeafOak.projectComponentPossibility = roundLeaf;
+    roundLeafOak.projectIdentification = oak;
+    
+    ProjectIdentificationComponentPossibility *heartLeafOak = (ProjectIdentificationComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
+    heartLeafOak.created = [NSDate date];
+    heartLeafOak.updated = [NSDate date];
+    heartLeafOak.projectComponentPossibility = heartLeaf;
+    heartLeafOak.projectIdentification = oak;
+    
     
     NSError *error = nil;
     if(![[self managedObjectContext]save:&error]){
