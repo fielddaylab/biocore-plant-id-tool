@@ -57,7 +57,7 @@
             //number of project components
             return 2;
         case 2:
-            return 2;
+            return 4;
         case 3:
             return 5;
         case 4:
@@ -86,8 +86,14 @@
             if(indexPath.row == 0){
                 cell.textLabel.text = @"Location";
             }
-            else{
+            else if(indexPath.row == 1){
                 cell.textLabel.text = @"Date Time";
+            }
+            else if(indexPath.row == 2){
+                cell.textLabel.text = @"Weather";
+            }
+            else{
+                cell.textLabel.text = @"Author";
             }
             break;
         case 3:
