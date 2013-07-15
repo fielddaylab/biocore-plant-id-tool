@@ -11,6 +11,7 @@
 #import "IncrementalStore.h"
 #import "Project.h"
 #import "ProjectComponent.h"
+#import "ProjectIdentification.h"
 
 @implementation AppDelegate
 
@@ -23,13 +24,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setRootViewController:[[RootViewController alloc] init]];
     [self.window makeKeyAndVisible];
-    
     //setup example data
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"FieldResearchTool.sqlite"];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if(![fileManager fileExistsAtPath:[storeURL path]]){
-        [self createSampleData];
-    }
+    //[self createSampleData];
     return YES;
 }
 
@@ -103,6 +99,7 @@
     //normal Core Data    
     NSError *error = nil;
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"FieldResearchTool.sqlite"];
+        
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
@@ -154,6 +151,26 @@
     leafLength.projectComponentPossibilities = nil;
     leafLength.project = project;
     leafLength.userObservationComponentData = nil;
+    
+    ProjectIdentification *maple = (ProjectIdentification *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentification" inManagedObjectContext:[self managedObjectContext]];
+    maple.authorCreated = [NSNumber numberWithBool:YES];
+    maple.created = [NSDate date];
+    maple.identificationDescription = @"A tall big tree";
+    maple.title = @"Maple";
+    maple.updated = [NSDate date];
+    maple.project = project;
+    maple.projectIdentificationComponentPossibilities = nil;
+    maple.userObservationIdentifications = nil;
+    
+    ProjectIdentification *oak = (ProjectIdentification *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentification" inManagedObjectContext:[self managedObjectContext]];
+    oak.authorCreated = [NSNumber numberWithBool:NO];
+    oak.created = [NSDate date];
+    oak.identificationDescription = @"This tree has awesome leafs";
+    oak.title = @"Oak";
+    oak.updated = [NSDate date];
+    oak.project = project;
+    oak.projectIdentificationComponentPossibilities = nil;
+    oak.userObservationIdentifications = nil;
     
     NSError *error = nil;
     if(![[self managedObjectContext]save:&error]){
