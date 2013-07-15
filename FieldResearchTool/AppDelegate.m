@@ -9,7 +9,14 @@
 #import "AppDelegate.h"
 #import "RootViewController.h"
 #import "IncrementalStore.h"
-#import "ObservationBooleanViewController.h"
+#import "Project.h"
+#import "ProjectComponent.h"
+
+@interface AppDelegate(){
+    NSURL *storeURL;
+}
+
+@end
 
 @implementation AppDelegate
 
@@ -20,11 +27,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    //ObservationBooleanViewController *vc = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
-    //self.window.rootViewController = vc;
-
     [self.window setRootViewController:[[RootViewController alloc] init]];
     [self.window makeKeyAndVisible];
+    
+    //setup example data
+    storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"FieldResearchTool.sqlite"];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if(![fileManager fileExistsAtPath:[storeURL path]]){
+        [self createSampleData];
+    }
+    
     return YES;
 }
 
@@ -85,11 +97,20 @@
     if(_persistentStoreCoordinator != nil) return _persistentStoreCoordinator;
     
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    AFIncrementalStore *incrementalStore = (AFIncrementalStore *)[_persistentStoreCoordinator addPersistentStoreWithType:[IncrementalStore type] configuration:nil URL:nil options:nil error:nil];
+    //turn off AFIncremental store for right now until the server is set up
+//    AFIncrementalStore *incrementalStore = (AFIncrementalStore *)[_persistentStoreCoordinator addPersistentStoreWithType:[IncrementalStore type] configuration:nil URL:nil options:nil error:nil];
+//    
+//    NSError *error = nil;
+//    if (![incrementalStore.backingPersistentStoreCoordinator addPersistentStoreWithType:NSInMemoryStoreType configuration:nil URL:nil options:nil error:&error])
+//    {
+//        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+//        abort();
+//    }
     
+    //normal Core Data    
     NSError *error = nil;
-    if (![incrementalStore.backingPersistentStoreCoordinator addPersistentStoreWithType:NSInMemoryStoreType configuration:nil URL:nil options:nil error:&error])
-    {
+    
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
@@ -103,6 +124,37 @@
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+#pragma mark Sample Data
+
+-(void)createSampleData{
+    Project *project = (Project *)[NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:[self managedObjectContext]];
+    project.allowedInterpretations = [NSNumber numberWithInt:1];
+    project.created = [NSDate date];
+    project.iconMediaUrl = @"iconMediaURL";
+    project.name = @"Biocore";
+    project.splashMediaUrl = @"splashMediaURL";
+    project.updated = [NSDate date];
+    project.projectComponents = nil;
+    project.projectIdentifications = nil;
+    project.userObservations = nil;
+    
+    ProjectComponent *leafType = (ProjectComponent *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponent" inManagedObjectContext:[self managedObjectContext]];
+    leafType.created = [NSDate date];
+    leafType.mediaUrl = @"mediaURL";
+    leafType.observationType = [NSNumber numberWithInt:0]; //0 for enum
+    leafType.required = @"YES"; //shouldn't this be a bool?
+    leafType.title = @"Leaf Type";
+    leafType.updated = [NSDate date];
+    
+    ProjectComponent *leafLength = (ProjectComponent *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponent" inManagedObjectContext:[self managedObjectContext]];
+    leafLength.created = [NSDate date];
+    leafLength.mediaUrl = @"mediaURL";
+    leafLength.observationType = [NSNumber numberWithInt:1]; //1 for float
+    leafLength.required = @"YES"; //shouldn't this be a bool?
+    leafLength.title = @"Leaf Length";
+    leafLength.updated = [NSDate date];
 }
 
 @end
