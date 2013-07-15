@@ -42,6 +42,8 @@
     
     [self.navigationItem setBackBarButtonItem:[[UIBarButtonItem alloc]initWithTitle:@"Backzz" style:UIBarButtonItemStyleBordered target:nil action:nil]];
     
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:nil]];
+    
     projectComponents = [[CoreDataWrapper sharedCoreData]
                          getProjectComponentsForProjectName:@"Biocore"];
     projectIdentifications = [[CoreDataWrapper sharedCoreData]getProjectIdentificationsForProjectName:@"Biocore"];
