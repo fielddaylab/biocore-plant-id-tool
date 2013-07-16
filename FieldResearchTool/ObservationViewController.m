@@ -16,7 +16,7 @@
 #import "AppDelegate.h"
 #import "ProjectComponent.h"
 #import "Project.h"
-#import "CoreDataWrapper.h"
+#import "AppModel.h"
 
 @interface ObservationViewController (){
     NSArray *projectComponents;
@@ -27,11 +27,15 @@
 
 @implementation ObservationViewController
 
+@synthesize table;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"New Observation";
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(projectComponentsResponseReady) name:@"ProjectComponentsResponseReady" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(projectIdentificationsResponseReady) name:@"ProjectIdentificationsResponseReady" object:nil];
     }
     return self;
 }
@@ -44,9 +48,8 @@
     
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:nil]];
     
-    projectComponents = [[CoreDataWrapper sharedCoreData]
-                         getProjectComponentsForProjectName:@"Biocore"];
-    projectIdentifications = [[CoreDataWrapper sharedCoreData]getProjectIdentificationsForProjectName:@"Biocore"];
+    [[AppModel sharedAppModel]getAllProjectComponentsForProjectName:@"Biocore"];
+    [[AppModel sharedAppModel]getAllProjectIdentificationsForProjectName:@"Biocore"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -172,6 +175,18 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+#pragma mark - Asynchronous responses
+
+-(void)projectComponentsResponseReady{
+    projectComponents = [AppModel sharedAppModel].projectComponents;
+    [self.table reloadData];
+}
+
+-(void)projectIdentificationsResponseReady{
+    projectIdentifications = [AppModel sharedAppModel].projectIdentifications;
+    [self.table reloadData];
 }
 
 @end

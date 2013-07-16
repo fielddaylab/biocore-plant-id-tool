@@ -10,10 +10,10 @@
 
 @interface CoreDataWrapper : NSObject
 
-+ (CoreDataWrapper *)sharedCoreData;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 
-//these will need to be called asyncronously
--(NSArray *)getProjectComponentsForProjectName:(NSString *)project;
--(NSArray *)getProjectIdentificationsForProjectName:(NSString *)project;
+-(void)fetchAllObjectsFromTable:(NSString *)tableName withHandler:(SEL)handler;
+-(void)fetchAllObjectsFromTable:(NSString *)tableName withAttribute:(NSString *)attributeName equalTo:(NSString *)attributeValue withHandler:(SEL)handler;
 
 @end

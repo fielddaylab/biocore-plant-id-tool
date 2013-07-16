@@ -8,56 +8,75 @@
 
 #import "CoreDataWrapper.h"
 #import "AppDelegate.h"
+#import "AppModel.h"
 
 @implementation CoreDataWrapper
 
-+ (id)sharedCoreData
+@synthesize managedObjectContext;
+@synthesize managedObjectModel;
+
+#pragma mark Init/dealloc
+- (id) init
 {
-    static dispatch_once_t pred = 0;
-    __strong static id _sharedObject = nil;
-    dispatch_once(&pred, ^{
-        _sharedObject = [[self alloc] init]; // or some other init method
+    self = [super init];
+    if(self)
+    {
+        managedObjectContext = [(AppDelegate *)[[UIApplication sharedApplication]delegate]managedObjectContext];
+        managedObjectModel = [(AppDelegate *)[[UIApplication sharedApplication]delegate]managedObjectModel];
+	}
+    return self;
+}
+
+-(void)fetchAllObjectsFromTable:(NSString *)tableName withHandler:(SEL)handler{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:tableName inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error = nil;
+    NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (fetchedObjects == nil) {
+        NSLog(@"An error occurred when fetching all object from table. Handler not called. %@", error);
+        return;
+    }
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(handler){
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                [[AppModel sharedAppModel] performSelector:handler withObject:fetchedObjects];
+#pragma clang diagnostic pop
+            }
+        });
     });
-    return _sharedObject;
 }
 
-//these need to go into AppModel!
--(NSArray *)getProjectComponentsForProjectName:(NSString *)project{
-    NSManagedObjectContext *context = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
+-(void)fetchAllObjectsFromTable:(NSString *)tableName withAttribute:(NSString *)attributeName equalTo:(NSString *)attributeValue withHandler:(SEL)handler{
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"ProjectComponent" inManagedObjectContext:context];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:tableName inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"project.name == %@", project];
+    NSString *predicateString = [NSString stringWithFormat:@"%@ == '%@'", attributeName, attributeValue];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateString];
     [fetchRequest setPredicate:predicate];
     
     NSError *error = nil;
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
     if (fetchedObjects == nil) {
-        NSLog(@"An error occurred. Returning nil. %@", error);
-        return nil;
+        NSLog(@"An error occurred when fetching all objects from table with an attribute. Handler not called. %@", error);
+        return;
     }
-    
-    return fetchedObjects;
-}
 
--(NSArray *)getProjectIdentificationsForProjectName:(NSString *)project{
-    NSManagedObjectContext *context = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"ProjectIdentification" inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"project.name == %@", project];
-    [fetchRequest setPredicate:predicate];
-    
-    NSError *error = nil;
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    if (fetchedObjects == nil) {
-        NSLog(@"An error occurred. Returning nil. %@", error);
-        return nil;
-    }
-    
-    return fetchedObjects;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(handler){
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                [[AppModel sharedAppModel] performSelector:handler withObject:fetchedObjects];
+#pragma clang diagnostic pop
+            }
+        });
+    });
 }
 
 @end

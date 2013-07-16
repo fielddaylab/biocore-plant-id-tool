@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ObservationViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UITableView *table;
 
 @end

@@ -27,7 +27,9 @@
     [self.window setRootViewController:[[RootViewController alloc] init]];
     [self.window makeKeyAndVisible];
     //setup example data
-    [self createSampleData];
+    //keep this commented out unless you want to regenerate sample data. otherwise it will continually
+    //add sample data
+    //[self createSampleData];
     return YES;
 }
 
