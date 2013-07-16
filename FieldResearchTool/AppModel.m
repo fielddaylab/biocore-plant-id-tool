@@ -39,7 +39,7 @@
 -(void)getAllProjects{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [coreData fetchAllObjectsFromTable:@"Project" withHandler:@selector(handleFetchOfAllProjects:)];
+            [coreData fetchAllEntities:@"Project" withHandler:@selector(handleFetchOfAllProjects:)];
         });
     });
 }
@@ -52,7 +52,7 @@
 -(void)getAllProjectComponentsForProjectName:(NSString *)project{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [coreData fetchAllObjectsFromTable:@"ProjectComponent" withAttribute:@"project.name" equalTo:project withHandler:@selector(handleFetchAllProjectComponentsForProjectName:)];
+            [coreData fetchAllEntities:@"ProjectComponent" withAttribute:@"project.name" equalTo:project withHandler:@selector(handleFetchAllProjectComponentsForProjectName:)];
         });
     });
 }
@@ -65,7 +65,7 @@
 -(void)getAllProjectIdentificationsForProjectName:(NSString *)project{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [coreData fetchAllObjectsFromTable:@"ProjectIdentification" withAttribute:@"project.name" equalTo:project withHandler:@selector(handleFetchProjectIdentifications:)];
+            [coreData fetchAllEntities:@"ProjectIdentification" withAttribute:@"project.name" equalTo:project withHandler:@selector(handleFetchProjectIdentifications:)];
         });
     });
 
@@ -79,7 +79,7 @@
 -(void)getProjectIdentificationsForProjectName:(NSString *)project withAttributes:(NSDictionary *)attributeNamesAndValues{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [coreData fetchObjectsFromTable:@"ProjectIdentification" withAttributes:attributeNamesAndValues withHandler:@selector(handleFetchProjectIdentifications:)];
+            [coreData fetchEntities:@"ProjectIdentification" withAttributes:attributeNamesAndValues withHandler:@selector(handleFetchProjectIdentifications:)];
         });
     });
 }

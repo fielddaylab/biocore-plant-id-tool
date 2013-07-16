@@ -27,33 +27,37 @@
     return self;
 }
 
--(void)fetchAllObjectsFromTable:(NSString *)tableName withHandler:(SEL)handler{
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:tableName inManagedObjectContext:managedObjectContext];
-    [fetchRequest setEntity:entity];
-    
-    NSError *error = nil;
-    NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    if (fetchedObjects == nil) {
-        NSLog(@"An error occurred when fetching all object from table. Handler not called. %@", error);
-        return;
-    }
-    
+-(void)callHandlerForTarget:(id)target handler:(SEL)handler withObject:(id)fetchedObjects{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             if(handler){
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-                [[AppModel sharedAppModel] performSelector:handler withObject:fetchedObjects];
+                [target performSelector:handler withObject:fetchedObjects];
 #pragma clang diagnostic pop
             }
         });
     });
 }
 
--(void)fetchAllObjectsFromTable:(NSString *)tableName withAttribute:(NSString *)attributeName equalTo:(NSString *)attributeValue withHandler:(SEL)handler{
+-(void)fetchAllEntities:(NSString *)entityName withHandler:(SEL)handler{
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:tableName inManagedObjectContext:managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error = nil;
+    NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (fetchedObjects == nil) {
+        NSLog(@"An error occurred when fetching all entities. Handler not called. %@", error);
+        return;
+    }
+    
+    [self callHandlerForTarget:[AppModel sharedAppModel] handler:handler withObject:fetchedObjects];
+}
+
+-(void)fetchAllEntities:(NSString *)entityName withAttribute:(NSString *)attributeName equalTo:(NSString *)attributeValue withHandler:(SEL)handler{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
     
     NSString *predicateString = [NSString stringWithFormat:@"%@ == '%@'", attributeName, attributeValue];
@@ -63,28 +67,19 @@
     NSError *error = nil;
     NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
     if (fetchedObjects == nil) {
-        NSLog(@"An error occurred when fetching all objects from table with an attribute. Handler not called. %@", error);
+        NSLog(@"An error occurred when fetching all entities with an attribute. Handler not called. %@", error);
         return;
     }
 
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if(handler){
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-                [[AppModel sharedAppModel] performSelector:handler withObject:fetchedObjects];
-#pragma clang diagnostic pop
-            }
-        });
-    });
+    [self callHandlerForTarget:[AppModel sharedAppModel] handler:handler withObject:fetchedObjects];
 }
 
--(void)fetchObjectsFromTable:(NSString *)tableName withAttributes:(NSDictionary *)attributeNamesAndValues withHandler:(SEL)handler{
+-(void)fetchEntities:(NSString *)entityName withAttributes:(NSDictionary *)attributeNamesAndValues withHandler:(SEL)handler{
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:tableName inManagedObjectContext:managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
     
-    if([attributeNamesAndValues count] > 0){
+    if(attributeNamesAndValues && [attributeNamesAndValues count] > 0){
         //create the predicate string
         NSMutableString *predicateString = [NSMutableString stringWithString:@""];
         for (NSString *key in attributeNamesAndValues) {
@@ -108,21 +103,120 @@
     NSError *error = nil;
     NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
     if (fetchedObjects == nil) {
-        NSLog(@"An error occurred when fetching objects from table with attributes. Handler not called. %@", error);
+        NSLog(@"An error occurred when fetching entities with attributes. Handler not called. %@", error);
         return;
     }
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if(handler){
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-                [[AppModel sharedAppModel] performSelector:handler withObject:fetchedObjects];
-#pragma clang diagnostic pop
-            }
-        });
-    });
+    [self callHandlerForTarget:[AppModel sharedAppModel] handler:handler withObject:fetchedObjects];
     
 }
 
+-(void)fetchEntities:(NSString *)entityName withAttributes:(NSDictionary *)attributeNamesAndValues withSortedAttributes:(NSArray *)attributesToBeSorted withHandler:(SEL)handler{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName
+                                              inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    if(attributeNamesAndValues && [attributeNamesAndValues count] > 0){
+        //create the predicate string
+        NSMutableString *predicateString = [NSMutableString stringWithString:@""];
+        for (NSString *key in attributeNamesAndValues) {
+            //first check to make sure the object we're adding to the predicate string isnt nil
+            if([attributeNamesAndValues objectForKey:key]){
+                if([predicateString isEqualToString:@""]){
+                    [predicateString appendFormat:@"%@ == '%@'", key, [attributeNamesAndValues objectForKey:key]];
+                }
+                else{
+                    [predicateString appendFormat:@" && %@ == '%@'", key, [attributeNamesAndValues objectForKey:key]];
+                }
+            }
+        }
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateString];
+        [fetchRequest setPredicate:predicate];
+    }
+    
+    
+    if(attributesToBeSorted && [attributesToBeSorted count] > 0){
+        NSMutableArray *sortDescriptors = [[NSMutableArray alloc] init];
+        for(int i = 0; i < [attributesToBeSorted count]; i++){
+            NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:attributesToBeSorted[i] ascending:YES];
+            [sortDescriptors addObject:sortDescriptor];
+        }
+        [fetchRequest setSortDescriptors:sortDescriptors];
+    }
+    
+    
+    
+    
+    NSError *error = nil;
+    NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (fetchedObjects == nil) {
+        NSLog(@"An error occurred when fetching entities with attributes and sorting them. Handler not called. %@", error);
+        return;
+    }
+    
+    [self callHandlerForTarget:[AppModel sharedAppModel] handler:handler withObject:fetchedObjects];
+    
+}
+
+-(void)fetchEntities:(NSString *)entityName withPredicate:(NSPredicate *)predicate withHandler:(SEL)handler{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (fetchedObjects == nil) {
+        NSLog(@"An error occurred when fetching entities with a predicate. Handler not called. %@", error);
+        return;
+    }
+    
+    [self callHandlerForTarget:[AppModel sharedAppModel] handler:handler withObject:fetchedObjects];
+}
+
+-(void)fetchEntities:(NSString *)entityName withPredicate:(NSPredicate *)predicate withSortDescriptors:(NSArray *)sortDescriptors withHandler:(SEL)handler{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName
+                                              inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    [fetchRequest setPredicate:predicate];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    NSError *error = nil;
+    NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (fetchedObjects == nil) {
+        NSLog(@"An error occurred when fetching entities with a predicate and with sort descriptors. Handler not called. %@", error);
+        return;
+    }
+    
+    [self callHandlerForTarget:[AppModel sharedAppModel] handler:handler withObject:fetchedObjects];
+}
+
+-(BOOL)save{
+    NSError *error = nil;
+    if(![managedObjectContext save:&error]){
+        NSLog(@"An error occurred while saving the managed object context. %@", error);
+        return NO;
+    }
+    return YES;
+}
+
+-(void)deleteObject:(NSManagedObject *)objectToDelete{
+    [managedObjectContext deleteObject:objectToDelete];
+}
+
+-(void)deleteObjects:(NSArray *)objectsToDelete{
+    for(id object in objectsToDelete){
+        if(![object isKindOfClass:[NSManagedObject class]]){
+            NSLog(@"Couldn't delete object because it is not a managed object");
+            continue;
+        }
+        [managedObjectContext deleteObject:object];
+    }
+}
 @end

@@ -13,8 +13,19 @@
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 
--(void)fetchAllObjectsFromTable:(NSString *)tableName withHandler:(SEL)handler;
--(void)fetchAllObjectsFromTable:(NSString *)tableName withAttribute:(NSString *)attributeName equalTo:(NSString *)attributeValue withHandler:(SEL)handler;
--(void)fetchObjectsFromTable:(NSString *)tableName withAttributes:(NSDictionary *)attributeNamesAndValues withHandler:(SEL)handler;
+-(void)fetchAllEntities:(NSString *)entityName withHandler:(SEL)handler;
+-(void)fetchAllEntities:(NSString *)entityName withAttribute:(NSString *)attributeName equalTo:(NSString *)attributeValue withHandler:(SEL)handler;
+-(void)fetchEntities:(NSString *)entityName withAttributes:(NSDictionary *)attributeNamesAndValues withHandler:(SEL)handler;
+
+-(void)fetchEntities:(NSString *)entityName withAttributes:(NSDictionary *)attributeNamesAndValues withSortedAttributes:(NSArray *)attributesToBeSorted withHandler:(SEL)handler;
+
+
+-(void)fetchEntities:(NSString *)entityName withPredicate:(NSPredicate *)predicate withHandler:(SEL)handler;
+-(void)fetchEntities:(NSString *)entityName withPredicate:(NSPredicate *)predicate withSortDescriptors:(NSArray *)sortDescriptors withHandler:(SEL)handler;
+
+-(BOOL)save;
+
+-(void)deleteObject:(NSManagedObject *)objectToDelete;
+-(void)deleteObjects:(NSArray *)objectsToDelete;
 
 @end
