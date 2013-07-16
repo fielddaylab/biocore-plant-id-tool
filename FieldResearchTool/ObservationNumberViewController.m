@@ -35,6 +35,8 @@
     
 #warning TODO
     
+    [changeUnitButton setTitle:@"cm" forState:UIControlStateNormal];
+    
     unitCount = 0;
     
     componentPossibilityDescription.text = @"WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN ";
@@ -50,10 +52,10 @@
 - (IBAction)changeUnit:(id)sender {
     unitCount ++;
     if(unitCount % 2 == 0){
-        [changeUnitButton setTitle:@"CM" forState:UIControlStateNormal];
+        [changeUnitButton setTitle:@"cm" forState:UIControlStateNormal];
     }
     else if(unitCount % 2 == 1){
-        [changeUnitButton setTitle:@"Inches" forState:UIControlStateNormal];
+        [changeUnitButton setTitle:@"inches" forState:UIControlStateNormal];
     }
 }
 - (IBAction)killKeyboard:(id)sender {
