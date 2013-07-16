@@ -15,7 +15,7 @@
         <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="mediaUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="observationType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="required" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="required" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updated" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="project" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="projectComponents" inverseEntity="Project" syncable="YES"/>
@@ -95,7 +95,7 @@
     </entity>
     <elements>
         <element name="Project" positionX="153" positionY="137" width="128" height="178"/>
-        <element name="ProjectComponent" positionX="144" positionY="-81" width="128" height="178"/>
+        <element name="ProjectComponent" positionX="144" positionY="-81" width="128" height="180"/>
         <element name="ProjectComponentPossibility" positionX="324" positionY="-288" width="128" height="208"/>
         <element name="ProjectIdentification" positionX="144" positionY="320" width="128" height="163"/>
         <element name="ProjectIdentificationComponentPossibility" positionX="439" positionY="185" width="128" height="73"/>
