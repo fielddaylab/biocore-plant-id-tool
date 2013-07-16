@@ -7,8 +7,13 @@
 //
 
 #import "ObservationPhotoViewController.h"
+#import <AVFoundation/AVFoundation.h>
 
-@interface ObservationPhotoViewController ()
+@interface ObservationPhotoViewController (){
+    AVCaptureSession *captureSession;
+    AVCaptureDevice *photoCaptureDevice;
+    AVCaptureDeviceInput *photoInput;
+}
 
 @end
 
@@ -33,7 +38,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    
 
 #warning TODO
 
@@ -54,8 +58,6 @@
     
 }
 
-
-
 - (IBAction)takePhoto:(UIButton *)sender {
     
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
@@ -69,16 +71,47 @@
 
 - (IBAction)selectPhoto:(UIButton *)sender {
     
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    captureSession = [[AVCaptureSession alloc] init];
     
-    [self presentViewController:picker animated:YES completion:NULL];
+    [captureSession startRunning];
+
+    photoCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    NSError *error = nil;
+    photoInput = [AVCaptureDeviceInput deviceInputWithDevice:photoCaptureDevice error:&error];
+    if (photoInput) {
+        [captureSession addInput:photoInput];
+        
+        NSLog(@"YEAEAEA");
+        AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
+        UIView* aView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-244)];//-44 navbar; -200 for scroller
+
+
+        
+        previewLayer.frame = aView.bounds; // Assume you want the preview layer to fill the view.
+        [aView.layer addSublayer:previewLayer];
+        [self.imageView addSubview:aView];
+        
+        CGRect bounds = aView.layer.bounds;
+        previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        previewLayer.bounds=bounds;
+        previewLayer.position=CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
+    }
+    else {
+        // Handle the failure.
+        
+        NSLog(@"NOOOO");
+    }
+
     
+    
+//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+//    picker.delegate = self;
+//    picker.allowsEditing = YES;
+//    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//    
+//    [self presentViewController:picker animated:YES completion:NULL];
     
 }
-
 
 - (void)didReceiveMemoryWarning
 {

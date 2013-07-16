@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ObservationTextViewController : UIViewController
+@interface ObservationTextViewController : UIViewController 
 
 @property (weak, nonatomic) IBOutlet UITextView *componentPossibilityDescription;
+@property (weak, nonatomic) IBOutlet UITextView *userInput;
+- (IBAction)killKeyboard:(id)sender;
 
 @end

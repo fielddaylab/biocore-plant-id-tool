@@ -8,13 +8,15 @@
 
 #import "ObservationTextViewController.h"
 
-@interface ObservationTextViewController ()
+@interface ObservationTextViewController (){
+    NSString *componentPossibilityJudgement;
+}
 
 @end
 
 @implementation ObservationTextViewController
 
-@synthesize componentPossibilityDescription;
+@synthesize componentPossibilityDescription, userInput;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,6 +34,13 @@
     
 #warning TODO
     componentPossibilityDescription.text = @"WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN ";
+    
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    componentPossibilityJudgement = userInput.text;
 
 }
 
@@ -41,4 +50,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)killKeyboard:(id)sender {
+    
+    [self.view endEditing:YES];
+}
 @end
