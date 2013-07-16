@@ -94,7 +94,7 @@
     
     switch (indexPath.section) {
         case 0:
-            cell.textLabel.text = [projectIdentifications count] != 0 ?[NSString stringWithFormat:@"%d identifications", [projectIdentifications count]] : [NSString stringWithFormat:@"%d identifications", 0];
+            cell.textLabel.text = [projectIdentifications count] != 1 ?[NSString stringWithFormat:@"%d identifications", [projectIdentifications count]] : [NSString stringWithFormat:@"%d identification", 1];
             break;
         case 1:
             com = (ProjectComponent *)[projectComponents objectAtIndex:indexPath.row];
@@ -143,28 +143,33 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    if(indexPath.section == 3 && indexPath.row == 0){
+    if(indexPath.section == 0){
+        NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+        //[attributes setObject:@"" forKey:@"identificationDescription"];
+        [attributes setObject:@"Maple" forKey:@"title"];
+        [[AppModel sharedAppModel]getProjectIdentificationsForProjectName:@"Biocore" withAttributes:attributes];
+    }
+    else if(indexPath.section == 3 && indexPath.row == 0){
         ObservationBooleanViewController *vc = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
     }
-    if(indexPath.section == 3 && indexPath.row == 1){
+    else if(indexPath.section == 3 && indexPath.row == 1){
         ObservationAudioVideoViewController *vc = [[ObservationAudioVideoViewController alloc]initWithNibName:@"ObservationAudioVideoViewController" bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
     }
-    if(indexPath.section == 3 && indexPath.row == 2){
+    else if(indexPath.section == 3 && indexPath.row == 2){
         ObservationTextViewController *vc = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
     }
-    if(indexPath.section == 3 && indexPath.row == 3){
+    else if(indexPath.section == 3 && indexPath.row == 3){
         ObservationNumberViewController *vc = [[ObservationNumberViewController alloc]initWithNibName:@"ObservationNumberViewController" bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
     }
-    if(indexPath.section == 3 && indexPath.row == 4){
+    else if(indexPath.section == 3 && indexPath.row == 4){
         ObservationPhotoViewController *vc = [[ObservationPhotoViewController alloc]initWithNibName:@"ObservationPhotoViewController" bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
     }
-    if(indexPath.section == 4 && indexPath.row == 0){
+    else if(indexPath.section == 4 && indexPath.row == 0){
         InterpretationChoiceViewController *vc = [[InterpretationChoiceViewController alloc]initWithNibName:@"InterpretationChoiceViewController" bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
     }

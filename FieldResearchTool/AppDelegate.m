@@ -157,6 +157,14 @@
     maple.updated = [NSDate date];
     maple.project = project;
     
+    ProjectIdentification *mapleTree = (ProjectIdentification *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentification" inManagedObjectContext:[self managedObjectContext]];
+    mapleTree.authorCreated = [NSNumber numberWithBool:YES];
+    mapleTree.created = [NSDate date];
+    mapleTree.identificationDescription = @"A tall big tree, that is a maple.";
+    mapleTree.title = @"Maple";
+    mapleTree.updated = [NSDate date];
+    mapleTree.project = project;
+    
     ProjectIdentification *oak = (ProjectIdentification *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentification" inManagedObjectContext:[self managedObjectContext]];
     oak.authorCreated = [NSNumber numberWithBool:NO];
     oak.created = [NSDate date];
@@ -168,7 +176,7 @@
     ProjectComponentPossibility *roundLeaf = (ProjectComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
     roundLeaf.boolValue = [NSNumber numberWithBool:YES];
     roundLeaf.created = [NSDate date];
-    roundLeaf.enumDescription = @"Round Leaft";
+    roundLeaf.enumDescription = @"Round Leaf";
     roundLeaf.mediaUrl = @"mediaURL";
     roundLeaf.rangeOperator = [NSNumber numberWithInt:0]; //0 for no range
     roundLeaf.rangeNumber1 = [NSNumber numberWithInt:0];

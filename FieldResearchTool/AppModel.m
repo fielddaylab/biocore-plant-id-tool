@@ -65,15 +65,23 @@
 -(void)getAllProjectIdentificationsForProjectName:(NSString *)project{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [coreData fetchAllObjectsFromTable:@"ProjectIdentification" withAttribute:@"project.name" equalTo:project withHandler:@selector(handleFetchAllProjectIdentificationsForProjectName:)];
+            [coreData fetchAllObjectsFromTable:@"ProjectIdentification" withAttribute:@"project.name" equalTo:project withHandler:@selector(handleFetchProjectIdentifications:)];
         });
     });
 
 }
 
--(void)handleFetchAllProjectIdentificationsForProjectName:(NSArray *)identifications{
+-(void)handleFetchProjectIdentifications:(NSArray *)identifications{
     projectIdentifications = identifications;
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"ProjectIdentificationsResponseReady" object:nil]];
+}
+
+-(void)getProjectIdentificationsForProjectName:(NSString *)project withAttributes:(NSDictionary *)attributeNamesAndValues{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [coreData fetchObjectsFromTable:@"ProjectIdentification" withAttributes:attributeNamesAndValues withHandler:@selector(handleFetchProjectIdentifications:)];
+        });
+    });
 }
 
 @end

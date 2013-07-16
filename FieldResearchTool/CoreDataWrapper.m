@@ -79,4 +79,50 @@
     });
 }
 
+-(void)fetchObjectsFromTable:(NSString *)tableName withAttributes:(NSDictionary *)attributeNamesAndValues withHandler:(SEL)handler{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:tableName inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    if([attributeNamesAndValues count] > 0){
+        //create the predicate string
+        NSMutableString *predicateString = [NSMutableString stringWithString:@""];
+        for (NSString *key in attributeNamesAndValues) {
+            //first check to make sure the object we're adding to the predicate string isnt nil
+            if([attributeNamesAndValues objectForKey:key]){
+                if([predicateString isEqualToString:@""]){
+                    [predicateString appendFormat:@"%@ == '%@'", key, [attributeNamesAndValues objectForKey:key]];
+                }
+                else{
+                    [predicateString appendFormat:@" && %@ == '%@'", key, [attributeNamesAndValues objectForKey:key]];
+                }
+            }
+        }
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateString];
+        [fetchRequest setPredicate:predicate];
+    }
+    
+
+    
+    NSError *error = nil;
+    NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (fetchedObjects == nil) {
+        NSLog(@"An error occurred when fetching objects from table with attributes. Handler not called. %@", error);
+        return;
+    }
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(handler){
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                [[AppModel sharedAppModel] performSelector:handler withObject:fetchedObjects];
+#pragma clang diagnostic pop
+            }
+        });
+    });
+    
+}
+
 @end

@@ -22,6 +22,8 @@
 -(void)getAllProjects;
 -(void)getAllProjectComponentsForProjectName:(NSString *)project;
 -(void)getAllProjectIdentificationsForProjectName:(NSString *)project;
+-(void)getProjectIdentificationsForProjectName:(NSString *)project withAttributes:(NSDictionary *)attributeNamesAndValues;
+
 
 
 @end

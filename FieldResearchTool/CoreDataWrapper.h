@@ -15,5 +15,6 @@
 
 -(void)fetchAllObjectsFromTable:(NSString *)tableName withHandler:(SEL)handler;
 -(void)fetchAllObjectsFromTable:(NSString *)tableName withAttribute:(NSString *)attributeName equalTo:(NSString *)attributeValue withHandler:(SEL)handler;
+-(void)fetchObjectsFromTable:(NSString *)tableName withAttributes:(NSDictionary *)attributeNamesAndValues withHandler:(SEL)handler;
 
 @end
