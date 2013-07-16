@@ -21,6 +21,7 @@
     return _sharedObject;
 }
 
+//these need to go into AppModel!
 -(NSArray *)getProjectComponentsForProjectName:(NSString *)project{
     NSManagedObjectContext *context = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];

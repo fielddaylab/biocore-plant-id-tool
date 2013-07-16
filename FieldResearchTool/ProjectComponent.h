@@ -2,7 +2,7 @@
 //  ProjectComponent.h
 //  FieldResearchTool
 //
-//  Created by Justin Moeller on 7/15/13.
+//  Created by Justin Moeller on 7/16/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
@@ -16,7 +16,7 @@
 @property (nonatomic, retain) NSDate * created;
 @property (nonatomic, retain) NSString * mediaUrl;
 @property (nonatomic, retain) NSNumber * observationType;
-@property (nonatomic, retain) NSString * required;
+@property (nonatomic, retain) NSNumber * required;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSDate * updated;
 @property (nonatomic, retain) Project *project;
