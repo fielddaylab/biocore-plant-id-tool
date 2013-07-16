@@ -17,6 +17,7 @@
 #import "ProjectComponent.h"
 #import "Project.h"
 #import "AppModel.h"
+#import "ProjectComponentDataType.h"
 
 @interface ObservationViewController (){
     NSArray *projectComponents;
@@ -61,7 +62,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -75,8 +76,6 @@
             return 4;
         case 3:
             return 5;
-        case 4:
-            return 1;
         default:
             return 0;
     };
@@ -144,10 +143,36 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 0){
-        NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-        //[attributes setObject:@"" forKey:@"identificationDescription"];
-        [attributes setObject:@"Maple" forKey:@"title"];
-        [[AppModel sharedAppModel]getProjectIdentificationsForProjectName:@"Biocore" withAttributes:attributes];
+        InterpretationChoiceViewController *vc = [[InterpretationChoiceViewController alloc]initWithNibName:@"InterpretationChoiceViewController" bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if(indexPath.section == 1){
+        ProjectComponent *projectComponent = [projectComponents objectAtIndex:indexPath.row];
+        UIViewController *viewControllerToPush;
+        switch ([projectComponent.observationType intValue]) {
+            case VISUAL:
+                viewControllerToPush = [[ObservationPhotoViewController alloc]initWithNibName:@"ObservationPhotoViewController" bundle:nil];
+                break;
+            case AUDIO:
+                viewControllerToPush = [[ObservationAudioVideoViewController alloc]initWithNibName:@"ObservationAudioVideoViewController" bundle:nil];
+                break;
+            case TEXT:
+                viewControllerToPush = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];
+                break;
+            case LONG_TEXT:
+                viewControllerToPush = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];
+                break;
+            case NUMBER:
+                viewControllerToPush = [[ObservationNumberViewController alloc]initWithNibName:@"ObservationNumberViewController" bundle:nil];
+                break;
+            case BOOLEAN:
+                viewControllerToPush = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
+                break;
+            default:
+                viewControllerToPush = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
+                break;
+        }
+        [self.navigationController pushViewController:viewControllerToPush animated:YES];
     }
     else if(indexPath.section == 3 && indexPath.row == 0){
         ObservationBooleanViewController *vc = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
@@ -167,10 +192,6 @@
     }
     else if(indexPath.section == 3 && indexPath.row == 4){
         ObservationPhotoViewController *vc = [[ObservationPhotoViewController alloc]initWithNibName:@"ObservationPhotoViewController" bundle:nil];
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    else if(indexPath.section == 4 && indexPath.row == 0){
-        InterpretationChoiceViewController *vc = [[InterpretationChoiceViewController alloc]initWithNibName:@"InterpretationChoiceViewController" bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
