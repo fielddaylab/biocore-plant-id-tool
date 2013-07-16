@@ -124,7 +124,7 @@
             else if (indexPath.row == 3){
                 cell.textLabel.text = @"NUMBER";
             }
-            else{
+            else if (indexPath.row == 4){
                 cell.textLabel.text = @"PHOTO";
             }
             break;
