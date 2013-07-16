@@ -10,10 +10,22 @@
 
 @interface CoreDataWrapper : NSObject
 
-+ (CoreDataWrapper *)sharedCoreData;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 
-//these will need to be called asyncronously
--(NSArray *)getProjectComponentsForProjectName:(NSString *)project;
--(NSArray *)getProjectIdentificationsForProjectName:(NSString *)project;
+-(void)fetchAllEntities:(NSString *)entityName withHandler:(SEL)handler;
+-(void)fetchAllEntities:(NSString *)entityName withAttribute:(NSString *)attributeName equalTo:(NSString *)attributeValue withHandler:(SEL)handler;
+-(void)fetchEntities:(NSString *)entityName withAttributes:(NSDictionary *)attributeNamesAndValues withHandler:(SEL)handler;
+
+-(void)fetchEntities:(NSString *)entityName withAttributes:(NSDictionary *)attributeNamesAndValues withSortedAttributes:(NSArray *)attributesToBeSorted withHandler:(SEL)handler;
+
+
+-(void)fetchEntities:(NSString *)entityName withPredicate:(NSPredicate *)predicate withHandler:(SEL)handler;
+-(void)fetchEntities:(NSString *)entityName withPredicate:(NSPredicate *)predicate withSortDescriptors:(NSArray *)sortDescriptors withHandler:(SEL)handler;
+
+-(BOOL)save;
+
+-(void)deleteObject:(NSManagedObject *)objectToDelete;
+-(void)deleteObjects:(NSArray *)objectsToDelete;
 
 @end

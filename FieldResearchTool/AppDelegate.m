@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "AppModel.h"
 #import "RootViewController.h"
 #import "IncrementalStore.h"
 #import "Project.h"
@@ -14,6 +15,8 @@
 #import "ProjectIdentification.h"
 #import "ProjectComponentPossibility.h"
 #import "ProjectIdentificationComponentPossibility.h"
+#import "ProjectComponentDataType.h"
+#import "RangeOperators.h"
 
 @implementation AppDelegate
 
@@ -27,7 +30,9 @@
     [self.window setRootViewController:[[RootViewController alloc] init]];
     [self.window makeKeyAndVisible];
     //setup example data
-    [self createSampleData];
+    //keep this commented out unless you want to regenerate sample data. otherwise it will continually
+    //add sample data
+    //[self createSampleData];
     return YES;
 }
 
@@ -132,7 +137,7 @@
     ProjectComponent *leafType = (ProjectComponent *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponent" inManagedObjectContext:[self managedObjectContext]];
     leafType.created = [NSDate date];
     leafType.mediaUrl = @"mediaURL";
-    leafType.observationType = [NSNumber numberWithInt:0]; //0 for enum
+    leafType.observationType = [NSNumber numberWithInt:VISUAL];
     leafType.required = [NSNumber numberWithBool:YES];
     leafType.title = @"Leaf Type";
     leafType.updated = [NSDate date];
@@ -141,7 +146,7 @@
     ProjectComponent *leafLength = (ProjectComponent *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponent" inManagedObjectContext:[self managedObjectContext]];
     leafLength.created = [NSDate date];
     leafLength.mediaUrl = @"mediaURL";
-    leafLength.observationType = [NSNumber numberWithInt:1]; //1 for float
+    leafLength.observationType = [NSNumber numberWithInt:NUMBER];
     leafLength.required = [NSNumber numberWithBool:YES];
     leafLength.title = @"Leaf Length";
     leafLength.updated = [NSDate date];
@@ -155,6 +160,14 @@
     maple.updated = [NSDate date];
     maple.project = project;
     
+    ProjectIdentification *mapleTree = (ProjectIdentification *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentification" inManagedObjectContext:[self managedObjectContext]];
+    mapleTree.authorCreated = [NSNumber numberWithBool:YES];
+    mapleTree.created = [NSDate date];
+    mapleTree.identificationDescription = @"A tall big tree, that is a maple.";
+    mapleTree.title = @"Maple";
+    mapleTree.updated = [NSDate date];
+    mapleTree.project = project;
+    
     ProjectIdentification *oak = (ProjectIdentification *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentification" inManagedObjectContext:[self managedObjectContext]];
     oak.authorCreated = [NSNumber numberWithBool:NO];
     oak.created = [NSDate date];
@@ -166,9 +179,9 @@
     ProjectComponentPossibility *roundLeaf = (ProjectComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
     roundLeaf.boolValue = [NSNumber numberWithBool:YES];
     roundLeaf.created = [NSDate date];
-    roundLeaf.enumDescription = @"Round Leaft";
+    roundLeaf.enumDescription = @"Round Leaf";
     roundLeaf.mediaUrl = @"mediaURL";
-    roundLeaf.rangeOperator = [NSNumber numberWithInt:0]; //0 for no range
+    roundLeaf.rangeOperator = [NSNumber numberWithInt:NOT_BETWEEN];
     roundLeaf.rangeNumber1 = [NSNumber numberWithInt:0];
     roundLeaf.rangeNumber2 = [NSNumber numberWithInt:0];
     roundLeaf.updated = [NSDate date];
@@ -179,7 +192,7 @@
     heartLeaf.created = [NSDate date];
     heartLeaf.enumDescription = @"Heart Leaf";
     heartLeaf.mediaUrl = @"mediaURL";
-    heartLeaf.rangeOperator = [NSNumber numberWithInt:0]; //0 for no range
+    heartLeaf.rangeOperator = [NSNumber numberWithInt:NOT_BETWEEN];
     heartLeaf.rangeNumber1 = [NSNumber numberWithInt:0];
     heartLeaf.rangeNumber2 = [NSNumber numberWithInt:0];
     heartLeaf.updated = [NSDate date];
@@ -190,7 +203,7 @@
     squareLeaf.created = [NSDate date];
     squareLeaf.enumDescription = @"Square Leaf";
     squareLeaf.mediaUrl = @"mediaURL";
-    squareLeaf.rangeOperator = [NSNumber numberWithInt:0]; //0 for no range
+    squareLeaf.rangeOperator = [NSNumber numberWithInt:NOT_BETWEEN];
     squareLeaf.rangeNumber1 = [NSNumber numberWithInt:0];
     squareLeaf.rangeNumber2 = [NSNumber numberWithInt:0];
     squareLeaf.updated = [NSDate date];
@@ -201,9 +214,9 @@
     equalToFiveInches.created = [NSDate date];
     equalToFiveInches.enumDescription = @"Leaf length must be equal to 5 inches";
     equalToFiveInches.mediaUrl = @"mediaURL";
-    equalToFiveInches.rangeOperator = [NSNumber numberWithInt:1]; //1 for equal to
+    equalToFiveInches.rangeOperator = [NSNumber numberWithInt:EQUAL];
     equalToFiveInches.rangeNumber1 = [NSNumber numberWithInt:5];
-    equalToFiveInches.rangeNumber2 = [NSNumber numberWithInt:0];
+    equalToFiveInches.rangeNumber2 = [NSNumber numberWithInt:5];
     equalToFiveInches.updated = [NSDate date];
     equalToFiveInches.projectComponent = leafLength;
     
@@ -232,10 +245,7 @@
     heartLeafOak.projectIdentification = oak;
     
     
-    NSError *error = nil;
-    if(![[self managedObjectContext]save:&error]){
-        NSLog(@"An error! %@", error);
-    }
+    [[AppModel sharedAppModel]save];
 }
 
 @end
