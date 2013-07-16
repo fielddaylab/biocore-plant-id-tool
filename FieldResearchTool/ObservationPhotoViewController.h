@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface ObservationPhotoViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-@property (strong, nonatomic) IBOutlet UIImageView *imageView;
-- (IBAction)takePhoto:(id)sender;
-- (IBAction)selectPhoto:(id)sender;
+@property(nonatomic, retain) AVCaptureStillImageOutput *stillImageOutput;
+
 
 @end

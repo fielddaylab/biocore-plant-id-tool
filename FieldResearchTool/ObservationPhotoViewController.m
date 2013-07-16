@@ -8,16 +8,25 @@
 
 #import "ObservationPhotoViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import <ImageIO/CGImageProperties.h>
+
+#define HEIGHT_OF_RECORD 244 
 
 @interface ObservationPhotoViewController (){
-    AVCaptureSession *captureSession;
     AVCaptureDevice *photoCaptureDevice;
     AVCaptureDeviceInput *photoInput;
+    UIButton *startRecording;
+    UIButton *takePicture;
+    UIView *recorderView;
+    UIView *showPictureView;
+    UIImageView *imageView;
+
 }
 
 @end
 
 @implementation ObservationPhotoViewController
+@synthesize stillImageOutput;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,88 +38,127 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-
     
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
+    
+    showPictureView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - HEIGHT_OF_RECORD)];//44 nav bar 200 space for slider
+    [self.view addSubview:showPictureView];
+    showPictureView.hidden = YES;
+    
+    startRecording = [UIButton buttonWithType:UIButtonTypeCustom];
+    startRecording.frame = showPictureView.bounds;
+    [startRecording setTitle:@"Retake PHOOOOTOOOOO" forState:UIControlStateNormal];
+    [startRecording addTarget:self action:@selector(startRecord) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    recorderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - HEIGHT_OF_RECORD)];//44 nav bar 200 space for slider
+    [self.view addSubview:recorderView];
 
-#warning TODO
+    takePicture = [UIButton buttonWithType:UIButtonTypeCustom];
+    takePicture.frame = recorderView.bounds;
+    [takePicture setTitle:@"Touch Me!" forState:UIControlStateNormal];
+    [takePicture addTarget:self action:@selector(takePhoto) forControlEvents:UIControlEventTouchUpInside];
 
+    
+    [self startRecord];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
-    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    self.imageView.image = chosenImage;
-    
-    [picker dismissViewControllerAnimated:YES completion:NULL];
-    
-}
+- (void) startRecord
+{
+    NSLog(@"START RECORD");
+    recorderView.hidden = NO;
+    takePicture.hidden = NO;
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    showPictureView.hidden = YES;
+    startRecording.hidden = YES;
     
-    [picker dismissViewControllerAnimated:YES completion:NULL];
+    AVCaptureSession *captureSession = [[AVCaptureSession alloc] init];
+    captureSession.sessionPreset = AVCaptureSessionPresetMedium;
     
-}
-
-- (IBAction)takePhoto:(UIButton *)sender {
+    AVCaptureVideoPreviewLayer *previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:captureSession];
     
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+//    CGRect bounds = recorderView.bounds;
+//    previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+//    previewLayer.bounds = bounds;
+//    previewLayer.position = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
     
-    [self presentViewController:picker animated:YES completion:NULL];
+    previewLayer.frame = recorderView.bounds;
+    [recorderView.layer addSublayer:previewLayer];
+    [recorderView addSubview:takePicture];
+    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
-}
-
-- (IBAction)selectPhoto:(UIButton *)sender {
+    NSError *error = nil;
+    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
+    if (!input) {
+        // Handle the error appropriately.
+        NSLog(@"ERROR: trying to open camera: %@", error);
+    }
+    [captureSession addInput:input];
     
-    captureSession = [[AVCaptureSession alloc] init];
+    stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
+    NSDictionary *outputSettings = [[NSDictionary alloc] initWithObjectsAndKeys: AVVideoCodecJPEG, AVVideoCodecKey, nil];
+    [stillImageOutput setOutputSettings:outputSettings];
+    [captureSession addOutput:stillImageOutput];
     
     [captureSession startRunning];
 
-    photoCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    NSError *error = nil;
-    photoInput = [AVCaptureDeviceInput deviceInputWithDevice:photoCaptureDevice error:&error];
-    if (photoInput) {
-        [captureSession addInput:photoInput];
-        
-        NSLog(@"YEAEAEA");
-        AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
-        UIView* aView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-244)];//-44 navbar; -200 for scroller
+    
+}
 
 
-        
-        previewLayer.frame = aView.bounds; // Assume you want the preview layer to fill the view.
-        [aView.layer addSublayer:previewLayer];
-        [self.imageView addSubview:aView];
-        
-        CGRect bounds = aView.layer.bounds;
-        previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-        previewLayer.bounds=bounds;
-        previewLayer.position=CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
+
+- (void)takePhoto {
+    
+    NSLog(@"TAKE PHOTO");
+
+    AVCaptureConnection *videoConnection = nil;
+    for (AVCaptureConnection *connection in stillImageOutput.connections)
+    {
+        for (AVCaptureInputPort *port in [connection inputPorts])
+        {
+            if ([[port mediaType] isEqual:AVMediaTypeVideo] )
+            {
+                videoConnection = connection;
+                break;
+            }
+        }
+        if (videoConnection)
+        {
+            break;
+        }
     }
-    else {
-        // Handle the failure.
-        
-        NSLog(@"NOOOO");
-    }
+    
+    NSLog(@"about to request a capture from: %@", stillImageOutput);
+    [stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler: ^(CMSampleBufferRef imageSampleBuffer, NSError *error)
+     {
+         CFDictionaryRef exifAttachments = CMGetAttachment( imageSampleBuffer, kCGImagePropertyExifDictionary, NULL);
+         if (exifAttachments)
+         {
+             // Do something with the attachments.
+             NSLog(@"attachements: %@", exifAttachments);
+         } else {
+             NSLog(@"no attachments");
+         }
+         
+         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
+         UIImage *image = [[UIImage alloc] initWithData:imageData];
+         
+         imageView.image = image;
+         
+         [showPictureView addSubview:startRecording];
+         
+         recorderView.hidden = YES;
+         takePicture.hidden = YES;
+         
+         showPictureView.hidden = NO;
+         startRecording.hidden = NO;
 
-    
-    
-//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-//    picker.delegate = self;
-//    picker.allowsEditing = YES;
-//    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//    
-//    [self presentViewController:picker animated:YES completion:NULL];
-    
+     }];
 }
 
 - (void)didReceiveMemoryWarning
