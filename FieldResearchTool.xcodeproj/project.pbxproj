@@ -29,8 +29,6 @@
 		718AAD0F1794761B00AFE6DB /* ObservationNumberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD0D1794761B00AFE6DB /* ObservationNumberViewController.xib */; };
 		718AAD131794763600AFE6DB /* ObservationTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AAD111794763600AFE6DB /* ObservationTextViewController.m */; };
 		718AAD141794763600AFE6DB /* ObservationTextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD121794763600AFE6DB /* ObservationTextViewController.xib */; };
-		718AAD181794764100AFE6DB /* ObservationPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AAD161794764100AFE6DB /* ObservationPhotoViewController.m */; };
-		718AAD191794764100AFE6DB /* ObservationPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD171794764100AFE6DB /* ObservationPhotoViewController.xib */; };
 		718AAD1D1794765100AFE6DB /* ObservationAudioVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AAD1B1794765100AFE6DB /* ObservationAudioVideoViewController.m */; };
 		718AAD1E1794765100AFE6DB /* ObservationAudioVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD1C1794765100AFE6DB /* ObservationAudioVideoViewController.xib */; };
 		718AAD221794771300AFE6DB /* InterpretationChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AAD201794771300AFE6DB /* InterpretationChoiceViewController.m */; };
@@ -42,6 +40,8 @@
 		71FF69C01794819300E2B411 /* ObservationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF69A81794819200E2B411 /* ObservationViewController.m */; };
 		71FF69C11794819300E2B411 /* ObservationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71FF69A91794819200E2B411 /* ObservationViewController.xib */; };
 		71FF69CD1794A20B00E2B411 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FF69CC1794A20A00E2B411 /* MediaPlayer.framework */; };
+		71FF69D71795BE6E00E2B411 /* ObservationPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF69D51795BE6D00E2B411 /* ObservationPhotoViewController.m */; };
+		71FF69D81795BE6E00E2B411 /* ObservationPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71FF69D61795BE6E00E2B411 /* ObservationPhotoViewController.xib */; };
 		AAAC4F32178F1767001AB1D8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC4F31178F1767001AB1D8 /* UIKit.framework */; };
 		AAAC4F34178F1767001AB1D8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC4F33178F1767001AB1D8 /* Foundation.framework */; };
 		AAAC4F36178F1767001AB1D8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC4F35178F1767001AB1D8 /* CoreGraphics.framework */; };
@@ -100,9 +100,6 @@
 		718AAD101794763600AFE6DB /* ObservationTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationTextViewController.h; sourceTree = "<group>"; };
 		718AAD111794763600AFE6DB /* ObservationTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationTextViewController.m; sourceTree = "<group>"; };
 		718AAD121794763600AFE6DB /* ObservationTextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationTextViewController.xib; sourceTree = "<group>"; };
-		718AAD151794764100AFE6DB /* ObservationPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationPhotoViewController.h; sourceTree = "<group>"; };
-		718AAD161794764100AFE6DB /* ObservationPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationPhotoViewController.m; sourceTree = "<group>"; };
-		718AAD171794764100AFE6DB /* ObservationPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationPhotoViewController.xib; sourceTree = "<group>"; };
 		718AAD1A1794765100AFE6DB /* ObservationAudioVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationAudioVideoViewController.h; sourceTree = "<group>"; };
 		718AAD1B1794765100AFE6DB /* ObservationAudioVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationAudioVideoViewController.m; sourceTree = "<group>"; };
 		718AAD1C1794765100AFE6DB /* ObservationAudioVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationAudioVideoViewController.xib; sourceTree = "<group>"; };
@@ -119,6 +116,9 @@
 		71FF69A81794819200E2B411 /* ObservationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationViewController.m; sourceTree = "<group>"; };
 		71FF69A91794819200E2B411 /* ObservationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationViewController.xib; sourceTree = "<group>"; };
 		71FF69CC1794A20A00E2B411 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		71FF69D51795BE6D00E2B411 /* ObservationPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationPhotoViewController.m; sourceTree = "<group>"; };
+		71FF69D61795BE6E00E2B411 /* ObservationPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationPhotoViewController.xib; sourceTree = "<group>"; };
+		71FF69D91795BE7500E2B411 /* ObservationPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationPhotoViewController.h; sourceTree = "<group>"; };
 		AAAC4F2E178F1767001AB1D8 /* FieldResearchTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FieldResearchTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAC4F31178F1767001AB1D8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AAAC4F33178F1767001AB1D8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -216,9 +216,9 @@
 				718AAD101794763600AFE6DB /* ObservationTextViewController.h */,
 				718AAD111794763600AFE6DB /* ObservationTextViewController.m */,
 				718AAD121794763600AFE6DB /* ObservationTextViewController.xib */,
-				718AAD151794764100AFE6DB /* ObservationPhotoViewController.h */,
-				718AAD161794764100AFE6DB /* ObservationPhotoViewController.m */,
-				718AAD171794764100AFE6DB /* ObservationPhotoViewController.xib */,
+				71FF69D91795BE7500E2B411 /* ObservationPhotoViewController.h */,
+				71FF69D51795BE6D00E2B411 /* ObservationPhotoViewController.m */,
+				71FF69D61795BE6E00E2B411 /* ObservationPhotoViewController.xib */,
 				718AAD1A1794765100AFE6DB /* ObservationAudioVideoViewController.h */,
 				718AAD1B1794765100AFE6DB /* ObservationAudioVideoViewController.m */,
 				718AAD1C1794765100AFE6DB /* ObservationAudioVideoViewController.xib */,
@@ -399,11 +399,11 @@
 				718AAD0A1794666200AFE6DB /* SwitchYesSmall.png in Resources */,
 				718AAD0F1794761B00AFE6DB /* ObservationNumberViewController.xib in Resources */,
 				718AAD141794763600AFE6DB /* ObservationTextViewController.xib in Resources */,
-				718AAD191794764100AFE6DB /* ObservationPhotoViewController.xib in Resources */,
 				718AAD1E1794765100AFE6DB /* ObservationAudioVideoViewController.xib in Resources */,
 				718AAD231794771300AFE6DB /* InterpretationChoiceViewController.xib in Resources */,
 				718AAD281794772300AFE6DB /* InterpretationSplitViewController.xib in Resources */,
 				71FF69C11794819300E2B411 /* ObservationViewController.xib in Resources */,
+				71FF69D81795BE6E00E2B411 /* ObservationPhotoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,7 +458,6 @@
 				718AACFD179463B500AFE6DB /* ObservationBooleanViewController.m in Sources */,
 				718AAD0E1794761B00AFE6DB /* ObservationNumberViewController.m in Sources */,
 				718AAD131794763600AFE6DB /* ObservationTextViewController.m in Sources */,
-				718AAD181794764100AFE6DB /* ObservationPhotoViewController.m in Sources */,
 				718AAD1D1794765100AFE6DB /* ObservationAudioVideoViewController.m in Sources */,
 				718AAD221794771300AFE6DB /* InterpretationChoiceViewController.m in Sources */,
 				718AAD271794772300AFE6DB /* InterpretationSplitViewController.m in Sources */,
@@ -477,6 +476,7 @@
 				5B0458A41795A26700B93A4D /* UserObservationComponentDataJudgement.m in Sources */,
 				5B0458AA1795A27700B93A4D /* UserObservationIdentification.m in Sources */,
 				5B0458AD1795A3E100B93A4D /* Project.m in Sources */,
+				71FF69D71795BE6E00E2B411 /* ObservationPhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

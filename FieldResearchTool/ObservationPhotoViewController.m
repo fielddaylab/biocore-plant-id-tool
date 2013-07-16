@@ -7,8 +7,13 @@
 //
 
 #import "ObservationPhotoViewController.h"
+#import <AVFoundation/AVFoundation.h>
 
-@interface ObservationPhotoViewController ()
+@interface ObservationPhotoViewController (){
+    AVCaptureSession *captureSession;
+    AVCaptureDevice *photoCaptureDevice;
+    AVCaptureDeviceInput *photoInput;
+}
 
 @end
 
@@ -32,7 +37,26 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    captureSession = [[AVCaptureSession alloc] init];
+    //audioCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
+    photoCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    NSError *error = nil;
+    //AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioCaptureDevice error:&error];
+    photoInput = [AVCaptureDeviceInput deviceInputWithDevice:photoCaptureDevice error:&error];
+    if (photoInput) {
+        //[captureSession addInput:audioInput];
+        [captureSession addInput:photoInput];
 
+        
+//        AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
+//        UIView *aView = [[UIView alloc]initWithFrame:CGRectMake(50, 100, 200, 300)];
+//        previewLayer.frame = aView.bounds; // Assume you want the preview layer to fill the view.
+//        [aView.layer addSublayer:previewLayer];
+    }
+    else {
+        // Handle the failure.
+    }
 
 #warning TODO
 
@@ -53,8 +77,6 @@
     
 }
 
-
-
 - (IBAction)takePhoto:(UIButton *)sender {
     
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
@@ -68,17 +90,16 @@
 
 - (IBAction)selectPhoto:(UIButton *)sender {
     
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [captureSession startRunning];
     
-    [self presentViewController:picker animated:YES completion:NULL];
-    
+//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+//    picker.delegate = self;
+//    picker.allowsEditing = YES;
+//    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//    
+//    [self presentViewController:picker animated:YES completion:NULL];
     
 }
-
-
 
 - (void)didReceiveMemoryWarning
 {
