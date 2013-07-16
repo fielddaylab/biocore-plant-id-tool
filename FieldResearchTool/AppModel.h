@@ -18,7 +18,7 @@
 
 + (AppModel *)sharedAppModel;
 
-//these will need to be called asyncronously
+-(BOOL)save;
 -(void)getAllProjects;
 -(void)getAllProjectComponentsForProjectName:(NSString *)project;
 -(void)getAllProjectIdentificationsForProjectName:(NSString *)project;

@@ -84,4 +84,8 @@
     });
 }
 
+-(BOOL)save{
+    return [coreData save];
+}
+
 @end

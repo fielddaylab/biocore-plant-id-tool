@@ -17,7 +17,7 @@
 		5B04589E1795A25500B93A4D /* UserObservationComponentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B04589D1795A25400B93A4D /* UserObservationComponentData.m */; };
 		5B0458A41795A26700B93A4D /* UserObservationComponentDataJudgement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0458A31795A26700B93A4D /* UserObservationComponentDataJudgement.m */; };
 		5B0458AA1795A27700B93A4D /* UserObservationIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0458A91795A27700B93A4D /* UserObservationIdentification.m */; };
-		5B0458AD1795A3E100B93A4D /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0458AC1795A3E100B93A4D /* Project.m */; };
+		5B0458BB1795FBEA00B93A4D /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0458BA1795FBEA00B93A4D /* Project.m */; };
 		5BFED1BA1794A49000648062 /* CoreDataWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFED1B91794A49000648062 /* CoreDataWrapper.m */; };
 		718AACFD179463B500AFE6DB /* ObservationBooleanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AACFB179463B500AFE6DB /* ObservationBooleanViewController.m */; };
 		718AACFE179463B500AFE6DB /* ObservationBooleanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AACFC179463B500AFE6DB /* ObservationBooleanViewController.xib */; };
@@ -84,8 +84,10 @@
 		5B0458A31795A26700B93A4D /* UserObservationComponentDataJudgement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationComponentDataJudgement.m; sourceTree = "<group>"; };
 		5B0458A81795A27700B93A4D /* UserObservationIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationIdentification.h; sourceTree = "<group>"; };
 		5B0458A91795A27700B93A4D /* UserObservationIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationIdentification.m; sourceTree = "<group>"; };
-		5B0458AB1795A3E100B93A4D /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
-		5B0458AC1795A3E100B93A4D /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
+		5B0458B01795F72800B93A4D /* ProjectComponentDataType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComponentDataType.h; sourceTree = "<group>"; };
+		5B0458B91795FBEA00B93A4D /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
+		5B0458BA1795FBEA00B93A4D /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
+		5B0458BC1795FC8B00B93A4D /* RangeOperators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangeOperators.h; sourceTree = "<group>"; };
 		5BFED1B81794A49000648062 /* CoreDataWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataWrapper.h; sourceTree = "<group>"; };
 		5BFED1B91794A49000648062 /* CoreDataWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataWrapper.m; sourceTree = "<group>"; };
 		718AACFA179463B500AFE6DB /* ObservationBooleanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationBooleanViewController.h; sourceTree = "<group>"; };
@@ -171,8 +173,10 @@
 		5BFED1B61794830700648062 /* DataObjects */ = {
 			isa = PBXGroup;
 			children = (
-				5B0458AB1795A3E100B93A4D /* Project.h */,
-				5B0458AC1795A3E100B93A4D /* Project.m */,
+				5B0458B01795F72800B93A4D /* ProjectComponentDataType.h */,
+				5B0458BC1795FC8B00B93A4D /* RangeOperators.h */,
+				5B0458B91795FBEA00B93A4D /* Project.h */,
+				5B0458BA1795FBEA00B93A4D /* Project.m */,
 				5B0458721795A1CE00B93A4D /* ProjectComponent.h */,
 				5B0458731795A1CE00B93A4D /* ProjectComponent.m */,
 				5B04587E1795A1F700B93A4D /* ProjectComponentPossibility.h */,
@@ -479,8 +483,8 @@
 				5B04589E1795A25500B93A4D /* UserObservationComponentData.m in Sources */,
 				5B0458A41795A26700B93A4D /* UserObservationComponentDataJudgement.m in Sources */,
 				5B0458AA1795A27700B93A4D /* UserObservationIdentification.m in Sources */,
-				5B0458AD1795A3E100B93A4D /* Project.m in Sources */,
 				71FF69D71795BE6E00E2B411 /* ObservationPhotoViewController.m in Sources */,
+				5B0458BB1795FBEA00B93A4D /* Project.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
