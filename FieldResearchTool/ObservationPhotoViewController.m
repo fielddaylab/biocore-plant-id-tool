@@ -38,25 +38,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    captureSession = [[AVCaptureSession alloc] init];
-    //audioCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
-    photoCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    NSError *error = nil;
-    //AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioCaptureDevice error:&error];
-    photoInput = [AVCaptureDeviceInput deviceInputWithDevice:photoCaptureDevice error:&error];
-    if (photoInput) {
-        //[captureSession addInput:audioInput];
-        [captureSession addInput:photoInput];
-
-        
-//        AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
-//        UIView *aView = [[UIView alloc]initWithFrame:CGRectMake(50, 100, 200, 300)];
-//        previewLayer.frame = aView.bounds; // Assume you want the preview layer to fill the view.
-//        [aView.layer addSublayer:previewLayer];
-    }
-    else {
-        // Handle the failure.
-    }
 
 #warning TODO
 
@@ -90,7 +71,38 @@
 
 - (IBAction)selectPhoto:(UIButton *)sender {
     
+    captureSession = [[AVCaptureSession alloc] init];
+    
     [captureSession startRunning];
+
+    photoCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    NSError *error = nil;
+    photoInput = [AVCaptureDeviceInput deviceInputWithDevice:photoCaptureDevice error:&error];
+    if (photoInput) {
+        [captureSession addInput:photoInput];
+        
+        NSLog(@"YEAEAEA");
+        AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
+        UIView* aView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-244)];//-44 navbar; -200 for scroller
+
+
+        
+        previewLayer.frame = aView.bounds; // Assume you want the preview layer to fill the view.
+        [aView.layer addSublayer:previewLayer];
+        [self.imageView addSubview:aView];
+        
+        CGRect bounds = aView.layer.bounds;
+        previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        previewLayer.bounds=bounds;
+        previewLayer.position=CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
+    }
+    else {
+        // Handle the failure.
+        
+        NSLog(@"NOOOO");
+    }
+
+    
     
 //    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
 //    picker.delegate = self;
