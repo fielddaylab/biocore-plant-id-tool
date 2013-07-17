@@ -18,9 +18,10 @@
     UIButton *startRecording;
     UIButton *takePicture;
     UIView *recorderView;
-    UIView *showPictureView;
+    UIImageView *showPictureView;
     UIImageView *imageView;
-
+    UIButton *testButton;
+    int count;
 }
 
 @end
@@ -45,47 +46,59 @@
 {
     [super viewDidLoad];
     
-    
     showPictureView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - HEIGHT_OF_RECORD)];//44 nav bar 200 space for slider
     [self.view addSubview:showPictureView];
-    showPictureView.hidden = YES;
-    
-    startRecording = [UIButton buttonWithType:UIButtonTypeCustom];
-    startRecording.frame = showPictureView.bounds;
-    [startRecording setTitle:@"Retake PHOOOOTOOOOO" forState:UIControlStateNormal];
-    [startRecording addTarget:self action:@selector(startRecord) forControlEvents:UIControlEventTouchUpInside];
-    
-    
+
     recorderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - HEIGHT_OF_RECORD)];//44 nav bar 200 space for slider
     [self.view addSubview:recorderView];
-
-    takePicture = [UIButton buttonWithType:UIButtonTypeCustom];
-    takePicture.frame = recorderView.bounds;
-    [takePicture setTitle:@"Touch Me!" forState:UIControlStateNormal];
-    [takePicture addTarget:self action:@selector(takePhoto) forControlEvents:UIControlEventTouchUpInside];
-
     
-    [self startRecord];
+    count = 0;
+    
+    testButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    testButton.frame = showPictureView.bounds;
+    [testButton addTarget:self action:@selector(swapViews) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:testButton];
+    
+    [self swapViews];
+    
+}
+
+- (void) swapViews
+{
+    if(count % 2 == 0){
+        NSLog(@"DUMMY START RECORD");
+        [testButton setTitle:@"Tap me!" forState:UIControlStateNormal];
+
+        [self startRecord];
+    }
+    else if(count % 2 == 1){
+        NSLog(@"DUMMY TAKE PHOTO");
+        [testButton setTitle:@"Tap to retake" forState:UIControlStateNormal];
+
+        [self takePhoto];
+    }
 }
 
 - (void) startRecord
 {
-    NSLog(@"START RECORD");
-    recorderView.hidden = NO;
-    takePicture.hidden = NO;
+    showPictureView.image = [[UIImage alloc]init];
 
+    count ++;
+    recorderView.hidden = NO;
     showPictureView.hidden = YES;
-    startRecording.hidden = YES;
+    NSLog(@"START RECORD");
+
     
     AVCaptureSession *captureSession = [[AVCaptureSession alloc] init];
     captureSession.sessionPreset = AVCaptureSessionPresetMedium;
     
     AVCaptureVideoPreviewLayer *previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:captureSession];
     
-//    CGRect bounds = recorderView.bounds;
-//    previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-//    previewLayer.bounds = bounds;
-//    previewLayer.position = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
+    //This makes the camera into a square.
+    CGRect bounds = recorderView.bounds;
+    previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    previewLayer.bounds = bounds;
+    previewLayer.position = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
     
     previewLayer.frame = recorderView.bounds;
     [recorderView.layer addSublayer:previewLayer];
@@ -114,8 +127,12 @@
 
 - (void)takePhoto {
     
+    count ++;
     NSLog(@"TAKE PHOTO");
 
+    recorderView.hidden = YES;
+    showPictureView.hidden = NO;
+    
     AVCaptureConnection *videoConnection = nil;
     for (AVCaptureConnection *connection in stillImageOutput.connections)
     {
@@ -148,15 +165,8 @@
          NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
          UIImage *image = [[UIImage alloc] initWithData:imageData];
          
-         imageView.image = image;
+         showPictureView.image = image;
          
-         [showPictureView addSubview:startRecording];
-         
-         recorderView.hidden = YES;
-         takePicture.hidden = YES;
-         
-         showPictureView.hidden = NO;
-         startRecording.hidden = NO;
 
      }];
 }
