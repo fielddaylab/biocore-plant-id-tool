@@ -203,7 +203,7 @@
     plantSound.mediaUrl = @"mediaURL";
     plantSound.observationType = [NSNumber numberWithInt:AUDIO];
     plantSound.required = [NSNumber numberWithBool:YES];
-    plantSound.title = @"Plant Sound";
+    plantSound.title = @"Plant Mating Call";
     plantSound.updated = [NSDate date];
     plantSound.project = project;
         

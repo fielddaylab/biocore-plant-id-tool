@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "iCarousel.h"
 
 @interface ObservationAudioVideoViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -16,6 +17,6 @@
 @property (strong, nonatomic) MPMoviePlayerController *movieController;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 
-- (IBAction)takeVideo:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet iCarousel *carousel;
 
 @end

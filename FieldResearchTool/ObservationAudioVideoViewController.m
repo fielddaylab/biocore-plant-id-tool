@@ -17,25 +17,43 @@
     AVCaptureDeviceInput *audioInput;
 }
 
+@property (nonatomic, retain) NSMutableArray *items;
+
 @end
 
 @implementation ObservationAudioVideoViewController
 
 @synthesize imageView;
+@synthesize carousel;
+@synthesize items;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.items = [NSMutableArray array];
+        for (int i = 0; i < 100; i++)
+        {
+            [items addObject:[NSNumber numberWithInt:i]];
+        }
     }
     return self;
+}
+
+-(void)dealloc{
+    carousel.delegate = nil;
+    carousel.dataSource = nil;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    carousel.type = iCarouselTypeCoverFlow2;
+    UIButton *recordButton = [[UIButton alloc] initWithFrame:CGRectMake(self.carousel.frame.size.width - 50, self.carousel.frame.origin.y - 50, 44, 44)];
+    [recordButton setImage:[UIImage imageNamed:@"29-circle-pause.png"] forState:UIControlStateNormal];
+    [recordButton addTarget:self action:@selector(takeVideo:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:recordButton];
     
 #warning TODO
 
@@ -138,6 +156,75 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark -
+#pragma mark iCarousel methods
+
+- (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
+{
+    //return the total number of items in the carousel
+    return [items count];
+}
+
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
+{
+    UILabel *label = nil;
+    
+    //create new view if no view is available for recycling
+    if (view == nil)
+    {
+        //don't do anything specific to the index within
+        //this `if (view == nil) {...}` statement because the view will be
+        //recycled and used with other index values later
+        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100.0f, 200.0f)];
+        view.contentMode = UIViewContentModeCenter;
+        
+        label = [[UILabel alloc] initWithFrame:view.bounds];
+        label.backgroundColor = [UIColor clearColor];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.font = [label.font fontWithSize:50];
+        label.tag = 1;
+        [view addSubview:label];
+    }
+    else
+    {
+        //get a reference to the label in the recycled view
+        label = (UILabel *)[view viewWithTag:1];
+    }
+    
+    //set item label
+    //remember to always set any properties of your carousel item
+    //views outside of the `if (view == nil) {...}` check otherwise
+    //you'll get weird issues with carousel item content appearing
+    //in the wrong place in the carousel
+    label.text = [[items objectAtIndex:index] stringValue];
+    if(index % 2 == 0){
+        ((UIImageView *)view).image = [UIImage imageNamed:@"35-circle-stop.png"];
+    }
+    else{
+        ((UIImageView *)view).image = [UIImage imageNamed:@"30-circle-play.png"];
+    }
+    
+    return view;
+}
+
+- (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
+{
+    if (option == iCarouselOptionSpacing)
+    {
+        return value * 1.1f;
+    }
+    return value;
+}
+
+#pragma mark -
+#pragma mark iCarousel taps
+
+- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
+{
+    NSNumber *item = [self.items objectAtIndex:index];
+    NSLog(@"Tapped view number: %@", item);
 }
 
 @end

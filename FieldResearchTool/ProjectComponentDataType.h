@@ -15,6 +15,7 @@ typedef enum ProjectComponentDataType
     TEXT,
     LONG_TEXT,
     NUMBER,
-    BOOLEAN
+    BOOLEAN,
+    //ENUMERATOR discussion about observation type vs judgement type
 } ProjectComponentDataType;
 
