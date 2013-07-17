@@ -48,7 +48,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    carousel.type = iCarouselTypeCoverFlow2;
+    carousel.type = iCarouselTypeLinear;
     UIButton *recordButton = [[UIButton alloc] initWithFrame:CGRectMake(self.carousel.frame.size.width - 50, self.carousel.frame.origin.y - 50, 44, 44)];
     [recordButton setImage:[UIImage imageNamed:@"29-circle-pause.png"] forState:UIControlStateNormal];
     [recordButton addTarget:self action:@selector(takeVideo:) forControlEvents:UIControlEventTouchUpInside];

@@ -131,7 +131,7 @@
         switch ([projectComponent.observationType intValue]) {
             case VISUAL:
                 viewControllerToPush = [[ObservationPhotoViewController alloc]initWithNibName:@"ObservationPhotoViewController" bundle:nil];
-                pushViewController = NO;
+                //pushViewController = NO;
                 break;
             case AUDIO:
                 viewControllerToPush = [[ObservationAudioVideoViewController alloc]initWithNibName:@"ObservationAudioVideoViewController" bundle:nil];
