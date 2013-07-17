@@ -16,11 +16,8 @@
 @interface ObservationPhotoViewController () <iCarouselDataSource, iCarouselDelegate>{
     AVCaptureDevice *photoCaptureDevice;
     AVCaptureDeviceInput *photoInput;
-    UIButton *startRecording;
-    UIButton *takePicture;
     UIView *recorderView;
     UIImageView *showPictureView;
-    UIImageView *imageView;
     UIButton *testButton;
     int count;
 }
@@ -40,10 +37,6 @@
         // Custom initialization
     }
     return self;
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-    
 }
 
 - (void)viewDidLoad
@@ -75,6 +68,7 @@
     
 }
 
+//Get to make this sweet ass dummy method because view hierarchy makes me feel bad about myself...
 - (void) swapViews
 {
     if(count % 2 == 0){
@@ -93,6 +87,7 @@
 
 - (void) startRecord
 {
+    //Create new image because it shows the previous one, which looks like shiiiit
     showPictureView.image = [[UIImage alloc]init];
 
     count ++;
@@ -114,7 +109,6 @@
     
     previewLayer.frame = recorderView.bounds;
     [recorderView.layer addSublayer:previewLayer];
-    [recorderView addSubview:takePicture];
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
     NSError *error = nil;
