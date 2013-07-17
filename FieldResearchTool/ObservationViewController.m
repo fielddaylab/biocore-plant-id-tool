@@ -62,7 +62,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -74,8 +74,6 @@
             return [projectComponents count];
         case 2:
             return 4;
-        case 3:
-            return 5;
         default:
             return 0;
     };
@@ -113,26 +111,6 @@
                 cell.textLabel.text = @"Author";
             }
             break;
-        case 3:
-            if(indexPath.row == 0){
-                cell.textLabel.text = @"BOOL";
-            }
-            else if (indexPath.row == 1){
-                cell.textLabel.text = @"AV";
-            }
-            else if (indexPath.row == 2){
-                cell.textLabel.text = @"TEXT";
-            }
-            else if (indexPath.row == 3){
-                cell.textLabel.text = @"NUMBER";
-            }
-            else if (indexPath.row == 4){
-                cell.textLabel.text = @"PHOTO";
-            }
-            break;
-        case 4:
-            cell.textLabel.text = @"INTERPRETATION CHOICE";
-            break;
         default:
             cell.textLabel.text = @"Dummy Data";
             break;
@@ -149,9 +127,11 @@
     else if(indexPath.section == 1){
         ProjectComponent *projectComponent = [projectComponents objectAtIndex:indexPath.row];
         UIViewController *viewControllerToPush;
+        BOOL pushViewController = YES;
         switch ([projectComponent.observationType intValue]) {
             case VISUAL:
                 viewControllerToPush = [[ObservationPhotoViewController alloc]initWithNibName:@"ObservationPhotoViewController" bundle:nil];
+                pushViewController = NO;
                 break;
             case AUDIO:
                 viewControllerToPush = [[ObservationAudioVideoViewController alloc]initWithNibName:@"ObservationAudioVideoViewController" bundle:nil];
@@ -172,27 +152,12 @@
                 viewControllerToPush = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
                 break;
         }
-        [self.navigationController pushViewController:viewControllerToPush animated:YES];
-    }
-    else if(indexPath.section == 3 && indexPath.row == 0){
-        ObservationBooleanViewController *vc = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    else if(indexPath.section == 3 && indexPath.row == 1){
-        ObservationAudioVideoViewController *vc = [[ObservationAudioVideoViewController alloc]initWithNibName:@"ObservationAudioVideoViewController" bundle:nil];
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    else if(indexPath.section == 3 && indexPath.row == 2){
-        ObservationTextViewController *vc = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    else if(indexPath.section == 3 && indexPath.row == 3){
-        ObservationNumberViewController *vc = [[ObservationNumberViewController alloc]initWithNibName:@"ObservationNumberViewController" bundle:nil];
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    else if(indexPath.section == 3 && indexPath.row == 4){
-        ObservationPhotoViewController *vc = [[ObservationPhotoViewController alloc]initWithNibName:@"ObservationPhotoViewController" bundle:nil];
-        [self.navigationController pushViewController:vc animated:YES];
+        if(pushViewController){
+            [self.navigationController pushViewController:viewControllerToPush animated:YES];
+        }
+        else{
+            NSLog(@"Not pushing view controller because it will CRASH on simulator");
+        }
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }

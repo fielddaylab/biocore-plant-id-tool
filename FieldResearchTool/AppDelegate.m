@@ -152,6 +152,42 @@
     leafLength.updated = [NSDate date];
     leafLength.project = project;
     
+    ProjectComponent *isLeafGreen = (ProjectComponent *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponent" inManagedObjectContext:[self managedObjectContext]];
+    isLeafGreen.created = [NSDate date];
+    isLeafGreen.mediaUrl = @"mediaURL";
+    isLeafGreen.observationType = [NSNumber numberWithInt:BOOLEAN];
+    isLeafGreen.required = [NSNumber numberWithBool:YES];
+    isLeafGreen.title = @"Green Leaf";
+    isLeafGreen.updated = [NSDate date];
+    isLeafGreen.project = project;
+    
+    ProjectComponent *stemDescription = (ProjectComponent *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponent" inManagedObjectContext:[self managedObjectContext]];
+    stemDescription.created = [NSDate date];
+    stemDescription.mediaUrl = @"mediaURL";
+    stemDescription.observationType = [NSNumber numberWithInt:LONG_TEXT];
+    stemDescription.required = [NSNumber numberWithBool:YES];
+    stemDescription.title = @"Stem Description";
+    stemDescription.updated = [NSDate date];
+    stemDescription.project = project;
+    
+    ProjectComponent *leafDescription = (ProjectComponent *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponent" inManagedObjectContext:[self managedObjectContext]];
+    leafDescription.created = [NSDate date];
+    leafDescription.mediaUrl = @"mediaURL";
+    leafDescription.observationType = [NSNumber numberWithInt:TEXT];
+    leafDescription.required = [NSNumber numberWithBool:YES];
+    leafDescription.title = @"Leaf Description";
+    leafDescription.updated = [NSDate date];
+    leafDescription.project = project;
+    
+    ProjectComponent *plantSound = (ProjectComponent *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponent" inManagedObjectContext:[self managedObjectContext]];
+    plantSound.created = [NSDate date];
+    plantSound.mediaUrl = @"mediaURL";
+    plantSound.observationType = [NSNumber numberWithInt:AUDIO];
+    plantSound.required = [NSNumber numberWithBool:YES];
+    plantSound.title = @"Plant Sound";
+    plantSound.updated = [NSDate date];
+    plantSound.project = project;
+    
     ProjectIdentification *maple = (ProjectIdentification *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentification" inManagedObjectContext:[self managedObjectContext]];
     maple.authorCreated = [NSNumber numberWithBool:YES];
     maple.created = [NSDate date];
