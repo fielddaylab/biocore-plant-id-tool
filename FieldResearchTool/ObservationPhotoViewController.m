@@ -183,8 +183,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark -
-#pragma mark iCarousel methods
+#pragma mark - iCarousel methods
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
@@ -242,8 +241,7 @@
     return value;
 }
 
-#pragma mark -
-#pragma mark iCarousel taps
+#pragma mark - iCarousel taps
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {
