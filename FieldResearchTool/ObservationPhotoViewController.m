@@ -171,6 +171,7 @@
          NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
          UIImage *image = [[UIImage alloc] initWithData:imageData];
          
+         showPictureView.contentMode = UIViewContentModeScaleAspectFill;
          showPictureView.image = image;
          
 
