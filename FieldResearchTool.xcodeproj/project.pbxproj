@@ -36,8 +36,8 @@
 		718AAD0F1794761B00AFE6DB /* ObservationNumberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD0D1794761B00AFE6DB /* ObservationNumberViewController.xib */; };
 		718AAD131794763600AFE6DB /* ObservationTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AAD111794763600AFE6DB /* ObservationTextViewController.m */; };
 		718AAD141794763600AFE6DB /* ObservationTextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD121794763600AFE6DB /* ObservationTextViewController.xib */; };
-		718AAD1D1794765100AFE6DB /* ObservationAudioVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AAD1B1794765100AFE6DB /* ObservationAudioVideoViewController.m */; };
-		718AAD1E1794765100AFE6DB /* ObservationAudioVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD1C1794765100AFE6DB /* ObservationAudioVideoViewController.xib */; };
+		718AAD1D1794765100AFE6DB /* ObservationVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AAD1B1794765100AFE6DB /* ObservationVideoViewController.m */; };
+		718AAD1E1794765100AFE6DB /* ObservationVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD1C1794765100AFE6DB /* ObservationVideoViewController.xib */; };
 		718AAD221794771300AFE6DB /* InterpretationChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AAD201794771300AFE6DB /* InterpretationChoiceViewController.m */; };
 		718AAD231794771300AFE6DB /* InterpretationChoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD211794771300AFE6DB /* InterpretationChoiceViewController.xib */; };
 		718AAD271794772300AFE6DB /* InterpretationSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AAD251794772300AFE6DB /* InterpretationSplitViewController.m */; };
@@ -121,9 +121,9 @@
 		718AAD101794763600AFE6DB /* ObservationTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationTextViewController.h; sourceTree = "<group>"; };
 		718AAD111794763600AFE6DB /* ObservationTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationTextViewController.m; sourceTree = "<group>"; };
 		718AAD121794763600AFE6DB /* ObservationTextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationTextViewController.xib; sourceTree = "<group>"; };
-		718AAD1A1794765100AFE6DB /* ObservationAudioVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationAudioVideoViewController.h; sourceTree = "<group>"; };
-		718AAD1B1794765100AFE6DB /* ObservationAudioVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationAudioVideoViewController.m; sourceTree = "<group>"; };
-		718AAD1C1794765100AFE6DB /* ObservationAudioVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationAudioVideoViewController.xib; sourceTree = "<group>"; };
+		718AAD1A1794765100AFE6DB /* ObservationVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationVideoViewController.h; sourceTree = "<group>"; };
+		718AAD1B1794765100AFE6DB /* ObservationVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationVideoViewController.m; sourceTree = "<group>"; };
+		718AAD1C1794765100AFE6DB /* ObservationVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationVideoViewController.xib; sourceTree = "<group>"; };
 		718AAD1F1794771300AFE6DB /* InterpretationChoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterpretationChoiceViewController.h; sourceTree = "<group>"; };
 		718AAD201794771300AFE6DB /* InterpretationChoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterpretationChoiceViewController.m; sourceTree = "<group>"; };
 		718AAD211794771300AFE6DB /* InterpretationChoiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InterpretationChoiceViewController.xib; sourceTree = "<group>"; };
@@ -262,9 +262,9 @@
 				71FF69D91795BE7500E2B411 /* ObservationPhotoViewController.h */,
 				71FF69D51795BE6D00E2B411 /* ObservationPhotoViewController.m */,
 				71FF69D61795BE6E00E2B411 /* ObservationPhotoViewController.xib */,
-				718AAD1A1794765100AFE6DB /* ObservationAudioVideoViewController.h */,
-				718AAD1B1794765100AFE6DB /* ObservationAudioVideoViewController.m */,
-				718AAD1C1794765100AFE6DB /* ObservationAudioVideoViewController.xib */,
+				718AAD1A1794765100AFE6DB /* ObservationVideoViewController.h */,
+				718AAD1B1794765100AFE6DB /* ObservationVideoViewController.m */,
+				718AAD1C1794765100AFE6DB /* ObservationVideoViewController.xib */,
 				718AACFA179463B500AFE6DB /* ObservationBooleanViewController.h */,
 				718AACFB179463B500AFE6DB /* ObservationBooleanViewController.m */,
 				718AACFC179463B500AFE6DB /* ObservationBooleanViewController.xib */,
@@ -452,7 +452,7 @@
 				718AAD0A1794666200AFE6DB /* SwitchYesSmall.png in Resources */,
 				718AAD0F1794761B00AFE6DB /* ObservationNumberViewController.xib in Resources */,
 				718AAD141794763600AFE6DB /* ObservationTextViewController.xib in Resources */,
-				718AAD1E1794765100AFE6DB /* ObservationAudioVideoViewController.xib in Resources */,
+				718AAD1E1794765100AFE6DB /* ObservationVideoViewController.xib in Resources */,
 				718AAD231794771300AFE6DB /* InterpretationChoiceViewController.xib in Resources */,
 				718AAD281794772300AFE6DB /* InterpretationSplitViewController.xib in Resources */,
 				71FF69C11794819300E2B411 /* ObservationViewController.xib in Resources */,
@@ -516,7 +516,7 @@
 				718AACFD179463B500AFE6DB /* ObservationBooleanViewController.m in Sources */,
 				718AAD0E1794761B00AFE6DB /* ObservationNumberViewController.m in Sources */,
 				718AAD131794763600AFE6DB /* ObservationTextViewController.m in Sources */,
-				718AAD1D1794765100AFE6DB /* ObservationAudioVideoViewController.m in Sources */,
+				718AAD1D1794765100AFE6DB /* ObservationVideoViewController.m in Sources */,
 				718AAD221794771300AFE6DB /* InterpretationChoiceViewController.m in Sources */,
 				718AAD271794772300AFE6DB /* InterpretationSplitViewController.m in Sources */,
 				71FF69BE1794819300E2B411 /* FieldResearchNavigationController.m in Sources */,

@@ -10,7 +10,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 
-@interface ObservationAudioVideoViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ObservationVideoViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (copy,   nonatomic) NSURL *movieURL;
 @property (strong, nonatomic) MPMoviePlayerController *movieController;

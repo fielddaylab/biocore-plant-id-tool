@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
-#import "ObservationAudioVideoViewController.h"
+#import "ObservationVideoViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "iCarousel.h"
 
 
 #define HEIGHT_OF_RECORD 44
 
-@interface ObservationAudioVideoViewController () <iCarouselDataSource, iCarouselDelegate>{
+@interface ObservationVideoViewController () <iCarouselDataSource, iCarouselDelegate>{
     UIImageView *imageView;
     AVCaptureSession *captureSession;
     AVCaptureDevice *videoCaptureDevice;
@@ -27,7 +27,7 @@
 
 @end
 
-@implementation ObservationAudioVideoViewController
+@implementation ObservationVideoViewController
 
 @synthesize carousel;
 @synthesize items;
