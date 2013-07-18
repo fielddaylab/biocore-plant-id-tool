@@ -8,7 +8,8 @@
 
 #import "ObservationViewController.h"
 #import "ObservationBooleanViewController.h"
-#import "ObservationAudioVideoViewController.h"
+#import "ObservationVideoViewController.h"
+#import "ObservationAudioViewController.h"
 #import "ObservationNumberViewController.h"
 #import "ObservationPhotoViewController.h"
 #import "ObservationTextViewController.h"
@@ -134,7 +135,7 @@
                 //pushViewController = NO;
                 break;
             case AUDIO:
-                viewControllerToPush = [[ObservationAudioVideoViewController alloc]initWithNibName:@"ObservationAudioVideoViewController" bundle:nil];
+                viewControllerToPush = [[ObservationAudioViewController alloc]initWithNibName:@"ObservationAudioViewController" bundle:nil];
                 break;
             case TEXT:
                 viewControllerToPush = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];

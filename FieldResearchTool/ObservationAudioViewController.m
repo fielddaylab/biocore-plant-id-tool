@@ -12,7 +12,7 @@
 #import "iCarousel.h"
 
 
-#define HEIGHT_OF_RECORD 244
+#define HEIGHT_OF_RECORD 44
 
 @interface ObservationAudioViewController () <iCarouselDataSource, iCarouselDelegate>{
     UIImageView *imageView;
@@ -60,12 +60,13 @@
     
     carousel.type = iCarouselTypeLinear;
     
-    carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, imageView.frame.size.height, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - imageView.frame.size.height)];
+    carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, imageView.frame.size.height - (100 + [UIApplication sharedApplication].statusBarFrame.size.height), [UIScreen mainScreen].bounds.size.width, 100)];
+    
 	carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     carousel.type = iCarouselTypeLinear;
 	carousel.delegate = self;
 	carousel.dataSource = self;
-    carousel.backgroundColor = [UIColor whiteColor];
+    carousel.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.3];
     [self.view addSubview:carousel];
     
     UIButton *recordButton = [[UIButton alloc] initWithFrame:CGRectMake(self.carousel.frame.size.width - 50, self.carousel.frame.origin.y - 50, 44, 44)];
