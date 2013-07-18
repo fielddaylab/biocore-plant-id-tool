@@ -1,19 +1,20 @@
 //
-//  ObservationAudioVideoViewController.m
+//  ObservationAudioViewController.m
 //  FieldResearchTool
 //
-//  Created by Nick Heindl on 7/15/13.
+//  Created by Nick Heindl on 7/18/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
-#import "ObservationAudioVideoViewController.h"
+
+#import "ObservationAudioViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "iCarousel.h"
 
 
-#define HEIGHT_OF_RECORD 44
+#define HEIGHT_OF_RECORD 244
 
-@interface ObservationAudioVideoViewController () <iCarouselDataSource, iCarouselDelegate>{
+@interface ObservationAudioViewController () <iCarouselDataSource, iCarouselDelegate>{
     UIImageView *imageView;
     AVCaptureSession *captureSession;
     AVCaptureDevice *videoCaptureDevice;
@@ -27,7 +28,7 @@
 
 @end
 
-@implementation ObservationAudioVideoViewController
+@implementation ObservationAudioViewController
 
 @synthesize carousel;
 @synthesize items;
@@ -59,17 +60,12 @@
     
     carousel.type = iCarouselTypeLinear;
     
-    //carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, imageView.frame.size.height, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - imageView.frame.size.height)];
-    
-    carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, imageView.frame.size.height - (100 + [UIApplication sharedApplication].statusBarFrame.size.height), [UIScreen mainScreen].bounds.size.width, 100)];
-
-    
-    
+    carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, imageView.frame.size.height, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - imageView.frame.size.height)];
 	carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     carousel.type = iCarouselTypeLinear;
 	carousel.delegate = self;
 	carousel.dataSource = self;
-    carousel.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3];
+    carousel.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:carousel];
     
     UIButton *recordButton = [[UIButton alloc] initWithFrame:CGRectMake(self.carousel.frame.size.width - 50, self.carousel.frame.origin.y - 50, 44, 44)];
@@ -77,7 +73,7 @@
     [recordButton addTarget:self action:@selector(takeVideo:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:recordButton];
-
+    
 }
 
 - (void)moviePlayBackDidFinish:(NSNotification *)notification {
@@ -91,7 +87,7 @@
 }
 
 - (IBAction)takeVideo:(UIButton *)sender {
-
+    
     captureSession = [[AVCaptureSession alloc] init];
     
     [captureSession startRunning];
@@ -99,13 +95,13 @@
     videoCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
     //audioCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
-
+    
     
     NSError *error = nil;
     videoInput = [AVCaptureDeviceInput deviceInputWithDevice:videoCaptureDevice error:&error];
     
     //audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioCaptureDevice error:&error];
-
+    
     if (videoInput) {
         [captureSession addInput:videoInput];
         
@@ -130,7 +126,7 @@
         
         NSLog(@"NOOOO");
     }
-
+    
     
 }
 

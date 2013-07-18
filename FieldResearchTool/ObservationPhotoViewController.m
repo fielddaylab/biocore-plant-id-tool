@@ -11,7 +11,7 @@
 #import <ImageIO/CGImageProperties.h>
 #import "iCarousel.h"
 
-#define HEIGHT_OF_RECORD 244 
+#define HEIGHT_OF_RECORD 44 
 
 @interface ObservationPhotoViewController () <iCarouselDataSource, iCarouselDelegate>{
     AVCaptureDevice *photoCaptureDevice;
@@ -58,12 +58,12 @@
     
     [self swapViews];
     
-    carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, recorderView.frame.size.height, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - recorderView.frame.size.height)];
+    carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, recorderView.frame.size.height - (50 + [UIApplication sharedApplication].statusBarFrame.size.height), [UIScreen mainScreen].bounds.size.width, 50)];
 	carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     carousel.type = iCarouselTypeLinear;
 	carousel.delegate = self;
 	carousel.dataSource = self;
-    carousel.backgroundColor = [UIColor whiteColor];
+    carousel.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];//[UIColor clearColor];
     [self.view addSubview:carousel];
     
 }
@@ -173,7 +173,6 @@
          
          showPictureView.contentMode = UIViewContentModeScaleAspectFill;
          showPictureView.image = image;
-         
 
      }];
 }
@@ -203,7 +202,7 @@
         //don't do anything specific to the index within
         //this `if (view == nil) {...}` statement because the view will be
         //recycled and used with other index values later
-        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100.0f, 200.0f)];
+        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100.0f, 100.0f)];
         view.contentMode = UIViewContentModeCenter;
         
         label = [[UILabel alloc] initWithFrame:view.bounds];
