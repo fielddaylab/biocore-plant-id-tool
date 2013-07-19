@@ -11,16 +11,13 @@
 #import <ImageIO/CGImageProperties.h>
 #import "iCarousel.h"
 
-#define HEIGHT_OF_RECORD 244 
+#define HEIGHT_OF_RECORD 44 
 
 @interface ObservationPhotoViewController () <iCarouselDataSource, iCarouselDelegate>{
     AVCaptureDevice *photoCaptureDevice;
     AVCaptureDeviceInput *photoInput;
-    UIButton *startRecording;
-    UIButton *takePicture;
     UIView *recorderView;
     UIImageView *showPictureView;
-    UIImageView *imageView;
     UIButton *testButton;
     int count;
 }
@@ -42,10 +39,6 @@
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -65,16 +58,17 @@
     
     [self swapViews];
     
-    carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, recorderView.frame.size.height, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - recorderView.frame.size.height)];
+    carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, recorderView.frame.size.height - (50 + [UIApplication sharedApplication].statusBarFrame.size.height), [UIScreen mainScreen].bounds.size.width, 50)];
 	carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     carousel.type = iCarouselTypeLinear;
 	carousel.delegate = self;
 	carousel.dataSource = self;
-    carousel.backgroundColor = [UIColor whiteColor];
+    carousel.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];//[UIColor clearColor];
     [self.view addSubview:carousel];
     
 }
 
+//Get to make this sweet ass dummy method because view hierarchy makes me feel bad about myself...
 - (void) swapViews
 {
     if(count % 2 == 0){
@@ -93,6 +87,7 @@
 
 - (void) startRecord
 {
+    //Create new image because it shows the previous one, which looks like shiiiit
     showPictureView.image = [[UIImage alloc]init];
 
     count ++;
@@ -114,7 +109,6 @@
     
     previewLayer.frame = recorderView.bounds;
     [recorderView.layer addSublayer:previewLayer];
-    [recorderView addSubview:takePicture];
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
     NSError *error = nil;
@@ -177,6 +171,7 @@
          NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
          UIImage *image = [[UIImage alloc] initWithData:imageData];
          
+         showPictureView.contentMode = UIViewContentModeScaleAspectFill;
          showPictureView.image = image;
          showPictureView.contentMode = UIViewContentModeScaleAspectFill;
 
@@ -189,8 +184,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark -
-#pragma mark iCarousel methods
+#pragma mark - iCarousel methods
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
@@ -208,7 +202,7 @@
         //don't do anything specific to the index within
         //this `if (view == nil) {...}` statement because the view will be
         //recycled and used with other index values later
-        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100.0f, 200.0f)];
+        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100.0f, 100.0f)];
         view.contentMode = UIViewContentModeCenter;
         
         label = [[UILabel alloc] initWithFrame:view.bounds];
@@ -248,8 +242,7 @@
     return value;
 }
 
-#pragma mark -
-#pragma mark iCarousel taps
+#pragma mark - iCarousel taps
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {

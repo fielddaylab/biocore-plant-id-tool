@@ -6,10 +6,15 @@
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
-#import "ObservationAudioVideoViewController.h"
+#import "ObservationVideoViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "iCarousel.h"
 
-@interface ObservationAudioVideoViewController (){
+
+#define HEIGHT_OF_RECORD 44
+
+@interface ObservationVideoViewController () <iCarouselDataSource, iCarouselDelegate>{
+    UIImageView *imageView;
     AVCaptureSession *captureSession;
     AVCaptureDevice *videoCaptureDevice;
     AVCaptureDeviceInput *videoInput;
@@ -18,12 +23,12 @@
 }
 
 @property (nonatomic, retain) NSMutableArray *items;
+@property (nonatomic, retain) iCarousel *carousel;
 
 @end
 
-@implementation ObservationAudioVideoViewController
+@implementation ObservationVideoViewController
 
-@synthesize imageView;
 @synthesize carousel;
 @synthesize items;
 
@@ -50,30 +55,11 @@
     [super viewDidLoad];
     carousel.type = iCarouselTypeCoverFlow2;
     UIButton *recordButton = [[UIButton alloc] initWithFrame:CGRectMake(self.carousel.frame.size.width - 50, self.carousel.frame.origin.y - 50, 44, 44)];
-    [recordButton setImage:[UIImage imageNamed:@"29-circle-pause.png"] forState:UIControlStateNormal];
+    [recordButton setImage:[UIImage imageNamed:@"29-circle-pause"] forState:UIControlStateNormal];
     [recordButton addTarget:self action:@selector(takeVideo:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:recordButton];
-    
-#warning TODO
 
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    
-//    self.movieController = [[MPMoviePlayerController alloc] init];
-//    
-//    [self.movieController setContentURL:self.movieURL];
-//    [self.movieController.view setFrame:CGRectMake (0, 0, 320, 320)];
-//    [self.view addSubview:self.movieController.view];
-//    
-//    [self.movieController play];
-//    
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(moviePlayBackDidFinish:)
-//                                                 name:MPMoviePlayerPlaybackDidFinishNotification
-//                                               object:self.movieController];
-    
 }
 
 - (void)moviePlayBackDidFinish:(NSNotification *)notification {
@@ -107,49 +93,28 @@
         
         NSLog(@"YEAEAEA");
         AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
-        UIView* aView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-244)];//-44 navbar; -200 for scroller
+        
+        UIView* aView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - HEIGHT_OF_RECORD)];
         
         
         
         previewLayer.frame = aView.bounds; // Assume you want the preview layer to fill the view.
         [aView.layer addSublayer:previewLayer];
-        [self.imageView addSubview:aView];
+        [imageView addSubview:aView];
         
         CGRect bounds = aView.layer.bounds;
         previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-        previewLayer.bounds=bounds;
-        previewLayer.position=CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
+        previewLayer.bounds = bounds;
+        previewLayer.position = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
     }
     else {
         // Handle the failure.
         
         NSLog(@"NOOOO");
     }
-    
-//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-//    picker.delegate = self;
-//    picker.allowsEditing = YES;
-//    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-//    picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
-//    
-//    [self presentViewController:picker animated:YES completion:NULL];
+
     
 }
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
-    self.movieURL = info[UIImagePickerControllerMediaURL];
-    
-    [picker dismissViewControllerAnimated:YES completion:NULL];
-    
-}
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    
-    [picker dismissViewControllerAnimated:YES completion:NULL];
-    
-}
-
 
 
 - (void)didReceiveMemoryWarning
@@ -158,13 +123,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark -
-#pragma mark iCarousel methods
+#pragma mark - iCarousel methods
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
     //return the total number of items in the carousel
-    return [items count];
+    return 100;
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
@@ -198,7 +162,6 @@
     //views outside of the `if (view == nil) {...}` check otherwise
     //you'll get weird issues with carousel item content appearing
     //in the wrong place in the carousel
-    label.text = [[items objectAtIndex:index] stringValue];
     if(index % 2 == 0){
         ((UIImageView *)view).image = [UIImage imageNamed:@"35-circle-stop.png"];
     }
@@ -218,13 +181,12 @@
     return value;
 }
 
-#pragma mark -
-#pragma mark iCarousel taps
+#pragma mark - iCarousel taps
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {
-    NSNumber *item = [self.items objectAtIndex:index];
-    NSLog(@"Tapped view number: %@", item);
+    NSLog(@"Tapped view number: %i", index);
 }
+
 
 @end
