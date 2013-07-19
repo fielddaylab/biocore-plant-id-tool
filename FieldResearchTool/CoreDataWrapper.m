@@ -85,11 +85,23 @@
         for (NSString *key in attributeNamesAndValues) {
             //first check to make sure the object we're adding to the predicate string isnt nil
             if([attributeNamesAndValues objectForKey:key]){
-                if([predicateString isEqualToString:@""]){
-                    [predicateString appendFormat:@"%@ == '%@'", key, [attributeNamesAndValues objectForKey:key]];
+                id value = [attributeNamesAndValues objectForKey:key];
+                BOOL isNumeric = [value isKindOfClass:[NSNumber class]];
+                if(isNumeric){
+                    if([predicateString isEqualToString:@""]){
+                        [predicateString appendFormat:@"%@ == %@", key, [attributeNamesAndValues objectForKey:key]];
+                    }
+                    else{
+                        [predicateString appendFormat:@" && %@ == %@", key, [attributeNamesAndValues objectForKey:key]];
+                    }
                 }
                 else{
-                    [predicateString appendFormat:@" && %@ == '%@'", key, [attributeNamesAndValues objectForKey:key]];
+                    if([predicateString isEqualToString:@""]){
+                        [predicateString appendFormat:@"%@ == '%@'", key, [attributeNamesAndValues objectForKey:key]];
+                    }
+                    else{
+                        [predicateString appendFormat:@" && %@ == '%@'", key, [attributeNamesAndValues objectForKey:key]];
+                    }
                 }
             }
         }

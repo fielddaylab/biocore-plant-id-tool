@@ -10,7 +10,8 @@
 
 typedef enum ProjectComponentDataType
 {
-    VISUAL,
+    VIDEO,
+    PHOTO,
     AUDIO,
     TEXT,
     LONG_TEXT,

@@ -129,9 +129,9 @@
         UIViewController *viewControllerToPush;
         BOOL pushViewController = YES;
         switch ([projectComponent.observationType intValue]) {
-            case VISUAL:
+            case PHOTO:
                 viewControllerToPush = [[ObservationPhotoViewController alloc]initWithNibName:@"ObservationPhotoViewController" bundle:nil];
-                //pushViewController = NO;
+                pushViewController = NO;
                 break;
             case AUDIO:
                 viewControllerToPush = [[ObservationAudioVideoViewController alloc]initWithNibName:@"ObservationAudioVideoViewController" bundle:nil];
@@ -149,6 +149,7 @@
                 viewControllerToPush = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
                 break;
             default:
+                NSLog(@"Pushing on Bool view controller as default");
                 viewControllerToPush = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
                 break;
         }

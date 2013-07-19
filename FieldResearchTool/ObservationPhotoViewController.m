@@ -178,7 +178,7 @@
          UIImage *image = [[UIImage alloc] initWithData:imageData];
          
          showPictureView.image = image;
-         
+         showPictureView.contentMode = UIViewContentModeScaleAspectFill;
 
      }];
 }
