@@ -9,6 +9,7 @@
 #import "RootViewController.h"
 #import "FieldResearchNavigationController.h"
 #import "ObservationViewController.h"
+#import "AppModel.h"
 
 
 @interface RootViewController ()
@@ -28,10 +29,17 @@
 {
     if(self = [super init])
     {
-        ObservationViewController *newObservation = [[ObservationViewController alloc]initWithNibName:@"ObservationViewController" bundle:nil];
-        self.observationController = [[FieldResearchNavigationController alloc]initWithRootViewController:newObservation];
+
     }
     return self;
+}
+
+-(void)handleFetchOfAllProjects:(NSArray *)projects{
+    ObservationViewController *newObservation = [[ObservationViewController alloc]initWithNibName:@"ObservationViewController" bundle:nil];
+    Project *project = projects[0];
+    newObservation.currentProject = project;
+    self.observationController = [[FieldResearchNavigationController alloc]initWithRootViewController:newObservation];
+    [self displayContentController:self.observationController];
 }
 
 - (void) loadView
@@ -46,7 +54,7 @@
     self.view.frame = [UIScreen mainScreen].bounds;
     
     if(!currentChildViewController)
-        [self displayContentController:self.observationController];
+        [[AppModel sharedAppModel] getAllProjectsWithHandler:@selector(handleFetchOfAllProjects:) target:self];
 }
 
 // Container VC Functions pulled from Apple Docs 5/6/13

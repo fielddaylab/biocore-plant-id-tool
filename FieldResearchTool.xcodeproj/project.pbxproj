@@ -468,6 +468,7 @@
 				5B82BD9617972EDB008CB441 /* 30-circle-play.png in Resources */,
 				5B82BD9717972EDB008CB441 /* 35-circle-stop.png in Resources */,
 				5B82BD9817972EDB008CB441 /* page.png in Resources */,
+				71FE1CDA1798617A00EB5A04 /* ObservationAudioViewController.xib in Resources */,
 				5B82BD9A1797478C008CB441 /* plantData.tsv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

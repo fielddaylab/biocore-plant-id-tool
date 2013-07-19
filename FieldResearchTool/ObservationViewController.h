@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Project.h"
 
 @interface ObservationViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITableView *table;
+@property (strong, nonatomic) Project *currentProject;
 
 @end

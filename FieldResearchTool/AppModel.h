@@ -19,10 +19,11 @@
 + (AppModel *)sharedAppModel;
 
 -(BOOL)save;
--(void)getAllProjects;
--(void)getAllProjectComponentsForProjectName:(NSString *)project;
--(void)getAllProjectIdentificationsForProjectName:(NSString *)project;
--(void)getProjectIdentificationsForProjectName:(NSString *)project withAttributes:(NSDictionary *)attributeNamesAndValues;
+-(void)getAllProjectsWithHandler:(SEL)handler target:(id)target;
+-(void)getAllProjectComponentsForProjectName:(NSString *)project withHandler:(SEL)handler target:(id)target;
+-(void)getAllProjectIdentificationsForProjectName:(NSString *)project withHandler:(SEL)handler target:(id)target;
+-(void)getProjectIdentificationsForProjectName:(NSString *)project withAttributes:(NSDictionary *)attributeNamesAndValues withHandler:(SEL)handler target:(id)target;
+-(void)getUserObservationsForProjectName:(NSString *)project withHandler:(SEL)handler target:(id)target;
 
 
 @end

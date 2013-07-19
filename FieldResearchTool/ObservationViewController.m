@@ -30,6 +30,7 @@
 @implementation ObservationViewController
 
 @synthesize table;
+@synthesize currentProject;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,13 +46,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"Project Name: %@", currentProject.name);
     
     [self.navigationItem setBackBarButtonItem:[[UIBarButtonItem alloc]initWithTitle:@"Backzz" style:UIBarButtonItemStyleBordered target:nil action:nil]];
     
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:nil]];
     
-    [[AppModel sharedAppModel]getAllProjectComponentsForProjectName:@"Biocore"];
-    [[AppModel sharedAppModel]getAllProjectIdentificationsForProjectName:@"Biocore"];
+    [[AppModel sharedAppModel]getAllProjectComponentsForProjectName:@"Biocore" withHandler:@selector(handleFetchAllProjectComponentsForProjectName:) target:[AppModel sharedAppModel]];
+    [[AppModel sharedAppModel]getAllProjectIdentificationsForProjectName:@"Biocore" withHandler:@selector(handleFetchProjectIdentifications:) target:[AppModel sharedAppModel]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -146,8 +148,15 @@
             case NUMBER:
                 viewControllerToPush = [[ObservationNumberViewController alloc]initWithNibName:@"ObservationNumberViewController" bundle:nil];
                 break;
-            case BOOLEAN:
-                viewControllerToPush = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
+            case BOOLEAN:{
+                ObservationBooleanViewController *boolViewController = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
+                ProjectComponent *projectComponent = [[AppModel sharedAppModel].projectComponents objectAtIndex:indexPath.row];
+                boolViewController.projectComponent = projectComponent;
+                viewControllerToPush = boolViewController;
+            }
+                break;
+            case VIDEO:
+                viewControllerToPush = [[ObservationVideoViewController alloc]initWithNibName:@"ObservationVideoViewController" bundle:nil];
                 break;
             default:
                 NSLog(@"Pushing on Bool view controller as default");

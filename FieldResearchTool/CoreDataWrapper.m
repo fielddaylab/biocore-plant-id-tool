@@ -40,7 +40,7 @@
     });
 }
 
--(void)fetchAllEntities:(NSString *)entityName withHandler:(SEL)handler{
+-(void)fetchAllEntities:(NSString *)entityName withHandler:(SEL)handler target:(id)target{
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
@@ -52,10 +52,10 @@
         return;
     }
     
-    [self callHandlerForTarget:[AppModel sharedAppModel] handler:handler withObject:fetchedObjects];
+    [self callHandlerForTarget:target handler:handler withObject:fetchedObjects];
 }
 
--(void)fetchAllEntities:(NSString *)entityName withAttribute:(NSString *)attributeName equalTo:(NSString *)attributeValue withHandler:(SEL)handler{
+-(void)fetchAllEntities:(NSString *)entityName withAttribute:(NSString *)attributeName equalTo:(NSString *)attributeValue withHandler:(SEL)handler target:(id)target{
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
@@ -71,10 +71,10 @@
         return;
     }
 
-    [self callHandlerForTarget:[AppModel sharedAppModel] handler:handler withObject:fetchedObjects];
+    [self callHandlerForTarget:target handler:handler withObject:fetchedObjects];
 }
 
--(void)fetchEntities:(NSString *)entityName withAttributes:(NSDictionary *)attributeNamesAndValues withHandler:(SEL)handler{
+-(void)fetchEntities:(NSString *)entityName withAttributes:(NSDictionary *)attributeNamesAndValues withHandler:(SEL)handler target:(id)target{
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
@@ -119,11 +119,11 @@
         return;
     }
     
-    [self callHandlerForTarget:[AppModel sharedAppModel] handler:handler withObject:fetchedObjects];
+    [self callHandlerForTarget:target handler:handler withObject:fetchedObjects];
     
 }
 
--(void)fetchEntities:(NSString *)entityName withAttributes:(NSDictionary *)attributeNamesAndValues withSortedAttributes:(NSArray *)attributesToBeSorted withHandler:(SEL)handler{
+-(void)fetchEntities:(NSString *)entityName withAttributes:(NSDictionary *)attributeNamesAndValues withSortedAttributes:(NSArray *)attributesToBeSorted withHandler:(SEL)handler target:(id)target{
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName
                                               inManagedObjectContext:managedObjectContext];
@@ -168,11 +168,11 @@
         return;
     }
     
-    [self callHandlerForTarget:[AppModel sharedAppModel] handler:handler withObject:fetchedObjects];
+    [self callHandlerForTarget:target handler:handler withObject:fetchedObjects];
     
 }
 
--(void)fetchEntities:(NSString *)entityName withPredicate:(NSPredicate *)predicate withHandler:(SEL)handler{
+-(void)fetchEntities:(NSString *)entityName withPredicate:(NSPredicate *)predicate withHandler:(SEL)handler target:(id)target{
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
@@ -186,10 +186,10 @@
         return;
     }
     
-    [self callHandlerForTarget:[AppModel sharedAppModel] handler:handler withObject:fetchedObjects];
+    [self callHandlerForTarget:target handler:handler withObject:fetchedObjects];
 }
 
--(void)fetchEntities:(NSString *)entityName withPredicate:(NSPredicate *)predicate withSortDescriptors:(NSArray *)sortDescriptors withHandler:(SEL)handler{
+-(void)fetchEntities:(NSString *)entityName withPredicate:(NSPredicate *)predicate withSortDescriptors:(NSArray *)sortDescriptors withHandler:(SEL)handler target:(id)target{
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName
                                               inManagedObjectContext:managedObjectContext];
@@ -206,7 +206,7 @@
         return;
     }
     
-    [self callHandlerForTarget:[AppModel sharedAppModel] handler:handler withObject:fetchedObjects];
+    [self callHandlerForTarget:target handler:handler withObject:fetchedObjects];
 }
 
 -(BOOL)save{
