@@ -30,7 +30,6 @@
 @implementation ObservationViewController
 
 @synthesize table;
-@synthesize currentProject;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,7 +45,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"Project Name: %@", currentProject.name);
     
     [self.navigationItem setBackBarButtonItem:[[UIBarButtonItem alloc]initWithTitle:@"Backzz" style:UIBarButtonItemStyleBordered target:nil action:nil]];
     

@@ -37,7 +37,6 @@
 -(void)handleFetchOfAllProjects:(NSArray *)projects{
     ObservationViewController *newObservation = [[ObservationViewController alloc]initWithNibName:@"ObservationViewController" bundle:nil];
     Project *project = projects[0];
-    newObservation.currentProject = project;
     self.observationController = [[FieldResearchNavigationController alloc]initWithRootViewController:newObservation];
     [self displayContentController:self.observationController];
 }
