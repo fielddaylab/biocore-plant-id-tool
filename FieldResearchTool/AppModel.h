@@ -29,6 +29,10 @@
 -(void)getAllProjectIdentificationsWithHandler:(SEL)handler target:(id)target;
 -(void)getProjectIdentificationsWithAttributes:(NSDictionary *)attributeNamesAndValues withHandler:(SEL)handler target:(id)target;
 -(void)getUserObservationsWithHandler:(SEL)handler target:(id)target;
+
+//Nick's faulty attempt at testing...
+-(void)getUserObservationComponentDataWithHandler:(SEL)handler target:(id)target;
+
 -(void)getUserForName:(NSString *)username password:(NSString *)password withHandler:(SEL)handler target:(id)target;
 -(void)createNewUserWithAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target;
 -(void)createNewUserObservationWithAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target;

@@ -90,6 +90,15 @@
     });
 }
 
+//////////////////// Nick wrote(copypasta-d) this, so beware...
+-(void)getUserObservationComponentDataWithHandler:(SEL)handler target:(id)target{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [coreData fetchAllEntities:@"UserObservationComponentData" withHandler:handler target:target];
+        });
+    });
+}
+////////////////////
 
 -(void)getUserForName:(NSString *)username password:(NSString *)password withHandler:(SEL)handler target:(id)target{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -133,6 +142,7 @@
     userObservationComponentData.userObservation = currentUserObservation;
     userObservationComponentData.user = currentUser;
     userObservationComponentData.projectComponent = projectComponent;
+    userObservationComponentData.user = currentUser;
     for (NSString *key in attributes) {
         id value = [attributes objectForKey:key];
         [userObservationComponentData setValue:value forKey:key];
