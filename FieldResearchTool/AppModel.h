@@ -28,7 +28,6 @@
 -(void)getProjectIdentificationsForProjectName:(NSString *)project withAttributes:(NSDictionary *)attributeNamesAndValues withHandler:(SEL)handler target:(id)target;
 -(void)getUserObservationsForProjectName:(NSString *)project withHandler:(SEL)handler target:(id)target;
 -(void)createNewUserObservationForProject:(Project *)project withAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target;
--(void)createNewUserObservationComponentDataForUserObservation:(UserObservation *)userObservation withAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target;
-
+-(void)createNewUserObservationComponentDataForUserObservation:(UserObservation *)userObservation withProjectComponent:(ProjectComponent *)projectComponent withAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target;
 
 @end

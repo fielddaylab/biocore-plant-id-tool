@@ -59,13 +59,20 @@
         NSLog(@"JUP");
         
         NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-        [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"latitude"];
-        [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"longitude"];
+//        [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"latitude"];
+//        [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"longitude"];
+        //observationid
+        //componentid
+        //user id
+        //data int ///wat
+        //[[attributes setValue:[[AppModel sharedAppModel].currentUserObservation] forKey:observationID]];
+        //[[attributes setValue:projectComponent forKey:projectComponent]];
+
         [attributes setValue:[NSDate date] forKey:@"created"];
         [attributes setValue:[NSDate date] forKey:@"updated"];
         
-        //[[AppModel sharedAppModel] createNewUserObservationComponentDataForUserObservation:[[AppModel sharedAppModel]currentUserObservation] withProjectComponent:projectComponent withAttributes:attributes withHandler:nil target:nil];
-    
+        [[AppModel sharedAppModel] createNewUserObservationComponentDataForUserObservation:[[AppModel sharedAppModel]currentUserObservation] withProjectComponent:projectComponent withAttributes:attributes withHandler:nil target:nil];
+        
     }
 }
 
