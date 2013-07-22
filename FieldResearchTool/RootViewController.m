@@ -42,6 +42,22 @@
     [self displayContentController:self.observationController];
 }
 
+-(void)handleFetchOfUser:(NSArray *)users{
+    
+    if(users == nil || [users count] != 1){
+        NSLog(@"Error fetching users from core data. Quitting.");
+#warning using exit(0)
+        exit(0);
+    }
+    else{
+        User *user = users[0];
+        [AppModel sharedAppModel].currentUser = user;
+        if(!currentChildViewController)
+            [[AppModel sharedAppModel] getAllProjectsWithHandler:@selector(handleFetchOfAllProjects:) target:self];
+    }
+    
+}
+
 - (void) loadView
 {
     //Frame will need to get set in viewWillAppear:
@@ -53,8 +69,9 @@
 {
     self.view.frame = [UIScreen mainScreen].bounds;
     
-    if(!currentChildViewController)
-        [[AppModel sharedAppModel] getAllProjectsWithHandler:@selector(handleFetchOfAllProjects:) target:self];
+    //this will need to move to a login view controller in the future
+    [[AppModel sharedAppModel] getUserForName:@"jgmoeller" password:@"qwerty" withHandler:@selector(handleFetchOfUser:) target:self];
+    
 }
 
 // Container VC Functions pulled from Apple Docs 5/6/13

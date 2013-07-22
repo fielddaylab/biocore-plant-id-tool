@@ -7,7 +7,6 @@
 //
 
 #import "AppModel.h"
-#import "UserObservation.h"
 #import "UserObservationComponentData.h"
 
 @implementation AppModel
@@ -17,6 +16,7 @@
 @synthesize currentProjectComponents;
 @synthesize currentProjectIdentifications;
 @synthesize currentUserObservation;
+@synthesize currentUser;
 
 + (id)sharedAppModel
 {
@@ -85,20 +85,39 @@
 -(void)getUserObservationsForProjectName:(NSString *)project withHandler:(SEL)handler target:(id)target{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [coreData fetchAllEntities:@"UserObservation" withHandler:@selector(handleFetchUserObservations:) target:target];
+            [coreData fetchAllEntities:@"UserObservation" withHandler:handler target:target];
         });
     });
 }
 
--(void)handleFetchUserObservations:(NSArray *)observations{
-    NSLog(@"handleFetchUserObservations");
+
+-(void)getUserForName:(NSString *)username password:(NSString *)password withHandler:(SEL)handler target:(id)target{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+            [attributes setValue:username forKey:@"name"];
+            [attributes setValue:password forKey:@"password"];
+            [coreData fetchEntities:@"User" withAttributes:attributes withHandler:handler target:target];
+        });
+    });
 }
+
 
 -(BOOL)save{
     return [coreData save];
 }
 
--(void)createNewUserObservationForProjectName:(Project *)project withAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target{
+-(void)createNewUserWithAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target{
+    User *newUser = (User *)[NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:coreData.managedObjectContext];
+    for (NSString *key in attributes) {
+        id value = [attributes objectForKey:key];
+        [newUser setValue:value forKey:key];
+    }
+    [self save];
+    currentUser = newUser;
+}
+
+-(void)createNewUserObservationForProject:(Project *)project withAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target{
     UserObservation *userObservation = (UserObservation *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservation" inManagedObjectContext:coreData.managedObjectContext];
     userObservation.project = project;
     for (NSString *key in attributes) {

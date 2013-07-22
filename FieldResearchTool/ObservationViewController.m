@@ -60,7 +60,7 @@
     [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"longitude"];
     [attributes setValue:[NSDate date] forKey:@"created"];
     [attributes setValue:[NSDate date] forKey:@"updated"];
-    [[AppModel sharedAppModel] createNewUserObservationForProjectName:[AppModel sharedAppModel].currentProject.name withAttributes:attributes withHandler:nil target:nil];
+    [[AppModel sharedAppModel] createNewUserObservationForProject:[AppModel sharedAppModel].currentProject withAttributes:attributes withHandler:nil target:nil];
     
 }
 
