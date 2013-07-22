@@ -13,9 +13,9 @@
 
 @interface UserObservationComponentData : NSManagedObject
 
-@property (nonatomic, retain) NSDate * created;
-@property (nonatomic, retain) NSNumber * data;
-@property (nonatomic, retain) NSDate * updated;
+@property (nonatomic, retain) NSDate *created;
+@property (nonatomic, retain) NSNumber *data;
+@property (nonatomic, retain) NSDate *updated;
 @property (nonatomic, retain) ProjectComponent *projectComponent;
 @property (nonatomic, retain) User *user;
 @property (nonatomic, retain) UserObservation *userObservation;

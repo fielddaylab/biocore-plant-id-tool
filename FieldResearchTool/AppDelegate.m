@@ -135,7 +135,8 @@
     project.splashMediaUrl = @"splashMediaURL";
     project.updated = [NSDate date];
     
-    NSString *contents = [NSString stringWithContentsOfFile:@"/Users/jgmoeller/iOS Development/Field Research Platform/FieldResearchTool/FieldResearchTool/plantData.tsv" encoding:NSASCIIStringEncoding error:nil];
+//    NSString *contents = [NSString stringWithContentsOfFile:@"/Users/jgmoeller/iOS Development/Field Research Platform/FieldResearchTool/FieldResearchTool/plantData.tsv" encoding:NSASCIIStringEncoding error:nil];
+    NSString *contents = [NSString stringWithContentsOfFile:@"/Users/nickheindl/Desktop/FieldResearchTool/FieldResearchTool/plantData.tsv" encoding:NSASCIIStringEncoding error:nil];
     NSArray *lines = [contents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     NSString *firstLine = lines[0];
     NSArray *wordsSeperatedByTabs = [firstLine componentsSeparatedByString:@"\t"];

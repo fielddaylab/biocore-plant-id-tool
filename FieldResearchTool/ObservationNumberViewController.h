@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProjectComponent.h"
 
 @interface ObservationNumberViewController : UIViewController
 
@@ -14,5 +15,7 @@
 - (IBAction)changeUnit:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *changeUnitButton;
 - (IBAction)killKeyboard:(id)sender;
+
+@property ProjectComponent *projectComponent;
 
 @end

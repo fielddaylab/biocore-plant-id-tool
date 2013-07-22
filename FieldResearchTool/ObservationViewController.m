@@ -60,7 +60,7 @@
     [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"longitude"];
     [attributes setValue:[NSDate date] forKey:@"created"];
     [attributes setValue:[NSDate date] forKey:@"updated"];
-    [[AppModel sharedAppModel] createNewUserObservationForProjectName:[AppModel sharedAppModel].currentProject.name withAttributes:attributes withHandler:nil target:nil];
+    [[AppModel sharedAppModel] createNewUserObservationForProject:[AppModel sharedAppModel].currentProject withAttributes:attributes withHandler:nil target:nil];
     
 }
 
@@ -153,8 +153,12 @@
             case LONG_TEXT:
                 viewControllerToPush = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];
                 break;
-            case NUMBER:
-                viewControllerToPush = [[ObservationNumberViewController alloc]initWithNibName:@"ObservationNumberViewController" bundle:nil];
+            case NUMBER:{
+                ObservationNumberViewController *numberViewController = [[ObservationNumberViewController alloc]initWithNibName:@"ObservationNumberViewController" bundle:nil];
+                ProjectComponent *projectComponent = [[AppModel sharedAppModel].currentProjectComponents objectAtIndex:indexPath.row];
+                numberViewController.projectComponent = projectComponent;
+                viewControllerToPush = numberViewController;
+            }
                 break;
             case BOOLEAN:{
                 ObservationBooleanViewController *boolViewController = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];

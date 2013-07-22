@@ -7,6 +7,7 @@
 //
 
 #import "ObservationNumberViewController.h"
+#import "AppModel.h"
 
 @interface ObservationNumberViewController (){
     int unitCount;
@@ -18,6 +19,7 @@
 
 @synthesize componentPossibilityDescription;
 @synthesize changeUnitButton;
+@synthesize projectComponent;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,6 +48,25 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    //Means that we are for sure going 'back'
+    if ([self isMovingFromParentViewController]){
+
+    //createNewUserObservationComponentDataForUserObservation
+        NSLog(@"JUP");
+        
+        NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+        [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"latitude"];
+        [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"longitude"];
+        [attributes setValue:[NSDate date] forKey:@"created"];
+        [attributes setValue:[NSDate date] forKey:@"updated"];
+        
+        //[[AppModel sharedAppModel] createNewUserObservationComponentDataForUserObservation:[[AppModel sharedAppModel]currentUserObservation] withProjectComponent:projectComponent withAttributes:attributes withHandler:nil target:nil];
+    
+    }
 }
 
 

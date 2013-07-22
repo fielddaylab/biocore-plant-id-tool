@@ -98,7 +98,7 @@
     return [coreData save];
 }
 
--(void)createNewUserObservationForProjectName:(Project *)project withAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target{
+-(void)createNewUserObservationForProject:(Project *)project withAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target{
     UserObservation *userObservation = (UserObservation *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservation" inManagedObjectContext:coreData.managedObjectContext];
     userObservation.project = project;
     for (NSString *key in attributes) {
@@ -109,9 +109,10 @@
     currentUserObservation = userObservation;
 }
 
--(void)createNewUserObservationComponentDataForUserObservation:(UserObservation *)userObservation withAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target{
+-(void)createNewUserObservationComponentDataForUserObservation:(UserObservation *)userObservation withProjectComponent:(ProjectComponent *)projectComponent withAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target{
     UserObservationComponentData *userObservationComponentData = (UserObservationComponentData *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservationComponentData" inManagedObjectContext:coreData.managedObjectContext];
     userObservationComponentData.userObservation = userObservation;
+    userObservationComponentData.projectComponent = projectComponent;
     for (NSString *key in attributes) {
         id value = [attributes objectForKey:key];
         [userObservationComponentData setValue:value forKey:key];
