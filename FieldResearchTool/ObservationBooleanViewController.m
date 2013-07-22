@@ -7,6 +7,7 @@
 //
 
 #import "ObservationBooleanViewController.h"
+#import "AppModel.h"
 
 @interface ObservationBooleanViewController ()
 
@@ -42,7 +43,14 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     //save the user observation component
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setValue:[NSDate date] forKey:@"created"];
+    [attributes setValue:[NSDate date] forKey:@"updated"];
+    [attributes setValue:[NSNumber numberWithBool:[boolSwitch isOn]] forKey:@"data"];
     
+    [[AppModel sharedAppModel] createNewUserObservationComponentDataWithProjectComponent:projectComponent withAttributes:attributes withHandler:nil target:nil];
+    
+    //possibility create the data judgment at the same time here
     
 }
 
