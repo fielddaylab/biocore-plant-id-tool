@@ -20,6 +20,7 @@
 #import "AppModel.h"
 #import "ProjectComponentDataType.h"
 #import "UserObservation.h"
+#import "UserObservationComponentData.h"
 
 @interface ObservationViewController (){
     NSArray *projectComponents;
@@ -42,6 +43,23 @@
     }
     return self;
 }
+
+- (void)printTest:(NSArray *)userObservationComponents{
+    NSLog(@"PRINT DAT TEST");
+    for(int i = 0; i<userObservationComponents.count; i++){
+        UserObservationComponentData *u = userObservationComponents[i];
+        NSLog(@"Blah: %@\n", u.data);
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    //Using only for testing.
+    
+    [[AppModel sharedAppModel] getUserObservationComponentDataWithHandler:@selector(printTest:) target:self];
+    
+}
+
 
 - (void)viewDidLoad
 {
