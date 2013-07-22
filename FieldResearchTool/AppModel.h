@@ -25,14 +25,14 @@
 
 -(BOOL)save;
 -(void)getAllProjectsWithHandler:(SEL)handler target:(id)target;
--(void)getAllProjectComponentsForProjectName:(NSString *)project withHandler:(SEL)handler target:(id)target;
--(void)getAllProjectIdentificationsForProjectName:(NSString *)project withHandler:(SEL)handler target:(id)target;
--(void)getProjectIdentificationsForProjectName:(NSString *)project withAttributes:(NSDictionary *)attributeNamesAndValues withHandler:(SEL)handler target:(id)target;
--(void)getUserObservationsForProjectName:(NSString *)project withHandler:(SEL)handler target:(id)target;
+-(void)getAllProjectComponentsWithHandler:(SEL)handler target:(id)target;
+-(void)getAllProjectIdentificationsWithHandler:(SEL)handler target:(id)target;
+-(void)getProjectIdentificationsWithAttributes:(NSDictionary *)attributeNamesAndValues withHandler:(SEL)handler target:(id)target;
+-(void)getUserObservationsWithHandler:(SEL)handler target:(id)target;
 -(void)getUserForName:(NSString *)username password:(NSString *)password withHandler:(SEL)handler target:(id)target;
 -(void)createNewUserWithAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target;
--(void)createNewUserObservationForProject:(Project *)project withAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target;
--(void)createNewUserObservationComponentDataForUserObservation:(UserObservation *)userObservation withAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target;
+-(void)createNewUserObservationWithAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target;
+-(void)createNewUserObservationComponentDataWithProjectComponent:(ProjectComponent *)projectComponent withAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target;
 
 
 @end
