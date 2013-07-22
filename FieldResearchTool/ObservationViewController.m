@@ -153,8 +153,12 @@
             case LONG_TEXT:
                 viewControllerToPush = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];
                 break;
-            case NUMBER:
-                viewControllerToPush = [[ObservationNumberViewController alloc]initWithNibName:@"ObservationNumberViewController" bundle:nil];
+            case NUMBER:{
+                ObservationNumberViewController *numberViewController = [[ObservationNumberViewController alloc]initWithNibName:@"ObservationNumberViewController" bundle:nil];
+                ProjectComponent *projectComponent = [[AppModel sharedAppModel].currentProjectComponents objectAtIndex:indexPath.row];
+                numberViewController.projectComponent = projectComponent;
+                viewControllerToPush = numberViewController;
+            }
                 break;
             case BOOLEAN:{
                 ObservationBooleanViewController *boolViewController = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
