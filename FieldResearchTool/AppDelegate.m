@@ -32,7 +32,6 @@
     //setup example data
     //keep this commented out unless you want to regenerate sample data. otherwise it will continually
     //add sample data
-    //[self createSampleData];
     //[self readInSampleData];
     return YES;
 }
@@ -127,6 +126,17 @@
 #pragma mark Sample Data
 
 -(void)readInSampleData{
+    
+    NSMutableDictionary *userAttributes = [[NSMutableDictionary alloc]init];
+    [userAttributes setValue:@"jgmoeller" forKey:@"name"];
+    [userAttributes setValue:@"qwerty" forKey:@"password"]; // probably should be hashed
+    [userAttributes setValue:[NSDate date] forKey:@"created"];
+    [userAttributes setValue:[NSDate date] forKey:@"updated"];
+    [userAttributes setValue:@"exampleURL" forKey:@"mediaUrl"];
+    [[AppModel sharedAppModel] createNewUserWithAttributes:userAttributes withHandler:nil target:nil];
+    
+    
+    
     Project *project = (Project *)[NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:[self managedObjectContext]];
     project.allowedInterpretations = [NSNumber numberWithInt:1];
     project.created = [NSDate date];

@@ -51,8 +51,8 @@
     
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:nil]];
     
-    [[AppModel sharedAppModel]getAllProjectComponentsForProjectName:[AppModel sharedAppModel].currentProject.name withHandler:@selector(handleFetchAllProjectComponentsForProjectName:) target:[AppModel sharedAppModel]];
-    [[AppModel sharedAppModel]getAllProjectIdentificationsForProjectName:[AppModel sharedAppModel].currentProject.name withHandler:@selector(handleFetchProjectIdentifications:) target:[AppModel sharedAppModel]];
+    [[AppModel sharedAppModel]getAllProjectComponentsWithHandler:@selector(handleFetchAllProjectComponentsForProjectName:) target:[AppModel sharedAppModel]];
+    [[AppModel sharedAppModel]getAllProjectIdentificationsWithHandler:@selector(handleFetchProjectIdentifications:) target:[AppModel sharedAppModel]];
     
     //get the location here
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
@@ -60,7 +60,7 @@
     [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"longitude"];
     [attributes setValue:[NSDate date] forKey:@"created"];
     [attributes setValue:[NSDate date] forKey:@"updated"];
-    [[AppModel sharedAppModel] createNewUserObservationForProject:[AppModel sharedAppModel].currentProject withAttributes:attributes withHandler:nil target:nil];
+    [[AppModel sharedAppModel] createNewUserObservationWithAttributes:attributes withHandler:nil target:nil];
     
 }
 
