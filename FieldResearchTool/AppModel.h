@@ -8,13 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "CoreDataWrapper.h"
+#import "Project.h"
+#import "UserObservation.h"
 
 @interface AppModel : NSObject
 
 @property (nonatomic, strong) CoreDataWrapper *coreData;
-@property (nonatomic, strong) NSArray *projects;
-@property (nonatomic, strong) NSArray *projectComponents;
-@property (nonatomic, strong) NSArray *projectIdentifications;
+@property (nonatomic, strong) Project *currentProject;
+@property (nonatomic, strong) NSArray *currentProjectComponents;
+@property (nonatomic, strong) NSArray *currentProjectIdentifications;
+@property (nonatomic, strong) UserObservation *currentUserObservation;
 
 + (AppModel *)sharedAppModel;
 
@@ -24,6 +27,8 @@
 -(void)getAllProjectIdentificationsForProjectName:(NSString *)project withHandler:(SEL)handler target:(id)target;
 -(void)getProjectIdentificationsForProjectName:(NSString *)project withAttributes:(NSDictionary *)attributeNamesAndValues withHandler:(SEL)handler target:(id)target;
 -(void)getUserObservationsForProjectName:(NSString *)project withHandler:(SEL)handler target:(id)target;
+-(void)createNewUserObservationForProject:(Project *)project withAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target;
+-(void)createNewUserObservationComponentDataForUserObservation:(UserObservation *)userObservation withAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target;
 
 
 @end

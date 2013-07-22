@@ -7,13 +7,16 @@
 //
 
 #import "AppModel.h"
+#import "UserObservation.h"
+#import "UserObservationComponentData.h"
 
 @implementation AppModel
 
 @synthesize coreData;
-@synthesize projects;
-@synthesize projectComponents;
-@synthesize projectIdentifications;
+@synthesize currentProject;
+@synthesize currentProjectComponents;
+@synthesize currentProjectIdentifications;
+@synthesize currentUserObservation;
 
 + (id)sharedAppModel
 {
@@ -53,7 +56,7 @@
 }
 
 -(void)handleFetchAllProjectComponentsForProjectName:(NSArray *)components{
-    projectComponents = components;
+    self.currentProjectComponents = components;
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"ProjectComponentsResponseReady" object:nil]];
 }
 
@@ -67,7 +70,7 @@
 }
 
 -(void)handleFetchProjectIdentifications:(NSArray *)identifications{
-    projectIdentifications = identifications;
+    self.currentProjectIdentifications = identifications;
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"ProjectIdentificationsResponseReady" object:nil]];
 }
 
@@ -93,6 +96,28 @@
 
 -(BOOL)save{
     return [coreData save];
+}
+
+-(void)createNewUserObservationForProjectName:(Project *)project withAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target{
+    UserObservation *userObservation = (UserObservation *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservation" inManagedObjectContext:coreData.managedObjectContext];
+    userObservation.project = project;
+    for (NSString *key in attributes) {
+        id value = [attributes objectForKey:key];
+        [userObservation setValue:value forKey:key];
+    }
+    [self save];
+    currentUserObservation = userObservation;
+}
+
+-(void)createNewUserObservationComponentDataForUserObservation:(UserObservation *)userObservation withAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target{
+    UserObservationComponentData *userObservationComponentData = (UserObservationComponentData *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservationComponentData" inManagedObjectContext:coreData.managedObjectContext];
+    userObservationComponentData.userObservation = userObservation;
+    for (NSString *key in attributes) {
+        id value = [attributes objectForKey:key];
+        [userObservationComponentData setValue:value forKey:key];
+    }
+    [self save];
+    //save to array or something
 }
 
 @end

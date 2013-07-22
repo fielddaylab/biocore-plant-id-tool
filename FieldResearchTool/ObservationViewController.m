@@ -19,6 +19,7 @@
 #import "Project.h"
 #import "AppModel.h"
 #import "ProjectComponentDataType.h"
+#import "UserObservation.h"
 
 @interface ObservationViewController (){
     NSArray *projectComponents;
@@ -50,8 +51,17 @@
     
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:nil]];
     
-    [[AppModel sharedAppModel]getAllProjectComponentsForProjectName:@"Biocore" withHandler:@selector(handleFetchAllProjectComponentsForProjectName:) target:[AppModel sharedAppModel]];
-    [[AppModel sharedAppModel]getAllProjectIdentificationsForProjectName:@"Biocore" withHandler:@selector(handleFetchProjectIdentifications:) target:[AppModel sharedAppModel]];
+    [[AppModel sharedAppModel]getAllProjectComponentsForProjectName:[AppModel sharedAppModel].currentProject.name withHandler:@selector(handleFetchAllProjectComponentsForProjectName:) target:[AppModel sharedAppModel]];
+    [[AppModel sharedAppModel]getAllProjectIdentificationsForProjectName:[AppModel sharedAppModel].currentProject.name withHandler:@selector(handleFetchProjectIdentifications:) target:[AppModel sharedAppModel]];
+    
+    //get the location here
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"latitude"];
+    [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"longitude"];
+    [attributes setValue:[NSDate date] forKey:@"created"];
+    [attributes setValue:[NSDate date] forKey:@"updated"];
+    [[AppModel sharedAppModel] createNewUserObservationForProjectName:[AppModel sharedAppModel].currentProject.name withAttributes:attributes withHandler:nil target:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -148,7 +158,7 @@
                 break;
             case BOOLEAN:{
                 ObservationBooleanViewController *boolViewController = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
-                ProjectComponent *projectComponent = [[AppModel sharedAppModel].projectComponents objectAtIndex:indexPath.row];
+                ProjectComponent *projectComponent = [[AppModel sharedAppModel].currentProjectComponents objectAtIndex:indexPath.row];
                 boolViewController.projectComponent = projectComponent;
                 viewControllerToPush = boolViewController;
             }
@@ -174,12 +184,12 @@
 #pragma mark - Asynchronous responses
 
 -(void)projectComponentsResponseReady{
-    projectComponents = [AppModel sharedAppModel].projectComponents;
+    projectComponents = [AppModel sharedAppModel].currentProjectComponents;
     [self.table reloadData];
 }
 
 -(void)projectIdentificationsResponseReady{
-    projectIdentifications = [AppModel sharedAppModel].projectIdentifications;
+    projectIdentifications = [AppModel sharedAppModel].currentProjectIdentifications;
     [self.table reloadData];
 }
 
