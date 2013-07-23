@@ -132,21 +132,21 @@
     [userAttributes setValue:@"qwerty" forKey:@"password"]; // probably should be hashed
     [userAttributes setValue:[NSDate date] forKey:@"created"];
     [userAttributes setValue:[NSDate date] forKey:@"updated"];
-    [userAttributes setValue:@"exampleURL" forKey:@"mediaUrl"];
-    [[AppModel sharedAppModel] createNewUserWithAttributes:userAttributes withHandler:nil target:nil];
+    //[userAttributes setValue:@"exampleURL" forKey:@"mediaUrl"]; //set media here
+    [[AppModel sharedAppModel] createNewUserWithAttributes:userAttributes];
     
     
     
     Project *project = (Project *)[NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:[self managedObjectContext]];
     project.allowedInterpretations = [NSNumber numberWithInt:1];
     project.created = [NSDate date];
-    project.iconMediaUrl = @"iconMediaURL";
+    //project.iconMediaUrl = @"iconMediaURL"; //get media here
     project.name = @"Biocore";
-    project.splashMediaUrl = @"splashMediaURL";
+    //project.splashMediaUrl = @"splashMediaURL"; //get media here
     project.updated = [NSDate date];
     
-//    NSString *contents = [NSString stringWithContentsOfFile:@"/Users/jgmoeller/iOS Development/Field Research Platform/FieldResearchTool/FieldResearchTool/plantData.tsv" encoding:NSASCIIStringEncoding error:nil];
-    NSString *contents = [NSString stringWithContentsOfFile:@"/Users/nickheindl/Desktop/FieldResearchTool/FieldResearchTool/plantData.tsv" encoding:NSASCIIStringEncoding error:nil];
+    NSString *contents = [NSString stringWithContentsOfFile:@"/Users/jgmoeller/iOS Development/Field Research Platform/FieldResearchTool/FieldResearchTool/plantData.tsv" encoding:NSASCIIStringEncoding error:nil];
+    //NSString *contents = [NSString stringWithContentsOfFile:@"/Users/nickheindl/Desktop/FieldResearchTool/FieldResearchTool/plantData.tsv" encoding:NSASCIIStringEncoding error:nil];
     NSArray *lines = [contents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     NSString *firstLine = lines[0];
     NSArray *wordsSeperatedByTabs = [firstLine componentsSeparatedByString:@"\t"];
@@ -213,7 +213,7 @@
             //create the project component
             ProjectComponent *projectComponent = (ProjectComponent *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponent" inManagedObjectContext:[self managedObjectContext]];
             projectComponent.created = [NSDate date];
-            projectComponent.mediaUrl = @"mediaURL";
+            //projectComponent.mediaUrl = @"mediaURL"; //get media here
             projectComponent.observationType = [NSNumber numberWithInt:type];
             projectComponent.required = [NSNumber numberWithBool:isRequired];
             projectComponent.title = projectComponentName;
@@ -234,7 +234,7 @@
                     projectComponentPossibility.created = [NSDate date];
                     projectComponentPossibility.updated = [NSDate date];
                     projectComponentPossibility.projectComponent = projectComponent;
-                    projectComponentPossibility.mediaUrl = @"mediaURL";
+                    //projectComponentPossibility.mediaUrl = @"mediaURL"; //get media here
                     if([stringProjectComponentPossibility isEqualToString:@"yes"]){
                         projectComponentPossibility.boolValue = [NSNumber numberWithBool:YES];
                         NSLog(@"Possibility: %@ Type: BOOL", stringProjectComponentPossibility);
@@ -454,7 +454,7 @@
                         projectComponentPossibility.created = [NSDate date];
                         projectComponentPossibility.updated = [NSDate date];
                         projectComponentPossibility.projectComponent = associatedProjectComponent;
-                        projectComponentPossibility.mediaUrl = @"mediaURL";
+                        //projectComponentPossibility.mediaUrl = @"mediaURL"; //get media here
                         
                         projectComponentPossibility.rangeOperator = [NSNumber numberWithInt:EQUAL];
                         projectComponentPossibility.rangeNumber1 = [NSNumber numberWithDouble:[componentPossibility doubleValue]];

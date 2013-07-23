@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B03BBAA179EE062005AD632 /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBA9179EE062005AD632 /* Media.m */; };
+		5B03BBB0179EE072005AD632 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBAF179EE072005AD632 /* Project.m */; };
+		5B03BBB6179EE081005AD632 /* ProjectComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBB5179EE081005AD632 /* ProjectComponent.m */; };
+		5B03BBBC179EE08F005AD632 /* ProjectComponentPossibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBBB179EE08F005AD632 /* ProjectComponentPossibility.m */; };
+		5B03BBC2179EE09D005AD632 /* ProjectIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBC1179EE09D005AD632 /* ProjectIdentification.m */; };
+		5B03BBC8179EE0AA005AD632 /* ProjectIdentificationComponentPossibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBC7179EE0AA005AD632 /* ProjectIdentificationComponentPossibility.m */; };
+		5B03BBCE179EE0B7005AD632 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBCD179EE0B7005AD632 /* User.m */; };
+		5B03BBD4179EE0CD005AD632 /* UserObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBD3179EE0CD005AD632 /* UserObservation.m */; };
+		5B03BBDA179EE0D9005AD632 /* UserObservationComponentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBD9179EE0D9005AD632 /* UserObservationComponentData.m */; };
+		5B03BBE0179EE0E7005AD632 /* UserObservationComponentDataJudgement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBDF179EE0E7005AD632 /* UserObservationComponentDataJudgement.m */; };
+		5B03BBE6179EE0F7005AD632 /* UserObservationIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBE5179EE0F7005AD632 /* UserObservationIdentification.m */; };
 		5B0458591795A11600B93A4D /* AppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0458581795A11600B93A4D /* AppModel.m */; };
-		5B0458741795A1CE00B93A4D /* ProjectComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0458731795A1CE00B93A4D /* ProjectComponent.m */; };
-		5B0458801795A1F700B93A4D /* ProjectComponentPossibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B04587F1795A1F700B93A4D /* ProjectComponentPossibility.m */; };
-		5B0458861795A20E00B93A4D /* ProjectIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0458851795A20E00B93A4D /* ProjectIdentification.m */; };
-		5B04588C1795A21F00B93A4D /* ProjectIdentificationComponentPossibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B04588B1795A21F00B93A4D /* ProjectIdentificationComponentPossibility.m */; };
-		5B0458921795A23100B93A4D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0458911795A23100B93A4D /* User.m */; };
-		5B0458981795A24200B93A4D /* UserObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0458971795A24200B93A4D /* UserObservation.m */; };
-		5B04589E1795A25500B93A4D /* UserObservationComponentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B04589D1795A25400B93A4D /* UserObservationComponentData.m */; };
-		5B0458A41795A26700B93A4D /* UserObservationComponentDataJudgement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0458A31795A26700B93A4D /* UserObservationComponentDataJudgement.m */; };
-		5B0458AA1795A27700B93A4D /* UserObservationIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0458A91795A27700B93A4D /* UserObservationIdentification.m */; };
-		5B0458BB1795FBEA00B93A4D /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0458BA1795FBEA00B93A4D /* Project.m */; };
 		5B82BD8917972005008CB441 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82BD8817972005008CB441 /* iCarousel.m */; };
 		5B82BD8C17972043008CB441 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B82BD8B17972043008CB441 /* QuartzCore.framework */; };
 		5B82BD9417972EDB008CB441 /* 05-shuffle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B82BD8F17972EDA008CB441 /* 05-shuffle.png */; };
@@ -76,29 +77,31 @@
 
 /* Begin PBXFileReference section */
 		03237ECF5C5F485597FD7DAA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		5B03BBA8179EE062005AD632 /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
+		5B03BBA9179EE062005AD632 /* Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Media.m; sourceTree = "<group>"; };
+		5B03BBAE179EE072005AD632 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
+		5B03BBAF179EE072005AD632 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
+		5B03BBB4179EE081005AD632 /* ProjectComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComponent.h; sourceTree = "<group>"; };
+		5B03BBB5179EE081005AD632 /* ProjectComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectComponent.m; sourceTree = "<group>"; };
+		5B03BBBA179EE08F005AD632 /* ProjectComponentPossibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComponentPossibility.h; sourceTree = "<group>"; };
+		5B03BBBB179EE08F005AD632 /* ProjectComponentPossibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectComponentPossibility.m; sourceTree = "<group>"; };
+		5B03BBC0179EE09D005AD632 /* ProjectIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentification.h; sourceTree = "<group>"; };
+		5B03BBC1179EE09D005AD632 /* ProjectIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentification.m; sourceTree = "<group>"; };
+		5B03BBC6179EE0AA005AD632 /* ProjectIdentificationComponentPossibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentificationComponentPossibility.h; sourceTree = "<group>"; };
+		5B03BBC7179EE0AA005AD632 /* ProjectIdentificationComponentPossibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentificationComponentPossibility.m; sourceTree = "<group>"; };
+		5B03BBCC179EE0B7005AD632 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		5B03BBCD179EE0B7005AD632 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		5B03BBD2179EE0CD005AD632 /* UserObservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservation.h; sourceTree = "<group>"; };
+		5B03BBD3179EE0CD005AD632 /* UserObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservation.m; sourceTree = "<group>"; };
+		5B03BBD8179EE0D9005AD632 /* UserObservationComponentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationComponentData.h; sourceTree = "<group>"; };
+		5B03BBD9179EE0D9005AD632 /* UserObservationComponentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationComponentData.m; sourceTree = "<group>"; };
+		5B03BBDE179EE0E7005AD632 /* UserObservationComponentDataJudgement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationComponentDataJudgement.h; sourceTree = "<group>"; };
+		5B03BBDF179EE0E7005AD632 /* UserObservationComponentDataJudgement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationComponentDataJudgement.m; sourceTree = "<group>"; };
+		5B03BBE4179EE0F7005AD632 /* UserObservationIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationIdentification.h; sourceTree = "<group>"; };
+		5B03BBE5179EE0F7005AD632 /* UserObservationIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationIdentification.m; sourceTree = "<group>"; };
 		5B0458571795A11600B93A4D /* AppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppModel.h; sourceTree = "<group>"; };
 		5B0458581795A11600B93A4D /* AppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppModel.m; sourceTree = "<group>"; };
-		5B0458721795A1CE00B93A4D /* ProjectComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComponent.h; sourceTree = "<group>"; };
-		5B0458731795A1CE00B93A4D /* ProjectComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectComponent.m; sourceTree = "<group>"; };
-		5B04587E1795A1F700B93A4D /* ProjectComponentPossibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComponentPossibility.h; sourceTree = "<group>"; };
-		5B04587F1795A1F700B93A4D /* ProjectComponentPossibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectComponentPossibility.m; sourceTree = "<group>"; };
-		5B0458841795A20E00B93A4D /* ProjectIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentification.h; sourceTree = "<group>"; };
-		5B0458851795A20E00B93A4D /* ProjectIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentification.m; sourceTree = "<group>"; };
-		5B04588A1795A21F00B93A4D /* ProjectIdentificationComponentPossibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentificationComponentPossibility.h; sourceTree = "<group>"; };
-		5B04588B1795A21F00B93A4D /* ProjectIdentificationComponentPossibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentificationComponentPossibility.m; sourceTree = "<group>"; };
-		5B0458901795A23100B93A4D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		5B0458911795A23100B93A4D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		5B0458961795A24200B93A4D /* UserObservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservation.h; sourceTree = "<group>"; };
-		5B0458971795A24200B93A4D /* UserObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservation.m; sourceTree = "<group>"; };
-		5B04589C1795A25400B93A4D /* UserObservationComponentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationComponentData.h; sourceTree = "<group>"; };
-		5B04589D1795A25400B93A4D /* UserObservationComponentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationComponentData.m; sourceTree = "<group>"; };
-		5B0458A21795A26700B93A4D /* UserObservationComponentDataJudgement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationComponentDataJudgement.h; sourceTree = "<group>"; };
-		5B0458A31795A26700B93A4D /* UserObservationComponentDataJudgement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationComponentDataJudgement.m; sourceTree = "<group>"; };
-		5B0458A81795A27700B93A4D /* UserObservationIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationIdentification.h; sourceTree = "<group>"; };
-		5B0458A91795A27700B93A4D /* UserObservationIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationIdentification.m; sourceTree = "<group>"; };
 		5B0458B01795F72800B93A4D /* ProjectComponentDataType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComponentDataType.h; sourceTree = "<group>"; };
-		5B0458B91795FBEA00B93A4D /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
-		5B0458BA1795FBEA00B93A4D /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
 		5B0458BC1795FC8B00B93A4D /* RangeOperators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangeOperators.h; sourceTree = "<group>"; };
 		5B82BD8717972005008CB441 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		5B82BD8817972005008CB441 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
@@ -213,26 +216,28 @@
 			children = (
 				5B0458B01795F72800B93A4D /* ProjectComponentDataType.h */,
 				5B0458BC1795FC8B00B93A4D /* RangeOperators.h */,
-				5B0458B91795FBEA00B93A4D /* Project.h */,
-				5B0458BA1795FBEA00B93A4D /* Project.m */,
-				5B0458721795A1CE00B93A4D /* ProjectComponent.h */,
-				5B0458731795A1CE00B93A4D /* ProjectComponent.m */,
-				5B04587E1795A1F700B93A4D /* ProjectComponentPossibility.h */,
-				5B04587F1795A1F700B93A4D /* ProjectComponentPossibility.m */,
-				5B0458841795A20E00B93A4D /* ProjectIdentification.h */,
-				5B0458851795A20E00B93A4D /* ProjectIdentification.m */,
-				5B04588A1795A21F00B93A4D /* ProjectIdentificationComponentPossibility.h */,
-				5B04588B1795A21F00B93A4D /* ProjectIdentificationComponentPossibility.m */,
-				5B0458901795A23100B93A4D /* User.h */,
-				5B0458911795A23100B93A4D /* User.m */,
-				5B0458961795A24200B93A4D /* UserObservation.h */,
-				5B0458971795A24200B93A4D /* UserObservation.m */,
-				5B04589C1795A25400B93A4D /* UserObservationComponentData.h */,
-				5B04589D1795A25400B93A4D /* UserObservationComponentData.m */,
-				5B0458A21795A26700B93A4D /* UserObservationComponentDataJudgement.h */,
-				5B0458A31795A26700B93A4D /* UserObservationComponentDataJudgement.m */,
-				5B0458A81795A27700B93A4D /* UserObservationIdentification.h */,
-				5B0458A91795A27700B93A4D /* UserObservationIdentification.m */,
+				5B03BBA8179EE062005AD632 /* Media.h */,
+				5B03BBA9179EE062005AD632 /* Media.m */,
+				5B03BBAE179EE072005AD632 /* Project.h */,
+				5B03BBAF179EE072005AD632 /* Project.m */,
+				5B03BBB4179EE081005AD632 /* ProjectComponent.h */,
+				5B03BBB5179EE081005AD632 /* ProjectComponent.m */,
+				5B03BBBA179EE08F005AD632 /* ProjectComponentPossibility.h */,
+				5B03BBBB179EE08F005AD632 /* ProjectComponentPossibility.m */,
+				5B03BBC0179EE09D005AD632 /* ProjectIdentification.h */,
+				5B03BBC1179EE09D005AD632 /* ProjectIdentification.m */,
+				5B03BBC6179EE0AA005AD632 /* ProjectIdentificationComponentPossibility.h */,
+				5B03BBC7179EE0AA005AD632 /* ProjectIdentificationComponentPossibility.m */,
+				5B03BBCC179EE0B7005AD632 /* User.h */,
+				5B03BBCD179EE0B7005AD632 /* User.m */,
+				5B03BBD2179EE0CD005AD632 /* UserObservation.h */,
+				5B03BBD3179EE0CD005AD632 /* UserObservation.m */,
+				5B03BBD8179EE0D9005AD632 /* UserObservationComponentData.h */,
+				5B03BBD9179EE0D9005AD632 /* UserObservationComponentData.m */,
+				5B03BBDE179EE0E7005AD632 /* UserObservationComponentDataJudgement.h */,
+				5B03BBDF179EE0E7005AD632 /* UserObservationComponentDataJudgement.m */,
+				5B03BBE4179EE0F7005AD632 /* UserObservationIdentification.h */,
+				5B03BBE5179EE0F7005AD632 /* UserObservationIdentification.m */,
 			);
 			name = DataObjects;
 			sourceTree = "<group>";
@@ -532,19 +537,20 @@
 				71FF69C01794819300E2B411 /* ObservationViewController.m in Sources */,
 				5BFED1BA1794A49000648062 /* CoreDataWrapper.m in Sources */,
 				5B0458591795A11600B93A4D /* AppModel.m in Sources */,
-				5B0458741795A1CE00B93A4D /* ProjectComponent.m in Sources */,
-				5B0458801795A1F700B93A4D /* ProjectComponentPossibility.m in Sources */,
-				5B0458861795A20E00B93A4D /* ProjectIdentification.m in Sources */,
-				5B04588C1795A21F00B93A4D /* ProjectIdentificationComponentPossibility.m in Sources */,
-				5B0458921795A23100B93A4D /* User.m in Sources */,
-				5B0458981795A24200B93A4D /* UserObservation.m in Sources */,
-				5B04589E1795A25500B93A4D /* UserObservationComponentData.m in Sources */,
-				5B0458A41795A26700B93A4D /* UserObservationComponentDataJudgement.m in Sources */,
-				5B0458AA1795A27700B93A4D /* UserObservationIdentification.m in Sources */,
 				71FF69D71795BE6E00E2B411 /* ObservationPhotoViewController.m in Sources */,
-				5B0458BB1795FBEA00B93A4D /* Project.m in Sources */,
 				5B82BD8917972005008CB441 /* iCarousel.m in Sources */,
 				71FE1CD91798617A00EB5A04 /* ObservationAudioViewController.m in Sources */,
+				5B03BBAA179EE062005AD632 /* Media.m in Sources */,
+				5B03BBB0179EE072005AD632 /* Project.m in Sources */,
+				5B03BBB6179EE081005AD632 /* ProjectComponent.m in Sources */,
+				5B03BBBC179EE08F005AD632 /* ProjectComponentPossibility.m in Sources */,
+				5B03BBC2179EE09D005AD632 /* ProjectIdentification.m in Sources */,
+				5B03BBC8179EE0AA005AD632 /* ProjectIdentificationComponentPossibility.m in Sources */,
+				5B03BBCE179EE0B7005AD632 /* User.m in Sources */,
+				5B03BBD4179EE0CD005AD632 /* UserObservation.m in Sources */,
+				5B03BBDA179EE0D9005AD632 /* UserObservationComponentData.m in Sources */,
+				5B03BBE0179EE0E7005AD632 /* UserObservationComponentDataJudgement.m in Sources */,
+				5B03BBE6179EE0F7005AD632 /* UserObservationIdentification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

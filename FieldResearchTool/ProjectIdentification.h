@@ -2,14 +2,14 @@
 //  ProjectIdentification.h
 //  FieldResearchTool
 //
-//  Created by Justin Moeller on 7/16/13.
+//  Created by Justin Moeller on 7/23/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Project, ProjectIdentificationComponentPossibility, UserObservationIdentification;
+@class Media, Project, ProjectIdentificationComponentPossibility, UserObservationIdentification;
 
 @interface ProjectIdentification : NSManagedObject
 
@@ -21,6 +21,7 @@
 @property (nonatomic, retain) Project *project;
 @property (nonatomic, retain) NSSet *projectIdentificationComponentPossibilities;
 @property (nonatomic, retain) NSSet *userObservationIdentifications;
+@property (nonatomic, retain) Media *media;
 @end
 
 @interface ProjectIdentification (CoreDataGeneratedAccessors)

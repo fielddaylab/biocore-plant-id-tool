@@ -2,13 +2,12 @@
 //  UserObservationComponentDataJudgement.m
 //  FieldResearchTool
 //
-//  Created by Justin Moeller on 7/16/13.
+//  Created by Justin Moeller on 7/23/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
 #import "UserObservationComponentDataJudgement.h"
 #import "ProjectComponentPossibility.h"
-#import "User.h"
 #import "UserObservationComponentData.h"
 
 
@@ -17,7 +16,6 @@
 @dynamic created;
 @dynamic updated;
 @dynamic projectComponentPossibility;
-@dynamic user;
 @dynamic userObservationComponentData;
 
 @end

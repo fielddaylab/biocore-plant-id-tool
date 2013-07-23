@@ -48,7 +48,7 @@
     NSLog(@"PRINT DAT TEST");
     for(int i = 0; i<userObservationComponents.count; i++){
         UserObservationComponentData *u = userObservationComponents[i];
-        NSLog(@"Blah: %@\n", u.data);
+        NSLog(@"Blah: %@\n", u.data_int);
     }
 }
 
@@ -56,7 +56,7 @@
 {
     //Using only for testing.
     
-    [[AppModel sharedAppModel] getUserObservationComponentDataWithHandler:@selector(printTest:) target:self];
+    [[AppModel sharedAppModel] getUserObservationComponentsDataWithHandler:@selector(printTest:) target:self];
     
 }
 
@@ -78,7 +78,7 @@
     [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"longitude"];
     [attributes setValue:[NSDate date] forKey:@"created"];
     [attributes setValue:[NSDate date] forKey:@"updated"];
-    [[AppModel sharedAppModel] createNewUserObservationWithAttributes:attributes withHandler:nil target:nil];
+    [[AppModel sharedAppModel] createNewUserObservationWithAttributes:attributes];
     
 }
 

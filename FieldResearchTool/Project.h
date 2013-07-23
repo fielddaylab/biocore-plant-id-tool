@@ -2,26 +2,26 @@
 //  Project.h
 //  FieldResearchTool
 //
-//  Created by Justin Moeller on 7/16/13.
+//  Created by Justin Moeller on 7/23/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class ProjectComponent, ProjectIdentification, UserObservation;
+@class Media, ProjectComponent, ProjectIdentification, UserObservation;
 
 @interface Project : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * allowedInterpretations;
 @property (nonatomic, retain) NSDate * created;
-@property (nonatomic, retain) NSString * iconMediaUrl;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * splashMediaUrl;
 @property (nonatomic, retain) NSDate * updated;
 @property (nonatomic, retain) NSSet *projectComponents;
 @property (nonatomic, retain) NSSet *projectIdentifications;
 @property (nonatomic, retain) NSSet *userObservations;
+@property (nonatomic, retain) Media *iconMedia;
+@property (nonatomic, retain) Media *splashMedia;
 @end
 
 @interface Project (CoreDataGeneratedAccessors)

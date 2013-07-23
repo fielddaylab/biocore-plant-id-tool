@@ -2,21 +2,20 @@
 //  ProjectComponentPossibility.h
 //  FieldResearchTool
 //
-//  Created by Justin Moeller on 7/16/13.
+//  Created by Justin Moeller on 7/23/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class ProjectComponent, ProjectIdentificationComponentPossibility, UserObservationComponentDataJudgement;
+@class Media, ProjectComponent, ProjectIdentificationComponentPossibility, UserObservationComponentDataJudgement;
 
 @interface ProjectComponentPossibility : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * boolValue;
 @property (nonatomic, retain) NSDate * created;
 @property (nonatomic, retain) NSString * enumDescription;
-@property (nonatomic, retain) NSString * mediaUrl;
 @property (nonatomic, retain) NSNumber * rangeNumber1;
 @property (nonatomic, retain) NSNumber * rangeNumber2;
 @property (nonatomic, retain) NSNumber * rangeOperator;
@@ -24,6 +23,7 @@
 @property (nonatomic, retain) ProjectComponent *projectComponent;
 @property (nonatomic, retain) NSSet *projectIdentificationComponentPossibilities;
 @property (nonatomic, retain) NSSet *userObservationComponentDataJudgements;
+@property (nonatomic, retain) Media *media;
 @end
 
 @interface ProjectComponentPossibility (CoreDataGeneratedAccessors)

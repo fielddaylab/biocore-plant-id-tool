@@ -11,6 +11,8 @@
 #import "Project.h"
 #import "UserObservation.h"
 #import "User.h"
+#import "UserObservationComponentData.h"
+#import "ProjectComponentPossibility.h"
 
 @interface AppModel : NSObject
 
@@ -31,12 +33,13 @@
 -(void)getUserObservationsWithHandler:(SEL)handler target:(id)target;
 
 //Nick's faulty attempt at testing...
--(void)getUserObservationComponentDataWithHandler:(SEL)handler target:(id)target;
+-(void)getUserObservationComponentsDataWithHandler:(SEL)handler target:(id)target;
 
 -(void)getUserForName:(NSString *)username password:(NSString *)password withHandler:(SEL)handler target:(id)target;
--(void)createNewUserWithAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target;
--(void)createNewUserObservationWithAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target;
--(void)createNewUserObservationComponentDataWithProjectComponent:(ProjectComponent *)projectComponent withAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target;
+-(void)createNewUserWithAttributes:(NSDictionary *)attributes;
+-(void)createNewUserObservationWithAttributes:(NSDictionary *)attributes;
+-(UserObservationComponentData *)createNewUserObservationComponentDataWithProjectComponent:(ProjectComponent *)projectComponent withAttributes:(NSDictionary *)attributes;
+-(UserObservationComponentDataJudgement *)createNewUserObservationComponentDataJudgementWithAttributes:(NSDictionary *)attributes withUserObservationComponentData:(UserObservationComponentData *)userObservationComponentData withProjectComponentPossibility:(ProjectComponentPossibility *)projectComponentPossibility;
 
 
 @end

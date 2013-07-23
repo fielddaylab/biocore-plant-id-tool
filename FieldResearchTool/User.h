@@ -2,33 +2,27 @@
 //  User.h
 //  FieldResearchTool
 //
-//  Created by Justin Moeller on 7/16/13.
+//  Created by Justin Moeller on 7/23/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class UserObservationComponentData, UserObservationComponentDataJudgement, UserObservationIdentification;
+@class Media, UserObservationComponentData, UserObservationIdentification;
 
 @interface User : NSManagedObject
 
 @property (nonatomic, retain) NSDate * created;
-@property (nonatomic, retain) NSString * mediaUrl;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * password;
 @property (nonatomic, retain) NSDate * updated;
-@property (nonatomic, retain) NSSet *userObservationComponentDataJudgements;
 @property (nonatomic, retain) NSSet *userObservationComponetData;
 @property (nonatomic, retain) NSSet *userObservationIdentifications;
+@property (nonatomic, retain) Media *media;
 @end
 
 @interface User (CoreDataGeneratedAccessors)
-
-- (void)addUserObservationComponentDataJudgementsObject:(UserObservationComponentDataJudgement *)value;
-- (void)removeUserObservationComponentDataJudgementsObject:(UserObservationComponentDataJudgement *)value;
-- (void)addUserObservationComponentDataJudgements:(NSSet *)values;
-- (void)removeUserObservationComponentDataJudgements:(NSSet *)values;
 
 - (void)addUserObservationComponetDataObject:(UserObservationComponentData *)value;
 - (void)removeUserObservationComponetDataObject:(UserObservationComponentData *)value;
