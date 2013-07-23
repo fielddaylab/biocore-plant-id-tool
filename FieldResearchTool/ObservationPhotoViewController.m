@@ -48,6 +48,7 @@
     [super viewDidLoad];
     
     saveButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData)];
+    [saveButton setEnabled:NO];
     [self.navigationItem setRightBarButtonItem:saveButton];
     
     showPictureView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - HEIGHT_OF_RECORD)];//44 nav bar 200 space for slider
@@ -81,12 +82,14 @@
     if(count % 2 == 0){
         NSLog(@"DUMMY START RECORD");
         [testButton setTitle:@"Tap me!" forState:UIControlStateNormal];
+        [saveButton setEnabled:NO];
 
         [self startRecord];
     }
     else if(count % 2 == 1){
         NSLog(@"DUMMY TAKE PHOTO");
         [testButton setTitle:@"Tap to retake" forState:UIControlStateNormal];
+        [saveButton setEnabled:YES];
 
         [self takePhoto];
     }
@@ -258,28 +261,23 @@
 #pragma mark save observation data
 -(void)saveObservationData{
     
-    if(count % 2 == 1){
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-                                                             NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
-        //should we use the library folder or the documents folder?
-        NSString *path = [documentsDirectory stringByAppendingPathComponent:
-                          @"userObservationComponentDataPicture.png"]; //replace this with a uuid
-        NSData* data = UIImagePNGRepresentation(image);
-        [data writeToFile:path atomically:YES];
-        
-        NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-        [attributes setObject:[NSDate date] forKey:@"created"];
-        [attributes setObject:[NSDate date] forKey:@"updated"];
-        Media *media = [[AppModel sharedAppModel] createNewMediaWithAttributes:attributes forPath:path withType:MEDIA_PHOTO];
-        projectComponent.media = media;
-        projectComponent.wasObserved = [NSNumber numberWithBool:YES];
-        [[AppModel sharedAppModel] save];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    else{
-        NSLog(@"Cannot save because no photo has been taken");
-    }
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                         NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    //should we use the library folder or the documents folder?
+    NSString *path = [documentsDirectory stringByAppendingPathComponent:
+                      @"userObservationComponentDataPicture.png"]; //replace this with a uuid
+    NSData* data = UIImagePNGRepresentation(image);
+    [data writeToFile:path atomically:YES];
+    
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setObject:[NSDate date] forKey:@"created"];
+    [attributes setObject:[NSDate date] forKey:@"updated"];
+    Media *media = [[AppModel sharedAppModel] createNewMediaWithAttributes:attributes forPath:path withType:MEDIA_PHOTO];
+    projectComponent.media = media;
+    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
+    [[AppModel sharedAppModel] save];
+    [self.navigationController popViewControllerAnimated:YES];
     
 
 }
