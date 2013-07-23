@@ -111,7 +111,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    //Make the identifier unique to that row so cell pictures don't get reused in funky ways.
+    NSString *CellIdentifier = [NSString stringWithFormat:@"%d", indexPath.section];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if(cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
@@ -121,31 +122,74 @@
     
     switch (indexPath.section) {
         case 0:
+
             cell.textLabel.text = [projectIdentifications count] != 1 ?[NSString stringWithFormat:@"%d identifications", [projectIdentifications count]] : [NSString stringWithFormat:@"%d identification", 1];
             break;
-        case 1:
+        case 1:{
+
+            UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 28, 28)];
+
+            if(indexPath.row % 4 == 1 && indexPath.section == 1){
+                imgView.image = [UIImage imageNamed:@"17-checkGREEN.png"];
+
+            }
+            else if(indexPath.row % 4 ==2 && indexPath.section == 1){
+                imgView.image = [UIImage imageNamed:@"19-circle-checkGREEN.png"];
+
+            }
+            else if(indexPath.row % 4 == 3 && indexPath.section == 1){
+                imgView.image = [UIImage imageNamed:@"37-circle-xRED.png"];
+
+            }
+            else if(indexPath.row % 4 == 0 && indexPath.section == 1){
+                imgView.image = [UIImage imageNamed:@"60-xRED.png"];
+
+            }
+            
+            cell.imageView.image = imgView.image;
+            
+            
             com = (ProjectComponent *)[projectComponents objectAtIndex:indexPath.row];
-            cell.textLabel.text = com.title;
-            break;
-        case 2:
+            cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
+        }break;
+        case 2:{
+          
+            UIButton *downloadButton = nil;
+            //this is the custom cell i have created one class for this in that i am place the string titlelabel.
+                downloadButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            float wizardry = ([UIScreen mainScreen].bounds.size.width - cell.frame.size.width) + 8; // 8 looks nice on iphone sim.
+            float magic = cell.frame.size.height/4; // 8 looks nice on iphone sim.
+            NSLog(@"%f uoihiphion %f", [UIScreen mainScreen].bounds.size.width, cell.frame.size.width);
+                downloadButton.frame = CGRectMake(wizardry, 8, 28, 28);
+                [downloadButton setImage:[UIImage imageNamed:@"19-circle-checkGREEN.png"] forState:UIControlStateNormal];
+                [downloadButton addTarget:self action:@selector(datLog) forControlEvents:UIControlEventTouchUpInside];
+                downloadButton.userInteractionEnabled = YES;
+                [cell.contentView addSubview:downloadButton];
+
+            
+            //add empty immage of 28x28 so that spacing is current.//NOT DONE YET...
             if(indexPath.row == 0){
-                cell.textLabel.text = @"Location";
+                cell.textLabel.text = @"       Location";
             }
             else if(indexPath.row == 1){
-                cell.textLabel.text = @"Date Time";
+                cell.textLabel.text = @"       Date Time";
             }
             else if(indexPath.row == 2){
-                cell.textLabel.text = @"Weather";
+                cell.textLabel.text = @"       Weather";
             }
             else{
-                cell.textLabel.text = @"Author";
+                cell.textLabel.text = @"       Author";
             }
-            break;
+        }break;
         default:
             cell.textLabel.text = @"Dummy Data";
             break;
     }
     return cell;
+}
+
+- (void) datLog{
+    NSLog(@"DAT LOG");
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
