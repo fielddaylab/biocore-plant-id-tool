@@ -13,6 +13,8 @@
 #import "User.h"
 #import "UserObservationComponentData.h"
 #import "ProjectComponentPossibility.h"
+#import "Media.h"
+#import "MediaType.h"
 
 @interface AppModel : NSObject
 
@@ -40,6 +42,7 @@
 -(void)createNewUserObservationWithAttributes:(NSDictionary *)attributes;
 -(UserObservationComponentData *)createNewUserObservationComponentDataWithProjectComponent:(ProjectComponent *)projectComponent withAttributes:(NSDictionary *)attributes;
 -(UserObservationComponentDataJudgement *)createNewUserObservationComponentDataJudgementWithAttributes:(NSDictionary *)attributes withUserObservationComponentData:(UserObservationComponentData *)userObservationComponentData withProjectComponentPossibility:(ProjectComponentPossibility *)projectComponentPossibility;
+-(Media *)createNewMediaWithAttributes:(NSDictionary *)attributes forPath:(NSString *)path withType:(MediaType)type;
 
 
 @end

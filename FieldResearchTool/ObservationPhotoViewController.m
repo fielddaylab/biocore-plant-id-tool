@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <ImageIO/CGImageProperties.h>
 #import "iCarousel.h"
+#import "AppModel.h"
 
 #define HEIGHT_OF_RECORD 44 
 
@@ -20,6 +21,8 @@
     UIImageView *showPictureView;
     UIButton *testButton;
     int count;
+    UIImage *image;
+    UIBarButtonItem *saveButton;
 }
 
 @property (nonatomic, retain) iCarousel *carousel;
@@ -44,7 +47,8 @@
 {
     [super viewDidLoad];
     
-    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData)]];
+    saveButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData)];
+    [self.navigationItem setRightBarButtonItem:saveButton];
     
     showPictureView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - HEIGHT_OF_RECORD)];//44 nav bar 200 space for slider
     [self.view addSubview:showPictureView];
@@ -172,12 +176,11 @@
          }
          
          NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
-         UIImage *image = [[UIImage alloc] initWithData:imageData];
+         image = [[UIImage alloc] initWithData:imageData];
          
          showPictureView.contentMode = UIViewContentModeScaleAspectFill;
          showPictureView.image = image;
          showPictureView.contentMode = UIViewContentModeScaleAspectFill;
-
      }];
 }
 
@@ -254,9 +257,31 @@
 
 #pragma mark save observation data
 -(void)saveObservationData{
-    //save the photo here
-    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    if(count % 2 == 1){
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                             NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        //should we use the library folder or the documents folder?
+        NSString *path = [documentsDirectory stringByAppendingPathComponent:
+                          @"userObservationComponentDataPicture.png"]; //replace this with a uuid
+        NSData* data = UIImagePNGRepresentation(image);
+        [data writeToFile:path atomically:YES];
+        
+        NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+        [attributes setObject:[NSDate date] forKey:@"created"];
+        [attributes setObject:[NSDate date] forKey:@"updated"];
+        Media *media = [[AppModel sharedAppModel] createNewMediaWithAttributes:attributes forPath:path withType:MEDIA_PHOTO];
+        projectComponent.media = media;
+        projectComponent.wasObserved = [NSNumber numberWithBool:YES];
+        [[AppModel sharedAppModel] save];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else{
+        NSLog(@"Cannot save because no photo has been taken");
+    }
+    
+
 }
 
 @end

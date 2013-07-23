@@ -152,7 +152,10 @@
     //project.splashMediaUrl = @"splashMediaURL"; //get media here
     project.updated = [NSDate date];
     
-    NSString *contents = [NSString stringWithContentsOfFile:@"/Users/jgmoeller/iOS Development/Field Research Platform/FieldResearchTool/FieldResearchTool/plantData.tsv" encoding:NSASCIIStringEncoding error:nil];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"plantData" ofType:@"tsv"];
+    //NSString *path = @"/Users/jgmoeller/iOS Development/Field Research Platform/FieldResearchTool/FieldResearchTool/plantData.tsv";
+    
+    NSString *contents = [NSString stringWithContentsOfFile:path encoding:NSASCIIStringEncoding error:nil];
     //NSString *contents = [NSString stringWithContentsOfFile:@"/Users/nickheindl/Desktop/FieldResearchTool/FieldResearchTool/plantData.tsv" encoding:NSASCIIStringEncoding error:nil];
     NSArray *lines = [contents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     NSString *firstLine = lines[0];

@@ -9,6 +9,7 @@
 #import "ObservationVideoViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "iCarousel.h"
+#import "AppModel.h"
 
 
 #define HEIGHT_OF_RECORD 44
@@ -196,6 +197,7 @@
 -(void)saveObservationData{
     //save the video to core data here
     projectComponent.wasObserved = [NSNumber numberWithBool:YES];
+    [[AppModel sharedAppModel] save];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

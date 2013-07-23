@@ -10,6 +10,7 @@
 #import "ObservationAudioViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "iCarousel.h"
+#import "AppModel.h"
 
 
 #define HEIGHT_OF_RECORD 44
@@ -210,6 +211,7 @@
 -(void)saveObservationData{
     //save the audio here
     projectComponent.wasObserved = [NSNumber numberWithBool:YES];
+    [[AppModel sharedAppModel] save];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -163,7 +163,7 @@
                 ObservationPhotoViewController *photoViewController = [[ObservationPhotoViewController alloc]initWithNibName:@"ObservationPhotoViewController" bundle:nil];
                 photoViewController.projectComponent = projectComponent;
                 viewControllerToPush = photoViewController;
-                pushViewController = NO;
+                //pushViewController = NO;
             }
                 break;
             case AUDIO:{
