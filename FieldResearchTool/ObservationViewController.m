@@ -203,12 +203,18 @@
         UIViewController *viewControllerToPush;
         BOOL pushViewController = YES;
         switch ([projectComponent.observationType intValue]) {
-            case PHOTO:
-                viewControllerToPush = [[ObservationPhotoViewController alloc]initWithNibName:@"ObservationPhotoViewController" bundle:nil];
-                pushViewController = NO;
+            case PHOTO:{
+                ObservationPhotoViewController *photoViewController = [[ObservationPhotoViewController alloc]initWithNibName:@"ObservationPhotoViewController" bundle:nil];
+                photoViewController.projectComponent = projectComponent;
+                viewControllerToPush = photoViewController;
+                //pushViewController = NO;
+            }
                 break;
-            case AUDIO:
-                viewControllerToPush = [[ObservationAudioViewController alloc]initWithNibName:@"ObservationAudioViewController" bundle:nil];
+            case AUDIO:{
+                ObservationAudioViewController *audioViewController = [[ObservationAudioViewController alloc]initWithNibName:@"ObservationAudioViewController" bundle:nil];
+                audioViewController.projectComponent = projectComponent;
+                viewControllerToPush = audioViewController;
+            }
                 break;
             case TEXT:{
                 ObservationTextViewController *textViewController = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];

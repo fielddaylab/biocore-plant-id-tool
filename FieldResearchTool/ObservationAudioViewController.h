@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "ProjectComponent.h"
 
 @interface ObservationAudioViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (copy,   nonatomic) NSURL *movieURL;
 @property (strong, nonatomic) MPMoviePlayerController *movieController;
+@property (strong, nonatomic) ProjectComponent *projectComponent;
 
 @end

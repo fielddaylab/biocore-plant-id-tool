@@ -151,9 +151,14 @@
     project.name = @"Biocore";
     //project.splashMediaUrl = @"splashMediaURL"; //get media here
     project.updated = [NSDate date];
+
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"plantData" ofType:@"tsv"];
+    //NSString *path = @"/Users/jgmoeller/iOS Development/Field Research Platform/FieldResearchTool/FieldResearchTool/plantData.tsv";
+    //NSString *path = "/Users/nickheindl/Desktop/FieldResearchTool/FieldResearchTool/plantData.tsv"];
     
-    //NSString *contents = [NSString stringWithContentsOfFile:@"/Users/jgmoeller/iOS Development/Field Research Platform/FieldResearchTool/FieldResearchTool/plantData.tsv" encoding:NSASCIIStringEncoding error:nil];
-    NSString *contents = [NSString stringWithContentsOfFile:@"/Users/nickheindl/Desktop/FieldResearchTool/FieldResearchTool/plantData.tsv" encoding:NSASCIIStringEncoding error:nil];
+    NSString *contents = [NSString stringWithContentsOfFile:path encoding:NSASCIIStringEncoding error:nil];
+
+
     NSArray *lines = [contents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     NSString *firstLine = lines[0];
     NSArray *wordsSeperatedByTabs = [firstLine componentsSeparatedByString:@"\t"];
@@ -226,6 +231,7 @@
             projectComponent.title = projectComponentName;
             projectComponent.updated = [NSDate date];
             projectComponent.project = project;
+            projectComponent.wasObserved = [NSNumber numberWithBool:NO];
             
             [projectComponents addObject:projectComponent];
 

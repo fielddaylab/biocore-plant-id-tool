@@ -162,4 +162,18 @@
     return userObservationComponentDataJudgment;
 }
 
+-(Media *)createNewMediaWithAttributes:(NSDictionary *)attributes forPath:(NSString *)path withType:(MediaType)type{
+    Media *media = (Media *)[NSEntityDescription insertNewObjectForEntityForName:@"Media" inManagedObjectContext:coreData.managedObjectContext];
+    media.created = [NSDate date];
+    media.updated = [NSDate date];
+    media.mediaURL = path;
+    media.type = [NSNumber numberWithInt:type];
+    for (NSString *key in attributes) {
+        id value = [attributes objectForKey:key];
+        [media setValue:value forKey:key];
+    }
+    [self save];
+    return media;
+}
+
 @end
