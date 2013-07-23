@@ -19,7 +19,7 @@
 
 @dynamic created;
 @dynamic updated;
-@dynamic media_url;
+@dynamic mediaURL;
 @dynamic type;
 @dynamic project;
 @dynamic projectComponent;
@@ -33,9 +33,9 @@
     if(mediaManager == nil){
         mediaManager = [[MediaManager alloc]init];
     }
-    NSURL *mediaURL = [mediaManager getMediaContentsForPath:self.media_url];
-    self.media_url = [mediaURL path];
-    return mediaURL;
+    NSURL *url = [mediaManager getMediaContentsForPath:self.mediaURL];
+    self.mediaURL = [url path];
+    return url;
 }
 
 @end

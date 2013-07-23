@@ -16,7 +16,7 @@
 
 @property (nonatomic, retain) NSDate * created;
 @property (nonatomic, retain) NSDate * updated;
-@property (nonatomic, retain) NSString * media_url;
+@property (nonatomic, retain) NSString * mediaURL;
 @property (nonatomic, retain) NSNumber * type;
 @property (nonatomic, retain) Project *project;
 @property (nonatomic, retain) ProjectComponent *projectComponent;

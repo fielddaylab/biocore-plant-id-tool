@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSNumber * required;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSDate * updated;
+@property (nonatomic, retain) NSNumber * wasObserved;
 @property (nonatomic, retain) Project *project;
 @property (nonatomic, retain) NSSet *projectComponentPossibilities;
 @property (nonatomic, retain) NSSet *userObservationComponentData;

@@ -52,7 +52,7 @@
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
     [attributes setObject:[NSDate date] forKey:@"created"];
     [attributes setObject:[NSDate date] forKey:@"updated"];
-    [attributes setObject:userInput.text forKey:@"data_text"];
+    [attributes setObject:userInput.text forKey:@"dataText"];
     
     [[AppModel sharedAppModel] createNewUserObservationComponentDataWithProjectComponent:projectComponent withAttributes:attributes];
     [self.navigationController popViewControllerAnimated:YES];

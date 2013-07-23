@@ -2,7 +2,7 @@
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Media" representedClassName="Media" syncable="YES">
         <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="media_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mediaURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="updated" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="project" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="media" inverseEntity="Project" syncable="YES"/>
@@ -10,7 +10,7 @@
         <relationship name="projectComponentPossibility" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ProjectComponentPossibility" inverseName="media" inverseEntity="ProjectComponentPossibility" syncable="YES"/>
         <relationship name="projectIdentification" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ProjectIdentification" inverseName="media" inverseEntity="ProjectIdentification" syncable="YES"/>
         <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="media" inverseEntity="User" syncable="YES"/>
-        <relationship name="userObservationComponentData" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="UserObservationComponentData" inverseName="data_media" inverseEntity="UserObservationComponentData" syncable="YES"/>
+        <relationship name="userObservationComponentData" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="UserObservationComponentData" inverseName="dataMedia" inverseEntity="UserObservationComponentData" syncable="YES"/>
     </entity>
     <entity name="Project" representedClassName="Project" syncable="YES">
         <attribute name="allowedInterpretations" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -28,6 +28,7 @@
         <attribute name="required" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updated" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="wasObserved" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="media" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Media" inverseName="projectComponent" inverseEntity="Media" syncable="YES"/>
         <relationship name="project" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="projectComponents" inverseEntity="Project" syncable="YES"/>
         <relationship name="projectComponentPossibilities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProjectComponentPossibility" inverseName="projectComponent" inverseEntity="ProjectComponentPossibility" syncable="YES"/>
@@ -83,10 +84,10 @@
     </entity>
     <entity name="UserObservationComponentData" representedClassName="UserObservationComponentData" syncable="YES">
         <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="data_int" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="data_text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dataInt" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="dataText" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updated" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="data_media" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Media" inverseName="userObservationComponentData" inverseEntity="Media" syncable="YES"/>
+        <relationship name="dataMedia" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Media" inverseName="userObservationComponentData" inverseEntity="Media" syncable="YES"/>
         <relationship name="projectComponent" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ProjectComponent" inverseName="userObservationComponentData" inverseEntity="ProjectComponent" syncable="YES"/>
         <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userObservationComponetData" inverseEntity="User" syncable="YES"/>
         <relationship name="userObservation" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="UserObservation" inverseName="userObservationComponentData" inverseEntity="UserObservation" syncable="YES"/>
@@ -107,7 +108,7 @@
     </entity>
     <elements>
         <element name="Project" positionX="153" positionY="137" width="128" height="163"/>
-        <element name="ProjectComponent" positionX="144" positionY="-81" width="128" height="178"/>
+        <element name="ProjectComponent" positionX="144" positionY="-81" width="128" height="193"/>
         <element name="ProjectComponentPossibility" positionX="324" positionY="-288" width="128" height="208"/>
         <element name="ProjectIdentification" positionX="144" positionY="320" width="128" height="178"/>
         <element name="ProjectIdentificationComponentPossibility" positionX="430" positionY="206" width="128" height="73"/>

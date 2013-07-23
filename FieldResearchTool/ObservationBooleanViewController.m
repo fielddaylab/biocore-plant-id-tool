@@ -54,7 +54,7 @@
     NSMutableDictionary *dataAttributes = [[NSMutableDictionary alloc]init];
     [dataAttributes setValue:[NSDate date] forKey:@"created"];
     [dataAttributes setValue:[NSDate date] forKey:@"updated"];
-    [dataAttributes setValue:[NSNumber numberWithBool:[boolSwitch isOn]] forKey:@"data_int"];
+    [dataAttributes setValue:[NSNumber numberWithBool:[boolSwitch isOn]] forKey:@"dataInt"];
     
     UserObservationComponentData *currentComponentData = [[AppModel sharedAppModel] createNewUserObservationComponentDataWithProjectComponent:projectComponent withAttributes:dataAttributes];
     

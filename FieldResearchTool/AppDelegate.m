@@ -140,7 +140,7 @@
     Media *iconMedia = (Media *)[NSEntityDescription insertNewObjectForEntityForName:@"Media" inManagedObjectContext:[self managedObjectContext]];
     iconMedia.created = [NSDate date];
     iconMedia.updated = [NSDate date];
-    iconMedia.media_url = @"";
+    iconMedia.mediaURL = @"";
     iconMedia.type = [NSNumber numberWithInt:MEDIA_PHOTO];
     
     

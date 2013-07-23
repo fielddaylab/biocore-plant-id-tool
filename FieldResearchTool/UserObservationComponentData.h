@@ -14,14 +14,14 @@
 @interface UserObservationComponentData : NSManagedObject
 
 @property (nonatomic, retain) NSDate * created;
-@property (nonatomic, retain) NSNumber * data_int;
+@property (nonatomic, retain) NSNumber * dataInt;
 @property (nonatomic, retain) NSDate * updated;
-@property (nonatomic, retain) NSString * data_text;
+@property (nonatomic, retain) NSString * dataText;
 @property (nonatomic, retain) ProjectComponent *projectComponent;
 @property (nonatomic, retain) User *user;
 @property (nonatomic, retain) UserObservation *userObservation;
 @property (nonatomic, retain) NSSet *userObservationComponentDataJudgements;
-@property (nonatomic, retain) Media *data_media;
+@property (nonatomic, retain) Media *dataMedia;
 @end
 
 @interface UserObservationComponentData (CoreDataGeneratedAccessors)

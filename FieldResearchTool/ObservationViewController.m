@@ -48,15 +48,17 @@
 - (void)printTest:(NSArray *)userObservationComponents{
     for(int i = 0; i<userObservationComponents.count; i++){
         UserObservationComponentData *u = userObservationComponents[i];
-        NSLog(@"Blah: %@\n", u.data_int);
+        NSLog(@"Blah: %@\n", u.dataInt);
     }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    //Using only for testing.
-    
+    //Using only for testing
     //[[AppModel sharedAppModel] getUserObservationComponentsDataWithHandler:@selector(printTest:) target:self];
+    
+
+    
 }
 
 
@@ -170,8 +172,11 @@
                 viewControllerToPush = textViewController;
             }
                 break;
-            case LONG_TEXT:
-                viewControllerToPush = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];
+            case LONG_TEXT:{
+                ObservationTextViewController *textViewController = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];
+                textViewController.projectComponent = projectComponent;
+                viewControllerToPush = textViewController;
+            }
                 break;
             case NUMBER:{
                 ObservationNumberViewController *numberViewController = [[ObservationNumberViewController alloc]initWithNibName:@"ObservationNumberViewController" bundle:nil];

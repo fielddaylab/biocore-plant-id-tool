@@ -62,7 +62,7 @@
 #pragma mark save observation data
 -(void)saveObservationData{
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-    [attributes setValue:[NSNumber numberWithInt:[textField.text intValue]] forKey:@"data_int"];
+    [attributes setValue:[NSNumber numberWithInt:[textField.text intValue]] forKey:@"dataInt"];
     [attributes setValue:[NSDate date] forKey:@"created"];
     [attributes setValue:[NSDate date] forKey:@"updated"];
     

@@ -20,6 +20,7 @@
 @dynamic required;
 @dynamic title;
 @dynamic updated;
+@dynamic wasObserved;
 @dynamic project;
 @dynamic projectComponentPossibilities;
 @dynamic userObservationComponentData;

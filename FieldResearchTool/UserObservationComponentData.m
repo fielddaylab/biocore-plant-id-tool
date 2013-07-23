@@ -17,13 +17,13 @@
 @implementation UserObservationComponentData
 
 @dynamic created;
-@dynamic data_int;
+@dynamic dataInt;
 @dynamic updated;
-@dynamic data_text;
+@dynamic dataText;
 @dynamic projectComponent;
 @dynamic user;
 @dynamic userObservation;
 @dynamic userObservationComponentDataJudgements;
-@dynamic data_media;
+@dynamic dataMedia;
 
 @end
