@@ -10,10 +10,12 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AVFoundation/AVFoundation.h>
+#import "ProjectComponent.h"
 
 @interface ObservationPhotoViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-@property(nonatomic, retain) AVCaptureStillImageOutput *stillImageOutput;
+@property (nonatomic, retain) AVCaptureStillImageOutput *stillImageOutput;
+@property (nonatomic, strong) ProjectComponent *projectComponent;
 
 
 @end

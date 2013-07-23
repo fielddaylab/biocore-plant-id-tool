@@ -29,6 +29,7 @@
 @implementation ObservationPhotoViewController
 @synthesize stillImageOutput;
 @synthesize carousel;
+@synthesize projectComponent;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -254,6 +255,7 @@
 #pragma mark save observation data
 -(void)saveObservationData{
     //save the photo here
+    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

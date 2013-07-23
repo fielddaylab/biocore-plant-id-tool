@@ -55,6 +55,7 @@
     [attributes setObject:userInput.text forKey:@"dataText"];
     
     [[AppModel sharedAppModel] createNewUserObservationComponentDataWithProjectComponent:projectComponent withAttributes:attributes];
+    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
 @end

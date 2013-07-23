@@ -67,6 +67,7 @@
     [attributes setValue:[NSDate date] forKey:@"updated"];
     
     [[AppModel sharedAppModel] createNewUserObservationComponentDataWithProjectComponent:projectComponent withAttributes:attributes];
+    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
 @end

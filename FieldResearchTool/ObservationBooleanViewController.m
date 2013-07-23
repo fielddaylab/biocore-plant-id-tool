@@ -72,6 +72,7 @@
     //    [judgementAttributes setValue:[NSDate date] forKey:@"created"];
     //    [judgementAttributes setValue:[NSDate date] forKey:@"updated"];
     //    UserObservationComponentDataJudgement *currentJudgment = [[AppModel sharedAppModel] createNewUserObservationComponentDataJudgementWithAttributes:judgementAttributes withUserObservationComponentData:currentComponentData withProjectComponentPossibility:componentPossibility];
+    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

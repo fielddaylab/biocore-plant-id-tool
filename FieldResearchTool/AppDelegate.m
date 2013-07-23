@@ -226,6 +226,7 @@
             projectComponent.title = projectComponentName;
             projectComponent.updated = [NSDate date];
             projectComponent.project = project;
+            projectComponent.wasObserved = [NSNumber numberWithBool:NO];
             
             [projectComponents addObject:projectComponent];
 
