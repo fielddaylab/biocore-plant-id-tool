@@ -22,7 +22,6 @@
 @dynamic projectComponents;
 @dynamic projectIdentifications;
 @dynamic userObservations;
-@dynamic iconMedia;
-@dynamic splashMedia;
+@dynamic media;
 
 @end

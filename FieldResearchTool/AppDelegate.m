@@ -17,6 +17,8 @@
 #import "ProjectIdentificationComponentPossibility.h"
 #import "ProjectComponentDataType.h"
 #import "RangeOperators.h"
+#import "Media.h"
+#import "MediaType.h"
 
 @implementation AppDelegate
 
@@ -135,12 +137,17 @@
     //[userAttributes setValue:@"exampleURL" forKey:@"mediaUrl"]; //set media here
     [[AppModel sharedAppModel] createNewUserWithAttributes:userAttributes];
     
+    Media *iconMedia = (Media *)[NSEntityDescription insertNewObjectForEntityForName:@"Media" inManagedObjectContext:[self managedObjectContext]];
+    iconMedia.created = [NSDate date];
+    iconMedia.updated = [NSDate date];
+    iconMedia.media_url = @"";
+    iconMedia.type = [NSNumber numberWithInt:MEDIA_PHOTO];
     
     
     Project *project = (Project *)[NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:[self managedObjectContext]];
     project.allowedInterpretations = [NSNumber numberWithInt:1];
     project.created = [NSDate date];
-    //project.iconMediaUrl = @"iconMediaURL"; //get media here
+    project.media = [NSSet setWithArray:[NSArray arrayWithObject:iconMedia]];
     project.name = @"Biocore";
     //project.splashMediaUrl = @"splashMediaURL"; //get media here
     project.updated = [NSDate date];

@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B03BBAA179EE062005AD632 /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBA9179EE062005AD632 /* Media.m */; };
-		5B03BBB0179EE072005AD632 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBAF179EE072005AD632 /* Project.m */; };
-		5B03BBB6179EE081005AD632 /* ProjectComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBB5179EE081005AD632 /* ProjectComponent.m */; };
-		5B03BBBC179EE08F005AD632 /* ProjectComponentPossibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBBB179EE08F005AD632 /* ProjectComponentPossibility.m */; };
-		5B03BBC2179EE09D005AD632 /* ProjectIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBC1179EE09D005AD632 /* ProjectIdentification.m */; };
-		5B03BBC8179EE0AA005AD632 /* ProjectIdentificationComponentPossibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBC7179EE0AA005AD632 /* ProjectIdentificationComponentPossibility.m */; };
-		5B03BBCE179EE0B7005AD632 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBCD179EE0B7005AD632 /* User.m */; };
-		5B03BBD4179EE0CD005AD632 /* UserObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBD3179EE0CD005AD632 /* UserObservation.m */; };
-		5B03BBDA179EE0D9005AD632 /* UserObservationComponentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBD9179EE0D9005AD632 /* UserObservationComponentData.m */; };
-		5B03BBE0179EE0E7005AD632 /* UserObservationComponentDataJudgement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBDF179EE0E7005AD632 /* UserObservationComponentDataJudgement.m */; };
-		5B03BBE6179EE0F7005AD632 /* UserObservationIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBE5179EE0F7005AD632 /* UserObservationIdentification.m */; };
+		5B03BBE9179EE495005AD632 /* MediaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBE8179EE495005AD632 /* MediaManager.m */; };
+		5B03BBFB179EEFC9005AD632 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBFA179EEFC9005AD632 /* Project.m */; };
+		5B03BC01179EEFD9005AD632 /* ProjectComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BC00179EEFD9005AD632 /* ProjectComponent.m */; };
+		5B03BC0D179EF005005AD632 /* ProjectComponentPossibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BC0C179EF004005AD632 /* ProjectComponentPossibility.m */; };
+		5B03BC13179EF013005AD632 /* ProjectIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BC12179EF013005AD632 /* ProjectIdentification.m */; };
+		5B03BC19179EF023005AD632 /* ProjectIdentificationComponentPossibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BC18179EF023005AD632 /* ProjectIdentificationComponentPossibility.m */; };
+		5B03BC1F179EF033005AD632 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BC1E179EF032005AD632 /* User.m */; };
+		5B03BC25179EF041005AD632 /* UserObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BC24179EF041005AD632 /* UserObservation.m */; };
+		5B03BC2B179EF04F005AD632 /* UserObservationComponentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BC2A179EF04F005AD632 /* UserObservationComponentData.m */; };
+		5B03BC31179EF05F005AD632 /* UserObservationComponentDataJudgement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BC30179EF05F005AD632 /* UserObservationComponentDataJudgement.m */; };
+		5B03BC37179EF06D005AD632 /* UserObservationIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BC36179EF06D005AD632 /* UserObservationIdentification.m */; };
+		5B03BC3D179EF8E1005AD632 /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BC3C179EF8E1005AD632 /* Media.m */; };
 		5B0458591795A11600B93A4D /* AppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0458581795A11600B93A4D /* AppModel.m */; };
 		5B82BD8917972005008CB441 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82BD8817972005008CB441 /* iCarousel.m */; };
 		5B82BD8C17972043008CB441 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B82BD8B17972043008CB441 /* QuartzCore.framework */; };
@@ -77,28 +78,31 @@
 
 /* Begin PBXFileReference section */
 		03237ECF5C5F485597FD7DAA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-		5B03BBA8179EE062005AD632 /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
-		5B03BBA9179EE062005AD632 /* Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Media.m; sourceTree = "<group>"; };
-		5B03BBAE179EE072005AD632 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
-		5B03BBAF179EE072005AD632 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
-		5B03BBB4179EE081005AD632 /* ProjectComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComponent.h; sourceTree = "<group>"; };
-		5B03BBB5179EE081005AD632 /* ProjectComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectComponent.m; sourceTree = "<group>"; };
-		5B03BBBA179EE08F005AD632 /* ProjectComponentPossibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComponentPossibility.h; sourceTree = "<group>"; };
-		5B03BBBB179EE08F005AD632 /* ProjectComponentPossibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectComponentPossibility.m; sourceTree = "<group>"; };
-		5B03BBC0179EE09D005AD632 /* ProjectIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentification.h; sourceTree = "<group>"; };
-		5B03BBC1179EE09D005AD632 /* ProjectIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentification.m; sourceTree = "<group>"; };
-		5B03BBC6179EE0AA005AD632 /* ProjectIdentificationComponentPossibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentificationComponentPossibility.h; sourceTree = "<group>"; };
-		5B03BBC7179EE0AA005AD632 /* ProjectIdentificationComponentPossibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentificationComponentPossibility.m; sourceTree = "<group>"; };
-		5B03BBCC179EE0B7005AD632 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		5B03BBCD179EE0B7005AD632 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		5B03BBD2179EE0CD005AD632 /* UserObservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservation.h; sourceTree = "<group>"; };
-		5B03BBD3179EE0CD005AD632 /* UserObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservation.m; sourceTree = "<group>"; };
-		5B03BBD8179EE0D9005AD632 /* UserObservationComponentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationComponentData.h; sourceTree = "<group>"; };
-		5B03BBD9179EE0D9005AD632 /* UserObservationComponentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationComponentData.m; sourceTree = "<group>"; };
-		5B03BBDE179EE0E7005AD632 /* UserObservationComponentDataJudgement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationComponentDataJudgement.h; sourceTree = "<group>"; };
-		5B03BBDF179EE0E7005AD632 /* UserObservationComponentDataJudgement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationComponentDataJudgement.m; sourceTree = "<group>"; };
-		5B03BBE4179EE0F7005AD632 /* UserObservationIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationIdentification.h; sourceTree = "<group>"; };
-		5B03BBE5179EE0F7005AD632 /* UserObservationIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationIdentification.m; sourceTree = "<group>"; };
+		5B03BBE7179EE495005AD632 /* MediaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaManager.h; sourceTree = "<group>"; };
+		5B03BBE8179EE495005AD632 /* MediaManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaManager.m; sourceTree = "<group>"; };
+		5B03BBF9179EEFC9005AD632 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
+		5B03BBFA179EEFC9005AD632 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
+		5B03BBFF179EEFD9005AD632 /* ProjectComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComponent.h; sourceTree = "<group>"; };
+		5B03BC00179EEFD9005AD632 /* ProjectComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectComponent.m; sourceTree = "<group>"; };
+		5B03BC0B179EF004005AD632 /* ProjectComponentPossibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComponentPossibility.h; sourceTree = "<group>"; };
+		5B03BC0C179EF004005AD632 /* ProjectComponentPossibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectComponentPossibility.m; sourceTree = "<group>"; };
+		5B03BC11179EF013005AD632 /* ProjectIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentification.h; sourceTree = "<group>"; };
+		5B03BC12179EF013005AD632 /* ProjectIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentification.m; sourceTree = "<group>"; };
+		5B03BC17179EF023005AD632 /* ProjectIdentificationComponentPossibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentificationComponentPossibility.h; sourceTree = "<group>"; };
+		5B03BC18179EF023005AD632 /* ProjectIdentificationComponentPossibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentificationComponentPossibility.m; sourceTree = "<group>"; };
+		5B03BC1D179EF032005AD632 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		5B03BC1E179EF032005AD632 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		5B03BC23179EF041005AD632 /* UserObservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservation.h; sourceTree = "<group>"; };
+		5B03BC24179EF041005AD632 /* UserObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservation.m; sourceTree = "<group>"; };
+		5B03BC29179EF04F005AD632 /* UserObservationComponentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationComponentData.h; sourceTree = "<group>"; };
+		5B03BC2A179EF04F005AD632 /* UserObservationComponentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationComponentData.m; sourceTree = "<group>"; };
+		5B03BC2F179EF05F005AD632 /* UserObservationComponentDataJudgement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationComponentDataJudgement.h; sourceTree = "<group>"; };
+		5B03BC30179EF05F005AD632 /* UserObservationComponentDataJudgement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationComponentDataJudgement.m; sourceTree = "<group>"; };
+		5B03BC35179EF06D005AD632 /* UserObservationIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationIdentification.h; sourceTree = "<group>"; };
+		5B03BC36179EF06D005AD632 /* UserObservationIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationIdentification.m; sourceTree = "<group>"; };
+		5B03BC3B179EF8E1005AD632 /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
+		5B03BC3C179EF8E1005AD632 /* Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Media.m; sourceTree = "<group>"; };
+		5B03BC3E179EF8F8005AD632 /* MediaType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaType.h; sourceTree = "<group>"; };
 		5B0458571795A11600B93A4D /* AppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppModel.h; sourceTree = "<group>"; };
 		5B0458581795A11600B93A4D /* AppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppModel.m; sourceTree = "<group>"; };
 		5B0458B01795F72800B93A4D /* ProjectComponentDataType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComponentDataType.h; sourceTree = "<group>"; };
@@ -214,30 +218,31 @@
 		5BFED1B61794830700648062 /* DataObjects */ = {
 			isa = PBXGroup;
 			children = (
+				5B03BC3E179EF8F8005AD632 /* MediaType.h */,
 				5B0458B01795F72800B93A4D /* ProjectComponentDataType.h */,
 				5B0458BC1795FC8B00B93A4D /* RangeOperators.h */,
-				5B03BBA8179EE062005AD632 /* Media.h */,
-				5B03BBA9179EE062005AD632 /* Media.m */,
-				5B03BBAE179EE072005AD632 /* Project.h */,
-				5B03BBAF179EE072005AD632 /* Project.m */,
-				5B03BBB4179EE081005AD632 /* ProjectComponent.h */,
-				5B03BBB5179EE081005AD632 /* ProjectComponent.m */,
-				5B03BBBA179EE08F005AD632 /* ProjectComponentPossibility.h */,
-				5B03BBBB179EE08F005AD632 /* ProjectComponentPossibility.m */,
-				5B03BBC0179EE09D005AD632 /* ProjectIdentification.h */,
-				5B03BBC1179EE09D005AD632 /* ProjectIdentification.m */,
-				5B03BBC6179EE0AA005AD632 /* ProjectIdentificationComponentPossibility.h */,
-				5B03BBC7179EE0AA005AD632 /* ProjectIdentificationComponentPossibility.m */,
-				5B03BBCC179EE0B7005AD632 /* User.h */,
-				5B03BBCD179EE0B7005AD632 /* User.m */,
-				5B03BBD2179EE0CD005AD632 /* UserObservation.h */,
-				5B03BBD3179EE0CD005AD632 /* UserObservation.m */,
-				5B03BBD8179EE0D9005AD632 /* UserObservationComponentData.h */,
-				5B03BBD9179EE0D9005AD632 /* UserObservationComponentData.m */,
-				5B03BBDE179EE0E7005AD632 /* UserObservationComponentDataJudgement.h */,
-				5B03BBDF179EE0E7005AD632 /* UserObservationComponentDataJudgement.m */,
-				5B03BBE4179EE0F7005AD632 /* UserObservationIdentification.h */,
-				5B03BBE5179EE0F7005AD632 /* UserObservationIdentification.m */,
+				5B03BC3B179EF8E1005AD632 /* Media.h */,
+				5B03BC3C179EF8E1005AD632 /* Media.m */,
+				5B03BBF9179EEFC9005AD632 /* Project.h */,
+				5B03BBFA179EEFC9005AD632 /* Project.m */,
+				5B03BBFF179EEFD9005AD632 /* ProjectComponent.h */,
+				5B03BC00179EEFD9005AD632 /* ProjectComponent.m */,
+				5B03BC0B179EF004005AD632 /* ProjectComponentPossibility.h */,
+				5B03BC0C179EF004005AD632 /* ProjectComponentPossibility.m */,
+				5B03BC11179EF013005AD632 /* ProjectIdentification.h */,
+				5B03BC12179EF013005AD632 /* ProjectIdentification.m */,
+				5B03BC17179EF023005AD632 /* ProjectIdentificationComponentPossibility.h */,
+				5B03BC18179EF023005AD632 /* ProjectIdentificationComponentPossibility.m */,
+				5B03BC1D179EF032005AD632 /* User.h */,
+				5B03BC1E179EF032005AD632 /* User.m */,
+				5B03BC23179EF041005AD632 /* UserObservation.h */,
+				5B03BC24179EF041005AD632 /* UserObservation.m */,
+				5B03BC29179EF04F005AD632 /* UserObservationComponentData.h */,
+				5B03BC2A179EF04F005AD632 /* UserObservationComponentData.m */,
+				5B03BC2F179EF05F005AD632 /* UserObservationComponentDataJudgement.h */,
+				5B03BC30179EF05F005AD632 /* UserObservationComponentDataJudgement.m */,
+				5B03BC35179EF06D005AD632 /* UserObservationIdentification.h */,
+				5B03BC36179EF06D005AD632 /* UserObservationIdentification.m */,
 			);
 			name = DataObjects;
 			sourceTree = "<group>";
@@ -354,6 +359,8 @@
 				5B0458581795A11600B93A4D /* AppModel.m */,
 				5BFED1B81794A49000648062 /* CoreDataWrapper.h */,
 				5BFED1B91794A49000648062 /* CoreDataWrapper.m */,
+				5B03BBE7179EE495005AD632 /* MediaManager.h */,
+				5B03BBE8179EE495005AD632 /* MediaManager.m */,
 				71FF69A31794819200E2B411 /* FieldResearchNavigationController.h */,
 				71FF69A41794819200E2B411 /* FieldResearchNavigationController.m */,
 				71FF69A51794819200E2B411 /* FieldResearchTool.xcdatamodeld */,
@@ -540,17 +547,18 @@
 				71FF69D71795BE6E00E2B411 /* ObservationPhotoViewController.m in Sources */,
 				5B82BD8917972005008CB441 /* iCarousel.m in Sources */,
 				71FE1CD91798617A00EB5A04 /* ObservationAudioViewController.m in Sources */,
-				5B03BBAA179EE062005AD632 /* Media.m in Sources */,
-				5B03BBB0179EE072005AD632 /* Project.m in Sources */,
-				5B03BBB6179EE081005AD632 /* ProjectComponent.m in Sources */,
-				5B03BBBC179EE08F005AD632 /* ProjectComponentPossibility.m in Sources */,
-				5B03BBC2179EE09D005AD632 /* ProjectIdentification.m in Sources */,
-				5B03BBC8179EE0AA005AD632 /* ProjectIdentificationComponentPossibility.m in Sources */,
-				5B03BBCE179EE0B7005AD632 /* User.m in Sources */,
-				5B03BBD4179EE0CD005AD632 /* UserObservation.m in Sources */,
-				5B03BBDA179EE0D9005AD632 /* UserObservationComponentData.m in Sources */,
-				5B03BBE0179EE0E7005AD632 /* UserObservationComponentDataJudgement.m in Sources */,
-				5B03BBE6179EE0F7005AD632 /* UserObservationIdentification.m in Sources */,
+				5B03BBE9179EE495005AD632 /* MediaManager.m in Sources */,
+				5B03BBFB179EEFC9005AD632 /* Project.m in Sources */,
+				5B03BC01179EEFD9005AD632 /* ProjectComponent.m in Sources */,
+				5B03BC0D179EF005005AD632 /* ProjectComponentPossibility.m in Sources */,
+				5B03BC13179EF013005AD632 /* ProjectIdentification.m in Sources */,
+				5B03BC19179EF023005AD632 /* ProjectIdentificationComponentPossibility.m in Sources */,
+				5B03BC1F179EF033005AD632 /* User.m in Sources */,
+				5B03BC25179EF041005AD632 /* UserObservation.m in Sources */,
+				5B03BC2B179EF04F005AD632 /* UserObservationComponentData.m in Sources */,
+				5B03BC31179EF05F005AD632 /* UserObservationComponentDataJudgement.m in Sources */,
+				5B03BC37179EF06D005AD632 /* UserObservationIdentification.m in Sources */,
+				5B03BC3D179EF8E1005AD632 /* Media.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,6 +21,7 @@
 #import "ProjectComponentDataType.h"
 #import "UserObservation.h"
 #import "UserObservationComponentData.h"
+#import "Media.h"
 
 @interface ObservationViewController (){
     NSArray *projectComponents;
@@ -58,6 +59,10 @@
     
     [[AppModel sharedAppModel] getUserObservationComponentsDataWithHandler:@selector(printTest:) target:self];
     
+    
+    NSArray *mediaArray = [NSArray arrayWithArray:[[AppModel sharedAppModel].currentProject.media allObjects]];
+    Media *iconMedia = mediaArray[0];
+    NSURL *media = [iconMedia getMedia];
 }
 
 

@@ -20,8 +20,7 @@
 @property (nonatomic, retain) NSSet *projectComponents;
 @property (nonatomic, retain) NSSet *projectIdentifications;
 @property (nonatomic, retain) NSSet *userObservations;
-@property (nonatomic, retain) Media *iconMedia;
-@property (nonatomic, retain) Media *splashMedia;
+@property (nonatomic, retain) NSSet *media;
 @end
 
 @interface Project (CoreDataGeneratedAccessors)
@@ -40,5 +39,10 @@
 - (void)removeUserObservationsObject:(UserObservation *)value;
 - (void)addUserObservations:(NSSet *)values;
 - (void)removeUserObservations:(NSSet *)values;
+
+- (void)addMediaObject:(Media *)value;
+- (void)removeMediaObject:(Media *)value;
+- (void)addMedia:(NSSet *)values;
+- (void)removeMedia:(NSSet *)values;
 
 @end
