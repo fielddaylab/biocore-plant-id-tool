@@ -34,43 +34,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
-#warning TODO
-    
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData)]];
     [changeUnitButton setTitle:@"cm" forState:UIControlStateNormal];
-    
     unitCount = 0;
-    
-    componentPossibilityDescription.text = @"WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN WHEN A FIRE STARTS TO BURN ";
+    componentPossibilityDescription.text = projectComponent.title;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    //Means that we are for sure going 'back'
-    if ([self isMovingFromParentViewController]){
-
-    //createNewUserObservationComponentDataForUserObservation
-        NSLog(@"JUP");
-        
-        NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-
-        //5 is just hardcoded for now...
-        [attributes setValue:[NSNumber numberWithInt:[textField.text intValue]] forKey:@"data"];
-        [attributes setValue:[NSDate date] forKey:@"created"];
-        [attributes setValue:[NSDate date] forKey:@"updated"];
-        
-        [[AppModel sharedAppModel] createNewUserObservationComponentDataWithProjectComponent:projectComponent withAttributes:attributes];
-        
-    }
-}
-
 
 - (IBAction)changeUnit:(id)sender {
     unitCount ++;
@@ -83,6 +57,16 @@
 }
 - (IBAction)killKeyboard:(id)sender {
     [self.view endEditing:YES];
+}
 
+#pragma mark save observation data
+-(void)saveObservationData{
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setValue:[NSNumber numberWithInt:[textField.text intValue]] forKey:@"data_int"];
+    [attributes setValue:[NSDate date] forKey:@"created"];
+    [attributes setValue:[NSDate date] forKey:@"updated"];
+    
+    [[AppModel sharedAppModel] createNewUserObservationComponentDataWithProjectComponent:projectComponent withAttributes:attributes];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

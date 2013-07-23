@@ -43,6 +43,8 @@
 {
     [super viewDidLoad];
     
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData)]];
+    
     showPictureView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - HEIGHT_OF_RECORD)];//44 nav bar 200 space for slider
     [self.view addSubview:showPictureView];
 
@@ -247,6 +249,12 @@
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {
     NSLog(@"Tapped view number: %i", index);
+}
+
+#pragma mark save observation data
+-(void)saveObservationData{
+    //save the photo here
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

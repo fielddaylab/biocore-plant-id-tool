@@ -46,7 +46,6 @@
 }
 
 - (void)printTest:(NSArray *)userObservationComponents{
-    NSLog(@"PRINT DAT TEST");
     for(int i = 0; i<userObservationComponents.count; i++){
         UserObservationComponentData *u = userObservationComponents[i];
         NSLog(@"Blah: %@\n", u.data_int);
@@ -57,12 +56,7 @@
 {
     //Using only for testing.
     
-    [[AppModel sharedAppModel] getUserObservationComponentsDataWithHandler:@selector(printTest:) target:self];
-    
-    
-    NSArray *mediaArray = [NSArray arrayWithArray:[[AppModel sharedAppModel].currentProject.media allObjects]];
-    Media *iconMedia = mediaArray[0];
-    NSURL *media = [iconMedia getMedia];
+    //[[AppModel sharedAppModel] getUserObservationComponentsDataWithHandler:@selector(printTest:) target:self];
 }
 
 
@@ -170,22 +164,23 @@
             case AUDIO:
                 viewControllerToPush = [[ObservationAudioViewController alloc]initWithNibName:@"ObservationAudioViewController" bundle:nil];
                 break;
-            case TEXT:
-                viewControllerToPush = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];
+            case TEXT:{
+                ObservationTextViewController *textViewController = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];
+                textViewController.projectComponent = projectComponent;
+                viewControllerToPush = textViewController;
+            }
                 break;
             case LONG_TEXT:
                 viewControllerToPush = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];
                 break;
             case NUMBER:{
                 ObservationNumberViewController *numberViewController = [[ObservationNumberViewController alloc]initWithNibName:@"ObservationNumberViewController" bundle:nil];
-                ProjectComponent *projectComponent = [[AppModel sharedAppModel].currentProjectComponents objectAtIndex:indexPath.row];
                 numberViewController.projectComponent = projectComponent;
                 viewControllerToPush = numberViewController;
             }
                 break;
             case BOOLEAN:{
                 ObservationBooleanViewController *boolViewController = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
-                ProjectComponent *projectComponent = [[AppModel sharedAppModel].currentProjectComponents objectAtIndex:indexPath.row];
                 boolViewController.projectComponent = projectComponent;
                 viewControllerToPush = boolViewController;
             }

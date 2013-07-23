@@ -34,20 +34,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-#warning TODO
-
+    
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData)]];
+    
     componentPossibilityDescription.text = projectComponent.title;
 
     
 }
 
--(void)viewWillDisappear:(BOOL)animated{
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark save observation data
+-(void)saveObservationData{
     //save the user observation component
     NSMutableDictionary *dataAttributes = [[NSMutableDictionary alloc]init];
     [dataAttributes setValue:[NSDate date] forKey:@"created"];
     [dataAttributes setValue:[NSDate date] forKey:@"updated"];
-    [dataAttributes setValue:[NSNumber numberWithBool:[boolSwitch isOn]] forKey:@"data"];
+    [dataAttributes setValue:[NSNumber numberWithBool:[boolSwitch isOn]] forKey:@"data_int"];
     
     UserObservationComponentData *currentComponentData = [[AppModel sharedAppModel] createNewUserObservationComponentDataWithProjectComponent:projectComponent withAttributes:dataAttributes];
     
@@ -61,18 +68,11 @@
         }
     }
     
-    NSMutableDictionary *judgementAttributes = [[NSMutableDictionary alloc]init];
-    [judgementAttributes setValue:[NSDate date] forKey:@"created"];
-    [judgementAttributes setValue:[NSDate date] forKey:@"updated"];
-    
-    UserObservationComponentDataJudgement *currentJudgment = [[AppModel sharedAppModel] createNewUserObservationComponentDataJudgementWithAttributes:judgementAttributes withUserObservationComponentData:currentComponentData withProjectComponentPossibility:componentPossibility];
-    
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    //    NSMutableDictionary *judgementAttributes = [[NSMutableDictionary alloc]init];
+    //    [judgementAttributes setValue:[NSDate date] forKey:@"created"];
+    //    [judgementAttributes setValue:[NSDate date] forKey:@"updated"];
+    //    UserObservationComponentDataJudgement *currentJudgment = [[AppModel sharedAppModel] createNewUserObservationComponentDataJudgementWithAttributes:judgementAttributes withUserObservationComponentData:currentComponentData withProjectComponentPossibility:componentPossibility];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

@@ -140,7 +140,6 @@
 -(UserObservationComponentData *)createNewUserObservationComponentDataWithProjectComponent:(ProjectComponent *)projectComponent withAttributes:(NSDictionary *)attributes{
     UserObservationComponentData *userObservationComponentData = (UserObservationComponentData *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservationComponentData" inManagedObjectContext:coreData.managedObjectContext];
     userObservationComponentData.userObservation = currentUserObservation;
-    userObservationComponentData.user = currentUser;
     userObservationComponentData.projectComponent = projectComponent;
     userObservationComponentData.user = currentUser;
     for (NSString *key in attributes) {

@@ -55,6 +55,8 @@
 {
     [super viewDidLoad];
     
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData)]];
+    
     imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - HEIGHT_OF_RECORD)];
     [self.view addSubview:imageView];
     
@@ -201,6 +203,12 @@
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {
     NSLog(@"Tapped view number: %i", index);
+}
+
+#pragma mark save observation data
+-(void)saveObservationData{
+    //save the audio here
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

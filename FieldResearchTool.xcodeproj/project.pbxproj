@@ -264,10 +264,10 @@
 			children = (
 				71FE1CD61798617A00EB5A04 /* ObservationAudioViewController.h */,
 				71FE1CD71798617A00EB5A04 /* ObservationAudioViewController.m */,
+				71FE1CD81798617A00EB5A04 /* ObservationAudioViewController.xib */,
 				71FF69D91795BE7500E2B411 /* ObservationPhotoViewController.h */,
 				71FF69D51795BE6D00E2B411 /* ObservationPhotoViewController.m */,
 				71FF69D61795BE6E00E2B411 /* ObservationPhotoViewController.xib */,
-				71FE1CD81798617A00EB5A04 /* ObservationAudioViewController.xib */,
 				71FF69A71794819200E2B411 /* ObservationViewController.h */,
 				71FF69A81794819200E2B411 /* ObservationViewController.m */,
 				71FF69A91794819200E2B411 /* ObservationViewController.xib */,
