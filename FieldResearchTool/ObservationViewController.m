@@ -26,6 +26,7 @@
 @interface ObservationViewController (){
     NSArray *projectComponents;
     NSArray *projectIdentifications;
+    int savedCount;
 }
 
 @end
@@ -57,7 +58,7 @@
     //Using only for testing
     //[[AppModel sharedAppModel] getUserObservationComponentsDataWithHandler:@selector(printTest:) target:self];
     
-
+    
     
 }
 
@@ -81,6 +82,8 @@
     [attributes setValue:[NSDate date] forKey:@"updated"];
     [[AppModel sharedAppModel] createNewUserObservationWithAttributes:attributes];
     
+    savedCount = 0;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,7 +95,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -101,8 +104,10 @@
         case 0:
             return 1;
         case 1:
-            return [projectComponents count];
+            return savedCount;
         case 2:
+            return [projectComponents count] - savedCount;
+        case 3:
             return 4;
         default:
             return 0;
@@ -122,63 +127,45 @@
     
     switch (indexPath.section) {
         case 0:
-
+            
             cell.textLabel.text = [projectIdentifications count] != 1 ?[NSString stringWithFormat:@"%d identifications", [projectIdentifications count]] : [NSString stringWithFormat:@"%d identification", 1];
             break;
+            
         case 1:{
+            if(com.wasObserved){
+                cell.accessoryType= UITableViewCellAccessoryCheckmark;
 
-            UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 28, 28)];
-
-            if(indexPath.row % 4 == 1 && indexPath.section == 1){
-                imgView.image = [UIImage imageNamed:@"17-checkGREEN.png"];
-
-            }
-            else if(indexPath.row % 4 ==2 && indexPath.section == 1){
+                UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 28, 28)];
+                
                 imgView.image = [UIImage imageNamed:@"19-circle-checkGREEN.png"];
-
-            }
-            else if(indexPath.row % 4 == 3 && indexPath.section == 1){
-                imgView.image = [UIImage imageNamed:@"37-circle-xRED.png"];
-
-            }
-            else if(indexPath.row % 4 == 0 && indexPath.section == 1){
-                imgView.image = [UIImage imageNamed:@"60-xRED.png"];
-
+                
+                cell.imageView.image = imgView.image;
+                
+                com = (ProjectComponent *)[projectComponents objectAtIndex:indexPath.row];
+                
+                cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
             }
             
-            cell.imageView.image = imgView.image;
-            
-            
+        }break;
+        case 2:{
             com = (ProjectComponent *)[projectComponents objectAtIndex:indexPath.row];
             cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
         }break;
-        case 2:{
-          
-            UIButton *downloadButton = nil;
-            //this is the custom cell i have created one class for this in that i am place the string titlelabel.
-                downloadButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            float wizardry = ([UIScreen mainScreen].bounds.size.width - cell.frame.size.width) + 8; // 8 looks nice on iphone sim.
-            float magic = cell.frame.size.height/4; // 8 looks nice on iphone sim.
-            NSLog(@"%f uoihiphion %f", [UIScreen mainScreen].bounds.size.width, cell.frame.size.width);
-                downloadButton.frame = CGRectMake(wizardry, 8, 28, 28);
-                [downloadButton setImage:[UIImage imageNamed:@"19-circle-checkGREEN.png"] forState:UIControlStateNormal];
-                [downloadButton addTarget:self action:@selector(datLog) forControlEvents:UIControlEventTouchUpInside];
-                downloadButton.userInteractionEnabled = YES;
-                [cell.contentView addSubview:downloadButton];
-
+        case 3:{
             
-            //add empty immage of 28x28 so that spacing is current.//NOT DONE YET...
+            cell.accessoryType= UITableViewCellAccessoryCheckmark;
+
             if(indexPath.row == 0){
-                cell.textLabel.text = @"       Location";
+                cell.textLabel.text = @"Location";
             }
             else if(indexPath.row == 1){
-                cell.textLabel.text = @"       Date Time";
+                cell.textLabel.text = @"Date Time";
             }
             else if(indexPath.row == 2){
-                cell.textLabel.text = @"       Weather";
+                cell.textLabel.text = @"Weather";
             }
             else{
-                cell.textLabel.text = @"       Author";
+                cell.textLabel.text = @"Author";
             }
         }break;
         default:
@@ -199,6 +186,16 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if(indexPath.section == 1){
+        //saved filter toggler
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        if (cell.accessoryType == UITableViewCellAccessoryCheckmark){
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        else{
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+    }
+    else if(indexPath.section == 2){
         ProjectComponent *projectComponent = [projectComponents objectAtIndex:indexPath.row];
         UIViewController *viewControllerToPush;
         BOOL pushViewController = YES;
@@ -253,6 +250,16 @@
         }
         else{
             NSLog(@"Not pushing view controller because it will CRASH on simulator");
+        }
+    }
+    else if (indexPath.section == 3){
+        //metadata
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        if (cell.accessoryType == UITableViewCellAccessoryCheckmark){
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        else{
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
