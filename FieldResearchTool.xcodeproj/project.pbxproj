@@ -28,6 +28,7 @@
 		5B98AFB217A07AB500678C36 /* UserObservationComponentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AFB117A07AB500678C36 /* UserObservationComponentData.m */; };
 		5B98AFB817A07ACC00678C36 /* UserObservationComponentDataJudgement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AFB717A07ACC00678C36 /* UserObservationComponentDataJudgement.m */; };
 		5B98AFBE17A07ADC00678C36 /* UserObservationIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AFBD17A07ADC00678C36 /* UserObservationIdentification.m */; };
+		5B98AFC017A08CA900678C36 /* examplePlantData.tsv in Resources */ = {isa = PBXBuildFile; fileRef = 5B98AFBF17A08CA900678C36 /* examplePlantData.tsv */; };
 		5BFED1BA1794A49000648062 /* CoreDataWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFED1B91794A49000648062 /* CoreDataWrapper.m */; };
 		7166E25A179F25B3009FFC6E /* 17-checkGREEN.png in Resources */ = {isa = PBXBuildFile; fileRef = 7166E256179F25B3009FFC6E /* 17-checkGREEN.png */; };
 		7166E25B179F25B3009FFC6E /* 19-circle-checkGREEN.png in Resources */ = {isa = PBXBuildFile; fileRef = 7166E257179F25B3009FFC6E /* 19-circle-checkGREEN.png */; };
@@ -120,6 +121,7 @@
 		5B98AFB717A07ACC00678C36 /* UserObservationComponentDataJudgement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationComponentDataJudgement.m; sourceTree = "<group>"; };
 		5B98AFBC17A07ADC00678C36 /* UserObservationIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationIdentification.h; sourceTree = "<group>"; };
 		5B98AFBD17A07ADC00678C36 /* UserObservationIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationIdentification.m; sourceTree = "<group>"; };
+		5B98AFBF17A08CA900678C36 /* examplePlantData.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = examplePlantData.tsv; sourceTree = "<group>"; };
 		5BFED1B81794A49000648062 /* CoreDataWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataWrapper.h; sourceTree = "<group>"; };
 		5BFED1B91794A49000648062 /* CoreDataWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataWrapper.m; sourceTree = "<group>"; };
 		7166E256179F25B3009FFC6E /* 17-checkGREEN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "17-checkGREEN.png"; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 		AAAC4F3A178F1767001AB1D8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5B98AFBF17A08CA900678C36 /* examplePlantData.tsv */,
 				AAAC4F3B178F1767001AB1D8 /* FieldResearchTool-Info.plist */,
 				5B82BD991797478C008CB441 /* plantData.tsv */,
 				AAAC4F3C178F1767001AB1D8 /* InfoPlist.strings */,
@@ -498,6 +501,7 @@
 				7166E25B179F25B3009FFC6E /* 19-circle-checkGREEN.png in Resources */,
 				7166E25C179F25B3009FFC6E /* 37-circle-xRED.png in Resources */,
 				7166E25D179F25B3009FFC6E /* 60-xRED.png in Resources */,
+				5B98AFC017A08CA900678C36 /* examplePlantData.tsv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

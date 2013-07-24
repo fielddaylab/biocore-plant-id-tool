@@ -18,6 +18,8 @@
 #import "RangeOperators.h"
 #import "Media.h"
 #import "MediaType.h"
+#import "ObservationDataType.h"
+#import "ObservationJudgementType.h"
 
 @implementation AppDelegate
 
@@ -33,7 +35,7 @@
     //setup example data
     //keep this commented out unless you want to regenerate sample data. otherwise it will continually
     //add sample data
-    //[self readInSampleData];
+    [self readInSampleData];
     return YES;
 }
 
@@ -125,7 +127,170 @@
 }
 
 #pragma mark Sample Data
-
+-(void)readInSampleData{
+    
+    Project *project = (Project *)[NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:[self managedObjectContext]];
+    project.allowedInterpretations = [NSNumber numberWithInt:1];
+    project.created = [NSDate date];
+    project.updated = [NSDate date];
+    project.name = @"Biocore";
+    //add media reference here
+    
+    [AppModel sharedAppModel].currentProject = project;
+    
+    User *user = (User *)[NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:[self managedObjectContext]];
+    user.name = @"jgmoeller";
+    user.password = @"qwerty";
+    user.created = [NSDate date];
+    user.updated = [NSDate date];
+    user.project = project;
+    
+    [AppModel sharedAppModel].currentUser = user;
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"examplePlantData" ofType:@"tsv"];
+    NSString *contents = [NSString stringWithContentsOfFile:path encoding:NSASCIIStringEncoding error:nil];
+    NSArray *lines = [contents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    NSString *firstLine = lines[0];
+    NSArray *wordsSeperatedByTabs = [firstLine componentsSeparatedByString:@"\t"];
+    NSMutableArray *projectComponents = [[NSMutableArray alloc]init];
+    int nonComponents = 0;
+    for(int i = 0; i < [wordsSeperatedByTabs count]; i++){
+        NSString *componentRegex = @".*(\\{YES\\}|\\{NO\\})?(\\{DATA_VIDEO\\}|\\{DATA_PHOTO\\}|\\{DATA_AUDIO\\}|\\{DATA_TEXT\\}|\\{DATA_LONG_TEXT\\}|\\{DATA_NUMBER\\}|\\{DATA_BOOL\\}|\\{DATA_ENUM\\})(\\{JUDGEMENT_TEXT\\}|\\{JUDGEMENT_LONG_TEXT\\}|\\{JUDGEMENT_NUMBER\\}|\\{JUDGEMENT_BOOL\\}|\\{JUDGEMENT_ENUM\\})";
+        BOOL isComponent = [self stringMatchesRegex:wordsSeperatedByTabs[i] regex:componentRegex];
+        if(isComponent){
+            NSString *leftBrace = @"{";
+            NSInteger leftBraceIndex = [wordsSeperatedByTabs[i] rangeOfString:leftBrace].location;
+            NSString *withoutParams = [wordsSeperatedByTabs[i] substringToIndex:leftBraceIndex];
+            NSString *params = [wordsSeperatedByTabs[i] substringFromIndex:leftBraceIndex];
+            
+            NSString *dash = @"-";
+            NSInteger dashIndex = [withoutParams rangeOfString:dash].location;
+            
+            NSString *projectComponentName = withoutParams;
+            if(dashIndex != NSNotFound){
+                projectComponentName = [withoutParams substringToIndex:dashIndex];
+            }
+            
+            NSString *requiredRegex = @"(\\{YES\\}.*)";
+            BOOL isRequired = [self stringMatchesRegex:params regex:requiredRegex];
+            
+            //figure out the observation type
+            ObservationDataType dataType;
+            NSString *videoRegex = @"(.*\\{DATA_VIDEO\\}.*)";
+            NSString *audioRegex = @"(.*\\{DATA_AUDIO\\}.*)";
+            NSString *photoRegex = @"(.*\\{DATA_PHOTO\\}.*)";
+            NSString *textRegex = @"(.*\\{DATA_TEXT\\}.*)";
+            NSString *longTextRegex = @"(.*\\{DATA_LONG_TEXT\\}.*)";
+            NSString *numberRegex = @"(.*\\{DATA_NUMBER\\}.*)";
+            NSString *boolRegex = @"(.*\\{DATA_BOOL\\}.*)";
+            NSString *enumRegex = @"(.*\\{DATA_ENUM\\}.*)";
+            if([self stringMatchesRegex:params regex:videoRegex]){
+                dataType = DATA_VIDEO;
+            }
+            else if([self stringMatchesRegex:params regex:audioRegex]){
+                dataType = DATA_AUDIO;
+            }
+            else if([self stringMatchesRegex:params regex:photoRegex]){
+                dataType = DATA_PHOTO;
+            }
+            else if([self stringMatchesRegex:params regex:textRegex]){
+                dataType = DATA_TEXT;
+            }
+            else if([self stringMatchesRegex:params regex:longTextRegex]){
+                dataType = DATA_LONG_TEXT;
+            }
+            else if([self stringMatchesRegex:params regex:numberRegex]){
+                dataType = DATA_NUMBER;
+            }
+            else if([self stringMatchesRegex:params regex:boolRegex]){
+                dataType = DATA_BOOLEAN;
+            }
+            else if([self stringMatchesRegex:params regex:enumRegex]){
+                dataType = DATA_ENUMERATOR;
+            }
+            else{
+                NSLog(@"Error in setting type for Project Component");
+                dataType = DATA_NUMBER;
+            }
+            
+            //figure out the judgement type
+            ObservationJudgementType judgementType;
+            videoRegex = @"(.*\\{JUDGEMENT_VIDEO\\}.*)";
+            audioRegex = @"(.*\\{JUDGEMENT_AUDIO\\}.*)";
+            photoRegex = @"(.*\\{JUDGEMENT_PHOTO\\}.*)";
+            textRegex = @"(.*\\{JUDGEMENT_TEXT\\}.*)";
+            longTextRegex = @"(.*\\{JUDGEMENT_LONG_TEXT\\}.*)";
+            numberRegex = @"(.*\\{JUDGEMENT_NUMBER\\}.*)";
+            boolRegex = @"(.*\\{JUDGEMENT_BOOL\\}.*)";
+            enumRegex = @"(.*\\{JUDGEMENT_ENUM\\}.*)";
+            if([self stringMatchesRegex:params regex:textRegex]){
+                judgementType = JUDGEMENT_TEXT;
+            }
+            else if([self stringMatchesRegex:params regex:longTextRegex]){
+                judgementType = JUDGEMENT_LONG_TEXT;
+            }
+            else if([self stringMatchesRegex:params regex:numberRegex]){
+                judgementType = JUDGEMENT_NUMBER;
+            }
+            else if([self stringMatchesRegex:params regex:boolRegex]){
+                judgementType = JUDGEMENT_BOOLEAN;
+            }
+            else if([self stringMatchesRegex:params regex:enumRegex]){
+                judgementType = JUDGEMENT_ENUMERATOR;
+            }
+            else{
+                NSLog(@"Error in setting type for Project Component");
+                judgementType = JUDGEMENT_NUMBER;
+            }
+            
+            
+            ProjectComponent *projectComponent = (ProjectComponent *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponent" inManagedObjectContext:[self managedObjectContext]];
+            projectComponent.created = [NSDate date];
+            projectComponent.updated = [NSDate date];
+            projectComponent.observationDataType = [NSNumber numberWithInt:dataType];
+            projectComponent.observationJudgementType = [NSNumber numberWithInt:judgementType];
+            projectComponent.required = [NSNumber numberWithBool:isRequired];
+            projectComponent.title = projectComponentName;
+            projectComponent.wasObserved = [NSNumber numberWithBool:NO];
+            projectComponent.wasJudged = [NSNumber numberWithBool:NO];
+            projectComponent.project = project;
+            [projectComponents addObject:projectComponent];
+            
+            if (dashIndex != NSNotFound) {
+                NSString *stringProjectComponentPossibilities = [withoutParams substringFromIndex:dashIndex+2];
+                NSArray *projectComponentPossibilities = [stringProjectComponentPossibilities componentsSeparatedByString:@", "];
+                for (int j = 0; j < [projectComponentPossibilities count]; j++) {
+                    NSString *stringProjectComponentPossibility = projectComponentPossibilities[j];
+                    ProjectComponentPossibility *projectComponentPossibility = (ProjectComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
+                    projectComponentPossibility.created = [NSDate date];
+                    projectComponentPossibility.updated = [NSDate date];
+                    
+                    if(judgementType == JUDGEMENT_BOOLEAN){
+                        if([stringProjectComponentPossibility isEqualToString:@"yes"]){
+                            projectComponentPossibility.boolValue = [NSNumber numberWithBool:YES];
+                        }
+                        else{
+                            projectComponentPossibility.boolValue = [NSNumber numberWithBool:NO];
+                        }
+                    }
+                    else if(judgementType == JUDGEMENT_ENUMERATOR){
+                        projectComponentPossibility.enumValue = stringProjectComponentPossibility;
+                    }
+                    else{
+                        NSLog(@"Error parsing project possibilities. Something other than bool or enum is specified after the dash");
+                    }
+                }
+            }
+        }
+        else{
+            nonComponents++;
+        }
+    }
+    
+    //read in the actual data
+    
+    
+}
 
 
 //-(void)readInSampleData{
@@ -169,7 +334,7 @@
 //        
 //        NSString *componentRegex = @".*(\\{YES\\}|\\{NO\\})?(\\{VIDEO\\}|\\{PHOTO\\}|\\{AUDIO\\}|\\{TEXT\\}|\\{LONG_TEXT\\}|\\{NUMBER\\}|\\{BOOL\\})";
 //        BOOL isComponent = [self stringMatchesRegex:wordsSeperatedByTabs[i] regex:componentRegex];
-//        
+//
 //        if(isComponent){
 //            NSString *leftBrace = @"{";
 //            NSInteger leftBraceIndex = [wordsSeperatedByTabs[i] rangeOfString:leftBrace].location;

@@ -90,7 +90,6 @@
     });
 }
 
-//////////////////// Nick wrote(copypasta-d) this, so beware...
 -(void)getUserObservationComponentsDataWithHandler:(SEL)handler target:(id)target{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -98,7 +97,6 @@
         });
     });
 }
-////////////////////
 
 -(void)getUserForName:(NSString *)username password:(NSString *)password withHandler:(SEL)handler target:(id)target{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -116,26 +114,6 @@
     return [coreData save];
 }
 
--(void)createNewUserWithAttributes:(NSDictionary *)attributes{
-    User *newUser = (User *)[NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:coreData.managedObjectContext];
-    for (NSString *key in attributes) {
-        id value = [attributes objectForKey:key];
-        [newUser setValue:value forKey:key];
-    }
-    [self save];
-    currentUser = newUser;
-}
-
--(void)createNewUserObservationWithAttributes:(NSDictionary *)attributes{
-    UserObservation *userObservation = (UserObservation *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservation" inManagedObjectContext:coreData.managedObjectContext];
-    userObservation.project = currentProject;
-    for (NSString *key in attributes) {
-        id value = [attributes objectForKey:key];
-        [userObservation setValue:value forKey:key];
-    }
-    [self save];
-    currentUserObservation = userObservation;
-}
 
 -(Media *)createNewMediaWithAttributes:(NSDictionary *)attributes forPath:(NSString *)path withType:(MediaType)type{
     Media *media = (Media *)[NSEntityDescription insertNewObjectForEntityForName:@"Media" inManagedObjectContext:coreData.managedObjectContext];

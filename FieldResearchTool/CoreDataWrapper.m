@@ -55,6 +55,7 @@
     [self callHandlerForTarget:target handler:handler withObject:fetchedObjects];
 }
 
+//only works for comparing strings currently
 -(void)fetchAllEntities:(NSString *)entityName withAttribute:(NSString *)attributeName equalTo:(NSString *)attributeValue withHandler:(SEL)handler target:(id)target{
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:managedObjectContext];

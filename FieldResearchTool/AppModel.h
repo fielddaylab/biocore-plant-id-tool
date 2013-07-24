@@ -38,8 +38,6 @@
 -(void)getUserObservationComponentsDataWithHandler:(SEL)handler target:(id)target;
 
 -(void)getUserForName:(NSString *)username password:(NSString *)password withHandler:(SEL)handler target:(id)target;
--(void)createNewUserWithAttributes:(NSDictionary *)attributes;
--(void)createNewUserObservationWithAttributes:(NSDictionary *)attributes;
 
 
 -(Media *)createNewMediaWithAttributes:(NSDictionary *)attributes forPath:(NSString *)path withType:(MediaType)type;
