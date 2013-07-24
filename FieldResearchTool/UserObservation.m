@@ -2,24 +2,24 @@
 //  UserObservation.m
 //  FieldResearchTool
 //
-//  Created by Justin Moeller on 7/23/13.
+//  Created by Justin Moeller on 7/24/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
 #import "UserObservation.h"
-#import "Project.h"
+#import "User.h"
 #import "UserObservationComponentData.h"
 #import "UserObservationIdentification.h"
 
 
 @implementation UserObservation
 
-@dynamic created;
 @dynamic latitude;
 @dynamic longitude;
+@dynamic created;
 @dynamic updated;
-@dynamic project;
-@dynamic userObservationComponentData;
+@dynamic user;
 @dynamic userObservationIdentifications;
+@dynamic userObservationComponentData;
 
 @end

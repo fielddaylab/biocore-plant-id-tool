@@ -137,31 +137,6 @@
     currentUserObservation = userObservation;
 }
 
--(UserObservationComponentData *)createNewUserObservationComponentDataWithProjectComponent:(ProjectComponent *)projectComponent withAttributes:(NSDictionary *)attributes{
-    UserObservationComponentData *userObservationComponentData = (UserObservationComponentData *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservationComponentData" inManagedObjectContext:coreData.managedObjectContext];
-    userObservationComponentData.userObservation = currentUserObservation;
-    userObservationComponentData.projectComponent = projectComponent;
-    userObservationComponentData.user = currentUser;
-    for (NSString *key in attributes) {
-        id value = [attributes objectForKey:key];
-        [userObservationComponentData setValue:value forKey:key];
-    }
-    [self save];
-    return userObservationComponentData;
-}
-
--(UserObservationComponentDataJudgement *)createNewUserObservationComponentDataJudgementWithAttributes:(NSDictionary *)attributes withUserObservationComponentData:(UserObservationComponentData *)userObservationComponentData withProjectComponentPossibility:(ProjectComponentPossibility *)projectComponentPossibility{
-        UserObservationComponentDataJudgement *userObservationComponentDataJudgment = (UserObservationComponentDataJudgement *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservationComponentDataJudgement" inManagedObjectContext:coreData.managedObjectContext];
-    userObservationComponentDataJudgment.userObservationComponentData = userObservationComponentData;
-    userObservationComponentDataJudgment.projectComponentPossibility = projectComponentPossibility;
-    for (NSString *key in attributes) {
-        id value = [attributes objectForKey:key];
-        [userObservationComponentDataJudgment setValue:value forKey:key];
-    }
-    [self save];
-    return userObservationComponentDataJudgment;
-}
-
 -(Media *)createNewMediaWithAttributes:(NSDictionary *)attributes forPath:(NSString *)path withType:(MediaType)type{
     Media *media = (Media *)[NSEntityDescription insertNewObjectForEntityForName:@"Media" inManagedObjectContext:coreData.managedObjectContext];
     media.created = [NSDate date];

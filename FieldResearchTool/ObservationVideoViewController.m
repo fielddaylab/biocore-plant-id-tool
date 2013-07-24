@@ -196,8 +196,8 @@
 #pragma mark save observation data
 -(void)saveObservationData{
     //save the video to core data here
-    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
-    [[AppModel sharedAppModel] save];
+//    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
+//    [[AppModel sharedAppModel] save];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

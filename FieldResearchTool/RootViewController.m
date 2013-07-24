@@ -36,27 +36,27 @@
 
 -(void)handleFetchOfAllProjects:(NSArray *)projects{
     ObservationViewController *newObservation = [[ObservationViewController alloc]initWithNibName:@"ObservationViewController" bundle:nil];
-    Project *project = projects[0];
-    [AppModel sharedAppModel].currentProject = project;
+//    Project *project = projects[0];
+//    [AppModel sharedAppModel].currentProject = project;
     self.observationController = [[FieldResearchNavigationController alloc]initWithRootViewController:newObservation];
     [self displayContentController:self.observationController];
 }
 
--(void)handleFetchOfUser:(NSArray *)users{
-    
-    if(users == nil || [users count] != 1){
-        NSLog(@"Error fetching users from core data. Quitting.");
-#warning using exit(0)
-        exit(0);
-    }
-    else{
-        User *user = users[0];
-        [AppModel sharedAppModel].currentUser = user;
-        if(!currentChildViewController)
-            [[AppModel sharedAppModel] getAllProjectsWithHandler:@selector(handleFetchOfAllProjects:) target:self];
-    }
-    
-}
+//-(void)handleFetchOfUser:(NSArray *)users{
+//    
+//    if(users == nil || [users count] != 1){
+//        NSLog(@"Error fetching users from core data. Quitting.");
+//#warning using exit(0)
+//        exit(0);
+//    }
+//    else{
+//        User *user = users[0];
+//        [AppModel sharedAppModel].currentUser = user;
+//        if(!currentChildViewController)
+//            [[AppModel sharedAppModel] getAllProjectsWithHandler:@selector(handleFetchOfAllProjects:) target:self];
+//    }
+//    
+//}
 
 - (void) loadView
 {
@@ -70,7 +70,9 @@
     self.view.frame = [UIScreen mainScreen].bounds;
     
     //this will need to move to a login view controller in the future
-    [[AppModel sharedAppModel] getUserForName:@"jgmoeller" password:@"qwerty" withHandler:@selector(handleFetchOfUser:) target:self];
+    //[[AppModel sharedAppModel] getUserForName:@"jgmoeller" password:@"qwerty" withHandler:@selector(handleFetchOfUser:) target:self];
+    if(!currentChildViewController)
+        [[AppModel sharedAppModel] getAllProjectsWithHandler:@selector(handleFetchOfAllProjects:) target:self];
     
 }
 

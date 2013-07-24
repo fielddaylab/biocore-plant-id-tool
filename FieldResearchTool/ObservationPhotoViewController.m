@@ -261,22 +261,22 @@
 #pragma mark save observation data
 -(void)saveObservationData{
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-                                                         NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    //should we use the library folder or the documents folder?
-    NSString *path = [documentsDirectory stringByAppendingPathComponent:
-                      @"userObservationComponentDataPicture.png"]; //replace this with a uuid
-    NSData* data = UIImagePNGRepresentation(image);
-    [data writeToFile:path atomically:YES];
-    
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-    [attributes setObject:[NSDate date] forKey:@"created"];
-    [attributes setObject:[NSDate date] forKey:@"updated"];
-    Media *media = [[AppModel sharedAppModel] createNewMediaWithAttributes:attributes forPath:path withType:MEDIA_PHOTO];
-    projectComponent.media = media;
-    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
-    [[AppModel sharedAppModel] save];
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+//                                                         NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0];
+//    //should we use the library folder or the documents folder?
+//    NSString *path = [documentsDirectory stringByAppendingPathComponent:
+//                      @"userObservationComponentDataPicture.png"]; //replace this with a uuid
+//    NSData* data = UIImagePNGRepresentation(image);
+//    [data writeToFile:path atomically:YES];
+//    
+//    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+//    [attributes setObject:[NSDate date] forKey:@"created"];
+//    [attributes setObject:[NSDate date] forKey:@"updated"];
+//    Media *media = [[AppModel sharedAppModel] createNewMediaWithAttributes:attributes forPath:path withType:MEDIA_PHOTO];
+//    projectComponent.media = media;
+//    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
+//    [[AppModel sharedAppModel] save];
     [self.navigationController popViewControllerAnimated:YES];
     
 

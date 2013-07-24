@@ -18,7 +18,6 @@
 #import "ProjectComponent.h"
 #import "Project.h"
 #import "AppModel.h"
-#import "ProjectComponentDataType.h"
 #import "UserObservation.h"
 #import "UserObservationComponentData.h"
 #import "Media.h"
@@ -45,19 +44,8 @@
     return self;
 }
 
-- (void)printTest:(NSArray *)userObservationComponents{
-    for(int i = 0; i<userObservationComponents.count; i++){
-        UserObservationComponentData *u = userObservationComponents[i];
-        NSLog(@"Blah: %@\n", u.dataInt);
-    }
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
-    //Using only for testing
-    //[[AppModel sharedAppModel] getUserObservationComponentsDataWithHandler:@selector(printTest:) target:self];
-    
-
     
 }
 
@@ -70,16 +58,8 @@
     
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:nil]];
     
-    [[AppModel sharedAppModel]getAllProjectComponentsWithHandler:@selector(handleFetchAllProjectComponentsForProjectName:) target:[AppModel sharedAppModel]];
-    [[AppModel sharedAppModel]getAllProjectIdentificationsWithHandler:@selector(handleFetchProjectIdentifications:) target:[AppModel sharedAppModel]];
-    
-    //get the location here
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-    [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"latitude"];
-    [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"longitude"];
-    [attributes setValue:[NSDate date] forKey:@"created"];
-    [attributes setValue:[NSDate date] forKey:@"updated"];
-    [[AppModel sharedAppModel] createNewUserObservationWithAttributes:attributes];
+//    [[AppModel sharedAppModel]getAllProjectComponentsWithHandler:@selector(handleFetchAllProjectComponentsForProjectName:) target:[AppModel sharedAppModel]];
+//    [[AppModel sharedAppModel]getAllProjectIdentificationsWithHandler:@selector(handleFetchProjectIdentifications:) target:[AppModel sharedAppModel]];
     
 }
 
@@ -159,7 +139,6 @@
                 downloadButton = [UIButton buttonWithType:UIButtonTypeCustom];
             float wizardry = ([UIScreen mainScreen].bounds.size.width - cell.frame.size.width) + 8; // 8 looks nice on iphone sim.
             float magic = cell.frame.size.height/4; // 8 looks nice on iphone sim.
-            NSLog(@"%f uoihiphion %f", [UIScreen mainScreen].bounds.size.width, cell.frame.size.width);
                 downloadButton.frame = CGRectMake(wizardry, 8, 28, 28);
                 [downloadButton setImage:[UIImage imageNamed:@"19-circle-checkGREEN.png"] forState:UIControlStateNormal];
                 [downloadButton addTarget:self action:@selector(datLog) forControlEvents:UIControlEventTouchUpInside];
@@ -198,63 +177,63 @@
         InterpretationChoiceViewController *vc = [[InterpretationChoiceViewController alloc]initWithNibName:@"InterpretationChoiceViewController" bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
     }
-    else if(indexPath.section == 1){
-        ProjectComponent *projectComponent = [projectComponents objectAtIndex:indexPath.row];
-        UIViewController *viewControllerToPush;
-        BOOL pushViewController = YES;
-        switch ([projectComponent.observationType intValue]) {
-            case PHOTO:{
-                ObservationPhotoViewController *photoViewController = [[ObservationPhotoViewController alloc]initWithNibName:@"ObservationPhotoViewController" bundle:nil];
-                photoViewController.projectComponent = projectComponent;
-                viewControllerToPush = photoViewController;
-                //pushViewController = NO;
-            }
-                break;
-            case AUDIO:{
-                ObservationAudioViewController *audioViewController = [[ObservationAudioViewController alloc]initWithNibName:@"ObservationAudioViewController" bundle:nil];
-                audioViewController.projectComponent = projectComponent;
-                viewControllerToPush = audioViewController;
-            }
-                break;
-            case TEXT:{
-                ObservationTextViewController *textViewController = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];
-                textViewController.projectComponent = projectComponent;
-                viewControllerToPush = textViewController;
-            }
-                break;
-            case LONG_TEXT:{
-                ObservationTextViewController *textViewController = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];
-                textViewController.projectComponent = projectComponent;
-                viewControllerToPush = textViewController;
-            }
-                break;
-            case NUMBER:{
-                ObservationNumberViewController *numberViewController = [[ObservationNumberViewController alloc]initWithNibName:@"ObservationNumberViewController" bundle:nil];
-                numberViewController.projectComponent = projectComponent;
-                viewControllerToPush = numberViewController;
-            }
-                break;
-            case BOOLEAN:{
-                ObservationBooleanViewController *boolViewController = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
-                boolViewController.projectComponent = projectComponent;
-                viewControllerToPush = boolViewController;
-            }
-                break;
-            case VIDEO:
-                viewControllerToPush = [[ObservationVideoViewController alloc]initWithNibName:@"ObservationVideoViewController" bundle:nil];
-                break;
-            default:
-                NSLog(@"Pushing on Bool view controller as default");
-                viewControllerToPush = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
-                break;
-        }
-        if(pushViewController){
-            [self.navigationController pushViewController:viewControllerToPush animated:YES];
-        }
-        else{
-            NSLog(@"Not pushing view controller because it will CRASH on simulator");
-        }
-    }
+//    else if(indexPath.section == 1){
+//        ProjectComponent *projectComponent = [projectComponents objectAtIndex:indexPath.row];
+//        UIViewController *viewControllerToPush;
+//        BOOL pushViewController = YES;
+//        switch ([projectComponent.observationType intValue]) {
+//            case PHOTO:{
+//                ObservationPhotoViewController *photoViewController = [[ObservationPhotoViewController alloc]initWithNibName:@"ObservationPhotoViewController" bundle:nil];
+//                photoViewController.projectComponent = projectComponent;
+//                viewControllerToPush = photoViewController;
+//                //pushViewController = NO;
+//            }
+//                break;
+//            case AUDIO:{
+//                ObservationAudioViewController *audioViewController = [[ObservationAudioViewController alloc]initWithNibName:@"ObservationAudioViewController" bundle:nil];
+//                audioViewController.projectComponent = projectComponent;
+//                viewControllerToPush = audioViewController;
+//            }
+//                break;
+//            case TEXT:{
+//                ObservationTextViewController *textViewController = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];
+//                textViewController.projectComponent = projectComponent;
+//                viewControllerToPush = textViewController;
+//            }
+//                break;
+//            case LONG_TEXT:{
+//                ObservationTextViewController *textViewController = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];
+//                textViewController.projectComponent = projectComponent;
+//                viewControllerToPush = textViewController;
+//            }
+//                break;
+//            case NUMBER:{
+//                ObservationNumberViewController *numberViewController = [[ObservationNumberViewController alloc]initWithNibName:@"ObservationNumberViewController" bundle:nil];
+//                numberViewController.projectComponent = projectComponent;
+//                viewControllerToPush = numberViewController;
+//            }
+//                break;
+//            case BOOLEAN:{
+//                ObservationBooleanViewController *boolViewController = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
+//                boolViewController.projectComponent = projectComponent;
+//                viewControllerToPush = boolViewController;
+//            }
+//                break;
+//            case VIDEO:
+//                viewControllerToPush = [[ObservationVideoViewController alloc]initWithNibName:@"ObservationVideoViewController" bundle:nil];
+//                break;
+//            default:
+//                NSLog(@"Pushing on Bool view controller as default");
+//                viewControllerToPush = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
+//                break;
+//        }
+//        if(pushViewController){
+//            [self.navigationController pushViewController:viewControllerToPush animated:YES];
+//        }
+//        else{
+//            NSLog(@"Not pushing view controller because it will CRASH on simulator");
+//        }
+//    }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 

@@ -2,28 +2,28 @@
 //  ProjectComponentPossibility.h
 //  FieldResearchTool
 //
-//  Created by Justin Moeller on 7/23/13.
+//  Created by Justin Moeller on 7/24/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Media, ProjectComponent, ProjectIdentificationComponentPossibility, UserObservationComponentDataJudgement;
+@class ProjectComponent, ProjectIdentificationComponentPossibility, UserObservationComponentDataJudgement;
 
 @interface ProjectComponentPossibility : NSManagedObject
 
+@property (nonatomic, retain) NSString * enumValue;
 @property (nonatomic, retain) NSNumber * boolValue;
 @property (nonatomic, retain) NSDate * created;
-@property (nonatomic, retain) NSString * enumDescription;
-@property (nonatomic, retain) NSNumber * rangeNumber1;
-@property (nonatomic, retain) NSNumber * rangeNumber2;
-@property (nonatomic, retain) NSNumber * rangeOperator;
 @property (nonatomic, retain) NSDate * updated;
+@property (nonatomic, retain) NSString * text;
+@property (nonatomic, retain) NSString * longText;
+@property (nonatomic, retain) NSNumber * number;
+@property (nonatomic, retain) NSNumber * stdDev;
 @property (nonatomic, retain) ProjectComponent *projectComponent;
+@property (nonatomic, retain) UserObservationComponentDataJudgement *userObservationComponentDataJudgement;
 @property (nonatomic, retain) NSSet *projectIdentificationComponentPossibilities;
-@property (nonatomic, retain) NSSet *userObservationComponentDataJudgements;
-@property (nonatomic, retain) Media *media;
 @end
 
 @interface ProjectComponentPossibility (CoreDataGeneratedAccessors)
@@ -32,10 +32,5 @@
 - (void)removeProjectIdentificationComponentPossibilitiesObject:(ProjectIdentificationComponentPossibility *)value;
 - (void)addProjectIdentificationComponentPossibilities:(NSSet *)values;
 - (void)removeProjectIdentificationComponentPossibilities:(NSSet *)values;
-
-- (void)addUserObservationComponentDataJudgementsObject:(UserObservationComponentDataJudgement *)value;
-- (void)removeUserObservationComponentDataJudgementsObject:(UserObservationComponentDataJudgement *)value;
-- (void)addUserObservationComponentDataJudgements:(NSSet *)values;
-- (void)removeUserObservationComponentDataJudgements:(NSSet *)values;
 
 @end
