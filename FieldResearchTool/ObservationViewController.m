@@ -23,10 +23,13 @@
 #import "UserObservationComponentData.h"
 #import "Media.h"
 
+#import "ObservationContainerViewController.h"
+
 @interface ObservationViewController (){
     NSArray *projectComponents;
     NSArray *projectIdentifications;
     int savedCount;
+    
 }
 
 @end
@@ -35,6 +38,8 @@
 
 @synthesize table;
 
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -42,6 +47,9 @@
         self.title = @"New Observation";
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(projectComponentsResponseReady) name:@"ProjectComponentsResponseReady" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(projectIdentificationsResponseReady) name:@"ProjectIdentificationsResponseReady" object:nil];
+    
+        savedCount = 0;
+
     }
     return self;
 }
@@ -81,9 +89,7 @@
     [attributes setValue:[NSDate date] forKey:@"created"];
     [attributes setValue:[NSDate date] forKey:@"updated"];
     [[AppModel sharedAppModel] createNewUserObservationWithAttributes:attributes];
-    
-    savedCount = 0;
-    
+        
 }
 
 - (void)didReceiveMemoryWarning
@@ -126,7 +132,7 @@
     ProjectComponent *com;
     
     switch (indexPath.section) {
-        case 0:
+        case 0:            
             
             cell.textLabel.text = [projectIdentifications count] != 1 ?[NSString stringWithFormat:@"%d identifications", [projectIdentifications count]] : [NSString stringWithFormat:@"%d identification", 1];
             break;
@@ -148,6 +154,9 @@
             
         }break;
         case 2:{
+            
+            cell.accessoryType= UITableViewCellAccessoryDisclosureIndicator;
+
             com = (ProjectComponent *)[projectComponents objectAtIndex:indexPath.row];
             cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
         }break;
@@ -201,7 +210,7 @@
         BOOL pushViewController = YES;
         switch ([projectComponent.observationType intValue]) {
             case PHOTO:{
-                ObservationPhotoViewController *photoViewController = [[ObservationPhotoViewController alloc]initWithNibName:@"ObservationPhotoViewController" bundle:nil];
+                ObservationContainerViewController *photoViewController = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];
                 photoViewController.projectComponent = projectComponent;
                 viewControllerToPush = photoViewController;
                 //pushViewController = NO;
