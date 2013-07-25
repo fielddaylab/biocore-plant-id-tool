@@ -37,6 +37,32 @@
 		7166E25D179F25B3009FFC6E /* 60-xRED.png in Resources */ = {isa = PBXBuildFile; fileRef = 7166E259179F25B3009FFC6E /* 60-xRED.png */; };
 		7174127917A19CDE003295B6 /* ObservationContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174127717A19CDD003295B6 /* ObservationContainerViewController.m */; };
 		7174127A17A19CDE003295B6 /* ObservationContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7174127817A19CDD003295B6 /* ObservationContainerViewController.xib */; };
+		7174128917A1B3CA003295B6 /* PhotoDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174128717A1B3CA003295B6 /* PhotoDataViewController.m */; };
+		7174128A17A1B3CA003295B6 /* PhotoDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7174128817A1B3CA003295B6 /* PhotoDataViewController.xib */; };
+		7174128E17A1B462003295B6 /* VideoDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174128C17A1B462003295B6 /* VideoDataViewController.m */; };
+		7174128F17A1B462003295B6 /* VideoDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7174128D17A1B462003295B6 /* VideoDataViewController.xib */; };
+		7174129317A1B470003295B6 /* AudioDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174129117A1B470003295B6 /* AudioDataViewController.m */; };
+		7174129417A1B470003295B6 /* AudioDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7174129217A1B470003295B6 /* AudioDataViewController.xib */; };
+		7174129817A1B47F003295B6 /* NumberDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174129617A1B47F003295B6 /* NumberDataViewController.m */; };
+		7174129917A1B47F003295B6 /* NumberDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7174129717A1B47F003295B6 /* NumberDataViewController.xib */; };
+		7174129D17A1B48D003295B6 /* BooleanDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174129B17A1B48D003295B6 /* BooleanDataViewController.m */; };
+		7174129E17A1B48D003295B6 /* BooleanDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7174129C17A1B48D003295B6 /* BooleanDataViewController.xib */; };
+		717412A217A1B498003295B6 /* TextDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717412A017A1B498003295B6 /* TextDataViewController.m */; };
+		717412A317A1B498003295B6 /* TextDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 717412A117A1B498003295B6 /* TextDataViewController.xib */; };
+		717412A717A1B4A7003295B6 /* LongTextDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717412A517A1B4A6003295B6 /* LongTextDataViewController.m */; };
+		717412A817A1B4A7003295B6 /* LongTextDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 717412A617A1B4A7003295B6 /* LongTextDataViewController.xib */; };
+		717412AC17A1B4B1003295B6 /* EnumDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717412AA17A1B4B0003295B6 /* EnumDataViewController.m */; };
+		717412AD17A1B4B1003295B6 /* EnumDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 717412AB17A1B4B0003295B6 /* EnumDataViewController.xib */; };
+		717412B117A1B4BE003295B6 /* ExternalAPIDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717412AF17A1B4BD003295B6 /* ExternalAPIDataViewController.m */; };
+		717412B217A1B4BE003295B6 /* ExternalAPIDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 717412B017A1B4BE003295B6 /* ExternalAPIDataViewController.xib */; };
+		717412B617A1B4D2003295B6 /* NumberJudgementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717412B417A1B4D2003295B6 /* NumberJudgementViewController.m */; };
+		717412B717A1B4D2003295B6 /* NumberJudgementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 717412B517A1B4D2003295B6 /* NumberJudgementViewController.xib */; };
+		717412BB17A1B4DE003295B6 /* BooleanJudgementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717412B917A1B4DE003295B6 /* BooleanJudgementViewController.m */; };
+		717412BC17A1B4DE003295B6 /* BooleanJudgementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 717412BA17A1B4DE003295B6 /* BooleanJudgementViewController.xib */; };
+		717412C017A1B4E6003295B6 /* TextJudgementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717412BE17A1B4E6003295B6 /* TextJudgementViewController.m */; };
+		717412C117A1B4E6003295B6 /* TextJudgementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 717412BF17A1B4E6003295B6 /* TextJudgementViewController.xib */; };
+		717412C517A1B4F1003295B6 /* LongTextJudgementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717412C317A1B4F1003295B6 /* LongTextJudgementViewController.m */; };
+		717412C617A1B4F1003295B6 /* LongTextJudgementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 717412C417A1B4F1003295B6 /* LongTextJudgementViewController.xib */; };
 		718AACFD179463B500AFE6DB /* ObservationBooleanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AACFB179463B500AFE6DB /* ObservationBooleanViewController.m */; };
 		718AACFE179463B500AFE6DB /* ObservationBooleanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AACFC179463B500AFE6DB /* ObservationBooleanViewController.xib */; };
 		718AAD071794666200AFE6DB /* SwitchNoBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD031794666200AFE6DB /* SwitchNoBig.png */; };
@@ -136,6 +162,45 @@
 		7174127617A19CDD003295B6 /* ObservationContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationContainerViewController.h; sourceTree = "<group>"; };
 		7174127717A19CDD003295B6 /* ObservationContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationContainerViewController.m; sourceTree = "<group>"; };
 		7174127817A19CDD003295B6 /* ObservationContainerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationContainerViewController.xib; sourceTree = "<group>"; };
+		7174128617A1B3CA003295B6 /* PhotoDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDataViewController.h; sourceTree = "<group>"; };
+		7174128717A1B3CA003295B6 /* PhotoDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDataViewController.m; sourceTree = "<group>"; };
+		7174128817A1B3CA003295B6 /* PhotoDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoDataViewController.xib; sourceTree = "<group>"; };
+		7174128B17A1B462003295B6 /* VideoDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDataViewController.h; sourceTree = "<group>"; };
+		7174128C17A1B462003295B6 /* VideoDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoDataViewController.m; sourceTree = "<group>"; };
+		7174128D17A1B462003295B6 /* VideoDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoDataViewController.xib; sourceTree = "<group>"; };
+		7174129017A1B470003295B6 /* AudioDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDataViewController.h; sourceTree = "<group>"; };
+		7174129117A1B470003295B6 /* AudioDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioDataViewController.m; sourceTree = "<group>"; };
+		7174129217A1B470003295B6 /* AudioDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioDataViewController.xib; sourceTree = "<group>"; };
+		7174129517A1B47F003295B6 /* NumberDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberDataViewController.h; sourceTree = "<group>"; };
+		7174129617A1B47F003295B6 /* NumberDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberDataViewController.m; sourceTree = "<group>"; };
+		7174129717A1B47F003295B6 /* NumberDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumberDataViewController.xib; sourceTree = "<group>"; };
+		7174129A17A1B48D003295B6 /* BooleanDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooleanDataViewController.h; sourceTree = "<group>"; };
+		7174129B17A1B48D003295B6 /* BooleanDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooleanDataViewController.m; sourceTree = "<group>"; };
+		7174129C17A1B48D003295B6 /* BooleanDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BooleanDataViewController.xib; sourceTree = "<group>"; };
+		7174129F17A1B498003295B6 /* TextDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextDataViewController.h; sourceTree = "<group>"; };
+		717412A017A1B498003295B6 /* TextDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextDataViewController.m; sourceTree = "<group>"; };
+		717412A117A1B498003295B6 /* TextDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextDataViewController.xib; sourceTree = "<group>"; };
+		717412A417A1B4A6003295B6 /* LongTextDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongTextDataViewController.h; sourceTree = "<group>"; };
+		717412A517A1B4A6003295B6 /* LongTextDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LongTextDataViewController.m; sourceTree = "<group>"; };
+		717412A617A1B4A7003295B6 /* LongTextDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LongTextDataViewController.xib; sourceTree = "<group>"; };
+		717412A917A1B4B0003295B6 /* EnumDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnumDataViewController.h; sourceTree = "<group>"; };
+		717412AA17A1B4B0003295B6 /* EnumDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnumDataViewController.m; sourceTree = "<group>"; };
+		717412AB17A1B4B0003295B6 /* EnumDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnumDataViewController.xib; sourceTree = "<group>"; };
+		717412AE17A1B4BD003295B6 /* ExternalAPIDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExternalAPIDataViewController.h; sourceTree = "<group>"; };
+		717412AF17A1B4BD003295B6 /* ExternalAPIDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExternalAPIDataViewController.m; sourceTree = "<group>"; };
+		717412B017A1B4BE003295B6 /* ExternalAPIDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExternalAPIDataViewController.xib; sourceTree = "<group>"; };
+		717412B317A1B4D2003295B6 /* NumberJudgementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberJudgementViewController.h; sourceTree = "<group>"; };
+		717412B417A1B4D2003295B6 /* NumberJudgementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberJudgementViewController.m; sourceTree = "<group>"; };
+		717412B517A1B4D2003295B6 /* NumberJudgementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumberJudgementViewController.xib; sourceTree = "<group>"; };
+		717412B817A1B4DE003295B6 /* BooleanJudgementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooleanJudgementViewController.h; sourceTree = "<group>"; };
+		717412B917A1B4DE003295B6 /* BooleanJudgementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooleanJudgementViewController.m; sourceTree = "<group>"; };
+		717412BA17A1B4DE003295B6 /* BooleanJudgementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BooleanJudgementViewController.xib; sourceTree = "<group>"; };
+		717412BD17A1B4E6003295B6 /* TextJudgementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextJudgementViewController.h; sourceTree = "<group>"; };
+		717412BE17A1B4E6003295B6 /* TextJudgementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextJudgementViewController.m; sourceTree = "<group>"; };
+		717412BF17A1B4E6003295B6 /* TextJudgementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextJudgementViewController.xib; sourceTree = "<group>"; };
+		717412C217A1B4F1003295B6 /* LongTextJudgementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongTextJudgementViewController.h; sourceTree = "<group>"; };
+		717412C317A1B4F1003295B6 /* LongTextJudgementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LongTextJudgementViewController.m; sourceTree = "<group>"; };
+		717412C417A1B4F1003295B6 /* LongTextJudgementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LongTextJudgementViewController.xib; sourceTree = "<group>"; };
 		718AACFA179463B500AFE6DB /* ObservationBooleanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationBooleanViewController.h; sourceTree = "<group>"; };
 		718AACFB179463B500AFE6DB /* ObservationBooleanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationBooleanViewController.m; sourceTree = "<group>"; };
 		718AACFC179463B500AFE6DB /* ObservationBooleanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationBooleanViewController.xib; sourceTree = "<group>"; };
@@ -424,6 +489,7 @@
 				718AAD021794666200AFE6DB /* Assets */,
 				718AAD291794773000AFE6DB /* InterpretationViewControllers */,
 				718AAD00179463F200AFE6DB /* ObservationViewControllers */,
+				7174127B17A1B0E0003295B6 /* UIViewControllers */,
 				AAAC4F59178F33D9001AB1D8 /* Incremental Store Models */,
 				AAAC4F3A178F1767001AB1D8 /* Supporting Files */,
 			);
@@ -540,6 +606,19 @@
 				7166E25D179F25B3009FFC6E /* 60-xRED.png in Resources */,
 				5B98AFC017A08CA900678C36 /* examplePlantData.tsv in Resources */,
 				7174127A17A19CDE003295B6 /* ObservationContainerViewController.xib in Resources */,
+				7174128A17A1B3CA003295B6 /* PhotoDataViewController.xib in Resources */,
+				7174128F17A1B462003295B6 /* VideoDataViewController.xib in Resources */,
+				7174129417A1B470003295B6 /* AudioDataViewController.xib in Resources */,
+				7174129917A1B47F003295B6 /* NumberDataViewController.xib in Resources */,
+				7174129E17A1B48D003295B6 /* BooleanDataViewController.xib in Resources */,
+				717412A317A1B498003295B6 /* TextDataViewController.xib in Resources */,
+				717412A817A1B4A7003295B6 /* LongTextDataViewController.xib in Resources */,
+				717412AD17A1B4B1003295B6 /* EnumDataViewController.xib in Resources */,
+				717412B217A1B4BE003295B6 /* ExternalAPIDataViewController.xib in Resources */,
+				717412B717A1B4D2003295B6 /* NumberJudgementViewController.xib in Resources */,
+				717412BC17A1B4DE003295B6 /* BooleanJudgementViewController.xib in Resources */,
+				717412C117A1B4E6003295B6 /* TextJudgementViewController.xib in Resources */,
+				717412C617A1B4F1003295B6 /* LongTextJudgementViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
