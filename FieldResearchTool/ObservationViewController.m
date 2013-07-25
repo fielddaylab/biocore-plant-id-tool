@@ -24,8 +24,8 @@
 #import "ObservationDataType.h"
 
 @interface ObservationViewController (){
-    NSArray *projectComponents;
-    NSArray *projectIdentifications;
+    NSMutableArray *projectComponents;
+    NSMutableArray *projectIdentifications;
     
     NSMutableArray *savedComponents;
     int savedCount;
@@ -47,8 +47,8 @@
     savedCount ++;
 
     [savedComponents insertObject:projectComponent atIndex:[savedComponents count]];
+    [projectComponents removeObject:projectComponent];
     
-    NSLog(@"EAEAAEAAEAE");
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -68,7 +68,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    
+    [table reloadData];
 }
 
 
@@ -111,9 +111,9 @@
         case 0:
             return 1;
         case 1:
-            return [savedComponents count];//savedCount;
+            return [savedComponents count];
         case 2:
-            return [projectComponents count] - [savedComponents count];//savedCount;
+            return [projectComponents count] - [savedComponents count];
         case 3:
             return 4;
         default:
@@ -142,7 +142,6 @@
         case 1:{
             com = [savedComponents objectAtIndex:indexPath.row];
 
-            //exception >:/
             if(com.wasObserved){
                 cell.accessoryType= UITableViewCellAccessoryCheckmark;
                 
@@ -150,7 +149,7 @@
                 
                 imgView.image = [UIImage imageNamed:@"19-circle-checkGREEN.png"];
                 
-                cell.imageView.image = imgView.image;
+                //cell.imageView.image = imgView.image;
                 
                 
                 cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
@@ -166,7 +165,7 @@
             }
         }break;
         case 3:{
-            
+          
             cell.accessoryType= UITableViewCellAccessoryCheckmark;
             
             if(indexPath.row == 0){
@@ -206,66 +205,10 @@
         }
     }
     else if(indexPath.section == 2){
-        ProjectComponent *projectComponent = [projectComponents objectAtIndex:indexPath.row];
-        UIViewController *viewControllerToPush;
         
-        ObservationContainerViewController *viewControllerToPushB;
-        
-        BOOL pushViewController = YES;
-        switch ([projectComponent.observationDataType intValue]) {
-            case DATA_PHOTO:{
-                ObservationContainerViewController *photoViewController = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];
-                photoViewController.projectComponent = projectComponent;
-                viewControllerToPushB = photoViewController;
-                //pushViewController = NO;
-            }
-                break;
-            case DATA_AUDIO:{
-                ObservationAudioViewController *audioViewController = [[ObservationAudioViewController alloc]initWithNibName:@"ObservationAudioViewController" bundle:nil];
-                audioViewController.projectComponent = projectComponent;
-                viewControllerToPush = audioViewController;
-            }
-                break;
-            case DATA_TEXT:{
-                ObservationTextViewController *textViewController = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];
-                textViewController.projectComponent = projectComponent;
-                viewControllerToPush = textViewController;
-            }
-                break;
-            case DATA_LONG_TEXT:{
-                ObservationTextViewController *textViewController = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];
-                textViewController.projectComponent = projectComponent;
-                viewControllerToPush = textViewController;
-            }
-                break;
-            case DATA_NUMBER:{
-                ObservationNumberViewController *numberViewController = [[ObservationNumberViewController alloc]initWithNibName:@"ObservationNumberViewController" bundle:nil];
-                numberViewController.projectComponent = projectComponent;
-                viewControllerToPush = numberViewController;
-            }
-                break;
-            case DATA_BOOLEAN:{
-                ObservationBooleanViewController *boolViewController = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
-                boolViewController.projectComponent = projectComponent;
-                viewControllerToPush = boolViewController;
-            }
-                break;
-            case DATA_VIDEO:
-                viewControllerToPush = [[ObservationVideoViewController alloc]initWithNibName:@"ObservationVideoViewController" bundle:nil];
-                break;
-            default:
-                NSLog(@"Pushing on Bool view controller as default");
-                viewControllerToPush = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
-                break;
-        }
-        if(pushViewController){
-            
-            viewControllerToPushB.delegate = self;
-            [self.navigationController pushViewController:viewControllerToPushB animated:YES];
-        }
-        else{
-            NSLog(@"Not pushing view controller because it will CRASH on simulator");
-        }
+        ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];;
+
+        [self.navigationController pushViewController:containerView animated:YES];
     }
     else if (indexPath.section == 3){
         //metadata
@@ -283,12 +226,12 @@
 #pragma mark - Asynchronous responses
 
 -(void)projectComponentsResponseReady{
-    projectComponents = [AppModel sharedAppModel].currentProjectComponents;
+    projectComponents = [NSMutableArray arrayWithArray:[AppModel sharedAppModel].currentProjectComponents];
     [self.table reloadData];
 }
 
 -(void)projectIdentificationsResponseReady{
-    projectIdentifications = [AppModel sharedAppModel].currentProjectIdentifications;
+    projectIdentifications = [NSMutableArray arrayWithArray:[AppModel sharedAppModel].currentProjectIdentifications];
     [self.table reloadData];
 }
 
