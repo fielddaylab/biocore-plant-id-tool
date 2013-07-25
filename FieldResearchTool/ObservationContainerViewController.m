@@ -11,12 +11,32 @@
 #import "ProjectComponentPossibility.h"
 
 
-@interface ObservationContainerViewController ()
+@interface ObservationContainerViewController (){
+    float lulz;
+}
 
 
 @end
 
 @implementation ObservationContainerViewController
+@synthesize projectComponent;
+@synthesize delegate;
+
+- (void)saveObservationData:(id)sender {
+    // Our delegate method is optional, so we should
+    // check that the delegate implements it
+    if ([self.delegate respondsToSelector:@selector(observationContainerViewController:didChooseValue:)]) {
+        [self.delegate observationContainerViewController:self didChooseValue:lulz];
+        NSLog(@"In the IF");
+
+    }
+    
+    NSLog(@"SHOULD BE SAVING SOMEWHERE ELSE - NEED TO DO");
+    [self.navigationController popViewControllerAnimated:YES];
+
+}
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -24,6 +44,7 @@
     if (self) {
         // Custom initialization
         self.title = @"New Obs";
+        lulz = 3;
         
     }
     return self;
@@ -33,17 +54,12 @@
 {
     [super viewDidLoad];
     
-    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData)]];
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData:)]];
     
     NSLog(@"IN CONTAINER");
     
 }
-- (void)saveObservationData{
-    NSLog(@"SHOULD BE SAVING SOMEWHERE ELSE - NEED TO DO");
-    [self.navigationController popViewControllerAnimated:YES];
 
-    
-}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

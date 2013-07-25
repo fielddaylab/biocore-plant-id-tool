@@ -9,11 +9,21 @@
 #import <UIKit/UIKit.h>
 #import "ProjectComponent.h"
 
+@protocol ObservationContainerViewControllerDelegate;
 
-@interface ObservationContainerViewController : UIViewController {
-}
+@interface ObservationContainerViewController : UIViewController
 
 @property (strong, nonatomic) ProjectComponent *projectComponent;
 
+@property (nonatomic, weak) id<ObservationContainerViewControllerDelegate> delegate;
+
+- (void)saveObservationData:(id)sender;
+
+@end
+
+@protocol ObservationContainerViewControllerDelegate <NSObject>
+
+- (void)observationContainerViewController:(ObservationContainerViewController*)viewController
+             didChooseValue:(float)value;
 
 @end

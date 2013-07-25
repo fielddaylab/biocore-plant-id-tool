@@ -23,8 +23,6 @@
 #import "UserObservationComponentData.h"
 #import "Media.h"
 
-#import "ObservationContainerViewController.h"
-
 @interface ObservationViewController (){
     NSArray *projectComponents;
     NSArray *projectIdentifications;
@@ -38,7 +36,16 @@
 
 @synthesize table;
 
-
+// Implement the delegate methods for ChildViewControllerDelegate
+- (void)observationContainerViewController:(ObservationContainerViewController *)viewController didChooseValue:(float)value {
+    
+    // Do something with value...
+    
+    // ...then dismiss the child view controller
+    savedCount ++;
+    NSLog(@"EAEAAEAAEAE");
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -65,9 +72,7 @@
 {
     //Using only for testing
     //[[AppModel sharedAppModel] getUserObservationComponentsDataWithHandler:@selector(printTest:) target:self];
-    
-    
-    
+    [table reloadData];
 }
 
 
@@ -204,15 +209,18 @@
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
     }
-    else if(indexPath.section == 2){
+    else if(indexPath.section == 2){        
         ProjectComponent *projectComponent = [projectComponents objectAtIndex:indexPath.row];
         UIViewController *viewControllerToPush;
+        
+        ObservationContainerViewController *viewControllerToPushB;
+
         BOOL pushViewController = YES;
         switch ([projectComponent.observationType intValue]) {
             case PHOTO:{
                 ObservationContainerViewController *photoViewController = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];
                 photoViewController.projectComponent = projectComponent;
-                viewControllerToPush = photoViewController;
+                viewControllerToPushB = photoViewController;
                 //pushViewController = NO;
             }
                 break;
@@ -255,7 +263,9 @@
                 break;
         }
         if(pushViewController){
-            [self.navigationController pushViewController:viewControllerToPush animated:YES];
+
+            viewControllerToPushB.delegate = self;
+            [self.navigationController pushViewController:viewControllerToPushB animated:YES];
         }
         else{
             NSLog(@"Not pushing view controller because it will CRASH on simulator");
