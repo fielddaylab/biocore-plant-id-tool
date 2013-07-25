@@ -195,6 +195,9 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if(indexPath.section == 1){
+        
+        
+        
         //saved filter toggler
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         if (cell.accessoryType == UITableViewCellAccessoryCheckmark){
