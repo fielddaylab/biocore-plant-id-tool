@@ -11,7 +11,7 @@
 
 @protocol ObservationContainerViewControllerDelegate <NSObject>
 
-- (void)observationContainerViewController:(ProjectComponent *)projectComponent;
+- (void)dismissContainerViewAndSetProjectComponentObserved:(ProjectComponent *)projectComponent;
 
 @end
 

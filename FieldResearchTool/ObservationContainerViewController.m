@@ -23,12 +23,6 @@
 
 - (void)saveObservationData:(id)sender {
 
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-    //[attributes setValue:[NSNumber numberWithInt:[textField.text intValue]] forKey:@"dataInt"];
-    [attributes setValue:[NSDate date] forKey:@"created"];
-    [attributes setValue:[NSDate date] forKey:@"updated"];
-    
-    //[[AppModel sharedAppModel] createNewUserObservationComponentDataWithProjectComponent:projectComponent withAttributes:attributes];
     projectComponent.wasObserved = [NSNumber numberWithBool:YES];
     [[AppModel sharedAppModel] save];
     
@@ -38,10 +32,8 @@
     
     // Our delegate method is optional, so we should
     // check that the delegate implements it
-    if ([self.delegate respondsToSelector:@selector(observationContainerViewController:)]) {
-        [self.delegate observationContainerViewController:projectComponent];
-        NSLog(@"In the IF");
-        
+    if ([self.delegate respondsToSelector:@selector(dismissContainerViewAndSetProjectComponentObserved:)]) {
+        [self.delegate dismissContainerViewAndSetProjectComponentObserved:projectComponent];
     }
 }
 

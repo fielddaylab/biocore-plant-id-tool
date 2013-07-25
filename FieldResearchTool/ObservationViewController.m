@@ -39,7 +39,7 @@
 @synthesize table;
 
 // Implement the delegate methods for ChildViewControllerDelegate
-- (void)observationContainerViewController:(ProjectComponent *)projectComponent{
+- (void)dismissContainerViewAndSetProjectComponentObserved:(ProjectComponent *)projectComponent{
     
     // Do something with value...
     
@@ -206,8 +206,10 @@
     }
     else if(indexPath.section == 2){
         
-        ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];;
-
+        ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];
+        ProjectComponent *projectComponent = [projectComponents objectAtIndex:indexPath.row];
+        containerView.projectComponent = projectComponent;
+        containerView.delegate = self;
         [self.navigationController pushViewController:containerView animated:YES];
     }
     else if (indexPath.section == 3){
