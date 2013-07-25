@@ -77,6 +77,14 @@
     [[AppModel sharedAppModel]getAllProjectComponentsWithHandler:@selector(handleFetchAllProjectComponentsForProjectName:) target:[AppModel sharedAppModel]];
     [[AppModel sharedAppModel]getAllProjectIdentificationsWithHandler:@selector(handleFetchProjectIdentifications:) target:[AppModel sharedAppModel]];
     
+    //get the location here
+//    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+//    [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"latitude"];
+//    [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"longitude"];
+//    [attributes setValue:[NSDate date] forKey:@"created"];
+//    [attributes setValue:[NSDate date] forKey:@"updated"];
+//    [[AppModel sharedAppModel] createNewUserObservationWithAttributes:attributes];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -147,19 +155,7 @@
             com = (ProjectComponent *)[projectComponents objectAtIndex:indexPath.row];
             cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
         }break;
-        case 2:{
-          
-            UIButton *downloadButton = nil;
-            //this is the custom cell i have created one class for this in that i am place the string titlelabel.
-                downloadButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            float wizardry = ([UIScreen mainScreen].bounds.size.width - cell.frame.size.width) + 8; // 8 looks nice on iphone sim.
-            float magic = cell.frame.size.height/4; // 8 looks nice on iphone sim.
-                downloadButton.frame = CGRectMake(wizardry, 8, 28, 28);
-                [downloadButton setImage:[UIImage imageNamed:@"19-circle-checkGREEN.png"] forState:UIControlStateNormal];
-                [downloadButton addTarget:self action:@selector(datLog) forControlEvents:UIControlEventTouchUpInside];
-                downloadButton.userInteractionEnabled = YES;
-                [cell.contentView addSubview:downloadButton];
-
+        case 3:{
             
             cell.accessoryType= UITableViewCellAccessoryCheckmark;
 
