@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProjectComponent.h"
 
 @interface NumberDataViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextView *componentPossibilityDescription;
+- (IBAction)changeUnit:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *changeUnitButton;
+- (IBAction)killKeyboard:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+
+@property ProjectComponent *projectComponent;
 
 @end

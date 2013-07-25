@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProjectComponent.h"
 
 @interface BooleanDataViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UITextView *componentPossibilityDescription;
+@property (strong, nonatomic) ProjectComponent *projectComponent;
+@property (strong, nonatomic) IBOutlet UISwitch *boolSwitch;
 
 @end

@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <AVFoundation/AVFoundation.h>
+#import "ProjectComponent.h"
 
-@interface PhotoDataViewController : UIViewController
+@interface PhotoDataViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (nonatomic, retain) AVCaptureStillImageOutput *stillImageOutput;
+@property (nonatomic, strong) ProjectComponent *projectComponent;
 
 @end

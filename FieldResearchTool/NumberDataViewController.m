@@ -7,12 +7,20 @@
 //
 
 #import "NumberDataViewController.h"
+#import "AppModel.h"
 
-@interface NumberDataViewController ()
+@interface NumberDataViewController (){
+    int unitCount;
+}
 
 @end
 
 @implementation NumberDataViewController
+
+@synthesize componentPossibilityDescription;
+@synthesize changeUnitButton;
+@synthesize projectComponent;
+@synthesize textField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,13 +34,41 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData)]];
+    [changeUnitButton setTitle:@"cm" forState:UIControlStateNormal];
+    unitCount = 0;
+    componentPossibilityDescription.text = projectComponent.title;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)changeUnit:(id)sender {
+    unitCount ++;
+    if(unitCount % 2 == 0){
+        [changeUnitButton setTitle:@"cm" forState:UIControlStateNormal];
+    }
+    else if(unitCount % 2 == 1){
+        [changeUnitButton setTitle:@"inches" forState:UIControlStateNormal];
+    }
+}
+- (IBAction)killKeyboard:(id)sender {
+    [self.view endEditing:YES];
+}
+
+#pragma mark save observation data
+-(void)saveObservationData{
+    //    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    //    [attributes setValue:[NSNumber numberWithInt:[textField.text intValue]] forKey:@"dataInt"];
+    //    [attributes setValue:[NSDate date] forKey:@"created"];
+    //    [attributes setValue:[NSDate date] forKey:@"updated"];
+    //
+    //    [[AppModel sharedAppModel] createNewUserObservationComponentDataWithProjectComponent:projectComponent withAttributes:attributes];
+    //    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
+    //    [[AppModel sharedAppModel] save];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

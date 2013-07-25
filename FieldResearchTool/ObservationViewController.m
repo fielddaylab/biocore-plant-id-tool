@@ -23,6 +23,12 @@
 #import "Media.h"
 #import "ObservationDataType.h"
 
+#import "PhotoDataViewController.h"
+#import "AudioDataViewController.h"
+#import "VideoDataViewController.h"
+#import "NumberDataViewController.h"
+#import "BooleanDataViewController.h"
+
 @interface ObservationViewController (){
     NSMutableArray *projectComponents;
     NSMutableArray *projectIdentifications;
@@ -210,6 +216,7 @@
     else if(indexPath.section == 2){
         
         ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];
+        
         ProjectComponent *projectComponent = [projectComponents objectAtIndex:indexPath.row];
         containerView.projectComponent = projectComponent;
         containerView.delegate = self;
@@ -217,13 +224,21 @@
     }
     else if (indexPath.section == 3){
         //metadata
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        if (cell.accessoryType == UITableViewCellAccessoryCheckmark){
-            cell.accessoryType = UITableViewCellAccessoryNone;
-        }
-        else{
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        }
+//        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//        if (cell.accessoryType == UITableViewCellAccessoryCheckmark){
+//            cell.accessoryType = UITableViewCellAccessoryNone;
+//        }
+//        else{
+//            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//        }
+        
+        
+        BooleanDataViewController *photoDataView = [[BooleanDataViewController alloc]initWithNibName:@"BooleanDataViewController" bundle:nil];
+        ProjectComponent *projectComponent = [projectComponents objectAtIndex:indexPath.row];
+        photoDataView.projectComponent = projectComponent;
+        [self.navigationController pushViewController:photoDataView animated:YES];
+        
+        
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }

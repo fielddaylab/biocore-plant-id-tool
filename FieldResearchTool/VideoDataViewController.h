@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import "ProjectComponent.h"
 
-@interface VideoDataViewController : UIViewController
+@interface VideoDataViewController : UIViewController<UINavigationControllerDelegate>
+
+@property (copy,   nonatomic) NSURL *movieURL;
+@property (strong, nonatomic) MPMoviePlayerController *movieController;
+@property (strong, nonatomic) ProjectComponent *projectComponent;
 
 @end
