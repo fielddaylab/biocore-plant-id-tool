@@ -24,8 +24,8 @@
 #import "ObservationDataType.h"
 
 @interface ObservationViewController (){
-    NSArray *projectComponents;
-    NSArray *projectIdentifications;
+    NSMutableArray *projectComponents;
+    NSMutableArray *projectIdentifications;
     
     NSMutableArray *savedComponents;
     int savedCount;
@@ -47,6 +47,7 @@
     savedCount ++;
 
     [savedComponents insertObject:projectComponent atIndex:[savedComponents count]];
+    [projectComponents removeObject:projectComponent];
     
     NSLog(@"EAEAAEAAEAE");
     [self.navigationController popViewControllerAnimated:YES];
@@ -68,7 +69,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    
+    [table reloadData];
+
 }
 
 
@@ -196,6 +198,9 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if(indexPath.section == 1){
+        
+        
+        
         //saved filter toggler
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         if (cell.accessoryType == UITableViewCellAccessoryCheckmark){
@@ -283,12 +288,12 @@
 #pragma mark - Asynchronous responses
 
 -(void)projectComponentsResponseReady{
-    projectComponents = [AppModel sharedAppModel].currentProjectComponents;
+    projectComponents = [NSMutableArray arrayWithArray:[AppModel sharedAppModel].currentProjectComponents];
     [self.table reloadData];
 }
 
 -(void)projectIdentificationsResponseReady{
-    projectIdentifications = [AppModel sharedAppModel].currentProjectIdentifications;
+    projectIdentifications = [NSMutableArray arrayWithArray:[AppModel sharedAppModel].currentProjectIdentifications];
     [self.table reloadData];
 }
 
