@@ -34,6 +34,8 @@
 		7166E25B179F25B3009FFC6E /* 19-circle-checkGREEN.png in Resources */ = {isa = PBXBuildFile; fileRef = 7166E257179F25B3009FFC6E /* 19-circle-checkGREEN.png */; };
 		7166E25C179F25B3009FFC6E /* 37-circle-xRED.png in Resources */ = {isa = PBXBuildFile; fileRef = 7166E258179F25B3009FFC6E /* 37-circle-xRED.png */; };
 		7166E25D179F25B3009FFC6E /* 60-xRED.png in Resources */ = {isa = PBXBuildFile; fileRef = 7166E259179F25B3009FFC6E /* 60-xRED.png */; };
+		7174127917A19CDE003295B6 /* ObservationContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174127717A19CDD003295B6 /* ObservationContainerViewController.m */; };
+		7174127A17A19CDE003295B6 /* ObservationContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7174127817A19CDD003295B6 /* ObservationContainerViewController.xib */; };
 		718AACFD179463B500AFE6DB /* ObservationBooleanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AACFB179463B500AFE6DB /* ObservationBooleanViewController.m */; };
 		718AACFE179463B500AFE6DB /* ObservationBooleanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AACFC179463B500AFE6DB /* ObservationBooleanViewController.xib */; };
 		718AAD071794666200AFE6DB /* SwitchNoBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD031794666200AFE6DB /* SwitchNoBig.png */; };
@@ -50,8 +52,6 @@
 		718AAD231794771300AFE6DB /* InterpretationChoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD211794771300AFE6DB /* InterpretationChoiceViewController.xib */; };
 		718AAD271794772300AFE6DB /* InterpretationSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AAD251794772300AFE6DB /* InterpretationSplitViewController.m */; };
 		718AAD281794772300AFE6DB /* InterpretationSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD261794772300AFE6DB /* InterpretationSplitViewController.xib */; };
-		719E098417A0679E009D848D /* ObservationContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 719E098217A0679E009D848D /* ObservationContainerViewController.m */; };
-		719E098517A0679E009D848D /* ObservationContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 719E098317A0679E009D848D /* ObservationContainerViewController.xib */; };
 		71FE1CD91798617A00EB5A04 /* ObservationAudioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FE1CD71798617A00EB5A04 /* ObservationAudioViewController.m */; };
 		71FE1CDA1798617A00EB5A04 /* ObservationAudioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71FE1CD81798617A00EB5A04 /* ObservationAudioViewController.xib */; };
 		71FF69BE1794819300E2B411 /* FieldResearchNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF69A41794819200E2B411 /* FieldResearchNavigationController.m */; };
@@ -130,6 +130,9 @@
 		7166E257179F25B3009FFC6E /* 19-circle-checkGREEN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "19-circle-checkGREEN.png"; sourceTree = "<group>"; };
 		7166E258179F25B3009FFC6E /* 37-circle-xRED.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37-circle-xRED.png"; sourceTree = "<group>"; };
 		7166E259179F25B3009FFC6E /* 60-xRED.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "60-xRED.png"; sourceTree = "<group>"; };
+		7174127617A19CDD003295B6 /* ObservationContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationContainerViewController.h; sourceTree = "<group>"; };
+		7174127717A19CDD003295B6 /* ObservationContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationContainerViewController.m; sourceTree = "<group>"; };
+		7174127817A19CDD003295B6 /* ObservationContainerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationContainerViewController.xib; sourceTree = "<group>"; };
 		718AACFA179463B500AFE6DB /* ObservationBooleanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationBooleanViewController.h; sourceTree = "<group>"; };
 		718AACFB179463B500AFE6DB /* ObservationBooleanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationBooleanViewController.m; sourceTree = "<group>"; };
 		718AACFC179463B500AFE6DB /* ObservationBooleanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationBooleanViewController.xib; sourceTree = "<group>"; };
@@ -152,9 +155,6 @@
 		718AAD241794772300AFE6DB /* InterpretationSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterpretationSplitViewController.h; sourceTree = "<group>"; };
 		718AAD251794772300AFE6DB /* InterpretationSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterpretationSplitViewController.m; sourceTree = "<group>"; };
 		718AAD261794772300AFE6DB /* InterpretationSplitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InterpretationSplitViewController.xib; sourceTree = "<group>"; };
-		719E098117A0679E009D848D /* ObservationContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationContainerViewController.h; sourceTree = "<group>"; };
-		719E098217A0679E009D848D /* ObservationContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationContainerViewController.m; sourceTree = "<group>"; };
-		719E098317A0679E009D848D /* ObservationContainerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationContainerViewController.xib; sourceTree = "<group>"; };
 		71FE1CD61798617A00EB5A04 /* ObservationAudioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationAudioViewController.h; sourceTree = "<group>"; };
 		71FE1CD71798617A00EB5A04 /* ObservationAudioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationAudioViewController.m; sourceTree = "<group>"; };
 		71FE1CD81798617A00EB5A04 /* ObservationAudioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationAudioViewController.xib; sourceTree = "<group>"; };
@@ -277,6 +277,9 @@
 		718AAD00179463F200AFE6DB /* ObservationViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7174127617A19CDD003295B6 /* ObservationContainerViewController.h */,
+				7174127717A19CDD003295B6 /* ObservationContainerViewController.m */,
+				7174127817A19CDD003295B6 /* ObservationContainerViewController.xib */,
 				71FE1CD61798617A00EB5A04 /* ObservationAudioViewController.h */,
 				71FE1CD71798617A00EB5A04 /* ObservationAudioViewController.m */,
 				71FE1CD81798617A00EB5A04 /* ObservationAudioViewController.xib */,
@@ -285,9 +288,6 @@
 				71FF69D61795BE6E00E2B411 /* ObservationPhotoViewController.xib */,
 				71FF69A71794819200E2B411 /* ObservationViewController.h */,
 				71FF69A81794819200E2B411 /* ObservationViewController.m */,
-				719E098117A0679E009D848D /* ObservationContainerViewController.h */,
-				719E098217A0679E009D848D /* ObservationContainerViewController.m */,
-				719E098317A0679E009D848D /* ObservationContainerViewController.xib */,
 				71FF69A91794819200E2B411 /* ObservationViewController.xib */,
 				718AAD0B1794761B00AFE6DB /* ObservationNumberViewController.h */,
 				718AAD0C1794761B00AFE6DB /* ObservationNumberViewController.m */,
@@ -511,6 +511,7 @@
 				7166E25D179F25B3009FFC6E /* 60-xRED.png in Resources */,
 				719E098517A0679E009D848D /* ObservationContainerViewController.xib in Resources */,
 				5B98AFC017A08CA900678C36 /* examplePlantData.tsv in Resources */,
+				7174127A17A19CDE003295B6 /* ObservationContainerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,6 +601,7 @@
 				5B98AFB217A07AB500678C36 /* UserObservationComponentData.m in Sources */,
 				5B98AFB817A07ACC00678C36 /* UserObservationComponentDataJudgement.m in Sources */,
 				5B98AFBE17A07ADC00678C36 /* UserObservationIdentification.m in Sources */,
+				7174127917A19CDE003295B6 /* ObservationContainerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,6 @@
 
 
 @interface ObservationContainerViewController (){
-    float lulz;
 }
 
 
@@ -23,17 +22,27 @@
 @synthesize delegate;
 
 - (void)saveObservationData:(id)sender {
-    // Our delegate method is optional, so we should
-    // check that the delegate implements it
-    if ([self.delegate respondsToSelector:@selector(observationContainerViewController:didChooseValue:)]) {
-        [self.delegate observationContainerViewController:self didChooseValue:lulz];
-        NSLog(@"In the IF");
 
-    }
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    //[attributes setValue:[NSNumber numberWithInt:[textField.text intValue]] forKey:@"dataInt"];
+    [attributes setValue:[NSDate date] forKey:@"created"];
+    [attributes setValue:[NSDate date] forKey:@"updated"];
+    
+    //[[AppModel sharedAppModel] createNewUserObservationComponentDataWithProjectComponent:projectComponent withAttributes:attributes];
+    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
+    [[AppModel sharedAppModel] save];
+    
     
     NSLog(@"SHOULD BE SAVING SOMEWHERE ELSE - NEED TO DO");
-    [self.navigationController popViewControllerAnimated:YES];
 
+    
+    // Our delegate method is optional, so we should
+    // check that the delegate implements it
+    if ([self.delegate respondsToSelector:@selector(observationContainerViewController:)]) {
+        [self.delegate observationContainerViewController:projectComponent];
+        NSLog(@"In the IF");
+        
+    }
 }
 
 
@@ -44,7 +53,6 @@
     if (self) {
         // Custom initialization
         self.title = @"New Obs";
-        lulz = 3;
         
     }
     return self;
