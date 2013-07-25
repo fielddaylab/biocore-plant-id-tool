@@ -264,21 +264,29 @@
                     ProjectComponentPossibility *projectComponentPossibility = (ProjectComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
                     projectComponentPossibility.created = [NSDate date];
                     projectComponentPossibility.updated = [NSDate date];
+                    projectComponentPossibility.projectComponent = projectComponent;
                     
-                    if(judgementType == JUDGEMENT_BOOLEAN){
-                        if([stringProjectComponentPossibility isEqualToString:@"yes"]){
-                            projectComponentPossibility.boolValue = [NSNumber numberWithBool:YES];
-                        }
-                        else{
-                            projectComponentPossibility.boolValue = [NSNumber numberWithBool:NO];
-                        }
-                    }
-                    else if(judgementType == JUDGEMENT_ENUMERATOR){
+                    if(judgementType == JUDGEMENT_ENUMERATOR){
                         projectComponentPossibility.enumValue = stringProjectComponentPossibility;
                     }
                     else{
-                        NSLog(@"Error parsing project possibilities. Something other than bool or enum is specified after the dash");
+                        NSLog(@"Error parsing project possibilities. Something other than enum is specified after the dash");
                     }
+                }
+            }
+            else{
+                if(judgementType == JUDGEMENT_BOOLEAN){
+                    ProjectComponentPossibility *projectComponentPossibilityYES = (ProjectComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
+                    projectComponentPossibilityYES.created = [NSDate date];
+                    projectComponentPossibilityYES.updated = [NSDate date];
+                    projectComponentPossibilityYES.projectComponent = projectComponent;
+                    projectComponentPossibilityYES.boolValue = [NSNumber numberWithBool:YES];
+                    
+                    ProjectComponentPossibility *projectComponentPossibilityNO = (ProjectComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
+                    projectComponentPossibilityNO.created = [NSDate date];
+                    projectComponentPossibilityNO.updated = [NSDate date];
+                    projectComponentPossibilityNO.projectComponent = projectComponent;
+                    projectComponentPossibilityNO.boolValue = [NSNumber numberWithBool:NO];
                 }
             }
         }
@@ -288,7 +296,99 @@
     }
     
     //read in the actual data
+    for(int i = 1; i < [lines count]; i++){
+        
+        NSArray *components = [lines[i] componentsSeparatedByString:@"\t"];
+        ProjectIdentification *identification = (ProjectIdentification *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentification" inManagedObjectContext:[self managedObjectContext]];
+        identification.authorCreated = [NSNumber numberWithBool:YES];
+        identification.created = [NSDate date];
+        identification.updated = [NSDate date];
+        identification.identificationDescription = components[1];
+        identification.title = components[0];
+        //add media here
+        identification.project = project;
+        
+        int numOfNonComponents = nonComponents;
+        for (int j = 0; j < [components count]; j++) {
+            
+            NSString *commaListOfComponentPossibilities = components[j];
+            if(j >= numOfNonComponents){
+                ProjectComponent *associatedProjectComponent = [projectComponents objectAtIndex:j-numOfNonComponents];
+                
+                if([commaListOfComponentPossibilities isEqualToString:@""]){
+                    //possibility was empty
+                    continue;
+                }
+                
+                NSArray *componentPossibilities = [commaListOfComponentPossibilities componentsSeparatedByString:@", "];
+                
+                
+                for(int k = 0; k < [componentPossibilities count]; k++){
+                    //create the possibilities for numbers and text
+//                    NSString *debugPossibility = componentPossibilities[k];
+//                    NSLog(@"Debug Possibility: %@", debugPossibility);
+                    ProjectComponentPossibility *componentPossibility;
+                    if(associatedProjectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_NUMBER] || associatedProjectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_TEXT] || associatedProjectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_LONG_TEXT]){
+                        
+                        componentPossibility = (ProjectComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
+                        componentPossibility.created = [NSDate date];
+                        componentPossibility.updated = [NSDate date];
+                        if(associatedProjectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_NUMBER]){
+                            if(k == 0){
+                                if([componentPossibilities count] != 2){
+                                    NSLog(@"Error parsing number, more than two numbers were provided");
+                                    continue;
+                                }
+                                NSString *number = componentPossibilities[0];
+                                NSString *stdDev = componentPossibilities[1];
+                                componentPossibility.number = [NSNumber numberWithInt:[number intValue]];
+                                componentPossibility.stdDev = [NSNumber numberWithInt:[stdDev intValue]];
+                            }
+                        }
+                        else if(associatedProjectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_TEXT]){
+                            componentPossibility.text = componentPossibilities[k];
+                        }
+                        else{
+                            componentPossibility.longText = componentPossibilities[k];
+                        }
+                    }
+                    else if(associatedProjectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_BOOLEAN]){
+                        NSString *yesRegex = @"\\s*(YES|yes)\\s*";
+                        if([self stringMatchesRegex:componentPossibilities[k] regex:yesRegex]){
+                            NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+                            [attributes setObject:[NSNumber numberWithBool:YES] forKey:@"boolValue"];
+                            [attributes setObject:associatedProjectComponent.title forKey:@"projectComponent.title"];
+                            componentPossibility = [self fetchEntities:@"ProjectComponentPossibility" withAttributes:attributes];
+                        }
+                        else{
+                            NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+                            [attributes setObject:[NSNumber numberWithBool:NO] forKey:@"boolValue"];
+                            [attributes setObject:associatedProjectComponent.title forKey:@"projectComponent.title"];
+                            componentPossibility = [self fetchEntities:@"ProjectComponentPossibility" withAttributes:attributes];
+                        }
+                    }
+                    else{
+                        NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+                        [attributes setObject:componentPossibilities[k] forKey:@"enumValue"];
+                        [attributes setObject:associatedProjectComponent.title forKey:@"projectComponent.title"];
+                        componentPossibility = [self fetchEntities:@"ProjectComponentPossibility" withAttributes:attributes];
+                    }
+                    
+                    ProjectIdentificationComponentPossibility *projectIdentificationComponentPossibility = (ProjectIdentificationComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
+                    projectIdentificationComponentPossibility.created = [NSDate date];
+                    projectIdentificationComponentPossibility.updated = [NSDate date];
+                    projectIdentificationComponentPossibility.projectComponentPossibility = componentPossibility;
+                    projectIdentificationComponentPossibility.projectIdentification = identification;
+                    
+                    //NSLog(@"Created Project Identification Component Possibility. Identification: %@ Component: %@", identification.title, associatedProjectComponent.title);
+                    
+                }
+            }
+        }
+        
+    }
     
+    [[AppModel sharedAppModel] save];
     
 }
 
