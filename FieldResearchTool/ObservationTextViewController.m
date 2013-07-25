@@ -49,14 +49,14 @@
 
 #pragma mark save observation data
 -(void)saveObservationData{
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-    [attributes setObject:[NSDate date] forKey:@"created"];
-    [attributes setObject:[NSDate date] forKey:@"updated"];
-    [attributes setObject:userInput.text forKey:@"dataText"];
-    
-    [[AppModel sharedAppModel] createNewUserObservationComponentDataWithProjectComponent:projectComponent withAttributes:attributes];
-    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
-    [[AppModel sharedAppModel] save];
+//    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+//    [attributes setObject:[NSDate date] forKey:@"created"];
+//    [attributes setObject:[NSDate date] forKey:@"updated"];
+//    [attributes setObject:userInput.text forKey:@"dataText"];
+//    
+//    [[AppModel sharedAppModel] createNewUserObservationComponentDataWithProjectComponent:projectComponent withAttributes:attributes];
+//    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
+//    [[AppModel sharedAppModel] save];
     [self.navigationController popViewControllerAnimated:YES];
 }
 @end

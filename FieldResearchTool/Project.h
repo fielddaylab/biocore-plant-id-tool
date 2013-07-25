@@ -2,47 +2,42 @@
 //  Project.h
 //  FieldResearchTool
 //
-//  Created by Justin Moeller on 7/23/13.
+//  Created by Justin Moeller on 7/24/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Media, ProjectComponent, ProjectIdentification, UserObservation;
+@class Media, ProjectComponent, ProjectIdentification, User;
 
 @interface Project : NSManagedObject
 
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * allowedInterpretations;
 @property (nonatomic, retain) NSDate * created;
-@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSDate * updated;
-@property (nonatomic, retain) NSSet *projectComponents;
 @property (nonatomic, retain) NSSet *projectIdentifications;
-@property (nonatomic, retain) NSSet *userObservations;
-@property (nonatomic, retain) NSSet *media;
+@property (nonatomic, retain) NSSet *projectComponents;
+@property (nonatomic, retain) NSSet *users;
+@property (nonatomic, retain) Media *media;
 @end
 
 @interface Project (CoreDataGeneratedAccessors)
-
-- (void)addProjectComponentsObject:(ProjectComponent *)value;
-- (void)removeProjectComponentsObject:(ProjectComponent *)value;
-- (void)addProjectComponents:(NSSet *)values;
-- (void)removeProjectComponents:(NSSet *)values;
 
 - (void)addProjectIdentificationsObject:(ProjectIdentification *)value;
 - (void)removeProjectIdentificationsObject:(ProjectIdentification *)value;
 - (void)addProjectIdentifications:(NSSet *)values;
 - (void)removeProjectIdentifications:(NSSet *)values;
 
-- (void)addUserObservationsObject:(UserObservation *)value;
-- (void)removeUserObservationsObject:(UserObservation *)value;
-- (void)addUserObservations:(NSSet *)values;
-- (void)removeUserObservations:(NSSet *)values;
+- (void)addProjectComponentsObject:(ProjectComponent *)value;
+- (void)removeProjectComponentsObject:(ProjectComponent *)value;
+- (void)addProjectComponents:(NSSet *)values;
+- (void)removeProjectComponents:(NSSet *)values;
 
-- (void)addMediaObject:(Media *)value;
-- (void)removeMediaObject:(Media *)value;
-- (void)addMedia:(NSSet *)values;
-- (void)removeMedia:(NSSet *)values;
+- (void)addUsersObject:(User *)value;
+- (void)removeUsersObject:(User *)value;
+- (void)addUsers:(NSSet *)values;
+- (void)removeUsers:(NSSet *)values;
 
 @end

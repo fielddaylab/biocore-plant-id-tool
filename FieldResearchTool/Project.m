@@ -2,7 +2,7 @@
 //  Project.m
 //  FieldResearchTool
 //
-//  Created by Justin Moeller on 7/23/13.
+//  Created by Justin Moeller on 7/24/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
@@ -10,18 +10,18 @@
 #import "Media.h"
 #import "ProjectComponent.h"
 #import "ProjectIdentification.h"
-#import "UserObservation.h"
+#import "User.h"
 
 
 @implementation Project
 
+@dynamic name;
 @dynamic allowedInterpretations;
 @dynamic created;
-@dynamic name;
 @dynamic updated;
-@dynamic projectComponents;
 @dynamic projectIdentifications;
-@dynamic userObservations;
+@dynamic projectComponents;
+@dynamic users;
 @dynamic media;
 
 @end

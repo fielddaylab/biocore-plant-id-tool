@@ -18,10 +18,10 @@
 #import "ProjectComponent.h"
 #import "Project.h"
 #import "AppModel.h"
-#import "ProjectComponentDataType.h"
 #import "UserObservation.h"
 #import "UserObservationComponentData.h"
 #import "Media.h"
+#import "ObservationDataType.h"
 
 @interface ObservationViewController (){
     NSArray *projectComponents;
@@ -66,18 +66,9 @@
     return self;
 }
 
-- (void)printTest:(NSArray *)userObservationComponents{
-    for(int i = 0; i<userObservationComponents.count; i++){
-        UserObservationComponentData *u = userObservationComponents[i];
-        NSLog(@"Blah: %@\n", u.dataInt);
-    }
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
-    //Using only for testing
-    //[[AppModel sharedAppModel] getUserObservationComponentsDataWithHandler:@selector(printTest:) target:self];
-    [table reloadData];
+    
 }
 
 
@@ -92,14 +83,14 @@
     [[AppModel sharedAppModel]getAllProjectComponentsWithHandler:@selector(handleFetchAllProjectComponentsForProjectName:) target:[AppModel sharedAppModel]];
     [[AppModel sharedAppModel]getAllProjectIdentificationsWithHandler:@selector(handleFetchProjectIdentifications:) target:[AppModel sharedAppModel]];
     
-    //get the location here
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-    [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"latitude"];
-    [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"longitude"];
-    [attributes setValue:[NSDate date] forKey:@"created"];
-    [attributes setValue:[NSDate date] forKey:@"updated"];
-    [[AppModel sharedAppModel] createNewUserObservationWithAttributes:attributes];
-    
+//    //get the location here
+//    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+//    [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"latitude"];
+//    [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"longitude"];
+//    [attributes setValue:[NSDate date] forKey:@"created"];
+//    [attributes setValue:[NSDate date] forKey:@"updated"];
+//    [[AppModel sharedAppModel] createNewUserObservationWithAttributes:attributes];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -175,7 +166,7 @@
             }
         }break;
         case 3:{
-            
+          
             cell.accessoryType= UITableViewCellAccessoryCheckmark;
             
             if(indexPath.row == 0){
@@ -196,10 +187,6 @@
             break;
     }
     return cell;
-}
-
-- (void) datLog{
-    NSLog(@"DAT LOG");
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -225,45 +212,45 @@
         ObservationContainerViewController *viewControllerToPushB;
         
         BOOL pushViewController = YES;
-        switch ([projectComponent.observationType intValue]) {
-            case PHOTO:{
+        switch ([projectComponent.observationDataType intValue]) {
+            case DATA_PHOTO:{
                 ObservationContainerViewController *photoViewController = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];
                 photoViewController.projectComponent = projectComponent;
                 viewControllerToPushB = photoViewController;
                 //pushViewController = NO;
             }
                 break;
-            case AUDIO:{
+            case DATA_AUDIO:{
                 ObservationAudioViewController *audioViewController = [[ObservationAudioViewController alloc]initWithNibName:@"ObservationAudioViewController" bundle:nil];
                 audioViewController.projectComponent = projectComponent;
                 viewControllerToPush = audioViewController;
             }
                 break;
-            case TEXT:{
+            case DATA_TEXT:{
                 ObservationTextViewController *textViewController = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];
                 textViewController.projectComponent = projectComponent;
                 viewControllerToPush = textViewController;
             }
                 break;
-            case LONG_TEXT:{
+            case DATA_LONG_TEXT:{
                 ObservationTextViewController *textViewController = [[ObservationTextViewController alloc]initWithNibName:@"ObservationTextViewController" bundle:nil];
                 textViewController.projectComponent = projectComponent;
                 viewControllerToPush = textViewController;
             }
                 break;
-            case NUMBER:{
+            case DATA_NUMBER:{
                 ObservationNumberViewController *numberViewController = [[ObservationNumberViewController alloc]initWithNibName:@"ObservationNumberViewController" bundle:nil];
                 numberViewController.projectComponent = projectComponent;
                 viewControllerToPush = numberViewController;
             }
                 break;
-            case BOOLEAN:{
+            case DATA_BOOLEAN:{
                 ObservationBooleanViewController *boolViewController = [[ObservationBooleanViewController alloc]initWithNibName:@"ObservationBooleanViewController" bundle:nil];
                 boolViewController.projectComponent = projectComponent;
                 viewControllerToPush = boolViewController;
             }
                 break;
-            case VIDEO:
+            case DATA_VIDEO:
                 viewControllerToPush = [[ObservationVideoViewController alloc]initWithNibName:@"ObservationVideoViewController" bundle:nil];
                 break;
             default:

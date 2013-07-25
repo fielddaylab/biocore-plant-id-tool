@@ -2,7 +2,7 @@
 //  ProjectIdentificationComponentPossibility.m
 //  FieldResearchTool
 //
-//  Created by Justin Moeller on 7/23/13.
+//  Created by Justin Moeller on 7/24/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
@@ -15,7 +15,7 @@
 
 @dynamic created;
 @dynamic updated;
-@dynamic projectComponentPossibility;
 @dynamic projectIdentification;
+@dynamic projectComponentPossibility;
 
 @end

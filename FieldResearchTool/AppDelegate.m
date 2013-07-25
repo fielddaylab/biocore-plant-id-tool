@@ -15,10 +15,11 @@
 #import "ProjectIdentification.h"
 #import "ProjectComponentPossibility.h"
 #import "ProjectIdentificationComponentPossibility.h"
-#import "ProjectComponentDataType.h"
 #import "RangeOperators.h"
 #import "Media.h"
 #import "MediaType.h"
+#import "ObservationDataType.h"
+#import "ObservationJudgementType.h"
 
 @implementation AppDelegate
 
@@ -126,49 +127,36 @@
 }
 
 #pragma mark Sample Data
-
 -(void)readInSampleData{
-    
-    NSMutableDictionary *userAttributes = [[NSMutableDictionary alloc]init];
-    [userAttributes setValue:@"jgmoeller" forKey:@"name"];
-    [userAttributes setValue:@"qwerty" forKey:@"password"]; // probably should be hashed
-    [userAttributes setValue:[NSDate date] forKey:@"created"];
-    [userAttributes setValue:[NSDate date] forKey:@"updated"];
-    //[userAttributes setValue:@"exampleURL" forKey:@"mediaUrl"]; //set media here
-    [[AppModel sharedAppModel] createNewUserWithAttributes:userAttributes];
-    
-    Media *iconMedia = (Media *)[NSEntityDescription insertNewObjectForEntityForName:@"Media" inManagedObjectContext:[self managedObjectContext]];
-    iconMedia.created = [NSDate date];
-    iconMedia.updated = [NSDate date];
-    iconMedia.mediaURL = @"";
-    iconMedia.type = [NSNumber numberWithInt:MEDIA_PHOTO];
-    
     
     Project *project = (Project *)[NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:[self managedObjectContext]];
     project.allowedInterpretations = [NSNumber numberWithInt:1];
     project.created = [NSDate date];
-    project.media = [NSSet setWithArray:[NSArray arrayWithObject:iconMedia]];
-    project.name = @"Biocore";
-    //project.splashMediaUrl = @"splashMediaURL"; //get media here
     project.updated = [NSDate date];
-
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"plantData" ofType:@"tsv"];
-    //NSString *path = @"/Users/jgmoeller/iOS Development/Field Research Platform/FieldResearchTool/FieldResearchTool/plantData.tsv";
-    //NSString *path = "/Users/nickheindl/Desktop/FieldResearchTool/FieldResearchTool/plantData.tsv"];
+    project.name = @"Biocore";
+    //add media reference here
     
+    [AppModel sharedAppModel].currentProject = project;
+    
+    User *user = (User *)[NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:[self managedObjectContext]];
+    user.name = @"jgmoeller";
+    user.password = @"qwerty";
+    user.created = [NSDate date];
+    user.updated = [NSDate date];
+    user.project = project;
+    
+    [AppModel sharedAppModel].currentUser = user;
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"examplePlantData" ofType:@"tsv"];
     NSString *contents = [NSString stringWithContentsOfFile:path encoding:NSASCIIStringEncoding error:nil];
-
-
     NSArray *lines = [contents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     NSString *firstLine = lines[0];
     NSArray *wordsSeperatedByTabs = [firstLine componentsSeparatedByString:@"\t"];
     NSMutableArray *projectComponents = [[NSMutableArray alloc]init];
     int nonComponents = 0;
     for(int i = 0; i < [wordsSeperatedByTabs count]; i++){
-        
-        NSString *componentRegex = @".*(\\{YES\\}|\\{NO\\})?(\\{VIDEO\\}|\\{PHOTO\\}|\\{AUDIO\\}|\\{TEXT\\}|\\{LONG_TEXT\\}|\\{NUMBER\\}|\\{BOOL\\})";
+        NSString *componentRegex = @".*(\\{YES\\}|\\{NO\\})?(\\{DATA_VIDEO\\}|\\{DATA_PHOTO\\}|\\{DATA_AUDIO\\}|\\{DATA_TEXT\\}|\\{DATA_LONG_TEXT\\}|\\{DATA_NUMBER\\}|\\{DATA_BOOL\\}|\\{DATA_ENUM\\})(\\{JUDGEMENT_TEXT\\}|\\{JUDGEMENT_LONG_TEXT\\}|\\{JUDGEMENT_NUMBER\\}|\\{JUDGEMENT_BOOL\\}|\\{JUDGEMENT_ENUM\\})";
         BOOL isComponent = [self stringMatchesRegex:wordsSeperatedByTabs[i] regex:componentRegex];
-        
         if(isComponent){
             NSString *leftBrace = @"{";
             NSInteger leftBraceIndex = [wordsSeperatedByTabs[i] rangeOfString:leftBrace].location;
@@ -182,128 +170,123 @@
             if(dashIndex != NSNotFound){
                 projectComponentName = [withoutParams substringToIndex:dashIndex];
             }
-            NSLog(@"Component: %@ Params: %@", projectComponentName, params);
             
             NSString *requiredRegex = @"(\\{YES\\}.*)";
             BOOL isRequired = [self stringMatchesRegex:params regex:requiredRegex];
             
-            //figure out the type
-            ProjectComponentDataType type;
-            NSString *videoRegex = @"(.*\\{VIDEO\\})";
-            NSString *audioRegex = @"(.*\\{AUDIO\\})";
-            NSString *photoRegex = @"(.*\\{PHOTO\\})";
-            NSString *textRegex = @"(.*\\{TEXT\\})";
-            NSString *longTextRegex = @"(.*\\{LONG_TEXT\\})";
-            NSString *numberRegex = @"(.*\\{NUMBER\\})";
-            NSString *boolRegex = @"(.*\\{BOOL\\})";
+            //figure out the observation type
+            ObservationDataType dataType;
+            NSString *videoRegex = @"(.*\\{DATA_VIDEO\\}.*)";
+            NSString *audioRegex = @"(.*\\{DATA_AUDIO\\}.*)";
+            NSString *photoRegex = @"(.*\\{DATA_PHOTO\\}.*)";
+            NSString *textRegex = @"(.*\\{DATA_TEXT\\}.*)";
+            NSString *longTextRegex = @"(.*\\{DATA_LONG_TEXT\\}.*)";
+            NSString *numberRegex = @"(.*\\{DATA_NUMBER\\}.*)";
+            NSString *boolRegex = @"(.*\\{DATA_BOOL\\}.*)";
+            NSString *enumRegex = @"(.*\\{DATA_ENUM\\}.*)";
             if([self stringMatchesRegex:params regex:videoRegex]){
-                type = VIDEO;
+                dataType = DATA_VIDEO;
             }
             else if([self stringMatchesRegex:params regex:audioRegex]){
-                type = AUDIO;
+                dataType = DATA_AUDIO;
             }
             else if([self stringMatchesRegex:params regex:photoRegex]){
-                type = PHOTO;
+                dataType = DATA_PHOTO;
             }
             else if([self stringMatchesRegex:params regex:textRegex]){
-                type = TEXT;
+                dataType = DATA_TEXT;
             }
             else if([self stringMatchesRegex:params regex:longTextRegex]){
-                type = LONG_TEXT;
+                dataType = DATA_LONG_TEXT;
             }
             else if([self stringMatchesRegex:params regex:numberRegex]){
-                type = NUMBER;
+                dataType = DATA_NUMBER;
             }
             else if([self stringMatchesRegex:params regex:boolRegex]){
-                type = BOOLEAN;
+                dataType = DATA_BOOLEAN;
+            }
+            else if([self stringMatchesRegex:params regex:enumRegex]){
+                dataType = DATA_ENUMERATOR;
             }
             else{
                 NSLog(@"Error in setting type for Project Component");
-                type = NUMBER;
+                dataType = DATA_NUMBER;
             }
             
-            //create the project component
+            //figure out the judgement type
+            ObservationJudgementType judgementType;
+            videoRegex = @"(.*\\{JUDGEMENT_VIDEO\\}.*)";
+            audioRegex = @"(.*\\{JUDGEMENT_AUDIO\\}.*)";
+            photoRegex = @"(.*\\{JUDGEMENT_PHOTO\\}.*)";
+            textRegex = @"(.*\\{JUDGEMENT_TEXT\\}.*)";
+            longTextRegex = @"(.*\\{JUDGEMENT_LONG_TEXT\\}.*)";
+            numberRegex = @"(.*\\{JUDGEMENT_NUMBER\\}.*)";
+            boolRegex = @"(.*\\{JUDGEMENT_BOOL\\}.*)";
+            enumRegex = @"(.*\\{JUDGEMENT_ENUM\\}.*)";
+            if([self stringMatchesRegex:params regex:textRegex]){
+                judgementType = JUDGEMENT_TEXT;
+            }
+            else if([self stringMatchesRegex:params regex:longTextRegex]){
+                judgementType = JUDGEMENT_LONG_TEXT;
+            }
+            else if([self stringMatchesRegex:params regex:numberRegex]){
+                judgementType = JUDGEMENT_NUMBER;
+            }
+            else if([self stringMatchesRegex:params regex:boolRegex]){
+                judgementType = JUDGEMENT_BOOLEAN;
+            }
+            else if([self stringMatchesRegex:params regex:enumRegex]){
+                judgementType = JUDGEMENT_ENUMERATOR;
+            }
+            else{
+                NSLog(@"Error in setting type for Project Component");
+                judgementType = JUDGEMENT_NUMBER;
+            }
+            
+            
             ProjectComponent *projectComponent = (ProjectComponent *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponent" inManagedObjectContext:[self managedObjectContext]];
             projectComponent.created = [NSDate date];
-            //projectComponent.mediaUrl = @"mediaURL"; //get media here
-            projectComponent.observationType = [NSNumber numberWithInt:type];
+            projectComponent.updated = [NSDate date];
+            projectComponent.observationDataType = [NSNumber numberWithInt:dataType];
+            projectComponent.observationJudgementType = [NSNumber numberWithInt:judgementType];
             projectComponent.required = [NSNumber numberWithBool:isRequired];
             projectComponent.title = projectComponentName;
-            projectComponent.updated = [NSDate date];
-            projectComponent.project = project;
             projectComponent.wasObserved = [NSNumber numberWithBool:NO];
-            
+            projectComponent.wasJudged = [NSNumber numberWithBool:NO];
+            projectComponent.project = project;
             [projectComponents addObject:projectComponent];
-
             
-            //create the project component possibilities
             if (dashIndex != NSNotFound) {
                 NSString *stringProjectComponentPossibilities = [withoutParams substringFromIndex:dashIndex+2];
                 NSArray *projectComponentPossibilities = [stringProjectComponentPossibilities componentsSeparatedByString:@", "];
                 for (int j = 0; j < [projectComponentPossibilities count]; j++) {
                     NSString *stringProjectComponentPossibility = projectComponentPossibilities[j];
-                    
                     ProjectComponentPossibility *projectComponentPossibility = (ProjectComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
                     projectComponentPossibility.created = [NSDate date];
                     projectComponentPossibility.updated = [NSDate date];
                     projectComponentPossibility.projectComponent = projectComponent;
-                    //projectComponentPossibility.mediaUrl = @"mediaURL"; //get media here
-                    if([stringProjectComponentPossibility isEqualToString:@"yes"]){
-                        projectComponentPossibility.boolValue = [NSNumber numberWithBool:YES];
-                        NSLog(@"Possibility: %@ Type: BOOL", stringProjectComponentPossibility);
-                    }
-                    else if([stringProjectComponentPossibility isEqualToString:@"no"]){
-                        projectComponentPossibility.boolValue = [NSNumber numberWithBool:NO];
-                        NSLog(@"Possibility: %@ Type: BOOL", stringProjectComponentPossibility);
-                    }
-                    else if([stringProjectComponentPossibility rangeOfString:@"<"].location != NSNotFound && [stringProjectComponentPossibility rangeOfString:@">"].location == NSNotFound){
-                        stringProjectComponentPossibility = [self getRidOfSingleAndDoubleQuotes:stringProjectComponentPossibility];
-                        NSInteger lessThanLocation = [stringProjectComponentPossibility rangeOfString:@"<"].location;
-                        NSString *number = [stringProjectComponentPossibility substringFromIndex:lessThanLocation+1];
-                        projectComponentPossibility.rangeOperator = [NSNumber numberWithInt:LESS_THAN];
-                        projectComponentPossibility.rangeNumber1 = [NSNumber numberWithDouble:[number doubleValue]];
-                        projectComponentPossibility.rangeNumber2 = [NSNumber numberWithDouble:[number doubleValue]];
-                        NSLog(@"Possibility: <%@ Type: LESS THAN RANGE", number);
-                    }
-                    else if([stringProjectComponentPossibility rangeOfString:@">"].location != NSNotFound && [stringProjectComponentPossibility rangeOfString:@"<"].location == NSNotFound){
-                        stringProjectComponentPossibility = [self getRidOfSingleAndDoubleQuotes:stringProjectComponentPossibility];
-                        NSInteger greaterThanLocation = [stringProjectComponentPossibility rangeOfString:@">"].location;
-                        NSString *number = [stringProjectComponentPossibility substringFromIndex:greaterThanLocation+1];
-                        projectComponentPossibility.rangeOperator = [NSNumber numberWithInt:GREATER_THAN];
-                        projectComponentPossibility.rangeNumber1 = [NSNumber numberWithDouble:[number doubleValue]];
-                        projectComponentPossibility.rangeNumber2 = [NSNumber numberWithDouble:[number doubleValue]];
-                        NSLog(@"Possibility: >%@ Type: GREATER THAN RANGE", number);
-                    }
-                    else if([stringProjectComponentPossibility rangeOfString:@">"].location != NSNotFound && [stringProjectComponentPossibility rangeOfString:@"<"].location != NSNotFound){
-                        //implement a range of BETWEEN
-                        NSInteger lessThanIndex = [stringProjectComponentPossibility rangeOfString:@"<"].location;
-                        NSString *lessThanPart = [stringProjectComponentPossibility substringFromIndex:lessThanIndex];
-                        NSString *greaterThanPart = [stringProjectComponentPossibility substringToIndex:lessThanIndex];
-                        lessThanPart = [self getRidOfSingleAndDoubleQuotes:lessThanPart];
-                        greaterThanPart = [self getRidOfSingleAndDoubleQuotes:greaterThanPart];
-                        
-                        NSInteger lessThanLocation = [lessThanPart rangeOfString:@"<"].location;
-                        NSString *lessThanNumber = [lessThanPart substringFromIndex:lessThanLocation+1];
-                        
-                        NSInteger greaterThanLocation = [greaterThanPart rangeOfString:@">"].location;
-                        NSString *greaterThanNumber = [greaterThanPart substringFromIndex:greaterThanLocation+1];
-                        
-                        projectComponentPossibility.rangeOperator = [NSNumber numberWithInt:BETWEEN];
-                        projectComponentPossibility.rangeNumber1 = [NSNumber numberWithDouble:[lessThanNumber doubleValue]];
-                        projectComponentPossibility.rangeNumber2 = [NSNumber numberWithDouble:[greaterThanNumber doubleValue]];
-                        NSLog(@"Possibility: >%@ <%@ Type: BETWEEN RANGE", greaterThanNumber, lessThanNumber);
-                    }
-                    else if([self isStringNumeric:stringProjectComponentPossibility]){
-                        stringProjectComponentPossibility = [self getRidOfSingleAndDoubleQuotes:stringProjectComponentPossibility];
-                        projectComponentPossibility.rangeOperator = [NSNumber numberWithInt:EQUAL];
-                        projectComponentPossibility.rangeNumber1 = [NSNumber numberWithDouble:[stringProjectComponentPossibility doubleValue]];
-                        projectComponentPossibility.rangeNumber2 = [NSNumber numberWithDouble:[stringProjectComponentPossibility doubleValue]];
-                        NSLog(@"Possibility: %@ Type: EQUAL TO RANGE", stringProjectComponentPossibility);
+                    
+                    if(judgementType == JUDGEMENT_ENUMERATOR){
+                        projectComponentPossibility.enumValue = stringProjectComponentPossibility;
                     }
                     else{
-                        projectComponentPossibility.enumDescription = stringProjectComponentPossibility;
-                        NSLog(@"Possibility: %@ Type: ENUM", stringProjectComponentPossibility);
+                        NSLog(@"Error parsing project possibilities. Something other than enum is specified after the dash");
                     }
+                }
+            }
+            else{
+                if(judgementType == JUDGEMENT_BOOLEAN){
+                    ProjectComponentPossibility *projectComponentPossibilityYES = (ProjectComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
+                    projectComponentPossibilityYES.created = [NSDate date];
+                    projectComponentPossibilityYES.updated = [NSDate date];
+                    projectComponentPossibilityYES.projectComponent = projectComponent;
+                    projectComponentPossibilityYES.boolValue = [NSNumber numberWithBool:YES];
+                    
+                    ProjectComponentPossibility *projectComponentPossibilityNO = (ProjectComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
+                    projectComponentPossibilityNO.created = [NSDate date];
+                    projectComponentPossibilityNO.updated = [NSDate date];
+                    projectComponentPossibilityNO.projectComponent = projectComponent;
+                    projectComponentPossibilityNO.boolValue = [NSNumber numberWithBool:NO];
                 }
             }
         }
@@ -312,207 +295,103 @@
         }
     }
     
-    
-    
     //read in the actual data
     for(int i = 1; i < [lines count]; i++){
-        NSArray *components = [lines[i] componentsSeparatedByString:@"\t"];
         
+        NSArray *components = [lines[i] componentsSeparatedByString:@"\t"];
         ProjectIdentification *identification = (ProjectIdentification *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentification" inManagedObjectContext:[self managedObjectContext]];
         identification.authorCreated = [NSNumber numberWithBool:YES];
         identification.created = [NSDate date];
-        identification.identificationDescription = components[3];
-        identification.title = components[2];
         identification.updated = [NSDate date];
+        identification.identificationDescription = components[1];
+        identification.title = components[0];
+        //add media here
         identification.project = project;
-        //NSLog(@"Identification: %@ Description: %@", identification.title, identification.identificationDescription);
         
-        //4 is hardcoded here
         int numOfNonComponents = nonComponents;
         for (int j = 0; j < [components count]; j++) {
+            
             NSString *commaListOfComponentPossibilities = components[j];
             if(j >= numOfNonComponents){
                 ProjectComponent *associatedProjectComponent = [projectComponents objectAtIndex:j-numOfNonComponents];
                 
                 if([commaListOfComponentPossibilities isEqualToString:@""]){
-                    //create ALL possibilities
-                    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-                    [attributes setObject:associatedProjectComponent.title forKey:@"projectComponent.title"];
-                    NSArray *allProjectComponentPossibilities = [self fetchAllEntities:@"ProjectComponentPossibility" withAttributes:attributes];
-                    if(allProjectComponentPossibilities){
-                        for (int k = 0; k < [allProjectComponentPossibilities count]; k++) {
-                            ProjectComponentPossibility *possibility = allProjectComponentPossibilities[k];
-                            ProjectIdentificationComponentPossibility *projectIdentificationComponentPossibility = (ProjectIdentificationComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
-                            projectIdentificationComponentPossibility.created = [NSDate date];
-                            projectIdentificationComponentPossibility.updated = [NSDate date];
-                            projectIdentificationComponentPossibility.projectComponentPossibility = possibility;
-                            projectIdentificationComponentPossibility.projectIdentification = identification;
-                        }
-                    }
-                    //NSLog(@"Create all possibilities for %@. Identification: %@", associatedProjectComponent.title, identification.title);
+                    //possibility was empty
                     continue;
                 }
                 
-                
-                
                 NSArray *componentPossibilities = [commaListOfComponentPossibilities componentsSeparatedByString:@", "];
-                ProjectComponentPossibility *possibility;
+                
+                
                 for(int k = 0; k < [componentPossibilities count]; k++){
-                    NSString *componentPossibility = componentPossibilities[k];
-                    
-                    if([self isStringNumeric:componentPossibility]){
-                        //handle numbers here
-                        componentPossibility = [self getRidOfSingleAndDoubleQuotes:componentPossibility];
+                    //create the possibilities for numbers and text
+//                    NSString *debugPossibility = componentPossibilities[k];
+//                    NSLog(@"Debug Possibility: %@", debugPossibility);
+                    ProjectComponentPossibility *componentPossibility;
+                    if(associatedProjectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_NUMBER] || associatedProjectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_TEXT] || associatedProjectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_LONG_TEXT]){
                         
-                        NSInteger lessThanIndex = [componentPossibility rangeOfString:@"<"].location;
-                        NSInteger greaterThanIndex = [componentPossibility rangeOfString:@">"].location;
-                        if(lessThanIndex != NSNotFound && greaterThanIndex == NSNotFound){
-                            //handle less than
-                            NSString *noSign = [componentPossibility substringFromIndex:lessThanIndex+1];
-                            NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-                            [f setNumberStyle:NSNumberFormatterDecimalStyle];
-                            NSNumber *number = [f numberFromString:noSign];
-                            NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-                            [attributes setObject:[NSNumber numberWithInt:LESS_THAN] forKey:@"rangeOperator"];
-                            [attributes setObject:number forKey:@"rangeNumber1"];
-                            [attributes setObject:associatedProjectComponent.title forKey:@"projectComponent.title"];
-                            possibility = [self fetchEntities:@"ProjectComponentPossibility" withAttributes:attributes];
+                        componentPossibility = (ProjectComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
+                        componentPossibility.created = [NSDate date];
+                        componentPossibility.updated = [NSDate date];
+                        if(associatedProjectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_NUMBER]){
+                            if(k == 0){
+                                if([componentPossibilities count] != 2){
+                                    NSLog(@"Error parsing number, more than two numbers were provided");
+                                    continue;
+                                }
+                                NSString *number = componentPossibilities[0];
+                                NSString *stdDev = componentPossibilities[1];
+                                componentPossibility.number = [NSNumber numberWithInt:[number intValue]];
+                                componentPossibility.stdDev = [NSNumber numberWithInt:[stdDev intValue]];
+                            }
                         }
-                        else if(greaterThanIndex != NSNotFound && lessThanIndex == NSNotFound){
-                            //handle greater than
-                            NSString *noSign = [componentPossibility substringFromIndex:greaterThanIndex+1];
-                            NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-                            [f setNumberStyle:NSNumberFormatterDecimalStyle];
-                            NSNumber *number = [f numberFromString:noSign];
-                            NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-                            [attributes setObject:[NSNumber numberWithInt:GREATER_THAN] forKey:@"rangeOperator"];
-                            [attributes setObject:number forKey:@"rangeNumber1"];
-                            [attributes setObject:associatedProjectComponent.title forKey:@"projectComponent.title"];
-                            possibility = [self fetchEntities:@"ProjectComponentPossibility" withAttributes:attributes];
-                        }
-                        else if(greaterThanIndex != NSNotFound && lessThanIndex != NSNotFound){
-                            //handle between
-                            NSInteger lessThanIndex = [componentPossibility rangeOfString:@"<"].location;
-                            NSString *lessThanPart = [componentPossibility substringFromIndex:lessThanIndex];
-                            NSString *greaterThanPart = [componentPossibility substringToIndex:lessThanIndex];
-                            NSInteger lessThanLocation = [lessThanPart rangeOfString:@"<"].location;
-                            NSString *lessThanNumber = [lessThanPart substringFromIndex:lessThanLocation+1];
-                            NSInteger greaterThanLocation = [greaterThanPart rangeOfString:@">"].location;
-                            NSString *greaterThanNumber = [greaterThanPart substringFromIndex:greaterThanLocation+1];
-                            NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-                            [f setNumberStyle:NSNumberFormatterDecimalStyle];
-                            NSNumber *lessNumber = [f numberFromString:lessThanNumber];
-                            NSNumber *greaterNumber = [f numberFromString:greaterThanNumber];
-                            NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-                            [attributes setObject:[NSNumber numberWithInt:BETWEEN] forKey:@"rangeOperator"];
-                            [attributes setObject:lessNumber forKey:@"rangeNumber1"];
-                            [attributes setObject:greaterNumber forKey:@"rangeNumber2"];
-                            [attributes setObject:associatedProjectComponent.title forKey:@"projectComponent.title"];
-                            possibility = [self fetchEntities:@"ProjectComponentPossibility" withAttributes:attributes];
+                        else if(associatedProjectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_TEXT]){
+                            componentPossibility.text = componentPossibilities[k];
                         }
                         else{
-                            NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-                            [f setNumberStyle:NSNumberFormatterDecimalStyle];
-                            NSNumber *number = [f numberFromString:componentPossibility];
-                            NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-                            [attributes setObject:number forKey:@"rangeNumber1"];
-                            [attributes setObject:[NSNumber numberWithInt:EQUAL] forKey:@"rangeOperator"];
-                            [attributes setObject:associatedProjectComponent.title forKey:@"projectComponent.title"];
-                            possibility = [self fetchEntities:@"ProjectComponentPossibility" withAttributes:attributes];
+                            componentPossibility.longText = componentPossibilities[k];
                         }
-                        
                     }
-                    else if([self isStringABoolean:componentPossibility]){
+                    else if(associatedProjectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_BOOLEAN]){
                         NSString *yesRegex = @"\\s*(YES|yes)\\s*";
-                        if([self stringMatchesRegex:componentPossibility regex:yesRegex]){
-                            componentPossibility = @"YES";
+                        if([self stringMatchesRegex:componentPossibilities[k] regex:yesRegex]){
                             NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
                             [attributes setObject:[NSNumber numberWithBool:YES] forKey:@"boolValue"];
                             [attributes setObject:associatedProjectComponent.title forKey:@"projectComponent.title"];
-                            possibility = [self fetchEntities:@"ProjectComponentPossibility" withAttributes:attributes];
+                            componentPossibility = [self fetchEntities:@"ProjectComponentPossibility" withAttributes:attributes];
                         }
                         else{
-                            componentPossibility = @"NO";
                             NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
                             [attributes setObject:[NSNumber numberWithBool:NO] forKey:@"boolValue"];
                             [attributes setObject:associatedProjectComponent.title forKey:@"projectComponent.title"];
-                            possibility = [self fetchEntities:@"ProjectComponentPossibility" withAttributes:attributes];
+                            componentPossibility = [self fetchEntities:@"ProjectComponentPossibility" withAttributes:attributes];
                         }
                     }
                     else{
-                        //handle enums
                         NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-                        [attributes setObject:componentPossibility forKey:@"enumDescription"];
+                        [attributes setObject:componentPossibilities[k] forKey:@"enumValue"];
                         [attributes setObject:associatedProjectComponent.title forKey:@"projectComponent.title"];
-                        possibility = [self fetchEntities:@"ProjectComponentPossibility" withAttributes:attributes];
+                        componentPossibility = [self fetchEntities:@"ProjectComponentPossibility" withAttributes:attributes];
                     }
                     
+                    ProjectIdentificationComponentPossibility *projectIdentificationComponentPossibility = (ProjectIdentificationComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
+                    projectIdentificationComponentPossibility.created = [NSDate date];
+                    projectIdentificationComponentPossibility.updated = [NSDate date];
+                    projectIdentificationComponentPossibility.projectComponentPossibility = componentPossibility;
+                    projectIdentificationComponentPossibility.projectIdentification = identification;
                     
-                    //create the object
-                    if(possibility != nil){
-                        ProjectIdentificationComponentPossibility *projectIdentificationComponentPossibility = (ProjectIdentificationComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
-                        projectIdentificationComponentPossibility.created = [NSDate date];
-                        projectIdentificationComponentPossibility.updated = [NSDate date];
-                        projectIdentificationComponentPossibility.projectComponentPossibility = possibility;
-                        projectIdentificationComponentPossibility.projectIdentification = identification;
-                        //NSLog(@"Component Possibility was found. Associated Project Component: %@ Associated Project ID: %@", associatedProjectComponent.title, identification.title);
-                    }
-                    else if([self isStringNumeric:componentPossibility]){
-                        //create a new project component possibility because we didnt find any specified ranges
-                        
-                        //in the future, it may be useful to add a check here to see if the data has a '<' or a '>'.
-                        //then we could create a new range. currently, it always assumes it to be equal
-                        
-                        ProjectComponentPossibility *projectComponentPossibility = (ProjectComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
-                        projectComponentPossibility.created = [NSDate date];
-                        projectComponentPossibility.updated = [NSDate date];
-                        projectComponentPossibility.projectComponent = associatedProjectComponent;
-                        //projectComponentPossibility.mediaUrl = @"mediaURL"; //get media here
-                        
-                        projectComponentPossibility.rangeOperator = [NSNumber numberWithInt:EQUAL];
-                        projectComponentPossibility.rangeNumber1 = [NSNumber numberWithDouble:[componentPossibility doubleValue]];
-                        projectComponentPossibility.rangeNumber2 = [NSNumber numberWithDouble:[componentPossibility doubleValue]];
-                        
-                        ProjectIdentificationComponentPossibility *projectIdentificationComponentPossibility = (ProjectIdentificationComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
-                        projectIdentificationComponentPossibility.created = [NSDate date];
-                        projectIdentificationComponentPossibility.updated = [NSDate date];
-                        projectIdentificationComponentPossibility.projectComponentPossibility = projectComponentPossibility;
-                        projectIdentificationComponentPossibility.projectIdentification = identification;
-                        //NSLog(@"Created New Component Possibility. Associated Project Component: %@ Associated Project ID: %@", associatedProjectComponent.title, identification.title);
-                    }
-                    else{
-                        //these objects will not be created
-                        NSLog(@"Component Possibility is NOT numeric and was NOT found. Associated Project Component: %@ Associated Project ID: %@", associatedProjectComponent.title, identification.title);
-                    }
+                    //NSLog(@"Created Project Identification Component Possibility. Identification: %@ Component: %@", identification.title, associatedProjectComponent.title);
                     
                 }
             }
-            
         }
+        
     }
     
     [[AppModel sharedAppModel] save];
     
 }
 
--(BOOL)isStringNumeric:(NSString *)string{
-    
-    NSString *regexNumber = @"\\s*(<|>)?[-+]?[0-9]*\\.?[0-9]+(\"?|\'?)\\s*";
-    
-    NSPredicate *testRegexInt = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexNumber];
-    BOOL isNumber = [testRegexInt evaluateWithObject: string];
-    
-    return isNumber;
-}
-
--(BOOL)isStringABoolean:(NSString *)string{
-    NSString *regexBool = @"\\s*(YES|NO|yes|no)\\s*";
-    
-    NSPredicate *testRegexInt = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexBool];
-    BOOL isBool = [testRegexInt evaluateWithObject: string];
-    
-    return isBool;
-}
 
 -(BOOL)stringMatchesRegex:(NSString *)string regex:(NSString *)regex{
     NSPredicate *testRegex = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
@@ -575,68 +454,5 @@
     return fetchedObjects[0];
     
 }
-
--(NSArray *)fetchAllEntities:(NSString *)entityName withAttributes:(NSDictionary *)attributeNamesAndValues{
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:[self managedObjectContext]];
-    [fetchRequest setEntity:entity];
-    NSMutableString *predicateString = [NSMutableString stringWithString:@""];
-    if(attributeNamesAndValues && [attributeNamesAndValues count] > 0){
-        //create the predicate string
-        for (NSString *key in attributeNamesAndValues) {
-            //first check to make sure the object we're adding to the predicate string isnt nil
-            if([attributeNamesAndValues objectForKey:key]){
-                
-                id value = [attributeNamesAndValues objectForKey:key];
-                BOOL isNumeric = [value isKindOfClass:[NSNumber class]];
-                if(isNumeric){
-                    if([predicateString isEqualToString:@""]){
-                        [predicateString appendFormat:@"%@ == %@", key, [attributeNamesAndValues objectForKey:key]];
-                    }
-                    else{
-                        [predicateString appendFormat:@" && %@ == %@", key, [attributeNamesAndValues objectForKey:key]];
-                    }
-                }
-                else{
-                    if([predicateString isEqualToString:@""]){
-                        [predicateString appendFormat:@"%@ == '%@'", key, [attributeNamesAndValues objectForKey:key]];
-                    }
-                    else{
-                        [predicateString appendFormat:@" && %@ == '%@'", key, [attributeNamesAndValues objectForKey:key]];
-                    }
-                }
-            }
-        }
-        
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateString];
-        [fetchRequest setPredicate:predicate];
-    }
-    
-    
-    
-    NSError *error = nil;
-    NSArray *fetchedObjects = [[self managedObjectContext] executeFetchRequest:fetchRequest error:&error];
-    if (fetchedObjects == nil) {
-        NSLog(@"An error occurred when fetching entities with attributes. Handler not called. %@", error);
-        return nil;
-    }
-
-    return fetchedObjects;
-    
-}
-
--(NSString *)getRidOfSingleAndDoubleQuotes:(NSString *)string{
-    NSString *returnString = string;
-    NSInteger doubleQuoteIndex = [string rangeOfString:@"\""].location;
-    if(doubleQuoteIndex != NSNotFound){
-        returnString = [string substringToIndex:doubleQuoteIndex];
-    }
-    NSInteger singleQuoteIndex = [string rangeOfString:@"\'"].location;
-    if(singleQuoteIndex != NSNotFound){
-        returnString = [string substringToIndex:singleQuoteIndex];
-    }
-    return returnString;
-}
-
 
 @end

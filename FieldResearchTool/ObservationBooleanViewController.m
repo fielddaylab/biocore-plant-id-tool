@@ -51,29 +51,29 @@
 #pragma mark save observation data
 -(void)saveObservationData{
     //save the user observation component
-    NSMutableDictionary *dataAttributes = [[NSMutableDictionary alloc]init];
-    [dataAttributes setValue:[NSDate date] forKey:@"created"];
-    [dataAttributes setValue:[NSDate date] forKey:@"updated"];
-    [dataAttributes setValue:[NSNumber numberWithBool:[boolSwitch isOn]] forKey:@"dataInt"];
-    
-    UserObservationComponentData *currentComponentData = [[AppModel sharedAppModel] createNewUserObservationComponentDataWithProjectComponent:projectComponent withAttributes:dataAttributes];
-    
-    NSArray *possibilities = [NSArray arrayWithArray:[projectComponent.projectComponentPossibilities allObjects]];
-    
-    ProjectComponentPossibility *componentPossibility;
-    for (int i = 0; i < possibilities.count; i++) {
-        componentPossibility = possibilities[i];
-        if(componentPossibility.boolValue == [NSNumber numberWithBool:[boolSwitch isOn]]){
-            break;
-        }
-    }
+//    NSMutableDictionary *dataAttributes = [[NSMutableDictionary alloc]init];
+//    [dataAttributes setValue:[NSDate date] forKey:@"created"];
+//    [dataAttributes setValue:[NSDate date] forKey:@"updated"];
+//    [dataAttributes setValue:[NSNumber numberWithBool:[boolSwitch isOn]] forKey:@"dataInt"];
+//    
+//    UserObservationComponentData *currentComponentData = [[AppModel sharedAppModel] createNewUserObservationComponentDataWithProjectComponent:projectComponent withAttributes:dataAttributes];
+//    
+//    NSArray *possibilities = [NSArray arrayWithArray:[projectComponent.projectComponentPossibilities allObjects]];
+//    
+//    ProjectComponentPossibility *componentPossibility;
+//    for (int i = 0; i < possibilities.count; i++) {
+//        componentPossibility = possibilities[i];
+//        if(componentPossibility.boolValue == [NSNumber numberWithBool:[boolSwitch isOn]]){
+//            break;
+//        }
+//    }
     
     //    NSMutableDictionary *judgementAttributes = [[NSMutableDictionary alloc]init];
     //    [judgementAttributes setValue:[NSDate date] forKey:@"created"];
     //    [judgementAttributes setValue:[NSDate date] forKey:@"updated"];
     //    UserObservationComponentDataJudgement *currentJudgment = [[AppModel sharedAppModel] createNewUserObservationComponentDataJudgementWithAttributes:judgementAttributes withUserObservationComponentData:currentComponentData withProjectComponentPossibility:componentPossibility];
-    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
-    [[AppModel sharedAppModel] save];
+//    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
+//    [[AppModel sharedAppModel] save];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

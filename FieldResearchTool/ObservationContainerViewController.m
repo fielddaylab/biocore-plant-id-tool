@@ -28,7 +28,7 @@
     [attributes setValue:[NSDate date] forKey:@"created"];
     [attributes setValue:[NSDate date] forKey:@"updated"];
     
-    [[AppModel sharedAppModel] createNewUserObservationComponentDataWithProjectComponent:projectComponent withAttributes:attributes];
+    //[[AppModel sharedAppModel] createNewUserObservationComponentDataWithProjectComponent:projectComponent withAttributes:attributes];
     projectComponent.wasObserved = [NSNumber numberWithBool:YES];
     [[AppModel sharedAppModel] save];
     

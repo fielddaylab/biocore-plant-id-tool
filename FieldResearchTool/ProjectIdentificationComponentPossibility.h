@@ -2,7 +2,7 @@
 //  ProjectIdentificationComponentPossibility.h
 //  FieldResearchTool
 //
-//  Created by Justin Moeller on 7/23/13.
+//  Created by Justin Moeller on 7/24/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
@@ -15,7 +15,7 @@
 
 @property (nonatomic, retain) NSDate * created;
 @property (nonatomic, retain) NSDate * updated;
-@property (nonatomic, retain) ProjectComponentPossibility *projectComponentPossibility;
 @property (nonatomic, retain) ProjectIdentification *projectIdentification;
+@property (nonatomic, retain) ProjectComponentPossibility *projectComponentPossibility;
 
 @end
