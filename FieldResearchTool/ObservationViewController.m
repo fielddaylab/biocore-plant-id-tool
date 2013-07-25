@@ -26,6 +26,8 @@
 @interface ObservationViewController (){
     NSArray *projectComponents;
     NSArray *projectIdentifications;
+    
+    NSMutableArray *savedComponents;
     int savedCount;
     
 }
@@ -37,12 +39,15 @@
 @synthesize table;
 
 // Implement the delegate methods for ChildViewControllerDelegate
-- (void)observationContainerViewController:(ObservationContainerViewController *)viewController didChooseValue:(float)value {
+- (void)observationContainerViewController:(ProjectComponent *)projectComponent{
     
     // Do something with value...
     
     // ...then dismiss the child view controller
     savedCount ++;
+
+    [savedComponents insertObject:projectComponent atIndex:[savedComponents count]];
+    
     NSLog(@"EAEAAEAAEAE");
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -54,9 +59,9 @@
         self.title = @"New Observation";
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(projectComponentsResponseReady) name:@"ProjectComponentsResponseReady" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(projectIdentificationsResponseReady) name:@"ProjectIdentificationsResponseReady" object:nil];
-    
+        savedComponents = [[NSMutableArray alloc]init];
         savedCount = 0;
-
+        
     }
     return self;
 }
@@ -94,7 +99,7 @@
     [attributes setValue:[NSDate date] forKey:@"created"];
     [attributes setValue:[NSDate date] forKey:@"updated"];
     [[AppModel sharedAppModel] createNewUserObservationWithAttributes:attributes];
-        
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -115,9 +120,9 @@
         case 0:
             return 1;
         case 1:
-            return savedCount;
+            return [savedComponents count];//savedCount;
         case 2:
-            return [projectComponents count] - savedCount;
+            return [projectComponents count] - [savedComponents count];//savedCount;
         case 3:
             return 4;
         default:
@@ -135,40 +140,44 @@
     }
     
     ProjectComponent *com;
-    
+
+
     switch (indexPath.section) {
-        case 0:            
-            
+        case 0:
+            cell.accessoryType= UITableViewCellAccessoryDisclosureIndicator;
             cell.textLabel.text = [projectIdentifications count] != 1 ?[NSString stringWithFormat:@"%d identifications", [projectIdentifications count]] : [NSString stringWithFormat:@"%d identification", 1];
             break;
             
         case 1:{
+            com = [savedComponents objectAtIndex:indexPath.row];
+
+            //exception >:/
             if(com.wasObserved){
                 cell.accessoryType= UITableViewCellAccessoryCheckmark;
-
+                
                 UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 28, 28)];
                 
                 imgView.image = [UIImage imageNamed:@"19-circle-checkGREEN.png"];
                 
                 cell.imageView.image = imgView.image;
                 
-                com = (ProjectComponent *)[projectComponents objectAtIndex:indexPath.row];
                 
                 cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
             }
             
         }break;
         case 2:{
-            
-            cell.accessoryType= UITableViewCellAccessoryDisclosureIndicator;
 
-            com = (ProjectComponent *)[projectComponents objectAtIndex:indexPath.row];
-            cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
+            cell.accessoryType= UITableViewCellAccessoryDisclosureIndicator;
+            if(!com.wasObserved){
+                com = (ProjectComponent *)[projectComponents objectAtIndex:indexPath.row];
+                cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
+            }
         }break;
         case 3:{
             
             cell.accessoryType= UITableViewCellAccessoryCheckmark;
-
+            
             if(indexPath.row == 0){
                 cell.textLabel.text = @"Location";
             }
@@ -209,12 +218,12 @@
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
     }
-    else if(indexPath.section == 2){        
+    else if(indexPath.section == 2){
         ProjectComponent *projectComponent = [projectComponents objectAtIndex:indexPath.row];
         UIViewController *viewControllerToPush;
         
         ObservationContainerViewController *viewControllerToPushB;
-
+        
         BOOL pushViewController = YES;
         switch ([projectComponent.observationType intValue]) {
             case PHOTO:{
@@ -263,7 +272,7 @@
                 break;
         }
         if(pushViewController){
-
+            
             viewControllerToPushB.delegate = self;
             [self.navigationController pushViewController:viewControllerToPushB animated:YES];
         }

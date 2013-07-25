@@ -23,7 +23,5 @@
 
 @protocol ObservationContainerViewControllerDelegate <NSObject>
 
-- (void)observationContainerViewController:(ObservationContainerViewController*)viewController
-             didChooseValue:(float)value;
-
+- (void)observationContainerViewController:(ProjectComponent *)projectComponent;
 @end
