@@ -35,7 +35,7 @@
     //setup example data
     //keep this commented out unless you want to regenerate sample data. otherwise it will continually
     //add sample data
-    [self readInSampleData];
+    //[self readInSampleData];
     return YES;
 }
 

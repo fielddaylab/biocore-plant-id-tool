@@ -25,6 +25,8 @@
 @interface ObservationViewController (){
     NSArray *projectComponents;
     NSArray *projectIdentifications;
+    int savedCount;
+    
 }
 
 @end
@@ -33,6 +35,17 @@
 
 @synthesize table;
 
+// Implement the delegate methods for ChildViewControllerDelegate
+- (void)observationContainerViewController:(ObservationContainerViewController *)viewController didChooseValue:(float)value {
+    
+    // Do something with value...
+    
+    // ...then dismiss the child view controller
+    savedCount ++;
+    NSLog(@"EAEAAEAAEAE");
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -40,6 +53,9 @@
         self.title = @"New Observation";
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(projectComponentsResponseReady) name:@"ProjectComponentsResponseReady" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(projectIdentificationsResponseReady) name:@"ProjectIdentificationsResponseReady" object:nil];
+    
+        savedCount = 0;
+
     }
     return self;
 }
@@ -72,7 +88,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -81,8 +97,10 @@
         case 0:
             return 1;
         case 1:
-            return [projectComponents count];
+            return savedCount;
         case 2:
+            return [projectComponents count] - savedCount;
+        case 3:
             return 4;
         default:
             return 0;
@@ -101,34 +119,31 @@
     ProjectComponent *com;
     
     switch (indexPath.section) {
-        case 0:
-
+        case 0:            
+            
             cell.textLabel.text = [projectIdentifications count] != 1 ?[NSString stringWithFormat:@"%d identifications", [projectIdentifications count]] : [NSString stringWithFormat:@"%d identification", 1];
             break;
+            
         case 1:{
+            if(com.wasObserved){
+                cell.accessoryType= UITableViewCellAccessoryCheckmark;
 
-            UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 28, 28)];
-
-            if(indexPath.row % 4 == 1 && indexPath.section == 1){
-                imgView.image = [UIImage imageNamed:@"17-checkGREEN.png"];
-
-            }
-            else if(indexPath.row % 4 ==2 && indexPath.section == 1){
+                UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 28, 28)];
+                
                 imgView.image = [UIImage imageNamed:@"19-circle-checkGREEN.png"];
-
-            }
-            else if(indexPath.row % 4 == 3 && indexPath.section == 1){
-                imgView.image = [UIImage imageNamed:@"37-circle-xRED.png"];
-
-            }
-            else if(indexPath.row % 4 == 0 && indexPath.section == 1){
-                imgView.image = [UIImage imageNamed:@"60-xRED.png"];
-
+                
+                cell.imageView.image = imgView.image;
+                
+                com = (ProjectComponent *)[projectComponents objectAtIndex:indexPath.row];
+                
+                cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
             }
             
-            cell.imageView.image = imgView.image;
+        }break;
+        case 2:{
             
-            
+            cell.accessoryType= UITableViewCellAccessoryDisclosureIndicator;
+
             com = (ProjectComponent *)[projectComponents objectAtIndex:indexPath.row];
             cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
         }break;
@@ -146,18 +161,19 @@
                 [cell.contentView addSubview:downloadButton];
 
             
-            //add empty immage of 28x28 so that spacing is current.//NOT DONE YET...
+            cell.accessoryType= UITableViewCellAccessoryCheckmark;
+
             if(indexPath.row == 0){
-                cell.textLabel.text = @"       Location";
+                cell.textLabel.text = @"Location";
             }
             else if(indexPath.row == 1){
-                cell.textLabel.text = @"       Date Time";
+                cell.textLabel.text = @"Date Time";
             }
             else if(indexPath.row == 2){
-                cell.textLabel.text = @"       Weather";
+                cell.textLabel.text = @"Weather";
             }
             else{
-                cell.textLabel.text = @"       Author";
+                cell.textLabel.text = @"Author";
             }
         }break;
         default:

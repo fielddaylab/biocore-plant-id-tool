@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Project.h"
+#import "ObservationContainerViewController.h"
 
-@interface ObservationViewController : UIViewController
+@interface ObservationViewController : UIViewController<ObservationContainerViewControllerDelegate>
+
 @property (strong, nonatomic) IBOutlet UITableView *table;
 
 @end
