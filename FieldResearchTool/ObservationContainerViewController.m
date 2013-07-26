@@ -9,6 +9,11 @@
 #import "ObservationContainerViewController.h"
 #import "AppModel.h"
 #import "ProjectComponentPossibility.h"
+#import "ObservationDataType.h"
+#import "ObservationJudgementType.h"
+#import "EnumJudgementViewController.h"
+#import "PhotoDataViewController.h"
+#import "EnumJudgementView.h"
 
 
 @interface ObservationContainerViewController (){
@@ -56,7 +61,66 @@
     
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData:)]];
     
-    NSLog(@"IN CONTAINER");
+    UIViewController *dataViewControllerToDisplay;
+    switch ([projectComponent.observationDataType intValue]) {
+        case DATA_AUDIO:
+            //set up view controller here
+            break;
+        case DATA_VIDEO:
+            //set up view controller here
+            break;
+        case DATA_PHOTO:{
+            PhotoDataViewController *photoDataViewController = [[PhotoDataViewController alloc]initWithNibName:@"PhotoDataViewController" bundle:nil];
+            dataViewControllerToDisplay = photoDataViewController;
+        }
+            //set up view here
+            break;
+        case DATA_NUMBER:
+            //set up view controller here
+            break;
+        case DATA_BOOLEAN:
+            //set up view controller here
+            break;
+        case DATA_TEXT:
+            //set up view controller here
+            break;
+        case DATA_LONG_TEXT:
+            //set up view controller here
+            break;
+        case DATA_ENUMERATOR:
+            //set up view controller here
+            break;
+        default:
+            break;
+    }
+    
+    [self addChildViewController:dataViewControllerToDisplay];
+    [dataView addSubview:dataViewControllerToDisplay.view];
+    
+//    UIView *judgementViewToDisplay;
+//    switch ([projectComponent.observationJudgementType intValue]) {
+//        case JUDGEMENT_NUMBER:
+//            //set up view controller here
+//            break;
+//        case JUDGEMENT_BOOLEAN:
+//            //set up view controller here
+//            break;
+//        case JUDGEMENT_TEXT:
+//            //set up view controller here
+//            break;
+//        case JUDGEMENT_LONG_TEXT:
+//            //set up view controller here
+//            break;
+//        case JUDGEMENT_ENUMERATOR:{
+//            EnumJudgementView *enumJudgementView = [[EnumJudgementView alloc]initWithFrame:dataView.frame];
+//            judgementViewToDisplay = enumJudgementView;
+//        }
+//            break;
+//        default:
+//            break;
+//    }
+//    
+//    [dataView addSubview:judgementViewToDisplay];
     
 }
 
