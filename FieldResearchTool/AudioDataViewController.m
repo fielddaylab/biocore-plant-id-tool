@@ -79,18 +79,18 @@
     
     [captureSession startRunning];
     
-    videoCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    //videoCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
-    //audioCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
+    audioCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
     
     
     NSError *error = nil;
-    videoInput = [AVCaptureDeviceInput deviceInputWithDevice:videoCaptureDevice error:&error];
+    //videoInput = [AVCaptureDeviceInput deviceInputWithDevice:videoCaptureDevice error:&error];
     
-    //audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioCaptureDevice error:&error];
+    audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioCaptureDevice error:&error];
     
-    if (videoInput) {
-        [captureSession addInput:videoInput];
+    if (audioInput) {
+        [captureSession addInput:audioInput];
         
         NSLog(@"YEAEAEA");
         AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];

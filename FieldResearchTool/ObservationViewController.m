@@ -202,8 +202,6 @@
     }
     else if(indexPath.section == 1){
         
-        
-        
         //saved filter toggler
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         if (cell.accessoryType == UITableViewCellAccessoryCheckmark){
@@ -233,7 +231,7 @@
 //        }
         
         
-        BooleanDataViewController *photoDataView = [[BooleanDataViewController alloc]initWithNibName:@"BooleanDataViewController" bundle:nil];
+        VideoDataViewController *photoDataView = [[VideoDataViewController alloc]initWithNibName:@"VideoDataViewController" bundle:nil];
         ProjectComponent *projectComponent = [projectComponents objectAtIndex:indexPath.row];
         photoDataView.projectComponent = projectComponent;
         [self.navigationController pushViewController:photoDataView animated:YES];
