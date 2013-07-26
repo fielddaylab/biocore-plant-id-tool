@@ -13,7 +13,7 @@
 #import "ObservationJudgementType.h"
 #import "EnumJudgementViewController.h"
 #import "PhotoDataViewController.h"
-#import "EnumJudgementView.h"
+#import "EnumJudgementViewController.h"
 
 
 @interface ObservationContainerViewController (){
@@ -95,7 +95,7 @@
     }
     
     [self addChildViewController:dataViewControllerToDisplay];
-    [dataView addSubview:dataViewControllerToDisplay.view];
+    //[dataView addSubview:dataViewControllerToDisplay.view];
     
 //    UIView *judgementViewToDisplay;
 //    switch ([projectComponent.observationJudgementType intValue]) {

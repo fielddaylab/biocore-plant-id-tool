@@ -7,15 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MediaPlayer/MediaPlayer.h>
-#import <MobileCoreServices/MobileCoreServices.h>
+
 #import "ProjectComponent.h"
 
-@interface AudioDataViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+#import <AVFoundation/AVFoundation.h>
 
-@property (copy,   nonatomic) NSURL *movieURL;
-@property (strong, nonatomic) MPMoviePlayerController *movieController;
+@interface AudioDataViewController : UIViewController<AVAudioRecorderDelegate, AVAudioPlayerDelegate>
+
 @property (strong, nonatomic) ProjectComponent *projectComponent;
-
 
 @end

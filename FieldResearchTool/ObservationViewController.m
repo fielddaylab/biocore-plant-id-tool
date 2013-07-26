@@ -231,7 +231,7 @@
 //        }
         
         
-        VideoDataViewController *photoDataView = [[VideoDataViewController alloc]initWithNibName:@"VideoDataViewController" bundle:nil];
+        AudioDataViewController *photoDataView = [[AudioDataViewController alloc]initWithNibName:@"AudioDataViewController" bundle:nil];
         ProjectComponent *projectComponent = [projectComponents objectAtIndex:indexPath.row];
         photoDataView.projectComponent = projectComponent;
         [self.navigationController pushViewController:photoDataView animated:YES];
