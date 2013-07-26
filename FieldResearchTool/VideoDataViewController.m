@@ -53,13 +53,32 @@
     
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData)]];
     
-    UIButton *recordButton = [[UIButton alloc] initWithFrame:CGRectMake(50   , 50, 44, 44)];
+
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    self.movieController = [[MPMoviePlayerController alloc] init];
+    
+    [self.movieController setContentURL:self.movieURL];
+    [self.movieController.view setFrame:CGRectMake (0, 0, 320, self.view.frame.size.height * .75)];//*.75for3/4
+    [self.view addSubview:self.movieController.view];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(moviePlayBackDidFinish:)
+                                                 name:MPMoviePlayerPlaybackDidFinishNotification
+                                               object:self.movieController];
+    
+    [self.movieController play];
+    UIButton *recordButton = [[UIButton alloc] initWithFrame:CGRectMake(50, 50, 44, 44)];
     [recordButton setImage:[UIImage imageNamed:@"29-circle-pause"] forState:UIControlStateNormal];
     [recordButton addTarget:self action:@selector(takeVideo:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:recordButton];
-    
 }
+
+
 
 - (void)moviePlayBackDidFinish:(NSNotification *)notification {
     
@@ -68,52 +87,110 @@
     [self.movieController stop];
     [self.movieController.view removeFromSuperview];
     self.movieController = nil;
-    
 }
 
 - (IBAction)takeVideo:(UIButton *)sender {
     
-    captureSession = [[AVCaptureSession alloc] init];
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
     
-    [captureSession startRunning];
-    
-    videoCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    
-    //audioCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
-    
-    
-    NSError *error = nil;
-    videoInput = [AVCaptureDeviceInput deviceInputWithDevice:videoCaptureDevice error:&error];
-    
-    //audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioCaptureDevice error:&error];
-    
-    if (videoInput) {
-        [captureSession addInput:videoInput];
-        
-        NSLog(@"YEAEAEA");
-        AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
-        
-        UIView* aView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - HEIGHT_OF_RECORD)];
-        
-        
-        
-        previewLayer.frame = aView.bounds; // Assume you want the preview layer to fill the view.
-        [aView.layer addSublayer:previewLayer];
-        [imageView addSubview:aView];
-        
-        CGRect bounds = aView.layer.bounds;
-        previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-        previewLayer.bounds = bounds;
-        previewLayer.position = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
-    }
-    else {
-        // Handle the failure.
-        
-        NSLog(@"NOOOO");
-    }
-    
+    [self presentViewController:picker animated:YES completion:NULL];
     
 }
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    self.movieURL = info[UIImagePickerControllerMediaURL];
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+
+//- (IBAction)takeVideo:(UIButton *)sender {
+//    
+//    captureSession = [[AVCaptureSession alloc] init];
+//    
+//    [captureSession startRunning];
+//    
+//    videoCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+//    
+//    //audioCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
+//    
+//    
+//    NSError *error = nil;
+//    videoInput = [AVCaptureDeviceInput deviceInputWithDevice:videoCaptureDevice error:&error];
+//    
+//    //audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioCaptureDevice error:&error];
+//
+//    if (videoInput) {
+//        
+//        NSLog(@"YEAEAEA");
+//        AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
+//
+//
+//        
+//        UIView* aView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - HEIGHT_OF_RECORD)];
+//        
+//        
+//        
+//        previewLayer.frame = aView.bounds; // Assume you want the preview layer to fill the view.
+//        [aView.layer addSublayer:previewLayer];
+//        [imageView addSubview:aView];
+//        
+//        CGRect bounds = aView.layer.bounds;
+//        previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+//        previewLayer.bounds = bounds;
+//        previewLayer.position = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
+//
+//        [captureSession addInput:videoInput];//
+//
+//    }
+//    else {
+//        // Handle the failure.
+//        
+//        NSLog(@"NOOOO");
+//    }
+//    
+//    
+//}
+
+
+//
+//
+//
+
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 - (void)didReceiveMemoryWarning
