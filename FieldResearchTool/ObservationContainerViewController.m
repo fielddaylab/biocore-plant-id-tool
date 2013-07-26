@@ -13,12 +13,16 @@
 #import "ObservationJudgementType.h"
 #import "EnumJudgementViewController.h"
 #import "PhotoDataViewController.h"
-#import "EnumJudgementView.h"
+#import "BooleanDataViewController.h"
+#import "NumberDataViewController.h"
+#import "BooleanJudgementViewController.h"
+#import "LongTextJudgementViewController.h"
+#import "TextJudgementViewController.h"
+#import "NumberJudgementViewController.h"
 
 
 @interface ObservationContainerViewController (){
 }
-
 
 @end
 
@@ -61,6 +65,8 @@
     
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData:)]];
     
+    CGRect frame = CGRectMake(0, 0, self.view.bounds.size.width, (self.view.bounds.size.height*(3.0f/4.0f) + [UIApplication sharedApplication].statusBarFrame.size.height + [self.navigationController navigationBar].frame.size.height));
+    
     UIViewController *dataViewControllerToDisplay;
     switch ([projectComponent.observationDataType intValue]) {
         case DATA_AUDIO:
@@ -70,19 +76,25 @@
             //set up view controller here
             break;
         case DATA_PHOTO:{
-            PhotoDataViewController *photoDataViewController = [[PhotoDataViewController alloc]initWithNibName:@"PhotoDataViewController" bundle:nil];
+            PhotoDataViewController *photoDataViewController = [[PhotoDataViewController alloc]init];
             dataViewControllerToDisplay = photoDataViewController;
         }
-            //set up view here
             break;
-        case DATA_NUMBER:
-            //set up view controller here
+        case DATA_NUMBER:{
+            NumberDataViewController *numberDataViewController = [[NumberDataViewController alloc]init];
+            numberDataViewController.view.frame = frame;
+            dataViewControllerToDisplay = numberDataViewController;
+        }
             break;
-        case DATA_BOOLEAN:
-            //set up view controller here
+        case DATA_BOOLEAN:{
+            BooleanDataViewController *booleanDataViewController = [[BooleanDataViewController alloc]init];
+            booleanDataViewController.view.frame = frame;
+            dataViewControllerToDisplay = booleanDataViewController;
+        }
             break;
-        case DATA_TEXT:
+        case DATA_TEXT:{
             //set up view controller here
+        }
             break;
         case DATA_LONG_TEXT:
             //set up view controller here
@@ -95,33 +107,53 @@
     }
     
     [self addChildViewController:dataViewControllerToDisplay];
-    [dataView addSubview:dataViewControllerToDisplay.view];
+    [self didMoveToParentViewController:dataViewControllerToDisplay];
+    [self.view addSubview:dataViewControllerToDisplay.view];
     
-//    UIView *judgementViewToDisplay;
-//    switch ([projectComponent.observationJudgementType intValue]) {
-//        case JUDGEMENT_NUMBER:
-//            //set up view controller here
-//            break;
-//        case JUDGEMENT_BOOLEAN:
-//            //set up view controller here
-//            break;
-//        case JUDGEMENT_TEXT:
-//            //set up view controller here
-//            break;
-//        case JUDGEMENT_LONG_TEXT:
-//            //set up view controller here
-//            break;
-//        case JUDGEMENT_ENUMERATOR:{
-//            EnumJudgementView *enumJudgementView = [[EnumJudgementView alloc]initWithFrame:dataView.frame];
-//            judgementViewToDisplay = enumJudgementView;
-//        }
-//            break;
-//        default:
-//            break;
-//    }
-//    
-//    [dataView addSubview:judgementViewToDisplay];
+    frame = CGRectMake(0, self.view.frame.size.height*(3.0f/4.0f) - [UIApplication sharedApplication].statusBarFrame.size.height - [self.navigationController navigationBar].frame.size.height, self.view.bounds.size.width, (self.view.bounds.size.height/4.0f) + [UIApplication sharedApplication].statusBarFrame.size.height + [self.navigationController navigationBar].frame.size.height);
+    UIViewController *judgementViewControllerToDisplay;
+    switch ([projectComponent.observationJudgementType intValue]) {
+        case JUDGEMENT_NUMBER:{
+            NumberJudgementViewController *numberJudgementViewController = [[NumberJudgementViewController alloc]init];
+            numberJudgementViewController.view.frame = frame;
+            judgementViewControllerToDisplay = numberJudgementViewController;
+        }
+            break;
+        case JUDGEMENT_BOOLEAN:{
+            BooleanJudgementViewController *booleanJudgementViewController = [[BooleanJudgementViewController alloc]init];
+            booleanJudgementViewController.view.frame = frame;
+            judgementViewControllerToDisplay = booleanJudgementViewController;
+        }
+            break;
+        case JUDGEMENT_TEXT:{
+            TextJudgementViewController *textJudgementViewController = [[TextJudgementViewController alloc]init];
+            textJudgementViewController.view.frame = frame;
+            judgementViewControllerToDisplay = textJudgementViewController;
+        }
+            break;
+        case JUDGEMENT_LONG_TEXT:{
+            LongTextJudgementViewController *longTextJudgementViewController = [[LongTextJudgementViewController alloc]init];
+            longTextJudgementViewController.view.frame = frame;
+            judgementViewControllerToDisplay = longTextJudgementViewController;
+        }
+            break;
+        case JUDGEMENT_ENUMERATOR:{
+            EnumJudgementViewController *enumJudgementViewController = [[EnumJudgementViewController alloc]init];
+            enumJudgementViewController.view.frame = frame;
+            enumJudgementViewController.view.backgroundColor = [UIColor lightGrayColor];
+            judgementViewControllerToDisplay = enumJudgementViewController;
+
+        }
+            break;
+        default:
+            break;
+    }
+
     
+    [self addChildViewController:judgementViewControllerToDisplay];
+    [self didMoveToParentViewController:judgementViewControllerToDisplay];
+    [self.view addSubview:judgementViewControllerToDisplay.view];
+
 }
 
 - (void)didReceiveMemoryWarning
