@@ -28,7 +28,10 @@
 {
     [super viewDidLoad];
     
-    CGRect frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+//    CGRect frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+    
+    CGRect frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    
     UISwitch *boolSwitch = [[UISwitch alloc]initWithFrame:frame];
     [self.view addSubview:boolSwitch];
     
