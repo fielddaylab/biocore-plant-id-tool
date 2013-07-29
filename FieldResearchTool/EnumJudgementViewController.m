@@ -151,10 +151,7 @@
     
     if(!userData){
         NSLog(@"Observation data passed in was nil");
-    }
-    
-    if(!chosenPossibility){
-        NSLog(@"Possibility chosen was nil");
+        return nil;
     }
     
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
@@ -162,8 +159,14 @@
     [attributes setObject:[NSDate date] forKey:@"updated"];
     [attributes setObject:chosenPossibility.enumValue forKey:@"enumValue"];
     
-    UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:[NSArray arrayWithObject:chosenPossibility] withAttributes:attributes];
-    return judgement;
+    if(chosenPossibility){
+        UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:[NSArray arrayWithObject:chosenPossibility] withAttributes:attributes];
+        return judgement;
+    }
+    
+    NSLog(@"No Possibility was chosen. No Judgement was made.");
+    
+    return nil;
 }
 
 
