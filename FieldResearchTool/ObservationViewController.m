@@ -24,6 +24,7 @@
 #import "BooleanDataViewController.h"
 #import "ProjectIdentificationComponentPossibility.h"
 #import "ProjectIdentification.h"
+#import "ObservationJudgementType.h"
 
 @interface ObservationViewController (){
     NSMutableArray *projectComponents;
@@ -31,7 +32,7 @@
     
     NSMutableArray *savedComponents;
     int savedCount;
-    
+    NSMutableDictionary *identificationAttributes;
 }
 
 @end
@@ -40,46 +41,7 @@
 
 @synthesize table;
 
-// Implement the delegate methods for ChildViewControllerDelegate
-- (void)dismissContainerViewAndSetProjectComponentObserved:(ProjectComponent *)projectComponent{
-    savedCount ++;
-    [savedComponents insertObject:projectComponent atIndex:[savedComponents count]];
-    [projectComponents removeObject:projectComponent];
-    [self.navigationController popViewControllerAnimated:YES];
-    
-    //manage filtering here
-    NSArray *userData = [NSArray arrayWithArray:[projectComponent.userObservationComponentData allObjects]];
-    for(int i = 0; i < userData.count; i++){
-        UserObservationComponentData *data = [userData objectAtIndex:i];
-        UserObservationComponentDataJudgement *judgement = data.userObservationComponentDataJudgement;
-        if(judgement){
-            NSLog(@"Judgement: %@", judgement.enumValue);
-            NSArray *componentPossibilities = [NSArray arrayWithArray:[judgement.projectComponentPossibilities allObjects]];
-            for(int j = 0; j < judgement.projectComponentPossibilities.count; j++){
-                ProjectComponentPossibility *possibility = [componentPossibilities objectAtIndex:j];
-                NSLog(@"Possibility: %@", possibility.enumValue);
-                [[AppModel sharedAppModel] getProjectIdentificationComponentPossibilitiesForPossibility:possibility withHandler:@selector(updateProjectIdentifications:) target:self];
-            }
-        }
-    }
-}
 
-//move this method later
--(void)updateProjectIdentifications:(NSArray *)projectIdentificationComponentPossibilities{
-    
-    //completely start over the identification process....this will need to change
-    projectIdentifications = [[NSMutableArray alloc]init];
-    for(int i = 0; i < projectIdentificationComponentPossibilities.count; i++){
-        ProjectIdentificationComponentPossibility *identificationComponentPossibility = [projectIdentificationComponentPossibilities objectAtIndex:i];
-        ProjectIdentification *identification = identificationComponentPossibility.projectIdentification;
-        NSLog(@"Adding identification: %@", identification.title);
-        [projectIdentifications addObject:identification];
-    }
-    
-    //possibily set the current project identifications to project identifications
-    [table reloadData];
-    
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -90,7 +52,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(projectIdentificationsResponseReady) name:@"ProjectIdentificationsResponseReady" object:nil];
         savedComponents = [[NSMutableArray alloc]init];
         savedCount = 0;
-        
+        identificationAttributes = [[NSMutableDictionary alloc]init];
     }
     return self;
 }
@@ -281,6 +243,34 @@
 -(void)projectIdentificationsResponseReady{
     projectIdentifications = [NSMutableArray arrayWithArray:[AppModel sharedAppModel].currentProjectIdentifications];
     [self.table reloadData];
+}
+
+- (void)dismissContainerViewAndSetProjectComponentObserved:(ProjectComponent *)projectComponent{
+    savedCount ++;
+    [savedComponents insertObject:projectComponent atIndex:[savedComponents count]];
+    [projectComponents removeObject:projectComponent];
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    //manage filtering here
+    NSArray *userData = [NSArray arrayWithArray:[projectComponent.userObservationComponentData allObjects]];
+    
+    //hard code one peice of data per project component
+    UserObservationComponentData *data = [userData objectAtIndex:0];
+    UserObservationComponentDataJudgement *judgement = data.userObservationComponentDataJudgement;
+    if(judgement){
+        NSArray *componentPossibilities = [NSArray arrayWithArray:[judgement.projectComponentPossibilities allObjects]];
+        //hard code for enums - because enums can only have 1 possibility
+        ProjectComponentPossibility *possibility = [componentPossibilities objectAtIndex:0];
+    }
+}
+
+-(void)updateProjectIdentifications:(NSArray *)projectIdentificationComponentPossibilities{
+    
+    
+}
+
+-(void)fetchNewIdentifications{
+    
 }
 
 @end
