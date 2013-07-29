@@ -69,7 +69,7 @@
     
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData:)]];
     
-    CGRect frame = CGRectMake(0, 0, self.view.bounds.size.width, (self.view.bounds.size.height*(3.0f/4.0f) + [UIApplication sharedApplication].statusBarFrame.size.height + [self.navigationController navigationBar].frame.size.height));
+    CGRect frame = CGRectMake(0, 0, self.view.bounds.size.width, (self.view.bounds.size.height* .75f + [UIApplication sharedApplication].statusBarFrame.size.height + [self.navigationController navigationBar].frame.size.height));
     
     UIViewController *dataViewControllerToDisplay;
     switch ([projectComponent.observationDataType intValue]) {
@@ -120,7 +120,7 @@
 
 
     
-    frame = CGRectMake(0, self.view.frame.size.height*(3.0f/4.0f) - [UIApplication sharedApplication].statusBarFrame.size.height - [self.navigationController navigationBar].frame.size.height, self.view.bounds.size.width, (self.view.bounds.size.height/4.0f) + [UIApplication sharedApplication].statusBarFrame.size.height + [self.navigationController navigationBar].frame.size.height);
+    frame = CGRectMake(0, self.view.bounds.size.height * .75f, self.view.bounds.size.width, (self.view.bounds.size.height * .25f) );
     UIViewController *judgementViewControllerToDisplay;
     switch ([projectComponent.observationJudgementType intValue]) {
         case JUDGEMENT_NUMBER:{
