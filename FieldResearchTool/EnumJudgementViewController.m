@@ -39,10 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
     wrap = YES;
-    
-    self.view.backgroundColor = [UIColor lightGrayColor];
     
     //create carousel
     carousel = [[iCarousel alloc] initWithFrame:self.view.bounds];
@@ -75,7 +72,7 @@
     //create new view if no view is available for recycling
     if (view == nil)
     {
-        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200.0f, 200.0f)];
+        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100.0f, 200.0f)];
         //((UIImageView *)view).image = [UIImage imageNamed:@"35-circle-stop.png"];
         view.contentMode = UIViewContentModeCenter;
         label = [[UILabel alloc] initWithFrame:view.bounds];

@@ -26,7 +26,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    CGRect frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+    UISwitch *boolSwitch = [[UISwitch alloc]initWithFrame:frame];
+    [self.view addSubview:boolSwitch];
+    
 }
 
 - (void)didReceiveMemoryWarning
