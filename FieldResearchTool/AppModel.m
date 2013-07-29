@@ -8,6 +8,8 @@
 
 #import "AppModel.h"
 #import "UserObservationComponentDataJudgement.h"
+#import "ObservationJudgementType.h"
+#import "ProjectComponent.h"
 
 @implementation AppModel
 
@@ -38,6 +40,8 @@
 	}
     return self;
 }
+
+#pragma mark fetches
 
 -(void)getAllProjectsWithHandler:(SEL)handler target:(id)target{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -117,10 +121,31 @@
     });
 }
 
+-(void)getProjectIdentificationComponentPossibilitiesForPossibility:(ProjectComponentPossibility *)possibility withHandler:(SEL)handler target:(id)target{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            ProjectComponent *component = possibility.projectComponent;
+            NSNumber *type = component.observationJudgementType;
+            switch ([type intValue]) {
+                case JUDGEMENT_ENUMERATOR:
+                    [coreData fetchAllEntities:@"ProjectIdentificationComponentPossibility" withAttribute:@"projectComponentPossibility.enumValue" equalTo:possibility.enumValue withHandler:handler target:target];
+                    break;
+                default:
+                    NSLog(@"Not fetching any possibilities because App Model isn't implemented");
+                    break;
+            }
+        });
+    });
+}
+
+
+#pragma mark saving
 
 -(BOOL)save{
     return [coreData save];
 }
+
+#pragma mark creations
 
 -(UserObservation *)createNewUserObservationWithAttributes:(NSDictionary *)attributes{
     UserObservation *observation = (UserObservation *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservation" inManagedObjectContext:coreData.managedObjectContext];

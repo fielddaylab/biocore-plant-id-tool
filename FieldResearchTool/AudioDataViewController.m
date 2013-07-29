@@ -173,14 +173,4 @@
 }
 
 
-
-#pragma mark save observation data
--(void)saveObservationData{
-    //save the audio here
-    //    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
-    //    [[AppModel sharedAppModel] save];
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-
 @end

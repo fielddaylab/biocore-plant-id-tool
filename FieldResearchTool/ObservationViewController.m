@@ -7,12 +7,6 @@
 //
 
 #import "ObservationViewController.h"
-#import "ObservationBooleanViewController.h"
-#import "ObservationVideoViewController.h"
-#import "ObservationAudioViewController.h"
-#import "ObservationNumberViewController.h"
-#import "ObservationPhotoViewController.h"
-#import "ObservationTextViewController.h"
 #import "InterpretationChoiceViewController.h"
 #import "AppDelegate.h"
 #import "ProjectComponent.h"
@@ -28,6 +22,8 @@
 #import "VideoDataViewController.h"
 #import "NumberDataViewController.h"
 #import "BooleanDataViewController.h"
+#import "ProjectIdentificationComponentPossibility.h"
+#import "ProjectIdentification.h"
 
 @interface ObservationViewController (){
     NSMutableArray *projectComponents;
@@ -46,16 +42,43 @@
 
 // Implement the delegate methods for ChildViewControllerDelegate
 - (void)dismissContainerViewAndSetProjectComponentObserved:(ProjectComponent *)projectComponent{
-    
-    // Do something with value...
-    
-    // ...then dismiss the child view controller
     savedCount ++;
-
     [savedComponents insertObject:projectComponent atIndex:[savedComponents count]];
     [projectComponents removeObject:projectComponent];
-    
     [self.navigationController popViewControllerAnimated:YES];
+    
+    //manage filtering here
+    NSArray *userData = [NSArray arrayWithArray:[projectComponent.userObservationComponentData allObjects]];
+    for(int i = 0; i < userData.count; i++){
+        UserObservationComponentData *data = [userData objectAtIndex:i];
+        UserObservationComponentDataJudgement *judgement = data.userObservationComponentDataJudgement;
+        if(judgement){
+            NSLog(@"Judgement: %@", judgement.enumValue);
+            NSArray *componentPossibilities = [NSArray arrayWithArray:[judgement.projectComponentPossibilities allObjects]];
+            for(int j = 0; j < judgement.projectComponentPossibilities.count; j++){
+                ProjectComponentPossibility *possibility = [componentPossibilities objectAtIndex:j];
+                NSLog(@"Possibility: %@", possibility.enumValue);
+                [[AppModel sharedAppModel] getProjectIdentificationComponentPossibilitiesForPossibility:possibility withHandler:@selector(updateProjectIdentifications:) target:self];
+            }
+        }
+    }
+}
+
+//move this method later
+-(void)updateProjectIdentifications:(NSArray *)projectIdentificationComponentPossibilities{
+    
+    //completely start over the identification process....this will need to change
+    projectIdentifications = [[NSMutableArray alloc]init];
+    for(int i = 0; i < projectIdentificationComponentPossibilities.count; i++){
+        ProjectIdentificationComponentPossibility *identificationComponentPossibility = [projectIdentificationComponentPossibilities objectAtIndex:i];
+        ProjectIdentification *identification = identificationComponentPossibility.projectIdentification;
+        NSLog(@"Adding identification: %@", identification.title);
+        [projectIdentifications addObject:identification];
+    }
+    
+    //possibily set the current project identifications to project identifications
+    [table reloadData];
+    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -245,6 +268,13 @@
 
 -(void)projectComponentsResponseReady{
     projectComponents = [NSMutableArray arrayWithArray:[AppModel sharedAppModel].currentProjectComponents];
+    for(int i = 0; i < projectComponents.count; i++){
+        ProjectComponent *component = [projectComponents objectAtIndex:i];
+        if([component.wasObserved boolValue]){
+            [projectComponents removeObject:component];
+            [savedComponents addObject:component];
+        }
+    }
     [self.table reloadData];
 }
 

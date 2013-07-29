@@ -172,42 +172,11 @@
 
 //
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-#pragma mark save observation data
--(void)saveObservationData{
-    //save the video to core data here
-    //    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
-    //    [[AppModel sharedAppModel] save];
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 
 @end
 

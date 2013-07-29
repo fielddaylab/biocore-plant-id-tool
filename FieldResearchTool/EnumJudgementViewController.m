@@ -147,10 +147,8 @@
 #pragma mark save observation and judgement delegates
 
 -(UserObservationComponentDataJudgement *)saveJudgementData:(UserObservationComponentData *)userData{
-    NSLog(@"Save Judgement Delegate was called");
-    
     if(!userData){
-        NSLog(@"Observation data passed in was nil");
+        NSLog(@"ERROR: Observation data passed in was nil");
         return nil;
     }
     

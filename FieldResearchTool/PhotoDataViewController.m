@@ -112,12 +112,13 @@
     
     Media *picTaken = [[AppModel sharedAppModel]createNewMediaWithAttributes:mediaAttributes];
     
-    NSMutableDictionary *judgementAttributes = [[NSMutableDictionary alloc]init];
-    [judgementAttributes setObject:[NSDate date] forKey:@"created"];
-    [judgementAttributes setObject:[NSDate date] forKey:@"updated"];
-    [judgementAttributes setObject:picTaken forKey:@"media"];
+    NSMutableDictionary *dataAttributes = [[NSMutableDictionary alloc]init];
+    [dataAttributes setObject:[NSDate date] forKey:@"created"];
+    [dataAttributes setObject:[NSDate date] forKey:@"updated"];
+    [dataAttributes setObject:picTaken forKey:@"media"];
+    [dataAttributes setObject:projectComponent forKey:@"projectComponent"];
     
-    UserObservationComponentData *data = [[AppModel sharedAppModel] createNewObservationDataWithAttributes:judgementAttributes];
+    UserObservationComponentData *data = [[AppModel sharedAppModel] createNewObservationDataWithAttributes:dataAttributes];
     return data;
 }
 
