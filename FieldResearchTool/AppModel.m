@@ -157,4 +157,14 @@
     return judgement;
 }
 
+-(Media *)createNewMediaWithAttributes:(NSDictionary *)attributes{
+    Media *media = (Media *)[NSEntityDescription insertNewObjectForEntityForName:@"Media" inManagedObjectContext:coreData.managedObjectContext];
+    for (NSString *key in attributes) {
+        id value = [attributes objectForKey:key];
+        [media setValue:value forKey:key];
+    }
+    [self save];
+    return media;
+}
+
 @end

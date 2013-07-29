@@ -157,9 +157,9 @@
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
     [attributes setObject:[NSDate date] forKey:@"created"];
     [attributes setObject:[NSDate date] forKey:@"updated"];
-    [attributes setObject:chosenPossibility.enumValue forKey:@"enumValue"];
     
     if(chosenPossibility){
+        [attributes setObject:chosenPossibility.enumValue forKey:@"enumValue"];
         UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:[NSArray arrayWithObject:chosenPossibility] withAttributes:attributes];
         return judgement;
     }

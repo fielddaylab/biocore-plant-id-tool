@@ -97,11 +97,28 @@
 
 
 #pragma mark - Save Observation Data
--(void)saveObservationData{
-
-    NSLog(@"Nothing is saving yet...");
-    [self.navigationController popViewControllerAnimated:YES];
-
+-(UserObservationComponentData *)saveObservationData{
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    //get uuid here to uniquely identify the pictures
+    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"picTaken.png"];
+    [UIImagePNGRepresentation(showPictureView.image) writeToFile:filePath atomically:YES];
+    
+    NSMutableDictionary *mediaAttributes = [[NSMutableDictionary alloc]init];
+    [mediaAttributes setObject:[NSDate date] forKey:@"created"];
+    [mediaAttributes setObject:[NSDate date] forKey:@"updated"];
+    [mediaAttributes setObject:[NSNumber numberWithInt:MEDIA_PHOTO] forKey:@"type"];
+    [mediaAttributes setObject:filePath forKey:@"mediaURL"];
+    
+    Media *picTaken = [[AppModel sharedAppModel]createNewMediaWithAttributes:mediaAttributes];
+    
+    NSMutableDictionary *judgementAttributes = [[NSMutableDictionary alloc]init];
+    [judgementAttributes setObject:[NSDate date] forKey:@"created"];
+    [judgementAttributes setObject:[NSDate date] forKey:@"updated"];
+    [judgementAttributes setObject:picTaken forKey:@"media"];
+    
+    UserObservationComponentData *data = [[AppModel sharedAppModel] createNewObservationDataWithAttributes:judgementAttributes];
+    return data;
 }
 
 #pragma mark - Cleanup

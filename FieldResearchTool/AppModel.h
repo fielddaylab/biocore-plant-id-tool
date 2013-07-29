@@ -42,5 +42,6 @@
 -(UserObservation *)createNewUserObservationWithAttributes:(NSDictionary *)attributes;
 -(UserObservationComponentData *)createNewObservationDataWithAttributes:(NSDictionary *)attributes;
 -(UserObservationComponentDataJudgement *)createNewJudgementWithData:(UserObservationComponentData *)data withProjectComponentPossibility:(NSArray *)possibilities withAttributes:(NSDictionary *)attributes;
+-(Media *)createNewMediaWithAttributes:(NSDictionary *)attributes;
 
 @end
