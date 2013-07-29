@@ -8,8 +8,9 @@
 
 #import "NumberDataViewController.h"
 #import "AppModel.h"
+#import "SaveObservationAndJudgementDelegate.h"
 
-@interface NumberDataViewController (){
+@interface NumberDataViewController ()<SaveObservationDelegate>{
     int unitCount;
 }
 

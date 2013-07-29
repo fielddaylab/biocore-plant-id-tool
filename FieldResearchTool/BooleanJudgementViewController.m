@@ -7,8 +7,9 @@
 //
 
 #import "BooleanJudgementViewController.h"
+#import "SaveObservationAndJudgementDelegate.h"
 
-@interface BooleanJudgementViewController ()
+@interface BooleanJudgementViewController ()<SaveJudgementDelegate>
 
 @end
 

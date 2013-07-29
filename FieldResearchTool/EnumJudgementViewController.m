@@ -10,8 +10,11 @@
 #import "iCarousel.h"
 #import "ProjectComponentPossibility.h"
 #import "AppModel.h"
+#import "SaveObservationAndJudgementDelegate.h"
 
-@interface EnumJudgementViewController () <iCarouselDataSource, iCarouselDelegate, UIActionSheetDelegate>
+@interface EnumJudgementViewController () <iCarouselDataSource, iCarouselDelegate, UIActionSheetDelegate, SaveJudgementDelegate>{
+    ProjectComponentPossibility *chosenPossibility;
+}
 
 @property (nonatomic, retain) iCarousel *carousel;
 @property (nonatomic, assign) BOOL wrap;
@@ -55,6 +58,8 @@
     
 	//add carousel to view
 	[self.view addSubview:carousel];
+    
+    chosenPossibility = nil;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -107,6 +112,12 @@
     ProjectComponentPossibility *componentPossibility = [possibilities objectAtIndex:index];
     label.text = componentPossibility.enumValue;
     
+    if(chosenPossibility){
+        if([componentPossibility.enumValue isEqualToString:chosenPossibility.enumValue]){
+            label.textColor = [UIColor redColor];
+        }
+    }
+    
     return view;
 }
 
@@ -123,13 +134,37 @@
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {
-    NSLog(@"Tapped view number: %i", index);
+    chosenPossibility = [possibilities objectAtIndex:index];
+    [self.carousel reloadData];
 }
 
-#pragma handle possibility response
+#pragma mark handle possibility response
 -(void)handlePossibilityResponse:(NSArray *)componentPossibilities{
     possibilities = componentPossibilities;
     [carousel reloadData];
 }
+
+#pragma mark save observation and judgement delegates
+
+-(UserObservationComponentDataJudgement *)saveJudgementData:(UserObservationComponentData *)userData{
+    NSLog(@"Save Judgement Delegate was called");
+    
+    if(!userData){
+        NSLog(@"Observation data passed in was nil");
+    }
+    
+    if(!chosenPossibility){
+        NSLog(@"Possibility chosen was nil");
+    }
+    
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setObject:[NSDate date] forKey:@"created"];
+    [attributes setObject:[NSDate date] forKey:@"updated"];
+    [attributes setObject:chosenPossibility.enumValue forKey:@"enumValue"];
+    
+    UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:[NSArray arrayWithObject:chosenPossibility] withAttributes:attributes];
+    return judgement;
+}
+
 
 @end

@@ -122,19 +122,39 @@
     return [coreData save];
 }
 
-
--(Media *)createNewMediaWithAttributes:(NSDictionary *)attributes forPath:(NSString *)path withType:(MediaType)type{
-    Media *media = (Media *)[NSEntityDescription insertNewObjectForEntityForName:@"Media" inManagedObjectContext:coreData.managedObjectContext];
-    media.created = [NSDate date];
-    media.updated = [NSDate date];
-    media.mediaURL = path;
-    media.type = [NSNumber numberWithInt:type];
+-(UserObservation *)createNewUserObservationWithAttributes:(NSDictionary *)attributes{
+    UserObservation *observation = (UserObservation *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservation" inManagedObjectContext:coreData.managedObjectContext];
+    observation.user = currentUser;
     for (NSString *key in attributes) {
         id value = [attributes objectForKey:key];
-        [media setValue:value forKey:key];
+        [observation setValue:value forKey:key];
+    }
+    self.currentUserObservation = observation;
+    [self save];
+    return observation;
+}
+
+-(UserObservationComponentData *)createNewObservationDataWithAttributes:(NSDictionary *)attributes{
+    UserObservationComponentData *data = (UserObservationComponentData *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservationComponentData" inManagedObjectContext:coreData.managedObjectContext];
+    data.userObservation = currentUserObservation;
+    for (NSString *key in attributes) {
+        id value = [attributes objectForKey:key];
+        [data setValue:value forKey:key];
     }
     [self save];
-    return media;
+    return data;
+}
+
+-(UserObservationComponentDataJudgement *)createNewJudgementWithData:(UserObservationComponentData *)data withProjectComponentPossibility:(NSArray *)possibilities withAttributes:(NSDictionary *)attributes{
+    UserObservationComponentDataJudgement *judgement = (UserObservationComponentDataJudgement *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservationComponentDataJudgement" inManagedObjectContext:coreData.managedObjectContext];
+    judgement.userObservationComponentData = data;
+    judgement.projectComponentPossibilities = [NSSet setWithArray:possibilities];
+    for (NSString *key in attributes) {
+        id value = [attributes objectForKey:key];
+        [judgement setValue:value forKey:key];
+    }
+    [self save];
+    return judgement;
 }
 
 @end

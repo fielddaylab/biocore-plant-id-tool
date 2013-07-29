@@ -9,11 +9,12 @@
 #import "AudioDataViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "AppModel.h"
+#import "SaveObservationAndJudgementDelegate.h"
 
 
 #define HEIGHT_OF_RECORD 44
 
-@interface AudioDataViewController (){
+@interface AudioDataViewController ()<SaveObservationDelegate>{
     
     AVAudioRecorder *recorder;
     AVAudioPlayer *player;

@@ -9,12 +9,13 @@
 #import "VideoDataViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "AppModel.h"
+#import "SaveObservationAndJudgementDelegate.h"
 
 
 #define HEIGHT_OF_RECORD 44
 
 
-@interface VideoDataViewController (){
+@interface VideoDataViewController ()<SaveObservationDelegate>{
     UIImageView *imageView;
     AVCaptureSession *captureSession;
     AVCaptureDevice *videoCaptureDevice;

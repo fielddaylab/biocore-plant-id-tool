@@ -7,8 +7,9 @@
 //
 
 #import "TextDataViewController.h"
+#import "SaveObservationAndJudgementDelegate.h"
 
-@interface TextDataViewController ()
+@interface TextDataViewController ()<SaveObservationDelegate>
 
 @end
 

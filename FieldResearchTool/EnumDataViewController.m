@@ -8,8 +8,10 @@
 
 #import "EnumDataViewController.h"
 #import "iCarousel.h"
+#import "SaveObservationAndJudgementDelegate.h"
+#import "AppModel.h"
 
-@interface EnumDataViewController () <iCarouselDataSource, iCarouselDelegate, UIActionSheetDelegate>
+@interface EnumDataViewController () <iCarouselDataSource, iCarouselDelegate, UIActionSheetDelegate, SaveObservationDelegate>
 
 @property (nonatomic, retain) iCarousel *carousel;
 @property (nonatomic, assign) BOOL wrap;
@@ -106,6 +108,11 @@
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {
     NSLog(@"Tapped view number: %i", index);
+}
+
+#pragma mark saving observation data
+-(UserObservationComponentData *)saveObservationData{
+    return nil;
 }
 
 @end

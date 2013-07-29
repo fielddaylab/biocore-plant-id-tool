@@ -32,7 +32,9 @@
 
 @implementation ObservationContainerViewController
 @synthesize projectComponent;
-@synthesize delegate;
+@synthesize dismissDelegate;
+@synthesize saveObservationDelegate;
+@synthesize saveJudgementDelegate;
 
 - (void)saveObservationData:(id)sender {
 
@@ -41,12 +43,14 @@
     
     
     NSLog(@"SHOULD BE SAVING SOMEWHERE ELSE - NEED TO DO");
+    UserObservationComponentData *userData = [self.saveObservationDelegate saveObservationData];
+    [self.saveJudgementDelegate saveJudgementData:userData];
 
     
     // Our delegate method is optional, so we should
     // check that the delegate implements it
-    if ([self.delegate respondsToSelector:@selector(dismissContainerViewAndSetProjectComponentObserved:)]) {
-        [self.delegate dismissContainerViewAndSetProjectComponentObserved:projectComponent];
+    if ([self.dismissDelegate respondsToSelector:@selector(dismissContainerViewAndSetProjectComponentObserved:)]) {
+        [self.dismissDelegate dismissContainerViewAndSetProjectComponentObserved:projectComponent];
     }
 }
 
@@ -93,6 +97,7 @@
         case DATA_BOOLEAN:{
             BooleanDataViewController *booleanDataViewController = [[BooleanDataViewController alloc]init];
             booleanDataViewController.view.frame = frame;
+            booleanDataViewController.projectComponent = projectComponent;
             dataViewControllerToDisplay = booleanDataViewController;
         }
             break;
@@ -113,6 +118,7 @@
             break;
     }
     if(dataViewControllerToDisplay){
+        self.saveObservationDelegate = (id)dataViewControllerToDisplay;
         [self addChildViewController:dataViewControllerToDisplay];
         [self didMoveToParentViewController:dataViewControllerToDisplay];
         [self.view addSubview:dataViewControllerToDisplay.view];
@@ -161,6 +167,7 @@
     }
 
     if(judgementViewControllerToDisplay){
+        self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
         [self addChildViewController:judgementViewControllerToDisplay];
         [self didMoveToParentViewController:judgementViewControllerToDisplay];
         [self.view addSubview:judgementViewControllerToDisplay.view];

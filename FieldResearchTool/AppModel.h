@@ -28,20 +28,19 @@
 + (AppModel *)sharedAppModel;
 
 -(BOOL)save;
+//fetch
 -(void)getAllProjectsWithHandler:(SEL)handler target:(id)target;
 -(void)getAllProjectComponentsWithHandler:(SEL)handler target:(id)target;
 -(void)getAllProjectIdentificationsWithHandler:(SEL)handler target:(id)target;
 -(void)getProjectIdentificationsWithAttributes:(NSDictionary *)attributeNamesAndValues withHandler:(SEL)handler target:(id)target;
 -(void)getUserObservationsWithHandler:(SEL)handler target:(id)target;
 -(void)getProjectComponentPossibilitiesWithAttributes:(NSDictionary *)attributeNamesAndValies withHandler:(SEL)handler target:(id)target;
-
-//Nick's faulty attempt at testing...
 -(void)getUserObservationComponentsDataWithHandler:(SEL)handler target:(id)target;
-
 -(void)getUserForName:(NSString *)username password:(NSString *)password withHandler:(SEL)handler target:(id)target;
 
-
--(Media *)createNewMediaWithAttributes:(NSDictionary *)attributes forPath:(NSString *)path withType:(MediaType)type;
-
+//create
+-(UserObservation *)createNewUserObservationWithAttributes:(NSDictionary *)attributes;
+-(UserObservationComponentData *)createNewObservationDataWithAttributes:(NSDictionary *)attributes;
+-(UserObservationComponentDataJudgement *)createNewJudgementWithData:(UserObservationComponentData *)data withProjectComponentPossibility:(NSArray *)possibilities withAttributes:(NSDictionary *)attributes;
 
 @end

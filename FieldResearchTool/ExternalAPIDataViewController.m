@@ -7,8 +7,9 @@
 //
 
 #import "ExternalAPIDataViewController.h"
+#import "SaveObservationAndJudgementDelegate.h"
 
-@interface ExternalAPIDataViewController ()
+@interface ExternalAPIDataViewController ()<SaveObservationDelegate>
 
 @end
 

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ProjectComponent.h"
+#import "SaveObservationAndJudgementDelegate.h"
 
 @protocol ObservationContainerViewControllerDelegate <NSObject>
 
@@ -22,7 +23,11 @@
 
 @property (strong, nonatomic) ProjectComponent *projectComponent;
 
-@property (nonatomic, weak) id<ObservationContainerViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<ObservationContainerViewControllerDelegate> dismissDelegate;
+
+@property (nonatomic, weak) id<SaveObservationDelegate> saveObservationDelegate;
+
+@property (nonatomic, weak) id<SaveJudgementDelegate> saveJudgementDelegate;
 
 @end
 

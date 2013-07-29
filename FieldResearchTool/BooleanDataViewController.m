@@ -9,8 +9,9 @@
 #import "BooleanDataViewController.h"
 #import "AppModel.h"
 #import "ProjectComponentPossibility.h"
+#import "SaveObservationAndJudgementDelegate.h"
 
-@interface BooleanDataViewController ()
+@interface BooleanDataViewController ()<SaveObservationDelegate>
 
 @end
 
@@ -50,32 +51,17 @@
 }
 
 #pragma mark save observation data
--(void)saveObservationData{
-    //save the user observation component
-    //    NSMutableDictionary *dataAttributes = [[NSMutableDictionary alloc]init];
-    //    [dataAttributes setValue:[NSDate date] forKey:@"created"];
-    //    [dataAttributes setValue:[NSDate date] forKey:@"updated"];
-    //    [dataAttributes setValue:[NSNumber numberWithBool:[boolSwitch isOn]] forKey:@"dataInt"];
-    //
-    //    UserObservationComponentData *currentComponentData = [[AppModel sharedAppModel] createNewUserObservationComponentDataWithProjectComponent:projectComponent withAttributes:dataAttributes];
-    //
-    //    NSArray *possibilities = [NSArray arrayWithArray:[projectComponent.projectComponentPossibilities allObjects]];
-    //
-    //    ProjectComponentPossibility *componentPossibility;
-    //    for (int i = 0; i < possibilities.count; i++) {
-    //        componentPossibility = possibilities[i];
-    //        if(componentPossibility.boolValue == [NSNumber numberWithBool:[boolSwitch isOn]]){
-    //            break;
-    //        }
-    //    }
+-(UserObservationComponentData *)saveObservationData{
     
-    //    NSMutableDictionary *judgementAttributes = [[NSMutableDictionary alloc]init];
-    //    [judgementAttributes setValue:[NSDate date] forKey:@"created"];
-    //    [judgementAttributes setValue:[NSDate date] forKey:@"updated"];
-    //    UserObservationComponentDataJudgement *currentJudgment = [[AppModel sharedAppModel] createNewUserObservationComponentDataJudgementWithAttributes:judgementAttributes withUserObservationComponentData:currentComponentData withProjectComponentPossibility:componentPossibility];
-    //    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
-    //    [[AppModel sharedAppModel] save];
-    [self.navigationController popViewControllerAnimated:YES];
+    BOOL switchValue = boolSwitch.isOn;
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setObject:[NSDate date] forKey:@"created"];
+    [attributes setObject:[NSDate date] forKey:@"updated"];
+    [attributes setObject:[NSNumber numberWithBool:switchValue] forKey:@"boolValue"];
+    [attributes setObject:projectComponent forKey:@"projectComponent"];
+    
+    UserObservationComponentData *data = [[AppModel sharedAppModel] createNewObservationDataWithAttributes:attributes];
+    return data;
 }
 
 @end

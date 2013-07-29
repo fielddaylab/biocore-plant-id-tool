@@ -7,8 +7,9 @@
 //
 
 #import "TextJudgementViewController.h"
+#import "SaveObservationAndJudgementDelegate.h"
 
-@interface TextJudgementViewController ()<UITextFieldDelegate>
+@interface TextJudgementViewController ()<UITextFieldDelegate, SaveJudgementDelegate>
 
 @end
 

@@ -10,13 +10,14 @@
 #import <AVFoundation/AVFoundation.h>
 #import <ImageIO/CGImageProperties.h>
 #import "AppModel.h"
+#import "SaveObservationAndJudgementDelegate.h"
 
 
 #define HEIGHT_OF_RECORD 44
 
 
 
-@interface PhotoDataViewController (){
+@interface PhotoDataViewController ()<SaveObservationDelegate>{
     AVCaptureDevice *photoCaptureDevice;
     AVCaptureDeviceInput *photoInput;
     UIView *recorderView;

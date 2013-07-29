@@ -90,12 +90,12 @@
     [[AppModel sharedAppModel]getAllProjectIdentificationsWithHandler:@selector(handleFetchProjectIdentifications:) target:[AppModel sharedAppModel]];
     
     //get the location here
-//    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-//    [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"latitude"];
-//    [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"longitude"];
-//    [attributes setValue:[NSDate date] forKey:@"created"];
-//    [attributes setValue:[NSDate date] forKey:@"updated"];
-//    [[AppModel sharedAppModel] createNewUserObservationWithAttributes:attributes];
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"latitude"];
+    [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"longitude"];
+    [attributes setValue:[NSDate date] forKey:@"created"];
+    [attributes setValue:[NSDate date] forKey:@"updated"];
+    [[AppModel sharedAppModel] createNewUserObservationWithAttributes:attributes];
     
 }
 
@@ -217,7 +217,7 @@
         
         ProjectComponent *projectComponent = [projectComponents objectAtIndex:indexPath.row];
         containerView.projectComponent = projectComponent;
-        containerView.delegate = self;
+        containerView.dismissDelegate = self;
         [self.navigationController pushViewController:containerView animated:YES];
     }
     else if (indexPath.section == 3){
