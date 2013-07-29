@@ -14,7 +14,6 @@
 
 @interface PhotoDataViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-@property (nonatomic, retain) AVCaptureStillImageOutput *stillImageOutput;
 @property (nonatomic, strong) ProjectComponent *projectComponent;
 
 @end
