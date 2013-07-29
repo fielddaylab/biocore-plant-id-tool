@@ -8,11 +8,14 @@
 
 #import "EnumJudgementViewController.h"
 #import "iCarousel.h"
+#import "ProjectComponentPossibility.h"
+#import "AppModel.h"
 
 @interface EnumJudgementViewController () <iCarouselDataSource, iCarouselDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, retain) iCarousel *carousel;
 @property (nonatomic, assign) BOOL wrap;
+@property (nonatomic, strong) NSArray *possibilities;
 
 @end
 
@@ -20,6 +23,8 @@
 
 @synthesize carousel;
 @synthesize wrap;
+@synthesize possibilities;
+@synthesize projectComponent;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,7 +45,7 @@
 {
     [super viewDidLoad];
     wrap = YES;
-    
+
     //create carousel
     carousel = [[iCarousel alloc] initWithFrame:self.view.bounds];
 	carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -50,6 +55,12 @@
     
 	//add carousel to view
 	[self.view addSubview:carousel];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
+    [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,7 +73,7 @@
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
-    return 100;
+    return [possibilities count];
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
@@ -72,7 +83,7 @@
     //create new view if no view is available for recycling
     if (view == nil)
     {
-        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100.0f, 200.0f)];
+        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 150.0f, 200.0f)];
         //((UIImageView *)view).image = [UIImage imageNamed:@"35-circle-stop.png"];
         view.contentMode = UIViewContentModeCenter;
         label = [[UILabel alloc] initWithFrame:view.bounds];
@@ -93,7 +104,8 @@
     //views outside of the `if (view == nil) {...}` check otherwise
     //you'll get weird issues with carousel item content appearing
     //in the wrong place in the carousel
-    label.text = [NSString stringWithFormat:@"%i", index];
+    ProjectComponentPossibility *componentPossibility = [possibilities objectAtIndex:index];
+    label.text = componentPossibility.enumValue;
     
     return view;
 }
@@ -112,6 +124,12 @@
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {
     NSLog(@"Tapped view number: %i", index);
+}
+
+#pragma handle possibility response
+-(void)handlePossibilityResponse:(NSArray *)componentPossibilities{
+    possibilities = componentPossibilities;
+    [carousel reloadData];
 }
 
 @end

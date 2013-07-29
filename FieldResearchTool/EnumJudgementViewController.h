@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProjectComponent.h"
 
 @interface EnumJudgementViewController : UIViewController
+
+@property (nonatomic, strong) ProjectComponent *projectComponent;
 
 @end

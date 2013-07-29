@@ -21,6 +21,7 @@
 #import "LongTextJudgementViewController.h"
 #import "TextJudgementViewController.h"
 #import "NumberJudgementViewController.h"
+#import "EnumDataViewController.h"
 
 
 
@@ -102,16 +103,21 @@
         case DATA_LONG_TEXT:
             //set up view controller here
             break;
-        case DATA_ENUMERATOR:
-            //set up view controller here
+        case DATA_ENUMERATOR:{
+            EnumDataViewController *enumDataViewController = [[EnumDataViewController alloc]init];
+            enumDataViewController.view.frame = frame;
+            dataViewControllerToDisplay = enumDataViewController;
+        }
             break;
         default:
             break;
     }
-    
-    [self addChildViewController:dataViewControllerToDisplay];
-    [self didMoveToParentViewController:dataViewControllerToDisplay];
-    [self.view addSubview:dataViewControllerToDisplay.view];
+    if(dataViewControllerToDisplay){
+        [self addChildViewController:dataViewControllerToDisplay];
+        [self didMoveToParentViewController:dataViewControllerToDisplay];
+        [self.view addSubview:dataViewControllerToDisplay.view];
+    }
+
 
     
     frame = CGRectMake(0, self.view.frame.size.height*(3.0f/4.0f) - [UIApplication sharedApplication].statusBarFrame.size.height - [self.navigationController navigationBar].frame.size.height, self.view.bounds.size.width, (self.view.bounds.size.height/4.0f) + [UIApplication sharedApplication].statusBarFrame.size.height + [self.navigationController navigationBar].frame.size.height);
@@ -145,6 +151,7 @@
             EnumJudgementViewController *enumJudgementViewController = [[EnumJudgementViewController alloc]init];
             enumJudgementViewController.view.frame = frame;
             enumJudgementViewController.view.backgroundColor = [UIColor lightGrayColor];
+            enumJudgementViewController.projectComponent = projectComponent;
             judgementViewControllerToDisplay = enumJudgementViewController;
 
         }
@@ -153,10 +160,11 @@
             break;
     }
 
-    
-    [self addChildViewController:judgementViewControllerToDisplay];
-    [self didMoveToParentViewController:judgementViewControllerToDisplay];
-    [self.view addSubview:judgementViewControllerToDisplay.view];
+    if(judgementViewControllerToDisplay){
+        [self addChildViewController:judgementViewControllerToDisplay];
+        [self didMoveToParentViewController:judgementViewControllerToDisplay];
+        [self.view addSubview:judgementViewControllerToDisplay.view];
+    }
 
 }
 

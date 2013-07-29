@@ -33,6 +33,7 @@
 -(void)getAllProjectIdentificationsWithHandler:(SEL)handler target:(id)target;
 -(void)getProjectIdentificationsWithAttributes:(NSDictionary *)attributeNamesAndValues withHandler:(SEL)handler target:(id)target;
 -(void)getUserObservationsWithHandler:(SEL)handler target:(id)target;
+-(void)getProjectComponentPossibilitiesWithAttributes:(NSDictionary *)attributeNamesAndValies withHandler:(SEL)handler target:(id)target;
 
 //Nick's faulty attempt at testing...
 -(void)getUserObservationComponentsDataWithHandler:(SEL)handler target:(id)target;
