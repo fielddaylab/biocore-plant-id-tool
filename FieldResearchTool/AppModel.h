@@ -21,7 +21,7 @@
 @property (nonatomic, strong) CoreDataWrapper *coreData;
 @property (nonatomic, strong) Project *currentProject;
 @property (nonatomic, strong) NSArray *currentProjectComponents;
-@property (nonatomic, strong) NSArray *currentProjectIdentifications;
+@property (nonatomic, strong) NSArray *allCurrentProjectIdentifications;
 @property (nonatomic, strong) UserObservation *currentUserObservation;
 @property (nonatomic, strong) User *currentUser;
 

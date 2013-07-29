@@ -16,7 +16,7 @@
 @synthesize coreData;
 @synthesize currentProject;
 @synthesize currentProjectComponents;
-@synthesize currentProjectIdentifications;
+@synthesize allCurrentProjectIdentifications;
 @synthesize currentUserObservation;
 @synthesize currentUser;
 
@@ -74,7 +74,7 @@
 }
 
 -(void)handleFetchProjectIdentifications:(NSArray *)identifications{
-    self.currentProjectIdentifications = identifications;
+    self.allCurrentProjectIdentifications = identifications;
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"ProjectIdentificationsResponseReady" object:nil]];
 }
 

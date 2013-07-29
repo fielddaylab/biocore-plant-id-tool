@@ -32,7 +32,6 @@
     
     NSMutableArray *savedComponents;
     int savedCount;
-    NSMutableDictionary *identificationAttributes;
 }
 
 @end
@@ -52,7 +51,6 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(projectIdentificationsResponseReady) name:@"ProjectIdentificationsResponseReady" object:nil];
         savedComponents = [[NSMutableArray alloc]init];
         savedCount = 0;
-        identificationAttributes = [[NSMutableDictionary alloc]init];
     }
     return self;
 }
@@ -122,8 +120,8 @@
     }
     
     ProjectComponent *com;
-
-
+    
+    
     switch (indexPath.section) {
         case 0:
             cell.accessoryType= UITableViewCellAccessoryDisclosureIndicator;
@@ -132,7 +130,7 @@
             
         case 1:{
             com = [savedComponents objectAtIndex:indexPath.row];
-
+            
             if(com.wasObserved){
                 cell.accessoryType= UITableViewCellAccessoryCheckmark;
                 
@@ -148,7 +146,7 @@
             
         }break;
         case 2:{
-
+            
             cell.accessoryType= UITableViewCellAccessoryDisclosureIndicator;
             if(!com.wasObserved){
                 com = (ProjectComponent *)[projectComponents objectAtIndex:indexPath.row];
@@ -156,7 +154,7 @@
             }
         }break;
         case 3:{
-          
+            
             cell.accessoryType= UITableViewCellAccessoryCheckmark;
             
             if(indexPath.row == 0){
@@ -207,13 +205,13 @@
     }
     else if (indexPath.section == 3){
         //metadata
-//        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-//        if (cell.accessoryType == UITableViewCellAccessoryCheckmark){
-//            cell.accessoryType = UITableViewCellAccessoryNone;
-//        }
-//        else{
-//            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-//        }
+        //        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        //        if (cell.accessoryType == UITableViewCellAccessoryCheckmark){
+        //            cell.accessoryType = UITableViewCellAccessoryNone;
+        //        }
+        //        else{
+        //            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        //        }
         
         
         AudioDataViewController *photoDataView = [[AudioDataViewController alloc]initWithNibName:@"AudioDataViewController" bundle:nil];
@@ -241,7 +239,7 @@
 }
 
 -(void)projectIdentificationsResponseReady{
-    projectIdentifications = [NSMutableArray arrayWithArray:[AppModel sharedAppModel].currentProjectIdentifications];
+    projectIdentifications = [NSMutableArray arrayWithArray:[AppModel sharedAppModel].allCurrentProjectIdentifications];
     [self.table reloadData];
 }
 
@@ -260,17 +258,10 @@
     if(judgement){
         NSArray *componentPossibilities = [NSArray arrayWithArray:[judgement.projectComponentPossibilities allObjects]];
         //hard code for enums - because enums can only have 1 possibility
+        //this is the possibility to be filtered upon
         ProjectComponentPossibility *possibility = [componentPossibilities objectAtIndex:0];
     }
 }
 
--(void)updateProjectIdentifications:(NSArray *)projectIdentificationComponentPossibilities{
-    
-    
-}
-
--(void)fetchNewIdentifications{
-    
-}
 
 @end
