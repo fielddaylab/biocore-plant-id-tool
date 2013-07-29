@@ -13,18 +13,12 @@
 #import "SaveObservationAndJudgementDelegate.h"
 
 
-#define HEIGHT_OF_RECORD 44
-
-
 
 @interface PhotoDataViewController ()<SaveObservationDelegate>{
-    AVCaptureDevice *photoCaptureDevice;
-    AVCaptureDeviceInput *photoInput;
-    UIView *recorderView;
     UIImageView *showPictureView;
+    UIView *recorderView;
     UIButton *retakeButton;
 }
-
 @end
 
 @implementation PhotoDataViewController
