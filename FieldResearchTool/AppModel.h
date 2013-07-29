@@ -37,6 +37,7 @@
 -(void)getProjectComponentPossibilitiesWithAttributes:(NSDictionary *)attributeNamesAndValies withHandler:(SEL)handler target:(id)target;
 -(void)getUserObservationComponentsDataWithHandler:(SEL)handler target:(id)target;
 -(void)getUserForName:(NSString *)username password:(NSString *)password withHandler:(SEL)handler target:(id)target;
+-(void)getProjectIdentificationComponentPossibilitiesForPossibility:(ProjectComponentPossibility *)possibility withHandler:(SEL)handler target:(id)target;
 
 //create
 -(UserObservation *)createNewUserObservationWithAttributes:(NSDictionary *)attributes;

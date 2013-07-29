@@ -41,8 +41,6 @@
     projectComponent.wasObserved = [NSNumber numberWithBool:YES];
     [[AppModel sharedAppModel] save];
     
-    
-    NSLog(@"SHOULD BE SAVING SOMEWHERE ELSE - NEED TO DO");
     UserObservationComponentData *userData = [self.saveObservationDelegate saveObservationData];
     [self.saveJudgementDelegate saveJudgementData:userData];
     
@@ -93,6 +91,7 @@
             break;
         case DATA_PHOTO:{
             PhotoDataViewController *photoDataViewController = [[PhotoDataViewController alloc]init];
+            photoDataViewController.projectComponent = projectComponent;
             dataViewControllerToDisplay = photoDataViewController;
         }
             break;
