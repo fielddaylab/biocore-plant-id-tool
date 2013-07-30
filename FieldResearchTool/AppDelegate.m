@@ -35,7 +35,7 @@
     //setup example data
     //keep this commented out unless you want to regenerate sample data. otherwise it will continually
     //add sample data
-    [self readInSampleData];
+    //[self readInSampleData];
     return YES;
 }
 
@@ -305,6 +305,7 @@
         identification.updated = [NSDate date];
         identification.identificationDescription = components[1];
         identification.title = components[0];
+        identification.score = [NSNumber numberWithFloat:0.0f];
         //add media here
         identification.project = project;
         

@@ -32,6 +32,8 @@
     
     NSMutableArray *savedComponents;
     int savedCount;
+    
+    NSMutableArray *componentsToFilter;
 }
 
 @end
@@ -51,6 +53,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(projectIdentificationsResponseReady) name:@"ProjectIdentificationsResponseReady" object:nil];
         savedComponents = [[NSMutableArray alloc]init];
         savedCount = 0;
+        componentsToFilter = [[NSMutableArray alloc]init];
     }
     return self;
 }
@@ -239,29 +242,41 @@
 }
 
 -(void)projectIdentificationsResponseReady{
-    projectIdentifications = [NSMutableArray arrayWithArray:[AppModel sharedAppModel].allCurrentProjectIdentifications];
+    projectIdentifications = [NSMutableArray arrayWithArray:[AppModel sharedAppModel].allProjectIdentifications];
     [self.table reloadData];
 }
 
 - (void)dismissContainerViewAndSetProjectComponentObserved:(ProjectComponent *)projectComponent{
+    
+    [componentsToFilter addObject:projectComponent];
+    
     savedCount ++;
     [savedComponents insertObject:projectComponent atIndex:[savedComponents count]];
     [projectComponents removeObject:projectComponent];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)rankIdentifications{
+    NSArray *allProjectIdentifications = [AppModel sharedAppModel].allProjectIdentifications;
+    for (int i = 0; i < allProjectIdentifications.count; i++) {
+        for (int j = 0; j < componentsToFilter.count; j++) {
+            
+        }
+    }
     
     //manage filtering here
     //hardcode first data is the data we want
-    NSArray *userData = [NSArray arrayWithArray:[projectComponent.userObservationComponentData allObjects]];
-    UserObservationComponentData *data = [userData objectAtIndex:0];
-    //hardcode the first judgement is the judgement we want
-    NSArray *judgementSet = [NSArray arrayWithArray:[data.userObservationComponentDataJudgement allObjects]];
-    UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
-    if(judgement){
-        NSArray *componentPossibilities = [NSArray arrayWithArray:[judgement.projectComponentPossibilities allObjects]];
-        //hard code for enums - because enums can only have 1 possibility
-        //this is the possibility to be filtered upon
-        ProjectComponentPossibility *possibility = [componentPossibilities objectAtIndex:0];
-    }
+//    NSArray *userData = [NSArray arrayWithArray:[projectComponent.userObservationComponentData allObjects]];
+//    UserObservationComponentData *data = [userData objectAtIndex:0];
+//    //hardcode the first judgement is the judgement we want
+//    NSArray *judgementSet = [NSArray arrayWithArray:[data.userObservationComponentDataJudgement allObjects]];
+//    UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
+//    if(judgement){
+//        NSArray *componentPossibilities = [NSArray arrayWithArray:[judgement.projectComponentPossibilities allObjects]];
+//        //hard code for enums - because enums can only have 1 possibility
+//        //this is the possibility to be filtered upon
+//        ProjectComponentPossibility *possibility = [componentPossibilities objectAtIndex:0];
+//    }
 }
 
 
