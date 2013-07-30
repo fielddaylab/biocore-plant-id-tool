@@ -110,9 +110,4 @@
     NSLog(@"Tapped view number: %i", index);
 }
 
-#pragma mark saving observation data
--(UserObservationComponentData *)saveObservationData{
-    return nil;
-}
-
 @end

@@ -102,6 +102,7 @@
     {
         //get a reference to the label in the recycled view
         label = (UILabel *)[view viewWithTag:1];
+        label.textColor = [UIColor blackColor];
     }
     
     //set item label

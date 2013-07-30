@@ -2,7 +2,7 @@
 //  ProjectIdentification.h
 //  FieldResearchTool
 //
-//  Created by Justin Moeller on 7/24/13.
+//  Created by Justin Moeller on 7/30/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
@@ -13,27 +13,28 @@
 
 @interface ProjectIdentification : NSManagedObject
 
-@property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSString * identificationDescription;
 @property (nonatomic, retain) NSNumber * authorCreated;
 @property (nonatomic, retain) NSDate * created;
+@property (nonatomic, retain) NSString * identificationDescription;
+@property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSDate * updated;
-@property (nonatomic, retain) Project *project;
+@property (nonatomic, retain) NSNumber * score;
 @property (nonatomic, retain) Media *media;
-@property (nonatomic, retain) NSSet *userObservationIdentifications;
+@property (nonatomic, retain) Project *project;
 @property (nonatomic, retain) NSSet *projectIdentificationComponentPossibilities;
+@property (nonatomic, retain) NSSet *userObservationIdentifications;
 @end
 
 @interface ProjectIdentification (CoreDataGeneratedAccessors)
-
-- (void)addUserObservationIdentificationsObject:(UserObservationIdentification *)value;
-- (void)removeUserObservationIdentificationsObject:(UserObservationIdentification *)value;
-- (void)addUserObservationIdentifications:(NSSet *)values;
-- (void)removeUserObservationIdentifications:(NSSet *)values;
 
 - (void)addProjectIdentificationComponentPossibilitiesObject:(ProjectIdentificationComponentPossibility *)value;
 - (void)removeProjectIdentificationComponentPossibilitiesObject:(ProjectIdentificationComponentPossibility *)value;
 - (void)addProjectIdentificationComponentPossibilities:(NSSet *)values;
 - (void)removeProjectIdentificationComponentPossibilities:(NSSet *)values;
+
+- (void)addUserObservationIdentificationsObject:(UserObservationIdentification *)value;
+- (void)removeUserObservationIdentificationsObject:(UserObservationIdentification *)value;
+- (void)addUserObservationIdentifications:(NSSet *)values;
+- (void)removeUserObservationIdentifications:(NSSet *)values;
 
 @end
