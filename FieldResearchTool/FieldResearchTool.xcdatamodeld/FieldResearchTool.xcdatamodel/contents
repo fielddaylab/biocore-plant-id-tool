@@ -92,7 +92,7 @@
         <relationship name="media" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Media" inverseName="userObservationComponentData" inverseEntity="Media" syncable="YES"/>
         <relationship name="projectComponent" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ProjectComponent" inverseName="userObservationComponentData" inverseEntity="ProjectComponent" syncable="YES"/>
         <relationship name="userObservation" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="UserObservation" inverseName="userObservationComponentData" inverseEntity="UserObservation" syncable="YES"/>
-        <relationship name="userObservationComponentDataJudgement" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="UserObservationComponentDataJudgement" inverseName="userObservationComponentData" inverseEntity="UserObservationComponentDataJudgement" syncable="YES"/>
+        <relationship name="userObservationComponentDataJudgement" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserObservationComponentDataJudgement" inverseName="userObservationComponentData" inverseEntity="UserObservationComponentDataJudgement" syncable="YES"/>
     </entity>
     <entity name="UserObservationComponentDataJudgement" representedClassName="UserObservationComponentDataJudgement" syncable="YES">
         <attribute name="boolValue" optional="YES" attributeType="Boolean" syncable="YES"/>

@@ -250,11 +250,12 @@
     [self.navigationController popViewControllerAnimated:YES];
     
     //manage filtering here
+    //hardcode first data is the data we want
     NSArray *userData = [NSArray arrayWithArray:[projectComponent.userObservationComponentData allObjects]];
-    
-    //hard code one peice of data per project component
     UserObservationComponentData *data = [userData objectAtIndex:0];
-    UserObservationComponentDataJudgement *judgement = data.userObservationComponentDataJudgement;
+    //hardcode the first judgement is the judgement we want
+    NSArray *judgementSet = [NSArray arrayWithArray:[data.userObservationComponentDataJudgement allObjects]];
+    UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
     if(judgement){
         NSArray *componentPossibilities = [NSArray arrayWithArray:[judgement.projectComponentPossibilities allObjects]];
         //hard code for enums - because enums can only have 1 possibility
