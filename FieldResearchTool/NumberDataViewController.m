@@ -60,4 +60,18 @@
     [self.view endEditing:YES];
 }
 
+-(UserObservationComponentData *)saveObservationData{
+    NSString *text = textField.text;
+    float numberToSave = [text floatValue];
+    
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setObject:[NSDate date] forKey:@"created"];
+    [attributes setObject:[NSDate date] forKey:@"updated"];
+    [attributes setObject:[NSNumber numberWithFloat:numberToSave] forKey:@"number"];
+    [attributes setObject:projectComponent forKey:@"projectComponent"];
+    
+    UserObservationComponentData *data = [[AppModel sharedAppModel] createNewObservationDataWithAttributes:attributes];
+    return data;
+}
+
 @end
