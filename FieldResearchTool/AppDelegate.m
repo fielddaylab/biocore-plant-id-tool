@@ -35,7 +35,7 @@
     //setup example data
     //keep this commented out unless you want to regenerate sample data. otherwise it will continually
     //add sample data
-    //[self readInSampleData];
+    [self readInSampleData];
     return YES;
 }
 
@@ -317,7 +317,13 @@
                 ProjectComponent *associatedProjectComponent = [projectComponents objectAtIndex:j-numOfNonComponents];
                 
                 if([commaListOfComponentPossibilities isEqualToString:@""]){
-                    //possibility was empty
+                    //create a 'pairing' of the identification and nil so we can find where data isn't filled out in the table
+                    ProjectIdentificationComponentPossibility *projectIdentificationComponentPossibility = (ProjectIdentificationComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
+                    projectIdentificationComponentPossibility.created = [NSDate date];
+                    projectIdentificationComponentPossibility.updated = [NSDate date];
+                    projectIdentificationComponentPossibility.projectComponentPossibility = nil;
+                    projectIdentificationComponentPossibility.projectIdentification = identification;
+                    NSLog(@"Creating identification component possibility for identification: %@ with nil possibility", identification.title);
                     continue;
                 }
                 
@@ -344,6 +350,9 @@
                                 NSString *stdDev = componentPossibilities[1];
                                 componentPossibility.number = [NSNumber numberWithInt:[number intValue]];
                                 componentPossibility.stdDev = [NSNumber numberWithInt:[stdDev intValue]];
+                            }
+                            else{
+                                continue;
                             }
                         }
                         else if(associatedProjectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_TEXT]){
@@ -381,7 +390,11 @@
                     projectIdentificationComponentPossibility.projectComponentPossibility = componentPossibility;
                     projectIdentificationComponentPossibility.projectIdentification = identification;
                     
-                    //NSLog(@"Created Project Identification Component Possibility. Identification: %@ Component: %@", identification.title, associatedProjectComponent.title);
+                    if (!componentPossibility) {
+                        NSLog(@"ERROR!!!!! Created Project Identification Component Possibility. Identification: %@ Component: %@ Possibility: %@", identification.title, associatedProjectComponent.title, componentPossibility.enumValue);
+                    }
+                    
+                    //NSLog(@"Created Project Identification Component Possibility. Identification: %@ Component: %@ Possibility: %@", identification.title, associatedProjectComponent.title, componentPossibility.enumValue);
                     
                 }
             }
