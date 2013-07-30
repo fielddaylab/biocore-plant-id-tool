@@ -37,7 +37,7 @@
     numberField.font = [UIFont systemFontOfSize:15];
     numberField.placeholder = @"enter number";
     numberField.autocorrectionType = UITextAutocorrectionTypeNo;
-    numberField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;//UIKeyboardTypeNumberPad;
+    numberField.keyboardType = UIKeyboardTypeDecimalPad;//UIKeyboardTypeNumbersAndPunctuation;//UIKeyboardTypeNumberPad;
     numberField.returnKeyType = UIReturnKeyDone;
     numberField.clearButtonMode = UITextFieldViewModeWhileEditing;
     numberField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
