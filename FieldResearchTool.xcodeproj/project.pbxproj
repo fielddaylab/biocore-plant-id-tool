@@ -71,6 +71,8 @@
 		718AAD231794771300AFE6DB /* InterpretationChoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD211794771300AFE6DB /* InterpretationChoiceViewController.xib */; };
 		718AAD271794772300AFE6DB /* InterpretationSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AAD251794772300AFE6DB /* InterpretationSplitViewController.m */; };
 		718AAD281794772300AFE6DB /* InterpretationSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD261794772300AFE6DB /* InterpretationSplitViewController.xib */; };
+		718F073E17A82DE0001FD560 /* BOC.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 718F073D17A82DE0001FD560 /* BOC.jpg */; };
+		718F074017A85543001FD560 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 718F073F17A85543001FD560 /* test.png */; };
 		71FF69BE1794819300E2B411 /* FieldResearchNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF69A41794819200E2B411 /* FieldResearchNavigationController.m */; };
 		71FF69BF1794819300E2B411 /* FieldResearchTool.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71FF69A51794819200E2B411 /* FieldResearchTool.xcdatamodeld */; };
 		71FF69C01794819300E2B411 /* ObservationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF69A81794819200E2B411 /* ObservationViewController.m */; };
@@ -200,6 +202,8 @@
 		718AAD241794772300AFE6DB /* InterpretationSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterpretationSplitViewController.h; sourceTree = "<group>"; };
 		718AAD251794772300AFE6DB /* InterpretationSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterpretationSplitViewController.m; sourceTree = "<group>"; };
 		718AAD261794772300AFE6DB /* InterpretationSplitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InterpretationSplitViewController.xib; sourceTree = "<group>"; };
+		718F073D17A82DE0001FD560 /* BOC.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BOC.jpg; sourceTree = "<group>"; };
+		718F073F17A85543001FD560 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		71FF69A31794819200E2B411 /* FieldResearchNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldResearchNavigationController.h; sourceTree = "<group>"; };
 		71FF69A41794819200E2B411 /* FieldResearchNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FieldResearchNavigationController.m; sourceTree = "<group>"; };
 		71FF69A61794819200E2B411 /* FieldResearchTool.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FieldResearchTool.xcdatamodel; sourceTree = "<group>"; };
@@ -384,6 +388,8 @@
 		718AAD021794666200AFE6DB /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				718F073F17A85543001FD560 /* test.png */,
+				718F073D17A82DE0001FD560 /* BOC.jpg */,
 				7166E256179F25B3009FFC6E /* 17-checkGREEN.png */,
 				7166E257179F25B3009FFC6E /* 19-circle-checkGREEN.png */,
 				7166E258179F25B3009FFC6E /* 37-circle-xRED.png */,
@@ -597,6 +603,8 @@
 				5BF30DCE17A1C6D40071E7EA /* LongTextJudgementViewController.xib in Resources */,
 				5BF30DD017A1C6D40071E7EA /* NumberJudgementViewController.xib in Resources */,
 				5BF30DD217A1C6D40071E7EA /* TextJudgementViewController.xib in Resources */,
+				718F073E17A82DE0001FD560 /* BOC.jpg in Resources */,
+				718F074017A85543001FD560 /* test.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
