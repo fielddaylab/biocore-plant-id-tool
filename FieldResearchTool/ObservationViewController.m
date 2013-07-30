@@ -292,8 +292,8 @@
         NSLog(@"%i: %@ with score %@", i, identification.title, identification.score);
     }
     
-//    projectIdentifications = [NSArray arrayWithArray:sortedIdentifications];
-//    [self.table reloadData];
+    projectIdentifications = [NSArray arrayWithArray:sortedIdentifications];
+    [self.table reloadData];
 }
 
 
