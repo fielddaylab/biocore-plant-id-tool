@@ -35,7 +35,7 @@
     //setup example data
     //keep this commented out unless you want to regenerate sample data. otherwise it will continually
     //add sample data
-    //[self readInSampleData];
+    [self readInSampleData];
     return YES;
 }
 
@@ -322,7 +322,7 @@
             nonComponents++;
         }
     }
-    
+        
     //read in the actual data
     for(int i = 1; i < [lines count]; i++){
         
@@ -334,6 +334,7 @@
         identification.identificationDescription = components[1];
         identification.title = components[0];
         identification.score = [NSNumber numberWithFloat:0.0f];
+        identification.numOfNils = [NSNumber numberWithInt:0];
         //add media here
         identification.project = project;
         
@@ -345,13 +346,19 @@
                 ProjectComponent *associatedProjectComponent = [projectComponents objectAtIndex:j-numOfNonComponents];
                 
                 if([commaListOfComponentPossibilities isEqualToString:@""]){
+                    //create special 'nil' possibility for data that isn't filled out
+                    ProjectComponentPossibility *nilPossibility = (ProjectComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
+                    nilPossibility.created = [NSDate date];
+                    nilPossibility.updated = [NSDate date];
+                    nilPossibility.enumValue = @""; //special value for nil possibility
+                    nilPossibility.projectComponent = associatedProjectComponent;
                     //create a 'pairing' of the identification and nil so we can find where data isn't filled out in the table
                     ProjectIdentificationComponentPossibility *projectIdentificationComponentPossibility = (ProjectIdentificationComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
                     projectIdentificationComponentPossibility.created = [NSDate date];
                     projectIdentificationComponentPossibility.updated = [NSDate date];
-                    projectIdentificationComponentPossibility.projectComponentPossibility = nil;
+                    projectIdentificationComponentPossibility.projectComponentPossibility = nilPossibility;
                     projectIdentificationComponentPossibility.projectIdentification = identification;
-                    NSLog(@"Creating identification component possibility for identification: %@ with nil possibility", identification.title);
+                    //NSLog(@"Creating identification component possibility for identification: %@ with nil possibility", identification.title);
                     continue;
                 }
                 
@@ -378,6 +385,7 @@
                                 NSString *stdDev = componentPossibilities[1];
                                 componentPossibility.number = [NSNumber numberWithInt:[number intValue]];
                                 componentPossibility.stdDev = [NSNumber numberWithInt:[stdDev intValue]];
+                                componentPossibility.projectComponent = associatedProjectComponent;
                             }
                             else{
                                 continue;
@@ -385,9 +393,11 @@
                         }
                         else if(associatedProjectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_TEXT]){
                             componentPossibility.text = componentPossibilities[k];
+                            componentPossibility.projectComponent = associatedProjectComponent;
                         }
                         else{
                             componentPossibility.longText = componentPossibilities[k];
+                            componentPossibility.projectComponent = associatedProjectComponent;
                         }
                     }
                     else if(associatedProjectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_BOOLEAN]){

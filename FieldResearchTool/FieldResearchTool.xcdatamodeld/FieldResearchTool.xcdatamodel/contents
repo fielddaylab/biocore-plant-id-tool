@@ -53,6 +53,7 @@
         <attribute name="authorCreated" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="identificationDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numOfNils" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="score" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updated" optional="YES" attributeType="Date" syncable="YES"/>
@@ -118,8 +119,13 @@
         <element name="Media" positionX="-495" positionY="-796" width="128" height="178"/>
         <element name="Project" positionX="153" positionY="206" width="128" height="165"/>
         <element name="ProjectComponent" positionX="144" positionY="-81" width="128" height="225"/>
+<<<<<<< HEAD
         <element name="ProjectComponentPossibility" positionX="567" positionY="-244" width="279" height="223"/>
         <element name="ProjectIdentification" positionX="135" positionY="497" width="128" height="195"/>
+=======
+        <element name="ProjectComponentPossibility" positionX="567" positionY="-244" width="279" height="210"/>
+        <element name="ProjectIdentification" positionX="135" positionY="497" width="128" height="210"/>
+>>>>>>> 78200987978f2575a231b363e7ccd0021b7505a9
         <element name="ProjectIdentificationComponentPossibility" positionX="450" positionY="180" width="288" height="105"/>
         <element name="User" positionX="-648" positionY="-324" width="128" height="135"/>
         <element name="UserObservation" positionX="-567" positionY="126" width="128" height="150"/>

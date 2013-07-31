@@ -98,6 +98,7 @@
         case DATA_NUMBER:{
             NumberDataViewController *numberDataViewController = [[NumberDataViewController alloc]init];
             numberDataViewController.view.frame = frame;
+            numberDataViewController.projectComponent = projectComponent;
             dataViewControllerToDisplay = numberDataViewController;
         }
             break;
@@ -117,9 +118,7 @@
             //set up view controller here
             break;
         case DATA_ENUMERATOR:{
-            EnumDataViewController *enumDataViewController = [[EnumDataViewController alloc]init];
-            enumDataViewController.view.frame = frame;
-            dataViewControllerToDisplay = enumDataViewController;
+            //set up view controller here
         }
             break;
         default:
@@ -157,12 +156,14 @@
         case JUDGEMENT_NUMBER:{
             NumberJudgementViewController *numberJudgementViewController = [[NumberJudgementViewController alloc]init];
             numberJudgementViewController.view.frame = frame2;
+            numberJudgementViewController.projectComponent = projectComponent;
             judgementViewControllerToDisplay = numberJudgementViewController;
         }
             break;
         case JUDGEMENT_BOOLEAN:{
             BooleanJudgementViewController *booleanJudgementViewController = [[BooleanJudgementViewController alloc]init];
             booleanJudgementViewController.view.frame = frame2;
+            booleanJudgementViewController.projectComponent = projectComponent;
             judgementViewControllerToDisplay = booleanJudgementViewController;
         }
             break;

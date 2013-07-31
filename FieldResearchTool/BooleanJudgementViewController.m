@@ -8,12 +8,17 @@
 
 #import "BooleanJudgementViewController.h"
 #import "SaveObservationAndJudgementDelegate.h"
+#import "AppModel.h"
 
-@interface BooleanJudgementViewController ()<SaveJudgementDelegate>
+@interface BooleanJudgementViewController ()<SaveJudgementDelegate>{
+    UISwitch *boolSwitch;
+    NSArray *possibilities;
+}
 
 @end
 
 @implementation BooleanJudgementViewController
+@synthesize projectComponent;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,20 +32,56 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-//    CGRect frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
-    
     CGRect frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
-    
-    UISwitch *boolSwitch = [[UISwitch alloc]initWithFrame:frame];
+    boolSwitch = [[UISwitch alloc]initWithFrame:frame];
     [self.view addSubview:boolSwitch];
     
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
+    [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark saving judgement data
+
+-(UserObservationComponentDataJudgement *)saveJudgementData:(UserObservationComponentData *)userData{
+    
+    if(!userData){
+        NSLog(@"ERROR: Observation data passed in was nil");
+        return nil;
+    }
+    
+    BOOL switchValue = boolSwitch.isOn;
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setObject:[NSDate date] forKey:@"created"];
+    [attributes setObject:[NSDate date] forKey:@"updated"];
+    [attributes setObject:[NSNumber numberWithBool:switchValue] forKey:@"boolValue"];
+    
+    //figure out what possibility you have chosen
+    ProjectComponentPossibility *possibility;
+    for (int i = 0; i < possibilities.count; i++) {
+        possibility = [possibilities objectAtIndex:i];
+        if([possibility.boolValue boolValue] == switchValue){
+            break;
+        }
+    }
+    
+    NSArray *chosenPossibility = [NSArray arrayWithObject:possibility];
+    UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:chosenPossibility withAttributes:attributes];
+    return judgement;
+}
+
+#pragma mark handle possibility response
+-(void)handlePossibilityResponse:(NSArray *)componentPossibilities{
+    possibilities = componentPossibilities;
 }
 
 @end
