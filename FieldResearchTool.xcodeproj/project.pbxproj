@@ -78,9 +78,9 @@
 		718F075517A9AA80001FD560 /* Growth_form_.png in Resources */ = {isa = PBXBuildFile; fileRef = 718F074817A9AA80001FD560 /* Growth_form_.png */; };
 		718F075617A9AA80001FD560 /* Is_this_plant_cool.png in Resources */ = {isa = PBXBuildFile; fileRef = 718F074917A9AA80001FD560 /* Is_this_plant_cool.png */; };
 		718F075717A9AA80001FD560 /* Max_height_of_stem(inches).png in Resources */ = {isa = PBXBuildFile; fileRef = 718F074A17A9AA80001FD560 /* Max_height_of_stem(inches).png */; };
-		718F075817A9AA80001FD560 /* MAX_Length_of_flower_cluster_(inches).png in Resources */ = {isa = PBXBuildFile; fileRef = 718F074B17A9AA80001FD560 /* MAX_Length_of_flower_cluster_(inches).png */; };
+		718F075817A9AA80001FD560 /* MAX_length_of_flower_cluster_(inches).png in Resources */ = {isa = PBXBuildFile; fileRef = 718F074B17A9AA80001FD560 /* MAX_length_of_flower_cluster_(inches).png */; };
 		718F075917A9AA80001FD560 /* MIN_Height_of_flowering_plant(inches).png in Resources */ = {isa = PBXBuildFile; fileRef = 718F074C17A9AA80001FD560 /* MIN_Height_of_flowering_plant(inches).png */; };
-		718F075A17A9AA80001FD560 /* MIN_Width_of_flower_.png in Resources */ = {isa = PBXBuildFile; fileRef = 718F074D17A9AA80001FD560 /* MIN_Width_of_flower_.png */; };
+		718F075A17A9AA80001FD560 /* MIN_width_of_flower_.png in Resources */ = {isa = PBXBuildFile; fileRef = 718F074D17A9AA80001FD560 /* MIN_width_of_flower_.png */; };
 		718F075B17A9AA80001FD560 /* Petiole_present.png in Resources */ = {isa = PBXBuildFile; fileRef = 718F074E17A9AA80001FD560 /* Petiole_present.png */; };
 		718F075C17A9AA80001FD560 /* flower.psd in Resources */ = {isa = PBXBuildFile; fileRef = 718F075017A9AA80001FD560 /* flower.psd */; };
 		718F075D17A9AA80001FD560 /* leaf.psd in Resources */ = {isa = PBXBuildFile; fileRef = 718F075117A9AA80001FD560 /* leaf.psd */; };
@@ -221,9 +221,9 @@
 		718F074817A9AA80001FD560 /* Growth_form_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Growth_form_.png; sourceTree = "<group>"; };
 		718F074917A9AA80001FD560 /* Is_this_plant_cool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Is_this_plant_cool.png; sourceTree = "<group>"; };
 		718F074A17A9AA80001FD560 /* Max_height_of_stem(inches).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Max_height_of_stem(inches).png"; sourceTree = "<group>"; };
-		718F074B17A9AA80001FD560 /* MAX_Length_of_flower_cluster_(inches).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MAX_Length_of_flower_cluster_(inches).png"; sourceTree = "<group>"; };
+		718F074B17A9AA80001FD560 /* MAX_length_of_flower_cluster_(inches).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MAX_length_of_flower_cluster_(inches).png"; sourceTree = "<group>"; };
 		718F074C17A9AA80001FD560 /* MIN_Height_of_flowering_plant(inches).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MIN_Height_of_flowering_plant(inches).png"; sourceTree = "<group>"; };
-		718F074D17A9AA80001FD560 /* MIN_Width_of_flower_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MIN_Width_of_flower_.png; sourceTree = "<group>"; };
+		718F074D17A9AA80001FD560 /* MIN_width_of_flower_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MIN_width_of_flower_.png; sourceTree = "<group>"; };
 		718F074E17A9AA80001FD560 /* Petiole_present.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Petiole_present.png; sourceTree = "<group>"; };
 		718F075017A9AA80001FD560 /* flower.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = flower.psd; sourceTree = "<group>"; };
 		718F075117A9AA80001FD560 /* leaf.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = leaf.psd; sourceTree = "<group>"; };
@@ -462,9 +462,9 @@
 				718F074817A9AA80001FD560 /* Growth_form_.png */,
 				718F074917A9AA80001FD560 /* Is_this_plant_cool.png */,
 				718F074A17A9AA80001FD560 /* Max_height_of_stem(inches).png */,
-				718F074B17A9AA80001FD560 /* MAX_Length_of_flower_cluster_(inches).png */,
+				718F074B17A9AA80001FD560 /* MAX_length_of_flower_cluster_(inches).png */,
 				718F074C17A9AA80001FD560 /* MIN_Height_of_flowering_plant(inches).png */,
-				718F074D17A9AA80001FD560 /* MIN_Width_of_flower_.png */,
+				718F074D17A9AA80001FD560 /* MIN_width_of_flower_.png */,
 				718F074E17A9AA80001FD560 /* Petiole_present.png */,
 			);
 			path = ComponentPNG;
@@ -670,9 +670,9 @@
 				718F075517A9AA80001FD560 /* Growth_form_.png in Resources */,
 				718F075617A9AA80001FD560 /* Is_this_plant_cool.png in Resources */,
 				718F075717A9AA80001FD560 /* Max_height_of_stem(inches).png in Resources */,
-				718F075817A9AA80001FD560 /* MAX_Length_of_flower_cluster_(inches).png in Resources */,
+				718F075817A9AA80001FD560 /* MAX_length_of_flower_cluster_(inches).png in Resources */,
 				718F075917A9AA80001FD560 /* MIN_Height_of_flowering_plant(inches).png in Resources */,
-				718F075A17A9AA80001FD560 /* MIN_Width_of_flower_.png in Resources */,
+				718F075A17A9AA80001FD560 /* MIN_width_of_flower_.png in Resources */,
 				718F075B17A9AA80001FD560 /* Petiole_present.png in Resources */,
 				718F075C17A9AA80001FD560 /* flower.psd in Resources */,
 				718F075D17A9AA80001FD560 /* leaf.psd in Resources */,

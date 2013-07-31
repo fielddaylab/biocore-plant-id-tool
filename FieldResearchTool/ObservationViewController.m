@@ -163,9 +163,15 @@
 
                 com = (ProjectComponent *)[projectComponents objectAtIndex:indexPath.row];
                 
-//                cell.imageView.image = [self imageWithImage:[UIImage imageNamed:@"test.png"] scaledToSize:CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, cell.bounds.size.height, cell.bounds.size.height).size];
+                NSString *projectComponentTitleString = com.title;
+                NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
+                projectComponentTitleString = [[projectComponentTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
+                NSLog(@"%@",projectComponentTitleString);
+                projectComponentTitleString = [projectComponentTitleString stringByAppendingString:@".png"];
                 
-                cell.imageView.image = [self imageWithImage:[UIImage imageWithContentsOfFile:com.media.mediaURL] scaledToSize:CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, cell.bounds.size.height, cell.bounds.size.height).size];
+                cell.imageView.image = [self imageWithImage:[UIImage imageNamed:projectComponentTitleString] scaledToSize:CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, cell.bounds.size.height, cell.bounds.size.height).size];
+                
+                //cell.imageView.image = [self imageWithImage:[UIImage imageWithContentsOfFile:com.media.mediaURL] scaledToSize:CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, cell.bounds.size.height, cell.bounds.size.height).size];
 
   
                 cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
