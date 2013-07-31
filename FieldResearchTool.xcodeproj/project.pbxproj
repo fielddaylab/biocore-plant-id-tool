@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B01FEE117A99D8900C547D8 /* ProjectIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B01FEE017A99D8900C547D8 /* ProjectIdentification.m */; };
 		5B034C1217A81F34003A1C50 /* UserObservationComponentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B034C1117A81F34003A1C50 /* UserObservationComponentData.m */; };
-		5B034C1817A824D3003A1C50 /* ProjectIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B034C1717A824D3003A1C50 /* ProjectIdentification.m */; };
 		5B03BBE9179EE495005AD632 /* MediaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBE8179EE495005AD632 /* MediaManager.m */; };
 		5B0458591795A11600B93A4D /* AppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0458581795A11600B93A4D /* AppModel.m */; };
 		5B82BD8917972005008CB441 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82BD8817972005008CB441 /* iCarousel.m */; };
@@ -102,10 +102,10 @@
 
 /* Begin PBXFileReference section */
 		03237ECF5C5F485597FD7DAA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		5B01FEDF17A99D8900C547D8 /* ProjectIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentification.h; sourceTree = "<group>"; };
+		5B01FEE017A99D8900C547D8 /* ProjectIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentification.m; sourceTree = "<group>"; };
 		5B034C1017A81F34003A1C50 /* UserObservationComponentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationComponentData.h; sourceTree = "<group>"; };
 		5B034C1117A81F34003A1C50 /* UserObservationComponentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationComponentData.m; sourceTree = "<group>"; };
-		5B034C1617A824D3003A1C50 /* ProjectIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentification.h; sourceTree = "<group>"; };
-		5B034C1717A824D3003A1C50 /* ProjectIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentification.m; sourceTree = "<group>"; };
 		5B03BBE7179EE495005AD632 /* MediaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaManager.h; sourceTree = "<group>"; };
 		5B03BBE8179EE495005AD632 /* MediaManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaManager.m; sourceTree = "<group>"; };
 		5B03BC3E179EF8F8005AD632 /* MediaType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaType.h; sourceTree = "<group>"; };
@@ -342,8 +342,8 @@
 				5B98AF8D17A07A4C00678C36 /* ProjectComponent.m */,
 				5B98AF9217A07A5E00678C36 /* ProjectComponentPossibility.h */,
 				5B98AF9317A07A5F00678C36 /* ProjectComponentPossibility.m */,
-				5B034C1617A824D3003A1C50 /* ProjectIdentification.h */,
-				5B034C1717A824D3003A1C50 /* ProjectIdentification.m */,
+				5B01FEDF17A99D8900C547D8 /* ProjectIdentification.h */,
+				5B01FEE017A99D8900C547D8 /* ProjectIdentification.m */,
 				5B98AF9E17A07A8300678C36 /* ProjectIdentificationComponentPossibility.h */,
 				5B98AF9F17A07A8300678C36 /* ProjectIdentificationComponentPossibility.m */,
 				5B98AFA417A07A9200678C36 /* User.h */,
@@ -690,7 +690,7 @@
 				5BF30DCF17A1C6D40071E7EA /* NumberJudgementViewController.m in Sources */,
 				5BF30DD117A1C6D40071E7EA /* TextJudgementViewController.m in Sources */,
 				5B034C1217A81F34003A1C50 /* UserObservationComponentData.m in Sources */,
-				5B034C1817A824D3003A1C50 /* ProjectIdentification.m in Sources */,
+				5B01FEE117A99D8900C547D8 /* ProjectIdentification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

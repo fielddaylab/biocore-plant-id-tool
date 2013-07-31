@@ -306,6 +306,7 @@
         identification.identificationDescription = components[1];
         identification.title = components[0];
         identification.score = [NSNumber numberWithFloat:0.0f];
+        identification.numOfNils = [NSNumber numberWithInt:0];
         //add media here
         identification.project = project;
         

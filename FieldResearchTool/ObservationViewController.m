@@ -141,7 +141,17 @@
     switch (indexPath.section) {
         case 0:
             cell.accessoryType= UITableViewCellAccessoryDisclosureIndicator;
-            cell.textLabel.text = [projectIdentifications count] != 1 ?[NSString stringWithFormat:@"%d identifications", [projectIdentifications count]] : [NSString stringWithFormat:@"%d identification", 1];
+            int identifications = [projectIdentifications count];
+            if(componentsToFilter.count > 0){
+                identifications = 0;
+                for (int i = 0; i < projectIdentifications.count; i++) {
+                    ProjectIdentification *iden = [projectIdentifications objectAtIndex:i];
+                    if([iden.score floatValue] >= .8){
+                        identifications++;
+                    }
+                }
+            }
+            cell.textLabel.text = identifications != 1 ?[NSString stringWithFormat:@"%d ids with > .8 match", identifications] : [NSString stringWithFormat:@"%d id with > .8 match", 1];
             break;
         case 1:
             com = (ProjectComponent *)[savedComponents objectAtIndex:indexPath.row];
@@ -262,6 +272,7 @@
     for (int i = 0; i < allProjectIdentifications.count; i++) {
         ProjectIdentification *identification = [allProjectIdentifications objectAtIndex:i];
         identification.score = [NSNumber numberWithFloat:0.0f];
+        identification.numOfNils = [NSNumber numberWithInt:0];
         for (int j = 0; j < componentsToFilter.count; j++) {
             ProjectComponent *component = [componentsToFilter objectAtIndex:j];
             switch ([component.observationJudgementType intValue]) {
@@ -291,15 +302,26 @@
         }
     }
     
+    //scale score to be 0 to 1
+    for (int i = 0; i < allProjectIdentifications.count; i++) {
+        ProjectIdentification *identification = [allProjectIdentifications objectAtIndex:i];
+        float score = [identification.score floatValue];
+        float scaledScore = score / [componentsToFilter count];
+        float roundedScore = floorf(scaledScore * 100 + 0.5) / 100;
+        identification.score = [NSNumber numberWithFloat:roundedScore];
+    }
+    
     //sort array
     NSSortDescriptor *scoreDescriptor = [[NSSortDescriptor alloc] initWithKey:@"score" ascending:NO];
-    NSArray *descriptors = [NSArray arrayWithObject:scoreDescriptor];
+    NSSortDescriptor *nilsDescriptor = [[NSSortDescriptor alloc] initWithKey:@"numOfNils" ascending:YES];
+    NSArray *descriptors = [NSArray arrayWithObjects:scoreDescriptor, nilsDescriptor, nil];
     NSArray *sortedIdentifications = [allProjectIdentifications sortedArrayUsingDescriptors:descriptors];
     
     //for debugging purposes
     for (int i = 0; i < sortedIdentifications.count; i++) {
         ProjectIdentification *identification = [sortedIdentifications objectAtIndex:i];
-        NSLog(@"%i: %@ with score %@", i, identification.title, identification.score);
+        int numberOfNils = [identification.numOfNils intValue];
+        NSLog(@"%i: %@ with score %@ and %i nils. Sorting on %lu components", i, identification.title, identification.score, numberOfNils, (unsigned long)componentsToFilter.count);
     }
     
     projectIdentifications = [NSArray arrayWithArray:sortedIdentifications];
@@ -386,6 +408,9 @@
     
     ProjectComponent *componentToCompare = possibility.projectComponent;
     if([componentToCompare.title isEqualToString:component.title] && [possibility.enumValue isEqualToString:@""]){
+        int nils = [identification.numOfNils intValue];
+        nils++;
+        identification.numOfNils = [NSNumber numberWithInt:nils];
         return NIL_SCORE;
     }
     
@@ -395,10 +420,11 @@
     float zScore = (x - mean) / stdDev;
     float absZ = fabsf(zScore);
     float score = 1 / expf(absZ);
+    float roundedToTwoDecimals = floorf(score * 100 + 0.5) / 100;
     
     //NSLog(@"Z-Score: %f Adding %f to identification: %@ for component: %@", absZ, score, identification.title, component.title);
     
-    return score;
+    return roundedToTwoDecimals;
     
 }
 
@@ -479,6 +505,9 @@
         ProjectComponent *componentToCompare = possibilityToCompare.projectComponent;
         if([component.title isEqualToString:componentToCompare.title] && [possibilityToCompare.enumValue isEqualToString:@""]){
             //NSLog(@"Identification: %@ has nil possibility. Adding 0.9 to its score.", identification.title);
+            int nils = [identification.numOfNils intValue];
+            nils++;
+            identification.numOfNils = [NSNumber numberWithInt:nils];
             return NIL_SCORE;
         }
         else if([possibilityToCompare.enumValue isEqualToString:possibility.enumValue]){
@@ -565,6 +594,9 @@
         //NSLog(@"PAIR Identification: %@ Possibility: %@", identification.title, possibilityToCompare.enumValue);
         if([component.title isEqualToString:componentToCompare.title] && [possibilityToCompare.enumValue isEqualToString:@""]){
             //NSLog(@"Identification: %@ has nil possibility. Adding 0.9 to its score.", identification.title);
+            int nils = [identification.numOfNils intValue];
+            nils++;
+            identification.numOfNils = [NSNumber numberWithInt:nils];
             return NIL_SCORE;
         }
         else if ([possibilityToCompare.boolValue boolValue] == [possibility.boolValue boolValue] && [component.title isEqualToString:componentToCompare.title]) {
