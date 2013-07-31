@@ -10,4 +10,8 @@
 
 @interface InterpretationChoiceViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITableView *table;
+@property (strong, nonatomic) NSArray *projectIdentifications;
+@property (strong, nonatomic) NSArray *componentsToFilter;
+
 @end

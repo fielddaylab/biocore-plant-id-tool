@@ -199,6 +199,8 @@
 {
     if(indexPath.section == 0){
         InterpretationChoiceViewController *vc = [[InterpretationChoiceViewController alloc]initWithNibName:@"InterpretationChoiceViewController" bundle:nil];
+        vc.projectIdentifications = projectIdentifications;
+        vc.componentsToFilter = componentsToFilter;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if(indexPath.section == 2){
