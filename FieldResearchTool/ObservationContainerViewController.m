@@ -118,9 +118,7 @@
             //set up view controller here
             break;
         case DATA_ENUMERATOR:{
-            EnumDataViewController *enumDataViewController = [[EnumDataViewController alloc]init];
-            enumDataViewController.view.frame = frame;
-            dataViewControllerToDisplay = enumDataViewController;
+            //set up view controller here
         }
             break;
         default:
@@ -165,6 +163,7 @@
         case JUDGEMENT_BOOLEAN:{
             BooleanJudgementViewController *booleanJudgementViewController = [[BooleanJudgementViewController alloc]init];
             booleanJudgementViewController.view.frame = frame2;
+            booleanJudgementViewController.projectComponent = projectComponent;
             judgementViewControllerToDisplay = booleanJudgementViewController;
         }
             break;

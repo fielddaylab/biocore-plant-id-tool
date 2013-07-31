@@ -28,6 +28,7 @@
 
 #define ENUM_SCORE 1.0
 #define NIL_SCORE 1.0
+#define BOOL_SCORE 1.0
 
 @interface ObservationViewController (){
     NSMutableArray *projectComponents;
@@ -264,8 +265,11 @@
         for (int j = 0; j < componentsToFilter.count; j++) {
             ProjectComponent *component = [componentsToFilter objectAtIndex:j];
             switch ([component.observationJudgementType intValue]) {
-                case JUDGEMENT_BOOLEAN:
-                    NSLog(@"Haven't implemented sorting for bools yet.");
+                case JUDGEMENT_BOOLEAN:{
+                    float score = [identification.score floatValue];
+                    score += [self getBoolScoreForComponent:component withIdentification:identification];
+                    identification.score = [NSNumber numberWithFloat:score];
+                }
                     break;
                 case JUDGEMENT_ENUMERATOR:{
                     float score = [identification.score floatValue];
@@ -479,8 +483,88 @@
     }
     
     return 0.0f;
-    
 }
 
-
+-(float)getBoolScoreForComponent:(ProjectComponent *)component withIdentification:(ProjectIdentification *)identification{
+    NSArray *userData = [NSArray arrayWithArray:[component.userObservationComponentData allObjects]];
+    
+    if(!userData){
+        NSLog(@"ERROR: userData is nil. Returning 0.0f");
+        return 0.0f;
+    }
+    else if(userData.count < 1){
+        NSLog(@"ERROR: There is no data associated with this component. Returning 0.0f");
+        return 0.0f;
+    }
+    else if (userData.count > 1){
+        NSLog(@"There is currently more than one data object associated with this component. This is either an error, or a feature to be implemented in the future. Returning 0.0f");
+        return 0.0f;
+    }
+    
+    UserObservationComponentData *data = [userData objectAtIndex:0];
+    
+    if (!data) {
+        NSLog(@"ERROR: data for this component is nil. Returning 0.0f");
+        return 0.0f;
+    }
+    
+    NSArray *judgementSet = [NSArray arrayWithArray:[data.userObservationComponentDataJudgement allObjects]];
+    
+    if(!judgementSet){
+        NSLog(@"ERROR: judgementSet is nil. Returning 0.0f");
+        return 0.0f;
+    }
+    else if (judgementSet.count < 1){
+        NSLog(@"There is no judgement associated with this data. Returning 0.0f");
+        return 0.0f;
+    }
+    else if (judgementSet.count > 1){
+        NSLog(@"There is currently more than one judgement associated with this data. This is probably a feature that needs to be implemented in the future. Currently returning 0.0f");
+        return 0.0f;
+    }
+    
+    UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
+    
+    if (!judgement) {
+        NSLog(@"ERROR: judgement for this data is nil, when it shouldn't be. Returning 0.0f");
+        return 0.0f;
+    }
+    
+    NSArray *componentPossibilities = [NSArray arrayWithArray:[judgement.projectComponentPossibilities allObjects]];
+    
+    if (!componentPossibilities) {
+        NSLog(@"ERROR: componentPossibilities is nil. Returning 0.0f");
+        return 0.0f;
+    }
+    else if (componentPossibilities.count < 1){
+        NSLog(@"ERROR: componentPossibilities doesn't have any values, when it should have 1. Returning 0.0f");
+        return 0.0f;
+    }
+    else if (componentPossibilities.count > 1){
+        NSLog(@"ERROR: componentPossibilities has more than one value, when it should have 1. Returning 0.0f");
+        return 0.0f;
+    }
+    
+    ProjectComponentPossibility *possibility = [componentPossibilities objectAtIndex:0];
+    
+    if(!possibility){
+        NSLog(@"ERROR: possibility is nil. Returning 0.0f");
+        return 0.0f;
+    }
+    
+    NSArray *pairs = [NSArray arrayWithArray:[identification.projectIdentificationComponentPossibilities allObjects]];
+    for (int i = 0; i < pairs.count; i++) {
+        ProjectIdentificationComponentPossibility *pair = [pairs objectAtIndex:i];
+        ProjectComponentPossibility *possibilityToCompare = pair.projectComponentPossibility;
+        ProjectComponent *componentToCompare = possibilityToCompare.projectComponent;
+        //NSLog(@"PAIR Identification: %@ Possibility: %@", identification.title, possibilityToCompare.enumValue);
+        if ([possibilityToCompare.boolValue boolValue] == [possibility.boolValue boolValue] && [component.title isEqualToString:componentToCompare.title]) {
+            //NSLog(@"Identification: %@ has possibility: %@. Adding 1 to its score.", identification.title, possibility.boolValue);
+            return BOOL_SCORE;
+        }
+    }
+    
+    
+    return 0.0f;
+}
 @end
