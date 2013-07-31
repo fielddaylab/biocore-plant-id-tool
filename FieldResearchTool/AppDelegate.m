@@ -254,7 +254,35 @@
             projectComponent.wasObserved = [NSNumber numberWithBool:NO];
             projectComponent.wasJudged = [NSNumber numberWithBool:NO];
             projectComponent.project = project;
+
+            ///////////////NICK MADE
+            //Make the filename for the media
+            NSString *projectComponentTitleString = projectComponentName;
+            NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
+            projectComponentTitleString = [[projectComponentTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
+            NSLog(@"%@",projectComponentTitleString);
+            projectComponentTitleString = [projectComponentTitleString stringByAppendingString:@".png"];
+            
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:projectComponentTitleString];
+            
+            //NSString *filePath = [[NSBundle mainBundle] pathForResource:projectComponentTitleString ofType:@"png"];
+
+
+            
+            NSMutableDictionary *mediaAttributes = [[NSMutableDictionary alloc]init];
+            [mediaAttributes setObject:[NSDate date] forKey:@"created"];
+            [mediaAttributes setObject:[NSDate date] forKey:@"updated"];
+            [mediaAttributes setObject:[NSNumber numberWithInt:MEDIA_PHOTO] forKey:@"type"];
+            [mediaAttributes setObject:filePath forKey:@"mediaURL"];
+            
+            Media *projectComponentMedia = [[AppModel sharedAppModel]createNewMediaWithAttributes:mediaAttributes];
+            projectComponent.media = projectComponentMedia;
+            ///////////////NICK MADE
+            
             [projectComponents addObject:projectComponent];
+
+            
             
             if (dashIndex != NSNotFound) {
                 NSString *stringProjectComponentPossibilities = [withoutParams substringFromIndex:dashIndex+2];

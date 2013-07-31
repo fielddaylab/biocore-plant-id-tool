@@ -154,7 +154,8 @@
                 
 //                cell.imageView.image = [self imageWithImage:[UIImage imageNamed:@"test.png"] scaledToSize:CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, cell.bounds.size.height, cell.bounds.size.height).size];
                 
-                cell.imageView.image = [self imageWithImage:[UIImage imageNamed:@"SwitchYesBig.png"] scaledToSize:CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, cell.bounds.size.height, cell.bounds.size.height).size];
+                cell.imageView.image = [self imageWithImage:[UIImage imageWithContentsOfFile:com.media.mediaURL] scaledToSize:CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, cell.bounds.size.height, cell.bounds.size.height).size];
+
   
                 cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
             }
