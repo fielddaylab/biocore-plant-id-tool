@@ -384,6 +384,11 @@
         }
     }
     
+    ProjectComponent *componentToCompare = possibility.projectComponent;
+    if([componentToCompare.title isEqualToString:component.title] && [possibility.enumValue isEqualToString:@""]){
+        return NIL_SCORE;
+    }
+    
     float mean = [possibility.number floatValue];
     float stdDev = [possibility.stdDev floatValue];
     float x = [judgement.number floatValue];
@@ -471,8 +476,8 @@
     for (int i = 0; i < pairs.count; i++) {
         ProjectIdentificationComponentPossibility *pair = [pairs objectAtIndex:i];
         ProjectComponentPossibility *possibilityToCompare = pair.projectComponentPossibility;
-        //NSLog(@"PAIR Identification: %@ Possibility: %@", identification.title, possibilityToCompare.enumValue);
-        if(!possibilityToCompare){
+        ProjectComponent *componentToCompare = possibilityToCompare.projectComponent;
+        if([component.title isEqualToString:componentToCompare.title] && [possibilityToCompare.enumValue isEqualToString:@""]){
             //NSLog(@"Identification: %@ has nil possibility. Adding 0.9 to its score.", identification.title);
             return NIL_SCORE;
         }
@@ -558,7 +563,11 @@
         ProjectComponentPossibility *possibilityToCompare = pair.projectComponentPossibility;
         ProjectComponent *componentToCompare = possibilityToCompare.projectComponent;
         //NSLog(@"PAIR Identification: %@ Possibility: %@", identification.title, possibilityToCompare.enumValue);
-        if ([possibilityToCompare.boolValue boolValue] == [possibility.boolValue boolValue] && [component.title isEqualToString:componentToCompare.title]) {
+        if([component.title isEqualToString:componentToCompare.title] && [possibilityToCompare.enumValue isEqualToString:@""]){
+            //NSLog(@"Identification: %@ has nil possibility. Adding 0.9 to its score.", identification.title);
+            return NIL_SCORE;
+        }
+        else if ([possibilityToCompare.boolValue boolValue] == [possibility.boolValue boolValue] && [component.title isEqualToString:componentToCompare.title]) {
             //NSLog(@"Identification: %@ has possibility: %@. Adding 1 to its score.", identification.title, possibility.boolValue);
             return BOOL_SCORE;
         }

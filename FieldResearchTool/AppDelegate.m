@@ -294,7 +294,7 @@
             nonComponents++;
         }
     }
-    
+        
     //read in the actual data
     for(int i = 1; i < [lines count]; i++){
         
@@ -317,13 +317,19 @@
                 ProjectComponent *associatedProjectComponent = [projectComponents objectAtIndex:j-numOfNonComponents];
                 
                 if([commaListOfComponentPossibilities isEqualToString:@""]){
+                    //create special 'nil' possibility for data that isn't filled out
+                    ProjectComponentPossibility *nilPossibility = (ProjectComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
+                    nilPossibility.created = [NSDate date];
+                    nilPossibility.updated = [NSDate date];
+                    nilPossibility.enumValue = @""; //special value for nil possibility
+                    nilPossibility.projectComponent = associatedProjectComponent;
                     //create a 'pairing' of the identification and nil so we can find where data isn't filled out in the table
                     ProjectIdentificationComponentPossibility *projectIdentificationComponentPossibility = (ProjectIdentificationComponentPossibility *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationComponentPossibility" inManagedObjectContext:[self managedObjectContext]];
                     projectIdentificationComponentPossibility.created = [NSDate date];
                     projectIdentificationComponentPossibility.updated = [NSDate date];
-                    projectIdentificationComponentPossibility.projectComponentPossibility = nil;
+                    projectIdentificationComponentPossibility.projectComponentPossibility = nilPossibility;
                     projectIdentificationComponentPossibility.projectIdentification = identification;
-                    NSLog(@"Creating identification component possibility for identification: %@ with nil possibility", identification.title);
+                    //NSLog(@"Creating identification component possibility for identification: %@ with nil possibility", identification.title);
                     continue;
                 }
                 

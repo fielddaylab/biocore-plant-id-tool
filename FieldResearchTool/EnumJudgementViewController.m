@@ -18,7 +18,7 @@
 
 @property (nonatomic, retain) iCarousel *carousel;
 @property (nonatomic, assign) BOOL wrap;
-@property (nonatomic, strong) NSArray *possibilities;
+@property (nonatomic, strong) NSMutableArray *possibilities;
 
 @end
 
@@ -141,7 +141,14 @@
 
 #pragma mark handle possibility response
 -(void)handlePossibilityResponse:(NSArray *)componentPossibilities{
-    possibilities = componentPossibilities;
+    possibilities = [NSMutableArray arrayWithArray:componentPossibilities];
+    //remove the nil value if it has one
+    for (int i = 0; i < possibilities.count; i++) {
+        ProjectComponentPossibility *possibility = [possibilities objectAtIndex:i];
+        if ([possibility.enumValue isEqualToString:@""]) {
+            [possibilities removeObject:possibility];
+        }
+    }
     [carousel reloadData];
 }
 
