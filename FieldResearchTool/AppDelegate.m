@@ -35,7 +35,7 @@
     //setup example data
     //keep this commented out unless you want to regenerate sample data. otherwise it will continually
     //add sample data
-    //[self readInSampleData];
+    [self readInSampleData];
     return YES;
 }
 
@@ -350,6 +350,7 @@
                                 NSString *stdDev = componentPossibilities[1];
                                 componentPossibility.number = [NSNumber numberWithInt:[number intValue]];
                                 componentPossibility.stdDev = [NSNumber numberWithInt:[stdDev intValue]];
+                                componentPossibility.projectComponent = associatedProjectComponent;
                             }
                             else{
                                 continue;
@@ -357,9 +358,11 @@
                         }
                         else if(associatedProjectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_TEXT]){
                             componentPossibility.text = componentPossibilities[k];
+                            componentPossibility.projectComponent = associatedProjectComponent;
                         }
                         else{
                             componentPossibility.longText = componentPossibilities[k];
+                            componentPossibility.projectComponent = associatedProjectComponent;
                         }
                     }
                     else if(associatedProjectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_BOOLEAN]){

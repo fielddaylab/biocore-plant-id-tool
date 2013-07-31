@@ -8,16 +8,20 @@
 
 #import "NumberJudgementViewController.h"
 #import "SaveObservationAndJudgementDelegate.h"
+#import "AppModel.h"
+#import "ProjectComponentPossibility.h"
 
 #define KEYBOARD_OFFSET 90
 
 @interface NumberJudgementViewController ()<UITextFieldDelegate, SaveJudgementDelegate>{
     UITextField *numberField;
+    NSArray *possibilities;
 }
 
 @end
 
 @implementation NumberJudgementViewController
+@synthesize projectComponent;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,7 +41,7 @@
     numberField.font = [UIFont systemFontOfSize:15];
     numberField.placeholder = @"enter number";
     numberField.autocorrectionType = UITextAutocorrectionTypeNo;
-    numberField.keyboardType = UIKeyboardTypeDecimalPad;//UIKeyboardTypeNumbersAndPunctuation;//UIKeyboardTypeNumberPad;
+    numberField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;//UIKeyboardTypeNumberPad;
     numberField.returnKeyType = UIReturnKeyDone;
     numberField.clearButtonMode = UITextFieldViewModeWhileEditing;
     numberField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
@@ -129,6 +133,10 @@
                                              selector:@selector(keyboardWillHide)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    NSLog(@"Project Component.title: %@", projectComponent.title);
+    [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
+    [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -143,6 +151,41 @@
                                                   object:nil];
 }
 
+#pragma mark handle possibility response
+-(void)handlePossibilityResponse:(NSArray *)componentPossibilities{
+    possibilities = componentPossibilities;
+}
+
+#pragma mark save judgement data
+-(UserObservationComponentDataJudgement *)saveJudgementData:(UserObservationComponentData *)userData{
+    if(!userData){
+        NSLog(@"ERROR: Observation data passed in was nil");
+        return nil;
+    }
+    
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setObject:[NSDate date] forKey:@"created"];
+    [attributes setObject:[NSDate date] forKey:@"updated"];
+    
+    NSString *text = numberField.text;
+    NSString *regexForNumber = @"[-+]?[0-9]*\\.?[0-9]+";
+    
+    NSPredicate *isNumber = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumber];
+    
+    if ([isNumber evaluateWithObject: text]){
+        float numberToSave = [text floatValue];
+        [attributes setObject:[NSNumber numberWithFloat:numberToSave] forKey:@"number"];
+        UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:possibilities withAttributes:attributes];
+        return judgement;
+    }
+    else{
+        NSLog(@"ERROR: Number entered was not of valid format!. Returning nil");
+        return nil;
+    }
+    
+    
+    return nil;
+}
 
 @end
 

@@ -27,7 +27,7 @@
 #import "ObservationJudgementType.h"
 
 #define ENUM_SCORE 1.0
-#define NIL_SCORE 0.9
+#define NIL_SCORE 1.0
 
 @interface ObservationViewController (){
     NSMutableArray *projectComponents;
@@ -265,6 +265,7 @@
             ProjectComponent *component = [componentsToFilter objectAtIndex:j];
             switch ([component.observationJudgementType intValue]) {
                 case JUDGEMENT_BOOLEAN:
+                    NSLog(@"Haven't implemented sorting for bools yet.");
                     break;
                 case JUDGEMENT_ENUMERATOR:{
                     float score = [identification.score floatValue];
@@ -272,7 +273,12 @@
                     identification.score = [NSNumber numberWithFloat:score];
                 }
                     break;
-                case JUDGEMENT_NUMBER:
+                case JUDGEMENT_NUMBER:{
+                    float score = [identification.score floatValue];
+                    score += [self getNumberScoreForComponent:component withIdentification:identification];
+                    identification.score = [NSNumber numberWithFloat:score];
+                    //NSLog(@"Haven't implemented sorting for numbers yet.");
+                }
                     break;
                 default:
                     NSLog(@"Not adjusting score because component is of type text or long text");
@@ -294,6 +300,97 @@
     
     projectIdentifications = [NSArray arrayWithArray:sortedIdentifications];
     [self.table reloadData];
+}
+
+-(float)getNumberScoreForComponent:(ProjectComponent *)component withIdentification:(ProjectIdentification *)identification{
+    
+    NSArray *userData = [NSArray arrayWithArray:[component.userObservationComponentData allObjects]];
+    
+    if(!userData){
+        NSLog(@"ERROR: userData is nil. Returning 0.0f");
+        return 0.0f;
+    }
+    else if(userData.count < 1){
+        NSLog(@"ERROR: There is no data associated with this component. Returning 0.0f");
+        return 0.0f;
+    }
+    else if (userData.count > 1){
+        NSLog(@"There is currently more than one data object associated with this component. This is either an error, or a feature to be implemented in the future. Returning 0.0f");
+        return 0.0f;
+    }
+    
+    UserObservationComponentData *data = [userData objectAtIndex:0];
+    
+    if (!data) {
+        NSLog(@"ERROR: data for this component is nil. Returning 0.0f");
+        return 0.0f;
+    }
+    
+    NSArray *judgementSet = [NSArray arrayWithArray:[data.userObservationComponentDataJudgement allObjects]];
+    
+    if(!judgementSet){
+        NSLog(@"ERROR: judgementSet is nil. Returning 0.0f");
+        return 0.0f;
+    }
+    else if (judgementSet.count < 1){
+        NSLog(@"There is no judgement associated with this data. Returning 0.0f");
+        return 0.0f;
+    }
+    else if (judgementSet.count > 1){
+        NSLog(@"There is currently more than one judgement associated with this data. This is probably a feature that needs to be implemented in the future. Currently returning 0.0f");
+        return 0.0f;
+    }
+    
+    UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
+    
+    if (!judgement) {
+        NSLog(@"ERROR: judgement for this data is nil, when it shouldn't be. Returning 0.0f");
+        return 0.0f;
+    }
+    
+    NSArray *componentPossibilities = [NSArray arrayWithArray:[judgement.projectComponentPossibilities allObjects]];
+    
+    if (!componentPossibilities) {
+        NSLog(@"ERROR: componentPossibilities is nil. Returning 0.0f");
+        return 0.0f;
+    }
+    
+    //find the correct possibility for the identification
+    ProjectComponentPossibility *possibility;
+    for (int i = 0; i < componentPossibilities.count; i++) {
+        possibility = [componentPossibilities objectAtIndex:i];
+        NSArray *pairs = [NSArray arrayWithArray:[possibility.projectIdentificationComponentPossibilities allObjects]];
+        if(!pairs){
+            NSLog(@"ERROR: pairs is nil. Returning 0.0f");
+            return 0.0f;
+        }
+        else if (pairs.count < 1){
+            NSLog(@"ERROR: pairs has no options for number. The number possibilities were not read in correctly. Returning 0.0f");
+            return 0.0f;
+        }
+        else if (pairs.count > 1){
+            NSLog(@"ERROR: pairs has more than on option for number. The number possibilities were not read in correctly. Returning 0.0f");
+            return 0.0f;
+        }
+        ProjectIdentificationComponentPossibility *identificationProjectPossibility = [pairs objectAtIndex:0];
+        ProjectIdentification *idToCompare = identificationProjectPossibility.projectIdentification;
+        if([idToCompare.title isEqualToString:identification.title]){
+            //NSLog(@"Component: %@ Identification: %@ Mean: %@ StdDev: %@", component.title, identification.title, possibility.number, possibility.stdDev);
+            break;
+        }
+    }
+    
+    float mean = [possibility.number floatValue];
+    float stdDev = [possibility.stdDev floatValue];
+    float x = [judgement.number floatValue];
+    float zScore = (x - mean) / stdDev;
+    float absZ = fabsf(zScore);
+    float score = 1 / expf(absZ);
+    
+    //NSLog(@"Z-Score: %f Adding %f to identification: %@ for component: %@", absZ, score, identification.title, component.title);
+    
+    return score;
+    
 }
 
 

@@ -98,6 +98,7 @@
         case DATA_NUMBER:{
             NumberDataViewController *numberDataViewController = [[NumberDataViewController alloc]init];
             numberDataViewController.view.frame = frame;
+            numberDataViewController.projectComponent = projectComponent;
             dataViewControllerToDisplay = numberDataViewController;
         }
             break;
@@ -157,6 +158,7 @@
         case JUDGEMENT_NUMBER:{
             NumberJudgementViewController *numberJudgementViewController = [[NumberJudgementViewController alloc]init];
             numberJudgementViewController.view.frame = frame2;
+            numberJudgementViewController.projectComponent = projectComponent;
             judgementViewControllerToDisplay = numberJudgementViewController;
         }
             break;
