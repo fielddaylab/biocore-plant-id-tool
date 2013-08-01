@@ -268,14 +268,12 @@
 }
 
 - (void)dismissContainerViewAndSetProjectComponentObserved:(ProjectComponent *)projectComponent{
-    
+    [savedComponents addObject:projectComponent];
+    [projectComponents removeObject:projectComponent];
     if([self doesProjectComponenthaveJudgement:projectComponent]){
         [componentsToFilter addObject:projectComponent];
         [self rankIdentifications];
     }
-    
-    [savedComponents addObject:projectComponent];
-    [projectComponents removeObject:projectComponent];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
