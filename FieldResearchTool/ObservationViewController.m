@@ -154,7 +154,6 @@
     }
     self.title = identifications != 1 ?[NSString stringWithFormat:@"%d possible matches", identifications] : [NSString stringWithFormat:@"%d possible match", 1];
     
-    
     //Make the identifier unique to that row so cell pictures don't get reused in funky ways.
     NSString *CellIdentifier = [NSString stringWithFormat:@"%d", indexPath.section];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -173,13 +172,19 @@
             
             cell.detailTextLabel.text = @"Not Interpreted";
             
+            NSMutableArray *userObservationComponentDataArray = [NSMutableArray arrayWithArray:[com.userObservationComponentData allObjects]];
+
+            if ([userObservationComponentDataArray count] > 0){
+                UIImageView *checkmark = [[UIImageView alloc] initWithFrame:CGRectMake(35, 25, 20, 20)];
+                checkmark.image = [UIImage imageNamed:@"17-checkGREEN"];
+                [cell addSubview:checkmark];
+            }
+            
             if ([com.wasJudged boolValue]) {
-                
-                NSMutableArray *userObservationComponentDataArray = [NSMutableArray arrayWithArray:[com.userObservationComponentData allObjects]];
-                
+                    
                 NSMutableArray *userObservationComponentDataJudgementArray = [NSMutableArray arrayWithArray:[[userObservationComponentDataArray[0] userObservationComponentDataJudgement] allObjects]];
                 
-                
+    
                 UserObservationComponentData *data = userObservationComponentDataJudgementArray[0];
                 
                 if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_BOOLEAN]){
@@ -220,11 +225,16 @@
             
             cell.detailTextLabel.text = @"Not Interpreted";
             
+            NSMutableArray *userObservationComponentDataArray = [NSMutableArray arrayWithArray:[com.userObservationComponentData allObjects]];
+            
+            if ([userObservationComponentDataArray count] > 0){
+                UIImageView *checkmark = [[UIImageView alloc] initWithFrame:CGRectMake(40, 25, 20, 20)];
+                checkmark.image = [UIImage imageNamed:@"17-checkGREEN"];
+                [cell addSubview:checkmark];
+            }
             
             if ([com.wasJudged boolValue]) {
-                
-                NSMutableArray *userObservationComponentDataArray = [NSMutableArray arrayWithArray:[com.userObservationComponentData allObjects]];
-                
+
                 NSMutableArray *userObservationComponentDataJudgementArray = [NSMutableArray arrayWithArray:[[userObservationComponentDataArray[0] userObservationComponentDataJudgement] allObjects]];
                 
                 UserObservationComponentData *data = userObservationComponentDataJudgementArray[0];
