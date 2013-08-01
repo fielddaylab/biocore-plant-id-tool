@@ -169,7 +169,7 @@
     [attributes setObject:[NSDate date] forKey:@"updated"];
     
     NSString *text = numberField.text;
-    NSString *regexForNumber = @"[-+]?[0-9]*\\.?[0-9]+";
+    NSString *regexForNumber = @"[-+]?[0-9]*\\.?[0-9]*";
     
     NSPredicate *isNumber = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumber];
     
@@ -178,6 +178,10 @@
         [attributes setObject:[NSNumber numberWithFloat:numberToSave] forKey:@"number"];
         UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:possibilities withAttributes:attributes];
         return judgement;
+    }
+    else if (text == nil){
+        NSLog(@"Not creating judgement because there wasn't any judgement entered. Returning nil");
+        return nil;
     }
     else{
         NSLog(@"ERROR: Number entered was not of valid format!. Returning nil");
