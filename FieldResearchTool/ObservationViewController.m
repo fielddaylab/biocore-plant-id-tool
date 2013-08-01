@@ -239,6 +239,14 @@
                     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.enumValue];
                 }
                 
+                ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
+                if([componentsToFilter containsObject:com]){
+                    [boolSwitch setOn:YES animated:NO];
+                }
+                [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
+                boolSwitch.component = com;
+                cell.accessoryView = boolSwitch;
+                
             }
             
             
