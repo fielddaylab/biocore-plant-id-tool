@@ -51,7 +51,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"New Observation";
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(projectComponentsResponseReady) name:@"ProjectComponentsResponseReady" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(projectIdentificationsResponseReady) name:@"ProjectIdentificationsResponseReady" object:nil];
         componentsToFilter = [[NSMutableArray alloc]init];
@@ -72,9 +71,15 @@
 {
     [super viewDidLoad];
     
-    [self.navigationItem setBackBarButtonItem:[[UIBarButtonItem alloc]initWithTitle:@"Backzz" style:UIBarButtonItemStyleBordered target:nil action:nil]];
+    [self.navigationItem setBackBarButtonItem:[[UIBarButtonItem alloc]initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil]];
     
-    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:nil]];
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithTitle:@"ID" style:UIBarButtonItemStyleBordered target:self action:@selector(pushInterpretationViewController)]];
+    
+    
+    
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithTitle:@"Back!" style:UIBarButtonItemStyleBordered target:self action:nil]];
+    
+    
     
     [[AppModel sharedAppModel]getAllProjectComponentsWithHandler:@selector(handleFetchAllProjectComponentsForProjectName:) target:[AppModel sharedAppModel]];
     [[AppModel sharedAppModel]getAllProjectIdentificationsWithHandler:@selector(handleFetchProjectIdentifications:) target:[AppModel sharedAppModel]];
@@ -94,23 +99,29 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void)pushInterpretationViewController{
+    InterpretationChoiceViewController *vc = [[InterpretationChoiceViewController alloc]initWithNibName:@"InterpretationChoiceViewController" bundle:nil];
+    vc.projectIdentifications = projectIdentifications;
+    vc.componentsToFilter = componentsToFilter;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
         case 0:
-            return 1;
-        case 1:
             return [requiredComponents count];
-        case 2:
+        case 1:
             return [optionalComponents count];
-        case 3:
+        case 2:
             return 4;
         default:
             return 0;
@@ -138,24 +149,26 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
+    /////////////////Change navbar title - probably want to move to universal 'update based on toggling filters' method...
+    int identifications = [projectIdentifications count];
+    if(componentsToFilter.count > 0){
+        identifications = 0;
+        for (int i = 0; i < projectIdentifications.count; i++) {
+            ProjectIdentification *iden = [projectIdentifications objectAtIndex:i];
+            if([iden.score floatValue] >= .8){
+                identifications++;
+            }
+        }
+    }
+    self.title = identifications != 1 ?[NSString stringWithFormat:@"%d possible matches", identifications] : [NSString stringWithFormat:@"%d possible match", 1];
+    ////////////////Change navbar title
+    
+    
     ProjectComponent *com;
     
     switch (indexPath.section) {
-        case 0:
-            cell.accessoryType= UITableViewCellAccessoryDisclosureIndicator;
-            int identifications = [projectIdentifications count];
-            if(componentsToFilter.count > 0){
-                identifications = 0;
-                for (int i = 0; i < projectIdentifications.count; i++) {
-                    ProjectIdentification *iden = [projectIdentifications objectAtIndex:i];
-                    if([iden.score floatValue] >= .8){
-                        identifications++;
-                    }
-                }
-            }
-            cell.textLabel.text = identifications != 1 ?[NSString stringWithFormat:@"%d ids with > .8 match", identifications] : [NSString stringWithFormat:@"%d id with > .8 match", 1];
-            break;
-        case 1:{
+
+        case 0:{
             
             com = (ProjectComponent *)[requiredComponents objectAtIndex:indexPath.row];
             cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
@@ -171,7 +184,7 @@
             
             
         }break;
-        case 2:{
+        case 1:{
             
             com = (ProjectComponent *)[optionalComponents objectAtIndex:indexPath.row];
             cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
@@ -188,7 +201,7 @@
             
             
         }break;
-        case 3:{
+        case 2:{
             
             cell.accessoryType= UITableViewCellAccessoryCheckmark;
             
@@ -237,22 +250,15 @@
         
         
     }
-    else if (indexPath.section == 3){
+    else if (indexPath.section == 2){
         //metadata
-        //        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        //        if (cell.accessoryType == UITableViewCellAccessoryCheckmark){
-        //            cell.accessoryType = UITableViewCellAccessoryNone;
-        //        }
-        //        else{
-        //            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        //        }
-        
-        
-        AudioDataViewController *photoDataView = [[AudioDataViewController alloc]initWithNibName:@"AudioDataViewController" bundle:nil];
-        ProjectComponent *projectComponent = [projectComponents objectAtIndex:indexPath.row];
-        photoDataView.projectComponent = projectComponent;
-        [self.navigationController pushViewController:photoDataView animated:YES];
-        
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        if (cell.accessoryType == UITableViewCellAccessoryCheckmark){
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        else{
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
         
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -263,14 +269,11 @@
 {
     switch (section) {
         case 0:
-            return @"";
-            break;
-        case 1:
             return @"Required Components";
             break;
-        case 2:
+        case 1:
             return @"Optional Components";
-        case 3:
+        case 2:
             return @"Metadata";
         default:
             return @"Error :'[";
