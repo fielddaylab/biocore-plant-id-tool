@@ -176,7 +176,15 @@
             cell.detailTextLabel.text = @"Not Interpreted";
             
             if ([com.wasJudged boolValue]) {
-                cell.detailTextLabel.text = @"Interpreted!";
+                
+                NSMutableArray *userObservationComponentDataArray = [NSMutableArray arrayWithArray:[com.userObservationComponentData allObjects]];
+                
+                NSMutableArray *userObservationComponentDataJudgementArray = [NSMutableArray arrayWithArray:[[userObservationComponentDataArray[0] userObservationComponentDataJudgement] allObjects]];
+                
+                if (userObservationComponentDataArray[0] != nil && userObservationComponentDataJudgementArray != nil){
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", userObservationComponentDataJudgementArray[0]];
+                }
+                
             }
             
             //We'll have to change this in the future, but for now 'reparse' the string...
@@ -197,8 +205,17 @@
             
             cell.detailTextLabel.text = @"Not Interpreted";
             
+            
             if ([com.wasJudged boolValue]) {
-                cell.detailTextLabel.text = @"Interpreted!";
+                
+                NSMutableArray *userObservationComponentDataArray = [NSMutableArray arrayWithArray:[com.userObservationComponentData allObjects]];
+                
+                NSMutableArray *userObservationComponentDataJudgementArray = [NSMutableArray arrayWithArray:[[userObservationComponentDataArray[0] userObservationComponentDataJudgement] allObjects]];
+
+                if (userObservationComponentDataArray[0] != nil && userObservationComponentDataJudgementArray != nil){
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", userObservationComponentDataJudgementArray[0]];
+                }
+                
             }
 
             
