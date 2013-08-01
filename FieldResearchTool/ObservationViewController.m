@@ -166,7 +166,7 @@
                 NSString *projectComponentTitleString = com.title;
                 NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
                 projectComponentTitleString = [[projectComponentTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
-                NSLog(@"%@",projectComponentTitleString);
+                //NSLog(@"%@",projectComponentTitleString);
                 projectComponentTitleString = [projectComponentTitleString stringByAppendingString:@".png"];
                 
                 cell.imageView.image = [self imageWithImage:[UIImage imageNamed:projectComponentTitleString] scaledToSize:CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, cell.bounds.size.height, cell.bounds.size.height).size];
@@ -269,11 +269,34 @@
 
 - (void)dismissContainerViewAndSetProjectComponentObserved:(ProjectComponent *)projectComponent{
     
-    [componentsToFilter addObject:projectComponent];
+    if([self doesProjectComponenthaveJudgement:projectComponent]){
+        [componentsToFilter addObject:projectComponent];
+        [self rankIdentifications];
+    }
+    
     [savedComponents addObject:projectComponent];
     [projectComponents removeObject:projectComponent];
-    [self rankIdentifications];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(BOOL)doesProjectComponenthaveJudgement:(ProjectComponent *)component{
+    NSArray *dataSet = [NSArray arrayWithArray:[component.userObservationComponentData allObjects]];
+    if(!dataSet || dataSet.count < 1 || dataSet.count > 1){
+        return NO;
+    }
+    UserObservationComponentData *data = [dataSet objectAtIndex:0];
+    if(!data){
+        return NO;
+    }
+    NSArray *judgementSet = [NSArray arrayWithArray:[data.userObservationComponentDataJudgement allObjects]];
+    if(!judgementSet || judgementSet.count < 1 || judgementSet.count > 1){
+        return NO;
+    }
+    UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
+    if(judgement){
+        return YES;
+    }
+    return NO;
 }
 
 -(void)rankIdentifications{
@@ -335,6 +358,7 @@
     
     projectIdentifications = [NSArray arrayWithArray:sortedIdentifications];
     [self.table reloadData];
+    [[AppModel sharedAppModel]save];
 }
 
 -(float)getNumberScoreForComponent:(ProjectComponent *)component withIdentification:(ProjectIdentification *)identification{
