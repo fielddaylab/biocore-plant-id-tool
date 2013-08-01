@@ -165,7 +165,7 @@
     ProjectComponent *com;
     
     switch (indexPath.section) {
-
+            
         case 0:{
             
             com = (ProjectComponent *)[requiredComponents objectAtIndex:indexPath.row];
@@ -179,8 +179,17 @@
                 
                 NSMutableArray *userObservationComponentDataJudgementArray = [NSMutableArray arrayWithArray:[[userObservationComponentDataArray[0] userObservationComponentDataJudgement] allObjects]];
                 
-                if (userObservationComponentDataArray[0] != nil && userObservationComponentDataJudgementArray != nil){
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", userObservationComponentDataJudgementArray[0]];
+                
+                UserObservationComponentData *data = userObservationComponentDataJudgementArray[0];
+                
+                if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_BOOLEAN]){
+                    cell.detailTextLabel.text = data.boolValue == [NSNumber numberWithInt:1] ?[NSString stringWithFormat:@"True"] : [NSString stringWithFormat:@"False"];
+                }
+                else if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_NUMBER]){
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.number];
+                }
+                else if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_ENUMERATOR]){
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.enumValue];
                 }
                 
             }
@@ -209,13 +218,21 @@
                 NSMutableArray *userObservationComponentDataArray = [NSMutableArray arrayWithArray:[com.userObservationComponentData allObjects]];
                 
                 NSMutableArray *userObservationComponentDataJudgementArray = [NSMutableArray arrayWithArray:[[userObservationComponentDataArray[0] userObservationComponentDataJudgement] allObjects]];
-
-                if (userObservationComponentDataArray[0] != nil && userObservationComponentDataJudgementArray != nil){
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", userObservationComponentDataJudgementArray[0]];
+                
+                UserObservationComponentData *data = userObservationComponentDataJudgementArray[0];
+                
+                if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_BOOLEAN]){
+                    cell.detailTextLabel.text = data.boolValue == [NSNumber numberWithInt:1] ?[NSString stringWithFormat:@"True"] : [NSString stringWithFormat:@"False"];
+                }
+                else if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_NUMBER]){
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.number];
+                }
+                else if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_ENUMERATOR]){
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.enumValue];
                 }
                 
             }
-
+            
             
             //We'll have to change this in the future, but for now 'reparse' the string...
             NSString *projectComponentTitleString = com.title;
