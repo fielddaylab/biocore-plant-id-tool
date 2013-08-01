@@ -220,7 +220,7 @@
         vc.componentsToFilter = componentsToFilter;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    else if(indexPath.section == 2){
+    else if(indexPath.section == 2 || indexPath.section == 1){
         
         ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];
         

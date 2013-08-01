@@ -44,8 +44,9 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    active = YES;
     [self.saveDelegate disableSaveButton];
+    active = YES;
+    [self performSelectorInBackground:@selector(checkIfNumberIsValid) withObject:nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -93,21 +94,44 @@
     }
 }
 
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+//    NSString *text = self.textField.text;
+//    NSString *regexForNumber = @"[-+]?[0-9]*\\.?[0-9]+";
+//    NSPredicate *isNumber = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumber];
+//    if ([isNumber evaluateWithObject: text]){
+//        [self.saveDelegate enableSaveButton];
+//    }
+//    else{
+//        [self.saveDelegate disableSaveButton];
+//    }
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self killKeyboard:self.textField];
+    return YES;
+}
+
 -(void)checkIfNumberIsValid{
-    
     while (active) {
         NSString *text = self.textField.text;
         NSString *regexForNumber = @"[-+]?[0-9]*\\.?[0-9]+";
         NSPredicate *isNumber = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumber];
         if ([isNumber evaluateWithObject: text]){
-            [self.saveDelegate enableSaveButton];
+            [self performSelectorOnMainThread:@selector(enableSave) withObject:nil waitUntilDone:NO];
         }
         else{
-            [self.saveDelegate disableSaveButton];
+            [self performSelectorOnMainThread:@selector(disableSave) withObject:nil waitUntilDone:NO];
         }
     }
 }
 
+-(void)enableSave{
+    [self.saveDelegate enableSaveButton];
+}
+
+-(void)disableSave{
+    [self.saveDelegate disableSaveButton];
+}
 
 
 @end
