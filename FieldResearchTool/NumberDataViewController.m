@@ -12,7 +12,6 @@
 
 @interface NumberDataViewController ()<SaveObservationDelegate, UITextFieldDelegate>{
     int unitCount;
-    BOOL active;
 }
 
 @end
@@ -45,12 +44,11 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.saveDelegate disableSaveButton];
-    active = YES;
-    [self performSelectorInBackground:@selector(checkIfNumberIsValid) withObject:nil];
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-    active = NO;
+    [NSTimer scheduledTimerWithTimeInterval:.2
+                                     target:self
+                                   selector:@selector(changeSaveButton)
+                                   userInfo:nil
+                                    repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -94,44 +92,21 @@
     }
 }
 
--(void)textFieldDidEndEditing:(UITextField *)textField{
-//    NSString *text = self.textField.text;
-//    NSString *regexForNumber = @"[-+]?[0-9]*\\.?[0-9]+";
-//    NSPredicate *isNumber = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumber];
-//    if ([isNumber evaluateWithObject: text]){
-//        [self.saveDelegate enableSaveButton];
-//    }
-//    else{
-//        [self.saveDelegate disableSaveButton];
-//    }
-}
-
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self killKeyboard:self.textField];
     return YES;
 }
 
--(void)checkIfNumberIsValid{
-    while (active) {
-        NSString *text = self.textField.text;
-        NSString *regexForNumber = @"[-+]?[0-9]*\\.?[0-9]+";
-        NSPredicate *isNumber = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumber];
-        if ([isNumber evaluateWithObject: text]){
-            [self performSelectorOnMainThread:@selector(enableSave) withObject:nil waitUntilDone:NO];
-        }
-        else{
-            [self performSelectorOnMainThread:@selector(disableSave) withObject:nil waitUntilDone:NO];
-        }
+-(void)changeSaveButton{
+    NSString *text = self.textField.text;
+    NSString *regexForNumber = @"[-+]?[0-9]*\\.?[0-9]+";
+    NSPredicate *isNumber = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumber];
+    if ([isNumber evaluateWithObject: text]){
+        [self.saveDelegate enableSaveButton];
+    }
+    else{
+        [self.saveDelegate disableSaveButton];
     }
 }
-
--(void)enableSave{
-    [self.saveDelegate enableSaveButton];
-}
-
--(void)disableSave{
-    [self.saveDelegate disableSaveButton];
-}
-
 
 @end

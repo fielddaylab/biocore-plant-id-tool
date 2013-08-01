@@ -227,13 +227,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.section == 0){
-        InterpretationChoiceViewController *vc = [[InterpretationChoiceViewController alloc]initWithNibName:@"InterpretationChoiceViewController" bundle:nil];
-        vc.projectIdentifications = projectIdentifications;
-        vc.componentsToFilter = componentsToFilter;
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    else if(indexPath.section == 2 || indexPath.section == 1){
+    if(indexPath.section == 0 || indexPath.section == 1){
         
         ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];
         
