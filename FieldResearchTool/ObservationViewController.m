@@ -51,7 +51,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"New Observation";
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(projectComponentsResponseReady) name:@"ProjectComponentsResponseReady" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(projectIdentificationsResponseReady) name:@"ProjectIdentificationsResponseReady" object:nil];
         componentsToFilter = [[NSMutableArray alloc]init];
@@ -138,22 +137,32 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
+    /////////////////Change navbar title
+    int identifications = [projectIdentifications count];
+    if(componentsToFilter.count > 0){
+        identifications = 0;
+        for (int i = 0; i < projectIdentifications.count; i++) {
+            ProjectIdentification *iden = [projectIdentifications objectAtIndex:i];
+            if([iden.score floatValue] >= .8){
+                identifications++;
+            }
+        }
+    }
+    self.title = identifications != 1 ?[NSString stringWithFormat:@"%d ids with > .8 match", identifications] : [NSString stringWithFormat:@"%d id with > .8 match", 1];
+    ////////////////Change navbar title
+    
+    
     ProjectComponent *com;
     
     switch (indexPath.section) {
         case 0:
             cell.accessoryType= UITableViewCellAccessoryDisclosureIndicator;
-            int identifications = [projectIdentifications count];
-            if(componentsToFilter.count > 0){
-                identifications = 0;
-                for (int i = 0; i < projectIdentifications.count; i++) {
-                    ProjectIdentification *iden = [projectIdentifications objectAtIndex:i];
-                    if([iden.score floatValue] >= .8){
-                        identifications++;
-                    }
-                }
-            }
-            cell.textLabel.text = identifications != 1 ?[NSString stringWithFormat:@"%d ids with > .8 match", identifications] : [NSString stringWithFormat:@"%d id with > .8 match", 1];
+
+            cell.textLabel.text = @"IMMA BE CHANGED";
+            
+            
+            
+            
             break;
         case 1:{
             
@@ -220,7 +229,7 @@
         vc.componentsToFilter = componentsToFilter;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    else if(indexPath.section == 2){
+    else if(indexPath.section == 2 || indexPath.section == 1){
         
         ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];
         
