@@ -10,8 +10,9 @@
 #import "AppModel.h"
 #import "SaveObservationAndJudgementDelegate.h"
 
-@interface NumberDataViewController ()<SaveObservationDelegate>{
+@interface NumberDataViewController ()<SaveObservationDelegate, UITextFieldDelegate>{
     int unitCount;
+    BOOL active;
 }
 
 @end
@@ -22,6 +23,7 @@
 @synthesize changeUnitButton;
 @synthesize projectComponent;
 @synthesize textField;
+@synthesize saveDelegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,10 +38,18 @@
 {
     [super viewDidLoad];
     
-    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData)]];
     [changeUnitButton setTitle:@"cm" forState:UIControlStateNormal];
     unitCount = 0;
     componentPossibilityDescription.text = projectComponent.title;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    active = YES;
+    [self.saveDelegate disableSaveButton];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    active = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,7 +91,23 @@
         NSLog(@"ERROR: Number is not of valid format. Returning nil.");
         return nil;
     }
-
 }
+
+-(void)checkIfNumberIsValid{
+    
+    while (active) {
+        NSString *text = self.textField.text;
+        NSString *regexForNumber = @"[-+]?[0-9]*\\.?[0-9]+";
+        NSPredicate *isNumber = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumber];
+        if ([isNumber evaluateWithObject: text]){
+            [self.saveDelegate enableSaveButton];
+        }
+        else{
+            [self.saveDelegate disableSaveButton];
+        }
+    }
+}
+
+
 
 @end

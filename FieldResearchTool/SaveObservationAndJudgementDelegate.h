@@ -21,3 +21,10 @@
 -(UserObservationComponentDataJudgement *)saveJudgementData:(UserObservationComponentData *)userData;
 
 @end
+
+@protocol ChangeSaveButtonStateDelegate <NSObject>
+
+-(void)enableSaveButton;
+-(void)disableSaveButton;
+
+@end

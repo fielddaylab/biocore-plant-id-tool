@@ -19,7 +19,7 @@
 
 
 
-@interface ObservationContainerViewController : UIViewController
+@interface ObservationContainerViewController : UIViewController <ChangeSaveButtonStateDelegate>
 
 @property (strong, nonatomic) ProjectComponent *projectComponent;
 

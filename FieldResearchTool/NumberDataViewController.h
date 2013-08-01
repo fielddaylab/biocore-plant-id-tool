@@ -8,14 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "ProjectComponent.h"
+#import "SaveObservationAndJudgementDelegate.h"
 
 @interface NumberDataViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITextView *componentPossibilityDescription;
-- (IBAction)changeUnit:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *changeUnitButton;
-- (IBAction)killKeyboard:(id)sender;
-@property (weak, nonatomic) IBOutlet UITextField *textField;
 
+@property (weak, nonatomic) IBOutlet UITextView *componentPossibilityDescription;
+@property (weak, nonatomic) IBOutlet UIButton *changeUnitButton;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
 @property ProjectComponent *projectComponent;
+@property (nonatomic, strong) id<ChangeSaveButtonStateDelegate> saveDelegate;
+
+- (IBAction)changeUnit:(id)sender;
+- (IBAction)killKeyboard:(id)sender;
+
+
 
 @end
