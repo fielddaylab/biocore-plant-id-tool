@@ -26,6 +26,7 @@
 
 
 @interface ObservationContainerViewController (){
+    UIBarButtonItem *saveButton;
 }
 
 @end
@@ -72,13 +73,14 @@
     
     float navAndStatusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height + [self.navigationController navigationBar].frame.size.height;
     
-    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData:)]];
+    saveButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData:)];
+    [self.navigationItem setRightBarButtonItem:saveButton];
     
     
     CGRect frame = CGRectMake(0, 0, self.view.bounds.size.width, (self.view.bounds.size.height *.75));
     
     
-    NSLog(@"\nUIScreen bounds height %f - \nUIScreen bounds width %f - \nnavAndStatusBarHeight %f - \nframe %@ -\nFrame Height %f -",[UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, navAndStatusBarHeight, NSStringFromCGRect(frame), self.view.frame.size.height);
+    //NSLog(@"\nUIScreen bounds height %f - \nUIScreen bounds width %f - \nnavAndStatusBarHeight %f - \nframe %@ -\nFrame Height %f -",[UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, navAndStatusBarHeight, NSStringFromCGRect(frame), self.view.frame.size.height);
     
     
     UIViewController *dataViewControllerToDisplay;
@@ -99,6 +101,7 @@
             NumberDataViewController *numberDataViewController = [[NumberDataViewController alloc]init];
             numberDataViewController.view.frame = frame;
             numberDataViewController.projectComponent = projectComponent;
+            numberDataViewController.saveDelegate = self;
             dataViewControllerToDisplay = numberDataViewController;
         }
             break;
@@ -149,7 +152,7 @@
     }
 
     
-    NSLog(@"\nUIScreen bounds height2 %f - \nUIScreen bounds width2 %f - \nnavAndStatusBarHeight2 %f - \nframe2 %@-\nFrame Height2 %f -",[UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, navAndStatusBarHeight, NSStringFromCGRect(frame2), self.view.frame.size.height);
+    //NSLog(@"\nUIScreen bounds height2 %f - \nUIScreen bounds width2 %f - \nnavAndStatusBarHeight2 %f - \nframe2 %@-\nFrame Height2 %f -",[UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, navAndStatusBarHeight, NSStringFromCGRect(frame2), self.view.frame.size.height);
     
     UIViewController *judgementViewControllerToDisplay;
     switch ([projectComponent.observationJudgementType intValue]) {
@@ -205,6 +208,14 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)enableSaveButton{
+    saveButton.enabled = YES;
+}
+
+-(void)disableSaveButton{
+    saveButton.enabled = NO;
 }
 
 @end

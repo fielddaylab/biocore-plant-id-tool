@@ -37,8 +37,6 @@
 {
     [super viewDidLoad];
     
-    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData)]];
-    
     componentPossibilityDescription.text = projectComponent.title;
     
     
