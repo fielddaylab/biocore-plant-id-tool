@@ -22,7 +22,6 @@
 @synthesize changeUnitButton;
 @synthesize projectComponent;
 @synthesize textField;
-@synthesize saveDelegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,15 +39,6 @@
     [changeUnitButton setTitle:@"cm" forState:UIControlStateNormal];
     unitCount = 0;
     componentPossibilityDescription.text = projectComponent.title;
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [self.saveDelegate disableSaveButton];
-    [NSTimer scheduledTimerWithTimeInterval:.2
-                                     target:self
-                                   selector:@selector(changeSaveButton)
-                                   userInfo:nil
-                                    repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -97,16 +87,5 @@
     return YES;
 }
 
--(void)changeSaveButton{
-    NSString *text = self.textField.text;
-    NSString *regexForNumber = @"[-+]?[0-9]*\\.?[0-9]+";
-    NSPredicate *isNumber = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumber];
-    if ([isNumber evaluateWithObject: text]){
-        [self.saveDelegate enableSaveButton];
-    }
-    else{
-        [self.saveDelegate disableSaveButton];
-    }
-}
 
 @end

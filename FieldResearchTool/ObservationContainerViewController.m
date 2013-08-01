@@ -27,6 +27,8 @@
 
 @interface ObservationContainerViewController (){
     UIBarButtonItem *saveButton;
+    UIViewController *dataViewControllerToDisplay;
+    UIViewController *judgementViewControllerToDisplay;
 }
 
 @end
@@ -83,7 +85,7 @@
     //NSLog(@"\nUIScreen bounds height %f - \nUIScreen bounds width %f - \nnavAndStatusBarHeight %f - \nframe %@ -\nFrame Height %f -",[UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, navAndStatusBarHeight, NSStringFromCGRect(frame), self.view.frame.size.height);
     
     
-    UIViewController *dataViewControllerToDisplay;
+    
     switch ([projectComponent.observationDataType intValue]) {
         case DATA_AUDIO:
             //set up view controller here
@@ -101,7 +103,6 @@
             NumberDataViewController *numberDataViewController = [[NumberDataViewController alloc]init];
             numberDataViewController.view.frame = frame;
             numberDataViewController.projectComponent = projectComponent;
-            numberDataViewController.saveDelegate = self;
             dataViewControllerToDisplay = numberDataViewController;
         }
             break;
@@ -154,7 +155,7 @@
     
     //NSLog(@"\nUIScreen bounds height2 %f - \nUIScreen bounds width2 %f - \nnavAndStatusBarHeight2 %f - \nframe2 %@-\nFrame Height2 %f -",[UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, navAndStatusBarHeight, NSStringFromCGRect(frame2), self.view.frame.size.height);
     
-    UIViewController *judgementViewControllerToDisplay;
+    
     switch ([projectComponent.observationJudgementType intValue]) {
         case JUDGEMENT_NUMBER:{
             NumberJudgementViewController *numberJudgementViewController = [[NumberJudgementViewController alloc]init];
@@ -202,6 +203,29 @@
         [self.view addSubview:judgementViewControllerToDisplay.view];
     }
     
+    //this case will go away once the view controllers are compressed into one view
+    if([dataViewControllerToDisplay isKindOfClass:[NumberDataViewController class]] && [judgementViewControllerToDisplay isKindOfClass:[NumberJudgementViewController class]]){
+        [NSTimer scheduledTimerWithTimeInterval:.2
+                                         target:self
+                                       selector:@selector(checkDataAndJudgmentNumber)
+                                       userInfo:nil
+                                        repeats:YES];
+    }
+    else if([dataViewControllerToDisplay isKindOfClass:[NumberDataViewController class]]){
+        [NSTimer scheduledTimerWithTimeInterval:.2
+                                         target:self
+                                       selector:@selector(checkDataNumber)
+                                       userInfo:nil
+                                        repeats:YES];
+    }
+    else if ([judgementViewControllerToDisplay isKindOfClass:[NumberJudgementViewController class]]){
+        [NSTimer scheduledTimerWithTimeInterval:.2
+                                         target:self
+                                       selector:@selector(checkJudgementNumber)
+                                       userInfo:nil
+                                        repeats:YES];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -210,12 +234,49 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)enableSaveButton{
-    saveButton.enabled = YES;
+//this case will go away once the view controllers are compressed into one view
+-(void)checkDataAndJudgmentNumber{
+    NumberDataViewController *numberDataViewController = (NumberDataViewController *)dataViewControllerToDisplay;
+    NumberJudgementViewController *numberJudgementViewController = (NumberJudgementViewController *)judgementViewControllerToDisplay;
+    NSString *dataText = numberDataViewController.textField.text;
+    NSString *judgementText = numberJudgementViewController.numberField.text;
+
+    NSString *regexForNumberData = @"[-+]?[0-9]*\\.?[0-9]+";
+    NSString *regexForNumberJudgement = @"[-+]?[0-9]*\\.?[0-9]*";
+    NSPredicate *isNumberData = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberData];
+    NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberJudgement];
+    if (([isNumberData evaluateWithObject: dataText] && [isNumberJudgement evaluateWithObject: judgementText]) || ([isNumberData evaluateWithObject: dataText] && judgementText == nil)){
+        saveButton.enabled = YES;
+    }
+    else{
+        saveButton.enabled = NO;
+    }
 }
 
--(void)disableSaveButton{
-    saveButton.enabled = NO;
+-(void)checkDataNumber{
+    NumberDataViewController *numberDataViewController = (NumberDataViewController *)dataViewControllerToDisplay;
+    NSString *dataText = numberDataViewController.textField.text;
+    NSString *regexForNumberData = @"[-+]?[0-9]*\\.?[0-9]+";
+    NSPredicate *isNumberData = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberData];
+    if ([isNumberData evaluateWithObject: dataText]){
+        saveButton.enabled = YES;
+    }
+    else{
+        saveButton.enabled = NO;
+    }
+}
+
+-(void)checkJudgementNumber{
+    NumberJudgementViewController *numberJudgementViewController = (NumberJudgementViewController *)judgementViewControllerToDisplay;
+    NSString *judgementText = numberJudgementViewController.numberField.text;
+    NSString *regexForNumberJudgement = @"[-+]?[0-9]*\\.?[0-9]*";
+    NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberJudgement];
+    if ([isNumberJudgement evaluateWithObject: judgementText]){
+        saveButton.enabled = YES;
+    }
+    else{
+        saveButton.enabled = NO;
+    }
 }
 
 @end

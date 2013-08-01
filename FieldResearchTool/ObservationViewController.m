@@ -142,14 +142,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //Make the identifier unique to that row so cell pictures don't get reused in funky ways.
-    NSString *CellIdentifier = [NSString stringWithFormat:@"%d", indexPath.section];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if(cell == nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
-    
-    /////////////////Change navbar title - probably want to move to universal 'update based on toggling filters' method...
     int identifications = [projectIdentifications count];
     if(componentsToFilter.count > 0){
         identifications = 0;
@@ -161,8 +153,14 @@
         }
     }
     self.title = identifications != 1 ?[NSString stringWithFormat:@"%d possible matches", identifications] : [NSString stringWithFormat:@"%d possible match", 1];
-    ////////////////Change navbar title
     
+    
+    //Make the identifier unique to that row so cell pictures don't get reused in funky ways.
+    NSString *CellIdentifier = [NSString stringWithFormat:@"%d", indexPath.section];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if(cell == nil){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
     
     ProjectComponent *com;
     
@@ -227,11 +225,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.section == 0 || indexPath.section == 1){
+    if(indexPath.section == 0){
         
         ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];
         
-        ProjectComponent *projectComponent = [projectComponents objectAtIndex:indexPath.row];
+        ProjectComponent *projectComponent = [requiredComponents objectAtIndex:indexPath.row];
         containerView.projectComponent = projectComponent;
         containerView.dismissDelegate = self;
         
@@ -243,6 +241,20 @@
         }
         
         
+    }
+    else if(indexPath.section == 1){
+        ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];
+        
+        ProjectComponent *projectComponent = [optionalComponents objectAtIndex:indexPath.row];
+        containerView.projectComponent = projectComponent;
+        containerView.dismissDelegate = self;
+        
+        if(![projectComponent.wasObserved boolValue]){
+            [self.navigationController pushViewController:containerView animated:YES];
+        }
+        else{
+            NSLog(@"This component has already been observed!");
+        }
     }
     else if (indexPath.section == 2){
         //metadata
@@ -286,8 +298,7 @@
         if([com.required boolValue]){
             [requiredComponents addObject:com];
         }
-        
-        if(![com.required boolValue]){
+        else{
             [optionalComponents addObject:com];
         }
         

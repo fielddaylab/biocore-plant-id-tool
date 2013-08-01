@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *changeUnitButton;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property ProjectComponent *projectComponent;
-@property (nonatomic, strong) id<ChangeSaveButtonStateDelegate> saveDelegate;
 
 - (IBAction)changeUnit:(id)sender;
 - (IBAction)killKeyboard:(id)sender;

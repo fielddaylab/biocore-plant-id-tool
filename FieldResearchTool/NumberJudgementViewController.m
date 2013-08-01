@@ -22,6 +22,7 @@
 
 @implementation NumberJudgementViewController
 @synthesize projectComponent;
+@synthesize numberField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
