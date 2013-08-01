@@ -175,7 +175,7 @@
             NSMutableArray *userObservationComponentDataArray = [NSMutableArray arrayWithArray:[com.userObservationComponentData allObjects]];
 
             if ([userObservationComponentDataArray count] > 0){
-                UIImageView *checkmark = [[UIImageView alloc] initWithFrame:CGRectMake(35, 25, 20, 20)];
+                UIImageView *checkmark = [[UIImageView alloc] initWithFrame:CGRectMake(35, 19, 25, 25)];
                 checkmark.image = [UIImage imageNamed:@"17-checkGREEN"];
                 [cell addSubview:checkmark];
             }
@@ -228,7 +228,7 @@
             NSMutableArray *userObservationComponentDataArray = [NSMutableArray arrayWithArray:[com.userObservationComponentData allObjects]];
             
             if ([userObservationComponentDataArray count] > 0){
-                UIImageView *checkmark = [[UIImageView alloc] initWithFrame:CGRectMake(40, 25, 20, 20)];
+                UIImageView *checkmark = [[UIImageView alloc] initWithFrame:CGRectMake(35, 19, 25, 25)];
                 checkmark.image = [UIImage imageNamed:@"17-checkGREEN"];
                 [cell addSubview:checkmark];
             }
