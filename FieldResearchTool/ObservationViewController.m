@@ -25,6 +25,7 @@
 #import "ProjectIdentificationComponentPossibility.h"
 #import "ProjectIdentification.h"
 #import "ObservationJudgementType.h"
+#import "ComponentSwitch.h"
 
 #define ENUM_SCORE 1.0
 #define NIL_SCORE 1.0
@@ -78,7 +79,6 @@
     
     
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithTitle:@"Back!" style:UIBarButtonItemStyleBordered target:self action:nil]];
-    
     
     
     [[AppModel sharedAppModel]getAllProjectComponentsWithHandler:@selector(handleFetchAllProjectComponentsForProjectName:) target:[AppModel sharedAppModel]];
@@ -196,6 +196,14 @@
                 else if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_ENUMERATOR]){
                     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.enumValue];
                 }
+                
+                ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
+                if([componentsToFilter containsObject:com]){
+                    [boolSwitch setOn:YES animated:NO];
+                }
+                [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
+                boolSwitch.component = com;
+                cell.accessoryView = boolSwitch;
                 
             }
             
@@ -739,5 +747,17 @@
     
     
     return 0.0f;
+}
+
+-(void)toggleFilter:(id)sender{
+    ComponentSwitch *boolSwitch = (ComponentSwitch *)sender;
+    ProjectComponent *component = boolSwitch.component;
+    if (boolSwitch.isOn) {
+        [componentsToFilter addObject:component];
+    }
+    else{
+        [componentsToFilter removeObject:component];
+    }
+    [self rankIdentifications];
 }
 @end
