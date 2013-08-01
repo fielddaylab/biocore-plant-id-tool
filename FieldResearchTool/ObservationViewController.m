@@ -173,6 +173,12 @@
             com = (ProjectComponent *)[requiredComponents objectAtIndex:indexPath.row];
             cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
             
+            cell.detailTextLabel.text = @"Not Interpreted";
+            
+            if ([com.wasJudged boolValue]) {
+                cell.detailTextLabel.text = @"Interpreted!";
+            }
+            
             //We'll have to change this in the future, but for now 'reparse' the string...
             NSString *projectComponentTitleString = com.title;
             NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
@@ -188,6 +194,13 @@
             
             com = (ProjectComponent *)[optionalComponents objectAtIndex:indexPath.row];
             cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
+            
+            cell.detailTextLabel.text = @"Not Interpreted";
+            
+            if ([com.wasJudged boolValue]) {
+                cell.detailTextLabel.text = @"Interpreted!";
+            }
+
             
             //We'll have to change this in the future, but for now 'reparse' the string...
             NSString *projectComponentTitleString = com.title;
@@ -303,6 +316,7 @@
 - (void)dismissContainerViewAndSetProjectComponentObserved:(ProjectComponent *)projectComponent{
     
     if([self doesProjectComponenthaveJudgement:projectComponent]){
+        projectComponent.wasJudged = [NSNumber numberWithBool:YES];;
         [componentsToFilter addObject:projectComponent];
         [self rankIdentifications];
     }
