@@ -35,7 +35,8 @@
     NSMutableArray *projectIdentifications;
     
     NSMutableArray *componentsToFilter;
-    NSMutableArray *savedComponents;
+    NSMutableArray *requiredComponents;
+    NSMutableArray *optionalComponents;
 }
 
 @end
@@ -54,7 +55,9 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(projectComponentsResponseReady) name:@"ProjectComponentsResponseReady" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(projectIdentificationsResponseReady) name:@"ProjectIdentificationsResponseReady" object:nil];
         componentsToFilter = [[NSMutableArray alloc]init];
-        savedComponents = [[NSMutableArray alloc]init];
+        
+        requiredComponents = [[NSMutableArray alloc]init];
+        optionalComponents = [[NSMutableArray alloc]init];
     }
     return self;
 }
@@ -91,7 +94,7 @@
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark Table View Controller Delegate
+#pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -104,9 +107,9 @@
         case 0:
             return 1;
         case 1:
-            return [savedComponents count];
+            return [requiredComponents count];
         case 2:
-            return [projectComponents count];
+            return [optionalComponents count];
         case 3:
             return 4;
         default:
@@ -137,7 +140,6 @@
     
     ProjectComponent *com;
     
-    
     switch (indexPath.section) {
         case 0:
             cell.accessoryType= UITableViewCellAccessoryDisclosureIndicator;
@@ -153,30 +155,38 @@
             }
             cell.textLabel.text = identifications != 1 ?[NSString stringWithFormat:@"%d ids with > .8 match", identifications] : [NSString stringWithFormat:@"%d id with > .8 match", 1];
             break;
-        case 1:
-            com = (ProjectComponent *)[savedComponents objectAtIndex:indexPath.row];
+        case 1:{
+            
+            com = (ProjectComponent *)[requiredComponents objectAtIndex:indexPath.row];
             cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
-            break;
+            
+            //We'll have to change this in the future, but for now 'reparse' the string...
+            NSString *projectComponentTitleString = com.title;
+            NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
+            projectComponentTitleString = [[projectComponentTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
+            projectComponentTitleString = [projectComponentTitleString stringByAppendingString:@".png"];
+            
+            cell.imageView.image = [self imageWithImage:[UIImage imageNamed:projectComponentTitleString] scaledToSize:CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, cell.bounds.size.height, cell.bounds.size.height).size];
+            //cell.imageView.image = [self imageWithImage:[UIImage imageWithContentsOfFile:com.media.mediaURL] scaledToSize:CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, cell.bounds.size.height, cell.bounds.size.height).size];
+            
+            
+        }break;
         case 2:{
-            cell.accessoryType= UITableViewCellAccessoryDisclosureIndicator;
-            if(!com.wasObserved){
-
-                com = (ProjectComponent *)[projectComponents objectAtIndex:indexPath.row];
-                
-                NSString *projectComponentTitleString = com.title;
-                NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
-                projectComponentTitleString = [[projectComponentTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
-                //NSLog(@"%@",projectComponentTitleString);
-                projectComponentTitleString = [projectComponentTitleString stringByAppendingString:@".png"];
-                
-                cell.imageView.image = [self imageWithImage:[UIImage imageNamed:projectComponentTitleString] scaledToSize:CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, cell.bounds.size.height, cell.bounds.size.height).size];
-                
-                //cell.imageView.image = [self imageWithImage:[UIImage imageWithContentsOfFile:com.media.mediaURL] scaledToSize:CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, cell.bounds.size.height, cell.bounds.size.height).size];
-
-  
-                cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
-            }
-
+            
+            com = (ProjectComponent *)[optionalComponents objectAtIndex:indexPath.row];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
+            
+            //We'll have to change this in the future, but for now 'reparse' the string...
+            NSString *projectComponentTitleString = com.title;
+            NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
+            projectComponentTitleString = [[projectComponentTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
+            projectComponentTitleString = [projectComponentTitleString stringByAppendingString:@".png"];
+            
+            cell.imageView.image = [self imageWithImage:[UIImage imageNamed:projectComponentTitleString] scaledToSize:CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, cell.bounds.size.height, cell.bounds.size.height).size];
+            
+            //cell.imageView.image = [self imageWithImage:[UIImage imageWithContentsOfFile:com.media.mediaURL] scaledToSize:CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, cell.bounds.size.height, cell.bounds.size.height).size];
+            
+            
         }break;
         case 3:{
             
@@ -248,16 +258,42 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+
+{
+    switch (section) {
+        case 0:
+            return @"";
+            break;
+        case 1:
+            return @"Required Components";
+            break;
+        case 2:
+            return @"Optional Components";
+        case 3:
+            return @"Metadata";
+        default:
+            return @"Error :'[";
+            break;
+    }
+    
+}
+
 #pragma mark - Asynchronous responses
 
 -(void)projectComponentsResponseReady{
     projectComponents = [NSMutableArray arrayWithArray:[AppModel sharedAppModel].currentProjectComponents];
     for (int i = 0; i < projectComponents.count; i++) {
         ProjectComponent *com = [projectComponents objectAtIndex:i];
-        if([com.wasObserved boolValue]){
-            [savedComponents addObject:com];
-            [projectComponents removeObject:com];
+        
+        if([com.required boolValue]){
+            [requiredComponents addObject:com];
         }
+        
+        if(![com.required boolValue]){
+            [optionalComponents addObject:com];
+        }
+        
     }
     [self.table reloadData];
 }
@@ -268,8 +304,7 @@
 }
 
 - (void)dismissContainerViewAndSetProjectComponentObserved:(ProjectComponent *)projectComponent{
-    [savedComponents addObject:projectComponent];
-    [projectComponents removeObject:projectComponent];
+    
     if([self doesProjectComponenthaveJudgement:projectComponent]){
         [componentsToFilter addObject:projectComponent];
         [self rankIdentifications];
@@ -528,7 +563,7 @@
     }
     
     //NSLog(@"Checking if identification: %@ has possibility: %@", identification.title, possibility.enumValue);
-        
+    
     NSArray *pairs = [NSArray arrayWithArray:[identification.projectIdentificationComponentPossibilities allObjects]];
     for (int i = 0; i < pairs.count; i++) {
         ProjectIdentificationComponentPossibility *pair = [pairs objectAtIndex:i];

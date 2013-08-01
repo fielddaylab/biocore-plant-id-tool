@@ -260,7 +260,6 @@
             NSString *projectComponentTitleString = projectComponentName;
             NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
             projectComponentTitleString = [[projectComponentTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
-            NSLog(@"%@",projectComponentTitleString);
             projectComponentTitleString = [projectComponentTitleString stringByAppendingString:@".png"];
             
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
