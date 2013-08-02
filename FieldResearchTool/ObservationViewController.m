@@ -196,14 +196,22 @@
                 else if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_ENUMERATOR]){
                     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.enumValue];
                 }
-                
-                ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
-                if([componentsToFilter containsObject:com]){
-                    [boolSwitch setOn:YES animated:NO];
+                else if (com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_TEXT]){
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.text];
                 }
-                [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
-                boolSwitch.component = com;
-                cell.accessoryView = boolSwitch;
+                else if (com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_LONG_TEXT]){
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.longText];
+                }
+                
+                if([self isComponentFilterable:com]){
+                    ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
+                    if([componentsToFilter containsObject:com]){
+                        [boolSwitch setOn:YES animated:NO];
+                    }
+                    [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
+                    boolSwitch.component = com;
+                    cell.accessoryView = boolSwitch;
+                }
                 
             }
             
@@ -248,15 +256,22 @@
                 else if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_ENUMERATOR]){
                     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.enumValue];
                 }
-                
-                ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
-                if([componentsToFilter containsObject:com]){
-                    [boolSwitch setOn:YES animated:NO];
+                else if (com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_TEXT]){
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.text];
                 }
-                [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
-                boolSwitch.component = com;
-                cell.accessoryView = boolSwitch;
+                else if (com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_LONG_TEXT]){
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.longText];
+                }
                 
+                if([self isComponentFilterable:com]){
+                    ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
+                    if([componentsToFilter containsObject:com]){
+                        [boolSwitch setOn:YES animated:NO];
+                    }
+                    [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
+                    boolSwitch.component = com;
+                    cell.accessoryView = boolSwitch;
+                }
             }
             
             
@@ -376,13 +391,17 @@
     
     if([self doesProjectComponenthaveJudgement:projectComponent]){
         projectComponent.wasJudged = [NSNumber numberWithBool:YES];
-        ProjectComponent *prevComponent = [self filterHasProjectComponentTitle:projectComponent.title];
-        if(prevComponent){
-            [componentsToFilter removeObject:prevComponent];
+        if(projectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_BOOLEAN] || projectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_NUMBER] || projectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_ENUMERATOR]){
+            ProjectComponent *prevComponent = [self filterHasProjectComponentTitle:projectComponent.title];
+            if(prevComponent){
+                [componentsToFilter removeObject:prevComponent];
+            }
+            [componentsToFilter addObject:projectComponent];
+            [self rankIdentifications];
         }
-        [componentsToFilter addObject:projectComponent];
-        [self rankIdentifications];
     }
+
+
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -416,6 +435,15 @@
     }
     
     return nil;
+}
+
+
+//this method will eventually be deleted once the data model is updated to allow components to be filterable
+-(BOOL)isComponentFilterable:(ProjectComponent *)component{
+    if (component.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_BOOLEAN] || component.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_ENUMERATOR] || component.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_NUMBER]) {
+        return YES;
+    }
+    return NO;
 }
 
 -(void)rankIdentifications{
