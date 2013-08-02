@@ -69,6 +69,8 @@
 		7174127A17A19CDE003295B6 /* ObservationContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7174127817A19CDD003295B6 /* ObservationContainerViewController.xib */; };
 		717AF34E17AC0A3400DA2077 /* InterpretationInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717AF34C17AC0A3400DA2077 /* InterpretationInformationViewController.m */; };
 		717AF34F17AC0A3400DA2077 /* InterpretationInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 717AF34D17AC0A3400DA2077 /* InterpretationInformationViewController.xib */; };
+		717AF35317AC36C200DA2077 /* ObservationProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717AF35117AC36C200DA2077 /* ObservationProfileViewController.m */; };
+		717AF35417AC36C200DA2077 /* ObservationProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 717AF35217AC36C200DA2077 /* ObservationProfileViewController.xib */; };
 		718AAD071794666200AFE6DB /* SwitchNoBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD031794666200AFE6DB /* SwitchNoBig.png */; };
 		718AAD081794666200AFE6DB /* SwitchNoSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD041794666200AFE6DB /* SwitchNoSmall.png */; };
 		718AAD091794666200AFE6DB /* SwitchYesBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD051794666200AFE6DB /* SwitchYesBig.png */; };
@@ -214,6 +216,9 @@
 		717AF34B17AC0A3400DA2077 /* InterpretationInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterpretationInformationViewController.h; sourceTree = "<group>"; };
 		717AF34C17AC0A3400DA2077 /* InterpretationInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterpretationInformationViewController.m; sourceTree = "<group>"; };
 		717AF34D17AC0A3400DA2077 /* InterpretationInformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InterpretationInformationViewController.xib; sourceTree = "<group>"; };
+		717AF35017AC36C100DA2077 /* ObservationProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationProfileViewController.h; sourceTree = "<group>"; };
+		717AF35117AC36C200DA2077 /* ObservationProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationProfileViewController.m; sourceTree = "<group>"; };
+		717AF35217AC36C200DA2077 /* ObservationProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationProfileViewController.xib; sourceTree = "<group>"; };
 		718AAD031794666200AFE6DB /* SwitchNoBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwitchNoBig.png; sourceTree = "<group>"; };
 		718AAD041794666200AFE6DB /* SwitchNoSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwitchNoSmall.png; sourceTree = "<group>"; };
 		718AAD051794666200AFE6DB /* SwitchYesBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwitchYesBig.png; sourceTree = "<group>"; };
@@ -411,6 +416,9 @@
 				7174127617A19CDD003295B6 /* ObservationContainerViewController.h */,
 				7174127717A19CDD003295B6 /* ObservationContainerViewController.m */,
 				7174127817A19CDD003295B6 /* ObservationContainerViewController.xib */,
+				717AF35017AC36C100DA2077 /* ObservationProfileViewController.h */,
+				717AF35117AC36C200DA2077 /* ObservationProfileViewController.m */,
+				717AF35217AC36C200DA2077 /* ObservationProfileViewController.xib */,
 			);
 			name = ObservationViewControllers;
 			sourceTree = "<group>";
@@ -688,6 +696,7 @@
 				5BDAE57117A9BF14008A6A99 /* MAX_length_of_flower_cluster.png in Resources */,
 				5BDAE57217A9BF14008A6A99 /* MIN_width_of_flower_.png in Resources */,
 				717AF34F17AC0A3400DA2077 /* InterpretationInformationViewController.xib in Resources */,
+				717AF35417AC36C200DA2077 /* ObservationProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,6 +784,7 @@
 				5B01FEE117A99D8900C547D8 /* ProjectIdentification.m in Sources */,
 				5B929A5517AAE2F30097D366 /* ComponentSwitch.m in Sources */,
 				717AF34E17AC0A3400DA2077 /* InterpretationInformationViewController.m in Sources */,
+				717AF35317AC36C200DA2077 /* ObservationProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

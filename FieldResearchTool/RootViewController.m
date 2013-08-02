@@ -11,6 +11,8 @@
 #import "ObservationViewController.h"
 #import "AppModel.h"
 
+#import "ObservationProfileViewController.h"
+
 
 @interface RootViewController ()
 {
@@ -35,7 +37,7 @@
 }
 
 -(void)handleFetchOfAllProjects:(NSArray *)projects{
-    ObservationViewController *newObservation = [[ObservationViewController alloc]initWithNibName:@"ObservationViewController" bundle:nil];
+    ObservationProfileViewController *newObservation = [[ObservationProfileViewController alloc]initWithNibName:@"ObservationProfileViewController" bundle:nil];
     
     
     Project *project = projects[0];
