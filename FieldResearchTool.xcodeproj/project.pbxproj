@@ -67,6 +67,8 @@
 		7166E25D179F25B3009FFC6E /* 60-xRED.png in Resources */ = {isa = PBXBuildFile; fileRef = 7166E259179F25B3009FFC6E /* 60-xRED.png */; };
 		7174127917A19CDE003295B6 /* ObservationContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174127717A19CDD003295B6 /* ObservationContainerViewController.m */; };
 		7174127A17A19CDE003295B6 /* ObservationContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7174127817A19CDD003295B6 /* ObservationContainerViewController.xib */; };
+		717AF34E17AC0A3400DA2077 /* InterpretationInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717AF34C17AC0A3400DA2077 /* InterpretationInformationViewController.m */; };
+		717AF34F17AC0A3400DA2077 /* InterpretationInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 717AF34D17AC0A3400DA2077 /* InterpretationInformationViewController.xib */; };
 		718AAD071794666200AFE6DB /* SwitchNoBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD031794666200AFE6DB /* SwitchNoBig.png */; };
 		718AAD081794666200AFE6DB /* SwitchNoSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD041794666200AFE6DB /* SwitchNoSmall.png */; };
 		718AAD091794666200AFE6DB /* SwitchYesBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD051794666200AFE6DB /* SwitchYesBig.png */; };
@@ -209,6 +211,9 @@
 		7174127617A19CDD003295B6 /* ObservationContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationContainerViewController.h; sourceTree = "<group>"; };
 		7174127717A19CDD003295B6 /* ObservationContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationContainerViewController.m; sourceTree = "<group>"; };
 		7174127817A19CDD003295B6 /* ObservationContainerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationContainerViewController.xib; sourceTree = "<group>"; };
+		717AF34B17AC0A3400DA2077 /* InterpretationInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterpretationInformationViewController.h; sourceTree = "<group>"; };
+		717AF34C17AC0A3400DA2077 /* InterpretationInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterpretationInformationViewController.m; sourceTree = "<group>"; };
+		717AF34D17AC0A3400DA2077 /* InterpretationInformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InterpretationInformationViewController.xib; sourceTree = "<group>"; };
 		718AAD031794666200AFE6DB /* SwitchNoBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwitchNoBig.png; sourceTree = "<group>"; };
 		718AAD041794666200AFE6DB /* SwitchNoSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwitchNoSmall.png; sourceTree = "<group>"; };
 		718AAD051794666200AFE6DB /* SwitchYesBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwitchYesBig.png; sourceTree = "<group>"; };
@@ -442,6 +447,9 @@
 				718AAD241794772300AFE6DB /* InterpretationSplitViewController.h */,
 				718AAD251794772300AFE6DB /* InterpretationSplitViewController.m */,
 				718AAD261794772300AFE6DB /* InterpretationSplitViewController.xib */,
+				717AF34B17AC0A3400DA2077 /* InterpretationInformationViewController.h */,
+				717AF34C17AC0A3400DA2077 /* InterpretationInformationViewController.m */,
+				717AF34D17AC0A3400DA2077 /* InterpretationInformationViewController.xib */,
 			);
 			name = InterpretationViewControllers;
 			sourceTree = "<group>";
@@ -679,6 +687,7 @@
 				5BDAE57017A9BF14008A6A99 /* MAX_Height_of_stem.png in Resources */,
 				5BDAE57117A9BF14008A6A99 /* MAX_length_of_flower_cluster.png in Resources */,
 				5BDAE57217A9BF14008A6A99 /* MIN_width_of_flower_.png in Resources */,
+				717AF34F17AC0A3400DA2077 /* InterpretationInformationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -765,6 +774,7 @@
 				5B034C1217A81F34003A1C50 /* UserObservationComponentData.m in Sources */,
 				5B01FEE117A99D8900C547D8 /* ProjectIdentification.m in Sources */,
 				5B929A5517AAE2F30097D366 /* ComponentSwitch.m in Sources */,
+				717AF34E17AC0A3400DA2077 /* InterpretationInformationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
