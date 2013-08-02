@@ -155,7 +155,7 @@
     NSMutableArray *projectComponents = [[NSMutableArray alloc]init];
     int nonComponents = 0;
     for(int i = 0; i < [wordsSeperatedByTabs count]; i++){
-        NSString *componentRegex = @".*(\\{YES\\}|\\{NO\\})?(\\{DATA_VIDEO\\}|\\{DATA_PHOTO\\}|\\{DATA_AUDIO\\}|\\{DATA_TEXT\\}|\\{DATA_LONG_TEXT\\}|\\{DATA_NUMBER\\}|\\{DATA_BOOL\\}|\\{DATA_ENUM\\})(\\{JUDGEMENT_TEXT\\}|\\{JUDGEMENT_LONG_TEXT\\}|\\{JUDGEMENT_NUMBER\\}|\\{JUDGEMENT_BOOL\\}|\\{JUDGEMENT_ENUM\\})";
+        NSString *componentRegex = @".*(\\{YES\\}|\\{NO\\})?(\\{DATA_VIDEO\\}|\\{DATA_PHOTO\\}|\\{DATA_AUDIO\\}|\\{DATA_TEXT\\}|\\{DATA_LONG_TEXT\\}|\\{DATA_NUMBER\\}|\\{DATA_BOOL\\}|\\{DATA_ENUM\\})(\\{JUDGEMENT_TEXT\\}|\\{JUDGEMENT_LONG_TEXT\\}|\\{JUDGEMENT_NUMBER\\}|\\{JUDGEMENT_BOOL\\}|\\{JUDGEMENT_ENUM\\})(\\{FILTER\\}|\\{DONT_FILTER\\})";
         BOOL isComponent = [self stringMatchesRegex:wordsSeperatedByTabs[i] regex:componentRegex];
         if(isComponent){
             NSString *leftBrace = @"{";
@@ -243,6 +243,26 @@
                 judgementType = JUDGEMENT_NUMBER;
             }
             
+            BOOL filter;
+            if(judgementType == JUDGEMENT_BOOLEAN || judgementType == JUDGEMENT_ENUMERATOR || judgementType == JUDGEMENT_NUMBER){
+                NSString *filterRegex = @".*\\{FILTER\\}.*";
+                NSString *dontFilterRegex = @".*\\DONT_FILTER\\}.*";
+                if([self stringMatchesRegex:params regex:filterRegex]){
+                    filter = YES;
+                }
+                else if ([self stringMatchesRegex:params regex:dontFilterRegex]){
+                    filter = NO;
+                }
+                else{
+                    NSLog(@"Something went wrong when trying to set filter for component");
+                    filter = NO;
+                }
+            }
+            else{
+                filter = NO;
+            }
+
+            
             
             ProjectComponent *projectComponent = (ProjectComponent *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponent" inManagedObjectContext:[self managedObjectContext]];
             projectComponent.created = [NSDate date];
@@ -254,6 +274,7 @@
             projectComponent.wasObserved = [NSNumber numberWithBool:NO];
             projectComponent.wasJudged = [NSNumber numberWithBool:NO];
             projectComponent.project = project;
+            projectComponent.filter = [NSNumber numberWithBool:filter];
 
             ///////////////NICK MADE
             //Make the filename for the media
