@@ -2,7 +2,7 @@
 //  ProjectIdentification.m
 //  FieldResearchTool
 //
-//  Created by Justin Moeller on 7/31/13.
+//  Created by Justin Moeller on 8/2/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
@@ -18,10 +18,11 @@
 @dynamic authorCreated;
 @dynamic created;
 @dynamic identificationDescription;
+@dynamic numOfNils;
 @dynamic score;
 @dynamic title;
 @dynamic updated;
-@dynamic numOfNils;
+@dynamic alternateName;
 @dynamic media;
 @dynamic project;
 @dynamic projectIdentificationComponentPossibilities;

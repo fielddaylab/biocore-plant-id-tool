@@ -351,11 +351,13 @@
         identification.authorCreated = [NSNumber numberWithBool:YES];
         identification.created = [NSDate date];
         identification.updated = [NSDate date];
-        identification.identificationDescription = components[1];
+        identification.identificationDescription = components[2];
+        identification.alternateName = components[1];
+        NSLog(@"Alternate Name: %@ Description: %@", identification.alternateName, identification.identificationDescription);
         identification.title = components[0];
         identification.score = [NSNumber numberWithFloat:0.0f];
         identification.numOfNils = [NSNumber numberWithInt:0];
-        //add media here
+        //add media array here
         identification.project = project;
         
         int numOfNonComponents = nonComponents;
