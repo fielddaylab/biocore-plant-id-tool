@@ -27,6 +27,7 @@
 
 + (AppModel *)sharedAppModel;
 
+//save
 -(BOOL)save;
 //fetch
 -(void)getAllProjectsWithHandler:(SEL)handler target:(id)target;
@@ -44,5 +45,9 @@
 -(UserObservationComponentData *)createNewObservationDataWithAttributes:(NSDictionary *)attributes;
 -(UserObservationComponentDataJudgement *)createNewJudgementWithData:(UserObservationComponentData *)data withProjectComponentPossibility:(NSArray *)possibilities withAttributes:(NSDictionary *)attributes;
 -(Media *)createNewMediaWithAttributes:(NSDictionary *)attributes;
+
+//delete
+-(void)deleteObject:(NSManagedObject *)objectToDelete;
+-(void)deleteObjects:(NSArray *)objectsToDelete;
 
 @end

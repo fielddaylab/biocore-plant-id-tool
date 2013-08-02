@@ -41,6 +41,21 @@
     componentPossibilityDescription.text = projectComponent.title;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    if([projectComponent.wasObserved boolValue]){
+        NSArray *dataSet = [projectComponent.userObservationComponentData allObjects];
+        if(!dataSet || dataSet.count < 1){
+            NSLog(@"ERROR: dataSet is nil or has no objects");
+        }
+        UserObservationComponentData *prevData = [dataSet objectAtIndex:0];
+        if(!prevData){
+            NSLog(@"ERROR: prevData was nil");
+        }
+        NSNumber *storedNumber = prevData.number;
+        textField.text = [storedNumber stringValue];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

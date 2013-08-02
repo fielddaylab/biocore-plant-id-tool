@@ -196,14 +196,22 @@
                 else if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_ENUMERATOR]){
                     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.enumValue];
                 }
-                
-                ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
-                if([componentsToFilter containsObject:com]){
-                    [boolSwitch setOn:YES animated:NO];
+                else if (com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_TEXT]){
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.text];
                 }
-                [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
-                boolSwitch.component = com;
-                cell.accessoryView = boolSwitch;
+                else if (com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_LONG_TEXT]){
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.longText];
+                }
+                
+                if([self isComponentFilterable:com]){
+                    ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
+                    if([componentsToFilter containsObject:com]){
+                        [boolSwitch setOn:YES animated:NO];
+                    }
+                    [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
+                    boolSwitch.component = com;
+                    cell.accessoryView = boolSwitch;
+                }
                 
             }
             
@@ -248,15 +256,22 @@
                 else if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_ENUMERATOR]){
                     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.enumValue];
                 }
-                
-                ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
-                if([componentsToFilter containsObject:com]){
-                    [boolSwitch setOn:YES animated:NO];
+                else if (com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_TEXT]){
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.text];
                 }
-                [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
-                boolSwitch.component = com;
-                cell.accessoryView = boolSwitch;
+                else if (com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_LONG_TEXT]){
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.longText];
+                }
                 
+                if([self isComponentFilterable:com]){
+                    ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
+                    if([componentsToFilter containsObject:com]){
+                        [boolSwitch setOn:YES animated:NO];
+                    }
+                    [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
+                    boolSwitch.component = com;
+                    cell.accessoryView = boolSwitch;
+                }
             }
             
             
@@ -306,14 +321,7 @@
         containerView.projectComponent = projectComponent;
         containerView.dismissDelegate = self;
         
-        if(![projectComponent.wasObserved boolValue]){
-            [self.navigationController pushViewController:containerView animated:YES];
-        }
-        else{
-            NSLog(@"This component has already been observed!");
-        }
-        
-        
+        [self.navigationController pushViewController:containerView animated:YES];
     }
     else if(indexPath.section == 1){
         ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];
@@ -322,12 +330,7 @@
         containerView.projectComponent = projectComponent;
         containerView.dismissDelegate = self;
         
-        if(![projectComponent.wasObserved boolValue]){
-            [self.navigationController pushViewController:containerView animated:YES];
-        }
-        else{
-            NSLog(@"This component has already been observed!");
-        }
+        [self.navigationController pushViewController:containerView animated:YES];
     }
     else if (indexPath.section == 2){
         //metadata
@@ -387,10 +390,18 @@
 - (void)dismissContainerViewAndSetProjectComponentObserved:(ProjectComponent *)projectComponent{
     
     if([self doesProjectComponenthaveJudgement:projectComponent]){
-        projectComponent.wasJudged = [NSNumber numberWithBool:YES];;
-        [componentsToFilter addObject:projectComponent];
-        [self rankIdentifications];
+        projectComponent.wasJudged = [NSNumber numberWithBool:YES];
+        if(projectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_BOOLEAN] || projectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_NUMBER] || projectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_ENUMERATOR]){
+            ProjectComponent *prevComponent = [self filterHasProjectComponentTitle:projectComponent.title];
+            if(prevComponent){
+                [componentsToFilter removeObject:prevComponent];
+            }
+            [componentsToFilter addObject:projectComponent];
+            [self rankIdentifications];
+        }
     }
+
+
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -414,7 +425,29 @@
     return NO;
 }
 
+-(ProjectComponent *)filterHasProjectComponentTitle:(NSString *)title{
+    
+    for (int i = 0; i < componentsToFilter.count; i++) {
+        ProjectComponent *component = [componentsToFilter objectAtIndex:i];
+        if([component.title isEqualToString:title]){
+            return component;
+        }
+    }
+    
+    return nil;
+}
+
+
+//this method will eventually be deleted once the data model is updated to allow components to be filterable
+-(BOOL)isComponentFilterable:(ProjectComponent *)component{
+    if (component.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_BOOLEAN] || component.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_ENUMERATOR] || component.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_NUMBER]) {
+        return YES;
+    }
+    return NO;
+}
+
 -(void)rankIdentifications{
+    NSLog(@"Filtering on %lu components", (unsigned long)componentsToFilter.count);
     NSArray *allProjectIdentifications = [AppModel sharedAppModel].allProjectIdentifications;
     for (int i = 0; i < allProjectIdentifications.count; i++) {
         ProjectIdentification *identification = [allProjectIdentifications objectAtIndex:i];
@@ -465,11 +498,11 @@
     NSArray *sortedIdentifications = [allProjectIdentifications sortedArrayUsingDescriptors:descriptors];
     
     //for debugging purposes
-    for (int i = 0; i < sortedIdentifications.count; i++) {
-        ProjectIdentification *identification = [sortedIdentifications objectAtIndex:i];
-        int numberOfNils = [identification.numOfNils intValue];
-        NSLog(@"%i: %@ with score %@ and %i nils. Sorting on %lu components", i, identification.title, identification.score, numberOfNils, (unsigned long)componentsToFilter.count);
-    }
+//    for (int i = 0; i < sortedIdentifications.count; i++) {
+//        ProjectIdentification *identification = [sortedIdentifications objectAtIndex:i];
+//        int numberOfNils = [identification.numOfNils intValue];
+//        NSLog(@"%i: %@ with score %@ and %i nils. Sorting on %lu components", i, identification.title, identification.score, numberOfNils, (unsigned long)componentsToFilter.count);
+//    }
     
     projectIdentifications = [NSArray arrayWithArray:sortedIdentifications];
     [self.table reloadData];
