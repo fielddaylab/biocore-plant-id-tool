@@ -315,12 +315,7 @@
         containerView.projectComponent = projectComponent;
         containerView.dismissDelegate = self;
         
-        if(![projectComponent.wasObserved boolValue]){
-            [self.navigationController pushViewController:containerView animated:YES];
-        }
-        else{
-            NSLog(@"This component has already been observed!");
-        }
+        [self.navigationController pushViewController:containerView animated:YES];
     }
     else if (indexPath.section == 2){
         //metadata
