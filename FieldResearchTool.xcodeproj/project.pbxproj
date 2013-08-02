@@ -773,6 +773,7 @@
 				5B034C1217A81F34003A1C50 /* UserObservationComponentData.m in Sources */,
 				5B01FEE117A99D8900C547D8 /* ProjectIdentification.m in Sources */,
 				5B929A5517AAE2F30097D366 /* ComponentSwitch.m in Sources */,
+				717AF34E17AC0A3400DA2077 /* InterpretationInformationViewController.m in Sources */,
 				5B4D2DF117AC34EA0071304F /* ProjectComponent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
