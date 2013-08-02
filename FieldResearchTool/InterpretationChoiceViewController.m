@@ -9,6 +9,8 @@
 #import "InterpretationChoiceViewController.h"
 #import "ProjectIdentification.h"
 
+#import "InterpretationInformationViewController.h"
+
 
 
 @interface InterpretationChoiceViewController ()
@@ -41,7 +43,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark table view delegate methods
+#pragma mark - table view delegate methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return projectIdentifications.count;
@@ -73,6 +75,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    InterpretationInformationViewController *interpretationInformationVC = [[InterpretationInformationViewController alloc]initWithNibName:@"InterpretationInformationViewController" bundle:nil];
+    [self.navigationController pushViewController:interpretationInformationVC animated:YES];
+    
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
