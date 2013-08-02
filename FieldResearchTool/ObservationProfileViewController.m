@@ -7,8 +7,9 @@
 //
 
 #import "ObservationProfileViewController.h"
-
 #import "ObservationViewController.h"
+#import "AppModel.h"
+#import "UserObservation.h"
 
 
 @interface ObservationProfileViewController (){
@@ -22,9 +23,9 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    profileObservations = [[NSMutableArray alloc]initWithObjects:@"Observation 1", @"Observation 2", @"Observation 3", nil];
+    profileObservations = [[NSMutableArray alloc]init];
     if (self) {
-        // Custom initialization
+        self.title = @"My Observations";
     }
     return self;
 }
@@ -33,7 +34,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(makeNewObservation)]];
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(makeNewObservation)];
+    [self.navigationItem setRightBarButtonItem:addButton];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [[AppModel sharedAppModel] getUserObservationsForCurrentUserWithHandler:@selector(handleFetchOfUserObservations:) target:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,14 +51,15 @@
 - (void) makeNewObservation
 {
     ObservationViewController *observationVC = [[ObservationViewController alloc]initWithNibName:@"ObservationViewController" bundle:nil];
+    observationVC.newObservation = YES;
+    observationVC.prevObservation = nil;
     [self.navigationController pushViewController:observationVC animated:YES];
-    
 }
 
 #pragma mark - table view delegate methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return [profileObservations count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -63,17 +70,17 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    
+    UserObservation *observation = [profileObservations objectAtIndex:indexPath.row];
     
     switch (indexPath.section) {
         case 0:
-            cell.textLabel.text = [NSString stringWithFormat:@"%@",profileObservations[indexPath.row]];
+            cell.textLabel.text = observation.identificationString;
             break;
         case 1:
-            cell.textLabel.text = [NSString stringWithFormat:@"%@",profileObservations[indexPath.row]];
+            cell.textLabel.text = observation.identificationString;
             break;
         case 2:
-            cell.textLabel.text = [NSString stringWithFormat:@"%@",profileObservations[indexPath.row]];
+            cell.textLabel.text = observation.identificationString;
             break;
             
         default:
@@ -86,7 +93,20 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UserObservation *observation = [profileObservations objectAtIndex:indexPath.row];
+    ObservationViewController *observationVC = [[ObservationViewController alloc]initWithNibName:@"ObservationViewController" bundle:nil];
+    observationVC.newObservation = NO;
+    observationVC.prevObservation = observation;
+    [AppModel sharedAppModel].currentUserObservation = observation;
+    [self.navigationController pushViewController:observationVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+#pragma mark
+-(void)handleFetchOfUserObservations:(NSArray *)observations{
+    profileObservations = [NSMutableArray arrayWithArray:observations];
+    [self.table reloadData];
 }
 
 

@@ -2,7 +2,7 @@
 //  UserObservation.m
 //  FieldResearchTool
 //
-//  Created by Justin Moeller on 7/24/13.
+//  Created by Justin Moeller on 8/2/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
@@ -14,12 +14,13 @@
 
 @implementation UserObservation
 
+@dynamic created;
 @dynamic latitude;
 @dynamic longitude;
-@dynamic created;
 @dynamic updated;
+@dynamic identificationString;
 @dynamic user;
-@dynamic userObservationIdentifications;
 @dynamic userObservationComponentData;
+@dynamic userObservationIdentifications;
 
 @end

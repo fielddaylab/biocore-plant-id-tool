@@ -35,6 +35,7 @@
 -(void)getAllProjectIdentificationsWithHandler:(SEL)handler target:(id)target;
 -(void)getProjectIdentificationsWithAttributes:(NSDictionary *)attributeNamesAndValues withHandler:(SEL)handler target:(id)target;
 -(void)getUserObservationsWithHandler:(SEL)handler target:(id)target;
+-(void)getUserObservationsForCurrentUserWithHandler:(SEL)handler target:(id)target;
 -(void)getProjectComponentPossibilitiesWithAttributes:(NSDictionary *)attributeNamesAndValies withHandler:(SEL)handler target:(id)target;
 -(void)getUserObservationComponentsDataWithHandler:(SEL)handler target:(id)target;
 -(void)getUserForName:(NSString *)username password:(NSString *)password withHandler:(SEL)handler target:(id)target;
@@ -46,6 +47,7 @@
 -(UserObservationComponentData *)createNewObservationDataWithAttributes:(NSDictionary *)attributes;
 -(UserObservationComponentDataJudgement *)createNewJudgementWithData:(UserObservationComponentData *)data withProjectComponentPossibility:(NSArray *)possibilities withAttributes:(NSDictionary *)attributes;
 -(Media *)createNewMediaWithAttributes:(NSDictionary *)attributes;
+-(NSArray *)createUserObservationIdentificationForProjectIdentifications:(NSArray *)projectIdentifications;
 
 //delete
 -(void)deleteObject:(NSManagedObject *)objectToDelete;
