@@ -76,11 +76,6 @@
     
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithTitle:@"ID" style:UIBarButtonItemStyleBordered target:self action:@selector(pushInterpretationViewController)]];
     
-    
-    
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithTitle:@"Back!" style:UIBarButtonItemStyleBordered target:self action:nil]];
-    
-    
     [[AppModel sharedAppModel]getAllProjectComponentsWithHandler:@selector(handleFetchAllProjectComponentsForProjectName:) target:[AppModel sharedAppModel]];
     [[AppModel sharedAppModel]getAllProjectIdentificationsWithHandler:@selector(handleFetchProjectIdentifications:) target:[AppModel sharedAppModel]];
     
