@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B01FEE117A99D8900C547D8 /* ProjectIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B01FEE017A99D8900C547D8 /* ProjectIdentification.m */; };
 		5B034C1217A81F34003A1C50 /* UserObservationComponentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B034C1117A81F34003A1C50 /* UserObservationComponentData.m */; };
 		5B03BBE9179EE495005AD632 /* MediaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBE8179EE495005AD632 /* MediaManager.m */; };
 		5B0458591795A11600B93A4D /* AppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0458581795A11600B93A4D /* AppModel.m */; };
+		5B4D2DF117AC34EA0071304F /* ProjectComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF017AC34EA0071304F /* ProjectComponent.m */; };
+		5B4D2DF417AC386A0071304F /* ProjectIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF317AC386A0071304F /* ProjectIdentification.m */; };
 		5B82BD8917972005008CB441 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82BD8817972005008CB441 /* iCarousel.m */; };
 		5B82BD8C17972043008CB441 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B82BD8B17972043008CB441 /* QuartzCore.framework */; };
 		5B82BD9417972EDB008CB441 /* 05-shuffle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B82BD8F17972EDA008CB441 /* 05-shuffle.png */; };
@@ -22,7 +23,6 @@
 		5B929A5517AAE2F30097D366 /* ComponentSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B929A5417AAE2F30097D366 /* ComponentSwitch.m */; };
 		5B98AF8217A07A2C00678C36 /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AF8117A07A2C00678C36 /* Media.m */; };
 		5B98AF8817A07A3A00678C36 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AF8717A07A3A00678C36 /* Project.m */; };
-		5B98AF8E17A07A4D00678C36 /* ProjectComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AF8D17A07A4C00678C36 /* ProjectComponent.m */; };
 		5B98AF9417A07A6000678C36 /* ProjectComponentPossibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AF9317A07A5F00678C36 /* ProjectComponentPossibility.m */; };
 		5B98AFA017A07A8300678C36 /* ProjectIdentificationComponentPossibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AF9F17A07A8300678C36 /* ProjectIdentificationComponentPossibility.m */; };
 		5B98AFA617A07A9300678C36 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AFA517A07A9200678C36 /* User.m */; };
@@ -118,8 +118,6 @@
 
 /* Begin PBXFileReference section */
 		03237ECF5C5F485597FD7DAA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-		5B01FEDF17A99D8900C547D8 /* ProjectIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentification.h; sourceTree = "<group>"; };
-		5B01FEE017A99D8900C547D8 /* ProjectIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentification.m; sourceTree = "<group>"; };
 		5B034C1017A81F34003A1C50 /* UserObservationComponentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationComponentData.h; sourceTree = "<group>"; };
 		5B034C1117A81F34003A1C50 /* UserObservationComponentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationComponentData.m; sourceTree = "<group>"; };
 		5B03BBE7179EE495005AD632 /* MediaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaManager.h; sourceTree = "<group>"; };
@@ -128,6 +126,10 @@
 		5B0458571795A11600B93A4D /* AppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppModel.h; sourceTree = "<group>"; };
 		5B0458581795A11600B93A4D /* AppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppModel.m; sourceTree = "<group>"; };
 		5B1B065617A6C90A002B47A0 /* SaveObservationAndJudgementDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveObservationAndJudgementDelegate.h; sourceTree = "<group>"; };
+		5B4D2DEF17AC34EA0071304F /* ProjectComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComponent.h; sourceTree = "<group>"; };
+		5B4D2DF017AC34EA0071304F /* ProjectComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectComponent.m; sourceTree = "<group>"; };
+		5B4D2DF217AC386A0071304F /* ProjectIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentification.h; sourceTree = "<group>"; };
+		5B4D2DF317AC386A0071304F /* ProjectIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentification.m; sourceTree = "<group>"; };
 		5B82BD8717972005008CB441 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		5B82BD8817972005008CB441 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		5B82BD8B17972043008CB441 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -145,8 +147,6 @@
 		5B98AF8117A07A2C00678C36 /* Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Media.m; sourceTree = "<group>"; };
 		5B98AF8617A07A3A00678C36 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
 		5B98AF8717A07A3A00678C36 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
-		5B98AF8C17A07A4B00678C36 /* ProjectComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComponent.h; sourceTree = "<group>"; };
-		5B98AF8D17A07A4C00678C36 /* ProjectComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectComponent.m; sourceTree = "<group>"; };
 		5B98AF9217A07A5E00678C36 /* ProjectComponentPossibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComponentPossibility.h; sourceTree = "<group>"; };
 		5B98AF9317A07A5F00678C36 /* ProjectComponentPossibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectComponentPossibility.m; sourceTree = "<group>"; };
 		5B98AF9E17A07A8300678C36 /* ProjectIdentificationComponentPossibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentificationComponentPossibility.h; sourceTree = "<group>"; };
@@ -373,12 +373,12 @@
 				5B98AF8117A07A2C00678C36 /* Media.m */,
 				5B98AF8617A07A3A00678C36 /* Project.h */,
 				5B98AF8717A07A3A00678C36 /* Project.m */,
-				5B98AF8C17A07A4B00678C36 /* ProjectComponent.h */,
-				5B98AF8D17A07A4C00678C36 /* ProjectComponent.m */,
+				5B4D2DEF17AC34EA0071304F /* ProjectComponent.h */,
+				5B4D2DF017AC34EA0071304F /* ProjectComponent.m */,
 				5B98AF9217A07A5E00678C36 /* ProjectComponentPossibility.h */,
 				5B98AF9317A07A5F00678C36 /* ProjectComponentPossibility.m */,
-				5B01FEDF17A99D8900C547D8 /* ProjectIdentification.h */,
-				5B01FEE017A99D8900C547D8 /* ProjectIdentification.m */,
+				5B4D2DF217AC386A0071304F /* ProjectIdentification.h */,
+				5B4D2DF317AC386A0071304F /* ProjectIdentification.m */,
 				5B98AF9E17A07A8300678C36 /* ProjectIdentificationComponentPossibility.h */,
 				5B98AF9F17A07A8300678C36 /* ProjectIdentificationComponentPossibility.m */,
 				5B98AFA417A07A9200678C36 /* User.h */,
@@ -758,7 +758,6 @@
 				5B03BBE9179EE495005AD632 /* MediaManager.m in Sources */,
 				5B98AF8217A07A2C00678C36 /* Media.m in Sources */,
 				5B98AF8817A07A3A00678C36 /* Project.m in Sources */,
-				5B98AF8E17A07A4D00678C36 /* ProjectComponent.m in Sources */,
 				5B98AF9417A07A6000678C36 /* ProjectComponentPossibility.m in Sources */,
 				5B98AFA017A07A8300678C36 /* ProjectIdentificationComponentPossibility.m in Sources */,
 				5B98AFA617A07A9300678C36 /* User.m in Sources */,
@@ -781,10 +780,11 @@
 				5BF30DCF17A1C6D40071E7EA /* NumberJudgementViewController.m in Sources */,
 				5BF30DD117A1C6D40071E7EA /* TextJudgementViewController.m in Sources */,
 				5B034C1217A81F34003A1C50 /* UserObservationComponentData.m in Sources */,
-				5B01FEE117A99D8900C547D8 /* ProjectIdentification.m in Sources */,
 				5B929A5517AAE2F30097D366 /* ComponentSwitch.m in Sources */,
 				717AF34E17AC0A3400DA2077 /* InterpretationInformationViewController.m in Sources */,
 				717AF35317AC36C200DA2077 /* ObservationProfileViewController.m in Sources */,
+				5B4D2DF117AC34EA0071304F /* ProjectComponent.m in Sources */,
+				5B4D2DF417AC386A0071304F /* ProjectIdentification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

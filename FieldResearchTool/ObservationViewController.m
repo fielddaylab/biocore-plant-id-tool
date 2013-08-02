@@ -198,7 +198,7 @@
                     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.longText];
                 }
                 
-                if([self isComponentFilterable:com]){
+                if([com.filter boolValue]){
                     ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
                     if([componentsToFilter containsObject:com]){
                         [boolSwitch setOn:YES animated:NO];
@@ -258,7 +258,7 @@
                     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.longText];
                 }
                 
-                if([self isComponentFilterable:com]){
+                if([com.filter boolValue]){
                     ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
                     if([componentsToFilter containsObject:com]){
                         [boolSwitch setOn:YES animated:NO];
@@ -386,7 +386,7 @@
     
     if([self doesProjectComponenthaveJudgement:projectComponent]){
         projectComponent.wasJudged = [NSNumber numberWithBool:YES];
-        if(projectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_BOOLEAN] || projectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_NUMBER] || projectComponent.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_ENUMERATOR]){
+        if([projectComponent.filter boolValue]){
             ProjectComponent *prevComponent = [self filterHasProjectComponentTitle:projectComponent.title];
             if(prevComponent){
                 [componentsToFilter removeObject:prevComponent];
@@ -432,14 +432,6 @@
     return nil;
 }
 
-
-//this method will eventually be deleted once the data model is updated to allow components to be filterable
--(BOOL)isComponentFilterable:(ProjectComponent *)component{
-    if (component.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_BOOLEAN] || component.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_ENUMERATOR] || component.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_NUMBER]) {
-        return YES;
-    }
-    return NO;
-}
 
 -(void)rankIdentifications{
     NSLog(@"Filtering on %lu components", (unsigned long)componentsToFilter.count);
