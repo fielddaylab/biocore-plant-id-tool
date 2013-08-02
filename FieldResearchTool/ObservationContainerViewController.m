@@ -41,11 +41,37 @@
 
 - (void)saveObservationData:(id)sender {
     
-    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
-    [[AppModel sharedAppModel] save];
+    UserObservationComponentData *prevData;
+    if([projectComponent.wasObserved boolValue]){
+        NSArray *dataSet = [projectComponent.userObservationComponentData allObjects];
+        if(!dataSet || dataSet.count < 1){
+            NSLog(@"ERROR: dataSet is nil or has no objects");
+        }
+        prevData = [dataSet objectAtIndex:0];
+        if(!prevData){
+            NSLog(@"ERROR: prevData was nil");
+        }
+        [[AppModel sharedAppModel] deleteObject:prevData];
+    }
+    
+    if([projectComponent.wasJudged boolValue]){
+        NSArray *judgementSet = [prevData.userObservationComponentDataJudgement allObjects];
+        if(!judgementSet || judgementSet.count < 1){
+            NSLog(@"ERROR: judgementSet was nil or had no objects");
+        }
+        UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
+        if(!judgement){
+            NSLog(@"ERROR: judgement was nil");
+        }
+        [[AppModel sharedAppModel] deleteObject:judgement];
+    }
+    
+    
     
     UserObservationComponentData *userData = [self.saveObservationDelegate saveObservationData];
+    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
     [self.saveJudgementDelegate saveJudgementData:userData];
+    [[AppModel sharedAppModel] save];
     
     
     // Our delegate method is optional, so we should

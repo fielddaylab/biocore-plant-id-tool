@@ -192,4 +192,12 @@
     return media;
 }
 
+-(void)deleteObject:(NSManagedObject *)objectToDelete{
+    [coreData deleteObject:objectToDelete];
+}
+
+-(void)deleteObjects:(NSArray *)objectsToDelete{
+    [coreData deleteObjects:objectsToDelete];
+}
+
 @end
