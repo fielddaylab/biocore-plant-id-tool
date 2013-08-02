@@ -7,6 +7,8 @@
 //
 
 #import "InterpretationInformationViewController.h"
+#import "AppModel.h"
+#import "ProjectIdentificationDiscussion.h"
 
 @interface InterpretationInformationViewController (){
     NSMutableArray *identificationInformation;
@@ -35,13 +37,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    NSString *a = @"Look-alikes";
-    NSString *b = @"Uses";
-    NSString *c = @"Fun Facts";
-    [identificationInformation addObject:[NSString stringWithString:a]];
-    [identificationInformation addObject:[NSString stringWithString:b]];
-    [identificationInformation addObject:[NSString stringWithString:c]];
+    
+    [[AppModel sharedAppModel] getProjectIdentificationDiscussionsWithHandler:@selector(handleDiscussionRetrieval:) target:self];
 
     NSMutableArray *arr = [[NSMutableArray alloc]initWithObjects:[UIImage imageNamed:@"MAX_Height_of_stem"], [UIImage imageNamed:@"MAX_length_of_flower_cluster"], nil];
     
@@ -64,7 +61,7 @@
 #pragma mark - table view delegate methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return [identificationInformation count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -75,17 +72,17 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
 
-
+    ProjectIdentificationDiscussion *discussion = [identificationInformation objectAtIndex:indexPath.row];
     
     switch (indexPath.section) {
         case 0:
-            cell.textLabel.text = [NSString stringWithFormat:@"%@",identificationInformation[indexPath.row]];
+            cell.textLabel.text = discussion.title;
             break;
         case 1:
-            cell.textLabel.text = [NSString stringWithFormat:@"%@",identificationInformation[indexPath.row]];
+            cell.textLabel.text = discussion.title;
             break;
         case 2:
-            cell.textLabel.text = [NSString stringWithFormat:@"%@",identificationInformation[indexPath.row]];
+            cell.textLabel.text = discussion.title;
             break;
             
         default:
@@ -100,6 +97,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+#pragma mark handle the discussion retrieval
+-(void)handleDiscussionRetrieval:(NSArray *)discussions{
+    identificationInformation = [NSMutableArray arrayWithArray:discussions];
+    [self.table reloadData];
 }
 
 

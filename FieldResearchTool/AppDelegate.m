@@ -20,6 +20,7 @@
 #import "MediaType.h"
 #import "ObservationDataType.h"
 #import "ObservationJudgementType.h"
+#import "ProjectIdentificationDiscussion.h"
 
 @implementation AppDelegate
 
@@ -340,6 +341,15 @@
         }
         else{
             nonComponents++;
+            NSString *helpString = @"Components go to the right of this column FORMAT: <Component Name> DASH <Component Possibility>, <Component Possibility>, .... LEFT CURLY BRACE isRequired RIGHT CURLY BRACE LEFT CURLY BRACE <Observation Type> RIGHT CURLY BRACE LEFT CURLY BRACE <Data Type> RIGHT CURLY BRACE";
+            if(i > 2 && ![self stringMatchesRegex:wordsSeperatedByTabs[i] regex:helpString]){
+                ProjectIdentificationDiscussion *discussion = (ProjectIdentificationDiscussion *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationDiscussion" inManagedObjectContext:[self managedObjectContext]];
+                discussion.created = [NSDate date];
+                discussion.updated = [NSDate date];
+                discussion.title = wordsSeperatedByTabs[i];
+                //create media object here and attach it
+                discussion.project = project;
+            }
         }
     }
         
@@ -353,7 +363,6 @@
         identification.updated = [NSDate date];
         identification.identificationDescription = components[2];
         identification.alternateName = components[1];
-        NSLog(@"Alternate Name: %@ Description: %@", identification.alternateName, identification.identificationDescription);
         identification.title = components[0];
         identification.score = [NSNumber numberWithFloat:0.0f];
         identification.numOfNils = [NSNumber numberWithInt:0];
