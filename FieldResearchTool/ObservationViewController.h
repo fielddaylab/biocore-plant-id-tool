@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "Project.h"
 #import "ObservationContainerViewController.h"
+#import "UserObservation.h"
 
 @interface ObservationViewController : UIViewController<ObservationContainerViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *table;
+@property (nonatomic) BOOL newObservation;
+@property (strong, nonatomic) UserObservation *prevObservation;
 
 @end

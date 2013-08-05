@@ -12,6 +12,9 @@
 		5B0458591795A11600B93A4D /* AppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0458581795A11600B93A4D /* AppModel.m */; };
 		5B4D2DF117AC34EA0071304F /* ProjectComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF017AC34EA0071304F /* ProjectComponent.m */; };
 		5B4D2DF417AC386A0071304F /* ProjectIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF317AC386A0071304F /* ProjectIdentification.m */; };
+		5B4D2DF717AC3C5B0071304F /* ProjectIdentificationDiscussion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF617AC3C5B0071304F /* ProjectIdentificationDiscussion.m */; };
+		5B4D2DFA17AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF917AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m */; };
+		5B4D2DFD17AC49920071304F /* UserObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DFC17AC49920071304F /* UserObservation.m */; };
 		5B82BD8917972005008CB441 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82BD8817972005008CB441 /* iCarousel.m */; };
 		5B82BD8C17972043008CB441 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B82BD8B17972043008CB441 /* QuartzCore.framework */; };
 		5B82BD9417972EDB008CB441 /* 05-shuffle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B82BD8F17972EDA008CB441 /* 05-shuffle.png */; };
@@ -26,7 +29,6 @@
 		5B98AF9417A07A6000678C36 /* ProjectComponentPossibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AF9317A07A5F00678C36 /* ProjectComponentPossibility.m */; };
 		5B98AFA017A07A8300678C36 /* ProjectIdentificationComponentPossibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AF9F17A07A8300678C36 /* ProjectIdentificationComponentPossibility.m */; };
 		5B98AFA617A07A9300678C36 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AFA517A07A9200678C36 /* User.m */; };
-		5B98AFAC17A07AA500678C36 /* UserObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AFAB17A07AA500678C36 /* UserObservation.m */; };
 		5B98AFB817A07ACC00678C36 /* UserObservationComponentDataJudgement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AFB717A07ACC00678C36 /* UserObservationComponentDataJudgement.m */; };
 		5B98AFBE17A07ADC00678C36 /* UserObservationIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AFBD17A07ADC00678C36 /* UserObservationIdentification.m */; };
 		5B98AFC017A08CA900678C36 /* examplePlantData.tsv in Resources */ = {isa = PBXBuildFile; fileRef = 5B98AFBF17A08CA900678C36 /* examplePlantData.tsv */; };
@@ -159,6 +161,12 @@
 		5B4D2DF017AC34EA0071304F /* ProjectComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectComponent.m; sourceTree = "<group>"; };
 		5B4D2DF217AC386A0071304F /* ProjectIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentification.h; sourceTree = "<group>"; };
 		5B4D2DF317AC386A0071304F /* ProjectIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentification.m; sourceTree = "<group>"; };
+		5B4D2DF517AC3C5B0071304F /* ProjectIdentificationDiscussion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentificationDiscussion.h; sourceTree = "<group>"; };
+		5B4D2DF617AC3C5B0071304F /* ProjectIdentificationDiscussion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentificationDiscussion.m; sourceTree = "<group>"; };
+		5B4D2DF817AC3C6C0071304F /* ProjectIdentificationDiscussionPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentificationDiscussionPost.h; sourceTree = "<group>"; };
+		5B4D2DF917AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentificationDiscussionPost.m; sourceTree = "<group>"; };
+		5B4D2DFB17AC49920071304F /* UserObservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservation.h; sourceTree = "<group>"; };
+		5B4D2DFC17AC49920071304F /* UserObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservation.m; sourceTree = "<group>"; };
 		5B82BD8717972005008CB441 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		5B82BD8817972005008CB441 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		5B82BD8B17972043008CB441 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -182,8 +190,6 @@
 		5B98AF9F17A07A8300678C36 /* ProjectIdentificationComponentPossibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentificationComponentPossibility.m; sourceTree = "<group>"; };
 		5B98AFA417A07A9200678C36 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		5B98AFA517A07A9200678C36 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		5B98AFAA17A07AA500678C36 /* UserObservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservation.h; sourceTree = "<group>"; };
-		5B98AFAB17A07AA500678C36 /* UserObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservation.m; sourceTree = "<group>"; };
 		5B98AFB617A07ACC00678C36 /* UserObservationComponentDataJudgement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationComponentDataJudgement.h; sourceTree = "<group>"; };
 		5B98AFB717A07ACC00678C36 /* UserObservationComponentDataJudgement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationComponentDataJudgement.m; sourceTree = "<group>"; };
 		5B98AFBC17A07ADC00678C36 /* UserObservationIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationIdentification.h; sourceTree = "<group>"; };
@@ -439,10 +445,14 @@
 				5B4D2DF317AC386A0071304F /* ProjectIdentification.m */,
 				5B98AF9E17A07A8300678C36 /* ProjectIdentificationComponentPossibility.h */,
 				5B98AF9F17A07A8300678C36 /* ProjectIdentificationComponentPossibility.m */,
+				5B4D2DF517AC3C5B0071304F /* ProjectIdentificationDiscussion.h */,
+				5B4D2DF617AC3C5B0071304F /* ProjectIdentificationDiscussion.m */,
+				5B4D2DF817AC3C6C0071304F /* ProjectIdentificationDiscussionPost.h */,
+				5B4D2DF917AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m */,
 				5B98AFA417A07A9200678C36 /* User.h */,
 				5B98AFA517A07A9200678C36 /* User.m */,
-				5B98AFAA17A07AA500678C36 /* UserObservation.h */,
-				5B98AFAB17A07AA500678C36 /* UserObservation.m */,
+				5B4D2DFB17AC49920071304F /* UserObservation.h */,
+				5B4D2DFC17AC49920071304F /* UserObservation.m */,
 				5B034C1017A81F34003A1C50 /* UserObservationComponentData.h */,
 				5B034C1117A81F34003A1C50 /* UserObservationComponentData.m */,
 				5B98AFB617A07ACC00678C36 /* UserObservationComponentDataJudgement.h */,
@@ -917,7 +927,6 @@
 				5B98AF9417A07A6000678C36 /* ProjectComponentPossibility.m in Sources */,
 				5B98AFA017A07A8300678C36 /* ProjectIdentificationComponentPossibility.m in Sources */,
 				5B98AFA617A07A9300678C36 /* User.m in Sources */,
-				5B98AFAC17A07AA500678C36 /* UserObservation.m in Sources */,
 				5B98AFB817A07ACC00678C36 /* UserObservationComponentDataJudgement.m in Sources */,
 				5B98AFBE17A07ADC00678C36 /* UserObservationIdentification.m in Sources */,
 				7174127917A19CDE003295B6 /* ObservationContainerViewController.m in Sources */,
@@ -941,6 +950,9 @@
 				717AF35317AC36C200DA2077 /* ObservationProfileViewController.m in Sources */,
 				5B4D2DF117AC34EA0071304F /* ProjectComponent.m in Sources */,
 				5B4D2DF417AC386A0071304F /* ProjectIdentification.m in Sources */,
+				5B4D2DF717AC3C5B0071304F /* ProjectIdentificationDiscussion.m in Sources */,
+				5B4D2DFA17AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m in Sources */,
+				5B4D2DFD17AC49920071304F /* UserObservation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

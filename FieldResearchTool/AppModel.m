@@ -10,6 +10,7 @@
 #import "UserObservationComponentDataJudgement.h"
 #import "ObservationJudgementType.h"
 #import "ProjectComponent.h"
+#import "UserObservationIdentification.h"
 
 @implementation AppModel
 
@@ -94,6 +95,14 @@
     });
 }
 
+-(void)getUserObservationsForCurrentUserWithHandler:(SEL)handler target:(id)target{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [coreData fetchAllEntities:@"UserObservation" withAttribute:@"user.name" equalTo:currentUser.name withHandler:handler target:target];
+        });
+    });
+}
+
 -(void)getUserObservationComponentsDataWithHandler:(SEL)handler target:(id)target{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -134,6 +143,14 @@
                     NSLog(@"Not fetching any possibilities because App Model isn't implemented");
                     break;
             }
+        });
+    });
+}
+
+-(void)getProjectIdentificationDiscussionsWithHandler:(SEL)handler target:(id)target{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [coreData fetchAllEntities:@"ProjectIdentificationDiscussion" withHandler:handler target:target];
         });
     });
 }
@@ -190,6 +207,20 @@
     }
     [self save];
     return media;
+}
+
+-(NSArray *)createUserObservationIdentificationForProjectIdentifications:(NSArray *)projectIdentifications{
+    NSMutableArray *userObservationIdentifications = [[NSMutableArray alloc]init];
+    for (int i = 0; i < projectIdentifications.count; i++) {
+        ProjectIdentification *projectIdentification = [projectIdentifications objectAtIndex:i];
+        UserObservationIdentification *userIdentification = (UserObservationIdentification *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservationIdentification" inManagedObjectContext:coreData.managedObjectContext];
+        userIdentification.created = [NSDate date];
+        userIdentification.updated = [NSDate date];
+        userIdentification.projectIdentification = projectIdentification;
+        userIdentification.userObservation = currentUserObservation;
+        [userObservationIdentifications addObject:userIdentification];
+    }
+    return [NSArray arrayWithArray:userObservationIdentifications];
 }
 
 -(void)deleteObject:(NSManagedObject *)objectToDelete{

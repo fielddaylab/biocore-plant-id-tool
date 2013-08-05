@@ -26,6 +26,7 @@
 #import "ProjectIdentification.h"
 #import "ObservationJudgementType.h"
 #import "ComponentSwitch.h"
+#import "UserObservationIdentification.h"
 
 #define ENUM_SCORE 1.0
 #define NIL_SCORE 1.0
@@ -38,6 +39,7 @@
     NSMutableArray *componentsToFilter;
     NSMutableArray *requiredComponents;
     NSMutableArray *optionalComponents;
+    UserObservation *observation;
 }
 
 @end
@@ -45,6 +47,8 @@
 @implementation ObservationViewController
 
 @synthesize table;
+@synthesize newObservation;
+@synthesize prevObservation;
 
 
 
@@ -67,6 +71,12 @@
     [table reloadData];
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    observation.identificationString = self.title;
+    [[AppModel sharedAppModel] createUserObservationIdentificationForProjectIdentifications:projectIdentifications];
+    [[AppModel sharedAppModel]save];
+}
+
 
 - (void)viewDidLoad
 {
@@ -76,16 +86,49 @@
     
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithTitle:@"ID" style:UIBarButtonItemStyleBordered target:self action:@selector(pushInterpretationViewController)]];
     
-    [[AppModel sharedAppModel]getAllProjectComponentsWithHandler:@selector(handleFetchAllProjectComponentsForProjectName:) target:[AppModel sharedAppModel]];
-    [[AppModel sharedAppModel]getAllProjectIdentificationsWithHandler:@selector(handleFetchProjectIdentifications:) target:[AppModel sharedAppModel]];
+    if(newObservation){
+        [[AppModel sharedAppModel]getAllProjectComponentsWithHandler:@selector(handleFetchAllProjectComponentsForProjectName:) target:[AppModel sharedAppModel]];
+        [[AppModel sharedAppModel]getAllProjectIdentificationsWithHandler:@selector(handleFetchProjectIdentifications:) target:[AppModel sharedAppModel]];
+        
+        //get the location here
+        NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+        [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"latitude"];
+        [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"longitude"];
+        [attributes setValue:[NSDate date] forKey:@"created"];
+        [attributes setValue:[NSDate date] forKey:@"updated"];
+        [attributes setValue:self.title forKey:@"identificationString"];
+        observation = [[AppModel sharedAppModel] createNewUserObservationWithAttributes:attributes];
+    }
+    else{
+        observation = prevObservation;
+        NSArray *dataSet = [observation.userObservationComponentData allObjects];
+        NSArray *userIdentificationSet = [observation.userObservationIdentifications allObjects];
+        //create the identifications
+        if(dataSet){
+            for (int i = 0; i < dataSet.count; i++) {
+                UserObservationComponentData *data = [dataSet objectAtIndex:i];
+                ProjectComponent *component = data.projectComponent;
+                [projectComponents addObject:component];
+                if([component.required boolValue]){
+                    [requiredComponents addObject:component];
+                }
+                else{
+                    [optionalComponents addObject:component];
+                }
+            }
+        }
+        if(userIdentificationSet){
+            for (int i = 0; i < userIdentificationSet.count; i++) {
+                UserObservationIdentification *userIdentification = [userIdentificationSet objectAtIndex:i];
+                ProjectIdentification *identification = userIdentification.projectIdentification;
+                [projectIdentifications addObject:identification];
+            }
+        }
+        [self rankIdentifications];
+        [self.table reloadData];
+    }
     
-    //get the location here
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-    [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"latitude"];
-    [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"longitude"];
-    [attributes setValue:[NSDate date] forKey:@"created"];
-    [attributes setValue:[NSDate date] forKey:@"updated"];
-    [[AppModel sharedAppModel] createNewUserObservationWithAttributes:attributes];
+
     
 }
 
