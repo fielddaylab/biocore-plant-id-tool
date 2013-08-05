@@ -253,7 +253,7 @@
                         [boolSwitch setOn:YES animated:NO];
                     }
                     [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
-                    boolSwitch.component = com;
+                    boolSwitch.data = data;
                     cell.accessoryView = boolSwitch;
                 }
                 
@@ -459,11 +459,11 @@
     NSArray *sortedIdentifications = [allProjectIdentifications sortedArrayUsingDescriptors:descriptors];
     
     //for debugging purposes
-    for (int i = 0; i < sortedIdentifications.count; i++) {
-        ProjectIdentification *identification = [sortedIdentifications objectAtIndex:i];
-        int numberOfNils = [identification.numOfNils intValue];
-        NSLog(@"%i: %@ with score %@ and %i nils. Sorting on %lu components", i, identification.title, identification.score, numberOfNils, (unsigned long)dataToFilter.count);
-    }
+//    for (int i = 0; i < sortedIdentifications.count; i++) {
+//        ProjectIdentification *identification = [sortedIdentifications objectAtIndex:i];
+//        int numberOfNils = [identification.numOfNils intValue];
+//        NSLog(@"%i: %@ with score %@ and %i nils. Sorting on %lu components", i, identification.title, identification.score, numberOfNils, (unsigned long)dataToFilter.count);
+//    }
     
     projectIdentifications = [NSArray arrayWithArray:sortedIdentifications];
     [self.table reloadData];
@@ -705,16 +705,15 @@
 }
 
 -(void)toggleFilter:(id)sender{
-//    ComponentSwitch *boolSwitch = (ComponentSwitch *)sender;
-//    ProjectComponent *component = boolSwitch.component;
-//    if (boolSwitch.isOn) {
-//        [componentsToFilter addObject:component];
-//    }
-//    else{
-//        [componentsToFilter removeObject:component];
-//    }
-//    [self rankIdentifications];
-    NSLog(@"TOGGLE");
+    ComponentSwitch *boolSwitch = (ComponentSwitch *)sender;
+    UserObservationComponentData *data = boolSwitch.data;
+    if (boolSwitch.isOn) {
+        [dataToFilter addObject:data];
+    }
+    else{
+        [dataToFilter removeObject:data];
+    }
+    [self rankIdentifications];
 }
 
 -(UserObservationComponentData *)findDataForComponent:(ProjectComponent *)com{
