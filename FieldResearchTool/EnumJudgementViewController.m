@@ -79,21 +79,23 @@
     [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
     [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];
     
-    if(prevData.wasJudged){
-        NSArray *judgementSet = [prevData.userObservationComponentDataJudgement allObjects];
-        if(!judgementSet || judgementSet.count < 1){
-            NSLog(@"ERROR: Judgement set was nil or had 0 data members");
+    if(prevData){
+        if([prevData.wasJudged boolValue]){
+            NSArray *judgementSet = [prevData.userObservationComponentDataJudgement allObjects];
+            if(!judgementSet || judgementSet.count < 1){
+                NSLog(@"ERROR: Judgement set was nil or had 0 data members");
+            }
+            UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
+            if(!judgement){
+                NSLog(@"ERROR: judgement was nil");
+            }
+            NSArray *prevPossibilities = [judgement.projectComponentPossibilities allObjects];
+            if(!prevPossibilities){
+                NSLog(@"ERROR: There were no possibilities, even though it was judged.");
+            }
+            ProjectComponentPossibility *prevPossibility = [prevPossibilities objectAtIndex:0];
+            chosenPossibility = prevPossibility;
         }
-        UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
-        if(!judgement){
-            NSLog(@"ERROR: judgement was nil");
-        }
-        NSArray *prevPossibilities = [judgement.projectComponentPossibilities allObjects];
-        if(!prevPossibilities){
-            NSLog(@"ERROR: There were no possibilities, even though it was judged.");
-        }
-        ProjectComponentPossibility *prevPossibility = [prevPossibilities objectAtIndex:0];
-        chosenPossibility = prevPossibility;
     }
 }
 
