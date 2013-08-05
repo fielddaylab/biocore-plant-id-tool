@@ -14,6 +14,4 @@
 
 @interface PhotoDataViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-@property (nonatomic, strong) ProjectComponent *projectComponent;
-
 @end

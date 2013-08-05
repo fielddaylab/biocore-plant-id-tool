@@ -14,6 +14,4 @@
 
 @interface AudioDataViewController : UIViewController<AVAudioRecorderDelegate, AVAudioPlayerDelegate>
 
-@property (strong, nonatomic) ProjectComponent *projectComponent;
-
 @end

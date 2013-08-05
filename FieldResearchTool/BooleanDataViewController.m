@@ -10,6 +10,7 @@
 #import "AppModel.h"
 #import "ProjectComponentPossibility.h"
 #import "SaveObservationAndJudgementDelegate.h"
+#import "ProjectComponent.h"
 
 @interface BooleanDataViewController ()<SaveObservationDelegate>
 
@@ -19,7 +20,6 @@
 
 
 @synthesize componentPossibilityDescription;
-@synthesize projectComponent;
 @synthesize boolSwitch;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -36,8 +36,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    componentPossibilityDescription.text = projectComponent.title;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -64,15 +62,17 @@
 #pragma mark save observation data
 -(UserObservationComponentData *)saveObservationData{
     
-    BOOL switchValue = boolSwitch.isOn;
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-    [attributes setObject:[NSDate date] forKey:@"created"];
-    [attributes setObject:[NSDate date] forKey:@"updated"];
-    [attributes setObject:[NSNumber numberWithBool:switchValue] forKey:@"boolValue"];
-    [attributes setObject:projectComponent forKey:@"projectComponent"];
-    
-    UserObservationComponentData *data = [[AppModel sharedAppModel] createNewObservationDataWithAttributes:attributes];
-    return data;
+//    BOOL switchValue = boolSwitch.isOn;
+//    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+//    [attributes setObject:[NSDate date] forKey:@"created"];
+//    [attributes setObject:[NSDate date] forKey:@"updated"];
+//    [attributes setObject:[NSNumber numberWithBool:switchValue] forKey:@"boolValue"];
+//    [attributes setObject:projectComponent forKey:@"projectComponent"];
+//    
+//    UserObservationComponentData *data = [[AppModel sharedAppModel] createNewObservationDataWithAttributes:attributes];
+//    return data;
+    NSLog(@"BOOL NOT IMPLEMENTED");
+    return nil;
 }
 
 @end

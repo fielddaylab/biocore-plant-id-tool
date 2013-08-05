@@ -23,8 +23,6 @@
 
 @implementation PhotoDataViewController
 
-@synthesize projectComponent;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -118,27 +116,29 @@
 #pragma mark - Save Observation Data
 -(UserObservationComponentData *)saveObservationData{
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    //get uuid here to uniquely identify the pictures
-    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"picTaken.png"];
-    [UIImagePNGRepresentation(showPictureView.image) writeToFile:filePath atomically:YES];
-    
-    NSMutableDictionary *mediaAttributes = [[NSMutableDictionary alloc]init];
-    [mediaAttributes setObject:[NSDate date] forKey:@"created"];
-    [mediaAttributes setObject:[NSDate date] forKey:@"updated"];
-    [mediaAttributes setObject:[NSNumber numberWithInt:MEDIA_PHOTO] forKey:@"type"];
-    [mediaAttributes setObject:filePath forKey:@"mediaURL"];
-    
-    Media *picTaken = [[AppModel sharedAppModel]createNewMediaWithAttributes:mediaAttributes];
-    
-    NSMutableDictionary *dataAttributes = [[NSMutableDictionary alloc]init];
-    [dataAttributes setObject:[NSDate date] forKey:@"created"];
-    [dataAttributes setObject:[NSDate date] forKey:@"updated"];
-    [dataAttributes setObject:picTaken forKey:@"media"];
-    [dataAttributes setObject:projectComponent forKey:@"projectComponent"];
-    
-    UserObservationComponentData *data = [[AppModel sharedAppModel] createNewObservationDataWithAttributes:dataAttributes];
-    return data;
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    //get uuid here to uniquely identify the pictures
+//    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"picTaken.png"];
+//    [UIImagePNGRepresentation(showPictureView.image) writeToFile:filePath atomically:YES];
+//    
+//    NSMutableDictionary *mediaAttributes = [[NSMutableDictionary alloc]init];
+//    [mediaAttributes setObject:[NSDate date] forKey:@"created"];
+//    [mediaAttributes setObject:[NSDate date] forKey:@"updated"];
+//    [mediaAttributes setObject:[NSNumber numberWithInt:MEDIA_PHOTO] forKey:@"type"];
+//    [mediaAttributes setObject:filePath forKey:@"mediaURL"];
+//    
+//    Media *picTaken = [[AppModel sharedAppModel]createNewMediaWithAttributes:mediaAttributes];
+//    
+//    NSMutableDictionary *dataAttributes = [[NSMutableDictionary alloc]init];
+//    [dataAttributes setObject:[NSDate date] forKey:@"created"];
+//    [dataAttributes setObject:[NSDate date] forKey:@"updated"];
+//    [dataAttributes setObject:picTaken forKey:@"media"];
+//    [dataAttributes setObject:projectComponent forKey:@"projectComponent"];
+//    
+//    UserObservationComponentData *data = [[AppModel sharedAppModel] createNewObservationDataWithAttributes:dataAttributes];
+//    return data;
+    NSLog(@"PHOTO NOT IMPLEMENTED");
+    return nil;
 }
 
 #pragma mark - Cleanup

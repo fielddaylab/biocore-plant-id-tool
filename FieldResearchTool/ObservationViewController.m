@@ -295,36 +295,33 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if(indexPath.section == 0){
-//        
-//        ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];
-//        
-//        ProjectComponent *projectComponent = [requiredComponents objectAtIndex:indexPath.row];
-//        containerView.projectComponent = projectComponent;
-//        containerView.dismissDelegate = self;
-//        
-//        [self.navigationController pushViewController:containerView animated:YES];
-//    }
-//    else if(indexPath.section == 1){
-//        ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];
-//        
-//        ProjectComponent *projectComponent = [optionalComponents objectAtIndex:indexPath.row];
-//        containerView.projectComponent = projectComponent;
-//        containerView.dismissDelegate = self;
-//        
-//        [self.navigationController pushViewController:containerView animated:YES];
-//    }
-//    else if (indexPath.section == 2){
-//        //metadata
-//        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-//        if (cell.accessoryType == UITableViewCellAccessoryCheckmark){
-//            cell.accessoryType = UITableViewCellAccessoryNone;
-//        }
-//        else{
-//            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-//        }
-//        
-//    }
+    if(indexPath.section == 0 || indexPath.section == 1){
+        
+        ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];
+        
+        ProjectComponent *projectComponent;
+        if(indexPath.section == 0){
+            projectComponent = [requiredComponents objectAtIndex:indexPath.row];
+        }
+        else{
+            projectComponent = [optionalComponents objectAtIndex:indexPath.row];
+        }
+        containerView.projectComponent = projectComponent;
+        containerView.dismissDelegate = self;
+        
+        [self.navigationController pushViewController:containerView animated:YES];
+    }
+    else if (indexPath.section == 2){
+        //metadata
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        if (cell.accessoryType == UITableViewCellAccessoryCheckmark){
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        else{
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
@@ -387,25 +384,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(BOOL)doesProjectComponenthaveJudgement:(ProjectComponent *)component{
-    NSArray *dataSet = [NSArray arrayWithArray:[component.userObservationComponentData allObjects]];
-    if(!dataSet || dataSet.count < 1 || dataSet.count > 1){
-        return NO;
-    }
-    UserObservationComponentData *data = [dataSet objectAtIndex:0];
-    if(!data){
-        return NO;
-    }
-    NSArray *judgementSet = [NSArray arrayWithArray:[data.userObservationComponentDataJudgement allObjects]];
-    if(!judgementSet || judgementSet.count < 1 || judgementSet.count > 1){
-        return NO;
-    }
-    UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
-    if(judgement){
-        return YES;
-    }
-    return NO;
-}
 
 -(ProjectComponent *)filterHasProjectComponentTitle:(NSString *)title{
     

@@ -20,7 +20,6 @@
 
 @synthesize componentPossibilityDescription;
 @synthesize changeUnitButton;
-@synthesize projectComponent;
 @synthesize textField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -38,7 +37,6 @@
     
     [changeUnitButton setTitle:@"cm" forState:UIControlStateNormal];
     unitCount = 0;
-    componentPossibilityDescription.text = projectComponent.title;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -75,26 +73,28 @@
 }
 
 -(UserObservationComponentData *)saveObservationData{
-    NSString *text = textField.text;
-    
-    NSString *regexForNumber = @"[-+]?[0-9]*\\.?[0-9]+";
-    
-    NSPredicate *isNumber = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumber];
-    
-    if ([isNumber evaluateWithObject: text]){
-        float numberToSave = [text floatValue];
-        NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-        [attributes setObject:[NSDate date] forKey:@"created"];
-        [attributes setObject:[NSDate date] forKey:@"updated"];
-        [attributes setObject:[NSNumber numberWithFloat:numberToSave] forKey:@"number"];
-        [attributes setObject:projectComponent forKey:@"projectComponent"];
-        UserObservationComponentData *data = [[AppModel sharedAppModel] createNewObservationDataWithAttributes:attributes];
-        return data;
-    }
-    else{
-        NSLog(@"ERROR: Number is not of valid format. Returning nil.");
-        return nil;
-    }
+//    NSString *text = textField.text;
+//    
+//    NSString *regexForNumber = @"[-+]?[0-9]*\\.?[0-9]+";
+//    
+//    NSPredicate *isNumber = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumber];
+//    
+//    if ([isNumber evaluateWithObject: text]){
+//        float numberToSave = [text floatValue];
+//        NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+//        [attributes setObject:[NSDate date] forKey:@"created"];
+//        [attributes setObject:[NSDate date] forKey:@"updated"];
+//        [attributes setObject:[NSNumber numberWithFloat:numberToSave] forKey:@"number"];
+//        [attributes setObject:projectComponent forKey:@"projectComponent"];
+//        UserObservationComponentData *data = [[AppModel sharedAppModel] createNewObservationDataWithAttributes:attributes];
+//        return data;
+//    }
+//    else{
+//        NSLog(@"ERROR: Number is not of valid format. Returning nil.");
+//        return nil;
+//    }
+    NSLog(@"NUMBER NOT IMPLEMENTED");
+    return nil;
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
