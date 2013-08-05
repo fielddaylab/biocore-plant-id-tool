@@ -73,6 +73,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     observation.identificationString = self.title;
+    //check to make sure the current observation doesn't have a user identification, if it does delete it
     [[AppModel sharedAppModel] createUserObservationIdentificationForProjectIdentifications:projectIdentifications];
     [[AppModel sharedAppModel]save];
 }
@@ -202,115 +203,61 @@
     
     switch (indexPath.section) {
             
-        case 0:{
-            
-            com = (ProjectComponent *)[requiredComponents objectAtIndex:indexPath.row];
-            cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
-            
-            cell.detailTextLabel.text = @"Not Interpreted";
-            
-            NSMutableArray *userObservationComponentDataArray = [NSMutableArray arrayWithArray:[com.userObservationComponentData allObjects]];
-
-            if ([userObservationComponentDataArray count] > 0){
-                UIImageView *checkmark = [[UIImageView alloc] initWithFrame:CGRectMake(35, 19, 25, 25)];
-                checkmark.image = [UIImage imageNamed:@"17-checkGREEN"];
-                [cell addSubview:checkmark];
-            }
-            
-            if ([com.wasJudged boolValue]) {
-                    
-                NSMutableArray *userObservationComponentDataJudgementArray = [NSMutableArray arrayWithArray:[[userObservationComponentDataArray[0] userObservationComponentDataJudgement] allObjects]];
-                
-    
-                UserObservationComponentData *data = userObservationComponentDataJudgementArray[0];
-                
-                if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_BOOLEAN]){
-                    cell.detailTextLabel.text = data.boolValue == [NSNumber numberWithInt:1] ?[NSString stringWithFormat:@"True"] : [NSString stringWithFormat:@"False"];
-                }
-                else if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_NUMBER]){
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.number];
-                }
-                else if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_ENUMERATOR]){
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.enumValue];
-                }
-                else if (com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_TEXT]){
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.text];
-                }
-                else if (com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_LONG_TEXT]){
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.longText];
-                }
-                
-                if([com.filter boolValue]){
-                    ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
-                    if([componentsToFilter containsObject:com]){
-                        [boolSwitch setOn:YES animated:NO];
-                    }
-                    [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
-                    boolSwitch.component = com;
-                    cell.accessoryView = boolSwitch;
-                }
-                
-            }
-            
-            //We'll have to change this in the future, but for now 'reparse' the string...
-            NSString *projectComponentTitleString = com.title;
-            NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
-            projectComponentTitleString = [[projectComponentTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
-            projectComponentTitleString = [projectComponentTitleString stringByAppendingString:@".png"];
-            
-            cell.imageView.image = [self imageWithImage:[UIImage imageNamed:projectComponentTitleString] scaledToSize:CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, cell.bounds.size.height, cell.bounds.size.height).size];
-            //cell.imageView.image = [self imageWithImage:[UIImage imageWithContentsOfFile:com.media.mediaURL] scaledToSize:CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, cell.bounds.size.height, cell.bounds.size.height).size];
-            
-            
-        }break;
+        case 0:
         case 1:{
             
-            com = (ProjectComponent *)[optionalComponents objectAtIndex:indexPath.row];
+            if (indexPath.section == 0) {
+                com = (ProjectComponent *)[requiredComponents objectAtIndex:indexPath.row];
+            }
+            else{
+                com = (ProjectComponent *)[optionalComponents objectAtIndex:indexPath.row];
+            }
+            
             cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
             
             cell.detailTextLabel.text = @"Not Interpreted";
             
-            NSMutableArray *userObservationComponentDataArray = [NSMutableArray arrayWithArray:[com.userObservationComponentData allObjects]];
-            
-            if ([userObservationComponentDataArray count] > 0){
+            UserObservationComponentData *data = [self findDataForComponent:com];
+            if(data){
                 UIImageView *checkmark = [[UIImageView alloc] initWithFrame:CGRectMake(35, 19, 25, 25)];
                 checkmark.image = [UIImage imageNamed:@"17-checkGREEN"];
                 [cell addSubview:checkmark];
             }
             
-            if ([com.wasJudged boolValue]) {
-
-                NSMutableArray *userObservationComponentDataJudgementArray = [NSMutableArray arrayWithArray:[[userObservationComponentDataArray[0] userObservationComponentDataJudgement] allObjects]];
+            
+            if ([data.wasJudged boolValue]) {
                 
-                UserObservationComponentData *data = userObservationComponentDataJudgementArray[0];
+                NSArray *judgementSet = [data.userObservationComponentDataJudgement allObjects];
+                UserObservationComponentDataJudgement *judgement = judgementSet[0];
+                
                 
                 if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_BOOLEAN]){
-                    cell.detailTextLabel.text = data.boolValue == [NSNumber numberWithInt:1] ?[NSString stringWithFormat:@"True"] : [NSString stringWithFormat:@"False"];
+                    cell.detailTextLabel.text = judgement.boolValue == [NSNumber numberWithInt:1] ?[NSString stringWithFormat:@"True"] : [NSString stringWithFormat:@"False"];
                 }
                 else if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_NUMBER]){
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.number];
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", judgement.number];
                 }
                 else if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_ENUMERATOR]){
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.enumValue];
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", judgement.enumValue];
                 }
                 else if (com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_TEXT]){
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.text];
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", judgement.text];
                 }
                 else if (com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_LONG_TEXT]){
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data.longText];
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", judgement.longText];
                 }
                 
-                if([com.filter boolValue]){
-                    ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
-                    if([componentsToFilter containsObject:com]){
-                        [boolSwitch setOn:YES animated:NO];
-                    }
-                    [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
-                    boolSwitch.component = com;
-                    cell.accessoryView = boolSwitch;
-                }
+//                if([com.filter boolValue]){
+//                    ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
+//                    if([componentsToFilter containsObject:com]){
+//                        [boolSwitch setOn:YES animated:NO];
+//                    }
+//                    [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
+//                    boolSwitch.component = com;
+//                    cell.accessoryView = boolSwitch;
+//                }
+                
             }
-            
             
             //We'll have to change this in the future, but for now 'reparse' the string...
             NSString *projectComponentTitleString = com.title;
@@ -319,8 +266,6 @@
             projectComponentTitleString = [projectComponentTitleString stringByAppendingString:@".png"];
             
             cell.imageView.image = [self imageWithImage:[UIImage imageNamed:projectComponentTitleString] scaledToSize:CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, cell.bounds.size.height, cell.bounds.size.height).size];
-            
-            //cell.imageView.image = [self imageWithImage:[UIImage imageWithContentsOfFile:com.media.mediaURL] scaledToSize:CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, cell.bounds.size.height, cell.bounds.size.height).size];
             
             
         }break;
@@ -350,36 +295,36 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.section == 0){
-        
-        ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];
-        
-        ProjectComponent *projectComponent = [requiredComponents objectAtIndex:indexPath.row];
-        containerView.projectComponent = projectComponent;
-        containerView.dismissDelegate = self;
-        
-        [self.navigationController pushViewController:containerView animated:YES];
-    }
-    else if(indexPath.section == 1){
-        ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];
-        
-        ProjectComponent *projectComponent = [optionalComponents objectAtIndex:indexPath.row];
-        containerView.projectComponent = projectComponent;
-        containerView.dismissDelegate = self;
-        
-        [self.navigationController pushViewController:containerView animated:YES];
-    }
-    else if (indexPath.section == 2){
-        //metadata
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        if (cell.accessoryType == UITableViewCellAccessoryCheckmark){
-            cell.accessoryType = UITableViewCellAccessoryNone;
-        }
-        else{
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        }
-        
-    }
+//    if(indexPath.section == 0){
+//        
+//        ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];
+//        
+//        ProjectComponent *projectComponent = [requiredComponents objectAtIndex:indexPath.row];
+//        containerView.projectComponent = projectComponent;
+//        containerView.dismissDelegate = self;
+//        
+//        [self.navigationController pushViewController:containerView animated:YES];
+//    }
+//    else if(indexPath.section == 1){
+//        ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];
+//        
+//        ProjectComponent *projectComponent = [optionalComponents objectAtIndex:indexPath.row];
+//        containerView.projectComponent = projectComponent;
+//        containerView.dismissDelegate = self;
+//        
+//        [self.navigationController pushViewController:containerView animated:YES];
+//    }
+//    else if (indexPath.section == 2){
+//        //metadata
+//        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//        if (cell.accessoryType == UITableViewCellAccessoryCheckmark){
+//            cell.accessoryType = UITableViewCellAccessoryNone;
+//        }
+//        else{
+//            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//        }
+//        
+//    }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
@@ -426,17 +371,17 @@
 
 - (void)dismissContainerViewAndSetProjectComponentObserved:(ProjectComponent *)projectComponent{
     
-    if([self doesProjectComponenthaveJudgement:projectComponent]){
-        projectComponent.wasJudged = [NSNumber numberWithBool:YES];
-        if([projectComponent.filter boolValue]){
-            ProjectComponent *prevComponent = [self filterHasProjectComponentTitle:projectComponent.title];
-            if(prevComponent){
-                [componentsToFilter removeObject:prevComponent];
-            }
-            [componentsToFilter addObject:projectComponent];
-            [self rankIdentifications];
-        }
-    }
+//    if([self doesProjectComponenthaveJudgement:projectComponent]){
+//        projectComponent.wasJudged = [NSNumber numberWithBool:YES];
+//        if([projectComponent.filter boolValue]){
+//            ProjectComponent *prevComponent = [self filterHasProjectComponentTitle:projectComponent.title];
+//            if(prevComponent){
+//                [componentsToFilter removeObject:prevComponent];
+//            }
+//            [componentsToFilter addObject:projectComponent];
+//            [self rankIdentifications];
+//        }
+//    }
 
 
     [self.navigationController popViewControllerAnimated:YES];
@@ -829,5 +774,16 @@
         [componentsToFilter removeObject:component];
     }
     [self rankIdentifications];
+}
+
+-(UserObservationComponentData *)findDataForComponent:(ProjectComponent *)com{
+    NSArray *dataSet = [observation.userObservationComponentData allObjects];
+    for (int i = 0; i < dataSet.count; i++) {
+        UserObservationComponentData *tempData = [dataSet objectAtIndex:i];
+        if([tempData.projectComponent.title isEqualToString:com.title]){
+            return tempData;
+        }
+    }
+    return nil;
 }
 @end

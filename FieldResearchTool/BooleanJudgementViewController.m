@@ -43,26 +43,26 @@
     [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
     [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];
     
-    if([projectComponent.wasJudged boolValue]){
-        NSArray *dataSet = [projectComponent.userObservationComponentData allObjects];
-        if(!dataSet || dataSet.count < 1){
-            NSLog(@"ERROR: Data set was nil or had 0 data members");
-        }
-        UserObservationComponentData *data = [dataSet objectAtIndex:0];
-        if(!data){
-            NSLog(@"ERROR: data was nil");
-        }
-        NSArray *judgementSet = [data.userObservationComponentDataJudgement allObjects];
-        if(!judgementSet || judgementSet.count < 1){
-            NSLog(@"ERROR: Judgement set was nil or had 0 data members");
-        }
-        UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
-        if(!judgement){
-            NSLog(@"ERROR: judgement was nil");
-        }
-        BOOL switchValue = [judgement.boolValue boolValue];
-        [boolSwitch setOn:switchValue animated:NO];
-    }
+//    if([projectComponent.wasJudged boolValue]){
+//        NSArray *dataSet = [projectComponent.userObservationComponentData allObjects];
+//        if(!dataSet || dataSet.count < 1){
+//            NSLog(@"ERROR: Data set was nil or had 0 data members");
+//        }
+//        UserObservationComponentData *data = [dataSet objectAtIndex:0];
+//        if(!data){
+//            NSLog(@"ERROR: data was nil");
+//        }
+//        NSArray *judgementSet = [data.userObservationComponentDataJudgement allObjects];
+//        if(!judgementSet || judgementSet.count < 1){
+//            NSLog(@"ERROR: Judgement set was nil or had 0 data members");
+//        }
+//        UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
+//        if(!judgement){
+//            NSLog(@"ERROR: judgement was nil");
+//        }
+//        BOOL switchValue = [judgement.boolValue boolValue];
+//        [boolSwitch setOn:switchValue animated:NO];
+//    }
 }
 
 - (void)didReceiveMemoryWarning

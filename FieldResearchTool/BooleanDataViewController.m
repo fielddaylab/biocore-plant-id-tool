@@ -41,18 +41,18 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    if([projectComponent.wasObserved boolValue]){
-        NSArray *dataSet = [projectComponent.userObservationComponentData allObjects];
-        if(!dataSet || dataSet.count < 1){
-            NSLog(@"ERROR: dataSet is nil or has no objects");
-        }
-        UserObservationComponentData *prevData = [dataSet objectAtIndex:0];
-        if(!prevData){
-            NSLog(@"ERROR: prevData was nil");
-        }
-        BOOL switchValue = [prevData.boolValue boolValue];
-        [boolSwitch setOn:switchValue animated:NO];
-    }
+//    if([projectComponent.wasObserved boolValue]){
+//        NSArray *dataSet = [projectComponent.userObservationComponentData allObjects];
+//        if(!dataSet || dataSet.count < 1){
+//            NSLog(@"ERROR: dataSet is nil or has no objects");
+//        }
+//        UserObservationComponentData *prevData = [dataSet objectAtIndex:0];
+//        if(!prevData){
+//            NSLog(@"ERROR: prevData was nil");
+//        }
+//        BOOL switchValue = [prevData.boolValue boolValue];
+//        [boolSwitch setOn:switchValue animated:NO];
+//    }
 }
 
 - (void)didReceiveMemoryWarning

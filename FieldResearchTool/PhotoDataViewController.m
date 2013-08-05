@@ -42,20 +42,20 @@
     showPictureView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * .75)];
     
     BOOL takeNewPic = YES;
-    if ([projectComponent.wasObserved boolValue]) {
-        NSArray *dataSet = [projectComponent.userObservationComponentData allObjects];
-        UserObservationComponentData *data = [dataSet objectAtIndex:0];
-        if (!dataSet || dataSet.count < 1 || !data) {
-            NSLog(@"ERROR: was observed was true when there isn't any data");
-            takeNewPic = YES;
-        }
-        takeNewPic = NO;
-        //this will change once the media manager is implemented
-        Media *media = data.media;
-        NSString *path = media.mediaURL;
-        UIImage *image = [UIImage imageWithContentsOfFile:path];
-        showPictureView.image = image;
-    }
+//    if ([projectComponent.wasObserved boolValue]) {
+//        NSArray *dataSet = [projectComponent.userObservationComponentData allObjects];
+//        UserObservationComponentData *data = [dataSet objectAtIndex:0];
+//        if (!dataSet || dataSet.count < 1 || !data) {
+//            NSLog(@"ERROR: was observed was true when there isn't any data");
+//            takeNewPic = YES;
+//        }
+//        takeNewPic = NO;
+//        //this will change once the media manager is implemented
+//        Media *media = data.media;
+//        NSString *path = media.mediaURL;
+//        UIImage *image = [UIImage imageWithContentsOfFile:path];
+//        showPictureView.image = image;
+//    }
 
     [self.view addSubview:showPictureView];
     
