@@ -2,7 +2,7 @@
 //  UserObservationComponentData.m
 //  FieldResearchTool
 //
-//  Created by Justin Moeller on 7/30/13.
+//  Created by Justin Moeller on 8/5/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
@@ -22,6 +22,7 @@
 @dynamic number;
 @dynamic text;
 @dynamic updated;
+@dynamic wasJudged;
 @dynamic media;
 @dynamic projectComponent;
 @dynamic userObservation;

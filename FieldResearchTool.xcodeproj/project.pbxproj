@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B034C1217A81F34003A1C50 /* UserObservationComponentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B034C1117A81F34003A1C50 /* UserObservationComponentData.m */; };
 		5B03BBE9179EE495005AD632 /* MediaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBE8179EE495005AD632 /* MediaManager.m */; };
 		5B0458591795A11600B93A4D /* AppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0458581795A11600B93A4D /* AppModel.m */; };
-		5B4D2DF117AC34EA0071304F /* ProjectComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF017AC34EA0071304F /* ProjectComponent.m */; };
+		5B1DAC6417B02CF700A30136 /* ProjectComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1DAC6317B02CF700A30136 /* ProjectComponent.m */; };
+		5B1DAC6717B02D0A00A30136 /* UserObservationComponentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1DAC6617B02D0A00A30136 /* UserObservationComponentData.m */; };
 		5B4D2DF417AC386A0071304F /* ProjectIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF317AC386A0071304F /* ProjectIdentification.m */; };
 		5B4D2DF717AC3C5B0071304F /* ProjectIdentificationDiscussion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF617AC3C5B0071304F /* ProjectIdentificationDiscussion.m */; };
 		5B4D2DFA17AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF917AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m */; };
@@ -96,8 +96,6 @@
 		71699E9117B019A700BEDF13 /* Leaf_type-Pinnate.png in Resources */ = {isa = PBXBuildFile; fileRef = 71699E7417B019A700BEDF13 /* Leaf_type-Pinnate.png */; };
 		71699E9217B019A700BEDF13 /* Leaf_type-Simple.png in Resources */ = {isa = PBXBuildFile; fileRef = 71699E7517B019A700BEDF13 /* Leaf_type-Simple.png */; };
 		71699E9317B019A700BEDF13 /* Leaf_type-Trifoliate.png in Resources */ = {isa = PBXBuildFile; fileRef = 71699E7617B019A700BEDF13 /* Leaf_type-Trifoliate.png */; };
-		71699E9717B01E2900BEDF13 /* Leaf_venation-Branched.png in Resources */ = {isa = PBXBuildFile; fileRef = 71699E9517B01E2900BEDF13 /* Leaf_venation-Branched.png */; };
-		71699E9817B01E2900BEDF13 /* Leaf_venation-Parallel.png in Resources */ = {isa = PBXBuildFile; fileRef = 71699E9617B01E2900BEDF13 /* Leaf_venation-Parallel.png */; };
 		7174127917A19CDE003295B6 /* ObservationContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174127717A19CDD003295B6 /* ObservationContainerViewController.m */; };
 		7174127A17A19CDE003295B6 /* ObservationContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7174127817A19CDD003295B6 /* ObservationContainerViewController.xib */; };
 		717AF34E17AC0A3400DA2077 /* InterpretationInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717AF34C17AC0A3400DA2077 /* InterpretationInformationViewController.m */; };
@@ -151,16 +149,16 @@
 
 /* Begin PBXFileReference section */
 		03237ECF5C5F485597FD7DAA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-		5B034C1017A81F34003A1C50 /* UserObservationComponentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationComponentData.h; sourceTree = "<group>"; };
-		5B034C1117A81F34003A1C50 /* UserObservationComponentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationComponentData.m; sourceTree = "<group>"; };
 		5B03BBE7179EE495005AD632 /* MediaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaManager.h; sourceTree = "<group>"; };
 		5B03BBE8179EE495005AD632 /* MediaManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaManager.m; sourceTree = "<group>"; };
 		5B03BC3E179EF8F8005AD632 /* MediaType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaType.h; sourceTree = "<group>"; };
 		5B0458571795A11600B93A4D /* AppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppModel.h; sourceTree = "<group>"; };
 		5B0458581795A11600B93A4D /* AppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppModel.m; sourceTree = "<group>"; };
 		5B1B065617A6C90A002B47A0 /* SaveObservationAndJudgementDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveObservationAndJudgementDelegate.h; sourceTree = "<group>"; };
-		5B4D2DEF17AC34EA0071304F /* ProjectComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComponent.h; sourceTree = "<group>"; };
-		5B4D2DF017AC34EA0071304F /* ProjectComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectComponent.m; sourceTree = "<group>"; };
+		5B1DAC6217B02CF700A30136 /* ProjectComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComponent.h; sourceTree = "<group>"; };
+		5B1DAC6317B02CF700A30136 /* ProjectComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectComponent.m; sourceTree = "<group>"; };
+		5B1DAC6517B02D0A00A30136 /* UserObservationComponentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationComponentData.h; sourceTree = "<group>"; };
+		5B1DAC6617B02D0A00A30136 /* UserObservationComponentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationComponentData.m; sourceTree = "<group>"; };
 		5B4D2DF217AC386A0071304F /* ProjectIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentification.h; sourceTree = "<group>"; };
 		5B4D2DF317AC386A0071304F /* ProjectIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentification.m; sourceTree = "<group>"; };
 		5B4D2DF517AC3C5B0071304F /* ProjectIdentificationDiscussion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentificationDiscussion.h; sourceTree = "<group>"; };
@@ -276,8 +274,6 @@
 		71699E7417B019A700BEDF13 /* Leaf_type-Pinnate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_type-Pinnate.png"; sourceTree = "<group>"; };
 		71699E7517B019A700BEDF13 /* Leaf_type-Simple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_type-Simple.png"; sourceTree = "<group>"; };
 		71699E7617B019A700BEDF13 /* Leaf_type-Trifoliate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_type-Trifoliate.png"; sourceTree = "<group>"; };
-		71699E9517B01E2900BEDF13 /* Leaf_venation-Branched.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_venation-Branched.png"; sourceTree = "<group>"; };
-		71699E9617B01E2900BEDF13 /* Leaf_venation-Parallel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_venation-Parallel.png"; sourceTree = "<group>"; };
 		7174127617A19CDD003295B6 /* ObservationContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationContainerViewController.h; sourceTree = "<group>"; };
 		7174127717A19CDD003295B6 /* ObservationContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationContainerViewController.m; sourceTree = "<group>"; };
 		7174127817A19CDD003295B6 /* ObservationContainerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObservationContainerViewController.xib; sourceTree = "<group>"; };
@@ -441,8 +437,8 @@
 				5B98AF8117A07A2C00678C36 /* Media.m */,
 				5B98AF8617A07A3A00678C36 /* Project.h */,
 				5B98AF8717A07A3A00678C36 /* Project.m */,
-				5B4D2DEF17AC34EA0071304F /* ProjectComponent.h */,
-				5B4D2DF017AC34EA0071304F /* ProjectComponent.m */,
+				5B1DAC6217B02CF700A30136 /* ProjectComponent.h */,
+				5B1DAC6317B02CF700A30136 /* ProjectComponent.m */,
 				5B98AF9217A07A5E00678C36 /* ProjectComponentPossibility.h */,
 				5B98AF9317A07A5F00678C36 /* ProjectComponentPossibility.m */,
 				5B4D2DF217AC386A0071304F /* ProjectIdentification.h */,
@@ -457,8 +453,8 @@
 				5B98AFA517A07A9200678C36 /* User.m */,
 				5B4D2DFB17AC49920071304F /* UserObservation.h */,
 				5B4D2DFC17AC49920071304F /* UserObservation.m */,
-				5B034C1017A81F34003A1C50 /* UserObservationComponentData.h */,
-				5B034C1117A81F34003A1C50 /* UserObservationComponentData.m */,
+				5B1DAC6517B02D0A00A30136 /* UserObservationComponentData.h */,
+				5B1DAC6617B02D0A00A30136 /* UserObservationComponentData.m */,
 				5B98AFB617A07ACC00678C36 /* UserObservationComponentDataJudgement.h */,
 				5B98AFB717A07ACC00678C36 /* UserObservationComponentDataJudgement.m */,
 				5B98AFBC17A07ADC00678C36 /* UserObservationIdentification.h */,
@@ -551,8 +547,6 @@
 		71699E9417B01E2900BEDF13 /* Leaf_venation */ = {
 			isa = PBXGroup;
 			children = (
-				71699E9517B01E2900BEDF13 /* Leaf_venation-Branched.png */,
-				71699E9617B01E2900BEDF13 /* Leaf_venation-Parallel.png */,
 			);
 			path = Leaf_venation;
 			sourceTree = "<group>";
@@ -877,8 +871,6 @@
 				71699E9117B019A700BEDF13 /* Leaf_type-Pinnate.png in Resources */,
 				71699E9217B019A700BEDF13 /* Leaf_type-Simple.png in Resources */,
 				71699E9317B019A700BEDF13 /* Leaf_type-Trifoliate.png in Resources */,
-				71699E9717B01E2900BEDF13 /* Leaf_venation-Branched.png in Resources */,
-				71699E9817B01E2900BEDF13 /* Leaf_venation-Parallel.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -960,15 +952,15 @@
 				5BF30DCD17A1C6D40071E7EA /* LongTextJudgementViewController.m in Sources */,
 				5BF30DCF17A1C6D40071E7EA /* NumberJudgementViewController.m in Sources */,
 				5BF30DD117A1C6D40071E7EA /* TextJudgementViewController.m in Sources */,
-				5B034C1217A81F34003A1C50 /* UserObservationComponentData.m in Sources */,
 				5B929A5517AAE2F30097D366 /* ComponentSwitch.m in Sources */,
 				717AF34E17AC0A3400DA2077 /* InterpretationInformationViewController.m in Sources */,
 				717AF35317AC36C200DA2077 /* ObservationProfileViewController.m in Sources */,
-				5B4D2DF117AC34EA0071304F /* ProjectComponent.m in Sources */,
 				5B4D2DF417AC386A0071304F /* ProjectIdentification.m in Sources */,
 				5B4D2DF717AC3C5B0071304F /* ProjectIdentificationDiscussion.m in Sources */,
 				5B4D2DFA17AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m in Sources */,
 				5B4D2DFD17AC49920071304F /* UserObservation.m in Sources */,
+				5B1DAC6417B02CF700A30136 /* ProjectComponent.m in Sources */,
+				5B1DAC6717B02D0A00A30136 /* UserObservationComponentData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
