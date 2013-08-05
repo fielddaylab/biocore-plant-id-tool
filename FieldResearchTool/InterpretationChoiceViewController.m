@@ -20,7 +20,7 @@
 @implementation InterpretationChoiceViewController
 @synthesize table;
 @synthesize projectIdentifications;
-@synthesize componentsToFilter;
+@synthesize dataToFilter;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -60,7 +60,7 @@
     ProjectIdentification *identification = [projectIdentifications objectAtIndex:indexPath.row];
     cell.textLabel.text = identification.title;
     
-    if(componentsToFilter.count > 0){
+    if(dataToFilter.count > 0){
         float decimal = [identification.score floatValue];
         float percent = decimal * 100;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%f percent match with %@ nil", percent, identification.numOfNils];

@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "ProjectComponent.h"
 #import "SaveObservationAndJudgementDelegate.h"
+#import "UserObservationComponentData.h"
 
 @protocol ObservationContainerViewControllerDelegate <NSObject>
 
-- (void)dismissContainerViewAndSetProjectComponentObserved:(ProjectComponent *)projectComponent;
+- (void)dismissContainerViewAndSetProjectComponentObserved:(UserObservationComponentData *)data;
 
 @end
 
@@ -22,11 +23,10 @@
 @interface ObservationContainerViewController : UIViewController
 
 @property (strong, nonatomic) ProjectComponent *projectComponent;
+@property (strong, nonatomic) UserObservationComponentData *prevData;
 
 @property (nonatomic, weak) id<ObservationContainerViewControllerDelegate> dismissDelegate;
-
 @property (nonatomic, weak) id<SaveObservationDelegate> saveObservationDelegate;
-
 @property (nonatomic, weak) id<SaveJudgementDelegate> saveJudgementDelegate;
 
 @end

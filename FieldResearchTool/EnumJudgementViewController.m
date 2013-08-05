@@ -27,6 +27,7 @@
 @synthesize carousel;
 @synthesize wrap;
 @synthesize possibilities;
+@synthesize prevData;
 @synthesize projectComponent;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -79,29 +80,24 @@
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
     [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
     [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];
-    if([projectComponent.wasJudged boolValue]){
-        NSArray *dataSet = [projectComponent.userObservationComponentData allObjects];
-        if(!dataSet || dataSet.count < 1){
-            NSLog(@"ERROR: Data set was nil or had 0 data members");
+    
+    if(prevData){
+        if([prevData.wasJudged boolValue]){
+            NSArray *judgementSet = [prevData.userObservationComponentDataJudgement allObjects];
+            if(!judgementSet || judgementSet.count < 1){
+                NSLog(@"ERROR: Judgement set was nil or had 0 data members");
+            }
+            UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
+            if(!judgement){
+                NSLog(@"ERROR: judgement was nil");
+            }
+            NSArray *prevPossibilities = [judgement.projectComponentPossibilities allObjects];
+            if(!prevPossibilities){
+                NSLog(@"ERROR: There were no possibilities, even though it was judged.");
+            }
+            ProjectComponentPossibility *prevPossibility = [prevPossibilities objectAtIndex:0];
+            chosenPossibility = prevPossibility;
         }
-        UserObservationComponentData *data = [dataSet objectAtIndex:0];
-        if(!data){
-            NSLog(@"ERROR: data was nil");
-        }
-        NSArray *judgementSet = [data.userObservationComponentDataJudgement allObjects];
-        if(!judgementSet || judgementSet.count < 1){
-            NSLog(@"ERROR: Judgement set was nil or had 0 data members");
-        }
-        UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
-        if(!judgement){
-            NSLog(@"ERROR: judgement was nil");
-        }
-        NSArray *prevPossibilities = [judgement.projectComponentPossibilities allObjects];
-        if(!prevPossibilities){
-            NSLog(@"ERROR: There were no possibilities, even though it was judged.");
-        }
-        ProjectComponentPossibility *prevPossibility = [prevPossibilities objectAtIndex:0];
-        chosenPossibility = prevPossibility;
     }
 }
 
@@ -215,7 +211,6 @@
     }
     
     NSLog(@"No Possibility was chosen. No Judgement was made.");
-    
     return nil;
 }
 

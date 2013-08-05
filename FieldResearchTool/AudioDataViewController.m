@@ -29,8 +29,6 @@
 
 @implementation AudioDataViewController
 
-@synthesize projectComponent;
-
 
 - (void)viewDidLoad
 {

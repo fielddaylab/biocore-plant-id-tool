@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "ProjectComponent.h"
+#import "UserObservationComponentData.h"
 
 @interface EnumJudgementViewController : UIViewController
 
+@property (nonatomic, strong) UserObservationComponentData *prevData;
 @property (nonatomic, strong) ProjectComponent *projectComponent;
 
 @end

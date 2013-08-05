@@ -15,6 +15,5 @@
 
 @property (copy,   nonatomic) NSURL *movieURL;
 @property (strong, nonatomic) MPMoviePlayerController *movieController;
-@property (strong, nonatomic) ProjectComponent *projectComponent;
 
 @end

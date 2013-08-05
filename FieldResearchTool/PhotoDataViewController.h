@@ -11,9 +11,11 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AVFoundation/AVFoundation.h>
 #import "ProjectComponent.h"
+#import "UserObservationComponentData.h"
 
 @interface PhotoDataViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) ProjectComponent *projectComponent;
+@property (nonatomic, strong) UserObservationComponentData *prevData;
 
 @end

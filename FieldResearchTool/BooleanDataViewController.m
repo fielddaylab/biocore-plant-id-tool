@@ -10,6 +10,7 @@
 #import "AppModel.h"
 #import "ProjectComponentPossibility.h"
 #import "SaveObservationAndJudgementDelegate.h"
+#import "ProjectComponent.h"
 
 @interface BooleanDataViewController ()<SaveObservationDelegate>
 
@@ -19,8 +20,9 @@
 
 
 @synthesize componentPossibilityDescription;
-@synthesize projectComponent;
 @synthesize boolSwitch;
+@synthesize prevData;
+@synthesize projectComponent;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,20 +38,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    componentPossibilityDescription.text = projectComponent.title;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    if([projectComponent.wasObserved boolValue]){
-        NSArray *dataSet = [projectComponent.userObservationComponentData allObjects];
-        if(!dataSet || dataSet.count < 1){
-            NSLog(@"ERROR: dataSet is nil or has no objects");
-        }
-        UserObservationComponentData *prevData = [dataSet objectAtIndex:0];
-        if(!prevData){
-            NSLog(@"ERROR: prevData was nil");
-        }
+    if (prevData) {
         BOOL switchValue = [prevData.boolValue boolValue];
         [boolSwitch setOn:switchValue animated:NO];
     }

@@ -20,8 +20,9 @@
 
 @synthesize componentPossibilityDescription;
 @synthesize changeUnitButton;
-@synthesize projectComponent;
 @synthesize textField;
+@synthesize prevData;
+@synthesize projectComponent;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,19 +39,10 @@
     
     [changeUnitButton setTitle:@"cm" forState:UIControlStateNormal];
     unitCount = 0;
-    componentPossibilityDescription.text = projectComponent.title;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    if([projectComponent.wasObserved boolValue]){
-        NSArray *dataSet = [projectComponent.userObservationComponentData allObjects];
-        if(!dataSet || dataSet.count < 1){
-            NSLog(@"ERROR: dataSet is nil or has no objects");
-        }
-        UserObservationComponentData *prevData = [dataSet objectAtIndex:0];
-        if(!prevData){
-            NSLog(@"ERROR: prevData was nil");
-        }
+    if (prevData) {
         NSNumber *storedNumber = prevData.number;
         textField.text = [storedNumber stringValue];
     }
@@ -95,6 +87,7 @@
         NSLog(@"ERROR: Number is not of valid format. Returning nil.");
         return nil;
     }
+    return nil;
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{

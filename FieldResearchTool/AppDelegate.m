@@ -272,8 +272,6 @@
             projectComponent.observationJudgementType = [NSNumber numberWithInt:judgementType];
             projectComponent.required = [NSNumber numberWithBool:isRequired];
             projectComponent.title = projectComponentName;
-            projectComponent.wasObserved = [NSNumber numberWithBool:NO];
-            projectComponent.wasJudged = [NSNumber numberWithBool:NO];
             projectComponent.project = project;
             projectComponent.filter = [NSNumber numberWithBool:filter];
 

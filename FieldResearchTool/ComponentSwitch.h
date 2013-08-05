@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ProjectComponent.h"
+#import "UserObservationComponentData.h"
 
 @interface ComponentSwitch : UISwitch
 
-@property (nonatomic, strong) ProjectComponent *component;
+@property (nonatomic, strong) UserObservationComponentData *data;
 
 @end

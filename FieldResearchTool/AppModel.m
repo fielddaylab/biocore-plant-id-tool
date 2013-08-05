@@ -179,6 +179,7 @@
 -(UserObservationComponentData *)createNewObservationDataWithAttributes:(NSDictionary *)attributes{
     UserObservationComponentData *data = (UserObservationComponentData *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservationComponentData" inManagedObjectContext:coreData.managedObjectContext];
     data.userObservation = currentUserObservation;
+    data.wasJudged = [NSNumber numberWithBool:NO];
     for (NSString *key in attributes) {
         id value = [attributes objectForKey:key];
         [data setValue:value forKey:key];
@@ -189,6 +190,7 @@
 
 -(UserObservationComponentDataJudgement *)createNewJudgementWithData:(UserObservationComponentData *)data withProjectComponentPossibility:(NSArray *)possibilities withAttributes:(NSDictionary *)attributes{
     UserObservationComponentDataJudgement *judgement = (UserObservationComponentDataJudgement *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservationComponentDataJudgement" inManagedObjectContext:coreData.managedObjectContext];
+    data.wasJudged = [NSNumber numberWithBool:YES];
     judgement.userObservationComponentData = data;
     judgement.projectComponentPossibilities = [NSSet setWithArray:possibilities];
     for (NSString *key in attributes) {

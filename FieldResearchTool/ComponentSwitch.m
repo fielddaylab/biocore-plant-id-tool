@@ -9,7 +9,7 @@
 #import "ComponentSwitch.h"
 
 @implementation ComponentSwitch
-@synthesize component;
+@synthesize data;
 
 - (id)initWithFrame:(CGRect)frame
 {

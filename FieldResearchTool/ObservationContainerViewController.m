@@ -38,38 +38,12 @@
 @synthesize dismissDelegate;
 @synthesize saveObservationDelegate;
 @synthesize saveJudgementDelegate;
+@synthesize prevData;
 
 - (void)saveObservationData:(id)sender {
     
-    UserObservationComponentData *prevData;
-    if([projectComponent.wasObserved boolValue]){
-        NSArray *dataSet = [projectComponent.userObservationComponentData allObjects];
-        if(!dataSet || dataSet.count < 1){
-            NSLog(@"ERROR: dataSet is nil or has no objects");
-        }
-        prevData = [dataSet objectAtIndex:0];
-        if(!prevData){
-            NSLog(@"ERROR: prevData was nil");
-        }
-        [[AppModel sharedAppModel] deleteObject:prevData];
-    }
-    
-    if([projectComponent.wasJudged boolValue]){
-        NSArray *judgementSet = [prevData.userObservationComponentDataJudgement allObjects];
-        if(!judgementSet || judgementSet.count < 1){
-            NSLog(@"ERROR: judgementSet was nil or had no objects");
-        }
-        UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
-        if(!judgement){
-            NSLog(@"ERROR: judgement was nil");
-        }
-        [[AppModel sharedAppModel] deleteObject:judgement];
-    }
-    
-    
-    
     UserObservationComponentData *userData = [self.saveObservationDelegate saveObservationData];
-    projectComponent.wasObserved = [NSNumber numberWithBool:YES];
+    //projectComponent.wasObserved = [NSNumber numberWithBool:YES];
     [self.saveJudgementDelegate saveJudgementData:userData];
     [[AppModel sharedAppModel] save];
     
@@ -77,7 +51,7 @@
     // Our delegate method is optional, so we should
     // check that the delegate implements it
     if ([self.dismissDelegate respondsToSelector:@selector(dismissContainerViewAndSetProjectComponentObserved:)]) {
-        [self.dismissDelegate dismissContainerViewAndSetProjectComponentObserved:projectComponent];
+        [self.dismissDelegate dismissContainerViewAndSetProjectComponentObserved:userData];
     }
 }
 
@@ -121,6 +95,7 @@
             break;
         case DATA_PHOTO:{
             PhotoDataViewController *photoDataViewController = [[PhotoDataViewController alloc]init];
+            photoDataViewController.prevData = prevData;
             photoDataViewController.projectComponent = projectComponent;
             dataViewControllerToDisplay = photoDataViewController;
         }
@@ -128,6 +103,7 @@
         case DATA_NUMBER:{
             NumberDataViewController *numberDataViewController = [[NumberDataViewController alloc]init];
             numberDataViewController.view.frame = frame;
+            numberDataViewController.prevData = prevData;
             numberDataViewController.projectComponent = projectComponent;
             dataViewControllerToDisplay = numberDataViewController;
         }
@@ -136,6 +112,7 @@
             
             BooleanDataViewController *booleanDataViewController = [[BooleanDataViewController alloc]init];
             booleanDataViewController.view.frame = frame;
+            booleanDataViewController.prevData = prevData;
             booleanDataViewController.projectComponent = projectComponent;
             dataViewControllerToDisplay = booleanDataViewController;
         }
@@ -186,6 +163,7 @@
         case JUDGEMENT_NUMBER:{
             NumberJudgementViewController *numberJudgementViewController = [[NumberJudgementViewController alloc]init];
             numberJudgementViewController.view.frame = frame2;
+            numberJudgementViewController.prevData = prevData;
             numberJudgementViewController.projectComponent = projectComponent;
             judgementViewControllerToDisplay = numberJudgementViewController;
         }
@@ -193,6 +171,7 @@
         case JUDGEMENT_BOOLEAN:{
             BooleanJudgementViewController *booleanJudgementViewController = [[BooleanJudgementViewController alloc]init];
             booleanJudgementViewController.view.frame = frame2;
+            booleanJudgementViewController.prevData = prevData;
             booleanJudgementViewController.projectComponent = projectComponent;
             judgementViewControllerToDisplay = booleanJudgementViewController;
         }
@@ -213,6 +192,7 @@
             EnumJudgementViewController *enumJudgementViewController = [[EnumJudgementViewController alloc]init];
             enumJudgementViewController.view.frame = frame2;
             enumJudgementViewController.view.backgroundColor = [UIColor lightGrayColor];
+            enumJudgementViewController.prevData = prevData;
             enumJudgementViewController.projectComponent = projectComponent;
             judgementViewControllerToDisplay = enumJudgementViewController;
             

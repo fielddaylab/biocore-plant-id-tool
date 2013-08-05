@@ -21,8 +21,9 @@
 @end
 
 @implementation NumberJudgementViewController
-@synthesize projectComponent;
 @synthesize numberField;
+@synthesize projectComponent;
+@synthesize prevData;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -139,25 +140,19 @@
     [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
     [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];
     
-    if([projectComponent.wasJudged boolValue]){
-        NSArray *dataSet = [projectComponent.userObservationComponentData allObjects];
-        if(!dataSet || dataSet.count < 1){
-            NSLog(@"ERROR: Data set was nil or had 0 data members");
+    if (prevData) {
+        if ([prevData.wasJudged boolValue]) {
+            NSArray *judgementSet = [prevData.userObservationComponentDataJudgement allObjects];
+            if(!judgementSet || judgementSet.count < 1){
+                NSLog(@"ERROR: Judgement set was nil or had 0 data members");
+            }
+            UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
+            if(!judgement){
+                NSLog(@"ERROR: judgement was nil");
+            }
+            NSNumber *storedNumber = judgement.number;
+            numberField.text = [storedNumber stringValue];
         }
-        UserObservationComponentData *data = [dataSet objectAtIndex:0];
-        if(!data){
-            NSLog(@"ERROR: data was nil");
-        }
-        NSArray *judgementSet = [data.userObservationComponentDataJudgement allObjects];
-        if(!judgementSet || judgementSet.count < 1){
-            NSLog(@"ERROR: Judgement set was nil or had 0 data members");
-        }
-        UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
-        if(!judgement){
-            NSLog(@"ERROR: judgement was nil");
-        }
-        NSNumber *storedNumber = judgement.number;
-        numberField.text = [storedNumber stringValue];
     }
 }
 
@@ -208,8 +203,6 @@
         NSLog(@"ERROR: Number entered was not of valid format!. Returning nil");
         return nil;
     }
-    
-    
     return nil;
 }
 

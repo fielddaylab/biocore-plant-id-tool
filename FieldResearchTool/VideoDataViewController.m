@@ -32,7 +32,6 @@
 
 
 @synthesize items;
-@synthesize projectComponent;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

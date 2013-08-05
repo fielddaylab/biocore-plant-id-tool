@@ -15,7 +15,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *componentPossibilityDescription;
 @property (weak, nonatomic) IBOutlet UIButton *changeUnitButton;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
-@property ProjectComponent *projectComponent;
+@property (nonatomic, strong) ProjectComponent *projectComponent;
+@property (nonatomic, strong) UserObservationComponentData *prevData;
 
 - (IBAction)changeUnit:(id)sender;
 - (IBAction)killKeyboard:(id)sender;

@@ -2,7 +2,7 @@
 //  ProjectComponent.h
 //  FieldResearchTool
 //
-//  Created by Justin Moeller on 8/2/13.
+//  Created by Justin Moeller on 8/5/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
@@ -14,14 +14,12 @@
 @interface ProjectComponent : NSManagedObject
 
 @property (nonatomic, retain) NSDate * created;
+@property (nonatomic, retain) NSNumber * filter;
 @property (nonatomic, retain) NSNumber * observationDataType;
 @property (nonatomic, retain) NSNumber * observationJudgementType;
 @property (nonatomic, retain) NSNumber * required;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSDate * updated;
-@property (nonatomic, retain) NSNumber * wasJudged;
-@property (nonatomic, retain) NSNumber * wasObserved;
-@property (nonatomic, retain) NSNumber * filter;
 @property (nonatomic, retain) Media *media;
 @property (nonatomic, retain) Project *project;
 @property (nonatomic, retain) NSSet *projectComponentPossibilities;

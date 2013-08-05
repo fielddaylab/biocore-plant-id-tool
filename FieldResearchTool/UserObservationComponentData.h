@@ -2,7 +2,7 @@
 //  UserObservationComponentData.h
 //  FieldResearchTool
 //
-//  Created by Justin Moeller on 7/30/13.
+//  Created by Justin Moeller on 8/5/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
@@ -20,6 +20,7 @@
 @property (nonatomic, retain) NSNumber * number;
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSDate * updated;
+@property (nonatomic, retain) NSNumber * wasJudged;
 @property (nonatomic, retain) Media *media;
 @property (nonatomic, retain) ProjectComponent *projectComponent;
 @property (nonatomic, retain) UserObservation *userObservation;
