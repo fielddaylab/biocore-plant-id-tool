@@ -42,8 +42,17 @@
 
 - (void)saveObservationData:(id)sender {
     
+    if ([prevData.wasJudged boolValue]) {
+        NSArray *judgementSet = [prevData.userObservationComponentDataJudgement allObjects];
+        UserObservationComponentDataJudgement * judgement = judgementSet[0];
+        [[AppModel sharedAppModel] deleteObject:judgement];
+    }
+    
+    if (prevData) {
+        [[AppModel sharedAppModel] deleteObject:prevData];
+    }
+    
     UserObservationComponentData *userData = [self.saveObservationDelegate saveObservationData];
-    //projectComponent.wasObserved = [NSNumber numberWithBool:YES];
     [self.saveJudgementDelegate saveJudgementData:userData];
     [[AppModel sharedAppModel] save];
     

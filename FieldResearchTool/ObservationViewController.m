@@ -377,13 +377,6 @@
             UserObservationComponentData *prevComponentData = [self filterHasProjectComponentTitle:com.title];
             if(prevComponentData){
                 [dataToFilter removeObject:prevComponentData];
-                BOOL wasJudged = [prevComponentData.wasJudged boolValue];
-                if (wasJudged) {
-                    NSArray *judgementSet = [prevComponentData.userObservationComponentDataJudgement allObjects];
-                    UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
-                    [[AppModel sharedAppModel] deleteObject:judgement];
-                }
-                [[AppModel sharedAppModel] deleteObject:prevComponentData];
             }
             [dataToFilter addObject:data];
             [self rankIdentifications];
