@@ -22,6 +22,8 @@
 
 @implementation NumberJudgementViewController
 @synthesize numberField;
+@synthesize projectComponent;
+@synthesize prevData;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -133,31 +135,24 @@
                                              selector:@selector(keyboardWillHide)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-//    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-//    NSLog(@"Project Component.title: %@", projectComponent.title);
-//    [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
-//    [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    NSLog(@"Project Component.title: %@", projectComponent.title);
+    [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
+    [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];
     
-//    if([projectComponent.wasJudged boolValue]){
-//        NSArray *dataSet = [projectComponent.userObservationComponentData allObjects];
-//        if(!dataSet || dataSet.count < 1){
-//            NSLog(@"ERROR: Data set was nil or had 0 data members");
-//        }
-//        UserObservationComponentData *data = [dataSet objectAtIndex:0];
-//        if(!data){
-//            NSLog(@"ERROR: data was nil");
-//        }
-//        NSArray *judgementSet = [data.userObservationComponentDataJudgement allObjects];
-//        if(!judgementSet || judgementSet.count < 1){
-//            NSLog(@"ERROR: Judgement set was nil or had 0 data members");
-//        }
-//        UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
-//        if(!judgement){
-//            NSLog(@"ERROR: judgement was nil");
-//        }
-//        NSNumber *storedNumber = judgement.number;
-//        numberField.text = [storedNumber stringValue];
-//    }
+    if ([prevData.wasJudged boolValue]) {
+        NSArray *judgementSet = [prevData.userObservationComponentDataJudgement allObjects];
+        if(!judgementSet || judgementSet.count < 1){
+            NSLog(@"ERROR: Judgement set was nil or had 0 data members");
+        }
+        UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
+        if(!judgement){
+            NSLog(@"ERROR: judgement was nil");
+        }
+        NSNumber *storedNumber = judgement.number;
+        numberField.text = [storedNumber stringValue];
+
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -179,36 +174,34 @@
 
 #pragma mark save judgement data
 -(UserObservationComponentDataJudgement *)saveJudgementData:(UserObservationComponentData *)userData{
-//    if(!userData){
-//        NSLog(@"ERROR: Observation data passed in was nil");
-//        return nil;
-//    }
-//    
-//    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-//    [attributes setObject:[NSDate date] forKey:@"created"];
-//    [attributes setObject:[NSDate date] forKey:@"updated"];
-//    
-//    NSString *text = numberField.text;
-//    NSString *regexForNumber = @"[-+]?[0-9]*\\.?[0-9]*";
-//    
-//    NSPredicate *isNumber = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumber];
-//    
-//    if ([isNumber evaluateWithObject: text]){
-//        float numberToSave = [text floatValue];
-//        [attributes setObject:[NSNumber numberWithFloat:numberToSave] forKey:@"number"];
-//        UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:possibilities withAttributes:attributes];
-//        return judgement;
-//    }
-//    else if (text == nil){
-//        NSLog(@"Not creating judgement because there wasn't any judgement entered. Returning nil");
-//        return nil;
-//    }
-//    else{
-//        NSLog(@"ERROR: Number entered was not of valid format!. Returning nil");
-//        return nil;
-//    }
+    if(!userData){
+        NSLog(@"ERROR: Observation data passed in was nil");
+        return nil;
+    }
     
-    NSLog(@"NUMBER NOT IMPLEMENTED");
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setObject:[NSDate date] forKey:@"created"];
+    [attributes setObject:[NSDate date] forKey:@"updated"];
+    
+    NSString *text = numberField.text;
+    NSString *regexForNumber = @"[-+]?[0-9]*\\.?[0-9]*";
+    
+    NSPredicate *isNumber = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumber];
+    
+    if ([isNumber evaluateWithObject: text]){
+        float numberToSave = [text floatValue];
+        [attributes setObject:[NSNumber numberWithFloat:numberToSave] forKey:@"number"];
+        UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:possibilities withAttributes:attributes];
+        return judgement;
+    }
+    else if (text == nil){
+        NSLog(@"Not creating judgement because there wasn't any judgement entered. Returning nil");
+        return nil;
+    }
+    else{
+        NSLog(@"ERROR: Number entered was not of valid format!. Returning nil");
+        return nil;
+    }
     return nil;
 }
 

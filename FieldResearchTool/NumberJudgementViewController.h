@@ -12,5 +12,7 @@
 @interface NumberJudgementViewController : UIViewController
 
 @property (nonatomic, strong) UITextField *numberField;
+@property (nonatomic, strong) ProjectComponent *projectComponent;
+@property (nonatomic, strong) UserObservationComponentData *prevData;
 
 @end

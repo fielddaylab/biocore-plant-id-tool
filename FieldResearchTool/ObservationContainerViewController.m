@@ -159,6 +159,8 @@
         case JUDGEMENT_NUMBER:{
             NumberJudgementViewController *numberJudgementViewController = [[NumberJudgementViewController alloc]init];
             numberJudgementViewController.view.frame = frame2;
+            numberJudgementViewController.prevData = prevData;
+            numberJudgementViewController.projectComponent = projectComponent;
             judgementViewControllerToDisplay = numberJudgementViewController;
         }
             break;
