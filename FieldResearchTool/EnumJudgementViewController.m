@@ -44,6 +44,17 @@
 	carousel.dataSource = nil;
 }
 
+- (UIImage*)imageWithImage:(UIImage*)image
+              scaledToSize:(CGSize)newSize;
+{
+    UIGraphicsBeginImageContext( newSize );
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -113,7 +124,13 @@
     if (view == nil)
     {
         view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 150.0f, 200.0f)];
-        //((UIImageView *)view).image = [UIImage imageNamed:@"35-circle-stop.png"];
+        ((UIImageView *)view).image =         [self imageWithImage:[UIImage imageNamed:@"Leaf_venation-Branched"] scaledToSize:CGRectMake(0, 0, 100, 100).size];
+//[UIImage imageNamed:@"35-circle-stop.png"];
+        
+
+    
+        
+        
         view.contentMode = UIViewContentModeCenter;
         label = [[UILabel alloc] initWithFrame:view.bounds];
         label.backgroundColor = [UIColor clearColor];
