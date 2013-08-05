@@ -170,12 +170,12 @@
     //This is a long ipod
     if([UIScreen mainScreen].bounds.size.height - navAndStatusBarHeight == self.view.frame.size.height){
         
-        frame2 = CGRectMake(0, self.view.frame.size.height * .75f, self.view.bounds.size.width, (self.view.bounds.size.height * .25f) + navAndStatusBarHeight);
+        frame2 = CGRectMake(0, self.view.frame.size.height * .75f - navAndStatusBarHeight, self.view.bounds.size.width, (self.view.bounds.size.height * .25f) + navAndStatusBarHeight);
+        NSLog(@"Ob Container Long %f and Main %f", self.view.frame.size.height, [UIScreen mainScreen].bounds.size.height);
     }
     //This is a normal ipod
     else{
-        frame2 = CGRectMake(0, ([UIScreen mainScreen].bounds.size.height - navAndStatusBarHeight)* .75f, self.view.bounds.size.width, (self.view.bounds.size.height * .30f) + navAndStatusBarHeight);
-        //* by .3 to compensate for float error.
+        frame2 = CGRectMake(0, ([UIScreen mainScreen].bounds.size.height - navAndStatusBarHeight)* .75f, self.view.bounds.size.width, (self.view.bounds.size.height * .25f) + navAndStatusBarHeight+4);//+4 for rounding
     }
 
     

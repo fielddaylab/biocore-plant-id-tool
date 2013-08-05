@@ -61,7 +61,9 @@
     wrap = YES;
 
     //create carousel
-    carousel = [[iCarousel alloc] initWithFrame:self.view.bounds];
+
+    carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];//44 navbar height.
+    
 	carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     carousel.type = iCarouselTypeLinear;
 	carousel.delegate = self;
@@ -124,10 +126,11 @@
     if (view == nil)
     {
         view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 150.0f, 200.0f)];
-        ((UIImageView *)view).image =         [self imageWithImage:[UIImage imageNamed:@"Leaf_venation-Branched"] scaledToSize:CGRectMake(0, 0, 100, 100).size];
+        ((UIImageView *)view).image = [self imageWithImage:[UIImage imageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, self.view.bounds.size.height *.8, self.view.bounds.size.height *.8).size];
+        //[self imageWithImage:[UIImage imageNamed:@"page.png"] scaledToSize:CGRectMake(0, 0, 60, 95).size];
 //[UIImage imageNamed:@"35-circle-stop.png"];
         
-
+            NSLog(@"Within View %@", NSStringFromCGRect(self.view.bounds));
     
         
         
