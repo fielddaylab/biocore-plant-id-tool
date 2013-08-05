@@ -13,5 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *componentPossibilityDescription;
 @property (strong, nonatomic) IBOutlet UISwitch *boolSwitch;
+@property (nonatomic, strong) ProjectComponent *projectComponent;
+@property (nonatomic, strong) UserObservationComponentData *prevData;
 
 @end

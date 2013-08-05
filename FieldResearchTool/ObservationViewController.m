@@ -141,6 +141,7 @@
 - (void)pushInterpretationViewController{
     InterpretationChoiceViewController *vc = [[InterpretationChoiceViewController alloc]initWithNibName:@"InterpretationChoiceViewController" bundle:nil];
     vc.projectIdentifications = projectIdentifications;
+    vc.dataToFilter = dataToFilter;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

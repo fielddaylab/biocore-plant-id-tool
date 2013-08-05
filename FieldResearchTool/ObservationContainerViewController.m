@@ -103,6 +103,8 @@
         case DATA_NUMBER:{
             NumberDataViewController *numberDataViewController = [[NumberDataViewController alloc]init];
             numberDataViewController.view.frame = frame;
+            numberDataViewController.prevData = prevData;
+            numberDataViewController.projectComponent = projectComponent;
             dataViewControllerToDisplay = numberDataViewController;
         }
             break;
@@ -110,6 +112,8 @@
             
             BooleanDataViewController *booleanDataViewController = [[BooleanDataViewController alloc]init];
             booleanDataViewController.view.frame = frame;
+            booleanDataViewController.prevData = prevData;
+            booleanDataViewController.projectComponent = projectComponent;
             dataViewControllerToDisplay = booleanDataViewController;
         }
             break;

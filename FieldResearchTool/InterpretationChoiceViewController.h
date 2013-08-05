@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *table;
 @property (strong, nonatomic) NSArray *projectIdentifications;
+@property (nonatomic, strong) NSArray *dataToFilter;
 
 @end
