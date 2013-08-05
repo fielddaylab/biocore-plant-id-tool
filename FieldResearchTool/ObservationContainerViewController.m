@@ -38,6 +38,7 @@
 @synthesize dismissDelegate;
 @synthesize saveObservationDelegate;
 @synthesize saveJudgementDelegate;
+@synthesize prevData;
 
 - (void)saveObservationData:(id)sender {
     
@@ -121,6 +122,8 @@
             break;
         case DATA_PHOTO:{
             PhotoDataViewController *photoDataViewController = [[PhotoDataViewController alloc]init];
+            photoDataViewController.prevData = prevData;
+            photoDataViewController.projectComponent = projectComponent;
             dataViewControllerToDisplay = photoDataViewController;
         }
             break;
@@ -183,14 +186,12 @@
         case JUDGEMENT_NUMBER:{
             NumberJudgementViewController *numberJudgementViewController = [[NumberJudgementViewController alloc]init];
             numberJudgementViewController.view.frame = frame2;
-            numberJudgementViewController.projectComponent = projectComponent;
             judgementViewControllerToDisplay = numberJudgementViewController;
         }
             break;
         case JUDGEMENT_BOOLEAN:{
             BooleanJudgementViewController *booleanJudgementViewController = [[BooleanJudgementViewController alloc]init];
             booleanJudgementViewController.view.frame = frame2;
-            booleanJudgementViewController.projectComponent = projectComponent;
             judgementViewControllerToDisplay = booleanJudgementViewController;
         }
             break;
@@ -210,6 +211,7 @@
             EnumJudgementViewController *enumJudgementViewController = [[EnumJudgementViewController alloc]init];
             enumJudgementViewController.view.frame = frame2;
             enumJudgementViewController.view.backgroundColor = [UIColor lightGrayColor];
+            enumJudgementViewController.prevData = prevData;
             enumJudgementViewController.projectComponent = projectComponent;
             judgementViewControllerToDisplay = enumJudgementViewController;
             

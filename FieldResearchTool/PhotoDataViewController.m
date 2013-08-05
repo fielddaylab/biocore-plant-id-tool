@@ -22,6 +22,8 @@
 @end
 
 @implementation PhotoDataViewController
+@synthesize projectComponent;
+@synthesize prevData;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,20 +42,14 @@
     showPictureView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * .75)];
     
     BOOL takeNewPic = YES;
-//    if ([projectComponent.wasObserved boolValue]) {
-//        NSArray *dataSet = [projectComponent.userObservationComponentData allObjects];
-//        UserObservationComponentData *data = [dataSet objectAtIndex:0];
-//        if (!dataSet || dataSet.count < 1 || !data) {
-//            NSLog(@"ERROR: was observed was true when there isn't any data");
-//            takeNewPic = YES;
-//        }
-//        takeNewPic = NO;
-//        //this will change once the media manager is implemented
-//        Media *media = data.media;
-//        NSString *path = media.mediaURL;
-//        UIImage *image = [UIImage imageWithContentsOfFile:path];
-//        showPictureView.image = image;
-//    }
+    if(prevData){
+        takeNewPic = NO;
+        //this will change once the media manager is implemented
+        Media *media = prevData.media;
+        NSString *path = media.mediaURL;
+        UIImage *image = [UIImage imageWithContentsOfFile:path];
+        showPictureView.image = image;
+    }
 
     [self.view addSubview:showPictureView];
     
@@ -116,29 +112,27 @@
 #pragma mark - Save Observation Data
 -(UserObservationComponentData *)saveObservationData{
     
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    //get uuid here to uniquely identify the pictures
-//    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"picTaken.png"];
-//    [UIImagePNGRepresentation(showPictureView.image) writeToFile:filePath atomically:YES];
-//    
-//    NSMutableDictionary *mediaAttributes = [[NSMutableDictionary alloc]init];
-//    [mediaAttributes setObject:[NSDate date] forKey:@"created"];
-//    [mediaAttributes setObject:[NSDate date] forKey:@"updated"];
-//    [mediaAttributes setObject:[NSNumber numberWithInt:MEDIA_PHOTO] forKey:@"type"];
-//    [mediaAttributes setObject:filePath forKey:@"mediaURL"];
-//    
-//    Media *picTaken = [[AppModel sharedAppModel]createNewMediaWithAttributes:mediaAttributes];
-//    
-//    NSMutableDictionary *dataAttributes = [[NSMutableDictionary alloc]init];
-//    [dataAttributes setObject:[NSDate date] forKey:@"created"];
-//    [dataAttributes setObject:[NSDate date] forKey:@"updated"];
-//    [dataAttributes setObject:picTaken forKey:@"media"];
-//    [dataAttributes setObject:projectComponent forKey:@"projectComponent"];
-//    
-//    UserObservationComponentData *data = [[AppModel sharedAppModel] createNewObservationDataWithAttributes:dataAttributes];
-//    return data;
-    NSLog(@"PHOTO NOT IMPLEMENTED");
-    return nil;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    //get uuid here to uniquely identify the pictures
+    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"picTaken.png"];
+    [UIImagePNGRepresentation(showPictureView.image) writeToFile:filePath atomically:YES];
+    
+    NSMutableDictionary *mediaAttributes = [[NSMutableDictionary alloc]init];
+    [mediaAttributes setObject:[NSDate date] forKey:@"created"];
+    [mediaAttributes setObject:[NSDate date] forKey:@"updated"];
+    [mediaAttributes setObject:[NSNumber numberWithInt:MEDIA_PHOTO] forKey:@"type"];
+    [mediaAttributes setObject:filePath forKey:@"mediaURL"];
+    
+    Media *picTaken = [[AppModel sharedAppModel]createNewMediaWithAttributes:mediaAttributes];
+    
+    NSMutableDictionary *dataAttributes = [[NSMutableDictionary alloc]init];
+    [dataAttributes setObject:[NSDate date] forKey:@"created"];
+    [dataAttributes setObject:[NSDate date] forKey:@"updated"];
+    [dataAttributes setObject:picTaken forKey:@"media"];
+    [dataAttributes setObject:projectComponent forKey:@"projectComponent"];
+    
+    UserObservationComponentData *data = [[AppModel sharedAppModel] createNewObservationDataWithAttributes:dataAttributes];
+    return data;
 }
 
 #pragma mark - Cleanup

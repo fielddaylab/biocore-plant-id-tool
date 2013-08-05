@@ -306,6 +306,8 @@
         else{
             projectComponent = [optionalComponents objectAtIndex:indexPath.row];
         }
+        UserObservationComponentData *prevData = [self findDataForComponent:projectComponent];
+        containerView.prevData = prevData;
         containerView.projectComponent = projectComponent;
         containerView.dismissDelegate = self;
         
