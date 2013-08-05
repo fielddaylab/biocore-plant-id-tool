@@ -21,6 +21,7 @@
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSDate * updated;
 @property (nonatomic, retain) NSNumber * wasJudged;
+@property (nonatomic, retain) NSNumber * isFiltered;
 @property (nonatomic, retain) Media *media;
 @property (nonatomic, retain) ProjectComponent *projectComponent;
 @property (nonatomic, retain) UserObservation *userObservation;

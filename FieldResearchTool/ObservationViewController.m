@@ -108,6 +108,9 @@
         if(dataSet){
             for (int i = 0; i < dataSet.count; i++) {
                 UserObservationComponentData *data = [dataSet objectAtIndex:i];
+                if ([data.wasJudged boolValue] && [data.isFiltered boolValue]) {
+                    [dataToFilter addObject:data];
+                }
                 ProjectComponent *component = data.projectComponent;
                 [projectComponents addObject:component];
                 if([component.required boolValue]){
@@ -125,7 +128,7 @@
                 [projectIdentifications addObject:identification];
             }
         }
-        //[self rankIdentifications];
+        [self rankIdentifications];
         [self.table reloadData];
     }
     
@@ -708,6 +711,8 @@
         [dataToFilter removeObject:data];
     }
     [self rankIdentifications];
+    data.isFiltered = [NSNumber numberWithBool:boolSwitch.isOn];
+    [[AppModel sharedAppModel] save];
 }
 
 -(UserObservationComponentData *)findDataForComponent:(ProjectComponent *)com{

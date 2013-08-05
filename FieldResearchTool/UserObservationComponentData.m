@@ -23,6 +23,7 @@
 @dynamic text;
 @dynamic updated;
 @dynamic wasJudged;
+@dynamic isFiltered;
 @dynamic media;
 @dynamic projectComponent;
 @dynamic userObservation;
