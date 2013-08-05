@@ -140,18 +140,19 @@
     [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
     [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];
     
-    if ([prevData.wasJudged boolValue]) {
-        NSArray *judgementSet = [prevData.userObservationComponentDataJudgement allObjects];
-        if(!judgementSet || judgementSet.count < 1){
-            NSLog(@"ERROR: Judgement set was nil or had 0 data members");
+    if (prevData) {
+        if ([prevData.wasJudged boolValue]) {
+            NSArray *judgementSet = [prevData.userObservationComponentDataJudgement allObjects];
+            if(!judgementSet || judgementSet.count < 1){
+                NSLog(@"ERROR: Judgement set was nil or had 0 data members");
+            }
+            UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
+            if(!judgement){
+                NSLog(@"ERROR: judgement was nil");
+            }
+            NSNumber *storedNumber = judgement.number;
+            numberField.text = [storedNumber stringValue];
         }
-        UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
-        if(!judgement){
-            NSLog(@"ERROR: judgement was nil");
-        }
-        NSNumber *storedNumber = judgement.number;
-        numberField.text = [storedNumber stringValue];
-
     }
 }
 

@@ -167,6 +167,8 @@
         case JUDGEMENT_BOOLEAN:{
             BooleanJudgementViewController *booleanJudgementViewController = [[BooleanJudgementViewController alloc]init];
             booleanJudgementViewController.view.frame = frame2;
+            booleanJudgementViewController.prevData = prevData;
+            booleanJudgementViewController.projectComponent = projectComponent;
             judgementViewControllerToDisplay = booleanJudgementViewController;
         }
             break;
