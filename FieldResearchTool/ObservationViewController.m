@@ -376,6 +376,13 @@
             UserObservationComponentData *prevComponentData = [self filterHasProjectComponentTitle:com.title];
             if(prevComponentData){
                 [dataToFilter removeObject:prevComponentData];
+                BOOL wasJudged = [prevComponentData.wasJudged boolValue];
+                if (wasJudged) {
+                    NSArray *judgementSet = [prevComponentData.userObservationComponentDataJudgement allObjects];
+                    UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
+                    [[AppModel sharedAppModel] deleteObject:judgement];
+                }
+                [[AppModel sharedAppModel] deleteObject:prevComponentData];
             }
             [dataToFilter addObject:data];
             [self rankIdentifications];
@@ -389,6 +396,7 @@
     for (int i = 0; i < dataToFilter.count; i++) {
         UserObservationComponentData *currData = [dataToFilter objectAtIndex:i];
         ProjectComponent *currCom = currData.projectComponent;
+        NSLog(@"Comparing %@ and %@", currCom.title, title);
         if ([currCom.title isEqualToString:title]) {
             return currData;
         }
