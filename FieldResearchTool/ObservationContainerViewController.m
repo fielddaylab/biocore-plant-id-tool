@@ -42,7 +42,6 @@
 
 - (void)saveObservationData:(id)sender {
     
-    UserObservationComponentData *prevData;
 //    if([projectComponent.wasObserved boolValue]){
 //        NSArray *dataSet = [projectComponent.userObservationComponentData allObjects];
 //        if(!dataSet || dataSet.count < 1){
@@ -78,7 +77,7 @@
     // Our delegate method is optional, so we should
     // check that the delegate implements it
     if ([self.dismissDelegate respondsToSelector:@selector(dismissContainerViewAndSetProjectComponentObserved:)]) {
-        [self.dismissDelegate dismissContainerViewAndSetProjectComponentObserved:projectComponent];
+        [self.dismissDelegate dismissContainerViewAndSetProjectComponentObserved:userData];
     }
 }
 

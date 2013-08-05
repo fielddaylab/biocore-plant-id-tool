@@ -36,7 +36,7 @@
     NSMutableArray *projectComponents;
     NSMutableArray *projectIdentifications;
     
-    NSMutableArray *componentsToFilter;
+    NSMutableArray *dataToFilter;
     NSMutableArray *requiredComponents;
     NSMutableArray *optionalComponents;
     UserObservation *observation;
@@ -58,7 +58,7 @@
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(projectComponentsResponseReady) name:@"ProjectComponentsResponseReady" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(projectIdentificationsResponseReady) name:@"ProjectIdentificationsResponseReady" object:nil];
-        componentsToFilter = [[NSMutableArray alloc]init];
+        dataToFilter = [[NSMutableArray alloc]init];
         
         requiredComponents = [[NSMutableArray alloc]init];
         optionalComponents = [[NSMutableArray alloc]init];
@@ -125,7 +125,7 @@
                 [projectIdentifications addObject:identification];
             }
         }
-        [self rankIdentifications];
+        //[self rankIdentifications];
         [self.table reloadData];
     }
     
@@ -141,7 +141,6 @@
 - (void)pushInterpretationViewController{
     InterpretationChoiceViewController *vc = [[InterpretationChoiceViewController alloc]initWithNibName:@"InterpretationChoiceViewController" bundle:nil];
     vc.projectIdentifications = projectIdentifications;
-    vc.componentsToFilter = componentsToFilter;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -180,8 +179,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //update the title of the view
     int identifications = [projectIdentifications count];
-    if(componentsToFilter.count > 0){
+    if(dataToFilter.count > 0){
         identifications = 0;
         for (int i = 0; i < projectIdentifications.count; i++) {
             ProjectIdentification *iden = [projectIdentifications objectAtIndex:i];
@@ -247,15 +247,15 @@
                     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", judgement.longText];
                 }
                 
-//                if([com.filter boolValue]){
-//                    ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
-//                    if([componentsToFilter containsObject:com]){
-//                        [boolSwitch setOn:YES animated:NO];
-//                    }
-//                    [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
-//                    boolSwitch.component = com;
-//                    cell.accessoryView = boolSwitch;
-//                }
+                if([com.filter boolValue]){
+                    ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
+                    if(data && [dataToFilter containsObject:data]){
+                        [boolSwitch setOn:YES animated:NO];
+                    }
+                    [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
+                    boolSwitch.component = com;
+                    cell.accessoryView = boolSwitch;
+                }
                 
             }
             
@@ -368,100 +368,98 @@
     [self.table reloadData];
 }
 
-- (void)dismissContainerViewAndSetProjectComponentObserved:(ProjectComponent *)projectComponent{
+- (void)dismissContainerViewAndSetProjectComponentObserved:(UserObservationComponentData *)data{
     
-//    if([self doesProjectComponenthaveJudgement:projectComponent]){
-//        projectComponent.wasJudged = [NSNumber numberWithBool:YES];
-//        if([projectComponent.filter boolValue]){
-//            ProjectComponent *prevComponent = [self filterHasProjectComponentTitle:projectComponent.title];
-//            if(prevComponent){
-//                [componentsToFilter removeObject:prevComponent];
-//            }
-//            [componentsToFilter addObject:projectComponent];
-//            [self rankIdentifications];
-//        }
-//    }
-
+    if([data.wasJudged boolValue]){
+        ProjectComponent *com = data.projectComponent;
+        if([com.filter boolValue]){
+            UserObservationComponentData *prevComponentData = [self filterHasProjectComponentTitle:com.title];
+            if(prevComponentData){
+                [dataToFilter removeObject:prevComponentData];
+            }
+            [dataToFilter addObject:data];
+            //[self rankIdentifications];
+        }
+    }
 
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
--(ProjectComponent *)filterHasProjectComponentTitle:(NSString *)title{
-    
-    for (int i = 0; i < componentsToFilter.count; i++) {
-        ProjectComponent *component = [componentsToFilter objectAtIndex:i];
-        if([component.title isEqualToString:title]){
-            return component;
+-(UserObservationComponentData *)filterHasProjectComponentTitle:(NSString *)title{
+    for (int i = 0; i < dataToFilter.count; i++) {
+        UserObservationComponentData *currData = [dataToFilter objectAtIndex:i];
+        ProjectComponent *currCom = currData.projectComponent;
+        if ([currCom.title isEqualToString:title]) {
+            return currData;
         }
     }
-    
     return nil;
 }
 
 
--(void)rankIdentifications{
-    NSLog(@"Filtering on %lu components", (unsigned long)componentsToFilter.count);
-    NSArray *allProjectIdentifications = [AppModel sharedAppModel].allProjectIdentifications;
-    for (int i = 0; i < allProjectIdentifications.count; i++) {
-        ProjectIdentification *identification = [allProjectIdentifications objectAtIndex:i];
-        identification.score = [NSNumber numberWithFloat:0.0f];
-        identification.numOfNils = [NSNumber numberWithInt:0];
-        for (int j = 0; j < componentsToFilter.count; j++) {
-            ProjectComponent *component = [componentsToFilter objectAtIndex:j];
-            switch ([component.observationJudgementType intValue]) {
-                case JUDGEMENT_BOOLEAN:{
-                    float score = [identification.score floatValue];
-                    score += [self getBoolScoreForComponent:component withIdentification:identification];
-                    identification.score = [NSNumber numberWithFloat:score];
-                }
-                    break;
-                case JUDGEMENT_ENUMERATOR:{
-                    float score = [identification.score floatValue];
-                    score += [self getEnumScoreForComponent:component withIdentification:identification];
-                    identification.score = [NSNumber numberWithFloat:score];
-                }
-                    break;
-                case JUDGEMENT_NUMBER:{
-                    float score = [identification.score floatValue];
-                    score += [self getNumberScoreForComponent:component withIdentification:identification];
-                    identification.score = [NSNumber numberWithFloat:score];
-                    //NSLog(@"Haven't implemented sorting for numbers yet.");
-                }
-                    break;
-                default:
-                    NSLog(@"Not adjusting score because component is of type text or long text");
-                    break;
-            }
-        }
-    }
-    
-    //scale score to be 0 to 1
-    for (int i = 0; i < allProjectIdentifications.count; i++) {
-        ProjectIdentification *identification = [allProjectIdentifications objectAtIndex:i];
-        float score = [identification.score floatValue];
-        float scaledScore = score / [componentsToFilter count];
-        float roundedScore = floorf(scaledScore * 100 + 0.5) / 100;
-        identification.score = [NSNumber numberWithFloat:roundedScore];
-    }
-    
-    //sort array
-    NSSortDescriptor *scoreDescriptor = [[NSSortDescriptor alloc] initWithKey:@"score" ascending:NO];
-    NSSortDescriptor *nilsDescriptor = [[NSSortDescriptor alloc] initWithKey:@"numOfNils" ascending:YES];
-    NSArray *descriptors = [NSArray arrayWithObjects:scoreDescriptor, nilsDescriptor, nil];
-    NSArray *sortedIdentifications = [allProjectIdentifications sortedArrayUsingDescriptors:descriptors];
-    
-    //for debugging purposes
-//    for (int i = 0; i < sortedIdentifications.count; i++) {
-//        ProjectIdentification *identification = [sortedIdentifications objectAtIndex:i];
-//        int numberOfNils = [identification.numOfNils intValue];
-//        NSLog(@"%i: %@ with score %@ and %i nils. Sorting on %lu components", i, identification.title, identification.score, numberOfNils, (unsigned long)componentsToFilter.count);
+
+//-(void)rankIdentifications{
+//    NSLog(@"Filtering on %lu components", (unsigned long)componentsToFilter.count);
+//    NSArray *allProjectIdentifications = [AppModel sharedAppModel].allProjectIdentifications;
+//    for (int i = 0; i < allProjectIdentifications.count; i++) {
+//        ProjectIdentification *identification = [allProjectIdentifications objectAtIndex:i];
+//        identification.score = [NSNumber numberWithFloat:0.0f];
+//        identification.numOfNils = [NSNumber numberWithInt:0];
+//        for (int j = 0; j < componentsToFilter.count; j++) {
+//            ProjectComponent *component = [componentsToFilter objectAtIndex:j];
+//            switch ([component.observationJudgementType intValue]) {
+//                case JUDGEMENT_BOOLEAN:{
+//                    float score = [identification.score floatValue];
+//                    score += [self getBoolScoreForComponent:component withIdentification:identification];
+//                    identification.score = [NSNumber numberWithFloat:score];
+//                }
+//                    break;
+//                case JUDGEMENT_ENUMERATOR:{
+//                    float score = [identification.score floatValue];
+//                    score += [self getEnumScoreForComponent:component withIdentification:identification];
+//                    identification.score = [NSNumber numberWithFloat:score];
+//                }
+//                    break;
+//                case JUDGEMENT_NUMBER:{
+//                    float score = [identification.score floatValue];
+//                    score += [self getNumberScoreForComponent:component withIdentification:identification];
+//                    identification.score = [NSNumber numberWithFloat:score];
+//                    //NSLog(@"Haven't implemented sorting for numbers yet.");
+//                }
+//                    break;
+//                default:
+//                    NSLog(@"Not adjusting score because component is of type text or long text");
+//                    break;
+//            }
+//        }
 //    }
-    
-    projectIdentifications = [NSArray arrayWithArray:sortedIdentifications];
-    [self.table reloadData];
-    [[AppModel sharedAppModel]save];
-}
+//    
+//    //scale score to be 0 to 1
+//    for (int i = 0; i < allProjectIdentifications.count; i++) {
+//        ProjectIdentification *identification = [allProjectIdentifications objectAtIndex:i];
+//        float score = [identification.score floatValue];
+//        float scaledScore = score / [componentsToFilter count];
+//        float roundedScore = floorf(scaledScore * 100 + 0.5) / 100;
+//        identification.score = [NSNumber numberWithFloat:roundedScore];
+//    }
+//    
+//    //sort array
+//    NSSortDescriptor *scoreDescriptor = [[NSSortDescriptor alloc] initWithKey:@"score" ascending:NO];
+//    NSSortDescriptor *nilsDescriptor = [[NSSortDescriptor alloc] initWithKey:@"numOfNils" ascending:YES];
+//    NSArray *descriptors = [NSArray arrayWithObjects:scoreDescriptor, nilsDescriptor, nil];
+//    NSArray *sortedIdentifications = [allProjectIdentifications sortedArrayUsingDescriptors:descriptors];
+//    
+//    //for debugging purposes
+////    for (int i = 0; i < sortedIdentifications.count; i++) {
+////        ProjectIdentification *identification = [sortedIdentifications objectAtIndex:i];
+////        int numberOfNils = [identification.numOfNils intValue];
+////        NSLog(@"%i: %@ with score %@ and %i nils. Sorting on %lu components", i, identification.title, identification.score, numberOfNils, (unsigned long)componentsToFilter.count);
+////    }
+//    
+//    projectIdentifications = [NSArray arrayWithArray:sortedIdentifications];
+//    [self.table reloadData];
+//    [[AppModel sharedAppModel]save];
+//}
 
 -(float)getNumberScoreForComponent:(ProjectComponent *)component withIdentification:(ProjectIdentification *)identification{
     
@@ -745,15 +743,16 @@
 }
 
 -(void)toggleFilter:(id)sender{
-    ComponentSwitch *boolSwitch = (ComponentSwitch *)sender;
-    ProjectComponent *component = boolSwitch.component;
-    if (boolSwitch.isOn) {
-        [componentsToFilter addObject:component];
-    }
-    else{
-        [componentsToFilter removeObject:component];
-    }
-    [self rankIdentifications];
+//    ComponentSwitch *boolSwitch = (ComponentSwitch *)sender;
+//    ProjectComponent *component = boolSwitch.component;
+//    if (boolSwitch.isOn) {
+//        [componentsToFilter addObject:component];
+//    }
+//    else{
+//        [componentsToFilter removeObject:component];
+//    }
+//    [self rankIdentifications];
+    NSLog(@"TOGGLE");
 }
 
 -(UserObservationComponentData *)findDataForComponent:(ProjectComponent *)com{
