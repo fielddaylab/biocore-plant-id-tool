@@ -378,7 +378,7 @@
                 [dataToFilter removeObject:prevComponentData];
             }
             [dataToFilter addObject:data];
-            //[self rankIdentifications];
+            [self rankIdentifications];
         }
     }
 
@@ -398,87 +398,71 @@
 
 
 
-//-(void)rankIdentifications{
-//    NSLog(@"Filtering on %lu components", (unsigned long)componentsToFilter.count);
-//    NSArray *allProjectIdentifications = [AppModel sharedAppModel].allProjectIdentifications;
-//    for (int i = 0; i < allProjectIdentifications.count; i++) {
-//        ProjectIdentification *identification = [allProjectIdentifications objectAtIndex:i];
-//        identification.score = [NSNumber numberWithFloat:0.0f];
-//        identification.numOfNils = [NSNumber numberWithInt:0];
-//        for (int j = 0; j < componentsToFilter.count; j++) {
-//            ProjectComponent *component = [componentsToFilter objectAtIndex:j];
-//            switch ([component.observationJudgementType intValue]) {
-//                case JUDGEMENT_BOOLEAN:{
-//                    float score = [identification.score floatValue];
-//                    score += [self getBoolScoreForComponent:component withIdentification:identification];
-//                    identification.score = [NSNumber numberWithFloat:score];
-//                }
-//                    break;
-//                case JUDGEMENT_ENUMERATOR:{
-//                    float score = [identification.score floatValue];
-//                    score += [self getEnumScoreForComponent:component withIdentification:identification];
-//                    identification.score = [NSNumber numberWithFloat:score];
-//                }
-//                    break;
-//                case JUDGEMENT_NUMBER:{
-//                    float score = [identification.score floatValue];
-//                    score += [self getNumberScoreForComponent:component withIdentification:identification];
-//                    identification.score = [NSNumber numberWithFloat:score];
-//                    //NSLog(@"Haven't implemented sorting for numbers yet.");
-//                }
-//                    break;
-//                default:
-//                    NSLog(@"Not adjusting score because component is of type text or long text");
-//                    break;
-//            }
-//        }
-//    }
-//    
-//    //scale score to be 0 to 1
-//    for (int i = 0; i < allProjectIdentifications.count; i++) {
-//        ProjectIdentification *identification = [allProjectIdentifications objectAtIndex:i];
-//        float score = [identification.score floatValue];
-//        float scaledScore = score / [componentsToFilter count];
-//        float roundedScore = floorf(scaledScore * 100 + 0.5) / 100;
-//        identification.score = [NSNumber numberWithFloat:roundedScore];
-//    }
-//    
-//    //sort array
-//    NSSortDescriptor *scoreDescriptor = [[NSSortDescriptor alloc] initWithKey:@"score" ascending:NO];
-//    NSSortDescriptor *nilsDescriptor = [[NSSortDescriptor alloc] initWithKey:@"numOfNils" ascending:YES];
-//    NSArray *descriptors = [NSArray arrayWithObjects:scoreDescriptor, nilsDescriptor, nil];
-//    NSArray *sortedIdentifications = [allProjectIdentifications sortedArrayUsingDescriptors:descriptors];
-//    
-//    //for debugging purposes
-////    for (int i = 0; i < sortedIdentifications.count; i++) {
-////        ProjectIdentification *identification = [sortedIdentifications objectAtIndex:i];
-////        int numberOfNils = [identification.numOfNils intValue];
-////        NSLog(@"%i: %@ with score %@ and %i nils. Sorting on %lu components", i, identification.title, identification.score, numberOfNils, (unsigned long)componentsToFilter.count);
-////    }
-//    
-//    projectIdentifications = [NSArray arrayWithArray:sortedIdentifications];
-//    [self.table reloadData];
-//    [[AppModel sharedAppModel]save];
-//}
+-(void)rankIdentifications{
+    NSLog(@"Filtering on %lu components", (unsigned long)dataToFilter.count);
+    NSArray *allProjectIdentifications = [AppModel sharedAppModel].allProjectIdentifications;
+    for (int i = 0; i < allProjectIdentifications.count; i++) {
+        ProjectIdentification *identification = [allProjectIdentifications objectAtIndex:i];
+        identification.score = [NSNumber numberWithFloat:0.0f];
+        identification.numOfNils = [NSNumber numberWithInt:0];
+        for (int j = 0; j < dataToFilter.count; j++) {
+            UserObservationComponentData *currData = [dataToFilter objectAtIndex:j];
+            ProjectComponent *component = currData.projectComponent;
+            switch ([component.observationJudgementType intValue]) {
+                case JUDGEMENT_BOOLEAN:{
+                    float score = [identification.score floatValue];
+                    score += [self getBoolScoreForData:currData withIdentification:identification];
+                    identification.score = [NSNumber numberWithFloat:score];
+                }
+                    break;
+                case JUDGEMENT_ENUMERATOR:{
+                    float score = [identification.score floatValue];
+                    score += [self getEnumScoreForData:currData withIdentification:identification];
+                    identification.score = [NSNumber numberWithFloat:score];
+                }
+                    break;
+                case JUDGEMENT_NUMBER:{
+                    float score = [identification.score floatValue];
+                    score += [self getNumberScoreForData:currData withIdentification:identification];
+                    identification.score = [NSNumber numberWithFloat:score];
+                    //NSLog(@"Haven't implemented sorting for numbers yet.");
+                }
+                    break;
+                default:
+                    NSLog(@"Not adjusting score because component is of type text or long text");
+                    break;
+            }
+        }
+    }
+    
+    //scale score to be 0 to 1
+    for (int i = 0; i < allProjectIdentifications.count; i++) {
+        ProjectIdentification *identification = [allProjectIdentifications objectAtIndex:i];
+        float score = [identification.score floatValue];
+        float scaledScore = score / [dataToFilter count];
+        float roundedScore = floorf(scaledScore * 100 + 0.5) / 100;
+        identification.score = [NSNumber numberWithFloat:roundedScore];
+    }
+    
+    //sort array
+    NSSortDescriptor *scoreDescriptor = [[NSSortDescriptor alloc] initWithKey:@"score" ascending:NO];
+    NSSortDescriptor *nilsDescriptor = [[NSSortDescriptor alloc] initWithKey:@"numOfNils" ascending:YES];
+    NSArray *descriptors = [NSArray arrayWithObjects:scoreDescriptor, nilsDescriptor, nil];
+    NSArray *sortedIdentifications = [allProjectIdentifications sortedArrayUsingDescriptors:descriptors];
+    
+    //for debugging purposes
+    for (int i = 0; i < sortedIdentifications.count; i++) {
+        ProjectIdentification *identification = [sortedIdentifications objectAtIndex:i];
+        int numberOfNils = [identification.numOfNils intValue];
+        NSLog(@"%i: %@ with score %@ and %i nils. Sorting on %lu components", i, identification.title, identification.score, numberOfNils, (unsigned long)dataToFilter.count);
+    }
+    
+    projectIdentifications = [NSArray arrayWithArray:sortedIdentifications];
+    [self.table reloadData];
+    [[AppModel sharedAppModel]save];
+}
 
--(float)getNumberScoreForComponent:(ProjectComponent *)component withIdentification:(ProjectIdentification *)identification{
-    
-    NSArray *userData = [NSArray arrayWithArray:[component.userObservationComponentData allObjects]];
-    
-    if(!userData){
-        NSLog(@"ERROR: userData is nil. Returning 0.0f");
-        return 0.0f;
-    }
-    else if(userData.count < 1){
-        NSLog(@"ERROR: There is no data associated with this component. Returning 0.0f");
-        return 0.0f;
-    }
-    else if (userData.count > 1){
-        NSLog(@"There is currently more than one data object associated with this component. This is either an error, or a feature to be implemented in the future. Returning 0.0f");
-        return 0.0f;
-    }
-    
-    UserObservationComponentData *data = [userData objectAtIndex:0];
+-(float)getNumberScoreForData:(UserObservationComponentData *)data withIdentification:(ProjectIdentification *)identification{
     
     if (!data) {
         NSLog(@"ERROR: data for this component is nil. Returning 0.0f");
@@ -540,6 +524,7 @@
     }
     
     ProjectComponent *componentToCompare = possibility.projectComponent;
+    ProjectComponent *component = data.projectComponent;
     if([componentToCompare.title isEqualToString:component.title] && [possibility.enumValue isEqualToString:@""]){
         int nils = [identification.numOfNils intValue];
         nils++;
@@ -562,23 +547,7 @@
 }
 
 
--(float)getEnumScoreForComponent:(ProjectComponent *)component withIdentification:(ProjectIdentification *)identification{
-    NSArray *userData = [NSArray arrayWithArray:[component.userObservationComponentData allObjects]];
-    
-    if(!userData){
-        NSLog(@"ERROR: userData is nil. Returning 0.0f");
-        return 0.0f;
-    }
-    else if(userData.count < 1){
-        NSLog(@"ERROR: There is no data associated with this component. Returning 0.0f");
-        return 0.0f;
-    }
-    else if (userData.count > 1){
-        NSLog(@"There is currently more than one data object associated with this component. This is either an error, or a feature to be implemented in the future. Returning 0.0f");
-        return 0.0f;
-    }
-    
-    UserObservationComponentData *data = [userData objectAtIndex:0];
+-(float)getEnumScoreForData:(UserObservationComponentData *)data withIdentification:(ProjectIdentification *)identification{
     
     if (!data) {
         NSLog(@"ERROR: data for this component is nil. Returning 0.0f");
@@ -630,7 +599,7 @@
     }
     
     //NSLog(@"Checking if identification: %@ has possibility: %@", identification.title, possibility.enumValue);
-    
+    ProjectComponent *component = data.projectComponent;
     NSArray *pairs = [NSArray arrayWithArray:[identification.projectIdentificationComponentPossibilities allObjects]];
     for (int i = 0; i < pairs.count; i++) {
         ProjectIdentificationComponentPossibility *pair = [pairs objectAtIndex:i];
@@ -652,23 +621,7 @@
     return 0.0f;
 }
 
--(float)getBoolScoreForComponent:(ProjectComponent *)component withIdentification:(ProjectIdentification *)identification{
-    NSArray *userData = [NSArray arrayWithArray:[component.userObservationComponentData allObjects]];
-    
-    if(!userData){
-        NSLog(@"ERROR: userData is nil. Returning 0.0f");
-        return 0.0f;
-    }
-    else if(userData.count < 1){
-        NSLog(@"ERROR: There is no data associated with this component. Returning 0.0f");
-        return 0.0f;
-    }
-    else if (userData.count > 1){
-        NSLog(@"There is currently more than one data object associated with this component. This is either an error, or a feature to be implemented in the future. Returning 0.0f");
-        return 0.0f;
-    }
-    
-    UserObservationComponentData *data = [userData objectAtIndex:0];
+-(float)getBoolScoreForData:(UserObservationComponentData *)data withIdentification:(ProjectIdentification *)identification{
     
     if (!data) {
         NSLog(@"ERROR: data for this component is nil. Returning 0.0f");
@@ -719,6 +672,7 @@
         return 0.0f;
     }
     
+    ProjectComponent *component = data.projectComponent;
     NSArray *pairs = [NSArray arrayWithArray:[identification.projectIdentificationComponentPossibilities allObjects]];
     for (int i = 0; i < pairs.count; i++) {
         ProjectIdentificationComponentPossibility *pair = [pairs objectAtIndex:i];
