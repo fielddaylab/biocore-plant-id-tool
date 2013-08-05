@@ -18,7 +18,6 @@
 @end
 
 @implementation BooleanJudgementViewController
-@synthesize projectComponent;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,9 +38,9 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-    [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
-    [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];
+//    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+//    [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
+//    [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];
     
 //    if([projectComponent.wasJudged boolValue]){
 //        NSArray *dataSet = [projectComponent.userObservationComponentData allObjects];
@@ -75,29 +74,31 @@
 
 -(UserObservationComponentDataJudgement *)saveJudgementData:(UserObservationComponentData *)userData{
     
-    if(!userData){
-        NSLog(@"ERROR: Observation data passed in was nil");
-        return nil;
-    }
-    
-    BOOL switchValue = boolSwitch.isOn;
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-    [attributes setObject:[NSDate date] forKey:@"created"];
-    [attributes setObject:[NSDate date] forKey:@"updated"];
-    [attributes setObject:[NSNumber numberWithBool:switchValue] forKey:@"boolValue"];
-    
-    //figure out what possibility you have chosen
-    ProjectComponentPossibility *possibility;
-    for (int i = 0; i < possibilities.count; i++) {
-        possibility = [possibilities objectAtIndex:i];
-        if([possibility.boolValue boolValue] == switchValue){
-            break;
-        }
-    }
-    
-    NSArray *chosenPossibility = [NSArray arrayWithObject:possibility];
-    UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:chosenPossibility withAttributes:attributes];
-    return judgement;
+//    if(!userData){
+//        NSLog(@"ERROR: Observation data passed in was nil");
+//        return nil;
+//    }
+//    
+//    BOOL switchValue = boolSwitch.isOn;
+//    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+//    [attributes setObject:[NSDate date] forKey:@"created"];
+//    [attributes setObject:[NSDate date] forKey:@"updated"];
+//    [attributes setObject:[NSNumber numberWithBool:switchValue] forKey:@"boolValue"];
+//    
+//    //figure out what possibility you have chosen
+//    ProjectComponentPossibility *possibility;
+//    for (int i = 0; i < possibilities.count; i++) {
+//        possibility = [possibilities objectAtIndex:i];
+//        if([possibility.boolValue boolValue] == switchValue){
+//            break;
+//        }
+//    }
+//    
+//    NSArray *chosenPossibility = [NSArray arrayWithObject:possibility];
+//    UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:chosenPossibility withAttributes:attributes];
+//    return judgement;
+    NSLog(@"BOOL NOT IMPLEMENTED");
+    return nil;
 }
 
 #pragma mark handle possibility response

@@ -27,7 +27,6 @@
 @synthesize carousel;
 @synthesize wrap;
 @synthesize possibilities;
-@synthesize projectComponent;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -74,9 +73,9 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-    [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
-    [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];
+//    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+//    [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
+//    [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];
 //    if([projectComponent.wasJudged boolValue]){
 //        NSArray *dataSet = [projectComponent.userObservationComponentData allObjects];
 //        if(!dataSet || dataSet.count < 1){
@@ -196,23 +195,23 @@
 #pragma mark save observation and judgement delegates
 
 -(UserObservationComponentDataJudgement *)saveJudgementData:(UserObservationComponentData *)userData{
-    if(!userData){
-        NSLog(@"ERROR: Observation data passed in was nil");
-        return nil;
-    }
-    
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-    [attributes setObject:[NSDate date] forKey:@"created"];
-    [attributes setObject:[NSDate date] forKey:@"updated"];
-    
-    if(chosenPossibility){
-        [attributes setObject:chosenPossibility.enumValue forKey:@"enumValue"];
-        UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:[NSArray arrayWithObject:chosenPossibility] withAttributes:attributes];
-        return judgement;
-    }
-    
-    NSLog(@"No Possibility was chosen. No Judgement was made.");
-    
+//    if(!userData){
+//        NSLog(@"ERROR: Observation data passed in was nil");
+//        return nil;
+//    }
+//    
+//    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+//    [attributes setObject:[NSDate date] forKey:@"created"];
+//    [attributes setObject:[NSDate date] forKey:@"updated"];
+//    
+//    if(chosenPossibility){
+//        [attributes setObject:chosenPossibility.enumValue forKey:@"enumValue"];
+//        UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:[NSArray arrayWithObject:chosenPossibility] withAttributes:attributes];
+//        return judgement;
+//    }
+//    
+//    NSLog(@"No Possibility was chosen. No Judgement was made.");
+    NSLog(@"ENUM NOT IMPLEMENTED");
     return nil;
 }
 

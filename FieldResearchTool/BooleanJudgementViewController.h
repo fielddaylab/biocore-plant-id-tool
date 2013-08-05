@@ -11,6 +11,4 @@
 
 @interface BooleanJudgementViewController : UIViewController
 
-@property (nonatomic, strong) ProjectComponent *projectComponent;
-
 @end

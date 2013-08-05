@@ -11,6 +11,4 @@
 
 @interface EnumJudgementViewController : UIViewController
 
-@property (nonatomic, strong) ProjectComponent *projectComponent;
-
 @end

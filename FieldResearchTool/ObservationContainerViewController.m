@@ -121,14 +121,12 @@
             break;
         case DATA_PHOTO:{
             PhotoDataViewController *photoDataViewController = [[PhotoDataViewController alloc]init];
-            photoDataViewController.projectComponent = projectComponent;
             dataViewControllerToDisplay = photoDataViewController;
         }
             break;
         case DATA_NUMBER:{
             NumberDataViewController *numberDataViewController = [[NumberDataViewController alloc]init];
             numberDataViewController.view.frame = frame;
-            numberDataViewController.projectComponent = projectComponent;
             dataViewControllerToDisplay = numberDataViewController;
         }
             break;
@@ -136,7 +134,6 @@
             
             BooleanDataViewController *booleanDataViewController = [[BooleanDataViewController alloc]init];
             booleanDataViewController.view.frame = frame;
-            booleanDataViewController.projectComponent = projectComponent;
             dataViewControllerToDisplay = booleanDataViewController;
         }
             break;
