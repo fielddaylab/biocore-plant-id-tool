@@ -374,18 +374,17 @@
 }
 
 - (void)dismissContainerViewAndSetProjectComponentObserved:(UserObservationComponentData *)data{
-    
-    if([data.wasJudged boolValue]){
-        ProjectComponent *com = data.projectComponent;
-        if([com.filter boolValue]){
-            UserObservationComponentData *prevComponentData = [self filterHasProjectComponentTitle:com.title];
-            if(prevComponentData){
-                [dataToFilter removeObject:prevComponentData];
-            }
-            [dataToFilter addObject:data];
-            [self rankIdentifications];
+        
+    dataToFilter = [[NSMutableArray alloc]init];
+    NSArray *dataSet = [observation.userObservationComponentData allObjects];
+    for (int i = 0; i < dataSet.count; i++) {
+        UserObservationComponentData *currData = [dataSet objectAtIndex:i];
+        if ([currData.wasJudged boolValue] && [currData.isFiltered boolValue]) {
+            [dataToFilter addObject:currData];
         }
     }
+    [self rankIdentifications];
+    
 
     [self.navigationController popViewControllerAnimated:YES];
 }
