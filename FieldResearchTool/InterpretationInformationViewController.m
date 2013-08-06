@@ -21,6 +21,7 @@
 @implementation InterpretationInformationViewController
 @synthesize identification;
 @synthesize table;
+@synthesize identification;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,6 +46,20 @@
     //identificationGallery.image = [UIImage imageNamed:@"MAX_Height_of_stem"];
     [self.view addSubview:identificationGallery];
     [identificationGallery startAnimating];
+    
+    //Placeholder for now. Aligns text correctly, and we'll need for later Identifying
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"UPL" style:UIBarButtonItemStyleDone target:self action:nil];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44)];
+    label.backgroundColor = [UIColor clearColor];
+    label.numberOfLines = 2;
+    label.font = [UIFont boldSystemFontOfSize: 14.0f];
+    label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor whiteColor];
+    label.text = [NSString stringWithFormat:@"%@\n%@", identification.alternateName, identification.title];
+    
+    self.navigationItem.titleView = label;
 
 
 }
