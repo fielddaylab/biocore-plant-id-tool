@@ -121,20 +121,18 @@
     //create new view if no view is available for recycling
     if (view == nil)
     {
-        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 150.0f, 200.0f)];
-        ((UIImageView *)view).image = [self imageWithImage:[UIImage imageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, self.view.bounds.size.height *.8, self.view.bounds.size.height *.8).size];
-        //[self imageWithImage:[UIImage imageNamed:@"page.png"] scaledToSize:CGRectMake(0, 0, 60, 95).size];
-//[UIImage imageNamed:@"35-circle-stop.png"];
+        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 150.0f, 150.0f)];
+    
         
-            NSLog(@"Within View %@", NSStringFromCGRect(self.view.bounds));
+            NSLog(@"Within View %@", NSStringFromCGRect(view.bounds));
     
         
         
         view.contentMode = UIViewContentModeCenter;
-        label = [[UILabel alloc] initWithFrame:view.bounds];
+        label = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, 150, 150)];//view.bounds];
         label.backgroundColor = [UIColor clearColor];
         label.textAlignment = NSTextAlignmentCenter;
-        label.font = [label.font fontWithSize:50];
+        label.font = [label.font fontWithSize:20];
         label.tag = 1;
         [view addSubview:label];
     }
@@ -152,6 +150,20 @@
     //in the wrong place in the carousel
     ProjectComponentPossibility *componentPossibility = [possibilities objectAtIndex:index];
     label.text = componentPossibility.enumValue;
+    
+    
+    
+    //Probably should make a class that handles all of these
+    NSString *projectComponentTitleString = projectComponent.title;
+    NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    projectComponentTitleString = [[projectComponentTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
+    ProjectComponentPossibility *pos = possibilities[index];
+    projectComponentTitleString = [projectComponentTitleString stringByAppendingFormat:@"-%@.png", pos.enumValue];
+    
+    ((UIImageView *)view).image = [self imageWithImage:[UIImage imageNamed:projectComponentTitleString] scaledToSize:CGRectMake(0, 0, self.view.bounds.size.height *.6, self.view.bounds.size.height *.6).size];
+    //[self imageWithImage:[UIImage imageNamed:@"page.png"] scaledToSize:CGRectMake(0, 0, 60, 95).size];
+    //[UIImage imageNamed:@"35-circle-stop.png"];
+    
     
     if(chosenPossibility){
         if([componentPossibility.enumValue isEqualToString:chosenPossibility.enumValue]){

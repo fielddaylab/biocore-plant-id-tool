@@ -92,7 +92,7 @@
     CGRect frame = CGRectMake(0, 0, self.view.bounds.size.width, (self.view.bounds.size.height *.75));
     
     
-    //NSLog(@"\nUIScreen bounds height %f - \nUIScreen bounds width %f - \nnavAndStatusBarHeight %f - \nframe %@ -\nFrame Height %f -",[UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, navAndStatusBarHeight, NSStringFromCGRect(frame), self.view.frame.size.height);
+    NSLog(@"\nUIScreen bounds height %f - \nUIScreen bounds width %f - \nnavAndStatusBarHeight %f - \nframe %@ -\nFrame Height %f -\nBounds %@ -",[UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, navAndStatusBarHeight, NSStringFromCGRect(frame), self.view.frame.size.height, NSStringFromCGRect(self.view.bounds));
     
     
     
