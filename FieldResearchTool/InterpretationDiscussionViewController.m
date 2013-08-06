@@ -67,10 +67,24 @@
     
     cell.textLabel.text = post.text;
     cell.detailTextLabel.text = user.name;
-    cell.userInteractionEnabled = NO;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     return cell;
-    
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        ProjectIdentificationDiscussionPost *post = [posts objectAtIndex:indexPath.row];
+        [posts removeObject:post];
+        [[AppModel sharedAppModel] deleteObject:post];
+        [self.table reloadData];
+    }
 }
 
 #pragma mark handle fetch of discussion posts
