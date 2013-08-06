@@ -15,6 +15,7 @@
 #import "ProjectComponentPossibility.h"
 #import "Media.h"
 #import "MediaType.h"
+#import "ProjectIdentificationDiscussionPost.h"
 
 @interface AppModel : NSObject
 
@@ -48,6 +49,7 @@
 -(UserObservationComponentDataJudgement *)createNewJudgementWithData:(UserObservationComponentData *)data withProjectComponentPossibility:(NSArray *)possibilities withAttributes:(NSDictionary *)attributes;
 -(Media *)createNewMediaWithAttributes:(NSDictionary *)attributes;
 -(NSArray *)createUserObservationIdentificationForProjectIdentifications:(NSArray *)projectIdentifications;
+-(ProjectIdentificationDiscussionPost *)createNewProjectIdentificationDiscussionPostWithAttributes:(NSDictionary *)attributes;
 
 //delete
 -(void)deleteObject:(NSManagedObject *)objectToDelete;

@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProjectIdentification.h"
 
 @interface InterpretationInformationViewController : UIViewController
+
 @property (weak, nonatomic) IBOutlet UITableView *table;
+@property (nonatomic, strong) ProjectIdentification *identification;
 
 @end

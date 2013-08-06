@@ -226,6 +226,17 @@
     return [NSArray arrayWithArray:userObservationIdentifications];
 }
 
+-(ProjectIdentificationDiscussionPost *)createNewProjectIdentificationDiscussionPostWithAttributes:(NSDictionary *)attributes{
+    ProjectIdentificationDiscussionPost *post = (ProjectIdentificationDiscussionPost *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationDiscussionPost" inManagedObjectContext:coreData.managedObjectContext];
+    post.user = currentUser;
+    for (NSString *key in attributes) {
+        id value = [attributes objectForKey:key];
+        [post setValue:value forKey:key];
+    }
+    [self save];
+    return post;
+}
+
 -(void)deleteObject:(NSManagedObject *)objectToDelete{
     [coreData deleteObject:objectToDelete];
 }

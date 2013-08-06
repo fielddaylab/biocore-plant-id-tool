@@ -9,6 +9,7 @@
 #import "InterpretationInformationViewController.h"
 #import "AppModel.h"
 #import "ProjectIdentificationDiscussion.h"
+#import "InterpretationDiscussionViewController.h"
 
 @interface InterpretationInformationViewController (){
     NSMutableArray *identificationInformation;
@@ -18,7 +19,7 @@
 @end
 
 @implementation InterpretationInformationViewController
-
+@synthesize identification;
 @synthesize table;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -27,10 +28,6 @@
     identificationInformation = [[NSMutableArray alloc]init];
     
     identificationGallery = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320.0f, 252.0f)];//252 because tableview in xib is fixed at that. (for now)
-
-    if (self) {
-        // Custom initialization
-    }
     return self;
 }
 
@@ -96,6 +93,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    InterpretationDiscussionViewController *discussionViewController = [[InterpretationDiscussionViewController alloc] initWithNibName:@"InterpretationDiscussionViewController" bundle:nil];
+    ProjectIdentificationDiscussion *discussion = [identificationInformation objectAtIndex:indexPath.row];
+    discussionViewController.discussion = discussion;
+    discussionViewController.identification = identification;
+    [self.navigationController pushViewController:discussionViewController animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
