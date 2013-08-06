@@ -24,6 +24,7 @@
 @implementation PhotoDataViewController
 @synthesize projectComponent;
 @synthesize prevData;
+@synthesize newObservation;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,8 +59,11 @@
     
     retakeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     retakeButton.frame = showPictureView.bounds;
-    [retakeButton addTarget:self action:@selector(startRecord) forControlEvents:UIControlEventTouchUpInside];
-    [retakeButton setTitle:@"Tap to retake" forState:UIControlStateNormal];
+    if (newObservation) {
+        [retakeButton addTarget:self action:@selector(startRecord) forControlEvents:UIControlEventTouchUpInside];
+        [retakeButton setTitle:@"Tap to retake" forState:UIControlStateNormal];
+    }
+
     [self.view addSubview:retakeButton];
 
     if (takeNewPic) {

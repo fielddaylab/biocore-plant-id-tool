@@ -110,6 +110,7 @@
         <attribute name="boolValue" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="enumValue" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isFiltered" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="longText" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="number" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
@@ -148,7 +149,7 @@
         <element name="ProjectIdentificationDiscussionPost" positionX="160" positionY="192" width="128" height="135"/>
         <element name="User" positionX="-648" positionY="-324" width="128" height="150"/>
         <element name="UserObservation" positionX="-567" positionY="126" width="128" height="165"/>
-        <element name="UserObservationComponentData" positionX="-351" positionY="-171" width="225" height="225"/>
+        <element name="UserObservationComponentData" positionX="-351" positionY="-171" width="225" height="240"/>
         <element name="UserObservationComponentDataJudgement" positionX="99" positionY="-522" width="270" height="180"/>
         <element name="UserObservationIdentification" positionX="-963" positionY="297" width="180" height="105"/>
     </elements>

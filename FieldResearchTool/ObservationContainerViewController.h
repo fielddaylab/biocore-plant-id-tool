@@ -24,6 +24,7 @@
 
 @property (strong, nonatomic) ProjectComponent *projectComponent;
 @property (strong, nonatomic) UserObservationComponentData *prevData;
+@property (nonatomic) BOOL newObservation;
 
 @property (nonatomic, weak) id<ObservationContainerViewControllerDelegate> dismissDelegate;
 @property (nonatomic, weak) id<SaveObservationDelegate> saveObservationDelegate;

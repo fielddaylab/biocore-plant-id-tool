@@ -23,6 +23,7 @@
 @synthesize textField;
 @synthesize prevData;
 @synthesize projectComponent;
+@synthesize newObservation;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,6 +46,9 @@
     if (prevData) {
         NSNumber *storedNumber = prevData.number;
         textField.text = [storedNumber stringValue];
+    }
+    if(!newObservation){
+        textField.enabled = NO;
     }
 }
 

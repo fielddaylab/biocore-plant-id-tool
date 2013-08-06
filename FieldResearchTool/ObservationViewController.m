@@ -108,6 +108,9 @@
         if(dataSet){
             for (int i = 0; i < dataSet.count; i++) {
                 UserObservationComponentData *data = [dataSet objectAtIndex:i];
+                if ([data.wasJudged boolValue] && [data.isFiltered boolValue]) {
+                    [dataToFilter addObject:data];
+                }
                 ProjectComponent *component = data.projectComponent;
                 [projectComponents addObject:component];
                 if([component.required boolValue]){
@@ -125,7 +128,7 @@
                 [projectIdentifications addObject:identification];
             }
         }
-        //[self rankIdentifications];
+        [self rankIdentifications];
         [self.table reloadData];
     }
     
@@ -310,6 +313,7 @@
         UserObservationComponentData *prevData = [self findDataForComponent:projectComponent];
         containerView.prevData = prevData;
         containerView.projectComponent = projectComponent;
+        containerView.newObservation = newObservation;
         containerView.dismissDelegate = self;
         
         [self.navigationController pushViewController:containerView animated:YES];
@@ -370,25 +374,17 @@
 }
 
 - (void)dismissContainerViewAndSetProjectComponentObserved:(UserObservationComponentData *)data{
-    
-    if([data.wasJudged boolValue]){
-        ProjectComponent *com = data.projectComponent;
-        if([com.filter boolValue]){
-            UserObservationComponentData *prevComponentData = [self filterHasProjectComponentTitle:com.title];
-            if(prevComponentData){
-                [dataToFilter removeObject:prevComponentData];
-                BOOL wasJudged = [prevComponentData.wasJudged boolValue];
-                if (wasJudged) {
-                    NSArray *judgementSet = [prevComponentData.userObservationComponentDataJudgement allObjects];
-                    UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
-                    [[AppModel sharedAppModel] deleteObject:judgement];
-                }
-                [[AppModel sharedAppModel] deleteObject:prevComponentData];
-            }
-            [dataToFilter addObject:data];
-            [self rankIdentifications];
+        
+    dataToFilter = [[NSMutableArray alloc]init];
+    NSArray *dataSet = [observation.userObservationComponentData allObjects];
+    for (int i = 0; i < dataSet.count; i++) {
+        UserObservationComponentData *currData = [dataSet objectAtIndex:i];
+        if ([currData.wasJudged boolValue] && [currData.isFiltered boolValue]) {
+            [dataToFilter addObject:currData];
         }
     }
+    [self rankIdentifications];
+    
 
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -715,6 +711,8 @@
         [dataToFilter removeObject:data];
     }
     [self rankIdentifications];
+    data.isFiltered = [NSNumber numberWithBool:boolSwitch.isOn];
+    [[AppModel sharedAppModel] save];
 }
 
 -(UserObservationComponentData *)findDataForComponent:(ProjectComponent *)com{

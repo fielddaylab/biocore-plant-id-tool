@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (nonatomic, strong) ProjectComponent *projectComponent;
 @property (nonatomic, strong) UserObservationComponentData *prevData;
+@property (nonatomic) BOOL newObservation;
 
 - (IBAction)changeUnit:(id)sender;
 - (IBAction)killKeyboard:(id)sender;

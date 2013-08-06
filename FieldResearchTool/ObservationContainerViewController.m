@@ -39,11 +39,21 @@
 @synthesize saveObservationDelegate;
 @synthesize saveJudgementDelegate;
 @synthesize prevData;
+@synthesize newObservation;
 
 - (void)saveObservationData:(id)sender {
     
+    if ([prevData.wasJudged boolValue]) {
+        NSArray *judgementSet = [prevData.userObservationComponentDataJudgement allObjects];
+        UserObservationComponentDataJudgement * judgement = judgementSet[0];
+        [[AppModel sharedAppModel] deleteObject:judgement];
+    }
+    
+    if (prevData) {
+        [[AppModel sharedAppModel] deleteObject:prevData];
+    }
+    
     UserObservationComponentData *userData = [self.saveObservationDelegate saveObservationData];
-    //projectComponent.wasObserved = [NSNumber numberWithBool:YES];
     [self.saveJudgementDelegate saveJudgementData:userData];
     [[AppModel sharedAppModel] save];
     
@@ -97,6 +107,7 @@
             PhotoDataViewController *photoDataViewController = [[PhotoDataViewController alloc]init];
             photoDataViewController.prevData = prevData;
             photoDataViewController.projectComponent = projectComponent;
+            photoDataViewController.newObservation = newObservation;
             dataViewControllerToDisplay = photoDataViewController;
         }
             break;
@@ -105,6 +116,7 @@
             numberDataViewController.view.frame = frame;
             numberDataViewController.prevData = prevData;
             numberDataViewController.projectComponent = projectComponent;
+            numberDataViewController.newObservation = newObservation;
             dataViewControllerToDisplay = numberDataViewController;
         }
             break;
@@ -114,6 +126,7 @@
             booleanDataViewController.view.frame = frame;
             booleanDataViewController.prevData = prevData;
             booleanDataViewController.projectComponent = projectComponent;
+            booleanDataViewController.newObservation = newObservation;
             dataViewControllerToDisplay = booleanDataViewController;
         }
             break;

@@ -180,6 +180,7 @@
     UserObservationComponentData *data = (UserObservationComponentData *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservationComponentData" inManagedObjectContext:coreData.managedObjectContext];
     data.userObservation = currentUserObservation;
     data.wasJudged = [NSNumber numberWithBool:NO];
+    data.isFiltered = [NSNumber numberWithBool:YES];
     for (NSString *key in attributes) {
         id value = [attributes objectForKey:key];
         [data setValue:value forKey:key];

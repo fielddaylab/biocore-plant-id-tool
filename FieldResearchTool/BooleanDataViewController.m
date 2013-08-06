@@ -23,6 +23,7 @@
 @synthesize boolSwitch;
 @synthesize prevData;
 @synthesize projectComponent;
+@synthesize newObservation;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,6 +46,10 @@
         BOOL switchValue = [prevData.boolValue boolValue];
         [boolSwitch setOn:switchValue animated:NO];
     }
+    if(!newObservation){
+        boolSwitch.enabled = NO;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
