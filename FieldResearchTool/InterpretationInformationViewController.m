@@ -9,6 +9,7 @@
 #import "InterpretationInformationViewController.h"
 #import "AppModel.h"
 #import "ProjectIdentificationDiscussion.h"
+#import "InterpretationDiscussionViewController.h"
 
 #define PICTURE_OFFSET 252
 
@@ -22,9 +23,8 @@
 @end
 
 @implementation InterpretationInformationViewController
-
-@synthesize table;
 @synthesize identification;
+@synthesize table;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,6 +43,7 @@
     if (self) {
         // Custom initialization
     }
+
     return self;
 }
 
@@ -160,6 +161,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    InterpretationDiscussionViewController *discussionViewController = [[InterpretationDiscussionViewController alloc] initWithNibName:@"InterpretationDiscussionViewController" bundle:nil];
+    ProjectIdentificationDiscussion *discussion = [identificationInformation objectAtIndex:indexPath.row];
+    discussionViewController.discussion = discussion;
+    discussionViewController.identification = identification;
+    [self.navigationController pushViewController:discussionViewController animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 

@@ -17,6 +17,10 @@
 		5B4D2DFD17AC49920071304F /* UserObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DFC17AC49920071304F /* UserObservation.m */; };
 		5B64933417B16DD900D8C1C7 /* Leaf_venation-Branched.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B64933217B16DD900D8C1C7 /* Leaf_venation-Branched.png */; };
 		5B64933517B16DD900D8C1C7 /* Leaf_venation-Parallel.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B64933317B16DD900D8C1C7 /* Leaf_venation-Parallel.png */; };
+		5B64933F17B17F2500D8C1C7 /* InterpretationDiscussionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B64933D17B17F2500D8C1C7 /* InterpretationDiscussionViewController.m */; };
+		5B64934017B17F2500D8C1C7 /* InterpretationDiscussionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B64933E17B17F2500D8C1C7 /* InterpretationDiscussionViewController.xib */; };
+		5B64934417B18D3600D8C1C7 /* InterpretationDiscussionPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B64934217B18D3600D8C1C7 /* InterpretationDiscussionPostViewController.m */; };
+		5B64934517B18D3600D8C1C7 /* InterpretationDiscussionPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B64934317B18D3600D8C1C7 /* InterpretationDiscussionPostViewController.xib */; };
 		5B82BD8917972005008CB441 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82BD8817972005008CB441 /* iCarousel.m */; };
 		5B82BD8C17972043008CB441 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B82BD8B17972043008CB441 /* QuartzCore.framework */; };
 		5B82BD9417972EDB008CB441 /* 05-shuffle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B82BD8F17972EDA008CB441 /* 05-shuffle.png */; };
@@ -176,6 +180,12 @@
 		5B4D2DFC17AC49920071304F /* UserObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservation.m; sourceTree = "<group>"; };
 		5B64933217B16DD900D8C1C7 /* Leaf_venation-Branched.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_venation-Branched.png"; sourceTree = "<group>"; };
 		5B64933317B16DD900D8C1C7 /* Leaf_venation-Parallel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_venation-Parallel.png"; sourceTree = "<group>"; };
+		5B64933C17B17F2500D8C1C7 /* InterpretationDiscussionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterpretationDiscussionViewController.h; sourceTree = "<group>"; };
+		5B64933D17B17F2500D8C1C7 /* InterpretationDiscussionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterpretationDiscussionViewController.m; sourceTree = "<group>"; };
+		5B64933E17B17F2500D8C1C7 /* InterpretationDiscussionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InterpretationDiscussionViewController.xib; sourceTree = "<group>"; };
+		5B64934117B18D3600D8C1C7 /* InterpretationDiscussionPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterpretationDiscussionPostViewController.h; sourceTree = "<group>"; };
+		5B64934217B18D3600D8C1C7 /* InterpretationDiscussionPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterpretationDiscussionPostViewController.m; sourceTree = "<group>"; };
+		5B64934317B18D3600D8C1C7 /* InterpretationDiscussionPostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InterpretationDiscussionPostViewController.xib; sourceTree = "<group>"; };
 		5B82BD8717972005008CB441 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		5B82BD8817972005008CB441 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		5B82BD8B17972043008CB441 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -646,6 +656,12 @@
 				717AF34B17AC0A3400DA2077 /* InterpretationInformationViewController.h */,
 				717AF34C17AC0A3400DA2077 /* InterpretationInformationViewController.m */,
 				717AF34D17AC0A3400DA2077 /* InterpretationInformationViewController.xib */,
+				5B64933C17B17F2500D8C1C7 /* InterpretationDiscussionViewController.h */,
+				5B64933D17B17F2500D8C1C7 /* InterpretationDiscussionViewController.m */,
+				5B64933E17B17F2500D8C1C7 /* InterpretationDiscussionViewController.xib */,
+				5B64934117B18D3600D8C1C7 /* InterpretationDiscussionPostViewController.h */,
+				5B64934217B18D3600D8C1C7 /* InterpretationDiscussionPostViewController.m */,
+				5B64934317B18D3600D8C1C7 /* InterpretationDiscussionPostViewController.xib */,
 			);
 			name = InterpretationViewControllers;
 			sourceTree = "<group>";
@@ -927,6 +943,8 @@
 				71699EB917B17CA800BEDF13 /* Leaf_shape.png in Resources */,
 				71699EBA17B17CA800BEDF13 /* Leaf_type.png in Resources */,
 				71699EBB17B17CA800BEDF13 /* Leaf_venation.png in Resources */,
+				5B64934017B17F2500D8C1C7 /* InterpretationDiscussionViewController.xib in Resources */,
+				5B64934517B18D3600D8C1C7 /* InterpretationDiscussionPostViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1017,6 +1035,8 @@
 				5B4D2DFD17AC49920071304F /* UserObservation.m in Sources */,
 				5B1DAC6417B02CF700A30136 /* ProjectComponent.m in Sources */,
 				5B1DAC6D17B05C0F00A30136 /* UserObservationComponentData.m in Sources */,
+				5B64933F17B17F2500D8C1C7 /* InterpretationDiscussionViewController.m in Sources */,
+				5B64934417B18D3600D8C1C7 /* InterpretationDiscussionPostViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

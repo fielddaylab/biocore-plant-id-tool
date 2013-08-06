@@ -15,6 +15,7 @@
 #import "ProjectComponentPossibility.h"
 #import "Media.h"
 #import "MediaType.h"
+#import "ProjectIdentificationDiscussionPost.h"
 
 @interface AppModel : NSObject
 
@@ -41,6 +42,7 @@
 -(void)getUserForName:(NSString *)username password:(NSString *)password withHandler:(SEL)handler target:(id)target;
 -(void)getProjectIdentificationComponentPossibilitiesForPossibility:(ProjectComponentPossibility *)possibility withHandler:(SEL)handler target:(id)target;
 -(void)getProjectIdentificationDiscussionsWithHandler:(SEL)handler target:(id)target;
+-(void)getProjectIdentificationDiscussionPostsWithAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target;
 
 //create
 -(UserObservation *)createNewUserObservationWithAttributes:(NSDictionary *)attributes;
@@ -48,6 +50,7 @@
 -(UserObservationComponentDataJudgement *)createNewJudgementWithData:(UserObservationComponentData *)data withProjectComponentPossibility:(NSArray *)possibilities withAttributes:(NSDictionary *)attributes;
 -(Media *)createNewMediaWithAttributes:(NSDictionary *)attributes;
 -(NSArray *)createUserObservationIdentificationForProjectIdentifications:(NSArray *)projectIdentifications;
+-(ProjectIdentificationDiscussionPost *)createNewProjectIdentificationDiscussionPostWithAttributes:(NSDictionary *)attributes;
 
 //delete
 -(void)deleteObject:(NSManagedObject *)objectToDelete;

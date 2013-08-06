@@ -290,7 +290,7 @@
     NSString *judgementText = numberJudgementViewController.numberField.text;
     NSString *regexForNumberJudgement = @"[-+]?[0-9]*\\.?[0-9]*";
     NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberJudgement];
-    if ([isNumberJudgement evaluateWithObject: judgementText]){
+    if (!judgementText || [isNumberJudgement evaluateWithObject: judgementText]){
         saveButton.enabled = YES;
     }
     else{

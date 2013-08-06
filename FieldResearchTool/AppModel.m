@@ -155,6 +155,14 @@
     });
 }
 
+-(void)getProjectIdentificationDiscussionPostsWithAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [coreData fetchEntities:@"ProjectIdentificationDiscussionPost" withAttributes:attributes withHandler:handler target:target];
+        });
+    });
+}
+
 
 #pragma mark saving
 
@@ -224,6 +232,17 @@
         [userObservationIdentifications addObject:userIdentification];
     }
     return [NSArray arrayWithArray:userObservationIdentifications];
+}
+
+-(ProjectIdentificationDiscussionPost *)createNewProjectIdentificationDiscussionPostWithAttributes:(NSDictionary *)attributes{
+    ProjectIdentificationDiscussionPost *post = (ProjectIdentificationDiscussionPost *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationDiscussionPost" inManagedObjectContext:coreData.managedObjectContext];
+    post.user = currentUser;
+    for (NSString *key in attributes) {
+        id value = [attributes objectForKey:key];
+        [post setValue:value forKey:key];
+    }
+    [self save];
+    return post;
 }
 
 -(void)deleteObject:(NSManagedObject *)objectToDelete{

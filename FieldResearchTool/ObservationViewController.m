@@ -32,7 +32,7 @@
 #define NIL_SCORE 1.0
 #define BOOL_SCORE 1.0
 
-@interface ObservationViewController (){
+@interface ObservationViewController ()<UIAlertViewDelegate>{
     NSMutableArray *projectComponents;
     NSMutableArray *projectIdentifications;
     
@@ -40,6 +40,7 @@
     NSMutableArray *requiredComponents;
     NSMutableArray *optionalComponents;
     UserObservation *observation;
+    int requiredFieldsFilledOut;
 }
 
 @end
@@ -62,6 +63,7 @@
         
         requiredComponents = [[NSMutableArray alloc]init];
         optionalComponents = [[NSMutableArray alloc]init];
+        requiredFieldsFilledOut = 0;
     }
     return self;
 }
@@ -71,20 +73,12 @@
     [table reloadData];
 }
 
--(void)viewWillDisappear:(BOOL)animated{
-    observation.identificationString = self.title;
-    //check to make sure the current observation doesn't have a user identification, if it does delete it
-    [[AppModel sharedAppModel] createUserObservationIdentificationForProjectIdentifications:projectIdentifications];
-    [[AppModel sharedAppModel]save];
-}
-
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [self.navigationItem setBackBarButtonItem:[[UIBarButtonItem alloc]initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil]];
-    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(popToObservationScreen)];
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithTitle:@"ID" style:UIBarButtonItemStyleBordered target:self action:@selector(pushInterpretationViewController)]];
     
     if(newObservation){
@@ -114,6 +108,7 @@
                 ProjectComponent *component = data.projectComponent;
                 [projectComponents addObject:component];
                 if([component.required boolValue]){
+                    requiredFieldsFilledOut++;
                     [requiredComponents addObject:component];
                 }
                 else{
@@ -134,6 +129,38 @@
     
 
     
+}
+
+-(void)popToObservationScreen{
+    if (requiredFieldsFilledOut == requiredComponents.count) {
+        if (newObservation) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Quit" message:@"Are you sure you want to quit? You won't be able to edit your data once you exit." delegate:self cancelButtonTitle:@"I'm sure" otherButtonTitles:@"Nevermind", nil];
+            alert.tag = 0;
+            [alert show];
+        }
+        else{
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+
+    }
+    else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error!" message:@"Required Fields Not Filled Out!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        alert.tag = 1;
+        [alert show];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 0) {
+        if (buttonIndex == 0) {
+            observation.identificationString = self.title;
+            //check to make sure the current observation doesn't have a user identification, if it does delete it
+            [[AppModel sharedAppModel] createUserObservationIdentificationForProjectIdentifications:projectIdentifications];
+            [[AppModel sharedAppModel]save];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -376,9 +403,16 @@
 - (void)dismissContainerViewAndSetProjectComponentObserved:(UserObservationComponentData *)data{
         
     dataToFilter = [[NSMutableArray alloc]init];
+    requiredFieldsFilledOut = 0;
     NSArray *dataSet = [observation.userObservationComponentData allObjects];
     for (int i = 0; i < dataSet.count; i++) {
         UserObservationComponentData *currData = [dataSet objectAtIndex:i];
+        if (currData) {
+            ProjectComponent *associateProjCom = currData.projectComponent;
+            if ([associateProjCom.required boolValue]) {
+                requiredFieldsFilledOut++;
+            }
+        }
         if ([currData.wasJudged boolValue] && [currData.isFiltered boolValue]) {
             [dataToFilter addObject:currData];
         }
