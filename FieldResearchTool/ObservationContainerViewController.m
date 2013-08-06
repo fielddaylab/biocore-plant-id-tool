@@ -39,6 +39,7 @@
 @synthesize saveObservationDelegate;
 @synthesize saveJudgementDelegate;
 @synthesize prevData;
+@synthesize newObservation;
 
 - (void)saveObservationData:(id)sender {
     
@@ -106,6 +107,7 @@
             PhotoDataViewController *photoDataViewController = [[PhotoDataViewController alloc]init];
             photoDataViewController.prevData = prevData;
             photoDataViewController.projectComponent = projectComponent;
+            photoDataViewController.newObservation = newObservation;
             dataViewControllerToDisplay = photoDataViewController;
         }
             break;
@@ -114,6 +116,7 @@
             numberDataViewController.view.frame = frame;
             numberDataViewController.prevData = prevData;
             numberDataViewController.projectComponent = projectComponent;
+            numberDataViewController.newObservation = newObservation;
             dataViewControllerToDisplay = numberDataViewController;
         }
             break;
@@ -123,6 +126,7 @@
             booleanDataViewController.view.frame = frame;
             booleanDataViewController.prevData = prevData;
             booleanDataViewController.projectComponent = projectComponent;
+            booleanDataViewController.newObservation = newObservation;
             dataViewControllerToDisplay = booleanDataViewController;
         }
             break;

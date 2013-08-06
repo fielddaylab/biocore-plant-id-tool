@@ -313,6 +313,7 @@
         UserObservationComponentData *prevData = [self findDataForComponent:projectComponent];
         containerView.prevData = prevData;
         containerView.projectComponent = projectComponent;
+        containerView.newObservation = newObservation;
         containerView.dismissDelegate = self;
         
         [self.navigationController pushViewController:containerView animated:YES];
