@@ -67,18 +67,10 @@
     
     cell.textLabel.text = post.text;
     cell.detailTextLabel.text = user.name;
+    cell.userInteractionEnabled = NO;
 
     return cell;
     
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    ProjectIdentificationDiscussionPost *prevPost = [posts objectAtIndex:indexPath.row];
-    InterpretationDiscussionPostViewController *postVC = [[InterpretationDiscussionPostViewController alloc] initWithNibName:@"InterpretationDiscussionPostViewController" bundle:nil];
-    postVC.delegate = self;
-    postVC.prevPost = prevPost;
-    [self.navigationController  pushViewController:postVC animated:NO];
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 #pragma mark handle fetch of discussion posts
@@ -110,23 +102,6 @@
     [posts addObject:post];
     [self.table reloadData];
 
-    [self.navigationController popViewControllerAnimated:NO];
-}
-
--(void)updateText:(NSString *)text prevPost:(ProjectIdentificationDiscussionPost *)prevPost{
-    if (prevPost) {
-        [posts removeObject:prevPost];
-        [[AppModel sharedAppModel] deleteObject:prevPost];
-    }
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-    [attributes setObject:[NSDate date] forKey:@"created"];
-    [attributes setObject:[NSDate date] forKey:@"updated"];
-    [attributes setObject:text forKey:@"text"];
-    [attributes setObject:discussion forKey:@"projectIdentificationDiscussion"];
-    [attributes setObject:identification forKey:@"projectIdentification"];
-    ProjectIdentificationDiscussionPost *post = [[AppModel sharedAppModel] createNewProjectIdentificationDiscussionPostWithAttributes:attributes];
-    [posts addObject:post];
-    [self.table reloadData];
     [self.navigationController popViewControllerAnimated:NO];
 }
 

@@ -13,7 +13,6 @@
 
 -(void)cancelled;
 -(void)textChosen:(NSString *)text;
--(void)updateText:(NSString *)text prevPost:(ProjectIdentificationDiscussionPost *)prevPost;
 
 @end
 

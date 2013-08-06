@@ -60,12 +60,7 @@
 
 - (void) saveButtonTouchAction
 {
-    if (prevPost) {
-        [self.delegate updateText:textBox.text prevPost:prevPost];
-    }
-    else{
-        [self.delegate textChosen:textBox.text];
-    }
+    [self.delegate textChosen:textBox.text];
 }
 
 @end
