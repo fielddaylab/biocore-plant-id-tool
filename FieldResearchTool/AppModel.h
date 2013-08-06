@@ -42,6 +42,7 @@
 -(void)getUserForName:(NSString *)username password:(NSString *)password withHandler:(SEL)handler target:(id)target;
 -(void)getProjectIdentificationComponentPossibilitiesForPossibility:(ProjectComponentPossibility *)possibility withHandler:(SEL)handler target:(id)target;
 -(void)getProjectIdentificationDiscussionsWithHandler:(SEL)handler target:(id)target;
+-(void)getProjectIdentificationDiscussionPostsWithAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target;
 
 //create
 -(UserObservation *)createNewUserObservationWithAttributes:(NSDictionary *)attributes;

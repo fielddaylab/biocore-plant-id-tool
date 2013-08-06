@@ -8,8 +8,9 @@
 
 #import "InterpretationDiscussionViewController.h"
 #import "AppModel.h"
+#import "InterpretationDiscussionPostViewController.h"
 
-@interface InterpretationDiscussionViewController (){
+@interface InterpretationDiscussionViewController ()<TextViewControlDelegate>{
     NSMutableArray *posts;
 }
 
@@ -35,6 +36,11 @@
     self.title = discussion.title;
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(makeNewPost)];
     [self.navigationItem setRightBarButtonItem:addButton];
+    
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setObject:identification.title forKey:@"projectIdentification.title"];
+    [attributes setObject:discussion.title forKey:@"projectIdentificationDiscussion.title"];
+    [[AppModel sharedAppModel] getProjectIdentificationDiscussionPostsWithAttributes:attributes withHandler:@selector(handleFetchOfDiscussionPosts:) target:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,19 +73,61 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ProjectIdentificationDiscussionPost *prevPost = [posts objectAtIndex:indexPath.row];
+    InterpretationDiscussionPostViewController *postVC = [[InterpretationDiscussionPostViewController alloc] initWithNibName:@"InterpretationDiscussionPostViewController" bundle:nil];
+    postVC.delegate = self;
+    postVC.prevPost = prevPost;
+    [self.navigationController  pushViewController:postVC animated:NO];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
+#pragma mark handle fetch of discussion posts
+-(void)handleFetchOfDiscussionPosts:(NSArray *)discussionPosts{
+    posts = [NSMutableArray arrayWithArray:discussionPosts];
+    [self.table reloadData];
+}
+
 -(void)makeNewPost{
+    InterpretationDiscussionPostViewController *postVC = [[InterpretationDiscussionPostViewController alloc] initWithNibName:@"InterpretationDiscussionPostViewController" bundle:nil];
+    postVC.delegate = self;
+    postVC.prevPost = nil;
+    [self.navigationController  pushViewController:postVC animated:NO];
+}
+
+#pragma mark text field delegate methods
+-(void)cancelled{
+    [self.navigationController popViewControllerAnimated:NO];
+}
+
+-(void)textChosen:(NSString *)text{
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
     [attributes setObject:[NSDate date] forKey:@"created"];
     [attributes setObject:[NSDate date] forKey:@"updated"];
-    [attributes setObject:@"Hey this is some test text" forKey:@"text"];
+    [attributes setObject:text forKey:@"text"];
     [attributes setObject:discussion forKey:@"projectIdentificationDiscussion"];
     [attributes setObject:identification forKey:@"projectIdentification"];
     ProjectIdentificationDiscussionPost *post = [[AppModel sharedAppModel] createNewProjectIdentificationDiscussionPostWithAttributes:attributes];
     [posts addObject:post];
     [self.table reloadData];
+
+    [self.navigationController popViewControllerAnimated:NO];
+}
+
+-(void)updateText:(NSString *)text prevPost:(ProjectIdentificationDiscussionPost *)prevPost{
+    if (prevPost) {
+        [posts removeObject:prevPost];
+        [[AppModel sharedAppModel] deleteObject:prevPost];
+    }
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setObject:[NSDate date] forKey:@"created"];
+    [attributes setObject:[NSDate date] forKey:@"updated"];
+    [attributes setObject:text forKey:@"text"];
+    [attributes setObject:discussion forKey:@"projectIdentificationDiscussion"];
+    [attributes setObject:identification forKey:@"projectIdentification"];
+    ProjectIdentificationDiscussionPost *post = [[AppModel sharedAppModel] createNewProjectIdentificationDiscussionPostWithAttributes:attributes];
+    [posts addObject:post];
+    [self.table reloadData];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 @end
