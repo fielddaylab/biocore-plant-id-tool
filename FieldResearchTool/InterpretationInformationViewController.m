@@ -29,7 +29,6 @@
     
     identificationGallery = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320.0f, 252.0f)];//252 because tableview in xib is fixed at that. (for now)
     
-    identification = [[ProjectIdentification alloc]init];
     
     //NSLog(@"%@",identification.title);
     
