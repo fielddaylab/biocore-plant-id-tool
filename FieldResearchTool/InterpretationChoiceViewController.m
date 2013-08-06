@@ -77,6 +77,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     InterpretationInformationViewController *interpretationInformationVC = [[InterpretationInformationViewController alloc]initWithNibName:@"InterpretationInformationViewController" bundle:nil];
+    interpretationInformationVC.identification = [projectIdentifications objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:interpretationInformationVC animated:YES];
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];

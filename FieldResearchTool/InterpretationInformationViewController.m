@@ -20,6 +20,7 @@
 @implementation InterpretationInformationViewController
 
 @synthesize table;
+@synthesize identification;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,7 +28,11 @@
     identificationInformation = [[NSMutableArray alloc]init];
     
     identificationGallery = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320.0f, 252.0f)];//252 because tableview in xib is fixed at that. (for now)
-
+    
+    identification = [[ProjectIdentification alloc]init];
+    
+    //NSLog(@"%@",identification.title);
+    
     if (self) {
         // Custom initialization
     }
@@ -48,6 +53,7 @@
     //identificationGallery.image = [UIImage imageNamed:@"MAX_Height_of_stem"];
     [self.view addSubview:identificationGallery];
     [identificationGallery startAnimating];
+    self.title = identification.title;
 
 
 }
