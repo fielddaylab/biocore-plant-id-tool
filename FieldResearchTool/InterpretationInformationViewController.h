@@ -16,6 +16,4 @@
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (nonatomic, strong) ProjectIdentification *identification;
 
-@property (strong, nonatomic) ProjectIdentification *identification;
-
 @end

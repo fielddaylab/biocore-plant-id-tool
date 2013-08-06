@@ -21,7 +21,6 @@
 @implementation InterpretationInformationViewController
 @synthesize identification;
 @synthesize table;
-@synthesize identification;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
