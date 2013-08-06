@@ -10,9 +10,13 @@
 #import "AppModel.h"
 #import "ProjectIdentificationDiscussion.h"
 
+#define PICTURE_OFFSET 252
+
 @interface InterpretationInformationViewController (){
     NSMutableArray *identificationInformation;
     UIImageView *identificationGallery;
+    UIScrollView *scrollView;
+    UIWebView *webView;
 }
 
 @end
@@ -27,8 +31,12 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     identificationInformation = [[NSMutableArray alloc]init];
     
-    identificationGallery = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320.0f, 252.0f)];//252 because tableview in xib is fixed at that. (for now)
+    identificationGallery = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320.0f, PICTURE_OFFSET)];//252 because tableview in xib is fixed at that. (for now)
     
+    webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, 252)];
+
+    
+    scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, PICTURE_OFFSET, 320, [UIScreen mainScreen].bounds.size.height - 252 - 64)];//Will need to do javascript stuffs to make webview better.
     
     //NSLog(@"%@",identification.title);
     
@@ -43,12 +51,12 @@
     [super viewDidLoad];
     
     [[AppModel sharedAppModel] getProjectIdentificationDiscussionsWithHandler:@selector(handleDiscussionRetrieval:) target:self];
-
+    
     NSMutableArray *arr = [[NSMutableArray alloc]initWithObjects:[UIImage imageNamed:@"MAX_Height_of_stem"], [UIImage imageNamed:@"MAX_length_of_flower_cluster"], nil];
     
     //[identificationGallery initWithImage:[UIImage imageNamed:@"page.png"]];
     identificationGallery.animationImages = arr;
-    identificationGallery.animationDuration = 5.0f;
+    identificationGallery.animationDuration = 10.0f;
     //identificationGallery.image = [UIImage imageNamed:@"MAX_Height_of_stem"];
     [self.view addSubview:identificationGallery];
     [identificationGallery startAnimating];
@@ -66,8 +74,46 @@
     label.text = [NSString stringWithFormat:@"%@\n%@", identification.alternateName, identification.title];
     
     self.navigationItem.titleView = label;
+        
+    scrollView.contentSize = CGSizeMake(320, 2000);
+    
+    NSString *url=@"http://www.google.com";
+    NSURL *nsurl=[NSURL URLWithString:url];
+    NSURLRequest *nsrequest=[NSURLRequest requestWithURL:nsurl];
+    [webView loadRequest:nsrequest];
+    webView.scrollView.scrollEnabled = NO;
+    [scrollView addSubview:webView];
+    
+
+}
 
 
+- (void) method0{
+    NSLog(@"METHOD WAS CLICKED: 0");
+}
+- (void) method2{
+    NSLog(@"METHOD WAS CLICKED: 2");
+}
+- (void) method1{
+    NSLog(@"METHOD WAS CLICKED: 1");
+}
+
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    for (int i = 0; i < identificationInformation.count; i++) {
+        ProjectIdentificationDiscussion *discussion = [identificationInformation objectAtIndex:i];
+        
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [button setTitle:discussion.title forState:UIControlStateNormal];
+        [button setFrame:CGRectMake(0, webView.bounds.size.height + 44*i, 320, 44)];//change webView bounds to some height determined by delegate javascript document.height kind of thing?
+        [button addTarget:self
+                   action:NSSelectorFromString([NSString stringWithFormat:@"method%d",i])
+         forControlEvents:UIControlEventTouchUpInside];
+        [scrollView addSubview:button];
+        
+    }
+    [self.view addSubview:scrollView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,7 +135,7 @@
     if(cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-
+    
     ProjectIdentificationDiscussion *discussion = [identificationInformation objectAtIndex:indexPath.row];
     
     switch (indexPath.section) {
