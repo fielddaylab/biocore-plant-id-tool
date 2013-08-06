@@ -15,6 +15,8 @@
 		5B4D2DF717AC3C5B0071304F /* ProjectIdentificationDiscussion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF617AC3C5B0071304F /* ProjectIdentificationDiscussion.m */; };
 		5B4D2DFA17AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF917AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m */; };
 		5B4D2DFD17AC49920071304F /* UserObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DFC17AC49920071304F /* UserObservation.m */; };
+		5B64933417B16DD900D8C1C7 /* Leaf_venation-Branched.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B64933217B16DD900D8C1C7 /* Leaf_venation-Branched.png */; };
+		5B64933517B16DD900D8C1C7 /* Leaf_venation-Parallel.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B64933317B16DD900D8C1C7 /* Leaf_venation-Parallel.png */; };
 		5B82BD8917972005008CB441 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82BD8817972005008CB441 /* iCarousel.m */; };
 		5B82BD8C17972043008CB441 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B82BD8B17972043008CB441 /* QuartzCore.framework */; };
 		5B82BD9417972EDB008CB441 /* 05-shuffle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B82BD8F17972EDA008CB441 /* 05-shuffle.png */; };
@@ -167,6 +169,8 @@
 		5B4D2DF917AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentificationDiscussionPost.m; sourceTree = "<group>"; };
 		5B4D2DFB17AC49920071304F /* UserObservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservation.h; sourceTree = "<group>"; };
 		5B4D2DFC17AC49920071304F /* UserObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservation.m; sourceTree = "<group>"; };
+		5B64933217B16DD900D8C1C7 /* Leaf_venation-Branched.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_venation-Branched.png"; sourceTree = "<group>"; };
+		5B64933317B16DD900D8C1C7 /* Leaf_venation-Parallel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_venation-Parallel.png"; sourceTree = "<group>"; };
 		5B82BD8717972005008CB441 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		5B82BD8817972005008CB441 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		5B82BD8B17972043008CB441 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -547,6 +551,8 @@
 		71699E9417B01E2900BEDF13 /* Leaf_venation */ = {
 			isa = PBXGroup;
 			children = (
+				5B64933217B16DD900D8C1C7 /* Leaf_venation-Branched.png */,
+				5B64933317B16DD900D8C1C7 /* Leaf_venation-Parallel.png */,
 			);
 			path = Leaf_venation;
 			sourceTree = "<group>";
@@ -871,6 +877,8 @@
 				71699E9117B019A700BEDF13 /* Leaf_type-Pinnate.png in Resources */,
 				71699E9217B019A700BEDF13 /* Leaf_type-Simple.png in Resources */,
 				71699E9317B019A700BEDF13 /* Leaf_type-Trifoliate.png in Resources */,
+				5B64933417B16DD900D8C1C7 /* Leaf_venation-Branched.png in Resources */,
+				5B64933517B16DD900D8C1C7 /* Leaf_venation-Parallel.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
