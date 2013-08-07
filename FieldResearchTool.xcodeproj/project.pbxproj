@@ -140,9 +140,6 @@
 		718F075617A9AA80001FD560 /* Is_this_plant_cool.png in Resources */ = {isa = PBXBuildFile; fileRef = 718F074917A9AA80001FD560 /* Is_this_plant_cool.png */; };
 		718F075917A9AA80001FD560 /* MIN_Height_of_flowering_plant.png in Resources */ = {isa = PBXBuildFile; fileRef = 718F074C17A9AA80001FD560 /* MIN_Height_of_flowering_plant.png */; };
 		718F075B17A9AA80001FD560 /* Petiole_present.png in Resources */ = {isa = PBXBuildFile; fileRef = 718F074E17A9AA80001FD560 /* Petiole_present.png */; };
-		718F075C17A9AA80001FD560 /* flower.psd in Resources */ = {isa = PBXBuildFile; fileRef = 718F075017A9AA80001FD560 /* flower.psd */; };
-		718F075D17A9AA80001FD560 /* leaf.psd in Resources */ = {isa = PBXBuildFile; fileRef = 718F075117A9AA80001FD560 /* leaf.psd */; };
-		718F075E17A9AA80001FD560 /* stem.psd in Resources */ = {isa = PBXBuildFile; fileRef = 718F075217A9AA80001FD560 /* stem.psd */; };
 		71FF69BE1794819300E2B411 /* FieldResearchNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF69A41794819200E2B411 /* FieldResearchNavigationController.m */; };
 		71FF69C01794819300E2B411 /* ObservationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF69A81794819200E2B411 /* ObservationViewController.m */; };
 		71FF69C11794819300E2B411 /* ObservationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71FF69A91794819200E2B411 /* ObservationViewController.xib */; };
@@ -347,9 +344,6 @@
 		718F074917A9AA80001FD560 /* Is_this_plant_cool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Is_this_plant_cool.png; sourceTree = "<group>"; };
 		718F074C17A9AA80001FD560 /* MIN_Height_of_flowering_plant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MIN_Height_of_flowering_plant.png; sourceTree = "<group>"; };
 		718F074E17A9AA80001FD560 /* Petiole_present.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Petiole_present.png; sourceTree = "<group>"; };
-		718F075017A9AA80001FD560 /* flower.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = flower.psd; sourceTree = "<group>"; };
-		718F075117A9AA80001FD560 /* leaf.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = leaf.psd; sourceTree = "<group>"; };
-		718F075217A9AA80001FD560 /* stem.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = stem.psd; sourceTree = "<group>"; };
 		71FF69A31794819200E2B411 /* FieldResearchNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldResearchNavigationController.h; sourceTree = "<group>"; };
 		71FF69A41794819200E2B411 /* FieldResearchNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FieldResearchNavigationController.m; sourceTree = "<group>"; };
 		71FF69A71794819200E2B411 /* ObservationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationViewController.h; sourceTree = "<group>"; };
@@ -684,7 +678,6 @@
 			children = (
 				71699E5517B019A700BEDF13 /* ComponentPossibilityPNG */,
 				718F074517A9AA80001FD560 /* ComponentPNG */,
-				718F074F17A9AA80001FD560 /* GeneralPSD */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -708,16 +701,6 @@
 				718F074E17A9AA80001FD560 /* Petiole_present.png */,
 			);
 			path = ComponentPNG;
-			sourceTree = "<group>";
-		};
-		718F074F17A9AA80001FD560 /* GeneralPSD */ = {
-			isa = PBXGroup;
-			children = (
-				718F075017A9AA80001FD560 /* flower.psd */,
-				718F075117A9AA80001FD560 /* leaf.psd */,
-				718F075217A9AA80001FD560 /* stem.psd */,
-			);
-			path = GeneralPSD;
 			sourceTree = "<group>";
 		};
 		AAAC4F25178F1767001AB1D8 = {
@@ -912,9 +895,6 @@
 				718F075617A9AA80001FD560 /* Is_this_plant_cool.png in Resources */,
 				718F075917A9AA80001FD560 /* MIN_Height_of_flowering_plant.png in Resources */,
 				718F075B17A9AA80001FD560 /* Petiole_present.png in Resources */,
-				718F075C17A9AA80001FD560 /* flower.psd in Resources */,
-				718F075D17A9AA80001FD560 /* leaf.psd in Resources */,
-				718F075E17A9AA80001FD560 /* stem.psd in Resources */,
 				5BDAE57017A9BF14008A6A99 /* MAX_Height_of_stem.png in Resources */,
 				5BDAE57117A9BF14008A6A99 /* MAX_length_of_flower_cluster.png in Resources */,
 				5BDAE57217A9BF14008A6A99 /* MIN_width_of_flower_.png in Resources */,
