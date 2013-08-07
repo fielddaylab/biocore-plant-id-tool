@@ -132,6 +132,9 @@
 		718AAD231794771300AFE6DB /* InterpretationChoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD211794771300AFE6DB /* InterpretationChoiceViewController.xib */; };
 		718AAD271794772300AFE6DB /* InterpretationSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AAD251794772300AFE6DB /* InterpretationSplitViewController.m */; };
 		718AAD281794772300AFE6DB /* InterpretationSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD261794772300AFE6DB /* InterpretationSplitViewController.xib */; };
+		718E5D1F17B2E72600CBF031 /* red_maple.png in Resources */ = {isa = PBXBuildFile; fileRef = 718E5D1C17B2E72600CBF031 /* red_maple.png */; };
+		718E5D2017B2E72600CBF031 /* red_maple2.png in Resources */ = {isa = PBXBuildFile; fileRef = 718E5D1D17B2E72600CBF031 /* red_maple2.png */; };
+		718E5D2417B2E80700CBF031 /* japanese_maple.png in Resources */ = {isa = PBXBuildFile; fileRef = 718E5D2317B2E80700CBF031 /* japanese_maple.png */; };
 		718F074017A85543001FD560 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 718F073F17A85543001FD560 /* test.png */; };
 		718F074217A86DE9001FD560 /* Flower_color.png in Resources */ = {isa = PBXBuildFile; fileRef = 718F074117A86DE9001FD560 /* Flower_color.png */; };
 		718F075317A9AA80001FD560 /* Flower_color_.png in Resources */ = {isa = PBXBuildFile; fileRef = 718F074617A9AA80001FD560 /* Flower_color_.png */; };
@@ -336,6 +339,9 @@
 		718AAD241794772300AFE6DB /* InterpretationSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterpretationSplitViewController.h; sourceTree = "<group>"; };
 		718AAD251794772300AFE6DB /* InterpretationSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterpretationSplitViewController.m; sourceTree = "<group>"; };
 		718AAD261794772300AFE6DB /* InterpretationSplitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InterpretationSplitViewController.xib; sourceTree = "<group>"; };
+		718E5D1C17B2E72600CBF031 /* red_maple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_maple.png; sourceTree = "<group>"; };
+		718E5D1D17B2E72600CBF031 /* red_maple2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_maple2.png; sourceTree = "<group>"; };
+		718E5D2317B2E80700CBF031 /* japanese_maple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = japanese_maple.png; sourceTree = "<group>"; };
 		718F073F17A85543001FD560 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		718F074117A86DE9001FD560 /* Flower_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flower_color.png; sourceTree = "<group>"; };
 		718F074617A9AA80001FD560 /* Flower_color_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flower_color_.png; sourceTree = "<group>"; };
@@ -630,6 +636,7 @@
 		718AAD021794666200AFE6DB /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				718E5D1217B2E5F500CBF031 /* Identifications */,
 				71699ED117B2C16500BEDF13 /* test320.png */,
 				718F074417A9AA80001FD560 /* Components */,
 				718F074117A86DE9001FD560 /* Flower_color.png */,
@@ -671,6 +678,16 @@
 				5B64934317B18D3600D8C1C7 /* InterpretationDiscussionPostViewController.xib */,
 			);
 			name = InterpretationViewControllers;
+			sourceTree = "<group>";
+		};
+		718E5D1217B2E5F500CBF031 /* Identifications */ = {
+			isa = PBXGroup;
+			children = (
+				718E5D2317B2E80700CBF031 /* japanese_maple.png */,
+				718E5D1C17B2E72600CBF031 /* red_maple.png */,
+				718E5D1D17B2E72600CBF031 /* red_maple2.png */,
+			);
+			path = Identifications;
 			sourceTree = "<group>";
 		};
 		718F074417A9AA80001FD560 /* Components */ = {
@@ -949,6 +966,9 @@
 				71699ECF17B2BA5300BEDF13 /* Flower_color-White.png in Resources */,
 				71699ED017B2BA5300BEDF13 /* Flower_color-Yellow.png in Resources */,
 				71699ED217B2C16500BEDF13 /* test320.png in Resources */,
+				718E5D1F17B2E72600CBF031 /* red_maple.png in Resources */,
+				718E5D2017B2E72600CBF031 /* red_maple2.png in Resources */,
+				718E5D2417B2E80700CBF031 /* japanese_maple.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

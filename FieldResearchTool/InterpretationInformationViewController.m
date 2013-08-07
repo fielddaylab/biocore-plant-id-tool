@@ -73,15 +73,21 @@
     webView.scrollView.scrollEnabled = NO;
     [scrollView addSubview:webView];
     
-    scrollGallery.contentSize = CGSizeMake(1600, PICTURE_OFFSET);//1600 = 320*5 change later to how many pics we have.
+    NSMutableArray *mediaArray = [NSMutableArray arrayWithArray:[identification.media allObjects]];
+    
+    scrollGallery.contentSize = CGSizeMake(320 * [mediaArray count], PICTURE_OFFSET);//1600 = 320*5 change later to how many pics we have.
     scrollGallery.pagingEnabled = YES;
     
-    for (int i = 0; i < 5; i++) {
-        UIImageView *imageGallery = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Flower_color.png"]];
+    for (int i = 0; i < [mediaArray count]; i++) {
+
+        Media *mediaObject = mediaArray[i];
+        
+        UIImageView *imageGallery = [[UIImageView alloc] initWithImage:[UIImage imageNamed:mediaObject.mediaURL]];
         [imageGallery setFrame:CGRectMake(i * 320, 0, 320, PICTURE_OFFSET)];
         
         [scrollGallery addSubview:imageGallery];
     }
+    
     [self.view addSubview:scrollGallery];
 
 }
