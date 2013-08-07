@@ -15,7 +15,7 @@
 
 @interface InterpretationInformationViewController (){
     NSMutableArray *identificationInformation;
-    UIImageView *identificationGallery;
+    UIScrollView *scrollGallery;
     UIScrollView *scrollView;
     UIWebView *webView;
 }
@@ -24,19 +24,16 @@
 
 @implementation InterpretationInformationViewController
 @synthesize identification;
-@synthesize table;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     identificationInformation = [[NSMutableArray alloc]init];
     
-    identificationGallery = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320.0f, PICTURE_OFFSET)];//252 because tableview in xib is fixed at that. (for now)
+    scrollGallery = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320.0f, PICTURE_OFFSET)];
     
     webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, 252)];
-
     
-    scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, PICTURE_OFFSET, 320, [UIScreen mainScreen].bounds.size.height - 252 - 64)];//Will need to do javascript stuffs to make webview better.
     
     //NSLog(@"%@",identification.title);
 
@@ -49,18 +46,10 @@
     
     [[AppModel sharedAppModel] getProjectIdentificationDiscussionsWithHandler:@selector(handleDiscussionRetrieval:) target:self];
     
-    NSMutableArray *arr = [[NSMutableArray alloc]initWithObjects:[UIImage imageNamed:@"MAX_Height_of_stem"], [UIImage imageNamed:@"MAX_length_of_flower_cluster"], nil];
-    
-    //[identificationGallery initWithImage:[UIImage imageNamed:@"page.png"]];
-    identificationGallery.animationImages = arr;
-    identificationGallery.animationDuration = 10.0f;
-    //identificationGallery.image = [UIImage imageNamed:@"MAX_Height_of_stem"];
-    [self.view addSubview:identificationGallery];
-    [identificationGallery startAnimating];
-    
     //Placeholder for now. Aligns text correctly, and we'll need for later Identifying
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"UPL" style:UIBarButtonItemStyleDone target:self action:nil];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:nil];
     
+    //Create navigation bar titles
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44)];
     label.backgroundColor = [UIColor clearColor];
     label.numberOfLines = 2;
@@ -69,10 +58,9 @@
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = [UIColor whiteColor];
     label.text = [NSString stringWithFormat:@"%@\n%@", identification.alternateName, identification.title];
-    
     self.navigationItem.titleView = label;
-        
-    scrollView.contentSize = CGSizeMake(320, 2000);
+    
+    scrollView.contentSize = CGSizeMake(320, 2000);//2000 is arbitrary here. don't do that later >.>
     
     NSString *url=@"http://www.google.com";
     NSURL *nsurl=[NSURL URLWithString:url];
@@ -81,32 +69,48 @@
     webView.scrollView.scrollEnabled = NO;
     [scrollView addSubview:webView];
     
+    scrollGallery.contentSize = CGSizeMake(1600, PICTURE_OFFSET);//1600 = 320*5 change later to how many pics we have.
+    scrollGallery.pagingEnabled = YES;
+    
+    for (int i = 0; i < 5; i++) {
+        UIImageView *imageGallery = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Flower_color.png"]];
+        [imageGallery setFrame:CGRectMake(i * 320, 0, 320, PICTURE_OFFSET)];
+        
+        [scrollGallery addSubview:imageGallery];
+    }
+    [self.view addSubview:scrollGallery];
 
 }
 
-
-- (void) method0{
-    NSLog(@"METHOD WAS CLICKED: 0");
+- (void) pushDiscussionViewController:(id) sender{
+    //Create new button to get the tag of the tapped button.
+    UIButton *button = (UIButton *) sender;
+    
+    InterpretationDiscussionViewController *discussionViewController = [[InterpretationDiscussionViewController alloc] initWithNibName:@"InterpretationDiscussionViewController" bundle:nil];
+    
+    discussionViewController.discussion = [identificationInformation objectAtIndex:button.tag];
+    
+    discussionViewController.identification = identification;
+    
+    [self.navigationController pushViewController:discussionViewController animated:YES];
 }
-- (void) method2{
-    NSLog(@"METHOD WAS CLICKED: 2");
-}
-- (void) method1{
-    NSLog(@"METHOD WAS CLICKED: 1");
-}
-
 
 - (void) viewDidAppear:(BOOL)animated
 {
+    ProjectIdentificationDiscussion *discussion;
+    
     for (int i = 0; i < identificationInformation.count; i++) {
-        ProjectIdentificationDiscussion *discussion = [identificationInformation objectAtIndex:i];
+        
+        discussion = [identificationInformation objectAtIndex:i];
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [button setTitle:discussion.title forState:UIControlStateNormal];
+        [button setTag:i];
         [button setFrame:CGRectMake(0, webView.bounds.size.height + 44*i, 320, 44)];//change webView bounds to some height determined by delegate javascript document.height kind of thing?
         [button addTarget:self
-                   action:NSSelectorFromString([NSString stringWithFormat:@"method%d",i])
+                   action:@selector(pushDiscussionViewController:)
          forControlEvents:UIControlEventTouchUpInside];
+        
         [scrollView addSubview:button];
         
     }
@@ -119,56 +123,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - table view delegate methods
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [identificationInformation count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if(cell == nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
-    
-    ProjectIdentificationDiscussion *discussion = [identificationInformation objectAtIndex:indexPath.row];
-    
-    switch (indexPath.section) {
-        case 0:
-            cell.textLabel.text = discussion.title;
-            break;
-        case 1:
-            cell.textLabel.text = discussion.title;
-            break;
-        case 2:
-            cell.textLabel.text = discussion.title;
-            break;
-            
-        default:
-            break;
-    }
-    
-    
-    
-    return cell;
-    
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    InterpretationDiscussionViewController *discussionViewController = [[InterpretationDiscussionViewController alloc] initWithNibName:@"InterpretationDiscussionViewController" bundle:nil];
-    ProjectIdentificationDiscussion *discussion = [identificationInformation objectAtIndex:indexPath.row];
-    discussionViewController.discussion = discussion;
-    discussionViewController.identification = identification;
-    [self.navigationController pushViewController:discussionViewController animated:YES];
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-}
 
 #pragma mark handle the discussion retrieval
 -(void)handleDiscussionRetrieval:(NSArray *)discussions{
     identificationInformation = [NSMutableArray arrayWithArray:discussions];
-    [self.table reloadData];
 }
 
 
