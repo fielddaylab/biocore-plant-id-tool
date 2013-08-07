@@ -35,6 +35,8 @@
     webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, 252)];
     
     
+    scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, PICTURE_OFFSET, 320, [UIScreen mainScreen].bounds.size.height - 252 - 64)];//Will need to do javascript stuffs to make webview better.
+    
     //NSLog(@"%@",identification.title);
 
     return self;
