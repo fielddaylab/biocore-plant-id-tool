@@ -24,7 +24,6 @@
 		5B1FBA3517B2BB6F006BD5BA /* tutorialPhoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B1FBA3417B2BB6F006BD5BA /* tutorialPhoto.jpg */; };
 		5B1FBA3717B2BF7F006BD5BA /* 86-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B1FBA3617B2BF7F006BD5BA /* 86-camera.png */; };
 		5B4D2DF417AC386A0071304F /* ProjectIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF317AC386A0071304F /* ProjectIdentification.m */; };
->>>>>>> 71ba7b7919936cdba0f0b4d8f466472454cd546a
 		5B4D2DF717AC3C5B0071304F /* ProjectIdentificationDiscussion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF617AC3C5B0071304F /* ProjectIdentificationDiscussion.m */; };
 		5B4D2DFA17AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF917AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m */; };
 		5B4D2DFD17AC49920071304F /* UserObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DFC17AC49920071304F /* UserObservation.m */; };
@@ -209,7 +208,6 @@
 		5B1FBA3617B2BF7F006BD5BA /* 86-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "86-camera.png"; path = "FieldResearchTool/Assets/86-camera.png"; sourceTree = SOURCE_ROOT; };
 		5B4D2DF217AC386A0071304F /* ProjectIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentification.h; sourceTree = "<group>"; };
 		5B4D2DF317AC386A0071304F /* ProjectIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentification.m; sourceTree = "<group>"; };
->>>>>>> 71ba7b7919936cdba0f0b4d8f466472454cd546a
 		5B4D2DF517AC3C5B0071304F /* ProjectIdentificationDiscussion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentificationDiscussion.h; sourceTree = "<group>"; };
 		5B4D2DF617AC3C5B0071304F /* ProjectIdentificationDiscussion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentificationDiscussion.m; sourceTree = "<group>"; };
 		5B4D2DF817AC3C6C0071304F /* ProjectIdentificationDiscussionPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentificationDiscussionPost.h; sourceTree = "<group>"; };
