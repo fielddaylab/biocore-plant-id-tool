@@ -13,7 +13,6 @@
 
 @interface InterpretationInformationViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UITableView *table;
 @property (nonatomic, strong) ProjectIdentification *identification;
 
 @end
