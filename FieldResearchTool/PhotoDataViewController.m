@@ -16,8 +16,10 @@
 
 @interface PhotoDataViewController ()<SaveObservationDelegate>{
     UIImageView *showPictureView;
+    UIImageView *cameraImageView;
     UIView *recorderView;
     UIButton *retakeButton;
+    UIButton *redXButton;
 }
 @end
 
@@ -40,36 +42,60 @@
     [super viewDidLoad];
     
     //Still has to be resized here because it's parent changes when the PhotoVC is pushed on.
+    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
     showPictureView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * .75)];
+    showPictureView.backgroundColor = [UIColor blackColor];
     
-    BOOL takeNewPic = YES;
     if(prevData){
-        takeNewPic = NO;
         //this will change once the media manager is implemented
         Media *media = prevData.media;
         NSString *path = media.mediaURL;
         UIImage *image = [UIImage imageWithContentsOfFile:path];
         showPictureView.image = image;
+        showPictureView.alpha = 1;
+    }
+    else{
+        UIImage *image = [UIImage imageNamed:@"tutorialPhoto.jpg"];
+        showPictureView.image = image;
+        showPictureView.alpha = .3f;
     }
 
     [self.view addSubview:showPictureView];
     
-    //May not be what we want. What is the one where aspect ration is kept and black border is filled in empty space?
-    //showPictureView.contentMode = UIViewContentModeScaleAspectFit;
+    //NSLog(@"X: %f, Y: %f, Width: %f, Height: %f", self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+    
+    UIImage *redX = [UIImage imageNamed:@"60-xRED.png"];
+    redXButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - redX.size.width, 310.0f - redX.size.height, redX.size.width, redX.size.height)];
+    [redXButton setImage:redX forState:UIControlStateNormal];
+    [redXButton addTarget:self
+                   action:@selector(redXPressed)
+         forControlEvents:UIControlEventTouchUpInside];
     
     retakeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     retakeButton.frame = showPictureView.bounds;
     if (newObservation) {
         [retakeButton addTarget:self action:@selector(startRecord) forControlEvents:UIControlEventTouchUpInside];
-        [retakeButton setTitle:@"Tap to retake" forState:UIControlStateNormal];
+    }
+    
+    UIImage *cameraImage = [UIImage imageNamed:@"86-camera.png"];
+    cameraImageView = [[UIImageView alloc] initWithImage:cameraImage];
+    cameraImageView.frame = CGRectMake(160 - (cameraImage.size.width / 2.0f), 148, cameraImage.size.width, cameraImage.size.height);
+    
+    if(!prevData){
+        cameraImageView.hidden = NO;
+        redXButton.hidden = YES;
+        retakeButton.enabled = YES;
+    }
+    else{
+        cameraImageView.hidden = YES;
+        redXButton.hidden = NO;
+        retakeButton.enabled = NO;
     }
 
+    [self.view addSubview:cameraImageView];
+    [self.view addSubview:redXButton];
     [self.view addSubview:retakeButton];
-
-    if (takeNewPic) {
-        [self startRecord];
-    }
-
 }
 
 
@@ -100,16 +126,27 @@
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     showPictureView.image = chosenImage;
+    showPictureView.alpha = 1;
+    cameraImageView.hidden = YES;
+    
+    redXButton.hidden = NO;
+    retakeButton.enabled = NO;
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    if(showPictureView.image == NULL){
-        NSLog(@"No photo :(");
-        [self.navigationController popViewControllerAnimated:YES];
-    }
     [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+#pragma mark red x pressed
+-(void)redXPressed{
+    redXButton.hidden = YES;
+    retakeButton.enabled = YES;
+    cameraImageView.hidden = NO;
+    UIImage *image = [UIImage imageNamed:@"tutorialPhoto.jpg"];
+    showPictureView.image = image;
+    showPictureView.alpha = .3f;
 }
 
 

@@ -82,6 +82,7 @@
 {
     [super viewDidLoad];
     
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(popToComponentScreen)];
     
     float navAndStatusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height + [self.navigationController navigationBar].frame.size.height;
     
@@ -245,6 +246,10 @@
                                         repeats:YES];
     }
     
+}
+
+-(void)popToComponentScreen{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
