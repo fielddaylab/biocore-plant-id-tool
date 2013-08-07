@@ -134,7 +134,7 @@
 -(void)popToObservationScreen{
     if (requiredFieldsFilledOut == requiredComponents.count) {
         if (newObservation) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Quit" message:@"Are you sure you want to quit? You won't be able to edit your data once you exit." delegate:self cancelButtonTitle:@"I'm sure" otherButtonTitles:@"Nevermind", nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Save and Lock" message:@"Once you save this observation it cannot be changed." delegate:self cancelButtonTitle:@"Save" otherButtonTitles:@"Keep Editing", nil];
             alert.tag = 0;
             [alert show];
         }
