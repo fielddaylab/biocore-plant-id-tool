@@ -83,10 +83,6 @@
     scrollGallery.contentSize = CGSizeMake(320 * [mediaArray count], PICTURE_OFFSET);
     scrollGallery.pagingEnabled = YES;
     
-    NSLog(@"mediaArray COUNT: %d", [mediaArray count]);
-    
-        
-
         for (int i = 0; i < [mediaArray count]; i++) {
             
             Media *mediaObject = mediaArray[i];
