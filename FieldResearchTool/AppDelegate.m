@@ -337,8 +337,8 @@
         }
         else{
             nonComponents++;
-            NSString *helpString = @"Components go to the right of this column FORMAT: <Component Name> DASH <Component Possibility>, <Component Possibility>, .... LEFT CURLY BRACE isRequired RIGHT CURLY BRACE LEFT CURLY BRACE <Observation Type> RIGHT CURLY BRACE LEFT CURLY BRACE <Data Type> RIGHT CURLY BRACE";
-            if(i > 2 && ![self stringMatchesRegex:wordsSeperatedByTabs[i] regex:helpString]){
+            NSString *helpString = @"Components go to the right of this column FORMAT: <Component Name> DASH <Component Possibility>, <Component Possibility>, .... LEFT CURLY BRACE isRequired RIGHT CURLY BRACE LEFT CURLY BRACE <Observation Type> RIGHT CURLY BRACE LEFT CURLY BRACE <Data Type> RIGHT CURLY BRACE LEFT CURLY BRACE isFilterable RIGHT CURLY BRACE";
+            if(i > 3 && ![self stringMatchesRegex:wordsSeperatedByTabs[i] regex:helpString]){
                 ProjectIdentificationDiscussion *discussion = (ProjectIdentificationDiscussion *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationDiscussion" inManagedObjectContext:[self managedObjectContext]];
                 discussion.created = [NSDate date];
                 discussion.updated = [NSDate date];

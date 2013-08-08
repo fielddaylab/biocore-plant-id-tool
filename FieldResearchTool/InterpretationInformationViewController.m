@@ -32,7 +32,7 @@
     
     scrollGallery = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320.0f, PICTURE_OFFSET)];
     
-    webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, 252)];
+    webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height - PICTURE_OFFSET - 64)];
     
     
     scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, PICTURE_OFFSET, 320, [UIScreen mainScreen].bounds.size.height - PICTURE_OFFSET - 64)];//Will need to do javascript stuffs to make webview better.
