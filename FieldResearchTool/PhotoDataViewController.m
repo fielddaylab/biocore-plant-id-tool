@@ -40,12 +40,10 @@
 - (void) viewDidLoad{
     
     [super viewDidLoad];
-    
-    //Still has to be resized here because it's parent changes when the PhotoVC is pushed on.
-    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
-    showPictureView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * .75)];
+    showPictureView = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.origin.x, [UIScreen mainScreen].bounds.origin.y - 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     showPictureView.backgroundColor = [UIColor blackColor];
+    //showPictureView.contentMode = UIViewContentModeScaleAspectFit;
     
     if(prevData){
         //this will change once the media manager is implemented
@@ -77,7 +75,7 @@
     if (newObservation) {
         [retakeButton addTarget:self action:@selector(startRecord) forControlEvents:UIControlEventTouchUpInside];
     }
-    
+
     UIImage *cameraImage = [UIImage imageNamed:@"86-camera.png"];
     cameraImageView = [[UIImageView alloc] initWithImage:cameraImage];
     cameraImageView.frame = CGRectMake(160 - (cameraImage.size.width / 2.0f), 148, cameraImage.size.width, cameraImage.size.height);
@@ -98,6 +96,16 @@
     [self.view addSubview:retakeButton];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBar.alpha = .5f;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    self.navigationController.navigationBar.alpha = 1.0f;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+}
+
 
 -(void)startRecord{
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
@@ -114,7 +122,7 @@
     
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
-    picker.allowsEditing = YES;
+    picker.allowsEditing = NO;
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     
     [self presentViewController:picker animated:YES completion:NULL];
@@ -124,7 +132,8 @@
 #pragma mark - Image Picker Controller Functions
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
-    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+//    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     showPictureView.image = chosenImage;
     showPictureView.alpha = 1;
     cameraImageView.hidden = YES;

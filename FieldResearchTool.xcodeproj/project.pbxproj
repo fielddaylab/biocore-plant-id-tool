@@ -27,6 +27,7 @@
 		5B4D2DF717AC3C5B0071304F /* ProjectIdentificationDiscussion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF617AC3C5B0071304F /* ProjectIdentificationDiscussion.m */; };
 		5B4D2DFA17AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF917AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m */; };
 		5B4D2DFD17AC49920071304F /* UserObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DFC17AC49920071304F /* UserObservation.m */; };
+		5B5D5A2417B4187A00187D12 /* iPhoneTutorialPhoto.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 5B5D5A2317B4187A00187D12 /* iPhoneTutorialPhoto.JPG */; };
 		5B64933417B16DD900D8C1C7 /* Leaf_venation-Branched.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B64933217B16DD900D8C1C7 /* Leaf_venation-Branched.png */; };
 		5B64933517B16DD900D8C1C7 /* Leaf_venation-Parallel.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B64933317B16DD900D8C1C7 /* Leaf_venation-Parallel.png */; };
 		5B64933F17B17F2500D8C1C7 /* InterpretationDiscussionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B64933D17B17F2500D8C1C7 /* InterpretationDiscussionViewController.m */; };
@@ -119,17 +120,6 @@
 		71699EB917B17CA800BEDF13 /* Leaf_shape.png in Resources */ = {isa = PBXBuildFile; fileRef = 71699EB417B17CA800BEDF13 /* Leaf_shape.png */; };
 		71699EBA17B17CA800BEDF13 /* Leaf_type.png in Resources */ = {isa = PBXBuildFile; fileRef = 71699EB517B17CA800BEDF13 /* Leaf_type.png */; };
 		71699EBB17B17CA800BEDF13 /* Leaf_venation.png in Resources */ = {isa = PBXBuildFile; fileRef = 71699EB617B17CA800BEDF13 /* Leaf_venation.png */; };
-		71699EC717B2BA5300BEDF13 /* Flower_color-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = 71699EBD17B2BA5300BEDF13 /* Flower_color-Black.png */; };
-		71699EC817B2BA5300BEDF13 /* Flower_color-Blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 71699EBE17B2BA5300BEDF13 /* Flower_color-Blue.png */; };
-		71699EC917B2BA5300BEDF13 /* Flower_color-Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 71699EBF17B2BA5300BEDF13 /* Flower_color-Green.png */; };
-		71699ECA17B2BA5300BEDF13 /* Flower_color-Indigo.png in Resources */ = {isa = PBXBuildFile; fileRef = 71699EC017B2BA5300BEDF13 /* Flower_color-Indigo.png */; };
-		71699ECB17B2BA5300BEDF13 /* Flower_color-Orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 71699EC117B2BA5300BEDF13 /* Flower_color-Orange.png */; };
-		71699ECC17B2BA5300BEDF13 /* Flower_color-Pink.png in Resources */ = {isa = PBXBuildFile; fileRef = 71699EC217B2BA5300BEDF13 /* Flower_color-Pink.png */; };
-		71699ECD17B2BA5300BEDF13 /* Flower_color-Purple.png in Resources */ = {isa = PBXBuildFile; fileRef = 71699EC317B2BA5300BEDF13 /* Flower_color-Purple.png */; };
-		71699ECE17B2BA5300BEDF13 /* Flower_color-Red.png in Resources */ = {isa = PBXBuildFile; fileRef = 71699EC417B2BA5300BEDF13 /* Flower_color-Red.png */; };
-		71699ECF17B2BA5300BEDF13 /* Flower_color-White.png in Resources */ = {isa = PBXBuildFile; fileRef = 71699EC517B2BA5300BEDF13 /* Flower_color-White.png */; };
-		71699ED017B2BA5300BEDF13 /* Flower_color-Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 71699EC617B2BA5300BEDF13 /* Flower_color-Yellow.png */; };
-		71699ED217B2C16500BEDF13 /* test320.png in Resources */ = {isa = PBXBuildFile; fileRef = 71699ED117B2C16500BEDF13 /* test320.png */; };
 		7174127917A19CDE003295B6 /* ObservationContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174127717A19CDD003295B6 /* ObservationContainerViewController.m */; };
 		7174127A17A19CDE003295B6 /* ObservationContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7174127817A19CDD003295B6 /* ObservationContainerViewController.xib */; };
 		717AF34E17AC0A3400DA2077 /* InterpretationInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717AF34C17AC0A3400DA2077 /* InterpretationInformationViewController.m */; };
@@ -210,6 +200,7 @@
 		5B4D2DF917AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentificationDiscussionPost.m; sourceTree = "<group>"; };
 		5B4D2DFB17AC49920071304F /* UserObservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservation.h; sourceTree = "<group>"; };
 		5B4D2DFC17AC49920071304F /* UserObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservation.m; sourceTree = "<group>"; };
+		5B5D5A2317B4187A00187D12 /* iPhoneTutorialPhoto.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPhoneTutorialPhoto.JPG; sourceTree = "<group>"; };
 		5B64933217B16DD900D8C1C7 /* Leaf_venation-Branched.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_venation-Branched.png"; sourceTree = "<group>"; };
 		5B64933317B16DD900D8C1C7 /* Leaf_venation-Parallel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_venation-Parallel.png"; sourceTree = "<group>"; };
 		5B64933C17B17F2500D8C1C7 /* InterpretationDiscussionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterpretationDiscussionViewController.h; sourceTree = "<group>"; };
@@ -330,16 +321,6 @@
 		71699EB417B17CA800BEDF13 /* Leaf_shape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_shape.png; sourceTree = "<group>"; };
 		71699EB517B17CA800BEDF13 /* Leaf_type.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_type.png; sourceTree = "<group>"; };
 		71699EB617B17CA800BEDF13 /* Leaf_venation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_venation.png; sourceTree = "<group>"; };
-		71699EBD17B2BA5300BEDF13 /* Flower_color-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-Black.png"; sourceTree = "<group>"; };
-		71699EBE17B2BA5300BEDF13 /* Flower_color-Blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-Blue.png"; sourceTree = "<group>"; };
-		71699EBF17B2BA5300BEDF13 /* Flower_color-Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-Green.png"; sourceTree = "<group>"; };
-		71699EC017B2BA5300BEDF13 /* Flower_color-Indigo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-Indigo.png"; sourceTree = "<group>"; };
-		71699EC117B2BA5300BEDF13 /* Flower_color-Orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-Orange.png"; sourceTree = "<group>"; };
-		71699EC217B2BA5300BEDF13 /* Flower_color-Pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-Pink.png"; sourceTree = "<group>"; };
-		71699EC317B2BA5300BEDF13 /* Flower_color-Purple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-Purple.png"; sourceTree = "<group>"; };
-		71699EC417B2BA5300BEDF13 /* Flower_color-Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-Red.png"; sourceTree = "<group>"; };
-		71699EC517B2BA5300BEDF13 /* Flower_color-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-White.png"; sourceTree = "<group>"; };
-		71699EC617B2BA5300BEDF13 /* Flower_color-Yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-Yellow.png"; sourceTree = "<group>"; };
 		71699ED117B2C16500BEDF13 /* test320.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test320.png; sourceTree = "<group>"; };
 		7174127617A19CDD003295B6 /* ObservationContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationContainerViewController.h; sourceTree = "<group>"; };
 		7174127717A19CDD003295B6 /* ObservationContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObservationContainerViewController.m; sourceTree = "<group>"; };
@@ -654,6 +635,7 @@
 		718AAD021794666200AFE6DB /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				5B5D5A2317B4187A00187D12 /* iPhoneTutorialPhoto.JPG */,
 				71699ED117B2C16500BEDF13 /* test320.png */,
 				718F074417A9AA80001FD560 /* Components */,
 				718F074117A86DE9001FD560 /* Flower_color.png */,
@@ -976,6 +958,7 @@
 				5B1FBA3317B2BA05006BD5BA /* Flower_color-Yellow.png in Resources */,
 				5B1FBA3517B2BB6F006BD5BA /* tutorialPhoto.jpg in Resources */,
 				5B1FBA3717B2BF7F006BD5BA /* 86-camera.png in Resources */,
+				5B5D5A2417B4187A00187D12 /* iPhoneTutorialPhoto.JPG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

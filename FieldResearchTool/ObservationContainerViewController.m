@@ -84,17 +84,12 @@
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(popToComponentScreen)];
     
-    float navAndStatusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height + [self.navigationController navigationBar].frame.size.height;
-    
     saveButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData:)];
     [self.navigationItem setRightBarButtonItem:saveButton];
     
+    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height * (2.0f/3.0f));
     
-    CGRect frame = CGRectMake(0, 0, self.view.bounds.size.width, (self.view.bounds.size.height *.75));
-    
-    
-    NSLog(@"\nUIScreen bounds height %f - \nUIScreen bounds width %f - \nnavAndStatusBarHeight %f - \nframe %@ -\nFrame Height %f -\nBounds %@ -",[UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, navAndStatusBarHeight, NSStringFromCGRect(frame), self.view.frame.size.height, NSStringFromCGRect(self.view.bounds));
-    
+    //NSLog(@"Frame X: %f Frame Y: %f Frame Width: %f Frame Height: %f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
     
     
     switch ([projectComponent.observationDataType intValue]) {
@@ -145,33 +140,10 @@
         default:
             break;
     }
-    if(dataViewControllerToDisplay){
-        
-        self.saveObservationDelegate = (id)dataViewControllerToDisplay;
-        [self addChildViewController:dataViewControllerToDisplay];
-        [self didMoveToParentViewController:dataViewControllerToDisplay];
-        [self.view addSubview:dataViewControllerToDisplay.view];
-        
-    }
-    
-    //seems that the second frame is not folling the same conventions as the top.
-    //It doesn't seem to be 'connected'. 504 is also the number that the frame is following, suggesting that somewhere down the chain 568 (length of long ipod) is subtracting nav&status bar heights. I tried eliminating the nibs but it did nothing.
-    CGRect frame2;
-    
-    //This is a long ipod
-    if([UIScreen mainScreen].bounds.size.height - navAndStatusBarHeight == self.view.frame.size.height){
-        
-        frame2 = CGRectMake(0, self.view.frame.size.height * .75f - navAndStatusBarHeight, self.view.bounds.size.width, (self.view.bounds.size.height * .25f) + navAndStatusBarHeight);
-        NSLog(@"Ob Container Long %f and Main %f", self.view.frame.size.height, [UIScreen mainScreen].bounds.size.height);
-    }
-    //This is a normal ipod
-    else{
-        frame2 = CGRectMake(0, ([UIScreen mainScreen].bounds.size.height - navAndStatusBarHeight)* .75f, self.view.bounds.size.width, (self.view.bounds.size.height * .25f) + navAndStatusBarHeight+4);//+4 for rounding
-    }
 
     
-    //NSLog(@"\nUIScreen bounds height2 %f - \nUIScreen bounds width2 %f - \nnavAndStatusBarHeight2 %f - \nframe2 %@-\nFrame Height2 %f -",[UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, navAndStatusBarHeight, NSStringFromCGRect(frame2), self.view.frame.size.height);
-    
+    CGRect frame2 = CGRectMake(0, frame.size.height, self.view.frame.size.width, self.view.frame.size.height * (1.0f/3.0f));
+    //NSLog(@"Frame2 X: %f Frame2 Y: %f Frame2 Width: %f Frame2 Height: %f", frame2.origin.x, frame2.origin.y, frame2.size.width, frame2.size.height);
     
     switch ([projectComponent.observationJudgementType intValue]) {
         case JUDGEMENT_NUMBER:{
@@ -205,7 +177,6 @@
         case JUDGEMENT_ENUMERATOR:{
             EnumJudgementViewController *enumJudgementViewController = [[EnumJudgementViewController alloc]init];
             enumJudgementViewController.view.frame = frame2;
-            enumJudgementViewController.view.backgroundColor = [UIColor lightGrayColor];
             enumJudgementViewController.prevData = prevData;
             enumJudgementViewController.projectComponent = projectComponent;
             judgementViewControllerToDisplay = enumJudgementViewController;
@@ -216,12 +187,23 @@
             break;
     }
     
+    if(dataViewControllerToDisplay){
+        self.saveObservationDelegate = (id)dataViewControllerToDisplay;
+        [self addChildViewController:dataViewControllerToDisplay];
+        [self didMoveToParentViewController:dataViewControllerToDisplay];
+        [self.view addSubview:dataViewControllerToDisplay.view];
+    }
+    
     if(judgementViewControllerToDisplay){
         self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
         [self addChildViewController:judgementViewControllerToDisplay];
         [self didMoveToParentViewController:judgementViewControllerToDisplay];
         [self.view addSubview:judgementViewControllerToDisplay.view];
     }
+    
+
+    
+
     
     //this case will go away once the view controllers are compressed into one view
     if([dataViewControllerToDisplay isKindOfClass:[NumberDataViewController class]] && [judgementViewControllerToDisplay isKindOfClass:[NumberJudgementViewController class]]){
