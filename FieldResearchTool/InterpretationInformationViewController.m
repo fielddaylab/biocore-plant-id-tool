@@ -50,7 +50,7 @@
     webView.frame = CGRectMake(webView.frame.origin.x, webView.frame.origin.y, webView.frame.size.width, webViewHeight);
     scrollView.contentSize = CGSizeMake(320, webView.frame.size.height + [self loadButtons]);
     [scrollView addSubview:webView];
-
+    
 }
 
 - (void)viewDidLoad
@@ -72,7 +72,7 @@
     label.textColor = [UIColor whiteColor];
     label.text = [NSString stringWithFormat:@"%@\n%@", identification.alternateName, identification.title];
     self.navigationItem.titleView = label;
-        
+    
     webView.delegate = self;
     NSString *myHTML = [NSString stringWithFormat:@"<html><div id='Description'>%@</div><body></body></html>", identification.identificationDescription];
     webView.scrollView.scrollEnabled = NO;
@@ -83,15 +83,27 @@
     scrollGallery.contentSize = CGSizeMake(320 * [mediaArray count], PICTURE_OFFSET);
     scrollGallery.pagingEnabled = YES;
     
-    for (int i = 0; i < [mediaArray count]; i++) {
+    NSLog(@"mediaArray COUNT: %d", [mediaArray count]);
+    
         
-        Media *mediaObject = mediaArray[i];
-        
-        UIImageView *imageGallery = [[UIImageView alloc] initWithImage:[UIImage imageNamed:mediaObject.mediaURL]];
-        [imageGallery setFrame:CGRectMake(i * 320, 0, 320, PICTURE_OFFSET)];
-        
-        [scrollGallery addSubview:imageGallery];
-    }
+
+        for (int i = 0; i < [mediaArray count]; i++) {
+            
+            Media *mediaObject = mediaArray[i];
+            
+            UIImageView *imageGallery;
+            
+            if ([mediaObject.mediaURL isEqualToString:@""]){
+                imageGallery = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"defaultIdentificationNoPhoto.png"]];
+                [imageGallery setFrame:CGRectMake(i * 320, 0, 320, PICTURE_OFFSET)];
+            }
+            else{
+                imageGallery = [[UIImageView alloc] initWithImage:[UIImage imageNamed:mediaObject.mediaURL]];
+                [imageGallery setFrame:CGRectMake(i * 320, 0, 320, PICTURE_OFFSET)];
+            }
+            [scrollGallery addSubview:imageGallery];
+        }
+
     
     [self.view addSubview:scrollGallery];
     

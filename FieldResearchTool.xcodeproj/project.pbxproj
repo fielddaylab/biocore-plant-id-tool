@@ -159,6 +159,7 @@
 		71FF69DB1795C08600E2B411 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FF69DA1795C08600E2B411 /* AVFoundation.framework */; };
 		71FF69DD1795DD8000E2B411 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FF69DC1795DD8000E2B411 /* ImageIO.framework */; };
 		71FF69DF1795DDA900E2B411 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FF69DE1795DDA900E2B411 /* CoreMedia.framework */; };
+		71FF817117B436F800552EF8 /* defaultIdentificationNoPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 71FF817017B436F800552EF8 /* defaultIdentificationNoPhoto.png */; };
 		AAAC4F32178F1767001AB1D8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC4F31178F1767001AB1D8 /* UIKit.framework */; };
 		AAAC4F34178F1767001AB1D8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC4F33178F1767001AB1D8 /* Foundation.framework */; };
 		AAAC4F36178F1767001AB1D8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC4F35178F1767001AB1D8 /* CoreGraphics.framework */; };
@@ -377,6 +378,7 @@
 		71FF69DA1795C08600E2B411 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		71FF69DC1795DD8000E2B411 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		71FF69DE1795DDA900E2B411 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		71FF817017B436F800552EF8 /* defaultIdentificationNoPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultIdentificationNoPhoto.png; sourceTree = "<group>"; };
 		AAAC4F2E178F1767001AB1D8 /* FieldResearchTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FieldResearchTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAC4F31178F1767001AB1D8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AAAC4F33178F1767001AB1D8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -737,6 +739,7 @@
 		71AA564E17B2EFFC00EECCC5 /* Identifications */ = {
 			isa = PBXGroup;
 			children = (
+				71FF817017B436F800552EF8 /* defaultIdentificationNoPhoto.png */,
 				71AA564F17B2EFFC00EECCC5 /* japanese_maple.jpg */,
 				71AA565017B2EFFC00EECCC5 /* japanese_maple.png */,
 				71AA565117B2EFFC00EECCC5 /* red_maple.jpg */,
@@ -1005,6 +1008,7 @@
 				71AA56AD17B2EFFC00EECCC5 /* test.png in Resources */,
 				71AA56AE17B2EFFC00EECCC5 /* test320.png in Resources */,
 				71AA56AF17B2EFFC00EECCC5 /* tutorialPhoto.jpg in Resources */,
+				71FF817117B436F800552EF8 /* defaultIdentificationNoPhoto.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
