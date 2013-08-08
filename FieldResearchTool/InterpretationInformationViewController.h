@@ -11,7 +11,7 @@
 
 #import "ProjectIdentification.h"
 
-@interface InterpretationInformationViewController : UIViewController
+@interface InterpretationInformationViewController : UIViewController <UIWebViewDelegate>
 
 @property (nonatomic, strong) ProjectIdentification *identification;
 

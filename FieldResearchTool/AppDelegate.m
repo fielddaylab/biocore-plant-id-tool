@@ -286,8 +286,6 @@
             NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:projectComponentTitleString];
             
             //NSString *filePath = [[NSBundle mainBundle] pathForResource:projectComponentTitleString ofType:@"png"];
-
-
             
             NSMutableDictionary *mediaAttributes = [[NSMutableDictionary alloc]init];
             [mediaAttributes setObject:[NSDate date] forKey:@"created"];
@@ -339,8 +337,8 @@
         }
         else{
             nonComponents++;
-            NSString *helpString = @"Components go to the right of this column FORMAT: <Component Name> DASH <Component Possibility>, <Component Possibility>, .... LEFT CURLY BRACE isRequired RIGHT CURLY BRACE LEFT CURLY BRACE <Observation Type> RIGHT CURLY BRACE LEFT CURLY BRACE <Data Type> RIGHT CURLY BRACE";
-            if(i > 2 && ![self stringMatchesRegex:wordsSeperatedByTabs[i] regex:helpString]){
+            NSString *helpString = @"Components go to the right of this column FORMAT: <Component Name> DASH <Component Possibility>, <Component Possibility>, .... LEFT CURLY BRACE isRequired RIGHT CURLY BRACE LEFT CURLY BRACE <Observation Type> RIGHT CURLY BRACE LEFT CURLY BRACE <Data Type> RIGHT CURLY BRACE LEFT CURLY BRACE isFilterable RIGHT CURLY BRACE";
+            if(i > 3 && ![self stringMatchesRegex:wordsSeperatedByTabs[i] regex:helpString]){
                 ProjectIdentificationDiscussion *discussion = (ProjectIdentificationDiscussion *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationDiscussion" inManagedObjectContext:[self managedObjectContext]];
                 discussion.created = [NSDate date];
                 discussion.updated = [NSDate date];
@@ -365,6 +363,35 @@
         identification.score = [NSNumber numberWithFloat:0.0f];
         identification.numOfNils = [NSNumber numberWithInt:0];
         //add media array here
+        //make a media object for everything in there, and then make a set of those media objects, and assign it to identification.media
+        //Parse string separated by commas. make a media object with that string.
+        NSString *mediaToParse = components[3];
+        NSArray *mediaSubstrings = [mediaToParse componentsSeparatedByString:@", "];
+
+        //////////////////////////////MADE BY NICK////////////////////
+
+        NSMutableArray *mediaObjects = [[NSMutableArray alloc]init];
+        for (int j = 0; j < [mediaSubstrings count]; j++) {
+            //make a media object for every iteration through here
+            NSMutableDictionary *mediaAttributes = [[NSMutableDictionary alloc]init];
+            [mediaAttributes setObject:[NSDate date] forKey:@"created"];
+            [mediaAttributes setObject:[NSDate date] forKey:@"updated"];
+            [mediaAttributes setObject:[NSNumber numberWithInt:MEDIA_PHOTO] forKey:@"type"];
+            
+            //Get rid of spaces if editors puts them in >.>
+            NSString *mediaTitleString = mediaSubstrings[j];
+            NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
+            mediaTitleString = [[mediaTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
+            
+            [mediaAttributes setObject:mediaTitleString forKey:@"mediaURL"];//this isn't path for now, just name
+            
+            Media *mediaObject = [[AppModel sharedAppModel]createNewMediaWithAttributes:mediaAttributes];
+            [mediaObjects insertObject:mediaObject atIndex:j];
+        }
+        NSSet *mediaSet = [NSSet setWithArray:mediaObjects];
+        identification.media = mediaSet;
+        //////////////////////////////MADE BY NICK////////////////////
+
         identification.project = project;
         
         int numOfNonComponents = nonComponents;

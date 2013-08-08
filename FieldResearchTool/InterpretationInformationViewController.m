@@ -11,13 +11,14 @@
 #import "ProjectIdentificationDiscussion.h"
 #import "InterpretationDiscussionViewController.h"
 
-#define PICTURE_OFFSET 252
+#define PICTURE_OFFSET 240
 
 @interface InterpretationInformationViewController (){
     NSMutableArray *identificationInformation;
     UIScrollView *scrollGallery;
     UIScrollView *scrollView;
     UIWebView *webView;
+    int webViewHeight;
 }
 
 @end
@@ -32,14 +33,24 @@
     
     scrollGallery = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320.0f, PICTURE_OFFSET)];
     
-    webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, 252)];
+    webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height - PICTURE_OFFSET - 64)];
     
+    scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, PICTURE_OFFSET, 320, [UIScreen mainScreen].bounds.size.height - PICTURE_OFFSET - 64)];//Will need to do javascript stuffs to make webview better.
     
-    scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, PICTURE_OFFSET, 320, [UIScreen mainScreen].bounds.size.height - 252 - 64)];//Will need to do javascript stuffs to make webview better.
+    webViewHeight = 15;//initialize to 15 because there is a slight offset with HTML
     
-    //NSLog(@"%@",identification.title);
-
     return self;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webViewThatLoaded
+{
+    NSString *output = [webViewThatLoaded stringByEvaluatingJavaScriptFromString:@"document.getElementById(\"Description\").offsetHeight;"];
+    NSLog(@"height: %@", output);
+    webViewHeight += [output intValue];
+    webView.frame = CGRectMake(webView.frame.origin.x, webView.frame.origin.y, webView.frame.size.width, webViewHeight);
+    scrollView.contentSize = CGSizeMake(320, webView.frame.size.height + [self loadButtons]);
+    [scrollView addSubview:webView];
+
 }
 
 - (void)viewDidLoad
@@ -61,27 +72,29 @@
     label.textColor = [UIColor whiteColor];
     label.text = [NSString stringWithFormat:@"%@\n%@", identification.alternateName, identification.title];
     self.navigationItem.titleView = label;
-    
-    scrollView.contentSize = CGSizeMake(320, 2000);//2000 is arbitrary here. don't do that later >.>
-    
-    NSString *url=@"http://www.google.com";
-    NSURL *nsurl=[NSURL URLWithString:url];
-    NSURLRequest *nsrequest=[NSURLRequest requestWithURL:nsurl];
-    [webView loadRequest:nsrequest];
+        
+    webView.delegate = self;
+    NSString *myHTML = [NSString stringWithFormat:@"<html><div id='Description'>%@</div><body></body></html>", identification.identificationDescription];
     webView.scrollView.scrollEnabled = NO;
-    [scrollView addSubview:webView];
+    [webView loadHTMLString:myHTML baseURL:nil];
     
-    scrollGallery.contentSize = CGSizeMake(1600, PICTURE_OFFSET);//1600 = 320*5 change later to how many pics we have.
+    NSMutableArray *mediaArray = [NSMutableArray arrayWithArray:[identification.media allObjects]];
+    
+    scrollGallery.contentSize = CGSizeMake(320 * [mediaArray count], PICTURE_OFFSET);
     scrollGallery.pagingEnabled = YES;
     
-    for (int i = 0; i < 5; i++) {
-        UIImageView *imageGallery = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Flower_color.png"]];
+    for (int i = 0; i < [mediaArray count]; i++) {
+        
+        Media *mediaObject = mediaArray[i];
+        
+        UIImageView *imageGallery = [[UIImageView alloc] initWithImage:[UIImage imageNamed:mediaObject.mediaURL]];
         [imageGallery setFrame:CGRectMake(i * 320, 0, 320, PICTURE_OFFSET)];
         
         [scrollGallery addSubview:imageGallery];
     }
+    
     [self.view addSubview:scrollGallery];
-
+    
 }
 
 - (void) pushDiscussionViewController:(id) sender{
@@ -97,10 +110,9 @@
     [self.navigationController pushViewController:discussionViewController animated:YES];
 }
 
-- (void) viewDidAppear:(BOOL)animated
-{
+- (int)loadButtons{
     ProjectIdentificationDiscussion *discussion;
-    
+    int heightOfAllButtons = 0;
     for (int i = 0; i < identificationInformation.count; i++) {
         
         discussion = [identificationInformation objectAtIndex:i];
@@ -108,16 +120,18 @@
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [button setTitle:discussion.title forState:UIControlStateNormal];
         [button setTag:i];
-        [button setFrame:CGRectMake(0, webView.bounds.size.height + 44*i, 320, 44)];//change webView bounds to some height determined by delegate javascript document.height kind of thing?
+        [button setFrame:CGRectMake(0, webViewHeight + 44*i, 320, 44)];//change webView bounds to some height determined by delegate javascript document.height kind of thing?
         [button addTarget:self
                    action:@selector(pushDiscussionViewController:)
          forControlEvents:UIControlEventTouchUpInside];
         
         [scrollView addSubview:button];
-        
+        heightOfAllButtons += 44;
     }
     [self.view addSubview:scrollView];
+    return heightOfAllButtons;
 }
+
 
 - (void)didReceiveMemoryWarning
 {
