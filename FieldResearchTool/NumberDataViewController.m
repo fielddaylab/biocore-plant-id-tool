@@ -11,7 +11,6 @@
 #import "SaveObservationAndJudgementDelegate.h"
 
 @interface NumberDataViewController ()<SaveObservationDelegate, UITextFieldDelegate>{
-    int unitCount;
     CGRect viewRect;
 }
 
@@ -19,9 +18,6 @@
 
 @implementation NumberDataViewController
 
-@synthesize componentPossibilityDescription;
-@synthesize changeUnitButton;
-@synthesize textField;
 @synthesize prevData;
 @synthesize projectComponent;
 @synthesize newObservation;
@@ -30,25 +26,18 @@
 -(id)initWithFrame:(CGRect)frame{
     self = [super init];
     viewRect = frame;
-    unitCount = 0;
     return self;
 }
 
 
 -(void)loadView{
     [super loadView];
-    [changeUnitButton setTitle:@"cm" forState:UIControlStateNormal];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     self.view.frame = viewRect;
-    self.view.backgroundColor = [UIColor lightGrayColor];
     if (prevData) {
         NSNumber *storedNumber = prevData.number;
-        textField.text = [storedNumber stringValue];
-    }
-    if(!newObservation){
-        textField.enabled = NO;
     }
 }
 
@@ -57,21 +46,11 @@
     [super didReceiveMemoryWarning];
 }
 
-- (IBAction)changeUnit:(id)sender {
-    unitCount ++;
-    if(unitCount % 2 == 0){
-        [changeUnitButton setTitle:@"cm" forState:UIControlStateNormal];
-    }
-    else if(unitCount % 2 == 1){
-        [changeUnitButton setTitle:@"inches" forState:UIControlStateNormal];
-    }
-}
-- (IBAction)killKeyboard:(id)sender {
-    [self.view endEditing:YES];
-}
 
 -(UserObservationComponentData *)saveObservationData{
-    NSString *text = textField.text;
+    //get the text here
+    //NSString *text = textField.text;
+    NSString *text = @"";
     
     NSString *regexForNumber = @"[-+]?[0-9]*\\.?[0-9]+";
     
@@ -95,7 +74,6 @@
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [self killKeyboard:self.textField];
     return YES;
 }
 

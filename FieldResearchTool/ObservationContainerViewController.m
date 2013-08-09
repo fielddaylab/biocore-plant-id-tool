@@ -88,7 +88,7 @@
             //set up view controller here
             break;
         case DATA_PHOTO:{
-            PhotoDataViewController *photoDataViewController = [[PhotoDataViewController alloc]initWithFrame:frame];
+            PhotoDataViewController *photoDataViewController = [[PhotoDataViewController alloc]initWithFrame:self.view.bounds];
             photoDataViewController.prevData = prevData;
             photoDataViewController.projectComponent = projectComponent;
             photoDataViewController.newObservation = newObservation;
@@ -176,12 +176,12 @@
         [self.view addSubview:dataViewControllerToDisplay.view];
     }
     
-    if(judgementViewControllerToDisplay){
-        self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
-        [self addChildViewController:judgementViewControllerToDisplay];
-        [self didMoveToParentViewController:judgementViewControllerToDisplay];
-        [self.view addSubview:judgementViewControllerToDisplay.view];
-    }
+//    if(judgementViewControllerToDisplay){
+//        self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
+//        [self addChildViewController:judgementViewControllerToDisplay];
+//        [self didMoveToParentViewController:judgementViewControllerToDisplay];
+//        [self.view addSubview:judgementViewControllerToDisplay.view];
+//    }
     
 
     
@@ -210,11 +210,6 @@
                                         repeats:YES];
     }
     
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBar.alpha = 0.1f;
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
 }
 
 -(void)popToComponentScreen{
