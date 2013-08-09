@@ -21,6 +21,7 @@
 
 - (IBAction)changeUnit:(id)sender;
 - (IBAction)killKeyboard:(id)sender;
+-(id)initWithFrame:(CGRect)frame;
 
 
 

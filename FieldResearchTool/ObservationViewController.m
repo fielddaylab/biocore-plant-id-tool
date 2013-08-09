@@ -328,7 +328,7 @@
 {
     if(indexPath.section == 0 || indexPath.section == 1){
         
-        ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]initWithNibName:@"ObservationContainerViewController" bundle:nil];
+        ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]init];
         
         ProjectComponent *projectComponent;
         if(indexPath.section == 0){

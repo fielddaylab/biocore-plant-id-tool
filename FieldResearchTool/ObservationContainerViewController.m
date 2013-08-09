@@ -66,18 +66,6 @@
 }
 
 
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-        self.title = @"New Obs";
-        
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -87,9 +75,9 @@
     saveButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData:)];
     [self.navigationItem setRightBarButtonItem:saveButton];
     
-    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height * (2.0f/3.0f));
+    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, (self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height) * (2.0f/4.0f));
     
-    //NSLog(@"Frame X: %f Frame Y: %f Frame Width: %f Frame Height: %f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
+    NSLog(@"Frame X: %f Frame Y: %f Frame Width: %f Frame Height: %f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
     
     
     switch ([projectComponent.observationDataType intValue]) {
@@ -100,7 +88,7 @@
             //set up view controller here
             break;
         case DATA_PHOTO:{
-            PhotoDataViewController *photoDataViewController = [[PhotoDataViewController alloc]init];
+            PhotoDataViewController *photoDataViewController = [[PhotoDataViewController alloc]initWithFrame:frame];
             photoDataViewController.prevData = prevData;
             photoDataViewController.projectComponent = projectComponent;
             photoDataViewController.newObservation = newObservation;
@@ -108,8 +96,7 @@
         }
             break;
         case DATA_NUMBER:{
-            NumberDataViewController *numberDataViewController = [[NumberDataViewController alloc]init];
-            numberDataViewController.view.frame = frame;
+            NumberDataViewController *numberDataViewController = [[NumberDataViewController alloc]initWithFrame:frame];
             numberDataViewController.prevData = prevData;
             numberDataViewController.projectComponent = projectComponent;
             numberDataViewController.newObservation = newObservation;
@@ -141,9 +128,9 @@
             break;
     }
 
-    
-    CGRect frame2 = CGRectMake(0, frame.size.height, self.view.frame.size.width, self.view.frame.size.height * (1.0f/3.0f));
-    //NSLog(@"Frame2 X: %f Frame2 Y: %f Frame2 Width: %f Frame2 Height: %f", frame2.origin.x, frame2.origin.y, frame2.size.width, frame2.size.height);
+     CGRect frame2 = CGRectMake(0, frame.size.height, self.view.frame.size.width, self.view.frame.size.height * (1.0f/3.0f));
+
+    NSLog(@"Frame2 X: %f Frame2 Y: %f Frame2 Width: %f Frame2 Height: %f", frame2.origin.x, frame2.origin.y, frame2.size.width, frame2.size.height);
     
     switch ([projectComponent.observationJudgementType intValue]) {
         case JUDGEMENT_NUMBER:{
@@ -179,6 +166,7 @@
             enumJudgementViewController.view.frame = frame2;
             enumJudgementViewController.prevData = prevData;
             enumJudgementViewController.projectComponent = projectComponent;
+            enumJudgementViewController.view.backgroundColor = [UIColor lightGrayColor];
             judgementViewControllerToDisplay = enumJudgementViewController;
             
         }
@@ -194,12 +182,12 @@
         [self.view addSubview:dataViewControllerToDisplay.view];
     }
     
-    if(judgementViewControllerToDisplay){
-        self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
-        [self addChildViewController:judgementViewControllerToDisplay];
-        [self didMoveToParentViewController:judgementViewControllerToDisplay];
-        [self.view addSubview:judgementViewControllerToDisplay.view];
-    }
+//    if(judgementViewControllerToDisplay){
+//        self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
+//        [self addChildViewController:judgementViewControllerToDisplay];
+//        [self didMoveToParentViewController:judgementViewControllerToDisplay];
+//        [self.view addSubview:judgementViewControllerToDisplay.view];
+//    }
     
 
     
@@ -228,6 +216,11 @@
                                         repeats:YES];
     }
     
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBar.alpha = 0.1f;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
 }
 
 -(void)popToComponentScreen{

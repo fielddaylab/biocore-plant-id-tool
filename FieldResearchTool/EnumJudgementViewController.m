@@ -62,15 +62,15 @@
     wrap = YES;
 
     //create carousel
-    carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];//44 navbar height.
-    
-	carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    carousel.type = iCarouselTypeLinear;
-	carousel.delegate = self;
-	carousel.dataSource = self;
-    
-	//add carousel to view
-	[self.view addSubview:carousel];
+//    carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];//44 navbar height.
+//    
+//	carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//    carousel.type = iCarouselTypeLinear;
+//	carousel.delegate = self;
+//	carousel.dataSource = self;
+//    
+//	//add carousel to view
+//	[self.view addSubview:carousel];
     
     chosenPossibility = nil;
 }

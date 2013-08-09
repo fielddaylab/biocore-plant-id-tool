@@ -12,6 +12,7 @@
 
 @interface NumberDataViewController ()<SaveObservationDelegate, UITextFieldDelegate>{
     int unitCount;
+    CGRect viewRect;
 }
 
 @end
@@ -25,24 +26,23 @@
 @synthesize projectComponent;
 @synthesize newObservation;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
+
+-(id)initWithFrame:(CGRect)frame{
+    self = [super init];
+    viewRect = frame;
+    unitCount = 0;
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
+
+-(void)loadView{
+    [super loadView];
     [changeUnitButton setTitle:@"cm" forState:UIControlStateNormal];
-    unitCount = 0;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    self.view.frame = viewRect;
+    self.view.backgroundColor = [UIColor lightGrayColor];
     if (prevData) {
         NSNumber *storedNumber = prevData.number;
         textField.text = [storedNumber stringValue];

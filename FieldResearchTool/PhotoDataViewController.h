@@ -19,4 +19,6 @@
 @property (nonatomic, strong) UserObservationComponentData *prevData;
 @property (nonatomic) BOOL newObservation;
 
+-(id)initWithFrame:(CGRect)frame;
+
 @end
