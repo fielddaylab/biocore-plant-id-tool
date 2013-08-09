@@ -176,12 +176,12 @@
         [self.view addSubview:dataViewControllerToDisplay.view];
     }
     
-//    if(judgementViewControllerToDisplay){
-//        self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
-//        [self addChildViewController:judgementViewControllerToDisplay];
-//        [self didMoveToParentViewController:judgementViewControllerToDisplay];
-//        [self.view addSubview:judgementViewControllerToDisplay.view];
-//    }
+    if(judgementViewControllerToDisplay){
+        self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
+        [self addChildViewController:judgementViewControllerToDisplay];
+        [self didMoveToParentViewController:judgementViewControllerToDisplay];
+        [self.view addSubview:judgementViewControllerToDisplay.view];
+    }
     
 
     
@@ -224,34 +224,34 @@
 
 //this case will go away once the view controllers are compressed into one view
 -(void)checkDataAndJudgmentNumber{
-    NumberDataViewController *numberDataViewController = (NumberDataViewController *)dataViewControllerToDisplay;
-    NumberJudgementViewController *numberJudgementViewController = (NumberJudgementViewController *)judgementViewControllerToDisplay;
-    NSString *dataText = numberDataViewController.textField.text;
-    NSString *judgementText = numberJudgementViewController.numberField.text;
-
-    NSString *regexForNumberData = @"[-+]?[0-9]*\\.?[0-9]+";
-    NSString *regexForNumberJudgement = @"[-+]?[0-9]*\\.?[0-9]*";
-    NSPredicate *isNumberData = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberData];
-    NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberJudgement];
-    if (([isNumberData evaluateWithObject: dataText] && [isNumberJudgement evaluateWithObject: judgementText]) || ([isNumberData evaluateWithObject: dataText] && judgementText == nil)){
-        saveButton.enabled = YES;
-    }
-    else{
-        saveButton.enabled = NO;
-    }
+//    NumberDataViewController *numberDataViewController = (NumberDataViewController *)dataViewControllerToDisplay;
+//    NumberJudgementViewController *numberJudgementViewController = (NumberJudgementViewController *)judgementViewControllerToDisplay;
+//    NSString *dataText = numberDataViewController.textField.text;
+//    NSString *judgementText = numberJudgementViewController.numberField.text;
+//
+//    NSString *regexForNumberData = @"[-+]?[0-9]*\\.?[0-9]+";
+//    NSString *regexForNumberJudgement = @"[-+]?[0-9]*\\.?[0-9]*";
+//    NSPredicate *isNumberData = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberData];
+//    NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberJudgement];
+//    if (([isNumberData evaluateWithObject: dataText] && [isNumberJudgement evaluateWithObject: judgementText]) || ([isNumberData evaluateWithObject: dataText] && judgementText == nil)){
+//        saveButton.enabled = YES;
+//    }
+//    else{
+//        saveButton.enabled = NO;
+//    }
 }
 
 -(void)checkDataNumber{
-    NumberDataViewController *numberDataViewController = (NumberDataViewController *)dataViewControllerToDisplay;
-    NSString *dataText = numberDataViewController.textField.text;
-    NSString *regexForNumberData = @"[-+]?[0-9]*\\.?[0-9]+";
-    NSPredicate *isNumberData = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberData];
-    if ([isNumberData evaluateWithObject: dataText]){
-        saveButton.enabled = YES;
-    }
-    else{
-        saveButton.enabled = NO;
-    }
+//    NumberDataViewController *numberDataViewController = (NumberDataViewController *)dataViewControllerToDisplay;
+//    NSString *dataText = numberDataViewController.textField.text;
+//    NSString *regexForNumberData = @"[-+]?[0-9]*\\.?[0-9]+";
+//    NSPredicate *isNumberData = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberData];
+//    if ([isNumberData evaluateWithObject: dataText]){
+//        saveButton.enabled = YES;
+//    }
+//    else{
+//        saveButton.enabled = NO;
+//    }
 }
 
 -(void)checkJudgementNumber{

@@ -40,7 +40,7 @@
     descriptionLabel.backgroundColor = [UIColor clearColor];
     descriptionLabel.textAlignment = NSTextAlignmentCenter;
     descriptionLabel.font = [descriptionLabel.font fontWithSize:20];
-    descriptionLabel.text = [NSString stringWithFormat:@"Is %@ ?", projectComponent.title];//This makes me cringe.
+    descriptionLabel.text = [NSString stringWithFormat:@"Is %@?", projectComponent.title];//This makes me cringe.
     descriptionLabel.tag = 2;
     [self.view addSubview:descriptionLabel];
        
