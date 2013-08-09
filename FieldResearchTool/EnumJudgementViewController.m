@@ -58,14 +58,17 @@
 
 -(void)loadView{
     [super loadView];
+
+    [self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"carouselBackground"]]];
+    
     //create carousel
     carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];//44 navbar height.
-    
+
     carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     carousel.type = iCarouselTypeLinear;
     carousel.delegate = self;
     carousel.dataSource = self;
-    
+        
     //add carousel to view
     [self.view addSubview:carousel];
     chosenPossibility = nil;
@@ -74,7 +77,8 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     self.view.frame = viewRect;
-    self.view.backgroundColor = [UIColor clearColor];
+    
+    //self.view.backgroundColor = [UIColor clearColor];
     
     UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height * .04, self.view.bounds.size.width, 22)];
     descriptionLabel.backgroundColor = [UIColor clearColor];
@@ -133,6 +137,7 @@
         view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width *.6, self.view.bounds.size.height *.6)];
         
         view.contentMode = UIViewContentModeCenter;
+        
         label = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height * .4, self.view.bounds.size.width *.6, self.view.bounds.size.height *.6)];
         label.backgroundColor = [UIColor clearColor];
         label.textAlignment = NSTextAlignmentCenter;
