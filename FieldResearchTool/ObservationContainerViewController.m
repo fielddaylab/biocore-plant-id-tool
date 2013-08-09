@@ -75,7 +75,7 @@
     saveButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData:)];
     [self.navigationItem setRightBarButtonItem:saveButton];
     
-    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, (self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height) * (2.0f/4.0f));
+    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, (self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height) * (2.0f/3.0f));
     
     NSLog(@"Frame X: %f Frame Y: %f Frame Width: %f Frame Height: %f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
     
@@ -105,8 +105,7 @@
             break;
         case DATA_BOOLEAN:{
             
-            BooleanDataViewController *booleanDataViewController = [[BooleanDataViewController alloc]init];
-            booleanDataViewController.view.frame = frame;
+            BooleanDataViewController *booleanDataViewController = [[BooleanDataViewController alloc]initWithFrame:frame];
             booleanDataViewController.prevData = prevData;
             booleanDataViewController.projectComponent = projectComponent;
             booleanDataViewController.newObservation = newObservation;

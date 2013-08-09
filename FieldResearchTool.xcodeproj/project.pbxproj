@@ -33,7 +33,6 @@
 		5BF30DAA17A1C6B10071E7EA /* AudioDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF30D9017A1C6B10071E7EA /* AudioDataViewController.m */; };
 		5BF30DAB17A1C6B10071E7EA /* AudioDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BF30D9117A1C6B10071E7EA /* AudioDataViewController.xib */; };
 		5BF30DAC17A1C6B10071E7EA /* BooleanDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF30D9317A1C6B10071E7EA /* BooleanDataViewController.m */; };
-		5BF30DAD17A1C6B10071E7EA /* BooleanDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BF30D9417A1C6B10071E7EA /* BooleanDataViewController.xib */; };
 		5BF30DAE17A1C6B10071E7EA /* EnumDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF30D9617A1C6B10071E7EA /* EnumDataViewController.m */; };
 		5BF30DAF17A1C6B10071E7EA /* EnumDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BF30D9717A1C6B10071E7EA /* EnumDataViewController.xib */; };
 		5BF30DB017A1C6B10071E7EA /* ExternalAPIDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF30D9917A1C6B10071E7EA /* ExternalAPIDataViewController.m */; };
@@ -47,7 +46,6 @@
 		5BF30DBA17A1C6B10071E7EA /* VideoDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF30DA817A1C6B10071E7EA /* VideoDataViewController.m */; };
 		5BF30DBB17A1C6B10071E7EA /* VideoDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BF30DA917A1C6B10071E7EA /* VideoDataViewController.xib */; };
 		5BF30DCA17A1C6D40071E7EA /* BooleanJudgementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF30DBD17A1C6D40071E7EA /* BooleanJudgementViewController.m */; };
-		5BF30DCB17A1C6D40071E7EA /* BooleanJudgementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BF30DBE17A1C6D40071E7EA /* BooleanJudgementViewController.xib */; };
 		5BF30DCC17A1C6D40071E7EA /* EnumJudgementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF30DC017A1C6D40071E7EA /* EnumJudgementViewController.m */; };
 		5BF30DCD17A1C6D40071E7EA /* LongTextJudgementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF30DC217A1C6D40071E7EA /* LongTextJudgementViewController.m */; };
 		5BF30DCE17A1C6D40071E7EA /* LongTextJudgementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BF30DC317A1C6D40071E7EA /* LongTextJudgementViewController.xib */; };
@@ -156,6 +154,7 @@
 		71FF69DB1795C08600E2B411 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FF69DA1795C08600E2B411 /* AVFoundation.framework */; };
 		71FF69DD1795DD8000E2B411 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FF69DC1795DD8000E2B411 /* ImageIO.framework */; };
 		71FF69DF1795DDA900E2B411 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FF69DE1795DDA900E2B411 /* CoreMedia.framework */; };
+		71FF817117B436F800552EF8 /* defaultIdentificationNoPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 71FF817017B436F800552EF8 /* defaultIdentificationNoPhoto.png */; };
 		AAAC4F32178F1767001AB1D8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC4F31178F1767001AB1D8 /* UIKit.framework */; };
 		AAAC4F34178F1767001AB1D8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC4F33178F1767001AB1D8 /* Foundation.framework */; };
 		AAAC4F36178F1767001AB1D8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC4F35178F1767001AB1D8 /* CoreGraphics.framework */; };
@@ -228,7 +227,6 @@
 		5BF30D9117A1C6B10071E7EA /* AudioDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioDataViewController.xib; sourceTree = "<group>"; };
 		5BF30D9217A1C6B10071E7EA /* BooleanDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooleanDataViewController.h; sourceTree = "<group>"; };
 		5BF30D9317A1C6B10071E7EA /* BooleanDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooleanDataViewController.m; sourceTree = "<group>"; };
-		5BF30D9417A1C6B10071E7EA /* BooleanDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BooleanDataViewController.xib; sourceTree = "<group>"; };
 		5BF30D9517A1C6B10071E7EA /* EnumDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnumDataViewController.h; sourceTree = "<group>"; };
 		5BF30D9617A1C6B10071E7EA /* EnumDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnumDataViewController.m; sourceTree = "<group>"; };
 		5BF30D9717A1C6B10071E7EA /* EnumDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnumDataViewController.xib; sourceTree = "<group>"; };
@@ -250,7 +248,6 @@
 		5BF30DA917A1C6B10071E7EA /* VideoDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoDataViewController.xib; sourceTree = "<group>"; };
 		5BF30DBC17A1C6D40071E7EA /* BooleanJudgementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooleanJudgementViewController.h; sourceTree = "<group>"; };
 		5BF30DBD17A1C6D40071E7EA /* BooleanJudgementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooleanJudgementViewController.m; sourceTree = "<group>"; };
-		5BF30DBE17A1C6D40071E7EA /* BooleanJudgementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BooleanJudgementViewController.xib; sourceTree = "<group>"; };
 		5BF30DBF17A1C6D40071E7EA /* EnumJudgementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnumJudgementViewController.h; sourceTree = "<group>"; };
 		5BF30DC017A1C6D40071E7EA /* EnumJudgementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnumJudgementViewController.m; sourceTree = "<group>"; };
 		5BF30DC117A1C6D40071E7EA /* LongTextJudgementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongTextJudgementViewController.h; sourceTree = "<group>"; };
@@ -377,6 +374,7 @@
 		71FF69DA1795C08600E2B411 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		71FF69DC1795DD8000E2B411 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		71FF69DE1795DDA900E2B411 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		71FF817017B436F800552EF8 /* defaultIdentificationNoPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultIdentificationNoPhoto.png; sourceTree = "<group>"; };
 		AAAC4F2E178F1767001AB1D8 /* FieldResearchTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FieldResearchTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAC4F31178F1767001AB1D8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AAAC4F33178F1767001AB1D8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -444,7 +442,6 @@
 				5BF30D9117A1C6B10071E7EA /* AudioDataViewController.xib */,
 				5BF30D9217A1C6B10071E7EA /* BooleanDataViewController.h */,
 				5BF30D9317A1C6B10071E7EA /* BooleanDataViewController.m */,
-				5BF30D9417A1C6B10071E7EA /* BooleanDataViewController.xib */,
 				5BF30D9517A1C6B10071E7EA /* EnumDataViewController.h */,
 				5BF30D9617A1C6B10071E7EA /* EnumDataViewController.m */,
 				5BF30D9717A1C6B10071E7EA /* EnumDataViewController.xib */,
@@ -473,7 +470,6 @@
 			children = (
 				5BF30DBC17A1C6D40071E7EA /* BooleanJudgementViewController.h */,
 				5BF30DBD17A1C6D40071E7EA /* BooleanJudgementViewController.m */,
-				5BF30DBE17A1C6D40071E7EA /* BooleanJudgementViewController.xib */,
 				5BF30DBF17A1C6D40071E7EA /* EnumJudgementViewController.h */,
 				5BF30DC017A1C6D40071E7EA /* EnumJudgementViewController.m */,
 				5BF30DC117A1C6D40071E7EA /* LongTextJudgementViewController.h */,
@@ -740,6 +736,7 @@
 		71AA564E17B2EFFC00EECCC5 /* Identifications */ = {
 			isa = PBXGroup;
 			children = (
+				71FF817017B436F800552EF8 /* defaultIdentificationNoPhoto.png */,
 				71AA564F17B2EFFC00EECCC5 /* japanese_maple.jpg */,
 				71AA565017B2EFFC00EECCC5 /* japanese_maple.png */,
 				71AA565117B2EFFC00EECCC5 /* red_maple.jpg */,
@@ -908,13 +905,11 @@
 				5B82BD9A1797478C008CB441 /* plantData.tsv in Resources */,
 				5B98AFC017A08CA900678C36 /* examplePlantData.tsv in Resources */,
 				5BF30DAB17A1C6B10071E7EA /* AudioDataViewController.xib in Resources */,
-				5BF30DAD17A1C6B10071E7EA /* BooleanDataViewController.xib in Resources */,
 				5BF30DAF17A1C6B10071E7EA /* EnumDataViewController.xib in Resources */,
 				5BF30DB117A1C6B10071E7EA /* ExternalAPIDataViewController.xib in Resources */,
 				5BF30DB317A1C6B10071E7EA /* LongTextDataViewController.xib in Resources */,
 				5BF30DB917A1C6B10071E7EA /* TextDataViewController.xib in Resources */,
 				5BF30DBB17A1C6B10071E7EA /* VideoDataViewController.xib in Resources */,
-				5BF30DCB17A1C6D40071E7EA /* BooleanJudgementViewController.xib in Resources */,
 				5BF30DCE17A1C6D40071E7EA /* LongTextJudgementViewController.xib in Resources */,
 				5BF30DD017A1C6D40071E7EA /* NumberJudgementViewController.xib in Resources */,
 				5BF30DD217A1C6D40071E7EA /* TextJudgementViewController.xib in Resources */,
@@ -1005,6 +1000,7 @@
 				71AA56AD17B2EFFC00EECCC5 /* test.png in Resources */,
 				71AA56AE17B2EFFC00EECCC5 /* test320.png in Resources */,
 				71AA56AF17B2EFFC00EECCC5 /* tutorialPhoto.jpg in Resources */,
+				71FF817117B436F800552EF8 /* defaultIdentificationNoPhoto.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

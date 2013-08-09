@@ -12,7 +12,9 @@
 #import "SaveObservationAndJudgementDelegate.h"
 #import "ProjectComponent.h"
 
-@interface BooleanDataViewController ()<SaveObservationDelegate>
+@interface BooleanDataViewController ()<SaveObservationDelegate>{
+    CGRect viewRect;
+}
 
 @end
 
@@ -25,23 +27,16 @@
 @synthesize projectComponent;
 @synthesize newObservation;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-        self.title = @"BOOLZ";
-        
-    }
+-(id)initWithFrame:(CGRect)frame{
+    self = [super init];
+    viewRect = frame;
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
 
 -(void)viewWillAppear:(BOOL)animated{
+    self.view.frame = viewRect;
+    self.view.backgroundColor = [UIColor lightGrayColor];
     if (prevData) {
         BOOL switchValue = [prevData.boolValue boolValue];
         [boolSwitch setOn:switchValue animated:NO];
