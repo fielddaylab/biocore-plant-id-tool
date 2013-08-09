@@ -46,7 +46,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     self.view.frame = viewRect;
-    self.view.backgroundColor = [UIColor orangeColor];
+    self.view.backgroundColor = [UIColor lightGrayColor];
     // register for keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow)

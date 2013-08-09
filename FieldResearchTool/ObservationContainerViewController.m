@@ -178,7 +178,7 @@
     }
     
     if(judgementViewControllerToDisplay){
-        if([projectComponent.observationDataType intValue]){
+        if([projectComponent.observationDataType intValue] == DATA_PHOTO){
             judgementViewControllerToDisplay.view.hidden = YES;
         }
         self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;

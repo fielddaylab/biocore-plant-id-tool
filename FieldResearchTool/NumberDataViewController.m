@@ -36,7 +36,6 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     self.view.frame = viewRect;
-    self.view.backgroundColor = [UIColor lightGrayColor];
     if (prevData) {
         NSNumber *storedNumber = prevData.number;
     }

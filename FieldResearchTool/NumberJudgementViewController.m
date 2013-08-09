@@ -69,7 +69,7 @@
     imageView.contentMode = UIViewContentModeCenter;
     [self.view addSubview:imageView];
     
-    self.view.backgroundColor = [UIColor orangeColor];
+    self.view.backgroundColor = [UIColor lightGrayColor];
     // register for keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow)
