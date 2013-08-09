@@ -11,12 +11,13 @@
 #import "AppModel.h"
 #import "ProjectComponentPossibility.h"
 
-#define KEYBOARD_OFFSET 90
+#define KEYBOARD_OFFSET 110
 
 @interface NumberJudgementViewController ()<UITextFieldDelegate, SaveJudgementDelegate>{
     UITextField *numberField;
     NSArray *possibilities;
     CGRect viewRect;
+    UIImageView *imageView;
 }
 
 @end
@@ -35,23 +36,39 @@
 
 -(void)loadView{
     [super loadView];
-//    numberField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 300, 40)];
-//    numberField.borderStyle = UITextBorderStyleRoundedRect;
-//    numberField.font = [UIFont systemFontOfSize:15];
-//    numberField.placeholder = @"enter number";
-//    numberField.autocorrectionType = UITextAutocorrectionTypeNo;
-//    numberField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;//UIKeyboardTypeNumberPad;
-//    numberField.returnKeyType = UIReturnKeyDone;
-//    numberField.clearButtonMode = UITextFieldViewModeWhileEditing;
-//    numberField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-//    numberField.delegate = self;
-//    [self.view addSubview:numberField];
-//    [self setViewMovedUp:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     self.view.frame = viewRect;
+    
+    UILabel *descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, self.view.bounds.size.height * .04, self.view.bounds.size.width, 22)];
+    descriptionLabel.backgroundColor = [UIColor clearColor];
+    descriptionLabel.textAlignment = NSTextAlignmentCenter;
+    descriptionLabel.font = [descriptionLabel.font fontWithSize:20];
+    descriptionLabel.text = [NSString stringWithFormat:@"Is %@ ?", projectComponent.title];//This makes me cringe.
+    descriptionLabel.tag = 2;
+    [self.view addSubview:descriptionLabel];
+    
+    numberField = [[UITextField alloc] init];
+    numberField.frame = CGRectMake(self.view.bounds.size.width *.5, self.view.bounds.size.height * .5 - 10, self.view.bounds.size.width *.45, 40); //-10 -> height(40)/2 = 20. -10 b/c label = 10;
+    numberField.borderStyle = UITextBorderStyleRoundedRect;
+    numberField.font = [UIFont systemFontOfSize:15];
+    numberField.placeholder = @"enter number";
+    numberField.autocorrectionType = UITextAutocorrectionTypeNo;
+    numberField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;//UIKeyboardTypeNumberPad;
+    numberField.returnKeyType = UIReturnKeyDone;
+    numberField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    numberField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    numberField.delegate = self;
+    [self.view addSubview:numberField];
+    
+    imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"test.png"]];
+    imageView.frame = CGRectMake(-75, 10, self.view.frame.size.width, self.view.frame.size.height);
+    imageView.image = [self imageWithImage:[UIImage imageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, self.view.bounds.size.height *.7, self.view.bounds.size.height *.7).size];
+    imageView.contentMode = UIViewContentModeCenter;
+    [self.view addSubview:imageView];
+    
     self.view.backgroundColor = [UIColor orangeColor];
     // register for keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -96,6 +113,16 @@
                                                   object:nil];
 }
 
+- (UIImage*)imageWithImage:(UIImage*)image
+              scaledToSize:(CGSize)newSize;
+{
+    UIGraphicsBeginImageContext( newSize );
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {

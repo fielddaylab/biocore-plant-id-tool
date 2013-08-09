@@ -12,6 +12,7 @@
 
 @interface BooleanJudgementViewController ()<SaveJudgementDelegate>{
     UISwitch *boolSwitch;
+    UIImageView *imageView;
     NSArray *possibilities;
     CGRect rectView;
 }
@@ -26,22 +27,37 @@
     self = [super init];
     rectView = rect;
     return self;
-    
 }
 
-- (void)loadView{//Not called until view accessed
+- (void)loadView{
     [super loadView];
-    
-//    NSLog(@"\nbounds: %@ \nframe: %@ ", NSStringFromCGRect(self.view.bounds), NSStringFromCGRect(self.view.frame));
-//    CGRect frame = CGRectMake([UIScreen mainScreen].bounds.size.width * .5, [UIScreen mainScreen].bounds.size.height *.66, 0,0);
-//    boolSwitch = [[UISwitch alloc]initWithFrame:frame];
-//    [self.view addSubview:boolSwitch];
 }
-
-
 
 -(void)viewWillAppear:(BOOL)animated{
     self.view.frame = rectView;
+    
+    UILabel *descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, self.view.bounds.size.height * .04, self.view.bounds.size.width, 22)];
+    descriptionLabel.backgroundColor = [UIColor clearColor];
+    descriptionLabel.textAlignment = NSTextAlignmentCenter;
+    descriptionLabel.font = [descriptionLabel.font fontWithSize:20];
+    descriptionLabel.text = [NSString stringWithFormat:@"Is %@ ?", projectComponent.title];//This makes me cringe.
+    descriptionLabel.tag = 2;
+    [self.view addSubview:descriptionLabel];
+       
+    boolSwitch = [[UISwitch alloc]initWithFrame:CGRectZero];
+    boolSwitch.frame = CGRectMake(self.view.frame.size.width *.6 , self.view.frame.size.height *.5 - boolSwitch.frame.size.height*.5 + 10, 0, 0);
+    [self.view addSubview:boolSwitch];
+    
+    imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"test.png"]];
+    imageView.frame = CGRectMake(-75, 10, self.view.frame.size.width, self.view.frame.size.height);
+    
+    imageView.image = [self imageWithImage:[UIImage imageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, self.view.bounds.size.height *.7, self.view.bounds.size.height *.7).size];
+    
+    imageView.contentMode = UIViewContentModeCenter;
+
+    
+    [self.view addSubview:imageView];
+    
     self.view.backgroundColor = [UIColor orangeColor];
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
     [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
@@ -68,6 +84,17 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (UIImage*)imageWithImage:(UIImage*)image
+              scaledToSize:(CGSize)newSize;
+{
+    UIGraphicsBeginImageContext( newSize );
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
 }
 
 #pragma mark saving judgement data

@@ -76,16 +76,13 @@
     self.view.frame = viewRect;
     self.view.backgroundColor = [UIColor orangeColor];
     
-    UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.view.bounds.size.width, 20)];
+    UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height * .04, self.view.bounds.size.width, 22)];
     descriptionLabel.backgroundColor = [UIColor clearColor];
     descriptionLabel.textAlignment = NSTextAlignmentCenter;
     descriptionLabel.font = [descriptionLabel.font fontWithSize:20];
-    descriptionLabel.text = @"1234512345123451234512345";
+    descriptionLabel.text = @"Choose an option";
     descriptionLabel.tag = 2;
     [self.view addSubview:descriptionLabel];
-
-    
-    
     
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
     [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
