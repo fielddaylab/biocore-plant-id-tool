@@ -25,7 +25,7 @@
 
 
 
-@interface ObservationContainerViewController (){
+@interface ObservationContainerViewController ()<ToggleJudgementViewDelegate>{
     UIBarButtonItem *saveButton;
     UIViewController *dataViewControllerToDisplay;
     UIViewController *judgementViewControllerToDisplay;
@@ -88,10 +88,11 @@
             //set up view controller here
             break;
         case DATA_PHOTO:{
-            PhotoDataViewController *photoDataViewController = [[PhotoDataViewController alloc]initWithFrame:self.view.bounds];
+            PhotoDataViewController *photoDataViewController = [[PhotoDataViewController alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, (self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height))];
             photoDataViewController.prevData = prevData;
             photoDataViewController.projectComponent = projectComponent;
             photoDataViewController.newObservation = newObservation;
+            photoDataViewController.delegate = self;
             dataViewControllerToDisplay = photoDataViewController;
         }
             break;
@@ -160,7 +161,6 @@
             EnumJudgementViewController *enumJudgementViewController = [[EnumJudgementViewController alloc]initWithFrame:frame2];
             enumJudgementViewController.prevData = prevData;
             enumJudgementViewController.projectComponent = projectComponent;
-            enumJudgementViewController.view.backgroundColor = [UIColor lightGrayColor];
             judgementViewControllerToDisplay = enumJudgementViewController;
             
         }
@@ -177,6 +177,9 @@
     }
     
     if(judgementViewControllerToDisplay){
+        if([projectComponent.observationDataType intValue]){
+            judgementViewControllerToDisplay.view.hidden = YES;
+        }
         self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
         [self addChildViewController:judgementViewControllerToDisplay];
         [self didMoveToParentViewController:judgementViewControllerToDisplay];
@@ -265,6 +268,15 @@
     else{
         saveButton.enabled = NO;
     }
+}
+
+#pragma mark toggle judgement view controller
+-(void)enableJudgementView{
+    judgementViewControllerToDisplay.view.hidden = NO;
+}
+
+-(void)disableJudgementView{
+    judgementViewControllerToDisplay.view.hidden = YES;
 }
 
 @end
