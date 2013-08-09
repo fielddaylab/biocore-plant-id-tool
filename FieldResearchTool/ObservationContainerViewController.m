@@ -180,6 +180,7 @@
     }
     
     if(judgementViewControllerToDisplay){
+        //judgementViewControllerToDisplay.view.backgroundColor = [UIColor lightGrayColor];
         if([projectComponent.observationDataType intValue] == DATA_PHOTO){
             judgementViewControllerToDisplay.view.hidden = YES;
         }

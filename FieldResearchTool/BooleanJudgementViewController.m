@@ -31,6 +31,7 @@
 
 - (void)loadView{
     [super loadView];
+    [self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"carouselBackground"]]];
 }
 
 -(void)viewWillAppear:(BOOL)animated{

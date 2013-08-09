@@ -30,6 +30,7 @@
 
 -(void)loadView{
     [super loadView];
+    [self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"carouselBackground"]]];
     UILabel *descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, viewRect.size.height * .04, viewRect.size.width, 22)];
     descriptionLabel.backgroundColor = [UIColor clearColor];
     descriptionLabel.textAlignment = NSTextAlignmentCenter;
