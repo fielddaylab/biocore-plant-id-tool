@@ -11,7 +11,10 @@
 
 @interface BooleanJudgementViewController : UIViewController
 
+- (id) initWithFrame:(CGRect) frame;
+
 @property (nonatomic, strong) ProjectComponent *projectComponent;
 @property (nonatomic, strong) UserObservationComponentData *prevData;
 
 @end
+

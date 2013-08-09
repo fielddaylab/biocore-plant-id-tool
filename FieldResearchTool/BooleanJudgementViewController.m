@@ -13,6 +13,7 @@
 @interface BooleanJudgementViewController ()<SaveJudgementDelegate>{
     UISwitch *boolSwitch;
     NSArray *possibilities;
+    CGRect rectView;
 }
 
 @end
@@ -21,23 +22,25 @@
 @synthesize prevData;
 @synthesize projectComponent;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
+- (id)initWithFrame:(CGRect) rect{
+    self = [super init];
+    
+    rectView = rect;
+    
     return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    CGRect frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
-    boolSwitch = [[UISwitch alloc]initWithFrame:frame];
-    [self.view addSubview:boolSwitch];
     
 }
+
+- (void)loadView{//Not called until view accessed
+    [super loadView];
+    
+    NSLog(@"\nbounds: %@ \nframe: %@ ", NSStringFromCGRect(self.view.bounds), NSStringFromCGRect(self.view.frame));
+    CGRect frame = CGRectMake([UIScreen mainScreen].bounds.size.width * .5, [UIScreen mainScreen].bounds.size.height *.66, 0,0);
+    boolSwitch = [[UISwitch alloc]initWithFrame:frame];
+    [self.view addSubview:boolSwitch];
+}
+
+
 
 -(void)viewWillAppear:(BOOL)animated{
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];

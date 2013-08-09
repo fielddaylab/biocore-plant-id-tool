@@ -25,16 +25,16 @@
 @synthesize projectComponent;
 @synthesize newObservation;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-        self.title = @"BOOLZ";
-        
-    }
-    return self;
-}
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//{
+//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//    if (self) {
+//        // Custom initialization
+//        self.title = @"BOOLZ";
+//        
+//    }
+//    return self;
+//}
 
 - (void)viewDidLoad
 {
@@ -42,6 +42,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    self.view.backgroundColor = [UIColor colorWithRed:69 green:69 blue:69 alpha:1];
     if (prevData) {
         BOOL switchValue = [prevData.boolValue boolValue];
         [boolSwitch setOn:switchValue animated:NO];
