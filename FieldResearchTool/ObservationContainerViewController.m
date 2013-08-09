@@ -127,42 +127,37 @@
             break;
     }
 
-     CGRect frame2 = CGRectMake(0, frame.size.height, self.view.frame.size.width, self.view.frame.size.height * (1.0f/3.0f));
+     CGRect frame2 = CGRectMake(0, frame.size.height, self.view.frame.size.width, (self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height) * (1.0f/3.0f));
 
     NSLog(@"Frame2 X: %f Frame2 Y: %f Frame2 Width: %f Frame2 Height: %f", frame2.origin.x, frame2.origin.y, frame2.size.width, frame2.size.height);
     
     switch ([projectComponent.observationJudgementType intValue]) {
         case JUDGEMENT_NUMBER:{
-            NumberJudgementViewController *numberJudgementViewController = [[NumberJudgementViewController alloc]init];
-            numberJudgementViewController.view.frame = frame2;
+            NumberJudgementViewController *numberJudgementViewController = [[NumberJudgementViewController alloc]initWithFrame:frame2];
             numberJudgementViewController.prevData = prevData;
             numberJudgementViewController.projectComponent = projectComponent;
             judgementViewControllerToDisplay = numberJudgementViewController;
         }
             break;
         case JUDGEMENT_BOOLEAN:{
-            BooleanJudgementViewController *booleanJudgementViewController = [[BooleanJudgementViewController alloc]init];
-            booleanJudgementViewController.view.frame = frame2;
+            BooleanJudgementViewController *booleanJudgementViewController = [[BooleanJudgementViewController alloc]initWithFrame:frame2];
             booleanJudgementViewController.prevData = prevData;
             booleanJudgementViewController.projectComponent = projectComponent;
             judgementViewControllerToDisplay = booleanJudgementViewController;
         }
             break;
         case JUDGEMENT_TEXT:{
-            TextJudgementViewController *textJudgementViewController = [[TextJudgementViewController alloc]init];
-            textJudgementViewController.view.frame = frame2;
+            TextJudgementViewController *textJudgementViewController = [[TextJudgementViewController alloc]initWithFrame:frame2];
             judgementViewControllerToDisplay = textJudgementViewController;
         }
             break;
         case JUDGEMENT_LONG_TEXT:{
-            LongTextJudgementViewController *longTextJudgementViewController = [[LongTextJudgementViewController alloc]init];
-            longTextJudgementViewController.view.frame = frame2;
+            LongTextJudgementViewController *longTextJudgementViewController = [[LongTextJudgementViewController alloc]initWithFrame:frame2];
             judgementViewControllerToDisplay = longTextJudgementViewController;
         }
             break;
         case JUDGEMENT_ENUMERATOR:{
-            EnumJudgementViewController *enumJudgementViewController = [[EnumJudgementViewController alloc]init];
-            enumJudgementViewController.view.frame = frame2;
+            EnumJudgementViewController *enumJudgementViewController = [[EnumJudgementViewController alloc]initWithFrame:frame2];
             enumJudgementViewController.prevData = prevData;
             enumJudgementViewController.projectComponent = projectComponent;
             enumJudgementViewController.view.backgroundColor = [UIColor lightGrayColor];
@@ -181,12 +176,12 @@
         [self.view addSubview:dataViewControllerToDisplay.view];
     }
     
-//    if(judgementViewControllerToDisplay){
-//        self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
-//        [self addChildViewController:judgementViewControllerToDisplay];
-//        [self didMoveToParentViewController:judgementViewControllerToDisplay];
-//        [self.view addSubview:judgementViewControllerToDisplay.view];
-//    }
+    if(judgementViewControllerToDisplay){
+        self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
+        [self addChildViewController:judgementViewControllerToDisplay];
+        [self didMoveToParentViewController:judgementViewControllerToDisplay];
+        [self.view addSubview:judgementViewControllerToDisplay.view];
+    }
     
 
     

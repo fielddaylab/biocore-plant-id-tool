@@ -14,6 +14,7 @@
 
 @interface EnumJudgementViewController () <iCarouselDataSource, iCarouselDelegate, UIActionSheetDelegate, SaveJudgementDelegate>{
     ProjectComponentPossibility *chosenPossibility;
+    CGRect viewRect;
 }
 
 @property (nonatomic, retain) iCarousel *carousel;
@@ -30,14 +31,6 @@
 @synthesize prevData;
 @synthesize projectComponent;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)dealloc
 {
@@ -56,26 +49,32 @@
     return newImage;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+-(id)initWithFrame:(CGRect)frame{
+    self = [super init];
+    viewRect = frame;
     wrap = YES;
+    return self;
+}
 
+-(void)loadView{
+    [super loadView];
     //create carousel
-//    carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];//44 navbar height.
-//    
-//	carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//    carousel.type = iCarouselTypeLinear;
-//	carousel.delegate = self;
-//	carousel.dataSource = self;
-//    
-//	//add carousel to view
-//	[self.view addSubview:carousel];
-    
+    //    carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];//44 navbar height.
+    //
+    //	carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    //    carousel.type = iCarouselTypeLinear;
+    //	carousel.delegate = self;
+    //	carousel.dataSource = self;
+    //
+    //	//add carousel to view
+    //	[self.view addSubview:carousel];
     chosenPossibility = nil;
 }
 
+
 -(void)viewWillAppear:(BOOL)animated{
+    self.view.frame = viewRect;
+    self.view.backgroundColor = [UIColor orangeColor];
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
     [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
     [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];

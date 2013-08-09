@@ -14,38 +14,37 @@
 
 @interface LongTextJudgementViewController ()<UITextFieldDelegate, SaveJudgementDelegate>{
     UITextField *textField;
+    CGRect viewRect;
 }
 
 @end
 
 @implementation LongTextJudgementViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
+-(id)initWithFrame:(CGRect)frame{
+    self = [super init];
+    viewRect = frame;
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 300, 40)];
-    textField.borderStyle = UITextBorderStyleRoundedRect;
-    textField.font = [UIFont systemFontOfSize:15];
-    textField.placeholder = @"enter text";
-    textField.autocorrectionType = UITextAutocorrectionTypeNo;
-    textField.keyboardType = UIKeyboardTypeDefault;
-    textField.returnKeyType = UIReturnKeyDone;
-    textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    textField.delegate = self;
-    [self.view addSubview:textField];
+-(void)loadView{
+    [super loadView];
+//    textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 300, 40)];
+//    textField.borderStyle = UITextBorderStyleRoundedRect;
+//    textField.font = [UIFont systemFontOfSize:15];
+//    textField.placeholder = @"enter text";
+//    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+//    textField.keyboardType = UIKeyboardTypeDefault;
+//    textField.returnKeyType = UIReturnKeyDone;
+//    textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+//    textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+//    textField.delegate = self;
+//    [self.view addSubview:textField];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    self.view.frame = viewRect;
+    self.view.backgroundColor = [UIColor orangeColor];
     // register for keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow)

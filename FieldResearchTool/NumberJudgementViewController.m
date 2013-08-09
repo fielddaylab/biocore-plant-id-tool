@@ -16,6 +16,7 @@
 @interface NumberJudgementViewController ()<UITextFieldDelegate, SaveJudgementDelegate>{
     UITextField *numberField;
     NSArray *possibilities;
+    CGRect viewRect;
 }
 
 @end
@@ -25,33 +26,76 @@
 @synthesize projectComponent;
 @synthesize prevData;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
+
+-(id)initWithFrame:(CGRect)frame{
+    self = [super init];
+    viewRect = frame;
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-        
-    numberField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 300, 40)];
-    numberField.borderStyle = UITextBorderStyleRoundedRect;
-    numberField.font = [UIFont systemFontOfSize:15];
-    numberField.placeholder = @"enter number";
-    numberField.autocorrectionType = UITextAutocorrectionTypeNo;
-    numberField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;//UIKeyboardTypeNumberPad;
-    numberField.returnKeyType = UIReturnKeyDone;
-    numberField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    numberField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    numberField.delegate = self;
-    [self.view addSubview:numberField];
-    [self setViewMovedUp:NO];
-
+-(void)loadView{
+    [super loadView];
+//    numberField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 300, 40)];
+//    numberField.borderStyle = UITextBorderStyleRoundedRect;
+//    numberField.font = [UIFont systemFontOfSize:15];
+//    numberField.placeholder = @"enter number";
+//    numberField.autocorrectionType = UITextAutocorrectionTypeNo;
+//    numberField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;//UIKeyboardTypeNumberPad;
+//    numberField.returnKeyType = UIReturnKeyDone;
+//    numberField.clearButtonMode = UITextFieldViewModeWhileEditing;
+//    numberField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+//    numberField.delegate = self;
+//    [self.view addSubview:numberField];
+//    [self setViewMovedUp:NO];
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.view.frame = viewRect;
+    self.view.backgroundColor = [UIColor orangeColor];
+    // register for keyboard notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    NSLog(@"Project Component.title: %@", projectComponent.title);
+    [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
+    [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];
+    
+    if (prevData) {
+        if ([prevData.wasJudged boolValue]) {
+            NSArray *judgementSet = [prevData.userObservationComponentDataJudgement allObjects];
+            if(!judgementSet || judgementSet.count < 1){
+                NSLog(@"ERROR: Judgement set was nil or had 0 data members");
+            }
+            UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
+            if(!judgement){
+                NSLog(@"ERROR: judgement was nil");
+            }
+            NSNumber *storedNumber = judgement.number;
+            numberField.text = [storedNumber stringValue];
+        }
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    // unregister for keyboard notifications while not visible.
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillShowNotification
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillHideNotification
+                                                  object:nil];
+}
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -123,50 +167,7 @@
 }
 
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    // register for keyboard notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-    NSLog(@"Project Component.title: %@", projectComponent.title);
-    [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
-    [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];
-    
-    if (prevData) {
-        if ([prevData.wasJudged boolValue]) {
-            NSArray *judgementSet = [prevData.userObservationComponentDataJudgement allObjects];
-            if(!judgementSet || judgementSet.count < 1){
-                NSLog(@"ERROR: Judgement set was nil or had 0 data members");
-            }
-            UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
-            if(!judgement){
-                NSLog(@"ERROR: judgement was nil");
-            }
-            NSNumber *storedNumber = judgement.number;
-            numberField.text = [storedNumber stringValue];
-        }
-    }
-}
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    // unregister for keyboard notifications while not visible.
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIKeyboardWillShowNotification
-                                                  object:nil];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIKeyboardWillHideNotification
-                                                  object:nil];
-}
 
 #pragma mark handle possibility response
 -(void)handlePossibilityResponse:(NSArray *)componentPossibilities{

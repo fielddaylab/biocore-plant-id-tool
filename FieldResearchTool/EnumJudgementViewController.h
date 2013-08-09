@@ -15,4 +15,6 @@
 @property (nonatomic, strong) UserObservationComponentData *prevData;
 @property (nonatomic, strong) ProjectComponent *projectComponent;
 
+-(id)initWithFrame:(CGRect)frame;
+
 @end

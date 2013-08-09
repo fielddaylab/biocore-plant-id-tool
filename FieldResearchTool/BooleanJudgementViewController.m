@@ -24,9 +24,7 @@
 
 - (id)initWithFrame:(CGRect) rect{
     self = [super init];
-    
     rectView = rect;
-    
     return self;
     
 }
@@ -34,15 +32,17 @@
 - (void)loadView{//Not called until view accessed
     [super loadView];
     
-    NSLog(@"\nbounds: %@ \nframe: %@ ", NSStringFromCGRect(self.view.bounds), NSStringFromCGRect(self.view.frame));
-    CGRect frame = CGRectMake([UIScreen mainScreen].bounds.size.width * .5, [UIScreen mainScreen].bounds.size.height *.66, 0,0);
-    boolSwitch = [[UISwitch alloc]initWithFrame:frame];
-    [self.view addSubview:boolSwitch];
+//    NSLog(@"\nbounds: %@ \nframe: %@ ", NSStringFromCGRect(self.view.bounds), NSStringFromCGRect(self.view.frame));
+//    CGRect frame = CGRectMake([UIScreen mainScreen].bounds.size.width * .5, [UIScreen mainScreen].bounds.size.height *.66, 0,0);
+//    boolSwitch = [[UISwitch alloc]initWithFrame:frame];
+//    [self.view addSubview:boolSwitch];
 }
 
 
 
 -(void)viewWillAppear:(BOOL)animated{
+    self.view.frame = rectView;
+    self.view.backgroundColor = [UIColor orangeColor];
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
     [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
     [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];

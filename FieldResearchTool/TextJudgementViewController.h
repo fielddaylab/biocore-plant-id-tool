@@ -10,4 +10,6 @@
 
 @interface TextJudgementViewController : UIViewController
 
+-(id)initWithFrame:(CGRect)frame;
+
 @end
