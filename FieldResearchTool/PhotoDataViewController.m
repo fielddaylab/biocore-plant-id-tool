@@ -33,7 +33,8 @@
 @synthesize projectComponent;
 @synthesize prevData;
 @synthesize newObservation;
-@synthesize delegate;
+@synthesize judgementDelegate;
+@synthesize saveDelegate;
 
 
 -(id)initWithFrame:(CGRect)frame{
@@ -96,6 +97,8 @@
         retakeButton.enabled = NO;
         arrowButton.hidden = NO;
     }
+    
+    [self.saveDelegate disableSaveButton];
 
     [self.view addSubview:showPictureView];
     [self.view addSubview:cameraImageView];
@@ -144,6 +147,7 @@
     redXButton.hidden = NO;
     retakeButton.enabled = NO;
     arrowButton.hidden = NO;
+    [self.saveDelegate enableSaveButton];
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
@@ -164,9 +168,10 @@
         redXButton.frame = CGRectMake(0, viewRect.size.height - redX.size.height - 10, redX.size.width, redX.size.height);
         arrowButton.frame = CGRectMake((viewRect.size.width / 2.0f) - (arrowImage.size.width / 2.0f), viewRect.size.height - arrowImage.size.height - 10, arrowImage.size.width, arrowImage.size.height);
         [arrowButton setImage:[UIImage imageNamed:@"03-arrow-north.png"] forState:UIControlStateNormal];
-        [self.delegate disableJudgementView];
+        [self.judgementDelegate disableJudgementView];
         judgementIsHidden = YES;
     }
+    [self.saveDelegate disableSaveButton];
 }
 
 #pragma mark arrow button pressed
@@ -175,14 +180,14 @@
         redXButton.frame = CGRectMake(0, viewRect.size.height - redX.size.height - (viewRect.size.height * (1.0f/3.0f)), redX.size.width, redX.size.height);
         arrowButton.frame = CGRectMake((viewRect.size.width / 2.0f) - (arrowImage.size.width / 2.0f), viewRect.size.height - arrowImage.size.height - (viewRect.size.height * (1.0f/3.0f)), arrowImage.size.width, arrowImage.size.height);
         [arrowButton setImage:[UIImage imageNamed:@"06-arrow-south.png"] forState:UIControlStateNormal];
-        [self.delegate enableJudgementView];
+        [self.judgementDelegate enableJudgementView];
         judgementIsHidden = NO;
     }
     else{
         redXButton.frame = CGRectMake(0, viewRect.size.height - redX.size.height - 10, redX.size.width, redX.size.height);
         arrowButton.frame = CGRectMake((viewRect.size.width / 2.0f) - (arrowImage.size.width / 2.0f), viewRect.size.height - arrowImage.size.height - 10, arrowImage.size.width, arrowImage.size.height);
         [arrowButton setImage:[UIImage imageNamed:@"03-arrow-north.png"] forState:UIControlStateNormal];
-        [self.delegate disableJudgementView];
+        [self.judgementDelegate disableJudgementView];
         judgementIsHidden = YES;
     }
 }

@@ -25,7 +25,7 @@
 
 
 
-@interface ObservationContainerViewController ()<ToggleJudgementViewDelegate>{
+@interface ObservationContainerViewController ()<ToggleJudgementViewDelegate, ToggleSaveButtonStateDelegate>{
     UIBarButtonItem *saveButton;
     UIViewController *dataViewControllerToDisplay;
     UIViewController *judgementViewControllerToDisplay;
@@ -92,7 +92,8 @@
             photoDataViewController.prevData = prevData;
             photoDataViewController.projectComponent = projectComponent;
             photoDataViewController.newObservation = newObservation;
-            photoDataViewController.delegate = self;
+            photoDataViewController.judgementDelegate = self;
+            photoDataViewController.saveDelegate = self;
             dataViewControllerToDisplay = photoDataViewController;
         }
             break;
@@ -277,6 +278,15 @@
 
 -(void)disableJudgementView{
     judgementViewControllerToDisplay.view.hidden = YES;
+}
+
+#pragma mark toggle save button
+-(void)enableSaveButton{
+    saveButton.enabled = YES;
+}
+
+-(void)disableSaveButton{
+    saveButton.enabled = NO;
 }
 
 @end

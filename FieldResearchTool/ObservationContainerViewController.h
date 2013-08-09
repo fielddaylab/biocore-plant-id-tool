@@ -18,8 +18,6 @@
 @end
 
 
-
-
 @interface ObservationContainerViewController : UIViewController
 
 @property (strong, nonatomic) ProjectComponent *projectComponent;
