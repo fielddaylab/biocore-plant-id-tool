@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProjectComponent.h"
 
 @interface LongTextJudgementViewController : UIViewController
+
+@property (nonatomic, strong) ProjectComponent *projectComponent;
 
 -(id)initWithFrame:(CGRect)frame;
 

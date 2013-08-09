@@ -20,12 +20,20 @@
 
 @end
 
+@protocol ToggleSaveButtonStateDelegate <NSObject>
+
+-(void)enableSaveButton;
+-(void)disableSaveButton;
+
+@end
+
 @interface PhotoDataViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) ProjectComponent *projectComponent;
 @property (nonatomic, strong) UserObservationComponentData *prevData;
 @property (nonatomic) BOOL newObservation;
-@property (nonatomic) id<ToggleJudgementViewDelegate> delegate;
+@property (nonatomic) id<ToggleJudgementViewDelegate> judgementDelegate;
+@property (nonatomic) id<ToggleSaveButtonStateDelegate> saveDelegate;
 
 -(id)initWithFrame:(CGRect)frame;
 

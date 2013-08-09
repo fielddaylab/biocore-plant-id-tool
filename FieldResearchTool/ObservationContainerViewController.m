@@ -25,7 +25,7 @@
 
 
 
-@interface ObservationContainerViewController ()<ToggleJudgementViewDelegate>{
+@interface ObservationContainerViewController ()<ToggleJudgementViewDelegate, ToggleSaveButtonStateDelegate>{
     UIBarButtonItem *saveButton;
     UIViewController *dataViewControllerToDisplay;
     UIViewController *judgementViewControllerToDisplay;
@@ -92,7 +92,8 @@
             photoDataViewController.prevData = prevData;
             photoDataViewController.projectComponent = projectComponent;
             photoDataViewController.newObservation = newObservation;
-            photoDataViewController.delegate = self;
+            photoDataViewController.judgementDelegate = self;
+            photoDataViewController.saveDelegate = self;
             dataViewControllerToDisplay = photoDataViewController;
         }
             break;
@@ -149,11 +150,13 @@
             break;
         case JUDGEMENT_TEXT:{
             TextJudgementViewController *textJudgementViewController = [[TextJudgementViewController alloc]initWithFrame:frame2];
+            textJudgementViewController.projectComponent = projectComponent;
             judgementViewControllerToDisplay = textJudgementViewController;
         }
             break;
         case JUDGEMENT_LONG_TEXT:{
             LongTextJudgementViewController *longTextJudgementViewController = [[LongTextJudgementViewController alloc]initWithFrame:frame2];
+            longTextJudgementViewController.projectComponent = projectComponent;
             judgementViewControllerToDisplay = longTextJudgementViewController;
         }
             break;
@@ -177,7 +180,7 @@
     }
     
     if(judgementViewControllerToDisplay){
-        if([projectComponent.observationDataType intValue]){
+        if([projectComponent.observationDataType intValue] == DATA_PHOTO){
             judgementViewControllerToDisplay.view.hidden = YES;
         }
         self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
@@ -277,6 +280,15 @@
 
 -(void)disableJudgementView{
     judgementViewControllerToDisplay.view.hidden = YES;
+}
+
+#pragma mark toggle save button
+-(void)enableSaveButton{
+    saveButton.enabled = YES;
+}
+
+-(void)disableSaveButton{
+    saveButton.enabled = NO;
 }
 
 @end
