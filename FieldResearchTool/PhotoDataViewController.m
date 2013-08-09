@@ -38,65 +38,61 @@
 
 -(void)loadView{
     [super loadView];
-//    showPictureView = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.origin.x, [UIScreen mainScreen].bounds.origin.y - 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-//    showPictureView.backgroundColor = [UIColor blackColor];
-//    
-//    if(prevData){
-//        //this will change once the media manager is implemented
-//        Media *media = prevData.media;
-//        NSString *path = media.mediaURL;
-//        UIImage *image = [UIImage imageWithContentsOfFile:path];
-//        showPictureView.image = image;
-//        showPictureView.alpha = 1;
-//    }
-//    else{
-//        UIImage *image = [UIImage imageNamed:@"tutorialPhoto.jpg"];
-//        showPictureView.image = image;
-//        showPictureView.alpha = .3f;
-//    }
-//    
-//    [self.view addSubview:showPictureView];
-//    
-//    //NSLog(@"X: %f, Y: %f, Width: %f, Height: %f", self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-//    
-//    UIImage *redX = [UIImage imageNamed:@"60-xRED.png"];
-//    redXButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - redX.size.width, 310.0f - redX.size.height, redX.size.width, redX.size.height)];
-//    [redXButton setImage:redX forState:UIControlStateNormal];
-//    [redXButton addTarget:self
-//                   action:@selector(redXPressed)
-//         forControlEvents:UIControlEventTouchUpInside];
-//    
-//    retakeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    retakeButton.frame = showPictureView.bounds;
-//    if (newObservation) {
-//        [retakeButton addTarget:self action:@selector(startRecord) forControlEvents:UIControlEventTouchUpInside];
-//    }
-//    
-//    UIImage *cameraImage = [UIImage imageNamed:@"86-camera.png"];
-//    cameraImageView = [[UIImageView alloc] initWithImage:cameraImage];
-//    cameraImageView.frame = CGRectMake(160 - (cameraImage.size.width / 2.0f), 148, cameraImage.size.width, cameraImage.size.height);
-//    
-//    if(!prevData){
-//        cameraImageView.hidden = NO;
-//        redXButton.hidden = YES;
-//        retakeButton.enabled = YES;
-//    }
-//    else{
-//        cameraImageView.hidden = YES;
-//        redXButton.hidden = NO;
-//        retakeButton.enabled = NO;
-//    }
-//    
-//    [self.view addSubview:cameraImageView];
-//    [self.view addSubview:redXButton];
-//    [self.view addSubview:retakeButton];
+    showPictureView = [[UIImageView alloc] initWithFrame:viewRect];
+    
+    if(prevData){
+        //this will change once the media manager is implemented
+        Media *media = prevData.media;
+        NSString *path = media.mediaURL;
+        UIImage *image = [UIImage imageWithContentsOfFile:path];
+        showPictureView.image = image;
+        showPictureView.alpha = 1;
+    }
+    else{
+        UIImage *image = [UIImage imageNamed:@"tutorialPhoto.jpg"];
+        showPictureView.image = image;
+        showPictureView.alpha = .3f;
+    }
+
+    
+    UIImage *redX = [UIImage imageNamed:@"60-xRED.png"];
+    redXButton = [[UIButton alloc] initWithFrame:CGRectMake(0, viewRect.size.height - self.navigationController.navigationBar.frame.size.height - redX.size.height, redX.size.width, redX.size.height)];
+    [redXButton setImage:redX forState:UIControlStateNormal];
+    [redXButton addTarget:self
+                   action:@selector(redXPressed)
+         forControlEvents:UIControlEventTouchUpInside];
+    
+    retakeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    retakeButton.frame = viewRect;
+    if (newObservation) {
+        [retakeButton addTarget:self action:@selector(startRecord) forControlEvents:UIControlEventTouchUpInside];
+    }
+
+    UIImage *cameraImage = [UIImage imageNamed:@"86-camera.png"];
+    cameraImageView = [[UIImageView alloc] initWithImage:cameraImage];
+    cameraImageView.frame = CGRectMake((viewRect.size.width / 2.0f) - (cameraImage.size.width / 2.0f), (viewRect.size.height / 2.0f) - (cameraImage.size.height / 2.0f), cameraImage.size.width, cameraImage.size.height);
+    
+    if(!prevData){
+        cameraImageView.hidden = NO;
+        redXButton.hidden = YES;
+        retakeButton.enabled = YES;
+    }
+    else{
+        cameraImageView.hidden = YES;
+        redXButton.hidden = NO;
+        retakeButton.enabled = NO;
+    }
+
+    [self.view addSubview:showPictureView];
+    [self.view addSubview:cameraImageView];
+    [self.view addSubview:redXButton];
+    [self.view addSubview:retakeButton];
 }
 
 
 -(void)viewWillAppear:(BOOL)animated{
     self.view.frame = viewRect;
-    self.view.backgroundColor = [UIColor lightGrayColor];
-    self.navigationController.navigationBar.alpha = .5f;
+    self.navigationController.navigationBar.alpha = .1f;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
 }
 
