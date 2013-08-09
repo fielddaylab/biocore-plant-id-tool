@@ -59,15 +59,15 @@
 -(void)loadView{
     [super loadView];
     //create carousel
-    //    carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];//44 navbar height.
-    //
-    //	carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    //    carousel.type = iCarouselTypeLinear;
-    //	carousel.delegate = self;
-    //	carousel.dataSource = self;
-    //
-    //	//add carousel to view
-    //	[self.view addSubview:carousel];
+    carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];//44 navbar height.
+    
+    carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    carousel.type = iCarouselTypeLinear;
+    carousel.delegate = self;
+    carousel.dataSource = self;
+    
+    //add carousel to view
+    [self.view addSubview:carousel];
     chosenPossibility = nil;
 }
 
@@ -75,6 +75,18 @@
 -(void)viewWillAppear:(BOOL)animated{
     self.view.frame = viewRect;
     self.view.backgroundColor = [UIColor orangeColor];
+    
+    UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.view.bounds.size.width, 20)];
+    descriptionLabel.backgroundColor = [UIColor clearColor];
+    descriptionLabel.textAlignment = NSTextAlignmentCenter;
+    descriptionLabel.font = [descriptionLabel.font fontWithSize:20];
+    descriptionLabel.text = @"1234512345123451234512345";
+    descriptionLabel.tag = 2;
+    [self.view addSubview:descriptionLabel];
+
+    
+    
+    
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
     [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
     [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];
@@ -119,15 +131,12 @@
     //create new view if no view is available for recycling
     if (view == nil)
     {
-        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 150.0f, 150.0f)];
-    
         
-            NSLog(@"Within View %@", NSStringFromCGRect(view.bounds));
-    
         
+        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width *.6, self.view.bounds.size.height *.6)];
         
         view.contentMode = UIViewContentModeCenter;
-        label = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, 150, 150)];//view.bounds];
+        label = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height * .4, self.view.bounds.size.width *.6, self.view.bounds.size.height *.6)];
         label.backgroundColor = [UIColor clearColor];
         label.textAlignment = NSTextAlignmentCenter;
         label.font = [label.font fontWithSize:20];
