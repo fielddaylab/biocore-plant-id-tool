@@ -20,6 +20,7 @@
 @end
 
 @implementation TextJudgementViewController
+@synthesize projectComponent;
 
 -(id)initWithFrame:(CGRect)frame{
     self = [super init];
@@ -29,18 +30,27 @@
 
 -(void)loadView{
     [super loadView];
-//    textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 300, 40)];
-//    textField.borderStyle = UITextBorderStyleRoundedRect;
-//    textField.font = [UIFont systemFontOfSize:15];
-//    textField.placeholder = @"enter text";
-//    textField.autocorrectionType = UITextAutocorrectionTypeNo;
-//    textField.keyboardType = UIKeyboardTypeDefault;
-//    textField.returnKeyType = UIReturnKeyDone;
-//    textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-//    textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-//    textField.delegate = self;
-//    [self.view addSubview:textField];
-//    [self setViewMovedUp:NO];
+    
+    UILabel *descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, viewRect.size.height * .04, viewRect.size.width, 22)];
+    descriptionLabel.backgroundColor = [UIColor clearColor];
+    descriptionLabel.textAlignment = NSTextAlignmentCenter;
+    descriptionLabel.font = [descriptionLabel.font fontWithSize:20];
+    descriptionLabel.text = [NSString stringWithFormat:@"Is %@ ?", projectComponent.title];//This makes me cringe.
+    descriptionLabel.tag = 2;
+    [self.view addSubview:descriptionLabel];
+    
+    textField = [[UITextField alloc] init];
+    textField.frame = CGRectMake(viewRect.size.width *.05, viewRect.size.height * .5 - 10, viewRect.size.width *.9, 40);
+    textField.borderStyle = UITextBorderStyleRoundedRect;
+    textField.font = [UIFont systemFontOfSize:15];
+    textField.placeholder = @"enter description";
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.keyboardType = UIKeyboardTypeDefault;//UIKeyboardTypeNumberPad;
+    textField.returnKeyType = UIReturnKeyDone;
+    textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    textField.delegate = self;
+    [self.view addSubview:textField];
 }
 
 

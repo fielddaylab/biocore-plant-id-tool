@@ -36,13 +36,8 @@
 
 -(void)loadView{
     [super loadView];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    self.view.frame = viewRect;
     
-    UILabel *descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, self.view.bounds.size.height * .04, self.view.bounds.size.width, 22)];
+    UILabel *descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, viewRect.size.height * .04, viewRect.size.width, 22)];
     descriptionLabel.backgroundColor = [UIColor clearColor];
     descriptionLabel.textAlignment = NSTextAlignmentCenter;
     descriptionLabel.font = [descriptionLabel.font fontWithSize:20];
@@ -51,7 +46,7 @@
     [self.view addSubview:descriptionLabel];
     
     numberField = [[UITextField alloc] init];
-    numberField.frame = CGRectMake(self.view.bounds.size.width *.5, self.view.bounds.size.height * .5 - 10, self.view.bounds.size.width *.45, 40); //-10 -> height(40)/2 = 20. -10 b/c label = 10;
+    numberField.frame = CGRectMake(viewRect.size.width *.5, viewRect.size.height * .5 - 10, viewRect.size.width *.45, 40); //-10 -> height(40)/2 = 20. -10 b/c label = 10;
     numberField.borderStyle = UITextBorderStyleRoundedRect;
     numberField.font = [UIFont systemFontOfSize:15];
     numberField.placeholder = @"enter number";
@@ -64,10 +59,15 @@
     [self.view addSubview:numberField];
     
     imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"test.png"]];
-    imageView.frame = CGRectMake(-75, 10, self.view.frame.size.width, self.view.frame.size.height);
-    imageView.image = [self imageWithImage:[UIImage imageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, self.view.bounds.size.height *.7, self.view.bounds.size.height *.7).size];
+    imageView.frame = CGRectMake(-75, 10, viewRect.size.width, viewRect.size.height);
+    imageView.image = [self imageWithImage:[UIImage imageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, viewRect.size.height *.7, viewRect.size.height *.7).size];
     imageView.contentMode = UIViewContentModeCenter;
     [self.view addSubview:imageView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.view.frame = viewRect;
     
     self.view.backgroundColor = [UIColor lightGrayColor];
     // register for keyboard notifications

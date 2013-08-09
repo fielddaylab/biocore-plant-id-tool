@@ -150,11 +150,13 @@
             break;
         case JUDGEMENT_TEXT:{
             TextJudgementViewController *textJudgementViewController = [[TextJudgementViewController alloc]initWithFrame:frame2];
+            textJudgementViewController.projectComponent = projectComponent;
             judgementViewControllerToDisplay = textJudgementViewController;
         }
             break;
         case JUDGEMENT_LONG_TEXT:{
             LongTextJudgementViewController *longTextJudgementViewController = [[LongTextJudgementViewController alloc]initWithFrame:frame2];
+            longTextJudgementViewController.projectComponent = projectComponent;
             judgementViewControllerToDisplay = longTextJudgementViewController;
         }
             break;
