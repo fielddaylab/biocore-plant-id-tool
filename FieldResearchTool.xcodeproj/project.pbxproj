@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5B03BBE9179EE495005AD632 /* MediaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBE8179EE495005AD632 /* MediaManager.m */; };
 		5B0458591795A11600B93A4D /* AppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0458581795A11600B93A4D /* AppModel.m */; };
+		5B04D63617B558AC0008C250 /* 03-arrow-north.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B04D63517B558AC0008C250 /* 03-arrow-north.png */; };
+		5B04D63817B55E690008C250 /* 06-arrow-south.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B04D63717B55E690008C250 /* 06-arrow-south.png */; };
+		5B04D63B17B579D20008C250 /* UIImage+Rotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B04D63A17B579D20008C250 /* UIImage+Rotation.m */; };
 		5B1DAC6417B02CF700A30136 /* ProjectComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1DAC6317B02CF700A30136 /* ProjectComponent.m */; };
 		5B1DAC6D17B05C0F00A30136 /* UserObservationComponentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1DAC6C17B05C0F00A30136 /* UserObservationComponentData.m */; };
 		5B4D2DF717AC3C5B0071304F /* ProjectIdentificationDiscussion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF617AC3C5B0071304F /* ProjectIdentificationDiscussion.m */; };
@@ -172,6 +175,10 @@
 		5B03BC3E179EF8F8005AD632 /* MediaType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaType.h; sourceTree = "<group>"; };
 		5B0458571795A11600B93A4D /* AppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppModel.h; sourceTree = "<group>"; };
 		5B0458581795A11600B93A4D /* AppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppModel.m; sourceTree = "<group>"; };
+		5B04D63517B558AC0008C250 /* 03-arrow-north.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "03-arrow-north.png"; sourceTree = "<group>"; };
+		5B04D63717B55E690008C250 /* 06-arrow-south.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "06-arrow-south.png"; sourceTree = "<group>"; };
+		5B04D63917B579D20008C250 /* UIImage+Rotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Rotation.h"; sourceTree = "<group>"; };
+		5B04D63A17B579D20008C250 /* UIImage+Rotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Rotation.m"; sourceTree = "<group>"; };
 		5B1B065617A6C90A002B47A0 /* SaveObservationAndJudgementDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveObservationAndJudgementDelegate.h; sourceTree = "<group>"; };
 		5B1DAC6217B02CF700A30136 /* ProjectComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComponent.h; sourceTree = "<group>"; };
 		5B1DAC6317B02CF700A30136 /* ProjectComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectComponent.m; sourceTree = "<group>"; };
@@ -546,6 +553,8 @@
 		71AA55FF17B2EFFC00EECCC5 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				5B04D63717B55E690008C250 /* 06-arrow-south.png */,
+				5B04D63517B558AC0008C250 /* 03-arrow-north.png */,
 				71AA560017B2EFFC00EECCC5 /* 05-shuffle.png */,
 				71AA560117B2EFFC00EECCC5 /* 17-check.png */,
 				71AA560217B2EFFC00EECCC5 /* 17-checkGREEN.png */,
@@ -776,6 +785,8 @@
 				5B1B065617A6C90A002B47A0 /* SaveObservationAndJudgementDelegate.h */,
 				AAAC4F5B178F3EEE001AB1D8 /* RootViewController.h */,
 				AAAC4F5C178F3EEE001AB1D8 /* RootViewController.m */,
+				5B04D63917B579D20008C250 /* UIImage+Rotation.h */,
+				5B04D63A17B579D20008C250 /* UIImage+Rotation.m */,
 				5BFED1B71794834C00648062 /* AccordianViewControllers */,
 				5BFED1B61794830700648062 /* DataObjects */,
 				71AA55FF17B2EFFC00EECCC5 /* Assets */,
@@ -965,6 +976,8 @@
 				71AA56AE17B2EFFC00EECCC5 /* test320.png in Resources */,
 				71AA56AF17B2EFFC00EECCC5 /* tutorialPhoto.jpg in Resources */,
 				71FF817117B436F800552EF8 /* defaultIdentificationNoPhoto.png in Resources */,
+				5B04D63617B558AC0008C250 /* 03-arrow-north.png in Resources */,
+				5B04D63817B55E690008C250 /* 06-arrow-south.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1057,6 +1070,7 @@
 				5B64933F17B17F2500D8C1C7 /* InterpretationDiscussionViewController.m in Sources */,
 				5B64934417B18D3600D8C1C7 /* InterpretationDiscussionPostViewController.m in Sources */,
 				71699ED517B2C8B400BEDF13 /* ProjectIdentification.m in Sources */,
+				5B04D63B17B579D20008C250 /* UIImage+Rotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

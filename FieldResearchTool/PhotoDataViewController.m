@@ -11,6 +11,7 @@
 #import <ImageIO/CGImageProperties.h>
 #import "AppModel.h"
 #import "SaveObservationAndJudgementDelegate.h"
+#import "UIImage+Rotation.h"
 
 
 
@@ -20,7 +21,11 @@
     UIView *recorderView;
     UIButton *retakeButton;
     UIButton *redXButton;
+    UIButton *arrowButton;
     CGRect viewRect;
+    UIImage *arrowImage;
+    UIImage *redX;
+    BOOL judgementIsHidden;
 }
 @end
 
@@ -28,17 +33,21 @@
 @synthesize projectComponent;
 @synthesize prevData;
 @synthesize newObservation;
+@synthesize delegate;
 
 
 -(id)initWithFrame:(CGRect)frame{
     self = [super init];
     viewRect = frame;
+    judgementIsHidden = YES;
     return self;
 }
 
 -(void)loadView{
     [super loadView];
     showPictureView = [[UIImageView alloc] initWithFrame:viewRect];
+    showPictureView.backgroundColor = [UIColor blackColor];
+    showPictureView.contentMode = UIViewContentModeScaleAspectFit;
     
     if(prevData){
         //this will change once the media manager is implemented
@@ -46,17 +55,15 @@
         NSString *path = media.mediaURL;
         UIImage *image = [UIImage imageWithContentsOfFile:path];
         showPictureView.image = image;
-        showPictureView.alpha = 1;
     }
     else{
         UIImage *image = [UIImage imageNamed:@"tutorialPhoto.jpg"];
         showPictureView.image = image;
-        showPictureView.alpha = .3f;
     }
 
     
-    UIImage *redX = [UIImage imageNamed:@"60-xRED.png"];
-    redXButton = [[UIButton alloc] initWithFrame:CGRectMake(0, viewRect.size.height - self.navigationController.navigationBar.frame.size.height - redX.size.height, redX.size.width, redX.size.height)];
+    redX = [UIImage imageNamed:@"60-xRED.png"];
+    redXButton = [[UIButton alloc] initWithFrame:CGRectMake(0, viewRect.size.height - redX.size.height - 10, redX.size.width, redX.size.height)];
     [redXButton setImage:redX forState:UIControlStateNormal];
     [redXButton addTarget:self
                    action:@selector(redXPressed)
@@ -72,33 +79,34 @@
     cameraImageView = [[UIImageView alloc] initWithImage:cameraImage];
     cameraImageView.frame = CGRectMake((viewRect.size.width / 2.0f) - (cameraImage.size.width / 2.0f), (viewRect.size.height / 2.0f) - (cameraImage.size.height / 2.0f), cameraImage.size.width, cameraImage.size.height);
     
+    arrowImage = [UIImage imageNamed:@"03-arrow-north.png"];
+    arrowButton = [[UIButton alloc] initWithFrame:CGRectMake((viewRect.size.width / 2.0f) - (arrowImage.size.width / 2.0f), viewRect.size.height - arrowImage.size.height - 10, arrowImage.size.width, arrowImage.size.height)];
+    [arrowButton setImage:arrowImage forState:UIControlStateNormal];
+    [arrowButton addTarget:self action:@selector(arrowButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    
     if(!prevData){
         cameraImageView.hidden = NO;
         redXButton.hidden = YES;
         retakeButton.enabled = YES;
+        arrowButton.hidden = YES;
     }
     else{
         cameraImageView.hidden = YES;
         redXButton.hidden = NO;
         retakeButton.enabled = NO;
+        arrowButton.hidden = NO;
     }
 
     [self.view addSubview:showPictureView];
     [self.view addSubview:cameraImageView];
     [self.view addSubview:redXButton];
     [self.view addSubview:retakeButton];
+    [self.view addSubview:arrowButton];
 }
 
 
 -(void)viewWillAppear:(BOOL)animated{
     self.view.frame = viewRect;
-    self.navigationController.navigationBar.alpha = .1f;
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-    self.navigationController.navigationBar.alpha = 1.0f;
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 
@@ -129,12 +137,13 @@
     
 //    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
+    
     showPictureView.image = chosenImage;
-    showPictureView.alpha = 1;
     cameraImageView.hidden = YES;
     
     redXButton.hidden = NO;
     retakeButton.enabled = NO;
+    arrowButton.hidden = NO;
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
@@ -148,9 +157,34 @@
     redXButton.hidden = YES;
     retakeButton.enabled = YES;
     cameraImageView.hidden = NO;
+    arrowButton.hidden = YES;
     UIImage *image = [UIImage imageNamed:@"tutorialPhoto.jpg"];
     showPictureView.image = image;
-    showPictureView.alpha = .3f;
+    if(!judgementIsHidden){
+        redXButton.frame = CGRectMake(0, viewRect.size.height - redX.size.height - 10, redX.size.width, redX.size.height);
+        arrowButton.frame = CGRectMake((viewRect.size.width / 2.0f) - (arrowImage.size.width / 2.0f), viewRect.size.height - arrowImage.size.height - 10, arrowImage.size.width, arrowImage.size.height);
+        [arrowButton setImage:[UIImage imageNamed:@"03-arrow-north.png"] forState:UIControlStateNormal];
+        [self.delegate disableJudgementView];
+        judgementIsHidden = YES;
+    }
+}
+
+#pragma mark arrow button pressed
+-(void)arrowButtonPressed{
+    if (judgementIsHidden) {
+        redXButton.frame = CGRectMake(0, viewRect.size.height - redX.size.height - (viewRect.size.height * (1.0f/3.0f)), redX.size.width, redX.size.height);
+        arrowButton.frame = CGRectMake((viewRect.size.width / 2.0f) - (arrowImage.size.width / 2.0f), viewRect.size.height - arrowImage.size.height - (viewRect.size.height * (1.0f/3.0f)), arrowImage.size.width, arrowImage.size.height);
+        [arrowButton setImage:[UIImage imageNamed:@"06-arrow-south.png"] forState:UIControlStateNormal];
+        [self.delegate enableJudgementView];
+        judgementIsHidden = NO;
+    }
+    else{
+        redXButton.frame = CGRectMake(0, viewRect.size.height - redX.size.height - 10, redX.size.width, redX.size.height);
+        arrowButton.frame = CGRectMake((viewRect.size.width / 2.0f) - (arrowImage.size.width / 2.0f), viewRect.size.height - arrowImage.size.height - 10, arrowImage.size.width, arrowImage.size.height);
+        [arrowButton setImage:[UIImage imageNamed:@"03-arrow-north.png"] forState:UIControlStateNormal];
+        [self.delegate disableJudgementView];
+        judgementIsHidden = YES;
+    }
 }
 
 
@@ -160,7 +194,8 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     //get uuid here to uniquely identify the pictures
     NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"picTaken.png"];
-    [UIImagePNGRepresentation(showPictureView.image) writeToFile:filePath atomically:YES];
+    UIImage *rotation = [showPictureView.image fixOrientation];
+    [UIImagePNGRepresentation(rotation) writeToFile:filePath atomically:YES];
     
     NSMutableDictionary *mediaAttributes = [[NSMutableDictionary alloc]init];
     [mediaAttributes setObject:[NSDate date] forKey:@"created"];

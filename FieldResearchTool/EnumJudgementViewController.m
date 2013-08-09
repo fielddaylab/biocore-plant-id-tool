@@ -74,7 +74,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     self.view.frame = viewRect;
-    self.view.backgroundColor = [UIColor orangeColor];
+    self.view.backgroundColor = [UIColor clearColor];
     
     UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.view.bounds.size.width, 20)];
     descriptionLabel.backgroundColor = [UIColor clearColor];

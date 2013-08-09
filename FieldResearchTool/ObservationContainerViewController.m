@@ -25,7 +25,7 @@
 
 
 
-@interface ObservationContainerViewController (){
+@interface ObservationContainerViewController ()<ToggleJudgementViewDelegate>{
     UIBarButtonItem *saveButton;
     UIViewController *dataViewControllerToDisplay;
     UIViewController *judgementViewControllerToDisplay;
@@ -88,10 +88,11 @@
             //set up view controller here
             break;
         case DATA_PHOTO:{
-            PhotoDataViewController *photoDataViewController = [[PhotoDataViewController alloc]initWithFrame:self.view.bounds];
+            PhotoDataViewController *photoDataViewController = [[PhotoDataViewController alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, (self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height))];
             photoDataViewController.prevData = prevData;
             photoDataViewController.projectComponent = projectComponent;
             photoDataViewController.newObservation = newObservation;
+            photoDataViewController.delegate = self;
             dataViewControllerToDisplay = photoDataViewController;
         }
             break;
@@ -160,7 +161,6 @@
             EnumJudgementViewController *enumJudgementViewController = [[EnumJudgementViewController alloc]initWithFrame:frame2];
             enumJudgementViewController.prevData = prevData;
             enumJudgementViewController.projectComponent = projectComponent;
-            enumJudgementViewController.view.backgroundColor = [UIColor lightGrayColor];
             judgementViewControllerToDisplay = enumJudgementViewController;
             
         }
@@ -176,12 +176,15 @@
         [self.view addSubview:dataViewControllerToDisplay.view];
     }
     
-//    if(judgementViewControllerToDisplay){
-//        self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
-//        [self addChildViewController:judgementViewControllerToDisplay];
-//        [self didMoveToParentViewController:judgementViewControllerToDisplay];
-//        [self.view addSubview:judgementViewControllerToDisplay.view];
-//    }
+    if(judgementViewControllerToDisplay){
+        if([projectComponent.observationDataType intValue]){
+            judgementViewControllerToDisplay.view.hidden = YES;
+        }
+        self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
+        [self addChildViewController:judgementViewControllerToDisplay];
+        [self didMoveToParentViewController:judgementViewControllerToDisplay];
+        [self.view addSubview:judgementViewControllerToDisplay.view];
+    }
     
 
     
@@ -224,34 +227,34 @@
 
 //this case will go away once the view controllers are compressed into one view
 -(void)checkDataAndJudgmentNumber{
-    NumberDataViewController *numberDataViewController = (NumberDataViewController *)dataViewControllerToDisplay;
-    NumberJudgementViewController *numberJudgementViewController = (NumberJudgementViewController *)judgementViewControllerToDisplay;
-    NSString *dataText = numberDataViewController.textField.text;
-    NSString *judgementText = numberJudgementViewController.numberField.text;
-
-    NSString *regexForNumberData = @"[-+]?[0-9]*\\.?[0-9]+";
-    NSString *regexForNumberJudgement = @"[-+]?[0-9]*\\.?[0-9]*";
-    NSPredicate *isNumberData = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberData];
-    NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberJudgement];
-    if (([isNumberData evaluateWithObject: dataText] && [isNumberJudgement evaluateWithObject: judgementText]) || ([isNumberData evaluateWithObject: dataText] && judgementText == nil)){
-        saveButton.enabled = YES;
-    }
-    else{
-        saveButton.enabled = NO;
-    }
+//    NumberDataViewController *numberDataViewController = (NumberDataViewController *)dataViewControllerToDisplay;
+//    NumberJudgementViewController *numberJudgementViewController = (NumberJudgementViewController *)judgementViewControllerToDisplay;
+//    NSString *dataText = numberDataViewController.textField.text;
+//    NSString *judgementText = numberJudgementViewController.numberField.text;
+//
+//    NSString *regexForNumberData = @"[-+]?[0-9]*\\.?[0-9]+";
+//    NSString *regexForNumberJudgement = @"[-+]?[0-9]*\\.?[0-9]*";
+//    NSPredicate *isNumberData = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberData];
+//    NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberJudgement];
+//    if (([isNumberData evaluateWithObject: dataText] && [isNumberJudgement evaluateWithObject: judgementText]) || ([isNumberData evaluateWithObject: dataText] && judgementText == nil)){
+//        saveButton.enabled = YES;
+//    }
+//    else{
+//        saveButton.enabled = NO;
+//    }
 }
 
 -(void)checkDataNumber{
-    NumberDataViewController *numberDataViewController = (NumberDataViewController *)dataViewControllerToDisplay;
-    NSString *dataText = numberDataViewController.textField.text;
-    NSString *regexForNumberData = @"[-+]?[0-9]*\\.?[0-9]+";
-    NSPredicate *isNumberData = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberData];
-    if ([isNumberData evaluateWithObject: dataText]){
-        saveButton.enabled = YES;
-    }
-    else{
-        saveButton.enabled = NO;
-    }
+//    NumberDataViewController *numberDataViewController = (NumberDataViewController *)dataViewControllerToDisplay;
+//    NSString *dataText = numberDataViewController.textField.text;
+//    NSString *regexForNumberData = @"[-+]?[0-9]*\\.?[0-9]+";
+//    NSPredicate *isNumberData = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberData];
+//    if ([isNumberData evaluateWithObject: dataText]){
+//        saveButton.enabled = YES;
+//    }
+//    else{
+//        saveButton.enabled = NO;
+//    }
 }
 
 -(void)checkJudgementNumber{
@@ -265,6 +268,15 @@
     else{
         saveButton.enabled = NO;
     }
+}
+
+#pragma mark toggle judgement view controller
+-(void)enableJudgementView{
+    judgementViewControllerToDisplay.view.hidden = NO;
+}
+
+-(void)disableJudgementView{
+    judgementViewControllerToDisplay.view.hidden = YES;
 }
 
 @end
