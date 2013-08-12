@@ -173,6 +173,7 @@
     }
     
     if(dataViewControllerToDisplay){
+        self.navigationItem.title = [NSString stringWithFormat:@"Is %@?", projectComponent.title];
         dataViewControllerToDisplay.view.backgroundColor = [UIColor grayColor];
         self.saveObservationDelegate = (id)dataViewControllerToDisplay;
         [self addChildViewController:dataViewControllerToDisplay];
