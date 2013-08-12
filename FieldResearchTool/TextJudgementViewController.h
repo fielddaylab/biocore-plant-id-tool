@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) ProjectComponent *projectComponent;
 @property (nonatomic) BOOL isOneToOne;
+@property (nonatomic, strong) UITextField *textField;
 
 -(id)initWithFrame:(CGRect)frame;
 

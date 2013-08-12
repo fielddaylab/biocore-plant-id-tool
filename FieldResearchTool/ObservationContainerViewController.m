@@ -21,8 +21,8 @@
 #import "LongTextJudgementViewController.h"
 #import "TextJudgementViewController.h"
 #import "NumberJudgementViewController.h"
-#import "EnumDataViewController.h"
-
+#import "TextDataViewController.h"
+#import "LongTextDataViewController.h"
 
 
 @interface ObservationContainerViewController ()<ToggleJudgementViewDelegate, ToggleSaveButtonStateDelegate>{
@@ -121,11 +121,20 @@
         }
             break;
         case DATA_TEXT:{
-            //set up view controller here
+            TextDataViewController *textDataViewController = [[TextDataViewController alloc]initWithFrame:frame];
+            textDataViewController.prevData = prevData;
+            textDataViewController.projectComponent = projectComponent;
+            textDataViewController.newObservation = newObservation;
+            dataViewControllerToDisplay = textDataViewController;
         }
             break;
-        case DATA_LONG_TEXT:
-            //set up view controller here
+        case DATA_LONG_TEXT:{
+            LongTextDataViewController *longTextDataViewController = [[LongTextDataViewController alloc] initWithFrame:frame];
+            longTextDataViewController.prevData = prevData;
+            longTextDataViewController.projectComponent = projectComponent;
+            longTextDataViewController.newObservation = newObservation;
+            dataViewControllerToDisplay = longTextDataViewController;
+        }
             break;
         case DATA_ENUMERATOR:{
             //set up view controller here
@@ -183,6 +192,12 @@
             break;
     }
     
+    [self pushOnViewControllers];
+    [self addDataValidationTimer];
+    
+}
+
+-(void)pushOnViewControllers{
     if(([dataViewControllerToDisplay isKindOfClass:[NumberDataViewController class]] && [judgementViewControllerToDisplay isKindOfClass:[NumberJudgementViewController class]])){
         NumberJudgementViewController *numberJudgementViewController = [[NumberJudgementViewController alloc]initWithFrame:self.view.bounds];
         numberJudgementViewController.prevData = prevData;
@@ -207,6 +222,28 @@
         [self didMoveToParentViewController:judgementViewControllerToDisplay];
         [self.view addSubview:judgementViewControllerToDisplay.view];
     }
+    else if (([dataViewControllerToDisplay isKindOfClass:[TextDataViewController class]] && [judgementViewControllerToDisplay isKindOfClass:[TextJudgementViewController class]])){
+        TextJudgementViewController *textJudgementViewController = [[TextJudgementViewController alloc] initWithFrame:self.view.bounds];
+        textJudgementViewController.projectComponent = projectComponent;
+        textJudgementViewController.isOneToOne = YES;
+        isOneToOne = YES;
+        judgementViewControllerToDisplay = textJudgementViewController;
+        self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
+        [self addChildViewController:judgementViewControllerToDisplay];
+        [self didMoveToParentViewController:judgementViewControllerToDisplay];
+        [self.view addSubview:judgementViewControllerToDisplay.view];
+    }
+    else if (([dataViewControllerToDisplay isKindOfClass:[LongTextDataViewController class]] && [judgementViewControllerToDisplay isKindOfClass:[LongTextJudgementViewController class]])){
+        LongTextJudgementViewController *longTextJudgementViewController = [[LongTextJudgementViewController alloc]initWithFrame:self.view.bounds];
+        longTextJudgementViewController.projectComponent = projectComponent;
+        longTextJudgementViewController.isOneToOne = YES;
+        isOneToOne = YES;
+        judgementViewControllerToDisplay = longTextJudgementViewController;
+        self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
+        [self addChildViewController:judgementViewControllerToDisplay];
+        [self didMoveToParentViewController:judgementViewControllerToDisplay];
+        [self.view addSubview:judgementViewControllerToDisplay.view];
+    }
     else{
         isOneToOne = NO;
         if(dataViewControllerToDisplay){
@@ -218,7 +255,6 @@
         }
         
         if(judgementViewControllerToDisplay){
-            //judgementViewControllerToDisplay.view.backgroundColor = [UIColor lightGrayColor];
             if([projectComponent.observationDataType intValue] == DATA_PHOTO){
                 judgementViewControllerToDisplay.view.hidden = YES;
             }
@@ -228,8 +264,9 @@
             [self.view addSubview:judgementViewControllerToDisplay.view];
         }
     }
-    
+}
 
+-(void)addDataValidationTimer{
     if (!isOneToOne) {
         if([dataViewControllerToDisplay isKindOfClass:[NumberDataViewController class]]){
             [NSTimer scheduledTimerWithTimeInterval:.2
@@ -245,6 +282,21 @@
                                            userInfo:nil
                                             repeats:YES];
         }
+        else if ([dataViewControllerToDisplay isKindOfClass:[TextDataViewController class]]){
+            [NSTimer scheduledTimerWithTimeInterval:.2
+                                             target:self
+                                           selector:@selector(checkDataText)
+                                           userInfo:nil
+                                            repeats:YES];
+        }
+        else if ([dataViewControllerToDisplay isKindOfClass:[LongTextDataViewController class]]){
+            [NSTimer scheduledTimerWithTimeInterval:.2
+                                             target:self
+                                           selector:@selector(checkDataText)
+                                           userInfo:nil
+                                            repeats:YES];
+        }
+        
     }
     else{
         if ([judgementViewControllerToDisplay isKindOfClass:[NumberJudgementViewController class]]){
@@ -254,9 +306,21 @@
                                            userInfo:nil
                                             repeats:YES];
         }
+        else if ([judgementViewControllerToDisplay isKindOfClass:[TextJudgementViewController class]]){
+            [NSTimer scheduledTimerWithTimeInterval:.2
+                                             target:self
+                                           selector:@selector(checkDataLongText)
+                                           userInfo:nil
+                                            repeats:YES];
+        }
+        else if ([judgementViewControllerToDisplay isKindOfClass:[LongTextJudgementViewController class]]){
+            [NSTimer scheduledTimerWithTimeInterval:.2
+                                             target:self
+                                           selector:@selector(checkJudgementLongText)
+                                           userInfo:nil
+                                            repeats:YES];
+        }
     }
-
-    
 }
 
 -(void)popToComponentScreen{
@@ -295,6 +359,62 @@
     
     NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberJudgement];
     if (!judgementText || [isNumberJudgement evaluateWithObject: judgementText]){
+        saveButton.enabled = YES;
+    }
+    else{
+        saveButton.enabled = NO;
+    }
+}
+
+-(void)checkDataText{
+    TextDataViewController *textDataViewController = (TextDataViewController *)dataViewControllerToDisplay;
+    NSString *dataText = textDataViewController.textField.text;
+    NSString *regexForTextData = @"^(?!\\s*$).+";
+    
+    NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForTextData];
+    if ([isNumberJudgement evaluateWithObject: dataText]){
+        saveButton.enabled = YES;
+    }
+    else{
+        saveButton.enabled = NO;
+    }
+}
+
+-(void)checkJudgementText{
+    TextJudgementViewController *textJudgementViewController = (TextJudgementViewController *)judgementViewControllerToDisplay;
+    NSString *judgementText = textJudgementViewController.textField.text;
+    NSString *regexForTextData = @"^(?!\\s*$).+";
+    
+    NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForTextData];
+    if ([isNumberJudgement evaluateWithObject: judgementText]){
+        saveButton.enabled = YES;
+    }
+    else{
+        saveButton.enabled = NO;
+    }
+}
+
+-(void)checkDataLongText{
+    LongTextDataViewController *longTextDataViewController = (LongTextDataViewController *)dataViewControllerToDisplay;
+    NSString *dataText = longTextDataViewController.textField.text;
+    NSString *regexForTextData = @"^(?!\\s*$).+";
+    
+    NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForTextData];
+    if ([isNumberJudgement evaluateWithObject: dataText]){
+        saveButton.enabled = YES;
+    }
+    else{
+        saveButton.enabled = NO;
+    }
+}
+
+-(void)checkJudgementLongText{
+    LongTextJudgementViewController *textJudgementViewController = (LongTextJudgementViewController *)judgementViewControllerToDisplay;
+    NSString *judgementText = textJudgementViewController.textField.text;
+    NSString *regexForTextData = @"^(?!\\s*$).+";
+    
+    NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForTextData];
+    if ([isNumberJudgement evaluateWithObject: judgementText]){
         saveButton.enabled = YES;
     }
     else{

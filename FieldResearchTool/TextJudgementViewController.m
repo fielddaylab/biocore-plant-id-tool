@@ -22,6 +22,7 @@
 @implementation TextJudgementViewController
 @synthesize projectComponent;
 @synthesize isOneToOne;
+@synthesize textField;
 
 -(id)initWithFrame:(CGRect)frame{
     self = [super init];
@@ -31,7 +32,13 @@
 
 -(void)loadView{
     [super loadView];
-    [self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"carouselBackground"]]];
+    if (!isOneToOne) {
+        [self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"carouselBackground"]]];
+    }
+    else{
+        self.view.backgroundColor = [UIColor lightGrayColor];
+    }
+    
     
     UILabel *descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, viewRect.size.height * .04, viewRect.size.width, 22)];
     descriptionLabel.backgroundColor = [UIColor clearColor];
@@ -42,7 +49,13 @@
     [self.view addSubview:descriptionLabel];
     
     textField = [[UITextField alloc] init];
-    textField.frame = CGRectMake(viewRect.size.width *.05, viewRect.size.height * .5 - 10, viewRect.size.width *.9, 40);
+    if (!isOneToOne) {
+        textField.frame = CGRectMake(viewRect.size.width *.05, viewRect.size.height * .5 - 10, viewRect.size.width *.9, 40);
+    }
+    else{
+        textField.frame = CGRectMake(viewRect.size.width *.05, descriptionLabel.frame.size.height + 30, viewRect.size.width *.9, 40);
+    }
+    
     textField.borderStyle = UITextBorderStyleRoundedRect;
     textField.font = [UIFont systemFontOfSize:15];
     textField.placeholder = @"enter description";
@@ -58,32 +71,44 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     self.view.frame = viewRect;
-    // register for keyboard notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
+    if (!isOneToOne) {
+        // register for keyboard notifications
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillShow)
+                                                     name:UIKeyboardWillShowNotification
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillHide)
+                                                     name:UIKeyboardWillHideNotification
+                                                   object:nil];
+    }
+    else{
+        [textField becomeFirstResponder];
+    }
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIKeyboardWillShowNotification
-                                                  object:nil];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIKeyboardWillHideNotification
-                                                  object:nil];
+    if (!isOneToOne) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                        name:UIKeyboardWillShowNotification
+                                                      object:nil];
+        
+        [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                        name:UIKeyboardWillHideNotification
+                                                      object:nil];
+    }
+
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self->textField resignFirstResponder];
-    [self setViewMovedUp:NO];
+    if (!isOneToOne) {
+        [self->textField resignFirstResponder];
+        [self setViewMovedUp:NO];
+    }
+
     
     return YES;
 }
@@ -115,7 +140,7 @@
     if ([sender isEqual:textField])
     {
         //move the main view, so that the keyboard does not hide it.
-        if  (self.view.frame.origin.y >= 0)
+        if  (self.view.frame.origin.y >= 0 && !isOneToOne)
         {
             [self setViewMovedUp:YES];
         }
@@ -167,6 +192,23 @@
     [attributes setObject:text forKey:@"text"];
     UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:nil withAttributes:attributes];
     return judgement;
+}
+
+-(UserObservationComponentData *)saveUserDataAndJudgement{
+    NSString *text = textField.text;
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setObject:[NSDate date] forKey:@"created"];
+    [attributes setObject:[NSDate date] forKey:@"updated"];
+    [attributes setObject:text forKey:@"text"];
+    [attributes setObject:projectComponent forKey:@"projectComponent"];
+    UserObservationComponentData *data = [[AppModel sharedAppModel] createNewObservationDataWithAttributes:attributes];
+    
+    NSMutableDictionary *judgementAttributes = [[NSMutableDictionary alloc]init];
+    [judgementAttributes setObject:[NSDate date] forKey:@"created"];
+    [judgementAttributes setObject:[NSDate date] forKey:@"updated"];
+    [judgementAttributes setObject:text forKey:@"text"];
+    [[AppModel sharedAppModel] createNewJudgementWithData:data withProjectComponentPossibility:nil withAttributes:judgementAttributes];
+    return data;
 }
 
 @end
