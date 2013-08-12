@@ -173,6 +173,7 @@
     }
     
     if(dataViewControllerToDisplay){
+        dataViewControllerToDisplay.view.backgroundColor = [UIColor grayColor];
         self.saveObservationDelegate = (id)dataViewControllerToDisplay;
         [self addChildViewController:dataViewControllerToDisplay];
         [self didMoveToParentViewController:dataViewControllerToDisplay];
@@ -231,40 +232,40 @@
 
 //this case will go away once the view controllers are compressed into one view
 -(void)checkDataAndJudgmentNumber{
-//    NumberDataViewController *numberDataViewController = (NumberDataViewController *)dataViewControllerToDisplay;
-//    NumberJudgementViewController *numberJudgementViewController = (NumberJudgementViewController *)judgementViewControllerToDisplay;
-//    NSString *dataText = numberDataViewController.textField.text;
-//    NSString *judgementText = numberJudgementViewController.numberField.text;
-//
-//    NSString *regexForNumberData = @"[-+]?[0-9]*\\.?[0-9]+";
-//    NSString *regexForNumberJudgement = @"[-+]?[0-9]*\\.?[0-9]*";
-//    NSPredicate *isNumberData = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberData];
-//    NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberJudgement];
-//    if (([isNumberData evaluateWithObject: dataText] && [isNumberJudgement evaluateWithObject: judgementText]) || ([isNumberData evaluateWithObject: dataText] && judgementText == nil)){
-//        saveButton.enabled = YES;
-//    }
-//    else{
-//        saveButton.enabled = NO;
-//    }
+    NumberDataViewController *numberDataViewController = (NumberDataViewController *)dataViewControllerToDisplay;
+    NumberJudgementViewController *numberJudgementViewController = (NumberJudgementViewController *)judgementViewControllerToDisplay;
+    NSString *dataText = numberDataViewController.numberField.text;
+    NSString *judgementText = numberJudgementViewController.numberField.text;
+
+    NSString *regexForNumberData = @"[-+]?[0-9]*\\.?[0-9]+";
+    NSString *regexForNumberJudgement = @"([-+]?[0-9]*\\.?[0-9]+)|(^$)";
+    NSPredicate *isNumberData = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberData];
+    NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberJudgement];
+    if (([isNumberData evaluateWithObject: dataText] && [isNumberJudgement evaluateWithObject: judgementText]) || ([isNumberData evaluateWithObject: dataText] && judgementText == nil)){
+        saveButton.enabled = YES;
+    }
+    else{
+        saveButton.enabled = NO;
+    }
 }
 
 -(void)checkDataNumber{
-//    NumberDataViewController *numberDataViewController = (NumberDataViewController *)dataViewControllerToDisplay;
-//    NSString *dataText = numberDataViewController.textField.text;
-//    NSString *regexForNumberData = @"[-+]?[0-9]*\\.?[0-9]+";
-//    NSPredicate *isNumberData = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberData];
-//    if ([isNumberData evaluateWithObject: dataText]){
-//        saveButton.enabled = YES;
-//    }
-//    else{
-//        saveButton.enabled = NO;
-//    }
+    NumberDataViewController *numberDataViewController = (NumberDataViewController *)dataViewControllerToDisplay;
+    NSString *dataText = numberDataViewController.numberField.text;
+    NSString *regexForNumberData = @"[-+]?[0-9]*\\.?[0-9]+";
+    NSPredicate *isNumberData = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberData];
+    if ([isNumberData evaluateWithObject: dataText]){
+        saveButton.enabled = YES;
+    }
+    else{
+        saveButton.enabled = NO;
+    }
 }
 
 -(void)checkJudgementNumber{
     NumberJudgementViewController *numberJudgementViewController = (NumberJudgementViewController *)judgementViewControllerToDisplay;
     NSString *judgementText = numberJudgementViewController.numberField.text;
-    NSString *regexForNumberJudgement = @"[-+]?[0-9]*\\.?[0-9]*";
+    NSString *regexForNumberJudgement = @"([-+]?[0-9]*\\.?[0-9]+)|(^$)";
     NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberJudgement];
     if (!judgementText || [isNumberJudgement evaluateWithObject: judgementText]){
         saveButton.enabled = YES;

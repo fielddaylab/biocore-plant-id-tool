@@ -12,6 +12,8 @@
 
 @interface NumberDataViewController ()<SaveObservationDelegate, UITextFieldDelegate>{
     CGRect viewRect;
+    UITextField *numberField;
+    UIImageView *imageView;
 }
 
 @end
@@ -21,6 +23,7 @@
 @synthesize prevData;
 @synthesize projectComponent;
 @synthesize newObservation;
+@synthesize numberField;
 
 
 -(id)initWithFrame:(CGRect)frame{
@@ -32,12 +35,40 @@
 
 -(void)loadView{
     [super loadView];
+    
+    UILabel *descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, viewRect.size.height * .04, viewRect.size.width, 22)];
+    descriptionLabel.backgroundColor = [UIColor clearColor];
+    descriptionLabel.textAlignment = NSTextAlignmentCenter;
+    descriptionLabel.font = [descriptionLabel.font fontWithSize:20];
+    descriptionLabel.text = [NSString stringWithFormat:@"Is %@ ?", projectComponent.title];
+    descriptionLabel.tag = 2;
+    [self.view addSubview:descriptionLabel];
+    
+    numberField = [[UITextField alloc] init];
+    numberField.frame = CGRectMake(viewRect.size.width *.05, descriptionLabel.frame.size.height + 20, viewRect.size.width *.9, 40);
+    numberField.borderStyle = UITextBorderStyleRoundedRect;
+    numberField.font = [UIFont systemFontOfSize:15];
+    numberField.placeholder = @"enter number";
+    numberField.autocorrectionType = UITextAutocorrectionTypeNo;
+    numberField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    numberField.returnKeyType = UIReturnKeyDone;
+    numberField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    numberField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    numberField.delegate = self;
+    [self.view addSubview:numberField];
+    
+    imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"test.png"]];
+    imageView.frame = CGRectMake(viewRect.size.width *.5 - 50, numberField.frame.size.height + 60, 100, 100);
+    imageView.image = [self imageWithImage:[UIImage imageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, 100, 100).size];
+    imageView.contentMode = UIViewContentModeCenter;
+    [self.view addSubview:imageView];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     self.view.frame = viewRect;
     if (prevData) {
         NSNumber *storedNumber = prevData.number;
+        [numberField setText:[storedNumber stringValue]];
     }
 }
 
@@ -46,11 +77,27 @@
     [super didReceiveMemoryWarning];
 }
 
+- (UIImage*)imageWithImage:(UIImage*)image
+              scaledToSize:(CGSize)newSize;
+{
+    UIGraphicsBeginImageContext( newSize );
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 
 -(UserObservationComponentData *)saveObservationData{
     //get the text here
-    //NSString *text = textField.text;
-    NSString *text = @"";
+    NSString *text = numberField.text;
     
     NSString *regexForNumber = @"[-+]?[0-9]*\\.?[0-9]+";
     
@@ -72,10 +119,5 @@
     }
     return nil;
 }
-
--(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    return YES;
-}
-
 
 @end

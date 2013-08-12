@@ -47,12 +47,12 @@
     [self.view addSubview:descriptionLabel];
     
     numberField = [[UITextField alloc] init];
-    numberField.frame = CGRectMake(viewRect.size.width *.5, viewRect.size.height * .5 - 10, viewRect.size.width *.45, 40); //-10 -> height(40)/2 = 20. -10 b/c label = 10;
+    numberField.frame = CGRectMake(viewRect.size.width *.5, viewRect.size.height * .5 - 10, viewRect.size.width *.45, 40);
     numberField.borderStyle = UITextBorderStyleRoundedRect;
     numberField.font = [UIFont systemFontOfSize:15];
     numberField.placeholder = @"enter number";
     numberField.autocorrectionType = UITextAutocorrectionTypeNo;
-    numberField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;//UIKeyboardTypeNumberPad;
+    numberField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     numberField.returnKeyType = UIReturnKeyDone;
     numberField.clearButtonMode = UITextFieldViewModeWhileEditing;
     numberField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
@@ -212,7 +212,7 @@
     [attributes setObject:[NSDate date] forKey:@"updated"];
     
     NSString *text = numberField.text;
-    NSString *regexForNumber = @"[-+]?[0-9]*\\.?[0-9]*";
+    NSString *regexForNumber = @"([-+]?[0-9]*\\.?[0-9]+)|(^$)";
     
     NSPredicate *isNumber = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumber];
     
