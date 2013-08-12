@@ -209,7 +209,7 @@
         case 1:
             return [optionalComponents count];
         case 2:
-            return 4;
+            return 3;
         default:
             return 0;
     };
@@ -327,10 +327,6 @@
                 cell.textLabel.text = @"Location";
                 cell.detailTextLabel.text = [metadata objectAtIndex:2];
 
-            }
-            else{
-                cell.textLabel.text = @"Weather";
-                cell.detailTextLabel.text = @"Will do later";
             }
             
         }break;
