@@ -195,6 +195,18 @@
         [self didMoveToParentViewController:judgementViewControllerToDisplay];
         [self.view addSubview:judgementViewControllerToDisplay.view];
     }
+    else if(([dataViewControllerToDisplay isKindOfClass:[BooleanDataViewController class]] && [judgementViewControllerToDisplay isKindOfClass:[BooleanJudgementViewController class]])){
+        BooleanJudgementViewController *booleanJudgementViewController = [[BooleanJudgementViewController alloc]initWithFrame:self.view.bounds];
+        booleanJudgementViewController.prevData = prevData;
+        booleanJudgementViewController.projectComponent = projectComponent;
+        booleanJudgementViewController.isOneToOne = YES;
+        isOneToOne = YES;
+        judgementViewControllerToDisplay = booleanJudgementViewController;
+        self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
+        [self addChildViewController:judgementViewControllerToDisplay];
+        [self didMoveToParentViewController:judgementViewControllerToDisplay];
+        [self.view addSubview:judgementViewControllerToDisplay.view];
+    }
     else{
         isOneToOne = NO;
         if(dataViewControllerToDisplay){

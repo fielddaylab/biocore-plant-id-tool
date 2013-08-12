@@ -32,35 +32,48 @@
 
 - (void)loadView{
     [super loadView];
-    [self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"carouselBackground"]]];
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    self.view.frame = rectView;
+    if (!isOneToOne) {
+        [self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"carouselBackground"]]];
+    }
+    else{
+        self.view.backgroundColor = [UIColor lightGrayColor];
+    }
     
-    UILabel *descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, self.view.bounds.size.height * .04, self.view.bounds.size.width, 22)];
+    UILabel *descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, rectView.size.height * .04, rectView.size.width, 22)];
     descriptionLabel.backgroundColor = [UIColor clearColor];
     descriptionLabel.textAlignment = NSTextAlignmentCenter;
     descriptionLabel.font = [descriptionLabel.font fontWithSize:20];
     descriptionLabel.text = [NSString stringWithFormat:@"Is %@?", projectComponent.title];//This makes me cringe.
     descriptionLabel.tag = 2;
     [self.view addSubview:descriptionLabel];
-       
+    
     boolSwitch = [[UISwitch alloc]initWithFrame:CGRectZero];
-    boolSwitch.frame = CGRectMake(self.view.frame.size.width *.6 , self.view.frame.size.height *.5 - boolSwitch.frame.size.height*.5 + 10, 0, 0);
+    if (!isOneToOne) {
+        boolSwitch.frame = CGRectMake(rectView.size.width *.6 , rectView.size.height *.5 - boolSwitch.frame.size.height*.5 + 10, 0, 0);
+    }
+    else{
+        boolSwitch.frame = CGRectMake(rectView.size.width *.6 , descriptionLabel.frame.size.height + 60, 0, 0);
+    }
+    
     [self.view addSubview:boolSwitch];
     
     imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"test.png"]];
-    imageView.frame = CGRectMake(-75, 10, self.view.frame.size.width, self.view.frame.size.height);
-    
-    imageView.image = [self imageWithImage:[UIImage imageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, self.view.bounds.size.height *.7, self.view.bounds.size.height *.7).size];
-    
+    if (!isOneToOne) {
+        imageView.frame = CGRectMake(-75, 10, rectView.size.width, rectView.size.height);
+        imageView.image = [self imageWithImage:[UIImage imageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, rectView.size.height *.7, rectView.size.height *.7).size];
+    }
+    else{
+        imageView.frame = CGRectMake(rectView.size.width * .1, boolSwitch.frame.origin.y, 100, 100);
+        imageView.image = [self imageWithImage:[UIImage imageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, 100, 100).size];
+    }
     imageView.contentMode = UIViewContentModeCenter;
-
-    
     [self.view addSubview:imageView];
     
-    self.view.backgroundColor = [UIColor lightGrayColor];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    self.view.frame = rectView;
+    
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
     [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
     [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];
@@ -126,6 +139,35 @@
     NSArray *chosenPossibility = [NSArray arrayWithObject:possibility];
     UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:chosenPossibility withAttributes:attributes];
     return judgement;
+}
+
+-(UserObservationComponentData *)saveUserDataAndJudgement{
+    BOOL switchValue = boolSwitch.isOn;
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setObject:[NSDate date] forKey:@"created"];
+    [attributes setObject:[NSDate date] forKey:@"updated"];
+    [attributes setObject:[NSNumber numberWithBool:switchValue] forKey:@"boolValue"];
+    [attributes setObject:projectComponent forKey:@"projectComponent"];
+    
+    UserObservationComponentData *data = [[AppModel sharedAppModel] createNewObservationDataWithAttributes:attributes];
+    
+    NSMutableDictionary *judgementAttributes = [[NSMutableDictionary alloc]init];
+    [judgementAttributes setObject:[NSDate date] forKey:@"created"];
+    [judgementAttributes setObject:[NSDate date] forKey:@"updated"];
+    [judgementAttributes setObject:[NSNumber numberWithBool:switchValue] forKey:@"boolValue"];
+    
+    //figure out what possibility you have chosen
+    ProjectComponentPossibility *possibility;
+    for (int i = 0; i < possibilities.count; i++) {
+        possibility = [possibilities objectAtIndex:i];
+        if([possibility.boolValue boolValue] == switchValue){
+            break;
+        }
+    }
+    
+    NSArray *chosenPossibility = [NSArray arrayWithObject:possibility];
+    [[AppModel sharedAppModel] createNewJudgementWithData:data withProjectComponentPossibility:chosenPossibility withAttributes:judgementAttributes];
+    return data;
 }
 
 #pragma mark handle possibility response
