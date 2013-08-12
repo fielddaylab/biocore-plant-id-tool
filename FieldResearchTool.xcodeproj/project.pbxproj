@@ -738,7 +738,6 @@
 		AAAC4F25178F1767001AB1D8 = {
 			isa = PBXGroup;
 			children = (
-				715A69D317B95DED00D7A992 /* CoreLocation.framework */,
 				AAAC4F39178F1767001AB1D8 /* FieldResearchTool */,
 				AAAC4F30178F1767001AB1D8 /* Frameworks */,
 				AAAC4F2F178F1767001AB1D8 /* Products */,
@@ -757,6 +756,7 @@
 		AAAC4F30178F1767001AB1D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				715A69D317B95DED00D7A992 /* CoreLocation.framework */,
 				5B82BD8B17972043008CB441 /* QuartzCore.framework */,
 				71FF69DE1795DDA900E2B411 /* CoreMedia.framework */,
 				71FF69DC1795DD8000E2B411 /* ImageIO.framework */,
