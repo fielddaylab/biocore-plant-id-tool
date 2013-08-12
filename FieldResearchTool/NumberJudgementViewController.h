@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UITextField *numberField;
 @property (nonatomic, strong) ProjectComponent *projectComponent;
 @property (nonatomic, strong) UserObservationComponentData *prevData;
+@property (nonatomic) BOOL isOneToOne;
 
 -(id)initWithFrame:(CGRect)frame;
 

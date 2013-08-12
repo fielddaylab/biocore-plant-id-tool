@@ -22,6 +22,7 @@
 @implementation BooleanJudgementViewController
 @synthesize prevData;
 @synthesize projectComponent;
+@synthesize isOneToOne;
 
 - (id)initWithFrame:(CGRect) rect{
     self = [super init];

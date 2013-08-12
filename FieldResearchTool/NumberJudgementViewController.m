@@ -26,6 +26,7 @@
 @synthesize numberField;
 @synthesize projectComponent;
 @synthesize prevData;
+@synthesize isOneToOne;
 
 
 -(id)initWithFrame:(CGRect)frame{
@@ -36,7 +37,12 @@
 
 -(void)loadView{
     [super loadView];
-    [self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"carouselBackground"]]];
+    if (!isOneToOne) {
+        [self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"carouselBackground"]]];
+    }
+    else{
+        self.view.backgroundColor = [UIColor lightGrayColor];
+    }
     
     UILabel *descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, viewRect.size.height * .04, viewRect.size.width, 22)];
     descriptionLabel.backgroundColor = [UIColor clearColor];
@@ -47,7 +53,13 @@
     [self.view addSubview:descriptionLabel];
     
     numberField = [[UITextField alloc] init];
-    numberField.frame = CGRectMake(viewRect.size.width *.5, viewRect.size.height * .5 - 10, viewRect.size.width *.45, 40);
+    if (!isOneToOne) {
+        numberField.frame = CGRectMake(viewRect.size.width *.5, viewRect.size.height * .5 - 10, viewRect.size.width *.45, 40);
+    }
+    else{
+        numberField.frame = CGRectMake(viewRect.size.width * .5, descriptionLabel.frame.size.height + 30, viewRect.size.width * .45, 40);
+    }
+    
     numberField.borderStyle = UITextBorderStyleRoundedRect;
     numberField.font = [UIFont systemFontOfSize:15];
     numberField.placeholder = @"enter number";
@@ -60,8 +72,15 @@
     [self.view addSubview:numberField];
     
     imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"test.png"]];
-    imageView.frame = CGRectMake(-75, 10, viewRect.size.width, viewRect.size.height);
-    imageView.image = [self imageWithImage:[UIImage imageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, viewRect.size.height *.7, viewRect.size.height *.7).size];
+    if (!isOneToOne) {
+        imageView.frame = CGRectMake(-75, 10, viewRect.size.width, viewRect.size.height);
+        imageView.image = [self imageWithImage:[UIImage imageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, viewRect.size.height *.7, viewRect.size.height *.7).size];
+    }
+    else{
+        imageView.frame = CGRectMake(viewRect.size.width * .05, numberField.frame.origin.y, 100, 100);
+        imageView.image = [self imageWithImage:[UIImage imageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, 100, 100).size];
+    }
+
     imageView.contentMode = UIViewContentModeCenter;
     [self.view addSubview:imageView];
 }
@@ -70,15 +89,21 @@
 {
     self.view.frame = viewRect;
     // register for keyboard notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
+    if (!isOneToOne) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillShow)
+                                                     name:UIKeyboardWillShowNotification
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillHide)
+                                                     name:UIKeyboardWillHideNotification
+                                                   object:nil];
+    }
+    else{
+        [numberField becomeFirstResponder];
+    }
+
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
     NSLog(@"Project Component.title: %@", projectComponent.title);
     [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
@@ -102,14 +127,17 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    // unregister for keyboard notifications while not visible.
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIKeyboardWillShowNotification
-                                                  object:nil];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIKeyboardWillHideNotification
-                                                  object:nil];
+    if (!isOneToOne) {
+        // unregister for keyboard notifications while not visible.
+        [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                        name:UIKeyboardWillShowNotification
+                                                      object:nil];
+        
+        [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                        name:UIKeyboardWillHideNotification
+                                                      object:nil];
+    }
+
 }
 
 - (UIImage*)imageWithImage:(UIImage*)image
@@ -125,8 +153,11 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];
-    [self setViewMovedUp:NO];
+    if (!isOneToOne) {
+        [textField resignFirstResponder];
+        [self setViewMovedUp:NO];
+    }
+    
 
     return YES;
 }
@@ -151,7 +182,7 @@
 
 -(void)keyboardWillHide {
     
-        [self setViewMovedUp:NO];
+    [self setViewMovedUp:NO];
 
 }
 
@@ -160,7 +191,7 @@
     if ([sender isEqual:numberField])
     {
         //move the main view, so that the keyboard does not hide it.
-        if  (self.view.frame.origin.y >= 0)
+        if  (self.view.frame.origin.y >= 0 && !isOneToOne)
         {
             [self setViewMovedUp:YES];
         }
@@ -212,25 +243,28 @@
     [attributes setObject:[NSDate date] forKey:@"updated"];
     
     NSString *text = numberField.text;
-    NSString *regexForNumber = @"([-+]?[0-9]*\\.?[0-9]+)|(^$)";
+    float numberToSave = [text floatValue];
+    [attributes setObject:[NSNumber numberWithFloat:numberToSave] forKey:@"number"];
+    UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:possibilities withAttributes:attributes];
+    return judgement;
+}
+
+-(UserObservationComponentData *)saveUserDataAndJudgement{
+    NSString *text = numberField.text;
+    float numberToSave = [text floatValue];
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setObject:[NSDate date] forKey:@"created"];
+    [attributes setObject:[NSDate date] forKey:@"updated"];
+    [attributes setObject:[NSNumber numberWithFloat:numberToSave] forKey:@"number"];
+    [attributes setObject:projectComponent forKey:@"projectComponent"];
+    UserObservationComponentData *data = [[AppModel sharedAppModel] createNewObservationDataWithAttributes:attributes];
     
-    NSPredicate *isNumber = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumber];
-    
-    if ([isNumber evaluateWithObject: text]){
-        float numberToSave = [text floatValue];
-        [attributes setObject:[NSNumber numberWithFloat:numberToSave] forKey:@"number"];
-        UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:possibilities withAttributes:attributes];
-        return judgement;
-    }
-    else if (text == nil){
-        NSLog(@"Not creating judgement because there wasn't any judgement entered. Returning nil");
-        return nil;
-    }
-    else{
-        NSLog(@"ERROR: Number entered was not of valid format!. Returning nil");
-        return nil;
-    }
-    return nil;
+    NSMutableDictionary *judgementAttributes = [[NSMutableDictionary alloc]init];
+    [judgementAttributes setObject:[NSDate date] forKey:@"created"];
+    [judgementAttributes setObject:[NSDate date] forKey:@"updated"];
+    [judgementAttributes setObject:[NSNumber numberWithFloat:numberToSave] forKey:@"number"];
+    [[AppModel sharedAppModel] createNewJudgementWithData:data withProjectComponentPossibility:possibilities withAttributes:judgementAttributes];
+    return data;
 }
 
 @end

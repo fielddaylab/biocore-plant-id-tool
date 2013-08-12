@@ -19,5 +19,6 @@
 @protocol SaveJudgementDelegate <NSObject>
 
 -(UserObservationComponentDataJudgement *)saveJudgementData:(UserObservationComponentData *)userData;
+-(UserObservationComponentData *)saveUserDataAndJudgement;
 
 @end

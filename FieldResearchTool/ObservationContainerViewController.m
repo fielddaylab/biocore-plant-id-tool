@@ -29,6 +29,7 @@
     UIBarButtonItem *saveButton;
     UIViewController *dataViewControllerToDisplay;
     UIViewController *judgementViewControllerToDisplay;
+    BOOL isOneToOne;
 }
 
 @end
@@ -53,8 +54,14 @@
         [[AppModel sharedAppModel] deleteObject:prevData];
     }
     
-    UserObservationComponentData *userData = [self.saveObservationDelegate saveObservationData];
-    [self.saveJudgementDelegate saveJudgementData:userData];
+    UserObservationComponentData *userData;
+    if (!isOneToOne) {
+        userData = [self.saveObservationDelegate saveObservationData];
+        [self.saveJudgementDelegate saveJudgementData:userData];
+    }
+    else{
+        userData = [self.saveJudgementDelegate saveUserDataAndJudgement];
+    }
     [[AppModel sharedAppModel] save];
     
     
@@ -78,7 +85,6 @@
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, (self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height) * (2.0f/3.0f));
     
     NSLog(@"Frame X: %f Frame Y: %f Frame Width: %f Frame Height: %f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
-    
     
     switch ([projectComponent.observationDataType intValue]) {
         case DATA_AUDIO:
@@ -138,6 +144,7 @@
             NumberJudgementViewController *numberJudgementViewController = [[NumberJudgementViewController alloc]initWithFrame:frame2];
             numberJudgementViewController.prevData = prevData;
             numberJudgementViewController.projectComponent = projectComponent;
+            numberJudgementViewController.isOneToOne = NO;
             judgementViewControllerToDisplay = numberJudgementViewController;
         }
             break;
@@ -145,18 +152,21 @@
             BooleanJudgementViewController *booleanJudgementViewController = [[BooleanJudgementViewController alloc]initWithFrame:frame2];
             booleanJudgementViewController.prevData = prevData;
             booleanJudgementViewController.projectComponent = projectComponent;
+            booleanJudgementViewController.isOneToOne = NO;
             judgementViewControllerToDisplay = booleanJudgementViewController;
         }
             break;
         case JUDGEMENT_TEXT:{
             TextJudgementViewController *textJudgementViewController = [[TextJudgementViewController alloc]initWithFrame:frame2];
             textJudgementViewController.projectComponent = projectComponent;
+            textJudgementViewController.isOneToOne = NO;
             judgementViewControllerToDisplay = textJudgementViewController;
         }
             break;
         case JUDGEMENT_LONG_TEXT:{
             LongTextJudgementViewController *longTextJudgementViewController = [[LongTextJudgementViewController alloc]initWithFrame:frame2];
             longTextJudgementViewController.projectComponent = projectComponent;
+            longTextJudgementViewController.isOneToOne = NO;
             judgementViewControllerToDisplay = longTextJudgementViewController;
         }
             break;
@@ -164,6 +174,7 @@
             EnumJudgementViewController *enumJudgementViewController = [[EnumJudgementViewController alloc]initWithFrame:frame2];
             enumJudgementViewController.prevData = prevData;
             enumJudgementViewController.projectComponent = projectComponent;
+            enumJudgementViewController.isOneToOne = NO;
             judgementViewControllerToDisplay = enumJudgementViewController;
             
         }
@@ -172,51 +183,67 @@
             break;
     }
     
-    if(dataViewControllerToDisplay){
-        dataViewControllerToDisplay.view.backgroundColor = [UIColor grayColor];
-        self.saveObservationDelegate = (id)dataViewControllerToDisplay;
-        [self addChildViewController:dataViewControllerToDisplay];
-        [self didMoveToParentViewController:dataViewControllerToDisplay];
-        [self.view addSubview:dataViewControllerToDisplay.view];
-    }
-    
-    if(judgementViewControllerToDisplay){
-        //judgementViewControllerToDisplay.view.backgroundColor = [UIColor lightGrayColor];
-        if([projectComponent.observationDataType intValue] == DATA_PHOTO){
-            judgementViewControllerToDisplay.view.hidden = YES;
-        }
+    if(([dataViewControllerToDisplay isKindOfClass:[NumberDataViewController class]] && [judgementViewControllerToDisplay isKindOfClass:[NumberJudgementViewController class]])){
+        NumberJudgementViewController *numberJudgementViewController = [[NumberJudgementViewController alloc]initWithFrame:self.view.bounds];
+        numberJudgementViewController.prevData = prevData;
+        numberJudgementViewController.projectComponent = projectComponent;
+        numberJudgementViewController.isOneToOne = YES;
+        isOneToOne = YES;
+        judgementViewControllerToDisplay = numberJudgementViewController;
         self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
         [self addChildViewController:judgementViewControllerToDisplay];
         [self didMoveToParentViewController:judgementViewControllerToDisplay];
         [self.view addSubview:judgementViewControllerToDisplay.view];
     }
+    else{
+        isOneToOne = NO;
+        if(dataViewControllerToDisplay){
+            dataViewControllerToDisplay.view.backgroundColor = [UIColor grayColor];
+            self.saveObservationDelegate = (id)dataViewControllerToDisplay;
+            [self addChildViewController:dataViewControllerToDisplay];
+            [self didMoveToParentViewController:dataViewControllerToDisplay];
+            [self.view addSubview:dataViewControllerToDisplay.view];
+        }
+        
+        if(judgementViewControllerToDisplay){
+            //judgementViewControllerToDisplay.view.backgroundColor = [UIColor lightGrayColor];
+            if([projectComponent.observationDataType intValue] == DATA_PHOTO){
+                judgementViewControllerToDisplay.view.hidden = YES;
+            }
+            self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
+            [self addChildViewController:judgementViewControllerToDisplay];
+            [self didMoveToParentViewController:judgementViewControllerToDisplay];
+            [self.view addSubview:judgementViewControllerToDisplay.view];
+        }
+    }
     
 
-    
+    if (!isOneToOne) {
+        if([dataViewControllerToDisplay isKindOfClass:[NumberDataViewController class]]){
+            [NSTimer scheduledTimerWithTimeInterval:.2
+                                             target:self
+                                           selector:@selector(checkDataNumber)
+                                           userInfo:nil
+                                            repeats:YES];
+        }
+        else if ([judgementViewControllerToDisplay isKindOfClass:[NumberJudgementViewController class]]){
+            [NSTimer scheduledTimerWithTimeInterval:.2
+                                             target:self
+                                           selector:@selector(checkJudgementNumber)
+                                           userInfo:nil
+                                            repeats:YES];
+        }
+    }
+    else{
+        if ([judgementViewControllerToDisplay isKindOfClass:[NumberJudgementViewController class]]){
+            [NSTimer scheduledTimerWithTimeInterval:.2
+                                             target:self
+                                           selector:@selector(checkJudgementNumber)
+                                           userInfo:nil
+                                            repeats:YES];
+        }
+    }
 
-    
-    //this case will go away once the view controllers are compressed into one view
-    if([dataViewControllerToDisplay isKindOfClass:[NumberDataViewController class]] && [judgementViewControllerToDisplay isKindOfClass:[NumberJudgementViewController class]]){
-        [NSTimer scheduledTimerWithTimeInterval:.2
-                                         target:self
-                                       selector:@selector(checkDataAndJudgmentNumber)
-                                       userInfo:nil
-                                        repeats:YES];
-    }
-    else if([dataViewControllerToDisplay isKindOfClass:[NumberDataViewController class]]){
-        [NSTimer scheduledTimerWithTimeInterval:.2
-                                         target:self
-                                       selector:@selector(checkDataNumber)
-                                       userInfo:nil
-                                        repeats:YES];
-    }
-    else if ([judgementViewControllerToDisplay isKindOfClass:[NumberJudgementViewController class]]){
-        [NSTimer scheduledTimerWithTimeInterval:.2
-                                         target:self
-                                       selector:@selector(checkJudgementNumber)
-                                       userInfo:nil
-                                        repeats:YES];
-    }
     
 }
 
@@ -228,25 +255,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-//this case will go away once the view controllers are compressed into one view
--(void)checkDataAndJudgmentNumber{
-    NumberDataViewController *numberDataViewController = (NumberDataViewController *)dataViewControllerToDisplay;
-    NumberJudgementViewController *numberJudgementViewController = (NumberJudgementViewController *)judgementViewControllerToDisplay;
-    NSString *dataText = numberDataViewController.numberField.text;
-    NSString *judgementText = numberJudgementViewController.numberField.text;
-
-    NSString *regexForNumberData = @"[-+]?[0-9]*\\.?[0-9]+";
-    NSString *regexForNumberJudgement = @"([-+]?[0-9]*\\.?[0-9]+)|(^$)";
-    NSPredicate *isNumberData = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberData];
-    NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberJudgement];
-    if (([isNumberData evaluateWithObject: dataText] && [isNumberJudgement evaluateWithObject: judgementText]) || ([isNumberData evaluateWithObject: dataText] && judgementText == nil)){
-        saveButton.enabled = YES;
-    }
-    else{
-        saveButton.enabled = NO;
-    }
 }
 
 -(void)checkDataNumber{
@@ -265,7 +273,14 @@
 -(void)checkJudgementNumber{
     NumberJudgementViewController *numberJudgementViewController = (NumberJudgementViewController *)judgementViewControllerToDisplay;
     NSString *judgementText = numberJudgementViewController.numberField.text;
-    NSString *regexForNumberJudgement = @"([-+]?[0-9]*\\.?[0-9]+)|(^$)";
+    NSString *regexForNumberJudgement;
+    if (!isOneToOne) {
+        regexForNumberJudgement = @"([-+]?[0-9]*\\.?[0-9]+)|(^$)";
+    }
+    else{
+        regexForNumberJudgement = @"[-+]?[0-9]*\\.?[0-9]+";
+    }
+    
     NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberJudgement];
     if (!judgementText || [isNumberJudgement evaluateWithObject: judgementText]){
         saveButton.enabled = YES;
