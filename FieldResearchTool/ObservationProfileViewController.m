@@ -11,7 +11,6 @@
 #import "AppModel.h"
 #import "UserObservation.h"
 
-
 @interface ObservationProfileViewController (){
     NSMutableArray *profileObservations;
 }
@@ -33,6 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view from its nib.
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(makeNewObservation)];
     [self.navigationItem setRightBarButtonItem:addButton];
@@ -40,6 +40,12 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [[AppModel sharedAppModel] getUserObservationsForCurrentUserWithHandler:@selector(handleFetchOfUserObservations:) target:self];
+    
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
 }
 
 - (void)didReceiveMemoryWarning
