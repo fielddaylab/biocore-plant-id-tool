@@ -407,13 +407,14 @@
     NSArray *dataSet = [observation.userObservationComponentData allObjects];
     for (int i = 0; i < dataSet.count; i++) {
         UserObservationComponentData *currData = [dataSet objectAtIndex:i];
+        ProjectComponent *associateProjCom;
         if (currData) {
-            ProjectComponent *associateProjCom = currData.projectComponent;
+            associateProjCom = currData.projectComponent;
             if ([associateProjCom.required boolValue]) {
                 requiredFieldsFilledOut++;
             }
         }
-        if ([currData.wasJudged boolValue] && [currData.isFiltered boolValue]) {
+        if ([currData.wasJudged boolValue] && [associateProjCom.filter boolValue]) {
             [dataToFilter addObject:currData];
         }
     }
