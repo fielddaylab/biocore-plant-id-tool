@@ -10,6 +10,7 @@
 #import "SaveObservationAndJudgementDelegate.h"
 #import "AppModel.h"
 #import "ProjectComponentPossibility.h"
+#import "MediaManager.h"
 
 #define KEYBOARD_OFFSET 110
 
@@ -38,7 +39,7 @@
 -(void)loadView{
     [super loadView];
     if (!isOneToOne) {
-        [self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"carouselBackground"]]];
+        [self.view addSubview:[[UIImageView alloc] initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"carouselBackground"]]];
     }
     else{
         self.view.backgroundColor = [UIColor lightGrayColor];
@@ -71,14 +72,14 @@
     numberField.delegate = self;
     [self.view addSubview:numberField];
     
-    imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"test.png"]];
+    imageView = [[UIImageView alloc]initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"test.png"]];
     if (!isOneToOne) {
         imageView.frame = CGRectMake(-75, 10, viewRect.size.width, viewRect.size.height);
-        imageView.image = [self imageWithImage:[UIImage imageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, viewRect.size.height *.7, viewRect.size.height *.7).size];
+        imageView.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, viewRect.size.height *.7, viewRect.size.height *.7).size];
     }
     else{
         imageView.frame = CGRectMake(viewRect.size.width * .05, numberField.frame.origin.y, 100, 100);
-        imageView.image = [self imageWithImage:[UIImage imageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, 100, 100).size];
+        imageView.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, 100, 100).size];
     }
 
     imageView.contentMode = UIViewContentModeCenter;
@@ -138,17 +139,6 @@
                                                       object:nil];
     }
 
-}
-
-- (UIImage*)imageWithImage:(UIImage*)image
-              scaledToSize:(CGSize)newSize;
-{
-    UIGraphicsBeginImageContext( newSize );
-    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

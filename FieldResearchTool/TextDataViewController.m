@@ -9,6 +9,7 @@
 #import "TextDataViewController.h"
 #import "SaveObservationAndJudgementDelegate.h"
 #import "AppModel.h"
+#import "MediaManager.h"
 
 @interface TextDataViewController ()<SaveObservationDelegate, UITextFieldDelegate>{
     CGRect viewRect;
@@ -54,9 +55,9 @@
     textField.delegate = self;
     [self.view addSubview:textField];
     
-    imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"test.png"]];
+    imageView = [[UIImageView alloc]initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"test.png"]];
     imageView.frame = CGRectMake(viewRect.size.width *.5 - 50, textField.frame.size.height + 60, 100, 100);
-    imageView.image = [self imageWithImage:[UIImage imageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, 100, 100).size];
+    imageView.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, 100, 100).size];
     imageView.contentMode = UIViewContentModeCenter;
     [self.view addSubview:imageView];
 }
@@ -78,17 +79,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-}
-
-- (UIImage*)imageWithImage:(UIImage*)image
-              scaledToSize:(CGSize)newSize;
-{
-    UIGraphicsBeginImageContext( newSize );
-    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
 }
 
 #pragma mark save observation data

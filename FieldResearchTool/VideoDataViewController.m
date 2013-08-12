@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "AppModel.h"
 #import "SaveObservationAndJudgementDelegate.h"
+#import "MediaManager.h"
 
 
 #define HEIGHT_OF_RECORD 44
@@ -67,7 +68,7 @@
     
     [self.movieController play];
     UIButton *recordButton = [[UIButton alloc] initWithFrame:CGRectMake(50, 50, 44, 44)];
-    [recordButton setImage:[UIImage imageNamed:@"29-circle-pause"] forState:UIControlStateNormal];
+    [recordButton setImage:[[MediaManager sharedMediaManager] getImageNamed:@"29-circle-pause"] forState:UIControlStateNormal];
     [recordButton addTarget:self action:@selector(takeVideo:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:recordButton];

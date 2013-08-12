@@ -69,7 +69,6 @@
     if (view == nil)
     {
         view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100.0f, 200.0f)];
-        //((UIImageView *)view).image = [UIImage imageNamed:@"35-circle-stop.png"];
         view.contentMode = UIViewContentModeCenter;
         label = [[UILabel alloc] initWithFrame:view.bounds];
         label.backgroundColor = [UIColor clearColor];

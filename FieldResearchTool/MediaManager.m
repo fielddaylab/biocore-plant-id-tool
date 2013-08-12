@@ -10,7 +10,16 @@
 
 @implementation MediaManager
 
-#warning implement media manger
++ (MediaManager *)sharedMediaManager{
+    static dispatch_once_t pred = 0;
+    __strong static id _sharedObject = nil;
+    dispatch_once(&pred, ^{
+        _sharedObject = [[self alloc] init]; // or some other init method
+    });
+    return _sharedObject;
+}
+
+//this is a test, and doesn't currently work
 -(NSURL *)getMediaContentsForPath:(NSString *)path{
     if([path isEqualToString:@""]){
         //this means the media doesn't exist yet, go get it from the server
@@ -30,6 +39,21 @@
     
     
     return nil;
+}
+
+- (UIImage*)imageWithImage:(UIImage*)image
+              scaledToSize:(CGSize)newSize;
+{
+    UIGraphicsBeginImageContext( newSize );
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
+//replace this method with code to find the image
+-(UIImage *)getImageNamed:(NSString *)imageName{
+    return [UIImage imageNamed:imageName];
 }
 
 @end

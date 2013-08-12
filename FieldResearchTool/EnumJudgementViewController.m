@@ -11,6 +11,8 @@
 #import "ProjectComponentPossibility.h"
 #import "AppModel.h"
 #import "SaveObservationAndJudgementDelegate.h"
+#import "MediaManager.h"
+#import "UserObservationComponentData.h"
 
 @interface EnumJudgementViewController () <iCarouselDataSource, iCarouselDelegate, UIActionSheetDelegate, SaveJudgementDelegate>{
     ProjectComponentPossibility *chosenPossibility;
@@ -39,17 +41,6 @@
 	carousel.dataSource = nil;
 }
 
-- (UIImage*)imageWithImage:(UIImage*)image
-              scaledToSize:(CGSize)newSize;
-{
-    UIGraphicsBeginImageContext( newSize );
-    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
-}
-
 -(id)initWithFrame:(CGRect)frame{
     self = [super init];
     viewRect = frame;
@@ -60,7 +51,7 @@
 -(void)loadView{
     [super loadView];
 
-    [self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"carouselBackground"]]];
+    [self.view addSubview:[[UIImageView alloc] initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"carouselBackground"]]];
     
     //create carousel
     carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];//44 navbar height.
@@ -168,9 +159,7 @@
     ProjectComponentPossibility *pos = possibilities[index];
     projectComponentTitleString = [projectComponentTitleString stringByAppendingFormat:@"-%@.png", pos.enumValue];
     
-    ((UIImageView *)view).image = [self imageWithImage:[UIImage imageNamed:projectComponentTitleString] scaledToSize:CGRectMake(0, 0, self.view.bounds.size.height *.6, self.view.bounds.size.height *.6).size];
-    //[self imageWithImage:[UIImage imageNamed:@"page.png"] scaledToSize:CGRectMake(0, 0, 60, 95).size];
-    //[UIImage imageNamed:@"35-circle-stop.png"];
+    ((UIImageView *)view).image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:projectComponentTitleString] scaledToSize:CGRectMake(0, 0, self.view.bounds.size.height *.6, self.view.bounds.size.height *.6).size];
     
     
     if(chosenPossibility){
@@ -231,6 +220,11 @@
     }
     
     NSLog(@"No Possibility was chosen. No Judgement was made.");
+    return nil;
+}
+
+-(UserObservationComponentData *)saveUserDataAndJudgement{
+    NSLog(@"ERROR: Enum cannot be a one to one. Returning nil");
     return nil;
 }
 

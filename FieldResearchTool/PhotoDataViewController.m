@@ -12,6 +12,7 @@
 #import "AppModel.h"
 #import "SaveObservationAndJudgementDelegate.h"
 #import "UIImage+Rotation.h"
+#import "MediaManager.h"
 
 
 
@@ -59,12 +60,12 @@
         showPictureView.image = image;
     }
     else{
-        UIImage *image = [UIImage imageNamed:@"tutorialPhoto.jpg"];
+        UIImage *image = [[MediaManager sharedMediaManager] getImageNamed:@"tutorialPhoto.jpg"];
         showPictureView.image = image;
     }
 
     
-    redX = [UIImage imageNamed:@"60-xRED.png"];
+    redX = [[MediaManager sharedMediaManager] getImageNamed:@"60-xRED.png"];
     redXButton = [[UIButton alloc] initWithFrame:CGRectMake(0, viewRect.size.height - redX.size.height - 10, redX.size.width, redX.size.height)];
     [redXButton setImage:redX forState:UIControlStateNormal];
     [redXButton addTarget:self
@@ -77,11 +78,11 @@
         [retakeButton addTarget:self action:@selector(startRecord) forControlEvents:UIControlEventTouchUpInside];
     }
 
-    UIImage *cameraImage = [UIImage imageNamed:@"86-camera.png"];
+    UIImage *cameraImage = [[MediaManager sharedMediaManager] getImageNamed:@"86-camera.png"];
     cameraImageView = [[UIImageView alloc] initWithImage:cameraImage];
     cameraImageView.frame = CGRectMake((viewRect.size.width / 2.0f) - (cameraImage.size.width / 2.0f), (viewRect.size.height / 2.0f) - (cameraImage.size.height / 2.0f), cameraImage.size.width, cameraImage.size.height);
     
-    arrowImage = [UIImage imageNamed:@"03-arrow-north.png"];
+    arrowImage = [[MediaManager sharedMediaManager] getImageNamed:@"03-arrow-north.png"];
     arrowButton = [[UIButton alloc] initWithFrame:CGRectMake((viewRect.size.width / 2.0f) - (arrowImage.size.width / 2.0f), viewRect.size.height - arrowImage.size.height - 10, arrowImage.size.width, arrowImage.size.height)];
     [arrowButton setImage:arrowImage forState:UIControlStateNormal];
     [arrowButton addTarget:self action:@selector(arrowButtonPressed) forControlEvents:UIControlEventTouchUpInside];
@@ -163,12 +164,12 @@
     retakeButton.enabled = YES;
     cameraImageView.hidden = NO;
     arrowButton.hidden = YES;
-    UIImage *image = [UIImage imageNamed:@"tutorialPhoto.jpg"];
+    UIImage *image = [[MediaManager sharedMediaManager] getImageNamed:@"tutorialPhoto.jpg"];
     showPictureView.image = image;
     if(!judgementIsHidden){
         redXButton.frame = CGRectMake(0, viewRect.size.height - redX.size.height - 10, redX.size.width, redX.size.height);
         arrowButton.frame = CGRectMake((viewRect.size.width / 2.0f) - (arrowImage.size.width / 2.0f), viewRect.size.height - arrowImage.size.height - 10, arrowImage.size.width, arrowImage.size.height);
-        [arrowButton setImage:[UIImage imageNamed:@"03-arrow-north.png"] forState:UIControlStateNormal];
+        [arrowButton setImage:[[MediaManager sharedMediaManager] getImageNamed:@"03-arrow-north.png"] forState:UIControlStateNormal];
         [self.judgementDelegate disableJudgementView];
         judgementIsHidden = YES;
     }
@@ -180,14 +181,14 @@
     if (judgementIsHidden) {
         redXButton.frame = CGRectMake(0, viewRect.size.height - redX.size.height - (viewRect.size.height * (1.0f/3.0f)), redX.size.width, redX.size.height);
         arrowButton.frame = CGRectMake((viewRect.size.width / 2.0f) - (arrowImage.size.width / 2.0f), viewRect.size.height - arrowImage.size.height - (viewRect.size.height * (1.0f/3.0f)), arrowImage.size.width, arrowImage.size.height);
-        [arrowButton setImage:[UIImage imageNamed:@"06-arrow-south.png"] forState:UIControlStateNormal];
+        [arrowButton setImage:[[MediaManager sharedMediaManager] getImageNamed:@"06-arrow-south.png"] forState:UIControlStateNormal];
         [self.judgementDelegate enableJudgementView];
         judgementIsHidden = NO;
     }
     else{
         redXButton.frame = CGRectMake(0, viewRect.size.height - redX.size.height - 10, redX.size.width, redX.size.height);
         arrowButton.frame = CGRectMake((viewRect.size.width / 2.0f) - (arrowImage.size.width / 2.0f), viewRect.size.height - arrowImage.size.height - 10, arrowImage.size.width, arrowImage.size.height);
-        [arrowButton setImage:[UIImage imageNamed:@"03-arrow-north.png"] forState:UIControlStateNormal];
+        [arrowButton setImage:[[MediaManager sharedMediaManager] getImageNamed:@"03-arrow-north.png"] forState:UIControlStateNormal];
         [self.judgementDelegate disableJudgementView];
         judgementIsHidden = YES;
     }

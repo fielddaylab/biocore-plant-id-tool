@@ -9,6 +9,7 @@
 #import "NumberDataViewController.h"
 #import "AppModel.h"
 #import "SaveObservationAndJudgementDelegate.h"
+#import "MediaManager.h"
 
 @interface NumberDataViewController ()<SaveObservationDelegate, UITextFieldDelegate>{
     CGRect viewRect;
@@ -57,9 +58,9 @@
     numberField.delegate = self;
     [self.view addSubview:numberField];
     
-    imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"test.png"]];
+    imageView = [[UIImageView alloc]initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"test.png"]];
     imageView.frame = CGRectMake(viewRect.size.width *.5 - 50, numberField.frame.size.height + 60, 100, 100);
-    imageView.image = [self imageWithImage:[UIImage imageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, 100, 100).size];
+    imageView.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, 100, 100).size];
     imageView.contentMode = UIViewContentModeCenter;
     [self.view addSubview:imageView];
 }
@@ -75,17 +76,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-}
-
-- (UIImage*)imageWithImage:(UIImage*)image
-              scaledToSize:(CGSize)newSize;
-{
-    UIGraphicsBeginImageContext( newSize );
-    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

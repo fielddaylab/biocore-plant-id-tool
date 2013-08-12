@@ -9,6 +9,7 @@
 #import "TextJudgementViewController.h"
 #import "SaveObservationAndJudgementDelegate.h"
 #import "AppModel.h"
+#import "MediaManager.h"
 
 #define KEYBOARD_OFFSET 90
 
@@ -33,7 +34,7 @@
 -(void)loadView{
     [super loadView];
     if (!isOneToOne) {
-        [self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"carouselBackground"]]];
+        [self.view addSubview:[[UIImageView alloc] initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"carouselBackground.png"]]];
     }
     else{
         self.view.backgroundColor = [UIColor lightGrayColor];

@@ -11,6 +11,7 @@
 #import "ProjectComponentPossibility.h"
 #import "SaveObservationAndJudgementDelegate.h"
 #import "ProjectComponent.h"
+#import "MediaManager.h"
 
 @interface BooleanDataViewController ()<SaveObservationDelegate>{
     CGRect viewRect;
@@ -58,9 +59,9 @@
     }
     
     
-    imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"test.png"]];
+    imageView = [[UIImageView alloc]initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"test.png"]]; 
     imageView.frame = CGRectMake(viewRect.size.width *.1, boolSwitch.frame.size.height + imageView.frame.size.height, 100, 100);
-    imageView.image = [self imageWithImage:[UIImage imageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, self.view.bounds.size.height *.2, self.view.bounds.size.height *.2).size];
+    imageView.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, self.view.bounds.size.height *.2, self.view.bounds.size.height *.2).size];
         
     imageView.contentMode = UIViewContentModeCenter;
     [self.view addSubview:imageView];
@@ -73,17 +74,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (UIImage*)imageWithImage:(UIImage*)image
-              scaledToSize:(CGSize)newSize;
-{
-    UIGraphicsBeginImageContext( newSize );
-    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
 }
 
 #pragma mark save observation data

@@ -27,6 +27,7 @@
 #import "ObservationJudgementType.h"
 #import "ComponentSwitch.h"
 #import "UserObservationIdentification.h"
+#import "MediaManager.h"
 
 #define ENUM_SCORE 1.0
 #define NIL_SCORE 1.0
@@ -189,17 +190,6 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (UIImage*)imageWithImage:(UIImage*)image
-              scaledToSize:(CGSize)newSize;
-{
-    UIGraphicsBeginImageContext( newSize );
-    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
-}
-
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -266,7 +256,7 @@
             UserObservationComponentData *data = [self findDataForComponent:com];
             if(data){
                 UIImageView *checkmark = [[UIImageView alloc] initWithFrame:CGRectMake(35, 19, 25, 25)];
-                checkmark.image = [UIImage imageNamed:@"17-checkGREEN"];
+                checkmark.image = [[MediaManager sharedMediaManager] getImageNamed:@"17-checkGREEN"];
                 [cell addSubview:checkmark];
             }
             
@@ -311,8 +301,7 @@
             projectComponentTitleString = [[projectComponentTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
             projectComponentTitleString = [projectComponentTitleString stringByAppendingString:@".png"];
             
-            cell.imageView.image = [self imageWithImage:[UIImage imageNamed:projectComponentTitleString] scaledToSize:CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, cell.bounds.size.height, cell.bounds.size.height).size];
-            
+            cell.imageView.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:projectComponentTitleString] scaledToSize:CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, cell.bounds.size.height, cell.bounds.size.height).size];
             
         }break;
         case 2:{

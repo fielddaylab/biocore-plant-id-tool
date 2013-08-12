@@ -10,6 +10,7 @@
 #import "AppModel.h"
 #import "ProjectIdentificationDiscussion.h"
 #import "InterpretationDiscussionViewController.h"
+#import "MediaManager.h"
 
 #define PICTURE_OFFSET 240
 
@@ -90,11 +91,11 @@
             UIImageView *imageGallery;
             
             if ([mediaObject.mediaURL isEqualToString:@""]){
-                imageGallery = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"defaultIdentificationNoPhoto.png"]];
+                imageGallery = [[UIImageView alloc] initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"defaultIdentificationNoPhoto.png"]];
                 [imageGallery setFrame:CGRectMake(i * 320, 0, 320, PICTURE_OFFSET)];
             }
             else{
-                imageGallery = [[UIImageView alloc] initWithImage:[UIImage imageNamed:mediaObject.mediaURL]];
+                imageGallery = [[UIImageView alloc] initWithImage:[[MediaManager sharedMediaManager] getImageNamed:mediaObject.mediaURL]];
                 [imageGallery setFrame:CGRectMake(i * 320, 0, 320, PICTURE_OFFSET)];
             }
             [scrollGallery addSubview:imageGallery];
