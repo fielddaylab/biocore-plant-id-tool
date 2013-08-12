@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+
 #import "Project.h"
 #import "ObservationContainerViewController.h"
 #import "UserObservation.h"
 
-@interface ObservationViewController : UIViewController<ObservationContainerViewControllerDelegate>
+@interface ObservationViewController : UIViewController<ObservationContainerViewControllerDelegate,  CLLocationManagerDelegate> {
+    CLLocationManager *locationManager;
+}
 
 @property (strong, nonatomic) IBOutlet UITableView *table;
 @property (nonatomic) BOOL newObservation;
