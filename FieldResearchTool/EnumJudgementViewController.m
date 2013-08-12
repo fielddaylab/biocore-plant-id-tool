@@ -30,6 +30,7 @@
 @synthesize possibilities;
 @synthesize prevData;
 @synthesize projectComponent;
+@synthesize isOneToOne;
 
 
 - (void)dealloc

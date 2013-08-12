@@ -21,6 +21,7 @@
 
 @implementation TextJudgementViewController
 @synthesize projectComponent;
+@synthesize isOneToOne;
 
 -(id)initWithFrame:(CGRect)frame{
     self = [super init];

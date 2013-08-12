@@ -98,26 +98,14 @@
 -(UserObservationComponentData *)saveObservationData{
     //get the text here
     NSString *text = numberField.text;
-    
-    NSString *regexForNumber = @"[-+]?[0-9]*\\.?[0-9]+";
-    
-    NSPredicate *isNumber = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumber];
-    
-    if ([isNumber evaluateWithObject: text]){
-        float numberToSave = [text floatValue];
-        NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-        [attributes setObject:[NSDate date] forKey:@"created"];
-        [attributes setObject:[NSDate date] forKey:@"updated"];
-        [attributes setObject:[NSNumber numberWithFloat:numberToSave] forKey:@"number"];
-        [attributes setObject:projectComponent forKey:@"projectComponent"];
-        UserObservationComponentData *data = [[AppModel sharedAppModel] createNewObservationDataWithAttributes:attributes];
-        return data;
-    }
-    else{
-        NSLog(@"ERROR: Number is not of valid format. Returning nil.");
-        return nil;
-    }
-    return nil;
+    float numberToSave = [text floatValue];
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setObject:[NSDate date] forKey:@"created"];
+    [attributes setObject:[NSDate date] forKey:@"updated"];
+    [attributes setObject:[NSNumber numberWithFloat:numberToSave] forKey:@"number"];
+    [attributes setObject:projectComponent forKey:@"projectComponent"];
+    UserObservationComponentData *data = [[AppModel sharedAppModel] createNewObservationDataWithAttributes:attributes];
+    return data;
 }
 
 @end

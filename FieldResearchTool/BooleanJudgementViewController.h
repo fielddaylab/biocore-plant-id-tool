@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) ProjectComponent *projectComponent;
 @property (nonatomic, strong) UserObservationComponentData *prevData;
+@property (nonatomic) BOOL isOneToOne;
 
 @end
 
