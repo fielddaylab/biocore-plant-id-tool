@@ -41,6 +41,9 @@
     NSMutableArray *optionalComponents;
     UserObservation *observation;
     int requiredFieldsFilledOut;
+    
+    NSMutableArray *metadata;
+    
 }
 
 @end
@@ -64,12 +67,16 @@
         requiredComponents = [[NSMutableArray alloc]init];
         optionalComponents = [[NSMutableArray alloc]init];
         requiredFieldsFilledOut = 0;
+        
     }
     return self;
 }
 
+
 - (void)viewDidAppear:(BOOL)animated
 {
+    metadata = [[NSMutableArray alloc]initWithArray:[self getMetadata]];
+
     [table reloadData];
 }
 
@@ -123,11 +130,12 @@
                 [projectIdentifications addObject:identification];
             }
         }
+                        
         [self rankIdentifications];
         [self.table reloadData];
     }
     
-
+    
     
 }
 
@@ -141,7 +149,7 @@
         else{
             [self.navigationController popViewControllerAnimated:YES];
         }
-
+        
     }
     else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error!" message:@"Required Fields Not Filled Out!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -221,6 +229,7 @@
             }
         }
     }
+    
     self.title = identifications != 1 ?[NSString stringWithFormat:@"%d possible matches", identifications] : [NSString stringWithFormat:@"%d possible match", 1];
     
     //Make the identifier unique to that row so cell pictures don't get reused in funky ways.
@@ -305,17 +314,25 @@
             cell.accessoryType= UITableViewCellAccessoryCheckmark;
             
             if(indexPath.row == 0){
-                cell.textLabel.text = @"Location";
+                cell.textLabel.text = @"Author";
+                cell.detailTextLabel.text = [metadata objectAtIndex:0];
+
             }
             else if(indexPath.row == 1){
-                cell.textLabel.text = @"Date Time";
+                cell.textLabel.text = @"Date";
+                cell.detailTextLabel.text = [metadata objectAtIndex:1];
+
             }
             else if(indexPath.row == 2){
-                cell.textLabel.text = @"Weather";
+                cell.textLabel.text = @"Location";
+                cell.detailTextLabel.text = [metadata objectAtIndex:2];
+
             }
             else{
-                cell.textLabel.text = @"Author";
+                cell.textLabel.text = @"Weather";
+                cell.detailTextLabel.text = @"Will do later";
             }
+            
         }break;
         default:
             cell.textLabel.text = @"Dummy Data";
@@ -401,7 +418,7 @@
 }
 
 - (void)dismissContainerViewAndSetProjectComponentObserved:(UserObservationComponentData *)data{
-        
+    
     dataToFilter = [[NSMutableArray alloc]init];
     requiredFieldsFilledOut = 0;
     NSArray *dataSet = [observation.userObservationComponentData allObjects];
@@ -420,7 +437,7 @@
     }
     [self rankIdentifications];
     
-
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -491,11 +508,11 @@
     NSArray *sortedIdentifications = [allProjectIdentifications sortedArrayUsingDescriptors:descriptors];
     
     //for debugging purposes
-//    for (int i = 0; i < sortedIdentifications.count; i++) {
-//        ProjectIdentification *identification = [sortedIdentifications objectAtIndex:i];
-//        int numberOfNils = [identification.numOfNils intValue];
-//        NSLog(@"%i: %@ with score %@ and %i nils. Sorting on %lu components", i, identification.title, identification.score, numberOfNils, (unsigned long)dataToFilter.count);
-//    }
+    //    for (int i = 0; i < sortedIdentifications.count; i++) {
+    //        ProjectIdentification *identification = [sortedIdentifications objectAtIndex:i];
+    //        int numberOfNils = [identification.numOfNils intValue];
+    //        NSLog(@"%i: %@ with score %@ and %i nils. Sorting on %lu components", i, identification.title, identification.score, numberOfNils, (unsigned long)dataToFilter.count);
+    //    }
     
     projectIdentifications = [NSArray arrayWithArray:sortedIdentifications];
     [self.table reloadData];
@@ -760,4 +777,42 @@
     }
     return nil;
 }
+
+#pragma mark - Metadata
+
+- (NSMutableArray*) getMetadata{
+    NSMutableArray *metadataToSend = [[NSMutableArray alloc]init];
+    
+    //User
+    NSLog(@"User: %@", observation.user.name);
+    [metadataToSend addObject:observation.user.name];
+    
+    //Date
+    NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
+                                                          dateStyle:NSDateFormatterShortStyle
+                                                          timeStyle:NSDateFormatterFullStyle];
+    NSLog(@"%@",dateString);
+    [metadataToSend addObject:dateString];
+    
+    //Location
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    NSLog(@"Lat: %f , LONG: %f",locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude);
+    [locationManager startUpdatingLocation];
+    [metadataToSend addObject:[NSString stringWithFormat:@"Lat: %f, Long: %f", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude]];
+    
+    //Weather
+    
+    return metadataToSend;
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    [locationManager stopUpdatingLocation];
+    NSLog(@"EAEAEAEAEAEAE");
+    [table reloadData];
+}
+
 @end
