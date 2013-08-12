@@ -22,7 +22,7 @@
 #import "TextJudgementViewController.h"
 #import "NumberJudgementViewController.h"
 #import "TextDataViewController.h"
-
+#import "LongTextDataViewController.h"
 
 
 @interface ObservationContainerViewController ()<ToggleJudgementViewDelegate, ToggleSaveButtonStateDelegate>{
@@ -128,8 +128,13 @@
             dataViewControllerToDisplay = textDataViewController;
         }
             break;
-        case DATA_LONG_TEXT:
-            //set up view controller here
+        case DATA_LONG_TEXT:{
+            LongTextDataViewController *longTextDataViewController = [[LongTextDataViewController alloc] initWithFrame:frame];
+            longTextDataViewController.prevData = prevData;
+            longTextDataViewController.projectComponent = projectComponent;
+            longTextDataViewController.newObservation = newObservation;
+            dataViewControllerToDisplay = longTextDataViewController;
+        }
             break;
         case DATA_ENUMERATOR:{
             //set up view controller here
@@ -267,6 +272,13 @@
                                            userInfo:nil
                                             repeats:YES];
         }
+        else if ([dataViewControllerToDisplay isKindOfClass:[LongTextDataViewController class]]){
+            [NSTimer scheduledTimerWithTimeInterval:.2
+                                             target:self
+                                           selector:@selector(checkDataText)
+                                           userInfo:nil
+                                            repeats:YES];
+        }
         
     }
     else{
@@ -280,7 +292,7 @@
         else if ([judgementViewControllerToDisplay isKindOfClass:[TextJudgementViewController class]]){
             [NSTimer scheduledTimerWithTimeInterval:.2
                                              target:self
-                                           selector:@selector(checkJudgementText)
+                                           selector:@selector(checkDataLongText)
                                            userInfo:nil
                                             repeats:YES];
         }
@@ -353,6 +365,20 @@
     
     NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForTextData];
     if ([isNumberJudgement evaluateWithObject: judgementText]){
+        saveButton.enabled = YES;
+    }
+    else{
+        saveButton.enabled = NO;
+    }
+}
+
+-(void)checkDataLongText{
+    LongTextDataViewController *longTextDataViewController = (LongTextDataViewController *)dataViewControllerToDisplay;
+    NSString *dataText = longTextDataViewController.textField.text;
+    NSString *regexForTextData = @"^(?!\\s*$).+";
+    
+    NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForTextData];
+    if ([isNumberJudgement evaluateWithObject: dataText]){
         saveButton.enabled = YES;
     }
     else{

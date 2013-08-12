@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProjectComponent.h"
+#import "UserObservationComponentData.h"
 
 @interface LongTextDataViewController : UIViewController
+
+@property (nonatomic, strong) ProjectComponent *projectComponent;
+@property (nonatomic, strong) UserObservationComponentData *prevData;
+@property (nonatomic) BOOL newObservation;
+@property (nonatomic, strong) UITextField *textField;
+
+-(id)initWithFrame:(CGRect)frame;
 
 @end
