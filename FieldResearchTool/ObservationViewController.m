@@ -68,6 +68,12 @@
         optionalComponents = [[NSMutableArray alloc]init];
         requiredFieldsFilledOut = 0;
         
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.delegate = self;
+        locationManager.distanceFilter = kCLDistanceFilterNone;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        [locationManager startUpdatingLocation];
+
     }
     return self;
 }
@@ -791,12 +797,7 @@
     [metadataToSend addObject:dateString];
     
     //Location
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.distanceFilter = kCLDistanceFilterNone;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    NSLog(@"Lat: %f , LONG: %f",locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude);
-    [locationManager startUpdatingLocation];
+    NSLog(@"Lat: %f , LONG: %f",locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude);    
     [metadataToSend addObject:[NSString stringWithFormat:@"Lat: %f, Long: %f", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude]];
     
     //Weather
