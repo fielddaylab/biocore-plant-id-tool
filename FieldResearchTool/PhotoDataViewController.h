@@ -34,6 +34,7 @@
 @property (nonatomic) BOOL newObservation;
 @property (nonatomic) id<ToggleJudgementViewDelegate> judgementDelegate;
 @property (nonatomic) id<ToggleSaveButtonStateDelegate> saveDelegate;
+@property (nonatomic, strong) UIButton *redXButton;
 
 -(id)initWithFrame:(CGRect)frame;
 

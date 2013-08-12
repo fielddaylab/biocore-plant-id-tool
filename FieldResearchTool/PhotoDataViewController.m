@@ -35,6 +35,7 @@
 @synthesize newObservation;
 @synthesize judgementDelegate;
 @synthesize saveDelegate;
+@synthesize redXButton;
 
 
 -(id)initWithFrame:(CGRect)frame{

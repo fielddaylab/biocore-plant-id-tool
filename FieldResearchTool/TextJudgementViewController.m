@@ -184,7 +184,7 @@
     
     NSString *text = textField.text;
     
-    if(text == nil){
+    if(text == nil || [text isEqualToString:@""]){
         NSLog(@"Not creating judgement because there wasn't any judgement entered. Returning nil");
         return nil;
     }

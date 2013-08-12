@@ -243,6 +243,10 @@
     [attributes setObject:[NSDate date] forKey:@"updated"];
     
     NSString *text = numberField.text;
+    if (text == nil || [text isEqualToString:@""]) {
+        NSLog(@"No Judgement was made. Returning nil");
+        return nil;
+    }
     float numberToSave = [text floatValue];
     [attributes setObject:[NSNumber numberWithFloat:numberToSave] forKey:@"number"];
     UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:possibilities withAttributes:attributes];

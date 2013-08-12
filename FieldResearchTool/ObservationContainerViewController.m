@@ -289,10 +289,24 @@
                                            userInfo:nil
                                             repeats:YES];
         }
+        else if ([judgementViewControllerToDisplay isKindOfClass:[TextJudgementViewController class]]){
+            [NSTimer scheduledTimerWithTimeInterval:.2
+                                             target:self
+                                           selector:@selector(checkJudgementText)
+                                           userInfo:nil
+                                            repeats:YES];
+        }
         else if ([dataViewControllerToDisplay isKindOfClass:[LongTextDataViewController class]]){
             [NSTimer scheduledTimerWithTimeInterval:.2
                                              target:self
                                            selector:@selector(checkDataText)
+                                           userInfo:nil
+                                            repeats:YES];
+        }
+        else if ([judgementViewControllerToDisplay isKindOfClass:[LongTextJudgementViewController class]]){
+            [NSTimer scheduledTimerWithTimeInterval:.2
+                                             target:self
+                                           selector:@selector(checkJudgementLongText)
                                            userInfo:nil
                                             repeats:YES];
         }
@@ -309,7 +323,7 @@
         else if ([judgementViewControllerToDisplay isKindOfClass:[TextJudgementViewController class]]){
             [NSTimer scheduledTimerWithTimeInterval:.2
                                              target:self
-                                           selector:@selector(checkDataLongText)
+                                           selector:@selector(checkJudgementText)
                                            userInfo:nil
                                             repeats:YES];
         }
@@ -357,13 +371,27 @@
         regexForNumberJudgement = @"[-+]?[0-9]*\\.?[0-9]+";
     }
     
-    NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberJudgement];
-    if (!judgementText || [isNumberJudgement evaluateWithObject: judgementText]){
-        saveButton.enabled = YES;
+    if ([dataViewControllerToDisplay isKindOfClass:[PhotoDataViewController class]]) {
+        PhotoDataViewController *photoDataViewController = (PhotoDataViewController *)dataViewControllerToDisplay;
+        BOOL canSave = !photoDataViewController.redXButton.hidden;
+        NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberJudgement];
+        if ((!judgementText || [isNumberJudgement evaluateWithObject: judgementText]) && canSave){
+            saveButton.enabled = YES;
+        }
+        else{
+            saveButton.enabled = NO;
+        }
     }
     else{
-        saveButton.enabled = NO;
+        NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForNumberJudgement];
+        if (!judgementText || [isNumberJudgement evaluateWithObject: judgementText]){
+            saveButton.enabled = YES;
+        }
+        else{
+            saveButton.enabled = NO;
+        }
     }
+
 }
 
 -(void)checkDataText{
@@ -383,23 +411,43 @@
 -(void)checkJudgementText{
     TextJudgementViewController *textJudgementViewController = (TextJudgementViewController *)judgementViewControllerToDisplay;
     NSString *judgementText = textJudgementViewController.textField.text;
-    NSString *regexForTextData = @"^(?!\\s*$).+";
-    
-    NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForTextData];
-    if ([isNumberJudgement evaluateWithObject: judgementText]){
-        saveButton.enabled = YES;
+    NSString *regexForTextJudgement;
+    if (!isOneToOne) {
+        regexForTextJudgement = @".*";
     }
     else{
-        saveButton.enabled = NO;
+        regexForTextJudgement = @"^(?!\\s*$).+";
     }
+    
+    if ([dataViewControllerToDisplay isKindOfClass:[PhotoDataViewController class]]) {
+        PhotoDataViewController *photoDataViewController = (PhotoDataViewController *)dataViewControllerToDisplay;
+        BOOL canSave = !photoDataViewController.redXButton.hidden;
+        NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForTextJudgement];
+        if ((!judgementText || [isNumberJudgement evaluateWithObject: judgementText]) && canSave){
+            saveButton.enabled = YES;
+        }
+        else{
+            saveButton.enabled = NO;
+        }
+    }
+    else{
+        NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForTextJudgement];
+        if (!judgementText || [isNumberJudgement evaluateWithObject: judgementText]){
+            saveButton.enabled = YES;
+        }
+        else{
+            saveButton.enabled = NO;
+        }
+    }
+    
+
 }
 
 -(void)checkDataLongText{
     LongTextDataViewController *longTextDataViewController = (LongTextDataViewController *)dataViewControllerToDisplay;
     NSString *dataText = longTextDataViewController.textField.text;
-    NSString *regexForTextData = @"^(?!\\s*$).+";
-    
-    NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForTextData];
+    NSString *regexForTextJudgement = @"^(?!\\s*$).+";
+    NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForTextJudgement];
     if ([isNumberJudgement evaluateWithObject: dataText]){
         saveButton.enabled = YES;
     }
@@ -411,15 +459,36 @@
 -(void)checkJudgementLongText{
     LongTextJudgementViewController *textJudgementViewController = (LongTextJudgementViewController *)judgementViewControllerToDisplay;
     NSString *judgementText = textJudgementViewController.textField.text;
-    NSString *regexForTextData = @"^(?!\\s*$).+";
-    
-    NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForTextData];
-    if ([isNumberJudgement evaluateWithObject: judgementText]){
-        saveButton.enabled = YES;
+    NSString *regexForTextJudgement;
+    if (!isOneToOne) {
+        regexForTextJudgement = @".*";
     }
     else{
-        saveButton.enabled = NO;
+        regexForTextJudgement = @"^(?!\\s*$).+";
     }
+    
+    if ([dataViewControllerToDisplay isKindOfClass:[PhotoDataViewController class]]) {
+        PhotoDataViewController *photoDataViewController = (PhotoDataViewController *)dataViewControllerToDisplay;
+        BOOL canSave = !photoDataViewController.redXButton.hidden;
+        NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForTextJudgement];
+        if ((!judgementText || [isNumberJudgement evaluateWithObject: judgementText]) && canSave){
+            saveButton.enabled = YES;
+        }
+        else{
+            saveButton.enabled = NO;
+        }
+    }
+    else{
+        NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForTextJudgement];
+        if (!judgementText || [isNumberJudgement evaluateWithObject: judgementText]){
+            saveButton.enabled = YES;
+        }
+        else{
+            saveButton.enabled = NO;
+        }
+    }
+    
+
 }
 
 #pragma mark toggle judgement view controller
