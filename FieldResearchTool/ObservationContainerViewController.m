@@ -277,6 +277,13 @@
                                            userInfo:nil
                                             repeats:YES];
         }
+        else if ([judgementViewControllerToDisplay isKindOfClass:[TextJudgementViewController class]]){
+            [NSTimer scheduledTimerWithTimeInterval:.2
+                                             target:self
+                                           selector:@selector(checkJudgementText)
+                                           userInfo:nil
+                                            repeats:YES];
+        }
     }
 
     
@@ -332,6 +339,20 @@
     
     NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForTextData];
     if ([isNumberJudgement evaluateWithObject: dataText]){
+        saveButton.enabled = YES;
+    }
+    else{
+        saveButton.enabled = NO;
+    }
+}
+
+-(void)checkJudgementText{
+    TextJudgementViewController *textJudgementViewController = (TextJudgementViewController *)judgementViewControllerToDisplay;
+    NSString *judgementText = textJudgementViewController.textField.text;
+    NSString *regexForTextData = @"^(?!\\s*$).+";
+    
+    NSPredicate *isNumberJudgement = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexForTextData];
+    if ([isNumberJudgement evaluateWithObject: judgementText]){
         saveButton.enabled = YES;
     }
     else{
