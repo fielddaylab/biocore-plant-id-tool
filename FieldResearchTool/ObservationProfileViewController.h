@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface ObservationProfileViewController : UIViewController
+
+@interface ObservationProfileViewController : UIViewController <CLLocationManagerDelegate>{
+    CLLocationManager* locationManager;
+}
 @property (weak, nonatomic) IBOutlet UITableView *table;
 
 @end
