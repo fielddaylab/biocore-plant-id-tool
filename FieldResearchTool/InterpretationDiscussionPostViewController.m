@@ -34,11 +34,15 @@
                                                                   target:self
                                                                   action:@selector(backButtonTouchAction)];
     self.navigationItem.leftBarButtonItem = backButton;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveButtonTouchAction)];
     if(prevPost){
         self.textBox.text = prevPost.text;
+        self.textBox.editable = NO;
     }
-    [self.textBox becomeFirstResponder];
+    else{
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveButtonTouchAction)];
+        [self.textBox becomeFirstResponder];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning

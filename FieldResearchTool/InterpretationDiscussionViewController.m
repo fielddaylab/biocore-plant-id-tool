@@ -67,9 +67,19 @@
     
     cell.textLabel.text = post.text;
     cell.detailTextLabel.text = user.name;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    //cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    ProjectIdentificationDiscussionPost *post = [posts objectAtIndex:indexPath.row];
+    InterpretationDiscussionPostViewController *postVC = [[InterpretationDiscussionPostViewController alloc] initWithNibName:@"InterpretationDiscussionPostViewController" bundle:nil];
+    postVC.delegate = self;
+    postVC.prevPost = post;
+    [self.navigationController  pushViewController:postVC animated:NO];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
