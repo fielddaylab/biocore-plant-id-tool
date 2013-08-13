@@ -28,6 +28,8 @@
 #import "ComponentSwitch.h"
 #import "UserObservationIdentification.h"
 
+#import "LoginViewController.h"
+
 #define ENUM_SCORE 1.0
 #define NIL_SCORE 1.0
 #define BOOL_SCORE 1.0
@@ -361,11 +363,15 @@
         containerView.projectComponent = projectComponent;
         containerView.newObservation = newObservation;
         containerView.dismissDelegate = self;
+    
         
         [self.navigationController pushViewController:containerView animated:YES];
     }
     else if (indexPath.section == 2){
         //metadata
+        LoginViewController *login = [[LoginViewController alloc]initWithFrame:self.view.bounds];
+        [self.navigationController pushViewController:login animated:YES];
+        
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         if (cell.accessoryType == UITableViewCellAccessoryCheckmark){
             cell.accessoryType = UITableViewCellAccessoryNone;
