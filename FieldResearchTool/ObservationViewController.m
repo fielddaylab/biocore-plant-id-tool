@@ -169,13 +169,16 @@
 {
     if (alertView.tag == 0) {
         if (buttonIndex == 0) {
-            observation.identificationString = self.title;
-            //check to make sure the current observation doesn't have a user identification, if it does delete it
-            [[AppModel sharedAppModel] createUserObservationIdentificationForProjectIdentifications:projectIdentifications];
-            [[AppModel sharedAppModel]save];
             [self.navigationController popViewControllerAnimated:YES];
         }
     }
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    observation.identificationString = self.title;
+    //check to make sure the current observation doesn't have a user identification, if it does delete it
+    [[AppModel sharedAppModel] createUserObservationIdentificationForProjectIdentifications:projectIdentifications];
+    [[AppModel sharedAppModel]save];
 }
 
 - (void)didReceiveMemoryWarning
@@ -633,7 +636,7 @@
         return 0.0f;
     }
     else if (componentPossibilities.count < 1){
-        NSLog(@"ERROR: componentPossibilities doesn't have any values, when it should have 1. Returning 0.0f");
+        NSLog(@"ERROR: ENUM componentPossibilities doesn't have any values, when it should have 1. Returning 0.0f");
         return 0.0f;
     }
     else if (componentPossibilities.count > 1){
@@ -707,7 +710,7 @@
         return 0.0f;
     }
     else if (componentPossibilities.count < 1){
-        NSLog(@"ERROR: componentPossibilities doesn't have any values, when it should have 1. Returning 0.0f");
+        NSLog(@"ERROR: BOOL componentPossibilities doesn't have any values, when it should have 1. Returning 0.0f");
         return 0.0f;
     }
     else if (componentPossibilities.count > 1){
