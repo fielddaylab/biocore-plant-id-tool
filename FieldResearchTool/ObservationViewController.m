@@ -358,9 +358,11 @@
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         if (cell.accessoryType == UITableViewCellAccessoryCheckmark){
             cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.detailTextLabel.text = @"";
         }
         else{
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            cell.detailTextLabel.text = [metadata objectAtIndex:indexPath.row];
         }
         
     }
