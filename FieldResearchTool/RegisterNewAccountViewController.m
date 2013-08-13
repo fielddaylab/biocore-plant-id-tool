@@ -40,7 +40,9 @@
 {
     [super loadView];
     
-    self.view.backgroundColor = [UIColor greenColor];
+    self.navigationItem.title = @"New Account";
+    
+    self.view.backgroundColor = [UIColor lightGrayColor];
     
     table = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 100) style:UITableViewStyleGrouped];
     table.scrollEnabled = NO;
@@ -74,7 +76,7 @@
     NSLog(@"USER: %@ PASS: %@",username, password);
     
     if ([username length] != 0 && [password length] != 0){
-        [[AppModel sharedAppModel] getUserForName:username password:password withHandler:@selector(handleFetchOfUser:) target:self];
+        [[AppModel sharedAppModel] getUserForName:username withHandler:@selector(handleFetchOfUser:) target:self];
     }
     else{
         NSLog(@"Error");
@@ -119,14 +121,17 @@
             if(indexPath.row == 0){
                 usernameTextField = [[UITextField alloc]initWithFrame:CGRectMake(cell.bounds.origin.x + 8, cell.bounds.origin.y + 10, cell.bounds.size.width, cell.bounds.size.height)];
                 usernameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-                usernameTextField.placeholder = @"Enter your Username";
+                usernameTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+                usernameTextField.placeholder = @"Username";
                 [cell.contentView addSubview:usernameTextField];
             }
             
             else if (indexPath.row == 1){
                 passwordTextField = [[UITextField alloc]initWithFrame:CGRectMake(cell.bounds.origin.x + 8, cell.bounds.origin.y + 10, cell.bounds.size.width, cell.bounds.size.height)];
                 passwordTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-                passwordTextField.placeholder = @"Enter your Password";
+                passwordTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+                passwordTextField.secureTextEntry = YES;
+                passwordTextField.placeholder = @"Password";
                 [cell.contentView addSubview:passwordTextField];
             }
             
@@ -140,13 +145,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (indexPath.section == 0){
-//        
-//    }
-//    else if (indexPath.section == 1){
-//        
-//    }
-//    
+    //    if (indexPath.section == 0){
+    //
+    //    }
+    //    else if (indexPath.section == 1){
+    //
+    //    }
+    //
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
@@ -154,19 +159,18 @@
 
 -(void)handleFetchOfUser:(NSArray *)users{
     
-    if(users == nil || [users count] != 1){
-//        NSLog(@"Bad username/password combination...");
-//        [alert show];
+    if (users != nil && [users count] == 0){
         
-        //CREATE NEW USER
-        User *user = users[0];
-        [AppModel sharedAppModel].currentUser = user;
-        [[AppModel sharedAppModel] getAllProjectsWithHandler:@selector(handleFetchOfAllProjects:) target:self];
+        NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+        [attributes setObject:[NSDate date] forKey:@"created"];
+        [attributes setObject:[NSDate date] forKey:@"updated"];
+        [attributes setObject:username forKey:@"name"];
+        [attributes setObject:password forKey:@"password"];
+        
+        [[AppModel sharedAppModel]createNewUserWithAttributes:attributes];
+        
     }
     else{
-//        User *user = users[0];
-//        [AppModel sharedAppModel].currentUser = user;
-//        [[AppModel sharedAppModel] getAllProjectsWithHandler:@selector(handleFetchOfAllProjects:) target:self];
         NSLog(@"Bad username/password combination...");
         [alert show];
     }

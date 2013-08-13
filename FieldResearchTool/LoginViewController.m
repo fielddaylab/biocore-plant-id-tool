@@ -46,6 +46,8 @@
     
     [super loadView];
     
+    self.navigationItem.title = @"Login";
+    
     self.view.backgroundColor = [UIColor lightGrayColor];
     
     table = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 100) style:UITableViewStyleGrouped];
@@ -136,6 +138,7 @@
             if(indexPath.row == 0){
                 usernameTextField = [[UITextField alloc]initWithFrame:CGRectMake(cell.bounds.origin.x + 8, cell.bounds.origin.y + 10, cell.bounds.size.width, cell.bounds.size.height)];
                 usernameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+                usernameTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
                 usernameTextField.placeholder = @"Enter your Username";
                 [cell.contentView addSubview:usernameTextField];
             }
@@ -143,6 +146,8 @@
             else if (indexPath.row == 1){
                 passwordTextField = [[UITextField alloc]initWithFrame:CGRectMake(cell.bounds.origin.x + 8, cell.bounds.origin.y + 10, cell.bounds.size.width, cell.bounds.size.height)];
                 passwordTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+                usernameTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+                passwordTextField.secureTextEntry = YES;
                 passwordTextField.placeholder = @"Enter your Password";
                 [cell.contentView addSubview:passwordTextField];
             }

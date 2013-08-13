@@ -122,6 +122,16 @@
     });
 }
 
+-(void)getUserForName:(NSString *)username withHandler:(SEL)handler target:(id)target{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+            [attributes setValue:username forKey:@"name"];
+            [coreData fetchEntities:@"User" withAttributes:attributes withHandler:handler target:target];
+        });
+    });
+}
+
 -(void)getProjectComponentPossibilitiesWithAttributes:(NSDictionary *)attributeNamesAndValies withHandler:(SEL)handler target:(id)target{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -171,6 +181,16 @@
 }
 
 #pragma mark creations
+
+-(User *)createNewUserWithAttributes:(NSDictionary*)attributes{
+    User *user = (User *)[NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:coreData.managedObjectContext];
+    for (NSString *key in attributes) {
+        id value = [attributes objectForKey:key];
+        [user setValue:value forKey:key];
+    }
+    [self save];
+    return user;
+}
 
 -(UserObservation *)createNewUserObservationWithAttributes:(NSDictionary *)attributes{
     UserObservation *observation = (UserObservation *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservation" inManagedObjectContext:coreData.managedObjectContext];
