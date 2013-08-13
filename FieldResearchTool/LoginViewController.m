@@ -102,6 +102,21 @@
     
 }
 
+-(BOOL)textFieldShouldReturn:(UITextField*)textField
+{
+    NSInteger nextTag = textField.tag % 2;
+    
+    UIResponder* nextResponder = [textField.superview viewWithTag:nextTag];
+    if (nextResponder){
+        
+        [nextResponder becomeFirstResponder];
+    }
+    else {
+        [self attemptLogin];
+    }
+    return NO;
+}
+
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

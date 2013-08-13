@@ -14,7 +14,7 @@
     CGRect viewRect;
     UITextField *usernameTextField;
     UITextField *passwordTextField;
-    UIAlertView *alert;
+    UIAlertView *failureAlert;
     NSString *username;
     NSString *password;
 }
@@ -61,7 +61,7 @@
     registerButton.frame = CGRectMake(10.0, table.bounds.size.height, 300.0, 40.0);
     [self.view addSubview:registerButton];
     
-    alert = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@"Please enter a valid username and password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    failureAlert = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@"Please enter a valid username and password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -80,9 +80,24 @@
     }
     else{
         NSLog(@"Error");
-        [alert show];
+        [failureAlert show];
     }
     
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField*)textField
+{
+    NSInteger nextTag = textField.tag % 2;
+
+    UIResponder* nextResponder = [textField.superview viewWithTag:nextTag];
+    if (nextResponder){
+
+        [nextResponder becomeFirstResponder];
+    }
+    else {
+        [self attemptToRegister];
+    }
+    return NO;
 }
 
 #pragma mark - Table View
@@ -123,6 +138,7 @@
                 usernameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
                 usernameTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
                 usernameTextField.placeholder = @"Username";
+                usernameTextField.tag = 1;
                 [cell.contentView addSubview:usernameTextField];
             }
             
@@ -132,6 +148,7 @@
                 passwordTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
                 passwordTextField.secureTextEntry = YES;
                 passwordTextField.placeholder = @"Password";
+                passwordTextField.tag = 2;
                 [cell.contentView addSubview:passwordTextField];
             }
             
@@ -169,10 +186,13 @@
         
         [[AppModel sharedAppModel]createNewUserWithAttributes:attributes];
         
+        UIAlertView *successAlert = [[UIAlertView alloc]initWithTitle:@"Success!" message:@"Account was successfully created." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [successAlert show];
+        
     }
     else{
         NSLog(@"Bad username/password combination...");
-        [alert show];
+        [failureAlert show];
     }
     
 }
