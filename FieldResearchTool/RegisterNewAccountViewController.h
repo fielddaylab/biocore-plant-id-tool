@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RegisterNewAccountViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface RegisterNewAccountViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 -(id)initWithFrame:(CGRect)frame;
 

@@ -44,6 +44,12 @@
     
     self.view.backgroundColor = [UIColor lightGrayColor];
     
+    UIButton *dismissButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [dismissButton addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchUpInside];
+    [dismissButton setTitle:@"" forState:UIControlStateNormal];
+    dismissButton.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+    [self.view addSubview:dismissButton];
+    
     table = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 100) style:UITableViewStyleGrouped];
     table.scrollEnabled = NO;
     
@@ -87,17 +93,18 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField*)textField
 {
-    NSInteger nextTag = textField.tag % 2;
-
-    UIResponder* nextResponder = [textField.superview viewWithTag:nextTag];
-    if (nextResponder){
-
-        [nextResponder becomeFirstResponder];
+    if (textField.tag == 1){
+        [passwordTextField becomeFirstResponder];
     }
     else {
         [self attemptToRegister];
     }
     return NO;
+}
+
+- (void)dismissKeyboard{
+    [usernameTextField resignFirstResponder];
+    [passwordTextField resignFirstResponder];
 }
 
 #pragma mark - Table View
@@ -138,7 +145,9 @@
                 usernameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
                 usernameTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
                 usernameTextField.placeholder = @"Username";
+                usernameTextField.returnKeyType = UIReturnKeyNext;
                 usernameTextField.tag = 1;
+                usernameTextField.delegate = self;
                 [cell.contentView addSubview:usernameTextField];
             }
             
@@ -148,7 +157,9 @@
                 passwordTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
                 passwordTextField.secureTextEntry = YES;
                 passwordTextField.placeholder = @"Password";
+                passwordTextField.returnKeyType = UIReturnKeyDone;
                 passwordTextField.tag = 2;
+                passwordTextField.delegate = self;
                 [cell.contentView addSubview:passwordTextField];
             }
             
