@@ -8,10 +8,10 @@
 
 #import "RootViewController.h"
 #import "FieldResearchNavigationController.h"
-#import "ObservationViewController.h"
+//#import "ObservationViewController.h"
 #import "AppModel.h"
 
-#import "ObservationProfileViewController.h"
+#import "LoginViewController.h"
 
 
 @interface RootViewController ()
@@ -36,32 +36,6 @@
     return self;
 }
 
--(void)handleFetchOfAllProjects:(NSArray *)projects{
-    ObservationProfileViewController *newObservation = [[ObservationProfileViewController alloc]initWithNibName:@"ObservationProfileViewController" bundle:nil];
-    
-    
-    Project *project = projects[0];
-    [AppModel sharedAppModel].currentProject = project;
-    self.observationController = [[FieldResearchNavigationController alloc]initWithRootViewController:newObservation];
-    [self displayContentController:self.observationController];
-}
-
--(void)handleFetchOfUser:(NSArray *)users{
-    
-    if(users == nil || [users count] != 1){
-        NSLog(@"Error fetching users from core data. Quitting.");
-#warning using exit(0)
-        exit(0);
-    }
-    else{
-        User *user = users[0];
-        [AppModel sharedAppModel].currentUser = user;
-        if(!currentChildViewController)
-            [[AppModel sharedAppModel] getAllProjectsWithHandler:@selector(handleFetchOfAllProjects:) target:self];
-    }
-    
-}
-
 - (void) loadView
 {
     //Frame will need to get set in viewWillAppear:
@@ -73,9 +47,10 @@
 {
     self.view.frame = [UIScreen mainScreen].bounds;
     
-    //this will need to move to a login view controller in the future
-    [[AppModel sharedAppModel] getUserForName:@"jgmoeller" password:@"qwerty" withHandler:@selector(handleFetchOfUser:) target:self];
-    
+    LoginViewController *loginViewController = [[LoginViewController alloc]initWithFrame:self.view.bounds];
+    self.observationController = [[FieldResearchNavigationController alloc]initWithRootViewController:loginViewController];
+    [self displayContentController:self.observationController];
+
 }
 
 // Container VC Functions pulled from Apple Docs 5/6/13

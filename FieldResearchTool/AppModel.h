@@ -40,11 +40,13 @@
 -(void)getProjectComponentPossibilitiesWithAttributes:(NSDictionary *)attributeNamesAndValies withHandler:(SEL)handler target:(id)target;
 -(void)getUserObservationComponentsDataWithHandler:(SEL)handler target:(id)target;
 -(void)getUserForName:(NSString *)username password:(NSString *)password withHandler:(SEL)handler target:(id)target;
+-(void)getUserForName:(NSString *)username withHandler:(SEL)handler target:(id)target;
 -(void)getProjectIdentificationComponentPossibilitiesForPossibility:(ProjectComponentPossibility *)possibility withHandler:(SEL)handler target:(id)target;
 -(void)getProjectIdentificationDiscussionsWithHandler:(SEL)handler target:(id)target;
 -(void)getProjectIdentificationDiscussionPostsWithAttributes:(NSDictionary *)attributes withHandler:(SEL)handler target:(id)target;
 
 //create
+-(User *)createNewUserWithAttributes:(NSDictionary *)attributes;
 -(UserObservation *)createNewUserObservationWithAttributes:(NSDictionary *)attributes;
 -(UserObservationComponentData *)createNewObservationDataWithAttributes:(NSDictionary *)attributes;
 -(UserObservationComponentDataJudgement *)createNewJudgementWithData:(UserObservationComponentData *)data withProjectComponentPossibility:(ProjectComponentPossibility *)possibility withAttributes:(NSDictionary *)attributes;
