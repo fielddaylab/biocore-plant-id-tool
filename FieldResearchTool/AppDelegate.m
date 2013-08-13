@@ -21,6 +21,8 @@
 #import "ObservationDataType.h"
 #import "ObservationJudgementType.h"
 #import "ProjectIdentificationDiscussion.h"
+#import "FieldResearchNavigationController.h"
+#import "LoginViewController.h"
 
 @implementation AppDelegate
 
@@ -31,7 +33,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self.window setRootViewController:[[RootViewController alloc] init]];
+    LoginViewController *loginViewController = [[LoginViewController alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    FieldResearchNavigationController *navVC = [[FieldResearchNavigationController alloc] initWithRootViewController:loginViewController];
+    [self.window setRootViewController:navVC];
     [self.window makeKeyAndVisible];
     //setup example data
     //keep this commented out unless you want to regenerate sample data. otherwise it will continually

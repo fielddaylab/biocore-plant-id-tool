@@ -134,6 +134,8 @@
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     
     [self presentViewController:picker animated:YES completion:NULL];
+//    [self presentViewController:[[UIViewController alloc] init] animated:YES completion:nil];
+//    [self performSelector:@selector(imagePickerControllerDidCancel:) withObject:nil afterDelay:5];
 }
 
 

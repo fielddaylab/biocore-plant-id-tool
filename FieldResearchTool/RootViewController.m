@@ -8,7 +8,6 @@
 
 #import "RootViewController.h"
 #import "FieldResearchNavigationController.h"
-//#import "ObservationViewController.h"
 #import "AppModel.h"
 
 #import "LoginViewController.h"

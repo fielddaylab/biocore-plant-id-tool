@@ -16,12 +16,7 @@
 
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        return YES;
-    }
-    else {
-        return [self.topViewController shouldAutorotateToInterfaceOrientation:interfaceOrientation];
-    }
+    return interfaceOrientation == UIInterfaceOrientationPortrait;
 }
 
 - (BOOL) shouldAutorotate
@@ -31,7 +26,7 @@
 
 - (NSInteger) supportedInterfaceOrientations
 {
-    return [self.topViewController supportedInterfaceOrientations];
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 @end
