@@ -148,12 +148,21 @@
     
     [AppModel sharedAppModel].currentUser = user;
     
+    //create an 'editor' user. this user will be used for creating discussion topics
+    User *editor = (User *)[NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:[self managedObjectContext]];
+    editor.name = @"Editor";
+    editor.password = @"editor";
+    editor.created = [NSDate date];
+    editor.updated = [NSDate date];
+    editor.project = project;
+    
     NSString *path = [[NSBundle mainBundle] pathForResource:@"examplePlantData" ofType:@"tsv"];
     NSString *contents = [NSString stringWithContentsOfFile:path encoding:NSASCIIStringEncoding error:nil];
     NSArray *lines = [contents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     NSString *firstLine = lines[0];
     NSArray *wordsSeperatedByTabs = [firstLine componentsSeparatedByString:@"\t"];
     NSMutableArray *projectComponents = [[NSMutableArray alloc]init];
+    NSMutableArray *discussionTopics = [[NSMutableArray alloc]init];
     int nonComponents = 0;
     for(int i = 0; i < [wordsSeperatedByTabs count]; i++){
         NSString *componentRegex = @".*(\\{YES\\}|\\{NO\\})?(\\{DATA_VIDEO\\}|\\{DATA_PHOTO\\}|\\{DATA_AUDIO\\}|\\{DATA_TEXT\\}|\\{DATA_LONG_TEXT\\}|\\{DATA_NUMBER\\}|\\{DATA_BOOL\\}|\\{DATA_ENUM\\})(\\{JUDGEMENT_TEXT\\}|\\{JUDGEMENT_LONG_TEXT\\}|\\{JUDGEMENT_NUMBER\\}|\\{JUDGEMENT_BOOL\\}|\\{JUDGEMENT_ENUM\\})(\\{FILTER\\}|\\{DONT_FILTER\\})";
@@ -345,6 +354,8 @@
                 discussion.title = wordsSeperatedByTabs[i];
                 //create media object here and attach it
                 discussion.project = project;
+                [discussionTopics addObject:discussion];
+                //NSLog(@"Adding discussion topic: %@", discussion.title);
             }
         }
     }
@@ -490,6 +501,22 @@
                     
                     //NSLog(@"Created Project Identification Component Possibility. Identification: %@ Component: %@ Possibility: %@", identification.title, associatedProjectComponent.title, componentPossibility.enumValue);
                     
+                }
+            }
+            else{
+                if (j > 3 && j < nonComponents-1) {
+                    NSArray *discussionPosts = [commaListOfComponentPossibilities componentsSeparatedByString:@", "];
+                    for (int k = 0; k < discussionPosts.count; k++) {
+                        ProjectIdentificationDiscussion *discussion = [discussionTopics objectAtIndex:j-4];
+                        ProjectIdentificationDiscussionPost *post = (ProjectIdentificationDiscussionPost *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationDiscussionPost" inManagedObjectContext:[self managedObjectContext]];
+                        post.created = [NSDate date];
+                        post.updated = [NSDate date];
+                        post.text = discussionPosts[k];
+                        post.user = editor;
+                        post.projectIdentificationDiscussion = discussion;
+                        post.projectIdentification = identification;
+                        //NSLog(@"Created post. User: %@ Discussion Topic: %@ Identification: %@ Text: %@", post.user.name, post.projectIdentificationDiscussion.title, post.projectIdentification.title, post.text);
+                    }
                 }
             }
         }
