@@ -18,6 +18,7 @@
     NSString *password;
     UITextField *usernameTextField;
     UITextField *passwordTextField;
+    UIAlertView *alert;
 }
 
 @end
@@ -61,6 +62,8 @@
     [loginButton setTitle:@"Login!" forState:UIControlStateNormal];
     loginButton.frame = CGRectMake(10.0, table.bounds.size.height, 300.0, 40.0);
     [self.view addSubview:loginButton];
+    
+    alert = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@"Please enter a valid username and password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,7 +77,13 @@
     password = passwordTextField.text;
     NSLog(@"USER: %@ PASS: %@",username, password);
     
-    [[AppModel sharedAppModel] getUserForName:username password:password withHandler:@selector(handleFetchOfUser:) target:self];
+    if ([username length] != 0 && [password length] != 0){
+        [[AppModel sharedAppModel] getUserForName:username password:password withHandler:@selector(handleFetchOfUser:) target:self];
+    }
+    else{
+        NSLog(@"LUL");
+        [alert show];
+    }
     
 }
 
@@ -150,9 +159,8 @@
 -(void)handleFetchOfUser:(NSArray *)users{
     
     if(users == nil || [users count] != 1){
-        NSLog(@"Error fetching users from core data. Quitting.");
-#warning using exit(0)
-        exit(0);
+        NSLog(@"Bad username/password combination...");
+        [alert show];
     }
     else{
         User *user = users[0];
