@@ -24,6 +24,7 @@
 @synthesize projectComponent;
 @synthesize isOneToOne;
 @synthesize textField;
+@synthesize prevData;
 
 -(id)initWithFrame:(CGRect)frame{
     self = [super init];
@@ -83,6 +84,20 @@
     }
     else{
         [textField becomeFirstResponder];
+    }
+    if (prevData) {
+        if ([prevData.wasJudged boolValue]) {
+            NSArray *judgementSet = [prevData.userObservationComponentDataJudgement allObjects];
+            if(!judgementSet || judgementSet.count < 1){
+                NSLog(@"ERROR: Judgement set was nil or had 0 data members");
+            }
+            UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
+            if(!judgement){
+                NSLog(@"ERROR: judgement was nil");
+            }
+            NSString *storedLongText = judgement.longText;
+            [textField setText:storedLongText];
+        }
     }
 
 }

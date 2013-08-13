@@ -799,7 +799,6 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     [locationManager stopUpdatingLocation];
-    NSLog(@"EAEAEAEAEAEAE");
     [table reloadData];
 }
 

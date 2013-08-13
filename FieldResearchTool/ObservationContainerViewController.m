@@ -169,6 +169,7 @@
             TextJudgementViewController *textJudgementViewController = [[TextJudgementViewController alloc]initWithFrame:frame2];
             textJudgementViewController.projectComponent = projectComponent;
             textJudgementViewController.isOneToOne = NO;
+            textJudgementViewController.prevData = prevData;
             judgementViewControllerToDisplay = textJudgementViewController;
         }
             break;
@@ -176,6 +177,7 @@
             LongTextJudgementViewController *longTextJudgementViewController = [[LongTextJudgementViewController alloc]initWithFrame:frame2];
             longTextJudgementViewController.projectComponent = projectComponent;
             longTextJudgementViewController.isOneToOne = NO;
+            longTextJudgementViewController.prevData = prevData;
             judgementViewControllerToDisplay = longTextJudgementViewController;
         }
             break;
@@ -226,6 +228,7 @@
         TextJudgementViewController *textJudgementViewController = [[TextJudgementViewController alloc] initWithFrame:self.view.bounds];
         textJudgementViewController.projectComponent = projectComponent;
         textJudgementViewController.isOneToOne = YES;
+        textJudgementViewController.prevData = prevData;
         isOneToOne = YES;
         judgementViewControllerToDisplay = textJudgementViewController;
         self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
@@ -237,6 +240,7 @@
         LongTextJudgementViewController *longTextJudgementViewController = [[LongTextJudgementViewController alloc]initWithFrame:self.view.bounds];
         longTextJudgementViewController.projectComponent = projectComponent;
         longTextJudgementViewController.isOneToOne = YES;
+        longTextJudgementViewController.prevData = prevData;
         isOneToOne = YES;
         judgementViewControllerToDisplay = longTextJudgementViewController;
         self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
