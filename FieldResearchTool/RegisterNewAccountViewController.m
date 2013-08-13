@@ -1,32 +1,27 @@
 //
-//  LoginViewController.m
+//  RegisterNewAccountViewController.m
 //  FieldResearchTool
 //
-//  Created by Nick Heindl on 8/12/13.
+//  Created by Nick Heindl on 8/13/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
-#import "LoginViewController.h"
-#import "AppModel.h"
-
-#import "ObservationProfileViewController.h"
-
 #import "RegisterNewAccountViewController.h"
 
+#import "AppModel.h"
 
-@interface LoginViewController (){
+@interface RegisterNewAccountViewController (){
     CGRect viewRect;
-    NSString *username;
-    NSString *password;
     UITextField *usernameTextField;
     UITextField *passwordTextField;
     UIAlertView *alert;
+    NSString *username;
+    NSString *password;
 }
 
 @end
 
-
-@implementation LoginViewController
+@implementation RegisterNewAccountViewController
 
 @synthesize table;
 
@@ -41,12 +36,11 @@
     self.view.frame = viewRect;
 }
 
-- (void)loadView
+- (void) loadView
 {
-    
     [super loadView];
     
-    self.view.backgroundColor = [UIColor lightGrayColor];
+    self.view.backgroundColor = [UIColor greenColor];
     
     table = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 100) style:UITableViewStyleGrouped];
     table.scrollEnabled = NO;
@@ -59,16 +53,10 @@
     
     [self.view addSubview:table];
     
-    UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [loginButton addTarget:self action:@selector(attemptLogin) forControlEvents:UIControlEventTouchUpInside];
-    [loginButton setTitle:@"Login!" forState:UIControlStateNormal];
-    loginButton.frame = CGRectMake(10.0, table.bounds.size.height, 300.0, 40.0);
-    [self.view addSubview:loginButton];
-    
     UIButton *registerButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [registerButton addTarget:self action:@selector(registerNewAccount) forControlEvents:UIControlEventTouchUpInside];
-    [registerButton setTitle:@"Join now!" forState:UIControlStateNormal];
-    registerButton.frame = CGRectMake(10.0, table.bounds.size.height + loginButton.bounds.size.height, 300.0, 40.0);
+    [registerButton addTarget:self action:@selector(attemptToRegister) forControlEvents:UIControlEventTouchUpInside];
+    [registerButton setTitle:@"Create account!" forState:UIControlStateNormal];
+    registerButton.frame = CGRectMake(10.0, table.bounds.size.height, 300.0, 40.0);
     [self.view addSubview:registerButton];
     
     alert = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@"Please enter a valid username and password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -80,12 +68,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)registerNewAccount{
-    RegisterNewAccountViewController *registerNewAccountVC = [[RegisterNewAccountViewController alloc]initWithFrame:self.view.bounds];
-    [self.navigationController pushViewController:registerNewAccountVC animated:YES];
-}
-
-- (void)attemptLogin{
+- (void)attemptToRegister{
     username = usernameTextField.text;
     password = passwordTextField.text;
     NSLog(@"USER: %@ PASS: %@",username, password);
@@ -172,23 +155,22 @@
 -(void)handleFetchOfUser:(NSArray *)users{
     
     if(users == nil || [users count] != 1){
-        NSLog(@"Bad username/password combination...");
-        [alert show];
-    }
-    else{
+//        NSLog(@"Bad username/password combination...");
+//        [alert show];
+        
+        //CREATE NEW USER
         User *user = users[0];
         [AppModel sharedAppModel].currentUser = user;
         [[AppModel sharedAppModel] getAllProjectsWithHandler:@selector(handleFetchOfAllProjects:) target:self];
     }
+    else{
+//        User *user = users[0];
+//        [AppModel sharedAppModel].currentUser = user;
+//        [[AppModel sharedAppModel] getAllProjectsWithHandler:@selector(handleFetchOfAllProjects:) target:self];
+        NSLog(@"Bad username/password combination...");
+        [alert show];
+    }
     
-}
-
--(void)handleFetchOfAllProjects:(NSArray *)projects{
-    ObservationProfileViewController *newObservation = [[ObservationProfileViewController alloc]initWithNibName:@"ObservationProfileViewController" bundle:nil];
-    
-    Project *project = projects[0];
-    [AppModel sharedAppModel].currentProject = project;
-    [self.navigationController pushViewController:newObservation animated:YES];
 }
 
 @end

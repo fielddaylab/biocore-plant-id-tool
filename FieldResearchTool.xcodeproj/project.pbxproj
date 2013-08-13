@@ -61,6 +61,7 @@
 		718AAD281794772300AFE6DB /* InterpretationSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD261794772300AFE6DB /* InterpretationSplitViewController.xib */; };
 		718F372017B97CB100297EBA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718F371F17B97CB100297EBA /* LoginViewController.m */; };
 		719102A117B593B700187EF2 /* carouselBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 719102A017B593B700187EF2 /* carouselBackground.png */; };
+		719D192517BA9D20002A2B24 /* RegisterNewAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 719D192417BA9D20002A2B24 /* RegisterNewAccountViewController.m */; };
 		71AA565D17B2EFFC00EECCC5 /* 05-shuffle.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AA560017B2EFFC00EECCC5 /* 05-shuffle.png */; };
 		71AA565E17B2EFFC00EECCC5 /* 17-check.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AA560117B2EFFC00EECCC5 /* 17-check.png */; };
 		71AA565F17B2EFFC00EECCC5 /* 17-checkGREEN.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AA560217B2EFFC00EECCC5 /* 17-checkGREEN.png */; };
@@ -278,6 +279,8 @@
 		718F371E17B97CB100297EBA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		718F371F17B97CB100297EBA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		719102A017B593B700187EF2 /* carouselBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carouselBackground.png; sourceTree = "<group>"; };
+		719D192317BA9D20002A2B24 /* RegisterNewAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterNewAccountViewController.h; sourceTree = "<group>"; };
+		719D192417BA9D20002A2B24 /* RegisterNewAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterNewAccountViewController.m; sourceTree = "<group>"; };
 		71AA560017B2EFFC00EECCC5 /* 05-shuffle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "05-shuffle.png"; sourceTree = "<group>"; };
 		71AA560117B2EFFC00EECCC5 /* 17-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "17-check.png"; sourceTree = "<group>"; };
 		71AA560217B2EFFC00EECCC5 /* 17-checkGREEN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "17-checkGREEN.png"; sourceTree = "<group>"; };
@@ -788,6 +791,8 @@
 				5BF30D8D17A1C63C0071E7EA /* DataViewControllers */,
 				718F371E17B97CB100297EBA /* LoginViewController.h */,
 				718F371F17B97CB100297EBA /* LoginViewController.m */,
+				719D192317BA9D20002A2B24 /* RegisterNewAccountViewController.h */,
+				719D192417BA9D20002A2B24 /* RegisterNewAccountViewController.m */,
 				5B0458571795A11600B93A4D /* AppModel.h */,
 				5B0458581795A11600B93A4D /* AppModel.m */,
 				5BFED1B81794A49000648062 /* CoreDataWrapper.h */,
@@ -1085,6 +1090,7 @@
 				71699ED517B2C8B400BEDF13 /* ProjectIdentification.m in Sources */,
 				5B04D63B17B579D20008C250 /* UIImage+Rotation.m in Sources */,
 				718F372017B97CB100297EBA /* LoginViewController.m in Sources */,
+				719D192517BA9D20002A2B24 /* RegisterNewAccountViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
