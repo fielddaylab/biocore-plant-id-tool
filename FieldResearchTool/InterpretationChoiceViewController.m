@@ -8,8 +8,8 @@
 
 #import "InterpretationChoiceViewController.h"
 #import "ProjectIdentification.h"
-
 #import "InterpretationInformationViewController.h"
+#import "ObservationViewController.h"
 
 
 
@@ -79,6 +79,8 @@
     InterpretationInformationViewController *interpretationInformationVC = [[InterpretationInformationViewController alloc]initWithNibName:@"InterpretationInformationViewController" bundle:nil];
     ProjectIdentification *identification = [projectIdentifications objectAtIndex:indexPath.row];
     interpretationInformationVC.identification = identification;
+    ObservationViewController *prevVC = (ObservationViewController *)[self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
+    interpretationInformationVC.delegate = (id)prevVC;
     [self.navigationController pushViewController:interpretationInformationVC animated:YES];
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];

@@ -11,8 +11,15 @@
 
 #import "ProjectIdentification.h"
 
+@protocol CreateUserIdentificationDelegate <NSObject>
+
+-(void)makeIdentification:(ProjectIdentification *)projectIdentification;
+
+@end
+
 @interface InterpretationInformationViewController : UIViewController <UIWebViewDelegate>
 
 @property (nonatomic, strong) ProjectIdentification *identification;
+@property (nonatomic, strong) id<CreateUserIdentificationDelegate> delegate;
 
 @end

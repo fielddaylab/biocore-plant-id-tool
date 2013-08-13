@@ -28,12 +28,13 @@
 #import "ComponentSwitch.h"
 #import "UserObservationIdentification.h"
 #import "MediaManager.h"
+#import "InterpretationInformationViewController.h"
 
 #define ENUM_SCORE 1.0
 #define NIL_SCORE 1.0
 #define BOOL_SCORE 1.0
 
-@interface ObservationViewController ()<UIAlertViewDelegate>{
+@interface ObservationViewController ()<UIAlertViewDelegate, CreateUserIdentificationDelegate>{
     NSMutableArray *projectComponents;
     NSMutableArray *projectIdentifications;
     
@@ -111,7 +112,6 @@
     else{
         observation = prevObservation;
         NSArray *dataSet = [observation.userObservationComponentData allObjects];
-        NSArray *userIdentificationSet = [observation.userObservationIdentifications allObjects];
         //create the identifications
         if(dataSet){
             for (int i = 0; i < dataSet.count; i++) {
@@ -130,16 +130,8 @@
                 }
             }
         }
-        if(userIdentificationSet){
-            for (int i = 0; i < userIdentificationSet.count; i++) {
-                UserObservationIdentification *userIdentification = [userIdentificationSet objectAtIndex:i];
-                ProjectIdentification *identification = userIdentification.projectIdentification;
-                [projectIdentifications addObject:identification];
-            }
-        }
-                        
-        [self rankIdentifications];
-        [self.table reloadData];
+        
+        [[AppModel sharedAppModel]getAllProjectIdentificationsWithHandler:@selector(handleFetchProjectIdentifications:) target:[AppModel sharedAppModel]];
     }
     
     
@@ -176,9 +168,6 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     observation.identificationString = self.title;
-    //check to make sure the current observation doesn't have a user identification, if it does delete it
-    [[AppModel sharedAppModel] createUserObservationIdentificationForProjectIdentifications:projectIdentifications];
-    [[AppModel sharedAppModel]save];
 }
 
 - (void)didReceiveMemoryWarning
@@ -410,6 +399,7 @@
 
 -(void)projectIdentificationsResponseReady{
     projectIdentifications = [NSMutableArray arrayWithArray:[AppModel sharedAppModel].allProjectIdentifications];
+    [self rankIdentifications];
     [self.table reloadData];
 }
 
@@ -774,6 +764,11 @@
 {
     [locationManager stopUpdatingLocation];
     [table reloadData];
+}
+
+#pragma mark make an identification
+-(void)makeIdentification:(ProjectIdentification *)projectIdentification{
+    [self.navigationController popToViewController:self animated:YES];
 }
 
 @end

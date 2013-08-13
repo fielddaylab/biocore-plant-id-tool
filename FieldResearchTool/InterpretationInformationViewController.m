@@ -26,6 +26,7 @@
 
 @implementation InterpretationInformationViewController
 @synthesize identification;
+@synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -61,7 +62,7 @@
     [[AppModel sharedAppModel] getProjectIdentificationDiscussionsWithHandler:@selector(handleDiscussionRetrieval:) target:self];
     
     //Placeholder for now. Aligns text correctly, and we'll need for later Identifying
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:nil];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(makeIdentification)];
     
     //Create navigation bar titles
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44)];
@@ -153,6 +154,11 @@
 #pragma mark handle the discussion retrieval
 -(void)handleDiscussionRetrieval:(NSArray *)discussions{
     identificationInformation = [NSMutableArray arrayWithArray:discussions];
+}
+
+#pragma mark make identification
+-(void)makeIdentification{
+    [self.delegate makeIdentification:identification];
 }
 
 
