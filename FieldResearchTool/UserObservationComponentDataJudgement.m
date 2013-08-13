@@ -2,7 +2,7 @@
 //  UserObservationComponentDataJudgement.m
 //  FieldResearchTool
 //
-//  Created by Justin Moeller on 7/24/13.
+//  Created by Justin Moeller on 8/13/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
@@ -13,14 +13,14 @@
 
 @implementation UserObservationComponentDataJudgement
 
-@dynamic created;
-@dynamic updated;
-@dynamic enumValue;
 @dynamic boolValue;
-@dynamic text;
+@dynamic created;
+@dynamic enumValue;
 @dynamic longText;
 @dynamic number;
+@dynamic text;
+@dynamic updated;
+@dynamic projectComponentPossibility;
 @dynamic userObservationComponentData;
-@dynamic projectComponentPossibilities;
 
 @end

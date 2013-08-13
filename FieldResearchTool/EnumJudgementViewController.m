@@ -92,11 +92,7 @@
             if(!judgement){
                 NSLog(@"ERROR: judgement was nil");
             }
-            NSArray *prevPossibilities = [judgement.projectComponentPossibilities allObjects];
-            if(!prevPossibilities){
-                NSLog(@"ERROR: There were no possibilities, even though it was judged.");
-            }
-            ProjectComponentPossibility *prevPossibility = [prevPossibilities objectAtIndex:0];
+            ProjectComponentPossibility *prevPossibility = judgement.projectComponentPossibility;
             chosenPossibility = prevPossibility;
         }
     }
@@ -215,7 +211,7 @@
     
     if(chosenPossibility){
         [attributes setObject:chosenPossibility.enumValue forKey:@"enumValue"];
-        UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:[NSArray arrayWithObject:chosenPossibility] withAttributes:attributes];
+        UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:chosenPossibility withAttributes:attributes];
         return judgement;
     }
     

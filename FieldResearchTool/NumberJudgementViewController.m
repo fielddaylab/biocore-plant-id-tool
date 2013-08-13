@@ -239,7 +239,7 @@
     }
     float numberToSave = [text floatValue];
     [attributes setObject:[NSNumber numberWithFloat:numberToSave] forKey:@"number"];
-    UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:possibilities withAttributes:attributes];
+    UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:nil withAttributes:attributes];
     return judgement;
 }
 
@@ -257,7 +257,7 @@
     [judgementAttributes setObject:[NSDate date] forKey:@"created"];
     [judgementAttributes setObject:[NSDate date] forKey:@"updated"];
     [judgementAttributes setObject:[NSNumber numberWithFloat:numberToSave] forKey:@"number"];
-    [[AppModel sharedAppModel] createNewJudgementWithData:data withProjectComponentPossibility:possibilities withAttributes:judgementAttributes];
+    [[AppModel sharedAppModel] createNewJudgementWithData:data withProjectComponentPossibility:nil withAttributes:judgementAttributes];
     return data;
 }
 

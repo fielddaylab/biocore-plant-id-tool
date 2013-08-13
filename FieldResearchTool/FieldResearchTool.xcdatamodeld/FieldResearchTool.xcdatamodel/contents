@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Media" representedClassName="Media" syncable="YES">
         <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="mediaURL" optional="YES" attributeType="String" syncable="YES"/>
@@ -48,7 +48,7 @@
         <relationship name="media" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Media" inverseName="projectComponentPossibility" inverseEntity="Media" syncable="YES"/>
         <relationship name="projectComponent" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ProjectComponent" inverseName="projectComponentPossibilities" inverseEntity="ProjectComponent" syncable="YES"/>
         <relationship name="projectIdentificationComponentPossibilities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProjectIdentificationComponentPossibility" inverseName="projectComponentPossibility" inverseEntity="ProjectIdentificationComponentPossibility" syncable="YES"/>
-        <relationship name="userObservationComponentDataJudgement" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="UserObservationComponentDataJudgement" inverseName="projectComponentPossibilities" inverseEntity="UserObservationComponentDataJudgement" syncable="YES"/>
+        <relationship name="userObservationComponentDataJudgement" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserObservationComponentDataJudgement" inverseName="projectComponentPossibility" inverseEntity="UserObservationComponentDataJudgement" syncable="YES"/>
     </entity>
     <entity name="ProjectIdentification" representedClassName="ProjectIdentification" syncable="YES">
         <attribute name="alternateName" optional="YES" attributeType="String" syncable="YES"/>
@@ -129,7 +129,7 @@
         <attribute name="number" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updated" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="projectComponentPossibilities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProjectComponentPossibility" inverseName="userObservationComponentDataJudgement" inverseEntity="ProjectComponentPossibility" syncable="YES"/>
+        <relationship name="projectComponentPossibility" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProjectComponentPossibility" inverseName="userObservationComponentDataJudgement" inverseEntity="ProjectComponentPossibility" syncable="YES"/>
         <relationship name="userObservationComponentData" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="UserObservationComponentData" inverseName="userObservationComponentDataJudgement" inverseEntity="UserObservationComponentData" syncable="YES"/>
     </entity>
     <entity name="UserObservationIdentification" representedClassName="UserObservationIdentification" syncable="YES">
@@ -142,7 +142,7 @@
         <element name="Media" positionX="-495" positionY="-796" width="128" height="195"/>
         <element name="Project" positionX="153" positionY="206" width="128" height="180"/>
         <element name="ProjectComponent" positionX="144" positionY="-81" width="128" height="210"/>
-        <element name="ProjectComponentPossibility" positionX="567" positionY="-244" width="279" height="210"/>
+        <element name="ProjectComponentPossibility" positionX="567" positionY="-244" width="279" height="225"/>
         <element name="ProjectIdentification" positionX="135" positionY="497" width="128" height="240"/>
         <element name="ProjectIdentificationComponentPossibility" positionX="450" positionY="180" width="288" height="105"/>
         <element name="ProjectIdentificationDiscussion" positionX="160" positionY="192" width="128" height="135"/>

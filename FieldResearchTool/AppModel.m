@@ -203,11 +203,11 @@
     return data;
 }
 
--(UserObservationComponentDataJudgement *)createNewJudgementWithData:(UserObservationComponentData *)data withProjectComponentPossibility:(NSArray *)possibilities withAttributes:(NSDictionary *)attributes{
+-(UserObservationComponentDataJudgement *)createNewJudgementWithData:(UserObservationComponentData *)data withProjectComponentPossibility:(ProjectComponentPossibility *)possibility withAttributes:(NSDictionary *)attributes{
     UserObservationComponentDataJudgement *judgement = (UserObservationComponentDataJudgement *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservationComponentDataJudgement" inManagedObjectContext:coreData.managedObjectContext];
     data.wasJudged = [NSNumber numberWithBool:YES];
     judgement.userObservationComponentData = data;
-    judgement.projectComponentPossibilities = [NSSet setWithArray:possibilities];
+    judgement.projectComponentPossibility = possibility;
     for (NSString *key in attributes) {
         id value = [attributes objectForKey:key];
         [judgement setValue:value forKey:key];

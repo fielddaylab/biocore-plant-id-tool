@@ -126,8 +126,7 @@
         }
     }
     
-    NSArray *chosenPossibility = [NSArray arrayWithObject:possibility];
-    UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:chosenPossibility withAttributes:attributes];
+    UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:possibility withAttributes:attributes];
     return judgement;
 }
 
@@ -155,8 +154,7 @@
         }
     }
     
-    NSArray *chosenPossibility = [NSArray arrayWithObject:possibility];
-    [[AppModel sharedAppModel] createNewJudgementWithData:data withProjectComponentPossibility:chosenPossibility withAttributes:judgementAttributes];
+    [[AppModel sharedAppModel] createNewJudgementWithData:data withProjectComponentPossibility:possibility withAttributes:judgementAttributes];
     return data;
 }
 

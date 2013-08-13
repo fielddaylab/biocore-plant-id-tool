@@ -47,7 +47,7 @@
 //create
 -(UserObservation *)createNewUserObservationWithAttributes:(NSDictionary *)attributes;
 -(UserObservationComponentData *)createNewObservationDataWithAttributes:(NSDictionary *)attributes;
--(UserObservationComponentDataJudgement *)createNewJudgementWithData:(UserObservationComponentData *)data withProjectComponentPossibility:(NSArray *)possibilities withAttributes:(NSDictionary *)attributes;
+-(UserObservationComponentDataJudgement *)createNewJudgementWithData:(UserObservationComponentData *)data withProjectComponentPossibility:(ProjectComponentPossibility *)possibility withAttributes:(NSDictionary *)attributes;
 -(Media *)createNewMediaWithAttributes:(NSDictionary *)attributes;
 -(NSArray *)createUserObservationIdentificationForProjectIdentifications:(NSArray *)projectIdentifications;
 -(ProjectIdentificationDiscussionPost *)createNewProjectIdentificationDiscussionPostWithAttributes:(NSDictionary *)attributes;

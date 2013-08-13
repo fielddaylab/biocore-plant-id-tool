@@ -2,7 +2,7 @@
 //  UserObservationComponentDataJudgement.h
 //  FieldResearchTool
 //
-//  Created by Justin Moeller on 7/24/13.
+//  Created by Justin Moeller on 8/13/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
@@ -13,22 +13,14 @@
 
 @interface UserObservationComponentDataJudgement : NSManagedObject
 
-@property (nonatomic, retain) NSDate * created;
-@property (nonatomic, retain) NSDate * updated;
-@property (nonatomic, retain) NSString * enumValue;
 @property (nonatomic, retain) NSNumber * boolValue;
-@property (nonatomic, retain) NSString * text;
+@property (nonatomic, retain) NSDate * created;
+@property (nonatomic, retain) NSString * enumValue;
 @property (nonatomic, retain) NSString * longText;
 @property (nonatomic, retain) NSNumber * number;
+@property (nonatomic, retain) NSString * text;
+@property (nonatomic, retain) NSDate * updated;
+@property (nonatomic, retain) ProjectComponentPossibility *projectComponentPossibility;
 @property (nonatomic, retain) UserObservationComponentData *userObservationComponentData;
-@property (nonatomic, retain) NSSet *projectComponentPossibilities;
-@end
-
-@interface UserObservationComponentDataJudgement (CoreDataGeneratedAccessors)
-
-- (void)addProjectComponentPossibilitiesObject:(ProjectComponentPossibility *)value;
-- (void)removeProjectComponentPossibilitiesObject:(ProjectComponentPossibility *)value;
-- (void)addProjectComponentPossibilities:(NSSet *)values;
-- (void)removeProjectComponentPossibilities:(NSSet *)values;
 
 @end
