@@ -288,7 +288,7 @@
                 
                 if([com.filter boolValue]){
                     ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
-                    if(data && [dataToFilter containsObject:data]){
+                    if(data && [data.isFiltered boolValue]){
                         [boolSwitch setOn:YES animated:NO];
                     }
                     [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];

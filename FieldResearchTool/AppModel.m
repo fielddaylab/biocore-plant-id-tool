@@ -188,16 +188,17 @@
     UserObservationComponentData *data = (UserObservationComponentData *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservationComponentData" inManagedObjectContext:coreData.managedObjectContext];
     data.userObservation = currentUserObservation;
     data.wasJudged = [NSNumber numberWithBool:NO];
+    for (NSString *key in attributes) {
+        id value = [attributes objectForKey:key];
+        [data setValue:value forKey:key];
+    }
     ProjectComponent *associateProjectComponent = data.projectComponent;
+    NSLog(@"IS COMPONENT FILTERABLE: %@", associateProjectComponent.filter);
     if ([associateProjectComponent.filter boolValue]) {
         data.isFiltered = [NSNumber numberWithBool:YES];
     }
     else{
         data.isFiltered = [NSNumber numberWithBool:NO];
-    }
-    for (NSString *key in attributes) {
-        id value = [attributes objectForKey:key];
-        [data setValue:value forKey:key];
     }
     [self save];
     return data;
