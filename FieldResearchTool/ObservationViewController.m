@@ -353,11 +353,13 @@
         containerView.projectComponent = projectComponent;
         containerView.newObservation = newObservation;
         containerView.dismissDelegate = self;
+    
         
         [self.navigationController pushViewController:containerView animated:YES];
     }
     else if (indexPath.section == 2){
         //metadata
+
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         if (cell.accessoryType == UITableViewCellAccessoryCheckmark){
             cell.accessoryType = UITableViewCellAccessoryNone;
