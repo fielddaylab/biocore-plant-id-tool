@@ -15,12 +15,13 @@
 
 #define PICTURE_OFFSET 240
 
-@interface InterpretationInformationViewController (){
+@interface InterpretationInformationViewController ()<UIScrollViewDelegate>{
     NSMutableArray *identificationInformation;
     UIScrollView *scrollGallery;
     UIScrollView *scrollView;
     UIWebView *webView;
     int webViewHeight;
+    UIPageControl *pageControl;
 }
 
 @end
@@ -117,8 +118,15 @@
             [scrollGallery addSubview:imageGallery];
         }
 
-    
+    scrollGallery.delegate = self;
     [self.view addSubview:scrollGallery];
+    if (mediaArray.count > 1) {
+        pageControl = [[UIPageControl alloc]init];
+        pageControl.frame = CGRectMake((scrollView.frame.size.width / 2.0f) - (mediaArray.count * 10.0f / 2.0f), scrollView.frame.size.height + self.navigationController.navigationBar.frame.size.height, (mediaArray.count * 10.0f), 5.0f);
+        pageControl.numberOfPages = mediaArray.count;
+        pageControl.currentPage = 0;
+        [self.view addSubview:pageControl];
+    }
     
 }
 
@@ -186,5 +194,12 @@
     [self.delegate removeIdentification:userIdentification];
 }
 
+#pragma mark scrollview delegate methods
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    CGFloat pageWidth = self->scrollGallery.frame.size.width;
+    float fractionalPage = self->scrollGallery.contentOffset.x / pageWidth;
+    NSInteger page = lround(fractionalPage);
+    pageControl.currentPage = page;
+}
 
 @end
