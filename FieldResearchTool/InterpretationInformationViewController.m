@@ -125,7 +125,7 @@
     [self.view addSubview:scrollGallery];
     if (mediaArray.count > 1) {
         pageControl = [[UIPageControl alloc]init];
-        pageControl.frame = CGRectMake((scrollView.frame.size.width / 2.0f) - (mediaArray.count * 10.0f / 2.0f), scrollView.frame.size.height + self.navigationController.navigationBar.frame.size.height, (mediaArray.count * 10.0f), 5.0f);
+        pageControl.frame = CGRectMake((scrollGallery.frame.size.width / 2.0f) - (mediaArray.count * 10.0f / 2.0f), scrollGallery.frame.size.height - 10, (mediaArray.count * 10.0f), 5.0f);
         pageControl.numberOfPages = mediaArray.count;
         pageControl.currentPage = 0;
         [self.view addSubview:pageControl];
