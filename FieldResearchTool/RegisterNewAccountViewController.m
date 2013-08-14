@@ -68,7 +68,7 @@
     registerButton.frame = CGRectMake(10.0, table.bounds.size.height, 300.0, 40.0);
     [self.view addSubview:registerButton];
     
-    failureAlert = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@"Please enter a valid username and password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    failureAlert = [[UIAlertView alloc]initWithTitle:@"Enter a valid username" message:@"Use characters a-z, 0-9, underscore, hyphen and between 3 and 15 characters." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     takenUsernameAlert = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"This username is already taken." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 }
 
@@ -82,8 +82,11 @@
     username = usernameTextField.text;
     password = passwordTextField.text;
     NSLog(@"USER: %@ PASS: %@",username, password);
+    NSString *usernameRegex = @"^[a-z0-9_-]{3,15}$";
+    NSPredicate *testRegex = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", usernameRegex];
+    BOOL validUser = [testRegex evaluateWithObject: username];
     
-    if ([username length] != 0 && [password length] != 0 && (![username isEqualToString:@"Editor"] || ![username isEqualToString:@"editor"])){
+    if (validUser && password.length > 0){
         [[AppModel sharedAppModel] getUserForName:username withHandler:@selector(handleFetchOfUser:) target:self];
     }
     else{
