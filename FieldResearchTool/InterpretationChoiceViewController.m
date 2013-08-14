@@ -58,7 +58,7 @@
     }
     
     ProjectIdentification *identification = [projectIdentifications objectAtIndex:indexPath.row];
-    cell.textLabel.text = identification.title;
+    cell.textLabel.text = identification.alternateName;
     
     if(dataToFilter.count > 0){
         float decimal = [identification.score floatValue];

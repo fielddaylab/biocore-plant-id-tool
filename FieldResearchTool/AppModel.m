@@ -247,20 +247,6 @@
     return media;
 }
 
--(NSArray *)createUserObservationIdentificationForProjectIdentifications:(NSArray *)projectIdentifications{
-    NSMutableArray *userObservationIdentifications = [[NSMutableArray alloc]init];
-    for (int i = 0; i < projectIdentifications.count; i++) {
-        ProjectIdentification *projectIdentification = [projectIdentifications objectAtIndex:i];
-        UserObservationIdentification *userIdentification = (UserObservationIdentification *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservationIdentification" inManagedObjectContext:coreData.managedObjectContext];
-        userIdentification.created = [NSDate date];
-        userIdentification.updated = [NSDate date];
-        userIdentification.projectIdentification = projectIdentification;
-        userIdentification.userObservation = currentUserObservation;
-        [userObservationIdentifications addObject:userIdentification];
-    }
-    return [NSArray arrayWithArray:userObservationIdentifications];
-}
-
 -(ProjectIdentificationDiscussionPost *)createNewProjectIdentificationDiscussionPostWithAttributes:(NSDictionary *)attributes{
     ProjectIdentificationDiscussionPost *post = (ProjectIdentificationDiscussionPost *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationDiscussionPost" inManagedObjectContext:coreData.managedObjectContext];
     post.user = currentUser;
@@ -270,6 +256,18 @@
     }
     [self save];
     return post;
+}
+
+-(UserObservationIdentification *)createNewUserObservationIdentificationWithProjectIdentification:(ProjectIdentification *) projectIdentification withAttributes:(NSDictionary *)attributes{
+    UserObservationIdentification *userIdentification = (UserObservationIdentification *)[NSEntityDescription insertNewObjectForEntityForName:@"UserObservationIdentification" inManagedObjectContext:coreData.managedObjectContext];
+    userIdentification.userObservation = currentUserObservation;
+    userIdentification.projectIdentification = projectIdentification;
+    for (NSString *key in attributes) {
+        id value = [attributes objectForKey:key];
+        [userIdentification setValue:value forKey:key];
+    }
+    [self save];
+    return userIdentification;
 }
 
 -(void)deleteObject:(NSManagedObject *)objectToDelete{

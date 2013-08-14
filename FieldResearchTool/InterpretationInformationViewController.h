@@ -14,6 +14,7 @@
 @protocol CreateUserIdentificationDelegate <NSObject>
 
 -(void)makeIdentification:(ProjectIdentification *)projectIdentification;
+-(void)removeIdentification:(UserObservationIdentification *)userIdentificationToDelete;
 
 @end
 

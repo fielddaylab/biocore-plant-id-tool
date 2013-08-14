@@ -51,8 +51,8 @@
 -(UserObservationComponentData *)createNewObservationDataWithAttributes:(NSDictionary *)attributes;
 -(UserObservationComponentDataJudgement *)createNewJudgementWithData:(UserObservationComponentData *)data withProjectComponentPossibility:(ProjectComponentPossibility *)possibility withAttributes:(NSDictionary *)attributes;
 -(Media *)createNewMediaWithAttributes:(NSDictionary *)attributes;
--(NSArray *)createUserObservationIdentificationForProjectIdentifications:(NSArray *)projectIdentifications;
 -(ProjectIdentificationDiscussionPost *)createNewProjectIdentificationDiscussionPostWithAttributes:(NSDictionary *)attributes;
+-(UserObservationIdentification *)createNewUserObservationIdentificationWithProjectIdentification:(ProjectIdentification *) projectIdentification withAttributes:(NSDictionary *)attributes;
 
 //delete
 -(void)deleteObject:(NSManagedObject *)objectToDelete;
