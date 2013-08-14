@@ -11,6 +11,7 @@
 #import "ProjectIdentificationDiscussion.h"
 #import "InterpretationDiscussionViewController.h"
 #import "MediaManager.h"
+#import "UserObservationIdentification.h"
 
 #define PICTURE_OFFSET 240
 
@@ -62,7 +63,21 @@
     [[AppModel sharedAppModel] getProjectIdentificationDiscussionsWithHandler:@selector(handleDiscussionRetrieval:) target:self];
     
     //Placeholder for now. Aligns text correctly, and we'll need for later Identifying
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(makeIdentification)];
+    NSArray *userIdentificationSet = [[AppModel sharedAppModel].currentUserObservation.userObservationIdentifications allObjects];
+    if (userIdentificationSet.count < 1) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"ID" style:UIBarButtonItemStyleDone target:self action:@selector(makeIdentification)];
+    }
+    else{
+        UserObservationIdentification *userIdentification = [userIdentificationSet objectAtIndex:0];
+        ProjectIdentification *idToCompare = userIdentification.projectIdentification;
+        if ([idToCompare.title isEqualToString:identification.title]) {
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"UN-ID" style:UIBarButtonSystemItemTrash target:self action:@selector(removeUserObservationIdentification)];
+        }
+        else{
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"ID" style:UIBarButtonItemStyleDone target:self action:@selector(makeIdentification)];
+        }
+    }
+    
     
     //Create navigation bar titles
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44)];
@@ -159,6 +174,16 @@
 #pragma mark make identification
 -(void)makeIdentification{
     [self.delegate makeIdentification:identification];
+}
+
+-(void)removeUserObservationIdentification{
+    NSArray *userIdentificationSet = [[AppModel sharedAppModel].currentUserObservation.userObservationIdentifications allObjects];
+    if (userIdentificationSet.count < 1) {
+        NSLog(@"ERROR trying to remove user observation that doesn't exist. Not calling delegate.");
+        return;
+    }
+    UserObservationIdentification *userIdentification = [userIdentificationSet objectAtIndex:0];
+    [self.delegate removeIdentification:userIdentification];
 }
 
 

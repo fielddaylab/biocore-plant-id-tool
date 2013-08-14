@@ -218,7 +218,16 @@
         }
     }
     
-    self.title = identifications != 1 ?[NSString stringWithFormat:@"%d possible matches", identifications] : [NSString stringWithFormat:@"%d possible match", 1];
+    if (observation.userObservationIdentifications.count < 1) {
+        self.title = identifications != 1 ?[NSString stringWithFormat:@"%d possible matches", identifications] : [NSString stringWithFormat:@"%d possible match", 1];
+    }
+    else{
+        NSArray *userIdentificationArray = [observation.userObservationIdentifications allObjects];
+        UserObservationIdentification *userIdentification = [userIdentificationArray objectAtIndex:0];
+        ProjectIdentification *projectIdentification = userIdentification.projectIdentification;
+        self.title = projectIdentification.alternateName;
+    }
+    
     
     //Make the identifier unique to that row so cell pictures don't get reused in funky ways.
     NSString *CellIdentifier = [NSString stringWithFormat:@"%d", indexPath.section];
@@ -770,6 +779,29 @@
 
 #pragma mark make an identification
 -(void)makeIdentification:(ProjectIdentification *)projectIdentification{
+    if (observation.userObservationIdentifications.count > 0) {
+        NSArray *userIdentificationSet = [observation.userObservationIdentifications allObjects];
+        UserObservationIdentification *userIdentification = [userIdentificationSet objectAtIndex:0];
+        [self removeIdentification:userIdentification];
+    }
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
+    [attributes setObject:[NSDate date] forKey:@"created"];
+    [attributes setObject:[NSDate date] forKey:@"updated"];
+    UserObservationIdentification *userIdentification = [[AppModel sharedAppModel] createNewUserObservationIdentificationWithProjectIdentification:projectIdentification withAttributes:attributes];
+    NSSet *userIdentifications = [NSSet setWithObject:userIdentification];
+    observation.userObservationIdentifications = userIdentifications;
+    [AppModel sharedAppModel].currentUserObservation = observation;
+    [[AppModel sharedAppModel] save];
+    [self.navigationController popToViewController:self animated:YES];
+}
+
+-(void)removeIdentification:(UserObservationIdentification *)userIdentificationToDelete{
+    NSMutableSet *userIdentifications = [NSMutableSet setWithSet:observation.userObservationIdentifications];
+    [userIdentifications removeObject:userIdentificationToDelete];
+    observation.userObservationIdentifications = userIdentifications;
+    [AppModel sharedAppModel].currentUserObservation = observation;
+    [[AppModel sharedAppModel] deleteObject:userIdentificationToDelete];
+    [[AppModel sharedAppModel] save];
     [self.navigationController popToViewController:self animated:YES];
 }
 
