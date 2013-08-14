@@ -146,6 +146,13 @@
 #pragma mark
 -(void)handleFetchOfUserObservations:(NSArray *)observations{
     profileObservations = [NSMutableArray arrayWithArray:observations];
+    for (int i = 0; i < profileObservations.count; i++) {
+        UserObservation *currObservation = [profileObservations objectAtIndex:i];
+        if (!currObservation.identificationString) {
+            [profileObservations removeObject:currObservation];
+            [[AppModel sharedAppModel] deleteObject:currObservation];
+        }
+    }
     [self.table reloadData];
 }
 

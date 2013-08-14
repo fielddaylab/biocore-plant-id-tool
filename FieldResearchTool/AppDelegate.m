@@ -38,20 +38,6 @@
     [self.window setRootViewController:navVC];
     [self.window makeKeyAndVisible];
     
-//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"fetchData"]) {
-//        NSLog(@"1. fetch was true");
-//    }
-//    else{
-//        NSLog(@"1. fetch was false");
-//    }
-//    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"fetchData"];
-//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"fetchData"]) {
-//        NSLog(@"2. fetch was true");
-//    }
-//    else{
-//        NSLog(@"2. fetch was false");
-//    }
-    
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"fetchData"]) {
         [self readInSampleData];
     }
