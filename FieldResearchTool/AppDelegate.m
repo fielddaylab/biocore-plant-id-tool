@@ -143,6 +143,7 @@
     
     [AppModel sharedAppModel].currentProject = project;
     
+#warning this user needs to be deleted
     User *user = (User *)[NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:[self managedObjectContext]];
     user.name = @"jgmoeller";
     user.password = @"qwerty";
