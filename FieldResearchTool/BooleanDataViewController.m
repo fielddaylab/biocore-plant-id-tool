@@ -58,6 +58,14 @@
         boolSwitch.enabled = NO;
     }
     
+    UILabel *descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, viewRect.size.height * .04, viewRect.size.width, 22)];
+    descriptionLabel.backgroundColor = [UIColor clearColor];
+    descriptionLabel.textAlignment = NSTextAlignmentCenter;
+    descriptionLabel.font = [descriptionLabel.font fontWithSize:16];
+    descriptionLabel.text = [NSString stringWithFormat:@"Choose a value for %@.", projectComponent.title];
+    descriptionLabel.tag = 2;
+    [self.view addSubview:descriptionLabel];
+    
     
     imageView = [[UIImageView alloc]initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"test.png"]]; 
     imageView.frame = CGRectMake(viewRect.size.width *.1, boolSwitch.frame.size.height + imageView.frame.size.height, 100, 100);

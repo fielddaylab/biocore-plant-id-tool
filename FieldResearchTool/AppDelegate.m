@@ -157,17 +157,7 @@
     //add media reference here
     
     [AppModel sharedAppModel].currentProject = project;
-    
-#warning this user needs to be deleted
-    User *user = (User *)[NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:[self managedObjectContext]];
-    user.name = @"jgmoeller";
-    user.password = @"qwerty";
-    user.created = [NSDate date];
-    user.updated = [NSDate date];
-    user.project = project;
-    
-    [AppModel sharedAppModel].currentUser = user;
-    
+        
     //create an 'editor' user. this user will be used for creating discussion topics
     User *editor = (User *)[NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:[self managedObjectContext]];
     editor.name = @"Editor";
