@@ -81,7 +81,7 @@
     password = passwordTextField.text;
     NSLog(@"USER: %@ PASS: %@",username, password);
     
-    if ([username length] != 0 && [password length] != 0){
+    if ([username length] != 0 && [password length] != 0 && ([username isEqualToString:@"Editor"] || [username isEqualToString:@"editor"])){
         [[AppModel sharedAppModel] getUserForName:username withHandler:@selector(handleFetchOfUser:) target:self];
     }
     else{
@@ -202,7 +202,7 @@
         
     }
     else{
-        NSLog(@"Bad username/password combination...");
+        NSLog(@"Bad username/password combination...(already taken)");
         [failureAlert show];
     }
     
