@@ -102,10 +102,6 @@
         
         //get the location here
         NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-        [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"latitude"];
-        [attributes setValue:[NSNumber numberWithFloat:1.0f] forKey:@"longitude"];
-        [attributes setValue:[NSDate date] forKey:@"created"];
-        [attributes setValue:[NSDate date] forKey:@"updated"];
         [attributes setValue:self.title forKey:@"identificationString"];
         observation = [[AppModel sharedAppModel] createNewUserObservationWithAttributes:attributes];
     }
@@ -161,6 +157,12 @@
 {
     if (alertView.tag == 0) {
         if (buttonIndex == 0) {
+            observation.latitude = [NSNumber numberWithFloat:locationManager.location.coordinate.latitude];
+            observation.longitude = [NSNumber numberWithFloat:locationManager.location.coordinate.longitude];
+            observation.created = [NSDate date];
+            observation.updated = [NSDate date];
+            [AppModel sharedAppModel].currentUserObservation = observation;
+            [[AppModel sharedAppModel] save];
             [self.navigationController popViewControllerAnimated:YES];
         }
     }
@@ -307,23 +309,46 @@
         }break;
         case 2:{
             
-            cell.accessoryType= UITableViewCellAccessoryCheckmark;
+            cell.userInteractionEnabled = NO;
             
-            if(indexPath.row == 0){
-                cell.textLabel.text = @"Author";
-                cell.detailTextLabel.text = [metadata objectAtIndex:0];
-
+            if (newObservation) {
+                if(indexPath.row == 0){
+                    cell.textLabel.text = @"Author";
+                    cell.detailTextLabel.text = [metadata objectAtIndex:0];
+                    
+                }
+                else if(indexPath.row == 1){
+                    cell.textLabel.text = @"Date";
+                    cell.detailTextLabel.text = [metadata objectAtIndex:1];
+                    
+                }
+                else if(indexPath.row == 2){
+                    cell.textLabel.text = @"Location";
+                    cell.detailTextLabel.text = [metadata objectAtIndex:2];
+                    
+                }
             }
-            else if(indexPath.row == 1){
-                cell.textLabel.text = @"Date";
-                cell.detailTextLabel.text = [metadata objectAtIndex:1];
-
+            else{
+                if(indexPath.row == 0){
+                    cell.textLabel.text = @"Author";
+                    cell.detailTextLabel.text = observation.user.name;
+                    
+                }
+                else if(indexPath.row == 1){
+                    cell.textLabel.text = @"Date";
+                    cell.detailTextLabel.text = [NSDateFormatter localizedStringFromDate:observation.updated
+                                                                               dateStyle:NSDateFormatterShortStyle
+                                                                               timeStyle:NSDateFormatterFullStyle];
+                    
+                }
+                else if(indexPath.row == 2){
+                    cell.textLabel.text = @"Location";
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"Lat: %f, Long: %f", [observation.latitude floatValue], [observation.longitude floatValue]];
+                    
+                }
             }
-            else if(indexPath.row == 2){
-                cell.textLabel.text = @"Location";
-                cell.detailTextLabel.text = [metadata objectAtIndex:2];
+            
 
-            }
             
         }break;
         default:
@@ -354,20 +379,6 @@
     
         
         [self.navigationController pushViewController:containerView animated:YES];
-    }
-    else if (indexPath.section == 2){
-        //metadata
-
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        if (cell.accessoryType == UITableViewCellAccessoryCheckmark){
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            cell.detailTextLabel.text = @" ";//space so the format stays the same.
-        }
-        else{
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            cell.detailTextLabel.text = [metadata objectAtIndex:indexPath.row];
-        }
-        
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
