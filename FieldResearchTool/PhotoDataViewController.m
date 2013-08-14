@@ -21,11 +21,11 @@
     UIImageView *cameraImageView;
     UIView *recorderView;
     UIButton *retakeButton;
-    UIButton *redXButton;
     UIButton *arrowButton;
+    UIButton *deleteImageButton;
     CGRect viewRect;
+    UIImage *deleteImageImage;
     UIImage *arrowImage;
-    UIImage *redX;
     BOOL judgementIsHidden;
 }
 @end
@@ -62,14 +62,14 @@
     else{
         UIImage *image = [[MediaManager sharedMediaManager] getImageNamed:@"tutorialPhoto.jpg"];
         showPictureView.image = image;
+        //[self arrowButtonPressed];
     }
-
     
-    redX = [[MediaManager sharedMediaManager] getImageNamed:@"60-xRED.png"];
-    redXButton = [[UIButton alloc] initWithFrame:CGRectMake(0, viewRect.size.height - redX.size.height - 10, redX.size.width, redX.size.height)];
-    [redXButton setImage:redX forState:UIControlStateNormal];
-    [redXButton addTarget:self
-                   action:@selector(redXPressed)
+    deleteImageImage = [[MediaManager sharedMediaManager] getImageNamed:@"298-circlex"];
+    deleteImageButton = [[UIButton alloc] initWithFrame:CGRectMake(312 - deleteImageImage.size.width, 8, deleteImageImage.size.width, deleteImageImage.size.height)];
+    [deleteImageButton setImage:deleteImageImage forState:UIControlStateNormal];
+    [deleteImageButton addTarget:self
+                   action:@selector(deleteImagePressed)
          forControlEvents:UIControlEventTouchUpInside];
     
     retakeButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -83,19 +83,19 @@
     cameraImageView.frame = CGRectMake((viewRect.size.width / 2.0f) - (cameraImage.size.width / 2.0f), (viewRect.size.height / 2.0f) - (cameraImage.size.height / 2.0f), cameraImage.size.width, cameraImage.size.height);
     
     arrowImage = [[MediaManager sharedMediaManager] getImageNamed:@"03-arrow-north.png"];
-    arrowButton = [[UIButton alloc] initWithFrame:CGRectMake((viewRect.size.width / 2.0f) - (arrowImage.size.width / 2.0f), viewRect.size.height - arrowImage.size.height - 10, arrowImage.size.width, arrowImage.size.height)];
+    arrowButton = [[UIButton alloc] initWithFrame:CGRectMake((viewRect.size.width / 2.0f) - (arrowImage.size.width / 2.0f) - 5, viewRect.size.height - arrowImage.size.height - 10 - 5, arrowImage.size.width + 10, arrowImage.size.height + 10)];
     [arrowButton setImage:arrowImage forState:UIControlStateNormal];
     [arrowButton addTarget:self action:@selector(arrowButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     
     if(!prevData){
         cameraImageView.hidden = NO;
-        redXButton.hidden = YES;
+        deleteImageButton.hidden = YES;
         retakeButton.enabled = YES;
         arrowButton.hidden = YES;
     }
     else{
         cameraImageView.hidden = YES;
-        redXButton.hidden = NO;
+        deleteImageButton.hidden = NO;
         retakeButton.enabled = NO;
         arrowButton.hidden = NO;
     }
@@ -104,9 +104,10 @@
 
     [self.view addSubview:showPictureView];
     [self.view addSubview:cameraImageView];
-    [self.view addSubview:redXButton];
+    [self.view addSubview:deleteImageButton];
     [self.view addSubview:retakeButton];
     [self.view addSubview:arrowButton];
+    
 }
 
 
@@ -148,28 +149,29 @@
     showPictureView.image = chosenImage;
     cameraImageView.hidden = YES;
     
-    redXButton.hidden = NO;
+    deleteImageButton.hidden = NO;
     retakeButton.enabled = NO;
     arrowButton.hidden = NO;
     [self.saveDelegate enableSaveButton];
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+    [self arrowButtonPressed];//Brings up the judgement automatically
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
-#pragma mark red x pressed
--(void)redXPressed{
-    redXButton.hidden = YES;
+#pragma mark - deleteImagePressed
+-(void)deleteImagePressed{
+    deleteImageButton.hidden = YES;
     retakeButton.enabled = YES;
     cameraImageView.hidden = NO;
     arrowButton.hidden = YES;
     UIImage *image = [[MediaManager sharedMediaManager] getImageNamed:@"tutorialPhoto.jpg"];
     showPictureView.image = image;
     if(!judgementIsHidden){
-        redXButton.frame = CGRectMake(0, viewRect.size.height - redX.size.height - 10, redX.size.width, redX.size.height);
         arrowButton.frame = CGRectMake((viewRect.size.width / 2.0f) - (arrowImage.size.width / 2.0f), viewRect.size.height - arrowImage.size.height - 10, arrowImage.size.width, arrowImage.size.height);
         [arrowButton setImage:[[MediaManager sharedMediaManager] getImageNamed:@"03-arrow-north.png"] forState:UIControlStateNormal];
         [self.judgementDelegate disableJudgementView];
@@ -178,17 +180,15 @@
     [self.saveDelegate disableSaveButton];
 }
 
-#pragma mark arrow button pressed
+#pragma mark - arrow button pressed
 -(void)arrowButtonPressed{
     if (judgementIsHidden) {
-        redXButton.frame = CGRectMake(0, viewRect.size.height - redX.size.height - (viewRect.size.height * (1.0f/3.0f)), redX.size.width, redX.size.height);
         arrowButton.frame = CGRectMake((viewRect.size.width / 2.0f) - (arrowImage.size.width / 2.0f), viewRect.size.height - arrowImage.size.height - (viewRect.size.height * (1.0f/3.0f)), arrowImage.size.width, arrowImage.size.height);
         [arrowButton setImage:[[MediaManager sharedMediaManager] getImageNamed:@"06-arrow-south.png"] forState:UIControlStateNormal];
         [self.judgementDelegate enableJudgementView];
         judgementIsHidden = NO;
     }
     else{
-        redXButton.frame = CGRectMake(0, viewRect.size.height - redX.size.height - 10, redX.size.width, redX.size.height);
         arrowButton.frame = CGRectMake((viewRect.size.width / 2.0f) - (arrowImage.size.width / 2.0f), viewRect.size.height - arrowImage.size.height - 10, arrowImage.size.width, arrowImage.size.height);
         [arrowButton setImage:[[MediaManager sharedMediaManager] getImageNamed:@"03-arrow-north.png"] forState:UIControlStateNormal];
         [self.judgementDelegate disableJudgementView];
