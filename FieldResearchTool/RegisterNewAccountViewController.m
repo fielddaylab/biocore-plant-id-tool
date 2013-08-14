@@ -81,7 +81,7 @@
     password = passwordTextField.text;
     NSLog(@"USER: %@ PASS: %@",username, password);
     
-    if ([username length] != 0 && [password length] != 0 && ([username isEqualToString:@"Editor"] || [username isEqualToString:@"editor"])){
+    if ([username length] != 0 && [password length] != 0 && (![username isEqualToString:@"Editor"] || ![username isEqualToString:@"editor"])){
         [[AppModel sharedAppModel] getUserForName:username withHandler:@selector(handleFetchOfUser:) target:self];
     }
     else{
@@ -199,6 +199,7 @@
         
         UIAlertView *successAlert = [[UIAlertView alloc]initWithTitle:@"Success!" message:@"Account was successfully created." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [successAlert show];
+        [self.navigationController popViewControllerAnimated:YES];
         
     }
     else{

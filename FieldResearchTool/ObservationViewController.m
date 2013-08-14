@@ -352,7 +352,7 @@
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         if (cell.accessoryType == UITableViewCellAccessoryCheckmark){
             cell.accessoryType = UITableViewCellAccessoryNone;
-            cell.detailTextLabel.text = @"";
+            cell.detailTextLabel.text = @" ";//space so the format stays the same.
         }
         else{
             cell.accessoryType = UITableViewCellAccessoryCheckmark;

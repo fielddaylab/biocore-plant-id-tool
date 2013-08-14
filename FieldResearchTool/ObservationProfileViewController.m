@@ -36,6 +36,11 @@
     // Do any additional setup after loading the view from its nib.
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(makeNewObservation)];
     [self.navigationItem setRightBarButtonItem:addButton];
+    
+    //Group navbar buttons here to get rectangle style
+    self.navigationItem.hidesBackButton = YES;
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleBordered target:self action:@selector(logout)]];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -52,6 +57,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) logout
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) makeNewObservation
