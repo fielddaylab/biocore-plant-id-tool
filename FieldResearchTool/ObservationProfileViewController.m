@@ -92,6 +92,7 @@
         default:
             break;
     }
+    cell.detailTextLabel.text = [AppModel sharedAppModel].currentUser.name;
     
     
     return cell;
