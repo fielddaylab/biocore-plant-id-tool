@@ -37,10 +37,25 @@
     FieldResearchNavigationController *navVC = [[FieldResearchNavigationController alloc] initWithRootViewController:loginViewController];
     [self.window setRootViewController:navVC];
     [self.window makeKeyAndVisible];
-    //setup example data
-    //keep this commented out unless you want to regenerate sample data. otherwise it will continually
-    //add sample data
-    [self readInSampleData];
+    
+//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"fetchData"]) {
+//        NSLog(@"1. fetch was true");
+//    }
+//    else{
+//        NSLog(@"1. fetch was false");
+//    }
+//    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"fetchData"];
+//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"fetchData"]) {
+//        NSLog(@"2. fetch was true");
+//    }
+//    else{
+//        NSLog(@"2. fetch was false");
+//    }
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"fetchData"]) {
+        [self readInSampleData];
+    }
+    
     return YES;
 }
 
@@ -528,6 +543,8 @@
         
     }
     
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"fetchData"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [[AppModel sharedAppModel] save];
     
 }
