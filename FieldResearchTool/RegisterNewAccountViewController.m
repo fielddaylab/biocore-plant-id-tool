@@ -15,6 +15,7 @@
     UITextField *usernameTextField;
     UITextField *passwordTextField;
     UIAlertView *failureAlert;
+    UIAlertView *takenUsernameAlert;
     NSString *username;
     NSString *password;
 }
@@ -68,6 +69,7 @@
     [self.view addSubview:registerButton];
     
     failureAlert = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@"Please enter a valid username and password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    takenUsernameAlert = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"This username is already taken." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -202,7 +204,7 @@
     }
     else{
         NSLog(@"Bad username/password combination...(already taken)");
-        [failureAlert show];
+        [takenUsernameAlert show];
     }
     
 }

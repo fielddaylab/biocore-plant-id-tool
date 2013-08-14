@@ -37,10 +37,11 @@
     FieldResearchNavigationController *navVC = [[FieldResearchNavigationController alloc] initWithRootViewController:loginViewController];
     [self.window setRootViewController:navVC];
     [self.window makeKeyAndVisible];
-    //setup example data
-    //keep this commented out unless you want to regenerate sample data. otherwise it will continually
-    //add sample data
-    //[self readInSampleData];
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"fetchData"]) {
+        [self readInSampleData];
+    }
+    
     return YES;
 }
 
@@ -142,16 +143,7 @@
     //add media reference here
     
     [AppModel sharedAppModel].currentProject = project;
-    
-    User *user = (User *)[NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:[self managedObjectContext]];
-    user.name = @"jgmoeller";
-    user.password = @"qwerty";
-    user.created = [NSDate date];
-    user.updated = [NSDate date];
-    user.project = project;
-    
-    [AppModel sharedAppModel].currentUser = user;
-    
+        
     //create an 'editor' user. this user will be used for creating discussion topics
     User *editor = (User *)[NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:[self managedObjectContext]];
     editor.name = @"Editor";
@@ -527,6 +519,8 @@
         
     }
     
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"fetchData"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [[AppModel sharedAppModel] save];
     
 }

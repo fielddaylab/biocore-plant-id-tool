@@ -84,7 +84,12 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return YES;
+    ProjectIdentificationDiscussionPost *post = [posts objectAtIndex:indexPath.row];
+    User *user = post.user;
+    if ([user.name isEqualToString:[AppModel sharedAppModel].currentUser.name]) {
+        return YES;
+    }
+    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

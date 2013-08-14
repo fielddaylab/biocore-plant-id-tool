@@ -73,8 +73,8 @@
     UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height * .04, self.view.bounds.size.width, 22)];
     descriptionLabel.backgroundColor = [UIColor clearColor];
     descriptionLabel.textAlignment = NSTextAlignmentCenter;
-    descriptionLabel.font = [descriptionLabel.font fontWithSize:20];
-    descriptionLabel.text = @"Choose an option";
+    descriptionLabel.font = [descriptionLabel.font fontWithSize:16];
+    descriptionLabel.text = @"Choose the best match.";
     descriptionLabel.tag = 2;
     [self.view addSubview:descriptionLabel];
     

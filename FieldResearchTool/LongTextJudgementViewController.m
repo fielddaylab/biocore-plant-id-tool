@@ -44,8 +44,8 @@
     UILabel *descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, viewRect.size.height * .04, viewRect.size.width, 22)];
     descriptionLabel.backgroundColor = [UIColor clearColor];
     descriptionLabel.textAlignment = NSTextAlignmentCenter;
-    descriptionLabel.font = [descriptionLabel.font fontWithSize:20];
-    descriptionLabel.text = [NSString stringWithFormat:@"Is %@ ?", projectComponent.title];//This makes me cringe.
+    descriptionLabel.font = [descriptionLabel.font fontWithSize:16];
+    descriptionLabel.text = [NSString stringWithFormat:@"Enter a description for %@.", projectComponent.title];//This makes me cringe.
     descriptionLabel.tag = 2;
     [self.view addSubview:descriptionLabel];
     
