@@ -119,11 +119,11 @@
     if (view == nil)
     {
         
-        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width * .6, self.view.bounds.size.height * .65)];
+        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width * .45, self.view.bounds.size.height * .65)];
         
         view.contentMode = UIViewContentModeBottom;
         
-        label = [[UILabel alloc] initWithFrame:CGRectMake(0, view.bounds.size.height * .65, self.view.bounds.size.width * .6, self.view.bounds.size.height * .65)];
+        label = [[UILabel alloc] initWithFrame:CGRectMake(0, view.bounds.size.height * .65, self.view.bounds.size.width * .45, self.view.bounds.size.height * .65)];
         
         label.backgroundColor = [UIColor clearColor];
         label.textAlignment = NSTextAlignmentCenter;
