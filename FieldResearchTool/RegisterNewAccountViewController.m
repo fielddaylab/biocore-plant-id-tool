@@ -7,8 +7,8 @@
 //
 
 #import "RegisterNewAccountViewController.h"
-
 #import "AppModel.h"
+#import "ObservationProfileViewController.h"
 
 @interface RegisterNewAccountViewController (){
     CGRect viewRect;
@@ -195,11 +195,9 @@
         [attributes setObject:username forKey:@"name"];
         [attributes setObject:password forKey:@"password"];
         
-        [[AppModel sharedAppModel]createNewUserWithAttributes:attributes];
-        
-        UIAlertView *successAlert = [[UIAlertView alloc]initWithTitle:@"Success!" message:@"Account was successfully created." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [successAlert show];
-        [self.navigationController popViewControllerAnimated:YES];
+        User *user = [[AppModel sharedAppModel]createNewUserWithAttributes:attributes];
+        [AppModel sharedAppModel].currentUser = user;
+        [[AppModel sharedAppModel] getAllProjectsWithHandler:@selector(handleFetchOfAllProjects:) target:self];
         
     }
     else{
@@ -207,6 +205,16 @@
         [failureAlert show];
     }
     
+}
+
+-(void)handleFetchOfAllProjects:(NSArray *)projects{
+    ObservationProfileViewController *newObservation = [[ObservationProfileViewController alloc]initWithNibName:@"ObservationProfileViewController" bundle:nil];
+    
+    Project *project = projects[0];
+    [AppModel sharedAppModel].currentProject = project;
+    [usernameTextField setText:@""];
+    [passwordTextField setText:@""];
+    [self.navigationController pushViewController:newObservation animated:YES];
 }
 
 @end

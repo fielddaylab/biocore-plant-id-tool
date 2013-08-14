@@ -221,6 +221,8 @@
     
     Project *project = projects[0];
     [AppModel sharedAppModel].currentProject = project;
+    [usernameTextField setText:@""];
+    [passwordTextField setText:@""];
     [self.navigationController pushViewController:newObservation animated:YES];
 }
 
