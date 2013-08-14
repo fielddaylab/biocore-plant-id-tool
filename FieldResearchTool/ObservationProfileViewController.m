@@ -61,7 +61,15 @@
 
 - (void) logout
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    UIAlertView *logoutAlert = [[UIAlertView alloc]initWithTitle:@"Logout" message:@"Are you sure you wish to logout?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Logout", nil];
+    [logoutAlert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1)
+    {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 - (void) makeNewObservation
