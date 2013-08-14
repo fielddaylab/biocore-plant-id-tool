@@ -210,8 +210,14 @@
     }
     else{
         User *user = users[0];
-        [AppModel sharedAppModel].currentUser = user;
-        [[AppModel sharedAppModel] getAllProjectsWithHandler:@selector(handleFetchOfAllProjects:) target:self];
+        if ([user.name isEqualToString:@"Editor"]) {
+            NSLog(@"This is a reserved username");
+            [alert show];
+        }
+        else{
+            [AppModel sharedAppModel].currentUser = user;
+            [[AppModel sharedAppModel] getAllProjectsWithHandler:@selector(handleFetchOfAllProjects:) target:self];
+        }
     }
     
 }
