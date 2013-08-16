@@ -13,7 +13,12 @@
 
 
 
-@interface InterpretationChoiceViewController ()
+@interface InterpretationChoiceViewController (){
+    
+    NSMutableArray *likelyChoices;
+    NSMutableArray *unlikelyChoices;
+    
+}
 
 @end
 
@@ -34,7 +39,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    likelyChoices = [[NSMutableArray alloc]init];
+    unlikelyChoices = [[NSMutableArray alloc]init];
+    
+    ProjectIdentification *identification;
+    for (int i = 0; i < [projectIdentifications count]; i ++) {
+        
+        identification = [projectIdentifications objectAtIndex:i];
+        
+        if ([identification.score floatValue] > .8) {
+            [likelyChoices addObject:identification];
+        }
+        else{
+            [unlikelyChoices addObject:identification];
+        }
+    }
+    
+}
+
+- (void) viewDidAppear:(BOOL)animated{
     [self.table reloadData];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,9 +71,20 @@
 }
 
 #pragma mark - table view delegate methods
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return projectIdentifications.count;
+    switch (section) {
+        case 0:
+            return [likelyChoices count];
+        case 1:
+            return [unlikelyChoices count];
+        default:
+            return 0;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -57,21 +95,33 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    ProjectIdentification *identification = [projectIdentifications objectAtIndex:indexPath.row];
+    
+    ProjectIdentification *identification;
+    
+    switch (indexPath.section) {
+        case 0:
+            identification = [likelyChoices objectAtIndex:indexPath.row];
+            break;
+        case 1:
+            identification = [unlikelyChoices objectAtIndex:indexPath.row];
+            break;
+        default:
+            break;
+    }
+    
     cell.textLabel.text = identification.alternateName;
     
+    float decimal = [identification.score floatValue];
+    float percent = decimal * 100;
+    
     if(dataToFilter.count > 0){
-        float decimal = [identification.score floatValue];
-        float percent = decimal * 100;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%f percent match with %@ nil", percent, identification.numOfNils];
     }
     else{
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%i percent match with %@ nil", 100, identification.numOfNils];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%i percent match with %@ nil", 100,  identification.numOfNils];
     }
     
-
     return cell;
-    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -84,6 +134,23 @@
     [self.navigationController pushViewController:interpretationInformationVC animated:YES];
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+
+{
+    switch (section) {
+        case 0:
+            return @"Likely options";
+            break;
+        case 1:
+            return @"Unlikely options";
+            break;
+        default:
+            return @"Error :'[";
+            break;
+    }
+    
 }
 
 @end
