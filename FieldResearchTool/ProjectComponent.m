@@ -2,7 +2,7 @@
 //  ProjectComponent.m
 //  FieldResearchTool
 //
-//  Created by Justin Moeller on 8/5/13.
+//  Created by Justin Moeller on 8/16/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
 
@@ -22,6 +22,7 @@
 @dynamic required;
 @dynamic title;
 @dynamic updated;
+@dynamic prompt;
 @dynamic media;
 @dynamic project;
 @dynamic projectComponentPossibilities;

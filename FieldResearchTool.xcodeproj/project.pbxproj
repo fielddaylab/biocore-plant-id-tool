@@ -12,7 +12,6 @@
 		5B04D63617B558AC0008C250 /* 03-arrow-north.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B04D63517B558AC0008C250 /* 03-arrow-north.png */; };
 		5B04D63817B55E690008C250 /* 06-arrow-south.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B04D63717B55E690008C250 /* 06-arrow-south.png */; };
 		5B04D63B17B579D20008C250 /* UIImage+Rotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B04D63A17B579D20008C250 /* UIImage+Rotation.m */; };
-		5B1DAC6417B02CF700A30136 /* ProjectComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1DAC6317B02CF700A30136 /* ProjectComponent.m */; };
 		5B1DAC6D17B05C0F00A30136 /* UserObservationComponentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1DAC6C17B05C0F00A30136 /* UserObservationComponentData.m */; };
 		5B4D2DF717AC3C5B0071304F /* ProjectIdentificationDiscussion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF617AC3C5B0071304F /* ProjectIdentificationDiscussion.m */; };
 		5B4D2DFA17AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF917AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m */; };
@@ -33,6 +32,7 @@
 		5B98AFA617A07A9300678C36 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AFA517A07A9200678C36 /* User.m */; };
 		5B98AFBE17A07ADC00678C36 /* UserObservationIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AFBD17A07ADC00678C36 /* UserObservationIdentification.m */; };
 		5B98AFC017A08CA900678C36 /* examplePlantData.tsv in Resources */ = {isa = PBXBuildFile; fileRef = 5B98AFBF17A08CA900678C36 /* examplePlantData.tsv */; };
+		5BBC88B617BECD4A00E524FF /* ProjectComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBC88B517BECD4A00E524FF /* ProjectComponent.m */; };
 		5BF30DAA17A1C6B10071E7EA /* AudioDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF30D9017A1C6B10071E7EA /* AudioDataViewController.m */; };
 		5BF30DAC17A1C6B10071E7EA /* BooleanDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF30D9317A1C6B10071E7EA /* BooleanDataViewController.m */; };
 		5BF30DAE17A1C6B10071E7EA /* EnumDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF30D9617A1C6B10071E7EA /* EnumDataViewController.m */; };
@@ -186,8 +186,6 @@
 		5B04D63917B579D20008C250 /* UIImage+Rotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Rotation.h"; sourceTree = "<group>"; };
 		5B04D63A17B579D20008C250 /* UIImage+Rotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Rotation.m"; sourceTree = "<group>"; };
 		5B1B065617A6C90A002B47A0 /* SaveObservationAndJudgementDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveObservationAndJudgementDelegate.h; sourceTree = "<group>"; };
-		5B1DAC6217B02CF700A30136 /* ProjectComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComponent.h; sourceTree = "<group>"; };
-		5B1DAC6317B02CF700A30136 /* ProjectComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectComponent.m; sourceTree = "<group>"; };
 		5B1DAC6B17B05C0F00A30136 /* UserObservationComponentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationComponentData.h; sourceTree = "<group>"; };
 		5B1DAC6C17B05C0F00A30136 /* UserObservationComponentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationComponentData.m; sourceTree = "<group>"; };
 		5B4D2DF517AC3C5B0071304F /* ProjectIdentificationDiscussion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentificationDiscussion.h; sourceTree = "<group>"; };
@@ -226,6 +224,8 @@
 		5B98AFBC17A07ADC00678C36 /* UserObservationIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationIdentification.h; sourceTree = "<group>"; };
 		5B98AFBD17A07ADC00678C36 /* UserObservationIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationIdentification.m; sourceTree = "<group>"; };
 		5B98AFBF17A08CA900678C36 /* examplePlantData.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = examplePlantData.tsv; sourceTree = "<group>"; };
+		5BBC88B417BECD4A00E524FF /* ProjectComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComponent.h; sourceTree = "<group>"; };
+		5BBC88B517BECD4A00E524FF /* ProjectComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectComponent.m; sourceTree = "<group>"; };
 		5BF30D8F17A1C6B10071E7EA /* AudioDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDataViewController.h; sourceTree = "<group>"; };
 		5BF30D9017A1C6B10071E7EA /* AudioDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioDataViewController.m; sourceTree = "<group>"; };
 		5BF30D9217A1C6B10071E7EA /* BooleanDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooleanDataViewController.h; sourceTree = "<group>"; };
@@ -492,8 +492,8 @@
 				5B98AF8117A07A2C00678C36 /* Media.m */,
 				5B98AF8617A07A3A00678C36 /* Project.h */,
 				5B98AF8717A07A3A00678C36 /* Project.m */,
-				5B1DAC6217B02CF700A30136 /* ProjectComponent.h */,
-				5B1DAC6317B02CF700A30136 /* ProjectComponent.m */,
+				5BBC88B417BECD4A00E524FF /* ProjectComponent.h */,
+				5BBC88B517BECD4A00E524FF /* ProjectComponent.m */,
 				5B8B65C917BAB53B00047D06 /* ProjectComponentPossibility.h */,
 				5B8B65CA17BAB53B00047D06 /* ProjectComponentPossibility.m */,
 				5B98AF9E17A07A8300678C36 /* ProjectIdentificationComponentPossibility.h */,
@@ -1089,7 +1089,6 @@
 				5B4D2DF717AC3C5B0071304F /* ProjectIdentificationDiscussion.m in Sources */,
 				5B4D2DFA17AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m in Sources */,
 				5B4D2DFD17AC49920071304F /* UserObservation.m in Sources */,
-				5B1DAC6417B02CF700A30136 /* ProjectComponent.m in Sources */,
 				5B1DAC6D17B05C0F00A30136 /* UserObservationComponentData.m in Sources */,
 				5B64933F17B17F2500D8C1C7 /* InterpretationDiscussionViewController.m in Sources */,
 				5B64934417B18D3600D8C1C7 /* InterpretationDiscussionPostViewController.m in Sources */,
@@ -1099,6 +1098,7 @@
 				5B8B65CE17BAB55300047D06 /* UserObservationComponentDataJudgement.m in Sources */,
 				718F372017B97CB100297EBA /* LoginViewController.m in Sources */,
 				719D192517BA9D20002A2B24 /* RegisterNewAccountViewController.m in Sources */,
+				5BBC88B617BECD4A00E524FF /* ProjectComponent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

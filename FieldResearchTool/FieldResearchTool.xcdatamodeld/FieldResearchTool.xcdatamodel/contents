@@ -28,6 +28,7 @@
         <attribute name="filter" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="observationDataType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="observationJudgementType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="prompt" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="required" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updated" optional="YES" attributeType="Date" syncable="YES"/>
@@ -141,7 +142,7 @@
     <elements>
         <element name="Media" positionX="-495" positionY="-796" width="128" height="195"/>
         <element name="Project" positionX="153" positionY="206" width="128" height="180"/>
-        <element name="ProjectComponent" positionX="144" positionY="-81" width="128" height="210"/>
+        <element name="ProjectComponent" positionX="144" positionY="-81" width="128" height="225"/>
         <element name="ProjectComponentPossibility" positionX="567" positionY="-244" width="279" height="225"/>
         <element name="ProjectIdentification" positionX="135" positionY="497" width="128" height="240"/>
         <element name="ProjectIdentificationComponentPossibility" positionX="450" positionY="180" width="288" height="105"/>
