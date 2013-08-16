@@ -104,6 +104,12 @@
         NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
         [attributes setValue:self.title forKey:@"identificationString"];
         observation = [[AppModel sharedAppModel] createNewUserObservationWithAttributes:attributes];
+        observation.latitude = [NSNumber numberWithFloat:locationManager.location.coordinate.latitude];
+        observation.longitude = [NSNumber numberWithFloat:locationManager.location.coordinate.longitude];
+        observation.created = [NSDate date];
+        observation.updated = [NSDate date];
+        [AppModel sharedAppModel].currentUserObservation = observation;
+        [[AppModel sharedAppModel] save];
     }
     else{
         observation = prevObservation;
@@ -157,12 +163,6 @@
 {
     if (alertView.tag == 0) {
         if (buttonIndex == 0) {
-            observation.latitude = [NSNumber numberWithFloat:locationManager.location.coordinate.latitude];
-            observation.longitude = [NSNumber numberWithFloat:locationManager.location.coordinate.longitude];
-            observation.created = [NSDate date];
-            observation.updated = [NSDate date];
-            [AppModel sharedAppModel].currentUserObservation = observation;
-            [[AppModel sharedAppModel] save];
             [self.navigationController popViewControllerAnimated:YES];
         }
     }
