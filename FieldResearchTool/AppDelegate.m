@@ -161,7 +161,7 @@
     NSMutableArray *discussionTopics = [[NSMutableArray alloc]init];
     int nonComponents = 0;
     for(int i = 0; i < [wordsSeperatedByTabs count]; i++){
-        NSString *componentRegex = @".*(\\{YES\\}|\\{NO\\})?(\\{DATA_VIDEO\\}|\\{DATA_PHOTO\\}|\\{DATA_AUDIO\\}|\\{DATA_TEXT\\}|\\{DATA_LONG_TEXT\\}|\\{DATA_NUMBER\\}|\\{DATA_BOOL\\}|\\{DATA_ENUM\\})(\\{JUDGEMENT_TEXT\\}|\\{JUDGEMENT_LONG_TEXT\\}|\\{JUDGEMENT_NUMBER\\}|\\{JUDGEMENT_BOOL\\}|\\{JUDGEMENT_ENUM\\})(\\{FILTER\\}|\\{DONT_FILTER\\})";
+        NSString *componentRegex = @".*(\\{YES\\}|\\{NO\\})?(\\{DATA_VIDEO\\}|\\{DATA_PHOTO\\}|\\{DATA_AUDIO\\}|\\{DATA_TEXT\\}|\\{DATA_LONG_TEXT\\}|\\{DATA_NUMBER\\}|\\{DATA_BOOL\\}|\\{DATA_ENUM\\})(\\{JUDGEMENT_TEXT\\}|\\{JUDGEMENT_LONG_TEXT\\}|\\{JUDGEMENT_NUMBER\\}|\\{JUDGEMENT_BOOL\\}|\\{JUDGEMENT_ENUM\\})(\\{FILTER\\}|\\{DONT_FILTER\\})(\\{.*\\})";
         BOOL isComponent = [self stringMatchesRegex:wordsSeperatedByTabs[i] regex:componentRegex];
         if(isComponent){
             NSString *leftBrace = @"{";
@@ -267,8 +267,10 @@
             else{
                 filter = NO;
             }
-
             
+            int startingLocation = [params rangeOfString:@"{" options:NSBackwardsSearch].location;
+            NSString *description = [params substringFromIndex:startingLocation+1];
+            NSString *componentDescription = [description substringToIndex:description.length - 1];
             
             ProjectComponent *projectComponent = (ProjectComponent *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectComponent" inManagedObjectContext:[self managedObjectContext]];
             projectComponent.created = [NSDate date];
@@ -279,6 +281,7 @@
             projectComponent.title = projectComponentName;
             projectComponent.project = project;
             projectComponent.filter = [NSNumber numberWithBool:filter];
+            projectComponent.prompt = componentDescription;
 
             ///////////////NICK MADE
             //Make the filename for the media
@@ -342,7 +345,7 @@
         }
         else{
             nonComponents++;
-            NSString *helpString = @"Components go to the right of this column FORMAT: <Component Name> DASH <Component Possibility>, <Component Possibility>, .... LEFT CURLY BRACE isRequired RIGHT CURLY BRACE LEFT CURLY BRACE <Observation Type> RIGHT CURLY BRACE LEFT CURLY BRACE <Data Type> RIGHT CURLY BRACE LEFT CURLY BRACE isFilterable RIGHT CURLY BRACE";
+            NSString *helpString = @"Components go to the right of this column FORMAT: <Component Name> DASH <Component Possibility>, <Component Possibility>, .... LEFT CURLY BRACE isRequired RIGHT CURLY BRACE LEFT CURLY BRACE <Observation Type> RIGHT CURLY BRACE LEFT CURLY BRACE <Data Type> RIGHT CURLY BRACE LEFT CURLY BRACE isFilterable RIGHT CURLY BRACE LEFT CURLY BRACE <Judgement description> RIGHT CURLY BRACE";
             if(i > 3 && ![self stringMatchesRegex:wordsSeperatedByTabs[i] regex:helpString]){
                 ProjectIdentificationDiscussion *discussion = (ProjectIdentificationDiscussion *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationDiscussion" inManagedObjectContext:[self managedObjectContext]];
                 discussion.created = [NSDate date];

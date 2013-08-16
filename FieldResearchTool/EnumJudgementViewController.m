@@ -74,7 +74,13 @@
     descriptionLabel.backgroundColor = [UIColor clearColor];
     descriptionLabel.textAlignment = NSTextAlignmentCenter;
     descriptionLabel.font = [descriptionLabel.font fontWithSize:16];
-    descriptionLabel.text = @"Choose the best match.";
+    if ([projectComponent.prompt isEqualToString:@""]) {
+        descriptionLabel.text = @"Choose the best match.";
+    }
+    else{
+        descriptionLabel.text = projectComponent.prompt;
+    }
+    
     descriptionLabel.tag = 2;
     [self.view addSubview:descriptionLabel];
     

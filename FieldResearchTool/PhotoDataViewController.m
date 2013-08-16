@@ -92,6 +92,7 @@
         deleteImageButton.hidden = YES;
         retakeButton.enabled = YES;
         arrowButton.hidden = YES;
+        [self.saveDelegate disableSaveButton];
     }
     else{
         cameraImageView.hidden = YES;
@@ -100,7 +101,7 @@
         arrowButton.hidden = NO;
     }
     
-    [self.saveDelegate disableSaveButton];
+    
 
     [self.view addSubview:showPictureView];
     [self.view addSubview:cameraImageView];

@@ -62,7 +62,13 @@
     descriptionLabel.backgroundColor = [UIColor clearColor];
     descriptionLabel.textAlignment = NSTextAlignmentCenter;
     descriptionLabel.font = [descriptionLabel.font fontWithSize:16];
-    descriptionLabel.text = [NSString stringWithFormat:@"Choose a value for %@.", projectComponent.title];
+    if ([projectComponent.prompt isEqualToString:@""]) {
+        descriptionLabel.text = [NSString stringWithFormat:@"Choose a value for %@.", projectComponent.title];
+    }
+    else{
+        descriptionLabel.text = projectComponent.prompt;
+    }
+    
     descriptionLabel.tag = 2;
     [self.view addSubview:descriptionLabel];
     

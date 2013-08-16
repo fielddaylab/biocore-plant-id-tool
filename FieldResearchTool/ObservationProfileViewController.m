@@ -110,7 +110,8 @@
         default:
             break;
     }
-    cell.detailTextLabel.text = [AppModel sharedAppModel].currentUser.name;
+    //cell.detailTextLabel.text = [AppModel sharedAppModel].currentUser.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", [AppModel sharedAppModel].currentUser.name, [NSDateFormatter localizedStringFromDate:observation.updated dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterFullStyle]];
     
     
     return cell;
