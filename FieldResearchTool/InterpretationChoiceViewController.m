@@ -115,10 +115,12 @@
     float percent = decimal * 100;
     
     if(dataToFilter.count > 0){
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%f percent match with %@ nil", percent, identification.numOfNils];
+        
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%.02f percent match with %@ nil", percent, identification.numOfNils];
+        
     }
     else{
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%i percent match with %@ nil", 100,  identification.numOfNils];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"No data to filter upon!"];
     }
     
     return cell;
@@ -141,10 +143,22 @@
 {
     switch (section) {
         case 0:
-            return @"Likely options";
+            
+            if ([tableView.dataSource tableView:tableView numberOfRowsInSection:section] == 0) {
+                return nil;
+            } else {
+                return @"Likely options";
+            }
+            
             break;
         case 1:
-            return @"Unlikely options";
+            
+            if ([tableView.dataSource tableView:tableView numberOfRowsInSection:section] == 0) {
+                return nil;
+            } else {
+                return @"Unlikely options";
+            }
+            
             break;
         default:
             return @"Error :'[";
