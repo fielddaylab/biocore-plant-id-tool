@@ -32,7 +32,6 @@
 		5B98AFA617A07A9300678C36 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AFA517A07A9200678C36 /* User.m */; };
 		5B98AFBE17A07ADC00678C36 /* UserObservationIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AFBD17A07ADC00678C36 /* UserObservationIdentification.m */; };
 		5B98AFC017A08CA900678C36 /* examplePlantData.tsv in Resources */ = {isa = PBXBuildFile; fileRef = 5B98AFBF17A08CA900678C36 /* examplePlantData.tsv */; };
-		5B9A26E417C28ED3007A3A55 /* InterpretationChoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B9A26E317C28ED3007A3A55 /* InterpretationChoiceTableViewCell.xib */; };
 		5BBC88B617BECD4A00E524FF /* ProjectComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBC88B517BECD4A00E524FF /* ProjectComponent.m */; };
 		5BF30DAA17A1C6B10071E7EA /* AudioDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF30D9017A1C6B10071E7EA /* AudioDataViewController.m */; };
 		5BF30DAC17A1C6B10071E7EA /* BooleanDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF30D9317A1C6B10071E7EA /* BooleanDataViewController.m */; };
@@ -49,6 +48,7 @@
 		5BF30DCF17A1C6D40071E7EA /* NumberJudgementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF30DC517A1C6D40071E7EA /* NumberJudgementViewController.m */; };
 		5BF30DD117A1C6D40071E7EA /* TextJudgementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF30DC817A1C6D40071E7EA /* TextJudgementViewController.m */; };
 		5BFED1BA1794A49000648062 /* CoreDataWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFED1B91794A49000648062 /* CoreDataWrapper.m */; };
+		7153516917C2BC9F007BAD27 /* InterpretationChoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B9A26E317C28ED3007A3A55 /* InterpretationChoiceTableViewCell.xib */; };
 		715A69D417B95DED00D7A992 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 715A69D317B95DED00D7A992 /* CoreLocation.framework */; };
 		71699ED517B2C8B400BEDF13 /* ProjectIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 71699ED417B2C8B400BEDF13 /* ProjectIdentification.m */; };
 		7174127917A19CDE003295B6 /* ObservationContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174127717A19CDD003295B6 /* ObservationContainerViewController.m */; };
@@ -1078,6 +1078,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7153516917C2BC9F007BAD27 /* InterpretationChoiceTableViewCell.xib in Resources */,
 				AAAC4F3E178F1767001AB1D8 /* InfoPlist.strings in Resources */,
 				AAAC4F46178F1767001AB1D8 /* Default.png in Resources */,
 				AAAC4F48178F1767001AB1D8 /* Default@2x.png in Resources */,
@@ -1132,7 +1133,6 @@
 				719102A117B593B700187EF2 /* carouselBackground.png in Resources */,
 				719D192917BC0DFC002A2B24 /* 298-circlex.png in Resources */,
 				719D192A17BC0DFC002A2B24 /* 298-circlex@2x.png in Resources */,
-				71DD18CE17C278DC003E4020 /* InterpretationChoiceTableViewCell.xib in Resources */,
 				71A8039A17C2B6FF00B565D1 /* Distribution.png in Resources */,
 				71A8039B17C2B6FF00B565D1 /* Flower_color.png in Resources */,
 				71A8039C17C2B6FF00B565D1 /* Flower_symmetry.png in Resources */,
