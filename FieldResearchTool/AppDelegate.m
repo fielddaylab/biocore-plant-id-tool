@@ -496,7 +496,6 @@
                     
                     if (!componentPossibility) {
                         NSLog(@"ERROR!!!!! Created Project Identification Component Possibility. Identification: %@ Component: %@ Possibility: %@", identification.title, associatedProjectComponent.title, componentPossibility.enumValue);
-                        exit(0);
                     }
                     
                     //NSLog(@"Created Project Identification Component Possibility. Identification: %@ Component: %@ Possibility: %@", identification.title, associatedProjectComponent.title, componentPossibility.enumValue);
@@ -507,6 +506,9 @@
                 if (j > 3 && j < nonComponents-1) {
                     NSArray *discussionPosts = [commaListOfComponentPossibilities componentsSeparatedByString:@", "];
                     for (int k = 0; k < discussionPosts.count; k++) {
+                        if ([discussionPosts[k] isEqualToString:@""]) {
+                            continue;
+                        }
                         ProjectIdentificationDiscussion *discussion = [discussionTopics objectAtIndex:j-4];
                         ProjectIdentificationDiscussionPost *post = (ProjectIdentificationDiscussionPost *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationDiscussionPost" inManagedObjectContext:[self managedObjectContext]];
                         post.created = [NSDate date];
