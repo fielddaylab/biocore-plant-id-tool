@@ -95,8 +95,14 @@
         [self.saveDelegate disableSaveButton];
     }
     else{
+        if (newObservation) {
+            deleteImageButton.hidden = NO;
+        }
+        else{
+            deleteImageButton.hidden = YES;
+        }
         cameraImageView.hidden = YES;
-        deleteImageButton.hidden = NO;
+        
         retakeButton.enabled = NO;
         arrowButton.hidden = NO;
     }
