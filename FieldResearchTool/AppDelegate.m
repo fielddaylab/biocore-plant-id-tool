@@ -323,7 +323,7 @@
                         projectComponentPossibility.enumValue = stringProjectComponentPossibility;
                     }
                     else{
-                        NSLog(@"Error parsing project possibilities. Something other than enum is specified after the dash");
+                        NSLog(@"Error parsing project possibilities. Something other than enum is specified after the dash. Component: %@", projectComponent.title);
                     }
                 }
             }
@@ -368,8 +368,8 @@
         identification.created = [NSDate date];
         identification.updated = [NSDate date];
         identification.identificationDescription = components[2];
-        identification.alternateName = components[1];
-        identification.title = components[0];
+        identification.alternateName = components[0];
+        identification.title = components[1];
         identification.score = [NSNumber numberWithFloat:0.0f];
         identification.numOfNils = [NSNumber numberWithInt:0];
         //add media array here
@@ -506,6 +506,9 @@
                 if (j > 3 && j < nonComponents-1) {
                     NSArray *discussionPosts = [commaListOfComponentPossibilities componentsSeparatedByString:@", "];
                     for (int k = 0; k < discussionPosts.count; k++) {
+                        if ([discussionPosts[k] isEqualToString:@""]) {
+                            continue;
+                        }
                         ProjectIdentificationDiscussion *discussion = [discussionTopics objectAtIndex:j-4];
                         ProjectIdentificationDiscussionPost *post = (ProjectIdentificationDiscussionPost *)[NSEntityDescription insertNewObjectForEntityForName:@"ProjectIdentificationDiscussionPost" inManagedObjectContext:[self managedObjectContext]];
                         post.created = [NSDate date];

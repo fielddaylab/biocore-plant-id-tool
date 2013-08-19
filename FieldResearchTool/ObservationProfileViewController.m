@@ -12,7 +12,10 @@
 #import "UserObservation.h"
 
 @interface ObservationProfileViewController (){
-    NSMutableArray *profileObservations;
+    NSMutableDictionary *sections;
+    NSArray *sortedDays;
+    NSDateFormatter *sectionDateFormatter;
+    NSDateFormatter *cellDateFormatter;
 }
 
 @end
@@ -22,7 +25,6 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    profileObservations = [[NSMutableArray alloc]init];
     if (self) {
         self.title = @"My Observations";
     }
@@ -40,6 +42,14 @@
     //Group navbar buttons here to get rectangle style
     self.navigationItem.hidesBackButton = YES;
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleBordered target:self action:@selector(logout)]];
+    
+    sectionDateFormatter = [[NSDateFormatter alloc] init];
+    [sectionDateFormatter setDateStyle:NSDateFormatterLongStyle];
+    [sectionDateFormatter setTimeStyle:NSDateFormatterNoStyle];
+    
+    cellDateFormatter = [[NSDateFormatter alloc] init];
+    [cellDateFormatter setDateStyle:NSDateFormatterNoStyle];
+    [cellDateFormatter setTimeStyle:NSDateFormatterShortStyle];
 
 }
 
@@ -82,8 +92,20 @@
 
 #pragma mark - table view delegate methods
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return sections.count;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [profileObservations count];
+    NSDate *dateRepresentingThisDay = [sortedDays objectAtIndex:section];
+    NSArray *observationsThisDay = [sections objectForKey:dateRepresentingThisDay];
+    return observationsThisDay.count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSDate *dateRepresentingThisDay = [sortedDays objectAtIndex:section];
+    return [sectionDateFormatter stringFromDate:dateRepresentingThisDay];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -94,33 +116,21 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    UserObservation *observation = [profileObservations objectAtIndex:indexPath.row];
     
-    switch (indexPath.section) {
-        case 0:
-            cell.textLabel.text = observation.identificationString;
-            break;
-        case 1:
-            cell.textLabel.text = observation.identificationString;
-            break;
-        case 2:
-            cell.textLabel.text = observation.identificationString;
-            break;
-            
-        default:
-            break;
-    }
-    //cell.detailTextLabel.text = [AppModel sharedAppModel].currentUser.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", [AppModel sharedAppModel].currentUser.name, [NSDateFormatter localizedStringFromDate:observation.updated dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterFullStyle]];
+    NSDate *dateRepresentingThisDay = [sortedDays objectAtIndex:indexPath.section];
+    NSArray *observationsOnThisDay = [sections objectForKey:dateRepresentingThisDay];
+    UserObservation *currObservation = [observationsOnThisDay objectAtIndex:indexPath.row];
     
-    
+    cell.textLabel.text = currObservation.identificationString;
+    cell.detailTextLabel.text = [cellDateFormatter stringFromDate:currObservation.created];
     return cell;
-    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UserObservation *observation = [profileObservations objectAtIndex:indexPath.row];
+    NSDate *dateRepresentingThisDay = [sortedDays objectAtIndex:indexPath.section];
+    NSArray *observationsThisDay = [sections objectForKey:dateRepresentingThisDay];
+    UserObservation *observation = [observationsThisDay objectAtIndex:indexPath.row];    
     ObservationViewController *observationVC = [[ObservationViewController alloc]initWithNibName:@"ObservationViewController" bundle:nil];
     observationVC.newObservation = NO;
     observationVC.prevObservation = observation;
@@ -137,24 +147,65 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        UserObservation *obsToDelete = [profileObservations objectAtIndex:indexPath.row];
-        [profileObservations removeObject:obsToDelete];
+        NSDate *dateRepresentingThisDay = [sortedDays objectAtIndex:indexPath.section];
+        NSMutableArray *observationsThisDay = [sections objectForKey:dateRepresentingThisDay];
+        UserObservation *obsToDelete = [observationsThisDay objectAtIndex:indexPath.row];
+        [observationsThisDay removeObject:obsToDelete];
         [[AppModel sharedAppModel] deleteObject:obsToDelete];
         [self.table reloadData];
     }
 }
 
-#pragma mark
+#pragma mark handle fetch of user observations
 -(void)handleFetchOfUserObservations:(NSArray *)observations{
-    profileObservations = [NSMutableArray arrayWithArray:observations];
-    for (int i = 0; i < profileObservations.count; i++) {
-        UserObservation *currObservation = [profileObservations objectAtIndex:i];
+    NSMutableArray *tempObservations = [(NSArray*)observations mutableCopy];
+    for (int i = 0; i < tempObservations.count; i++) {
+        UserObservation *currObservation = [tempObservations objectAtIndex:i];
         if (!currObservation.identificationString) {
-            [profileObservations removeObject:currObservation];
+            [tempObservations removeObject:currObservation];
             [[AppModel sharedAppModel] deleteObject:currObservation];
         }
     }
+    
+    sections = [[NSMutableDictionary alloc] init];
+    for (int i = 0; i < tempObservations.count; i++) {
+        UserObservation *currObservation = [tempObservations objectAtIndex:i];
+        NSDate *dateRepresentingThisDay = [self dateAtBeginningOfDayForDate:currObservation.created];
+        
+        NSMutableArray *eventsOnThisDay = [sections objectForKey:dateRepresentingThisDay];
+        if (!eventsOnThisDay) {
+            eventsOnThisDay = [NSMutableArray array];
+            
+            [sections setObject:eventsOnThisDay forKey:dateRepresentingThisDay];
+        }
+        
+        [eventsOnThisDay addObject:currObservation];
+    }
+    
+    NSArray *unsortedDays = [sections allKeys];
+    sortedDays = [unsortedDays sortedArrayUsingSelector:@selector(compare:)];
+    
     [self.table reloadData];
+}
+
+- (NSDate *)dateAtBeginningOfDayForDate:(NSDate *)inputDate
+{
+    // Use the user's current calendar and time zone
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSTimeZone *timeZone = [NSTimeZone systemTimeZone];
+    [calendar setTimeZone:timeZone];
+    
+    // Selectively convert the date components (year, month, day) of the input date
+    NSDateComponents *dateComps = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:inputDate];
+    
+    // Set the time components manually
+    [dateComps setHour:0];
+    [dateComps setMinute:0];
+    [dateComps setSecond:0];
+    
+    // Convert back
+    NSDate *beginningOfDay = [calendar dateFromComponents:dateComps];
+    return beginningOfDay;
 }
 
 
