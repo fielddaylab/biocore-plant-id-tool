@@ -200,6 +200,7 @@
             [possibilities removeObject:possibility];
         }
     }
+    NSLog(@"ENUM: Number of possibilities: %lu", (unsigned long)possibilities.count);
     [carousel reloadData];
 }
 

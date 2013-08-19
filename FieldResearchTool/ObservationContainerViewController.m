@@ -137,7 +137,7 @@
         }
             break;
         case DATA_ENUMERATOR:{
-            //set up view controller here
+            NSLog(@"Not setting up a view controller because enum data will never has it's own view controller. Must be paired with judgement enum");
         }
             break;
         default:
@@ -243,6 +243,18 @@
         longTextJudgementViewController.prevData = prevData;
         isOneToOne = YES;
         judgementViewControllerToDisplay = longTextJudgementViewController;
+        self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
+        [self addChildViewController:judgementViewControllerToDisplay];
+        [self didMoveToParentViewController:judgementViewControllerToDisplay];
+        [self.view addSubview:judgementViewControllerToDisplay.view];
+    }
+    else if ([projectComponent.observationDataType intValue] == DATA_ENUMERATOR && [judgementViewControllerToDisplay isKindOfClass:[EnumJudgementViewController class]]){
+        EnumJudgementViewController *enumJudgementViewController = [[EnumJudgementViewController alloc] initWithFrame:self.view.bounds];
+        enumJudgementViewController.projectComponent = projectComponent;
+        enumJudgementViewController.isOneToOne = YES;
+        enumJudgementViewController.prevData = prevData;
+        isOneToOne = YES;
+        judgementViewControllerToDisplay = enumJudgementViewController;
         self.saveJudgementDelegate = (id)judgementViewControllerToDisplay;
         [self addChildViewController:judgementViewControllerToDisplay];
         [self didMoveToParentViewController:judgementViewControllerToDisplay];
