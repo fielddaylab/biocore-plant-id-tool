@@ -11,6 +11,8 @@
 #import "InterpretationInformationViewController.h"
 #import "ObservationViewController.h"
 
+#import "MediaManager.h"
+
 
 
 @interface InterpretationChoiceViewController (){
@@ -92,7 +94,10 @@
     NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if(cell == nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        //cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        
+        NSArray *nibObjects = [[NSBundle mainBundle] loadNibNamed:@"InterpretationChoiceTableViewCell" owner:self options:nil];
+        cell = [nibObjects objectAtIndex:0];
     }
     
     
@@ -109,18 +114,41 @@
             break;
     }
     
-    cell.textLabel.text = identification.alternateName;
+    //Image
+    UIImageView *cellImage = (UIImageView *)[cell viewWithTag:0];
+    
+    NSString *identificationTitleString = identification.title;
+    NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    identificationTitleString = [[identificationTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
+
+    cellImage.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:[NSString stringWithFormat:@"%@-default",identificationTitleString]] scaledToSize:CGRectMake(0, 0, 80, 80).size];
+    
+    if (cellImage.image == nil){
+        cellImage.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"defaultIdentificationNoPhoto"] scaledToSize:CGRectMake(0, 0, 80, 80).size];
+    }
+    
+    //Scientific Name
+    UILabel *labelText = (UILabel *)[cell viewWithTag: 1];
+    labelText.text = identification.title;
+    
+    //Common Name
+    UILabel *detailLabelText = (UILabel *)[cell viewWithTag: 2];
+    detailLabelText.text = identification.alternateName;
+    
+    //Percentage
+    UILabel *labelPercentageText = (UILabel *)[cell viewWithTag: 3];    
+    
     
     float decimal = [identification.score floatValue];
     float percent = decimal * 100;
     
     if(dataToFilter.count > 0){
         
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%.02f percent match with %@ nil", percent, identification.numOfNils];
+        labelPercentageText.text = [NSString stringWithFormat:@"%.02f percent match with %@ nil", percent, identification.numOfNils];
         
     }
     else{
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"No data to filter upon!"];
+        labelPercentageText.text = [NSString stringWithFormat:@"No data to filter upon!"];
     }
     
     return cell;
