@@ -185,7 +185,7 @@
             if ([tableView.dataSource tableView:tableView numberOfRowsInSection:section] == 0) {
                 return nil;
             } else {
-                return @"Likely options";
+                return [NSString stringWithFormat:@"%d Likely Options", [likelyChoices count]];
             }
             
             break;
@@ -194,7 +194,7 @@
             if ([tableView.dataSource tableView:tableView numberOfRowsInSection:section] == 0) {
                 return nil;
             } else {
-                return @"Unlikely options";
+                return [NSString stringWithFormat:@"%d Unlikely Options", [unlikelyChoices count]];
             }
             
             break;
