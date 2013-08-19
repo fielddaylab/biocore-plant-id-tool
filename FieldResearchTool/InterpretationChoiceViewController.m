@@ -123,7 +123,7 @@
 
     cellImage.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:[NSString stringWithFormat:@"%@-default",identificationTitleString]] scaledToSize:CGRectMake(0, 0, 80, 80).size];
     
-    if (cellImage.image == nil){
+    if ([[MediaManager sharedMediaManager]getImageNamed:[NSString stringWithFormat:@"%@-default", identificationTitleString]] == nil){
         cellImage.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"defaultIdentificationNoPhoto"] scaledToSize:CGRectMake(0, 0, 80, 80).size];
     }
     
