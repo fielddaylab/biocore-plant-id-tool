@@ -130,7 +130,8 @@
     //Scientific Name
     UILabel *labelText = (UILabel *)[cell viewWithTag: 1];
     labelText.text = identification.title;
-    
+    //labelText.adjustsFontSizeToFitWidth = YES;
+    //labelText.adjustsLetterSpacingToFitWidth = YES;
     //Common Name
     UILabel *detailLabelText = (UILabel *)[cell viewWithTag: 2];
     detailLabelText.text = identification.alternateName;
