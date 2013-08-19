@@ -51,10 +51,22 @@
 -(void)loadView{
     [super loadView];
 
-    [self.view addSubview:[[UIImageView alloc] initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"carouselBackground"]]];
+    if (!isOneToOne) {
+        [self.view addSubview:[[UIImageView alloc] initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"carouselBackground"]]];
+    }
+    else{
+        self.view.backgroundColor = [UIColor lightGrayColor];
+    }
+    
     
     //create carousel
-    carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];//44 navbar height.
+    if (!isOneToOne) {
+        carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];//44 navbar height.
+    }
+    else{
+        carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, -50, self.view.bounds.size.width, self.view.bounds.size.height)];//44 navbar height.
+    }
+
 
     carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     carousel.type = iCarouselTypeLinear;
@@ -114,7 +126,7 @@
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
-    NSLog(@"ENUM: possibility count: %lu", (unsigned long)possibilities.count);
+    //NSLog(@"ENUM: possibility count: %lu", (unsigned long)possibilities.count);
     return [possibilities count];
 }
 
@@ -125,16 +137,22 @@
     //create new view if no view is available for recycling
     if (view == nil)
     {
+        if (!isOneToOne) {
+            view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width * .45, self.view.bounds.size.height * .65)];
+            label = [[UILabel alloc] initWithFrame:CGRectMake(0, view.bounds.size.height * .65, self.view.bounds.size.width * .45, self.view.bounds.size.height * .65)];
+        }
+        else{
+            view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width * .25, self.view.bounds.size.height * .35)];
+            label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width * .25, self.view.bounds.size.height * .35)];
+            view.backgroundColor = [UIColor whiteColor];
+        }
+
         
-        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width * .45, self.view.bounds.size.height * .65)];
         
         view.contentMode = UIViewContentModeBottom;
-        
-        label = [[UILabel alloc] initWithFrame:CGRectMake(0, view.bounds.size.height * .65, self.view.bounds.size.width * .45, self.view.bounds.size.height * .65)];
-        
         label.backgroundColor = [UIColor clearColor];
         label.textAlignment = NSTextAlignmentCenter;
-        label.font = [label.font fontWithSize:20];
+        label.font = [label.font fontWithSize:16];
         label.tag = 1;
         [view addSubview:label];
     }
@@ -152,6 +170,7 @@
     //in the wrong place in the carousel
     ProjectComponentPossibility *componentPossibility = [possibilities objectAtIndex:index];
     label.text = componentPossibility.enumValue;
+    NSLog(@"label.text: %@", label.text);
     
     
     
@@ -197,7 +216,7 @@
     possibilities = [[NSMutableArray alloc] init];
     for (int i = 0; i < componentPossibilities.count; i++) {
         ProjectComponentPossibility *possibility = [componentPossibilities objectAtIndex:i];
-        NSLog(@"Component: %@ Possibility: %@ at index: %i", projectComponent.title, possibility.enumValue, i);
+        //NSLog(@"Component: %@ Possibility: %@ at index: %i", projectComponent.title, possibility.enumValue, i);
         if (![possibility.enumValue isEqualToString:@""]) {
             [possibilities addObject:possibility];
         }
