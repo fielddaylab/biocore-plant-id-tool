@@ -32,6 +32,7 @@
 		5B98AFA617A07A9300678C36 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AFA517A07A9200678C36 /* User.m */; };
 		5B98AFBE17A07ADC00678C36 /* UserObservationIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AFBD17A07ADC00678C36 /* UserObservationIdentification.m */; };
 		5B98AFC017A08CA900678C36 /* examplePlantData.tsv in Resources */ = {isa = PBXBuildFile; fileRef = 5B98AFBF17A08CA900678C36 /* examplePlantData.tsv */; };
+		5B9A26E417C28ED3007A3A55 /* InterpretationChoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B9A26E317C28ED3007A3A55 /* InterpretationChoiceTableViewCell.xib */; };
 		5BBC88B617BECD4A00E524FF /* ProjectComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBC88B517BECD4A00E524FF /* ProjectComponent.m */; };
 		5BF30DAA17A1C6B10071E7EA /* AudioDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF30D9017A1C6B10071E7EA /* AudioDataViewController.m */; };
 		5BF30DAC17A1C6B10071E7EA /* BooleanDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF30D9317A1C6B10071E7EA /* BooleanDataViewController.m */; };
@@ -224,6 +225,7 @@
 		5B98AFBC17A07ADC00678C36 /* UserObservationIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationIdentification.h; sourceTree = "<group>"; };
 		5B98AFBD17A07ADC00678C36 /* UserObservationIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationIdentification.m; sourceTree = "<group>"; };
 		5B98AFBF17A08CA900678C36 /* examplePlantData.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = examplePlantData.tsv; sourceTree = "<group>"; };
+		5B9A26E317C28ED3007A3A55 /* InterpretationChoiceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InterpretationChoiceTableViewCell.xib; sourceTree = "<group>"; };
 		5BBC88B417BECD4A00E524FF /* ProjectComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComponent.h; sourceTree = "<group>"; };
 		5BBC88B517BECD4A00E524FF /* ProjectComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectComponent.m; sourceTree = "<group>"; };
 		5BF30D8F17A1C6B10071E7EA /* AudioDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDataViewController.h; sourceTree = "<group>"; };
@@ -549,6 +551,7 @@
 		718AAD291794773000AFE6DB /* InterpretationViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5B9A26E317C28ED3007A3A55 /* InterpretationChoiceTableViewCell.xib */,
 				718AAD1F1794771300AFE6DB /* InterpretationChoiceViewController.h */,
 				718AAD201794771300AFE6DB /* InterpretationChoiceViewController.m */,
 				718AAD211794771300AFE6DB /* InterpretationChoiceViewController.xib */,
@@ -1004,6 +1007,7 @@
 				719102A117B593B700187EF2 /* carouselBackground.png in Resources */,
 				719D192917BC0DFC002A2B24 /* 298-circlex.png in Resources */,
 				719D192A17BC0DFC002A2B24 /* 298-circlex@2x.png in Resources */,
+				5B9A26E417C28ED3007A3A55 /* InterpretationChoiceTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
