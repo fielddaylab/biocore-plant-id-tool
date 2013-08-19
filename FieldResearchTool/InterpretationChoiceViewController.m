@@ -144,7 +144,7 @@
     
     if(dataToFilter.count > 0){
         
-        labelPercentageText.text = [NSString stringWithFormat:@"%.02f percent match with %@ nil", percent, identification.numOfNils];
+        labelPercentageText.text = [NSString stringWithFormat:@"%.02f%% with %@ nil", percent, identification.numOfNils];
         
     }
     else{
