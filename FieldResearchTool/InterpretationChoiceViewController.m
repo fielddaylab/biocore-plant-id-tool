@@ -129,7 +129,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     InterpretationInformationViewController *interpretationInformationVC = [[InterpretationInformationViewController alloc]initWithNibName:@"InterpretationInformationViewController" bundle:nil];
-    ProjectIdentification *identification = [projectIdentifications objectAtIndex:indexPath.row];
+    
+    ProjectIdentification *identification;
+    
+    if(indexPath.section == 0){
+        identification = [likelyChoices objectAtIndex:indexPath.row];
+    }
+    else if(indexPath.section == 1){
+        identification = [unlikelyChoices objectAtIndex:indexPath.row];
+    }
+    
     interpretationInformationVC.identification = identification;
     ObservationViewController *prevVC = (ObservationViewController *)[self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
     interpretationInformationVC.delegate = (id)prevVC;
