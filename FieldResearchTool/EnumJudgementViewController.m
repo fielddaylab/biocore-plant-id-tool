@@ -64,6 +64,10 @@
     //add carousel to view
     [self.view addSubview:carousel];
     chosenPossibility = nil;
+    
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
+    [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];
 }
 
 
@@ -83,11 +87,7 @@
     
     descriptionLabel.tag = 2;
     [self.view addSubview:descriptionLabel];
-    
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-    [attributes setObject:projectComponent.title forKey:@"projectComponent.title"];
-    [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];
-    
+        
     if(prevData){
         if([prevData.wasJudged boolValue]){
             NSArray *judgementSet = [prevData.userObservationComponentDataJudgement allObjects];
@@ -114,6 +114,7 @@
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
+    NSLog(@"ENUM: possibility count: %lu", (unsigned long)possibilities.count);
     return [possibilities count];
 }
 
@@ -192,15 +193,15 @@
 
 #pragma mark handle possibility response
 -(void)handlePossibilityResponse:(NSArray *)componentPossibilities{
-    possibilities = [NSMutableArray arrayWithArray:componentPossibilities];
     //remove the nil value if it has one
-    for (int i = 0; i < possibilities.count; i++) {
-        ProjectComponentPossibility *possibility = [possibilities objectAtIndex:i];
-        if ([possibility.enumValue isEqualToString:@""]) {
-            [possibilities removeObject:possibility];
+    possibilities = [[NSMutableArray alloc] init];
+    for (int i = 0; i < componentPossibilities.count; i++) {
+        ProjectComponentPossibility *possibility = [componentPossibilities objectAtIndex:i];
+        NSLog(@"Component: %@ Possibility: %@ at index: %i", projectComponent.title, possibility.enumValue, i);
+        if (![possibility.enumValue isEqualToString:@""]) {
+            [possibilities addObject:possibility];
         }
     }
-    NSLog(@"ENUM: Number of possibilities: %lu", (unsigned long)possibilities.count);
     [carousel reloadData];
 }
 
