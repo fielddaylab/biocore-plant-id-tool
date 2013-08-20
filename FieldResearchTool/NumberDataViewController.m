@@ -66,7 +66,13 @@
     
     imageView = [[UIImageView alloc]initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"test.png"]];
     imageView.frame = CGRectMake(viewRect.size.width *.5 - 50, numberField.frame.size.height + 60, 100, 100);
-    imageView.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, 100, 100).size];
+    
+    NSString *tutorialLargeString = projectComponent.title;
+    NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    tutorialLargeString = [[tutorialLargeString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
+    tutorialLargeString = [tutorialLargeString stringByAppendingString:@"@_TutorialLarge"];
+    
+    imageView.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:tutorialLargeString] scaledToSize:CGRectMake(0, 0, 100, 100).size];
     imageView.contentMode = UIViewContentModeCenter;
     [self.view addSubview:imageView];
 }

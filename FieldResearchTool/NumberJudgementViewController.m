@@ -78,14 +78,19 @@
     numberField.delegate = self;
     [self.view addSubview:numberField];
     
+    NSString *tutorialImageString = projectComponent.title;
+    NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    tutorialImageString = [[tutorialImageString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
+    tutorialImageString = [tutorialImageString stringByAppendingString:@"_TutorialSmall"];
+    
     imageView = [[UIImageView alloc]initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"test.png"]];
     if (!isOneToOne) {
         imageView.frame = CGRectMake(-75, 10, viewRect.size.width, viewRect.size.height);
-        imageView.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, viewRect.size.height *.7, viewRect.size.height *.7).size];
+        imageView.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:tutorialImageString] scaledToSize:CGRectMake(0, 0, viewRect.size.height *.7, viewRect.size.height *.7).size];
     }
     else{
         imageView.frame = CGRectMake(viewRect.size.width * .05, numberField.frame.origin.y, 100, 100);
-        imageView.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, 100, 100).size];
+        imageView.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:tutorialImageString] scaledToSize:CGRectMake(0, 0, 100, 100).size];
     }
 
     imageView.contentMode = UIViewContentModeCenter;

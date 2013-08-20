@@ -27,6 +27,7 @@
     UIImage *deleteImageImage;
     UIImage *arrowImage;
     BOOL judgementIsHidden;
+    UIImage *tutorialPhoto;
 }
 @end
 
@@ -52,6 +53,13 @@
     showPictureView.backgroundColor = [UIColor blackColor];
     showPictureView.contentMode = UIViewContentModeScaleAspectFit;
     
+    NSString *tutorialLargeString = projectComponent.title;
+    NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    tutorialLargeString = [[tutorialLargeString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
+    tutorialLargeString = [tutorialLargeString stringByAppendingString:@"_TutorialLarge"];
+    
+    tutorialPhoto = [[MediaManager sharedMediaManager] getImageNamed:tutorialLargeString];
+    
     if(prevData){
         //this will change once the media manager is implemented
         Media *media = prevData.media;
@@ -60,8 +68,7 @@
         showPictureView.image = image;
     }
     else{
-        UIImage *image = [[MediaManager sharedMediaManager] getImageNamed:@"tutorialPhoto.jpg"];
-        showPictureView.image = image;
+        showPictureView.image = tutorialPhoto;
         //[self arrowButtonPressed];
     }
     
@@ -176,8 +183,7 @@
     retakeButton.enabled = YES;
     cameraImageView.hidden = NO;
     arrowButton.hidden = YES;
-    UIImage *image = [[MediaManager sharedMediaManager] getImageNamed:@"tutorialPhoto.jpg"];
-    showPictureView.image = image;
+    showPictureView.image = tutorialPhoto;
     if(!judgementIsHidden){
         arrowButton.frame = CGRectMake((viewRect.size.width / 2.0f) - (arrowImage.size.width / 2.0f), viewRect.size.height - arrowImage.size.height - 10, arrowImage.size.width, arrowImage.size.height);
         [arrowButton setImage:[[MediaManager sharedMediaManager] getImageNamed:@"03-arrow-north.png"] forState:UIControlStateNormal];

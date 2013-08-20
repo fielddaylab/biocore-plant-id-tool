@@ -73,14 +73,19 @@
     [self.view addSubview:descriptionLabel];
     
     
-    imageView = [[UIImageView alloc]initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"test.png"]]; 
-    imageView.frame = CGRectMake(viewRect.size.width *.1, boolSwitch.frame.size.height + imageView.frame.size.height, 100, 100);
-    imageView.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, self.view.bounds.size.height *.2, self.view.bounds.size.height *.2).size];
+    NSString *tutorialLargeString = projectComponent.title;
+    NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    tutorialLargeString = [[tutorialLargeString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
+    tutorialLargeString = [tutorialLargeString stringByAppendingString:@"_TutorialLarge"];
+    
+    //Why have this? 
+    imageView = [[UIImageView alloc]initWithImage:[[MediaManager sharedMediaManager] getImageNamed:tutorialLargeString]];
+    imageView.frame = CGRectMake(viewRect.size.width * .1, boolSwitch.frame.size.height + imageView.frame.size.height, 100, 100);
+
+    imageView.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:tutorialLargeString] scaledToSize:CGRectMake(0, 0, self.view.bounds.size.height * .2, self.view.bounds.size.height * .2).size];
         
     imageView.contentMode = UIViewContentModeCenter;
     [self.view addSubview:imageView];
-    
-
     
 }
 
