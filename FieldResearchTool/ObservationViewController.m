@@ -475,7 +475,6 @@
     }
     [self rankIdentifications];
     
-    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -483,12 +482,38 @@
     for (int i = 0; i < dataToFilter.count; i++) {
         UserObservationComponentData *currData = [dataToFilter objectAtIndex:i];
         ProjectComponent *currCom = currData.projectComponent;
-        NSLog(@"Comparing %@ and %@", currCom.title, title);
+        //NSLog(@"Comparing %@ and %@", currCom.title, title);
         if ([currCom.title isEqualToString:title]) {
             return currData;
         }
     }
     return nil;
+}
+
+-(void)loadIdentificationImages{
+    [AppModel sharedAppModel].likelyIdentificationImages = [[NSMutableArray alloc] init];
+    [AppModel sharedAppModel].unlikelyIdentificationImages = [[NSMutableArray alloc] init];
+    for (int i = 0; i < projectIdentifications.count; i++) {
+        ProjectIdentification *identification = [projectIdentifications objectAtIndex:i];
+        UIImage *defaultImage = [self loadDefaultImageForIdentification:identification];
+        if ([identification.score floatValue] > .8) {
+            [[AppModel sharedAppModel].likelyIdentificationImages addObject:defaultImage];
+        }
+        else{
+            [[AppModel sharedAppModel].unlikelyIdentificationImages addObject:defaultImage];
+        }
+    }
+}
+
+-(UIImage *)loadDefaultImageForIdentification:(ProjectIdentification *)identification{
+    NSString *identificationTitleString = identification.title;
+    NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    identificationTitleString = [[identificationTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
+    UIImage *defaultImage = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:[NSString stringWithFormat:@"%@-default",identificationTitleString]] scaledToSize:CGRectMake(0, 0, 80, 80).size];
+    if ([[MediaManager sharedMediaManager] getImageNamed:[NSString stringWithFormat:@"%@-default",identificationTitleString]] == nil) {
+        defaultImage = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"defaultIdentificationNoPhoto"] scaledToSize:CGRectMake(0, 0, 80, 80).size];
+    }
+    return defaultImage;
 }
 
 
@@ -554,6 +579,7 @@
     
     projectIdentifications = [NSArray arrayWithArray:sortedIdentifications];
     [self.table reloadData];
+    [self performSelectorInBackground:@selector(loadIdentificationImages) withObject:self];
     [[AppModel sharedAppModel]save];
 }
 

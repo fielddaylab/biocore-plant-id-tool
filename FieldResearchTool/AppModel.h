@@ -25,6 +25,8 @@
 @property (nonatomic, strong) NSArray *allProjectIdentifications;
 @property (nonatomic, strong) UserObservation *currentUserObservation;
 @property (nonatomic, strong) User *currentUser;
+@property (nonatomic, strong) NSMutableArray *likelyIdentificationImages;
+@property (nonatomic, strong) NSMutableArray *unlikelyIdentificationImages;
 
 + (AppModel *)sharedAppModel;
 
