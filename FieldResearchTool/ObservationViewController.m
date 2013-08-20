@@ -37,7 +37,8 @@
 @interface ObservationViewController ()<UIAlertViewDelegate, CreateUserIdentificationDelegate>{
     NSMutableArray *projectComponents;
     NSMutableArray *projectIdentifications;
-    
+    NSMutableArray *requiredComImages;
+    NSMutableArray *optionalComImages;
     NSMutableArray *dataToFilter;
     NSMutableArray *requiredComponents;
     NSMutableArray *optionalComponents;
@@ -45,7 +46,8 @@
     int requiredFieldsFilledOut;
     
     NSMutableArray *metadata;
-    
+    NSMutableArray *requiredCheckmarkImageViews;
+    NSMutableArray *optionalCheckmarkImageViews;
 }
 
 @end
@@ -68,6 +70,10 @@
         
         requiredComponents = [[NSMutableArray alloc]init];
         optionalComponents = [[NSMutableArray alloc]init];
+        requiredComImages = [[NSMutableArray alloc] init];
+        optionalComImages = [[NSMutableArray alloc] init];
+        requiredCheckmarkImageViews = [[NSMutableArray alloc] init];
+        optionalCheckmarkImageViews = [[NSMutableArray alloc] init];
         requiredFieldsFilledOut = 0;
         
         locationManager = [[CLLocationManager alloc] init];
@@ -99,7 +105,6 @@
     UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle: @"Back" style: UIBarButtonItemStyleBordered target: nil action: nil];
     [[self navigationItem] setBackBarButtonItem: newBackButton];
     
-    
     if(newObservation){
         [[AppModel sharedAppModel]getAllProjectComponentsWithHandler:@selector(handleFetchAllProjectComponentsForProjectName:) target:[AppModel sharedAppModel]];
         [[AppModel sharedAppModel]getAllProjectIdentificationsWithHandler:@selector(handleFetchProjectIdentifications:) target:[AppModel sharedAppModel]];
@@ -118,6 +123,7 @@
     else{
         observation = prevObservation;
         NSArray *dataSet = [observation.userObservationComponentData allObjects];
+        UIImage *checkmarkImage = [[MediaManager sharedMediaManager] getImageNamed:@"17-checkGREEN"];
         //create the identifications
         if(dataSet){
             for (int i = 0; i < dataSet.count; i++) {
@@ -127,12 +133,20 @@
                 }
                 ProjectComponent *component = data.projectComponent;
                 [projectComponents addObject:component];
+                UIImageView *checkmark = [[UIImageView alloc] initWithFrame:CGRectMake(35, 19, 25, 25)];
+                checkmark.image = checkmarkImage;
                 if([component.required boolValue]){
                     requiredFieldsFilledOut++;
                     [requiredComponents addObject:component];
+                    UIImage *requiredImage = [self loadImageForComponent:component];
+                    [requiredComImages addObject:requiredImage];
+                    [requiredCheckmarkImageViews addObject:checkmark];
                 }
                 else{
                     [optionalComponents addObject:component];
+                    UIImage *optionalImage = [self loadImageForComponent:component];
+                    [optionalComImages addObject:optionalImage];
+                    [optionalCheckmarkImageViews addObject:checkmark];
                 }
             }
         }
@@ -243,6 +257,8 @@
     }
     
     ProjectComponent *com;
+    UIImage *comImage;
+    UIImageView *checkmark;
     
     switch (indexPath.section) {
             
@@ -251,9 +267,13 @@
             
             if (indexPath.section == 0) {
                 com = (ProjectComponent *)[requiredComponents objectAtIndex:indexPath.row];
+                comImage = (UIImage *)[requiredComImages objectAtIndex:indexPath.row];
+                checkmark = (UIImageView *)[requiredCheckmarkImageViews objectAtIndex:indexPath.row];
             }
             else{
                 com = (ProjectComponent *)[optionalComponents objectAtIndex:indexPath.row];
+                comImage = (UIImage *)[optionalComImages objectAtIndex:indexPath.row];
+                checkmark = (UIImageView *)[optionalCheckmarkImageViews objectAtIndex:indexPath.row];
             }
             
             cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
@@ -262,8 +282,6 @@
             
             UserObservationComponentData *data = [self findDataForComponent:com];
             if(data){
-                UIImageView *checkmark = [[UIImageView alloc] initWithFrame:CGRectMake(35, 19, 25, 25)];
-                checkmark.image = [[MediaManager sharedMediaManager] getImageNamed:@"17-checkGREEN"];
                 [cell addSubview:checkmark];
             }
             
@@ -302,13 +320,7 @@
                 
             }
             
-            //We'll have to change this in the future, but for now 'reparse' the string...
-            NSString *projectComponentTitleString = com.title;
-            NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
-            projectComponentTitleString = [[projectComponentTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
-            projectComponentTitleString = [projectComponentTitleString stringByAppendingString:@".png"];
-            
-            cell.imageView.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:projectComponentTitleString] scaledToSize:CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, cell.bounds.size.height, cell.bounds.size.height).size];
+            cell.imageView.image = comImage;
             
         }break;
         case 2:{
@@ -356,7 +368,6 @@
             
         }break;
         default:
-            cell.textLabel.text = @"Dummy Data";
             break;
     }
     return cell;
@@ -409,18 +420,33 @@
 
 -(void)projectComponentsResponseReady{
     projectComponents = [NSMutableArray arrayWithArray:[AppModel sharedAppModel].currentProjectComponents];
+    UIImage *checkmarkImage = [[MediaManager sharedMediaManager] getImageNamed:@"17-checkGREEN"];
     for (int i = 0; i < projectComponents.count; i++) {
         ProjectComponent *com = [projectComponents objectAtIndex:i];
+        UIImage *componentImage = [self loadImageForComponent:com];
+        UIImageView *checkmark = [[UIImageView alloc] initWithFrame:CGRectMake(35, 19, 25, 25)];
+        checkmark.image = checkmarkImage;
         
         if([com.required boolValue]){
             [requiredComponents addObject:com];
+            [requiredComImages addObject:componentImage];
+            [requiredCheckmarkImageViews addObject:checkmark];
         }
         else{
             [optionalComponents addObject:com];
+            [optionalComImages addObject:componentImage];
+            [optionalCheckmarkImageViews addObject:checkmark];
         }
-        
     }
     [self.table reloadData];
+}
+
+-(UIImage *)loadImageForComponent:(ProjectComponent *)com{
+    NSString *projectComponentTitleString = com.title;
+    NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    projectComponentTitleString = [[projectComponentTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
+    projectComponentTitleString = [projectComponentTitleString stringByAppendingString:@".png"];
+    return [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:projectComponentTitleString] scaledToSize:CGRectMake(0, 0, 40, 40).size];
 }
 
 -(void)projectIdentificationsResponseReady{
