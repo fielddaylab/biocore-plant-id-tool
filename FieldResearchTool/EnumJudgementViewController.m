@@ -175,11 +175,19 @@
     
     
     //Probably should make a class that handles all of these
+    //This parses component
     NSString *projectComponentTitleString = projectComponent.title;
     NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
     projectComponentTitleString = [[projectComponentTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
+    
+    
     ProjectComponentPossibility *pos = possibilities[index];
-    projectComponentTitleString = [projectComponentTitleString stringByAppendingFormat:@"-%@.png", pos.enumValue];
+    
+    //This parses enumValue
+    NSString *enumValueTitleString = pos.enumValue;
+    enumValueTitleString = [[enumValueTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
+    
+    projectComponentTitleString = [projectComponentTitleString stringByAppendingFormat:@"-%@", enumValueTitleString];
     
     ((UIImageView *)view).image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:projectComponentTitleString] scaledToSize:CGRectMake(0, 0, self.view.bounds.size.height *.6, self.view.bounds.size.height *.6).size];
     

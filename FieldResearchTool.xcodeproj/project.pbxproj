@@ -30,126 +30,6 @@
 		5B98AFA617A07A9300678C36 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AFA517A07A9200678C36 /* User.m */; };
 		5B98AFBE17A07ADC00678C36 /* UserObservationIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B98AFBD17A07ADC00678C36 /* UserObservationIdentification.m */; };
 		5B98AFC017A08CA900678C36 /* examplePlantData.tsv in Resources */ = {isa = PBXBuildFile; fileRef = 5B98AFBF17A08CA900678C36 /* examplePlantData.tsv */; };
-		5BAFEC9F17C3E12500B3BAA9 /* 03-arrow-north.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC0A17C3E12500B3BAA9 /* 03-arrow-north.png */; };
-		5BAFECA017C3E12500B3BAA9 /* 05-shuffle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC0B17C3E12500B3BAA9 /* 05-shuffle.png */; };
-		5BAFECA117C3E12500B3BAA9 /* 06-arrow-south.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC0C17C3E12500B3BAA9 /* 06-arrow-south.png */; };
-		5BAFECA217C3E12500B3BAA9 /* 17-check.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC0D17C3E12500B3BAA9 /* 17-check.png */; };
-		5BAFECA317C3E12500B3BAA9 /* 17-checkGREEN.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC0E17C3E12500B3BAA9 /* 17-checkGREEN.png */; };
-		5BAFECA417C3E12500B3BAA9 /* 19-circle-check.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC0F17C3E12500B3BAA9 /* 19-circle-check.png */; };
-		5BAFECA517C3E12500B3BAA9 /* 19-circle-checkGREEN.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC1017C3E12500B3BAA9 /* 19-circle-checkGREEN.png */; };
-		5BAFECA617C3E12500B3BAA9 /* 29-circle-pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC1117C3E12500B3BAA9 /* 29-circle-pause.png */; };
-		5BAFECA717C3E12500B3BAA9 /* 298-circlex.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC1217C3E12500B3BAA9 /* 298-circlex.png */; };
-		5BAFECA817C3E12500B3BAA9 /* 298-circlex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC1317C3E12500B3BAA9 /* 298-circlex@2x.png */; };
-		5BAFECA917C3E12500B3BAA9 /* 30-circle-play.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC1417C3E12500B3BAA9 /* 30-circle-play.png */; };
-		5BAFECAA17C3E12500B3BAA9 /* 35-circle-stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC1517C3E12500B3BAA9 /* 35-circle-stop.png */; };
-		5BAFECAB17C3E12500B3BAA9 /* 37-circle-x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC1617C3E12500B3BAA9 /* 37-circle-x.png */; };
-		5BAFECAC17C3E12500B3BAA9 /* 37-circle-xRED.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC1717C3E12500B3BAA9 /* 37-circle-xRED.png */; };
-		5BAFECAD17C3E12500B3BAA9 /* 60-x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC1817C3E12500B3BAA9 /* 60-x.png */; };
-		5BAFECAE17C3E12500B3BAA9 /* 60-xRED.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC1917C3E12500B3BAA9 /* 60-xRED.png */; };
-		5BAFECAF17C3E12500B3BAA9 /* 86-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC1A17C3E12500B3BAA9 /* 86-camera.png */; };
-		5BAFECB017C3E12500B3BAA9 /* carouselBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC1B17C3E12500B3BAA9 /* carouselBackground.png */; };
-		5BAFECB117C3E12500B3BAA9 /* Distribution.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC1E17C3E12500B3BAA9 /* Distribution.png */; };
-		5BAFECB217C3E12500B3BAA9 /* Flower_arrangement.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC1F17C3E12500B3BAA9 /* Flower_arrangement.png */; };
-		5BAFECB317C3E12500B3BAA9 /* Flower_color.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC2017C3E12500B3BAA9 /* Flower_color.png */; };
-		5BAFECB417C3E12500B3BAA9 /* Flower_symmetry.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC2117C3E12500B3BAA9 /* Flower_symmetry.png */; };
-		5BAFECB517C3E12500B3BAA9 /* Flowering_month.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC2217C3E12500B3BAA9 /* Flowering_month.png */; };
-		5BAFECB617C3E12500B3BAA9 /* Growth_form.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC2317C3E12500B3BAA9 /* Growth_form.png */; };
-		5BAFECB717C3E12500B3BAA9 /* Is_this_plant_cool.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC2417C3E12500B3BAA9 /* Is_this_plant_cool.png */; };
-		5BAFECB817C3E12500B3BAA9 /* Leaf_arrangement.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC2517C3E12500B3BAA9 /* Leaf_arrangement.png */; };
-		5BAFECB917C3E12500B3BAA9 /* Leaf_margin.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC2617C3E12500B3BAA9 /* Leaf_margin.png */; };
-		5BAFECBA17C3E12500B3BAA9 /* Leaf_shape.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC2717C3E12500B3BAA9 /* Leaf_shape.png */; };
-		5BAFECBB17C3E12500B3BAA9 /* Leaf_type.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC2817C3E12500B3BAA9 /* Leaf_type.png */; };
-		5BAFECBC17C3E12500B3BAA9 /* Leaf_venation.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC2917C3E12500B3BAA9 /* Leaf_venation.png */; };
-		5BAFECBD17C3E12500B3BAA9 /* Number_flower_parts.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC2A17C3E12500B3BAA9 /* Number_flower_parts.png */; };
-		5BAFECBE17C3E12500B3BAA9 /* Petiole_present.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC2B17C3E12500B3BAA9 /* Petiole_present.png */; };
-		5BAFECBF17C3E12500B3BAA9 /* Plant_height.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC2C17C3E12500B3BAA9 /* Plant_height.png */; };
-		5BAFECC017C3E12500B3BAA9 /* Stem_shape.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC2D17C3E12500B3BAA9 /* Stem_shape.png */; };
-		5BAFECC117C3E12500B3BAA9 /* Stem_texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC2E17C3E12500B3BAA9 /* Stem_texture.png */; };
-		5BAFECC217C3E12500B3BAA9 /* Distribution-bunches.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC3117C3E12500B3BAA9 /* Distribution-bunches.png */; };
-		5BAFECC317C3E12500B3BAA9 /* Distribution-patches.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC3217C3E12500B3BAA9 /* Distribution-patches.png */; };
-		5BAFECC417C3E12500B3BAA9 /* Distribution-singular.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC3317C3E12500B3BAA9 /* Distribution-singular.png */; };
-		5BAFECC517C3E12500B3BAA9 /* Flower_arrangement-Corymb.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC3517C3E12500B3BAA9 /* Flower_arrangement-Corymb.png */; };
-		5BAFECC617C3E12500B3BAA9 /* Flower_arrangement-Cyme.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC3617C3E12500B3BAA9 /* Flower_arrangement-Cyme.png */; };
-		5BAFECC717C3E12500B3BAA9 /* Flower_arrangement-Head.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC3717C3E12500B3BAA9 /* Flower_arrangement-Head.png */; };
-		5BAFECC817C3E12500B3BAA9 /* Flower_arrangement-Panicle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC3817C3E12500B3BAA9 /* Flower_arrangement-Panicle.png */; };
-		5BAFECC917C3E12500B3BAA9 /* Flower_arrangement-Raceme.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC3917C3E12500B3BAA9 /* Flower_arrangement-Raceme.png */; };
-		5BAFECCA17C3E12500B3BAA9 /* Flower_arrangement-Solitary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC3A17C3E12500B3BAA9 /* Flower_arrangement-Solitary.png */; };
-		5BAFECCB17C3E12500B3BAA9 /* Flower_arrangement-Spike.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC3B17C3E12500B3BAA9 /* Flower_arrangement-Spike.png */; };
-		5BAFECCC17C3E12500B3BAA9 /* Flower_arrangement-Umbel.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC3C17C3E12500B3BAA9 /* Flower_arrangement-Umbel.png */; };
-		5BAFECCD17C3E12500B3BAA9 /* Flower_color-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC3E17C3E12500B3BAA9 /* Flower_color-Black.png */; };
-		5BAFECCE17C3E12500B3BAA9 /* Flower_color-Blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC3F17C3E12500B3BAA9 /* Flower_color-Blue.png */; };
-		5BAFECCF17C3E12500B3BAA9 /* Flower_color-Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC4017C3E12500B3BAA9 /* Flower_color-Green.png */; };
-		5BAFECD017C3E12500B3BAA9 /* Flower_color-Indigo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC4117C3E12500B3BAA9 /* Flower_color-Indigo.png */; };
-		5BAFECD117C3E12500B3BAA9 /* Flower_color-Orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC4217C3E12500B3BAA9 /* Flower_color-Orange.png */; };
-		5BAFECD217C3E12500B3BAA9 /* Flower_color-Pink.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC4317C3E12500B3BAA9 /* Flower_color-Pink.png */; };
-		5BAFECD317C3E12500B3BAA9 /* Flower_color-Purple.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC4417C3E12500B3BAA9 /* Flower_color-Purple.png */; };
-		5BAFECD417C3E12500B3BAA9 /* Flower_color-Red.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC4517C3E12500B3BAA9 /* Flower_color-Red.png */; };
-		5BAFECD517C3E12500B3BAA9 /* Flower_color-White.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC4617C3E12500B3BAA9 /* Flower_color-White.png */; };
-		5BAFECD617C3E12500B3BAA9 /* Flower_color-Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC4717C3E12500B3BAA9 /* Flower_color-Yellow.png */; };
-		5BAFECD717C3E12500B3BAA9 /* Flower_symmetry-bilateral.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC4917C3E12500B3BAA9 /* Flower_symmetry-bilateral.png */; };
-		5BAFECD817C3E12500B3BAA9 /* Flower_symmetry-radial.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC4A17C3E12500B3BAA9 /* Flower_symmetry-radial.png */; };
-		5BAFECD917C3E12500B3BAA9 /* Growth_form-sprawling.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC4C17C3E12500B3BAA9 /* Growth_form-sprawling.png */; };
-		5BAFECDA17C3E12500B3BAA9 /* Growth_form-upright_branching.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC4D17C3E12500B3BAA9 /* Growth_form-upright_branching.png */; };
-		5BAFECDB17C3E12500B3BAA9 /* Growth_form-upright_few_to_no_branches.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC4E17C3E12500B3BAA9 /* Growth_form-upright_few_to_no_branches.png */; };
-		5BAFECDC17C3E12500B3BAA9 /* Leaf_arrangement-Alternate.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC5017C3E12500B3BAA9 /* Leaf_arrangement-Alternate.png */; };
-		5BAFECDD17C3E12500B3BAA9 /* Leaf_arrangement-Basal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC5117C3E12500B3BAA9 /* Leaf_arrangement-Basal.png */; };
-		5BAFECDE17C3E12500B3BAA9 /* Leaf_arrangement-Opposite.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC5217C3E12500B3BAA9 /* Leaf_arrangement-Opposite.png */; };
-		5BAFECDF17C3E12500B3BAA9 /* Leaf_arrangement-Whorled.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC5317C3E12500B3BAA9 /* Leaf_arrangement-Whorled.png */; };
-		5BAFECE017C3E12500B3BAA9 /* Leaf_margin-coarsely_toothed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC5517C3E12500B3BAA9 /* Leaf_margin-coarsely_toothed.png */; };
-		5BAFECE117C3E12500B3BAA9 /* Leaf_margin-doubly_toothed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC5617C3E12500B3BAA9 /* Leaf_margin-doubly_toothed.png */; };
-		5BAFECE217C3E12500B3BAA9 /* Leaf_margin-entire.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC5717C3E12500B3BAA9 /* Leaf_margin-entire.png */; };
-		5BAFECE317C3E12500B3BAA9 /* Leaf_margin-finely_toothed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC5817C3E12500B3BAA9 /* Leaf_margin-finely_toothed.png */; };
-		5BAFECE417C3E12500B3BAA9 /* Leaf_margin-lobed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC5917C3E12500B3BAA9 /* Leaf_margin-lobed.png */; };
-		5BAFECE517C3E12500B3BAA9 /* Leaf_margin-wavy.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC5A17C3E12500B3BAA9 /* Leaf_margin-wavy.png */; };
-		5BAFECE617C3E12500B3BAA9 /* Leaf_margin.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC5B17C3E12500B3BAA9 /* Leaf_margin.png */; };
-		5BAFECE717C3E12500B3BAA9 /* Leaf_shape-Cordiform.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC5D17C3E12500B3BAA9 /* Leaf_shape-Cordiform.png */; };
-		5BAFECE817C3E12500B3BAA9 /* Leaf_shape-Divided.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC5E17C3E12500B3BAA9 /* Leaf_shape-Divided.png */; };
-		5BAFECE917C3E12500B3BAA9 /* Leaf_shape-Elliptic.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC5F17C3E12500B3BAA9 /* Leaf_shape-Elliptic.png */; };
-		5BAFECEA17C3E12500B3BAA9 /* Leaf_shape-Lanceolate.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC6017C3E12500B3BAA9 /* Leaf_shape-Lanceolate.png */; };
-		5BAFECEB17C3E12500B3BAA9 /* Leaf_shape-Linear.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC6117C3E12500B3BAA9 /* Leaf_shape-Linear.png */; };
-		5BAFECEC17C3E12500B3BAA9 /* Leaf_shape-Lobed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC6217C3E12500B3BAA9 /* Leaf_shape-Lobed.png */; };
-		5BAFECED17C3E12500B3BAA9 /* Leaf_shape-Oblong.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC6317C3E12500B3BAA9 /* Leaf_shape-Oblong.png */; };
-		5BAFECEE17C3E12500B3BAA9 /* Leaf_shape-Obovate.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC6417C3E12500B3BAA9 /* Leaf_shape-Obovate.png */; };
-		5BAFECEF17C3E12500B3BAA9 /* Leaf_shape-Orbicular.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC6517C3E12500B3BAA9 /* Leaf_shape-Orbicular.png */; };
-		5BAFECF017C3E12500B3BAA9 /* Leaf_shape-Ovate.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC6617C3E12500B3BAA9 /* Leaf_shape-Ovate.png */; };
-		5BAFECF117C3E12500B3BAA9 /* Leaf_shape-Reniform.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC6717C3E12500B3BAA9 /* Leaf_shape-Reniform.png */; };
-		5BAFECF217C3E12500B3BAA9 /* Leaf_shape-Spatulate.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC6817C3E12500B3BAA9 /* Leaf_shape-Spatulate.png */; };
-		5BAFECF317C3E12500B3BAA9 /* Leaf_type-Bipinnate.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC6A17C3E12500B3BAA9 /* Leaf_type-Bipinnate.png */; };
-		5BAFECF417C3E12500B3BAA9 /* Leaf_type-Palmate.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC6B17C3E12500B3BAA9 /* Leaf_type-Palmate.png */; };
-		5BAFECF517C3E12500B3BAA9 /* Leaf_type-Pinnate.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC6C17C3E12500B3BAA9 /* Leaf_type-Pinnate.png */; };
-		5BAFECF617C3E12500B3BAA9 /* Leaf_type-Simple.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC6D17C3E12500B3BAA9 /* Leaf_type-Simple.png */; };
-		5BAFECF717C3E12500B3BAA9 /* Leaf_type-Trifoliate.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC6E17C3E12500B3BAA9 /* Leaf_type-Trifoliate.png */; };
-		5BAFECF817C3E12500B3BAA9 /* Leaf_venation-Branched.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC7017C3E12500B3BAA9 /* Leaf_venation-Branched.png */; };
-		5BAFECF917C3E12500B3BAA9 /* Leaf_venation-Parallel.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC7117C3E12500B3BAA9 /* Leaf_venation-Parallel.png */; };
-		5BAFECFA17C3E12500B3BAA9 /* Stem_shape-ridged.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC7317C3E12500B3BAA9 /* Stem_shape-ridged.png */; };
-		5BAFECFB17C3E12500B3BAA9 /* Stem_shape-round.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC7417C3E12500B3BAA9 /* Stem_shape-round.png */; };
-		5BAFECFC17C3E12500B3BAA9 /* Stem_shape-square.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC7517C3E12500B3BAA9 /* Stem_shape-square.png */; };
-		5BAFECFD17C3E12500B3BAA9 /* Stem_texture-fuzzy.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC7717C3E12500B3BAA9 /* Stem_texture-fuzzy.png */; };
-		5BAFECFE17C3E12500B3BAA9 /* Stem_texture-hairless.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC7817C3E12500B3BAA9 /* Stem_texture-hairless.png */; };
-		5BAFECFF17C3E12500B3BAA9 /* Stem_texture-hairy.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC7917C3E12500B3BAA9 /* Stem_texture-hairy.png */; };
-		5BAFED0017C3E12500B3BAA9 /* Stem_texture-prickly.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC7A17C3E12500B3BAA9 /* Stem_texture-prickly.png */; };
-		5BAFED0A17C3E12500B3BAA9 /* Petiole_present_TutorialSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC8517C3E12500B3BAA9 /* Petiole_present_TutorialSmall.png */; };
-		5BAFED0D17C3E12500B3BAA9 /* Plant_height ruler.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC8817C3E12500B3BAA9 /* Plant_height ruler.png */; };
-		5BAFED0E17C3E12500B3BAA9 /* Plant_height.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC8917C3E12500B3BAA9 /* Plant_height.png */; };
-		5BAFED0F17C3E12500B3BAA9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC8A17C3E12500B3BAA9 /* Default-568h@2x.png */; };
-		5BAFED1017C3E12500B3BAA9 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC8B17C3E12500B3BAA9 /* Default.png */; };
-		5BAFED1117C3E12500B3BAA9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC8C17C3E12500B3BAA9 /* Default@2x.png */; };
-		5BAFED1317C3E12500B3BAA9 /* defaultIdentificationNoPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC8F17C3E12500B3BAA9 /* defaultIdentificationNoPhoto.png */; };
-		5BAFED1417C3E12500B3BAA9 /* japanese_maple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC9017C3E12500B3BAA9 /* japanese_maple.jpg */; };
-		5BAFED1517C3E12500B3BAA9 /* japanese_maple.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC9117C3E12500B3BAA9 /* japanese_maple.png */; };
-		5BAFED1617C3E12500B3BAA9 /* red_maple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC9217C3E12500B3BAA9 /* red_maple.jpg */; };
-		5BAFED1717C3E12500B3BAA9 /* red_maple.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC9317C3E12500B3BAA9 /* red_maple.png */; };
-		5BAFED1817C3E12500B3BAA9 /* red_maple2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC9417C3E12500B3BAA9 /* red_maple2.jpg */; };
-		5BAFED1917C3E12500B3BAA9 /* red_maple2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC9517C3E12500B3BAA9 /* red_maple2.png */; };
-		5BAFED1A17C3E12500B3BAA9 /* iPhoneTutorialPhoto.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC9617C3E12500B3BAA9 /* iPhoneTutorialPhoto.JPG */; };
-		5BAFED1B17C3E12500B3BAA9 /* page.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC9717C3E12500B3BAA9 /* page.png */; };
-		5BAFED1C17C3E12500B3BAA9 /* SwitchNoBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC9817C3E12500B3BAA9 /* SwitchNoBig.png */; };
-		5BAFED1D17C3E12500B3BAA9 /* SwitchNoSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC9917C3E12500B3BAA9 /* SwitchNoSmall.png */; };
-		5BAFED1E17C3E12500B3BAA9 /* SwitchYesBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC9A17C3E12500B3BAA9 /* SwitchYesBig.png */; };
-		5BAFED1F17C3E12500B3BAA9 /* SwitchYesSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC9B17C3E12500B3BAA9 /* SwitchYesSmall.png */; };
-		5BAFED2017C3E12500B3BAA9 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC9C17C3E12500B3BAA9 /* test.png */; };
-		5BAFED2117C3E12500B3BAA9 /* test320.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC9D17C3E12500B3BAA9 /* test320.png */; };
-		5BAFED2217C3E12500B3BAA9 /* tutorialPhoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFEC9E17C3E12500B3BAA9 /* tutorialPhoto.jpg */; };
 		5BBC88B617BECD4A00E524FF /* ProjectComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBC88B517BECD4A00E524FF /* ProjectComponent.m */; };
 		5BF30DAA17A1C6B10071E7EA /* AudioDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF30D9017A1C6B10071E7EA /* AudioDataViewController.m */; };
 		5BF30DAC17A1C6B10071E7EA /* BooleanDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF30D9317A1C6B10071E7EA /* BooleanDataViewController.m */; };
@@ -180,6 +60,143 @@
 		718AAD281794772300AFE6DB /* InterpretationSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD261794772300AFE6DB /* InterpretationSplitViewController.xib */; };
 		718F372017B97CB100297EBA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718F371F17B97CB100297EBA /* LoginViewController.m */; };
 		719D192517BA9D20002A2B24 /* RegisterNewAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 719D192417BA9D20002A2B24 /* RegisterNewAccountViewController.m */; };
+		71F5813317C40A3200C063DF /* 03-arrow-north.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5809417C40A3200C063DF /* 03-arrow-north.png */; };
+		71F5813417C40A3200C063DF /* 05-shuffle.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5809517C40A3200C063DF /* 05-shuffle.png */; };
+		71F5813517C40A3200C063DF /* 06-arrow-south.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5809617C40A3200C063DF /* 06-arrow-south.png */; };
+		71F5813617C40A3200C063DF /* 17-check.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5809717C40A3200C063DF /* 17-check.png */; };
+		71F5813717C40A3200C063DF /* 17-checkGREEN.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5809817C40A3200C063DF /* 17-checkGREEN.png */; };
+		71F5813817C40A3200C063DF /* 19-circle-check.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5809917C40A3200C063DF /* 19-circle-check.png */; };
+		71F5813917C40A3200C063DF /* 19-circle-checkGREEN.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5809A17C40A3200C063DF /* 19-circle-checkGREEN.png */; };
+		71F5813A17C40A3200C063DF /* 29-circle-pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5809B17C40A3200C063DF /* 29-circle-pause.png */; };
+		71F5813B17C40A3200C063DF /* 298-circlex.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5809C17C40A3200C063DF /* 298-circlex.png */; };
+		71F5813C17C40A3200C063DF /* 298-circlex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5809D17C40A3200C063DF /* 298-circlex@2x.png */; };
+		71F5813D17C40A3200C063DF /* 30-circle-play.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5809E17C40A3200C063DF /* 30-circle-play.png */; };
+		71F5813E17C40A3200C063DF /* 35-circle-stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5809F17C40A3200C063DF /* 35-circle-stop.png */; };
+		71F5813F17C40A3200C063DF /* 37-circle-x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580A017C40A3200C063DF /* 37-circle-x.png */; };
+		71F5814017C40A3200C063DF /* 37-circle-xRED.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580A117C40A3200C063DF /* 37-circle-xRED.png */; };
+		71F5814117C40A3200C063DF /* 60-x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580A217C40A3200C063DF /* 60-x.png */; };
+		71F5814217C40A3200C063DF /* 60-xRED.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580A317C40A3200C063DF /* 60-xRED.png */; };
+		71F5814317C40A3200C063DF /* 86-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580A417C40A3200C063DF /* 86-camera.png */; };
+		71F5814417C40A3200C063DF /* carouselBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580A517C40A3200C063DF /* carouselBackground.png */; };
+		71F5814517C40A3200C063DF /* Distribution.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580A817C40A3200C063DF /* Distribution.png */; };
+		71F5814617C40A3200C063DF /* Flower_arrangement.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580A917C40A3200C063DF /* Flower_arrangement.png */; };
+		71F5814717C40A3200C063DF /* Flower_color.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580AA17C40A3200C063DF /* Flower_color.png */; };
+		71F5814817C40A3200C063DF /* Flower_symmetry.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580AB17C40A3200C063DF /* Flower_symmetry.png */; };
+		71F5814917C40A3200C063DF /* Flowering_month.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580AC17C40A3200C063DF /* Flowering_month.png */; };
+		71F5814A17C40A3200C063DF /* Growth_form.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580AD17C40A3200C063DF /* Growth_form.png */; };
+		71F5814B17C40A3200C063DF /* Is_this_plant_cool.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580AE17C40A3200C063DF /* Is_this_plant_cool.png */; };
+		71F5814C17C40A3200C063DF /* Leaf_arrangement.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580AF17C40A3200C063DF /* Leaf_arrangement.png */; };
+		71F5814D17C40A3200C063DF /* Leaf_margin.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580B017C40A3200C063DF /* Leaf_margin.png */; };
+		71F5814E17C40A3200C063DF /* Leaf_shape.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580B117C40A3200C063DF /* Leaf_shape.png */; };
+		71F5814F17C40A3200C063DF /* Leaf_type.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580B217C40A3200C063DF /* Leaf_type.png */; };
+		71F5815017C40A3200C063DF /* Leaf_venation.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580B317C40A3200C063DF /* Leaf_venation.png */; };
+		71F5815117C40A3200C063DF /* Number_flower_parts.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580B417C40A3200C063DF /* Number_flower_parts.png */; };
+		71F5815217C40A3200C063DF /* Petiole_present.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580B517C40A3200C063DF /* Petiole_present.png */; };
+		71F5815317C40A3200C063DF /* Plant_height.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580B617C40A3200C063DF /* Plant_height.png */; };
+		71F5815417C40A3200C063DF /* Stem_shape.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580B717C40A3200C063DF /* Stem_shape.png */; };
+		71F5815517C40A3200C063DF /* Stem_texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580B817C40A3200C063DF /* Stem_texture.png */; };
+		71F5815617C40A3200C063DF /* Distribution-bunches.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580BB17C40A3200C063DF /* Distribution-bunches.png */; };
+		71F5815717C40A3200C063DF /* Distribution-patches.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580BC17C40A3200C063DF /* Distribution-patches.png */; };
+		71F5815817C40A3200C063DF /* Distribution-singular.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580BD17C40A3200C063DF /* Distribution-singular.png */; };
+		71F5815917C40A3200C063DF /* Flower_arrangement-corymb.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580BF17C40A3200C063DF /* Flower_arrangement-corymb.png */; };
+		71F5815A17C40A3200C063DF /* Flower_arrangement-cyme.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580C017C40A3200C063DF /* Flower_arrangement-cyme.png */; };
+		71F5815B17C40A3200C063DF /* Flower_arrangement-head.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580C117C40A3200C063DF /* Flower_arrangement-head.png */; };
+		71F5815C17C40A3200C063DF /* Flower_arrangement-panicle.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580C217C40A3200C063DF /* Flower_arrangement-panicle.png */; };
+		71F5815D17C40A3200C063DF /* Flower_arrangement-raceme.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580C317C40A3200C063DF /* Flower_arrangement-raceme.png */; };
+		71F5815E17C40A3200C063DF /* Flower_arrangement-solitary.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580C417C40A3200C063DF /* Flower_arrangement-solitary.png */; };
+		71F5815F17C40A3200C063DF /* Flower_arrangement-spike.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580C517C40A3200C063DF /* Flower_arrangement-spike.png */; };
+		71F5816017C40A3200C063DF /* Flower_arrangement-umbel.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580C617C40A3200C063DF /* Flower_arrangement-umbel.png */; };
+		71F5816117C40A3200C063DF /* Flower_color-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580C817C40A3200C063DF /* Flower_color-black.png */; };
+		71F5816217C40A3200C063DF /* Flower_color-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580C917C40A3200C063DF /* Flower_color-blue.png */; };
+		71F5816317C40A3200C063DF /* Flower_color-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580CA17C40A3200C063DF /* Flower_color-green.png */; };
+		71F5816417C40A3200C063DF /* Flower_color-indigo.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580CB17C40A3200C063DF /* Flower_color-indigo.png */; };
+		71F5816517C40A3200C063DF /* Flower_color-orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580CC17C40A3200C063DF /* Flower_color-orange.png */; };
+		71F5816617C40A3200C063DF /* Flower_color-pink.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580CD17C40A3200C063DF /* Flower_color-pink.png */; };
+		71F5816717C40A3200C063DF /* Flower_color-purple.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580CE17C40A3200C063DF /* Flower_color-purple.png */; };
+		71F5816817C40A3200C063DF /* Flower_color-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580CF17C40A3200C063DF /* Flower_color-red.png */; };
+		71F5816917C40A3200C063DF /* Flower_color-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580D017C40A3200C063DF /* Flower_color-white.png */; };
+		71F5816A17C40A3200C063DF /* Flower_color-yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580D117C40A3200C063DF /* Flower_color-yellow.png */; };
+		71F5816B17C40A3200C063DF /* Flower_symmetry-bilateral.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580D317C40A3200C063DF /* Flower_symmetry-bilateral.png */; };
+		71F5816C17C40A3200C063DF /* Flower_symmetry-radial.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580D417C40A3200C063DF /* Flower_symmetry-radial.png */; };
+		71F5816D17C40A3200C063DF /* Growth_form-sprawling.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580D717C40A3200C063DF /* Growth_form-sprawling.png */; };
+		71F5816E17C40A3200C063DF /* Growth_form-upright_branching.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580D817C40A3200C063DF /* Growth_form-upright_branching.png */; };
+		71F5817017C40A3200C063DF /* Leaf_arrangement-alternate.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580DB17C40A3200C063DF /* Leaf_arrangement-alternate.png */; };
+		71F5817117C40A3200C063DF /* Leaf_arrangement-basal.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580DC17C40A3200C063DF /* Leaf_arrangement-basal.png */; };
+		71F5817217C40A3200C063DF /* Leaf_arrangement-opposite.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580DD17C40A3200C063DF /* Leaf_arrangement-opposite.png */; };
+		71F5817317C40A3200C063DF /* Leaf_arrangement-whorled.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580DE17C40A3200C063DF /* Leaf_arrangement-whorled.png */; };
+		71F5817417C40A3200C063DF /* Leaf_margin-coarsely_toothed.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580E017C40A3200C063DF /* Leaf_margin-coarsely_toothed.png */; };
+		71F5817517C40A3200C063DF /* Leaf_margin-doubly_toothed.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580E117C40A3200C063DF /* Leaf_margin-doubly_toothed.png */; };
+		71F5817617C40A3200C063DF /* Leaf_margin-entire.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580E217C40A3200C063DF /* Leaf_margin-entire.png */; };
+		71F5817717C40A3200C063DF /* Leaf_margin-finely_toothed.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580E317C40A3200C063DF /* Leaf_margin-finely_toothed.png */; };
+		71F5817817C40A3200C063DF /* Leaf_margin-lobed.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580E417C40A3200C063DF /* Leaf_margin-lobed.png */; };
+		71F5817917C40A3200C063DF /* Leaf_margin-wavy.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580E517C40A3200C063DF /* Leaf_margin-wavy.png */; };
+		71F5817A17C40A3200C063DF /* Leaf_margin.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580E617C40A3200C063DF /* Leaf_margin.png */; };
+		71F5817B17C40A3200C063DF /* Leaf_shape-cordiform.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580E817C40A3200C063DF /* Leaf_shape-cordiform.png */; };
+		71F5817C17C40A3200C063DF /* Leaf_shape-divided.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580E917C40A3200C063DF /* Leaf_shape-divided.png */; };
+		71F5817D17C40A3200C063DF /* Leaf_shape-elliptic.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580EA17C40A3200C063DF /* Leaf_shape-elliptic.png */; };
+		71F5817E17C40A3200C063DF /* Leaf_shape-lanceolate.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580EB17C40A3200C063DF /* Leaf_shape-lanceolate.png */; };
+		71F5817F17C40A3200C063DF /* Leaf_shape-linear.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580EC17C40A3200C063DF /* Leaf_shape-linear.png */; };
+		71F5818017C40A3200C063DF /* Leaf_shape-lobed.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580ED17C40A3200C063DF /* Leaf_shape-lobed.png */; };
+		71F5818117C40A3200C063DF /* Leaf_shape-oblong.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580EE17C40A3200C063DF /* Leaf_shape-oblong.png */; };
+		71F5818217C40A3200C063DF /* Leaf_shape-obovate.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580EF17C40A3200C063DF /* Leaf_shape-obovate.png */; };
+		71F5818317C40A3200C063DF /* Leaf_shape-orbicular.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580F017C40A3200C063DF /* Leaf_shape-orbicular.png */; };
+		71F5818417C40A3200C063DF /* Leaf_shape-ovate.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580F117C40A3200C063DF /* Leaf_shape-ovate.png */; };
+		71F5818517C40A3200C063DF /* Leaf_shape-reniform.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580F217C40A3200C063DF /* Leaf_shape-reniform.png */; };
+		71F5818617C40A3200C063DF /* Leaf_shape-spatulate.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580F317C40A3200C063DF /* Leaf_shape-spatulate.png */; };
+		71F5818717C40A3200C063DF /* Leaf_type-bipinnate.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580F517C40A3200C063DF /* Leaf_type-bipinnate.png */; };
+		71F5818817C40A3200C063DF /* Leaf_type-palmate.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580F617C40A3200C063DF /* Leaf_type-palmate.png */; };
+		71F5818917C40A3200C063DF /* Leaf_type-pinnate.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580F717C40A3200C063DF /* Leaf_type-pinnate.png */; };
+		71F5818A17C40A3200C063DF /* Leaf_type-simple.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580F817C40A3200C063DF /* Leaf_type-simple.png */; };
+		71F5818B17C40A3200C063DF /* Leaf_type-trifoliate.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580F917C40A3200C063DF /* Leaf_type-trifoliate.png */; };
+		71F5818C17C40A3200C063DF /* Leaf_venation-branched.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580FB17C40A3200C063DF /* Leaf_venation-branched.png */; };
+		71F5818D17C40A3200C063DF /* Leaf_venation-parallel.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580FC17C40A3200C063DF /* Leaf_venation-parallel.png */; };
+		71F5818E17C40A3200C063DF /* Number_flower_parts-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580FE17C40A3200C063DF /* Number_flower_parts-3.png */; };
+		71F5818F17C40A3200C063DF /* Number_flower_parts-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580FF17C40A3200C063DF /* Number_flower_parts-4.png */; };
+		71F5819017C40A3200C063DF /* Number_flower_parts-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5810017C40A3200C063DF /* Number_flower_parts-5.png */; };
+		71F5819117C40A3200C063DF /* Number_flower_parts-6.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5810117C40A3200C063DF /* Number_flower_parts-6.png */; };
+		71F5819217C40A3200C063DF /* Number_flower_parts-more.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5810217C40A3200C063DF /* Number_flower_parts-more.png */; };
+		71F5819317C40A3200C063DF /* Stem_shape-ridged.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5810617C40A3200C063DF /* Stem_shape-ridged.png */; };
+		71F5819417C40A3200C063DF /* Stem_shape-round.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5810717C40A3200C063DF /* Stem_shape-round.png */; };
+		71F5819517C40A3200C063DF /* Stem_shape-square.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5810817C40A3200C063DF /* Stem_shape-square.png */; };
+		71F5819617C40A3200C063DF /* Stem_texture-fuzzy.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5810A17C40A3200C063DF /* Stem_texture-fuzzy.png */; };
+		71F5819717C40A3200C063DF /* Stem_texture-hairless.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5810B17C40A3200C063DF /* Stem_texture-hairless.png */; };
+		71F5819817C40A3200C063DF /* Stem_texture-hairy.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5810C17C40A3200C063DF /* Stem_texture-hairy.png */; };
+		71F5819917C40A3200C063DF /* Stem_texture-prickly.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5810D17C40A3200C063DF /* Stem_texture-prickly.png */; };
+		71F5819A17C40A3200C063DF /* Distribution_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5810F17C40A3200C063DF /* Distribution_TutorialLarge.png */; };
+		71F5819B17C40A3200C063DF /* Flower_arrangement_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5811017C40A3200C063DF /* Flower_arrangement_TutorialLarge.png */; };
+		71F5819C17C40A3200C063DF /* Flower_color_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5811117C40A3200C063DF /* Flower_color_TutorialLarge.png */; };
+		71F5819D17C40A3200C063DF /* Flower_symmetry_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5811217C40A3200C063DF /* Flower_symmetry_TutorialLarge.png */; };
+		71F5819E17C40A3200C063DF /* Growth_form_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5811317C40A3200C063DF /* Growth_form_TutorialLarge.png */; };
+		71F5819F17C40A3200C063DF /* Leaf_margin_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5811417C40A3200C063DF /* Leaf_margin_TutorialLarge.png */; };
+		71F581A017C40A3200C063DF /* Leaf_shape_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5811517C40A3200C063DF /* Leaf_shape_TutorialLarge.png */; };
+		71F581A117C40A3200C063DF /* Leaf_venation_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5811617C40A3200C063DF /* Leaf_venation_TutorialLarge.png */; };
+		71F581A217C40A3200C063DF /* Number_of_flower_parts_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5811717C40A3200C063DF /* Number_of_flower_parts_TutorialLarge.png */; };
+		71F581A317C40A3200C063DF /* Petiole_present_TutorialSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5811817C40A3200C063DF /* Petiole_present_TutorialSmall.png */; };
+		71F581A417C40A3200C063DF /* Plant_height_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5811917C40A3200C063DF /* Plant_height_TutorialLarge.png */; };
+		71F581A517C40A3200C063DF /* Plant_height_TutorialSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5811A17C40A3200C063DF /* Plant_height_TutorialSmall.png */; };
+		71F581A617C40A3200C063DF /* Stem_shape_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5811B17C40A3200C063DF /* Stem_shape_TutorialLarge.png */; };
+		71F581A717C40A3200C063DF /* Plant_height ruler.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5811C17C40A3200C063DF /* Plant_height ruler.png */; };
+		71F581A917C40A3200C063DF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5811E17C40A3200C063DF /* Default-568h@2x.png */; };
+		71F581AA17C40A3200C063DF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5811F17C40A3200C063DF /* Default.png */; };
+		71F581AB17C40A3200C063DF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5812017C40A3200C063DF /* Default@2x.png */; };
+		71F581AC17C40A3200C063DF /* Flower_color.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5812117C40A3200C063DF /* Flower_color.png */; };
+		71F581AD17C40A3200C063DF /* defaultIdentificationNoPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5812317C40A3200C063DF /* defaultIdentificationNoPhoto.png */; };
+		71F581AE17C40A3200C063DF /* japanese_maple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71F5812417C40A3200C063DF /* japanese_maple.jpg */; };
+		71F581AF17C40A3200C063DF /* japanese_maple.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5812517C40A3200C063DF /* japanese_maple.png */; };
+		71F581B017C40A3200C063DF /* red_maple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71F5812617C40A3200C063DF /* red_maple.jpg */; };
+		71F581B117C40A3200C063DF /* red_maple.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5812717C40A3200C063DF /* red_maple.png */; };
+		71F581B217C40A3200C063DF /* red_maple2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71F5812817C40A3200C063DF /* red_maple2.jpg */; };
+		71F581B317C40A3200C063DF /* red_maple2.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5812917C40A3200C063DF /* red_maple2.png */; };
+		71F581B417C40A3200C063DF /* iPhoneTutorialPhoto.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 71F5812A17C40A3200C063DF /* iPhoneTutorialPhoto.JPG */; };
+		71F581B517C40A3200C063DF /* page.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5812B17C40A3200C063DF /* page.png */; };
+		71F581B617C40A3200C063DF /* SwitchNoBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5812C17C40A3200C063DF /* SwitchNoBig.png */; };
+		71F581B717C40A3200C063DF /* SwitchNoSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5812D17C40A3200C063DF /* SwitchNoSmall.png */; };
+		71F581B817C40A3200C063DF /* SwitchYesBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5812E17C40A3200C063DF /* SwitchYesBig.png */; };
+		71F581B917C40A3200C063DF /* SwitchYesSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5812F17C40A3200C063DF /* SwitchYesSmall.png */; };
+		71F581BA17C40A3200C063DF /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5813017C40A3200C063DF /* test.png */; };
+		71F581BB17C40A3200C063DF /* test320.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5813117C40A3200C063DF /* test320.png */; };
+		71F581BC17C40A3200C063DF /* tutorialPhoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71F5813217C40A3200C063DF /* tutorialPhoto.jpg */; };
+		71F581C017C416BB00C063DF /* Growth_form-upright_few_to_no_branches.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F581BF17C416BB00C063DF /* Growth_form-upright_few_to_no_branches.png */; };
 		71FF69BE1794819300E2B411 /* FieldResearchNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF69A41794819200E2B411 /* FieldResearchNavigationController.m */; };
 		71FF69C01794819300E2B411 /* ObservationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF69A81794819200E2B411 /* ObservationViewController.m */; };
 		71FF69C11794819300E2B411 /* ObservationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71FF69A91794819200E2B411 /* ObservationViewController.xib */; };
@@ -251,138 +268,6 @@
 		5B98AFBD17A07ADC00678C36 /* UserObservationIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationIdentification.m; sourceTree = "<group>"; };
 		5B98AFBF17A08CA900678C36 /* examplePlantData.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = examplePlantData.tsv; sourceTree = "<group>"; };
 		5B9A26E317C28ED3007A3A55 /* InterpretationChoiceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InterpretationChoiceTableViewCell.xib; sourceTree = "<group>"; };
-		5BAFEC0A17C3E12500B3BAA9 /* 03-arrow-north.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "03-arrow-north.png"; sourceTree = "<group>"; };
-		5BAFEC0B17C3E12500B3BAA9 /* 05-shuffle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "05-shuffle.png"; sourceTree = "<group>"; };
-		5BAFEC0C17C3E12500B3BAA9 /* 06-arrow-south.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "06-arrow-south.png"; sourceTree = "<group>"; };
-		5BAFEC0D17C3E12500B3BAA9 /* 17-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "17-check.png"; sourceTree = "<group>"; };
-		5BAFEC0E17C3E12500B3BAA9 /* 17-checkGREEN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "17-checkGREEN.png"; sourceTree = "<group>"; };
-		5BAFEC0F17C3E12500B3BAA9 /* 19-circle-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "19-circle-check.png"; sourceTree = "<group>"; };
-		5BAFEC1017C3E12500B3BAA9 /* 19-circle-checkGREEN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "19-circle-checkGREEN.png"; sourceTree = "<group>"; };
-		5BAFEC1117C3E12500B3BAA9 /* 29-circle-pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "29-circle-pause.png"; sourceTree = "<group>"; };
-		5BAFEC1217C3E12500B3BAA9 /* 298-circlex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "298-circlex.png"; sourceTree = "<group>"; };
-		5BAFEC1317C3E12500B3BAA9 /* 298-circlex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "298-circlex@2x.png"; sourceTree = "<group>"; };
-		5BAFEC1417C3E12500B3BAA9 /* 30-circle-play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "30-circle-play.png"; sourceTree = "<group>"; };
-		5BAFEC1517C3E12500B3BAA9 /* 35-circle-stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "35-circle-stop.png"; sourceTree = "<group>"; };
-		5BAFEC1617C3E12500B3BAA9 /* 37-circle-x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37-circle-x.png"; sourceTree = "<group>"; };
-		5BAFEC1717C3E12500B3BAA9 /* 37-circle-xRED.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37-circle-xRED.png"; sourceTree = "<group>"; };
-		5BAFEC1817C3E12500B3BAA9 /* 60-x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "60-x.png"; sourceTree = "<group>"; };
-		5BAFEC1917C3E12500B3BAA9 /* 60-xRED.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "60-xRED.png"; sourceTree = "<group>"; };
-		5BAFEC1A17C3E12500B3BAA9 /* 86-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera.png"; sourceTree = "<group>"; };
-		5BAFEC1B17C3E12500B3BAA9 /* carouselBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carouselBackground.png; sourceTree = "<group>"; };
-		5BAFEC1E17C3E12500B3BAA9 /* Distribution.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Distribution.png; sourceTree = "<group>"; };
-		5BAFEC1F17C3E12500B3BAA9 /* Flower_arrangement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flower_arrangement.png; sourceTree = "<group>"; };
-		5BAFEC2017C3E12500B3BAA9 /* Flower_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flower_color.png; sourceTree = "<group>"; };
-		5BAFEC2117C3E12500B3BAA9 /* Flower_symmetry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flower_symmetry.png; sourceTree = "<group>"; };
-		5BAFEC2217C3E12500B3BAA9 /* Flowering_month.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flowering_month.png; sourceTree = "<group>"; };
-		5BAFEC2317C3E12500B3BAA9 /* Growth_form.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Growth_form.png; sourceTree = "<group>"; };
-		5BAFEC2417C3E12500B3BAA9 /* Is_this_plant_cool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Is_this_plant_cool.png; sourceTree = "<group>"; };
-		5BAFEC2517C3E12500B3BAA9 /* Leaf_arrangement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_arrangement.png; sourceTree = "<group>"; };
-		5BAFEC2617C3E12500B3BAA9 /* Leaf_margin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_margin.png; sourceTree = "<group>"; };
-		5BAFEC2717C3E12500B3BAA9 /* Leaf_shape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_shape.png; sourceTree = "<group>"; };
-		5BAFEC2817C3E12500B3BAA9 /* Leaf_type.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_type.png; sourceTree = "<group>"; };
-		5BAFEC2917C3E12500B3BAA9 /* Leaf_venation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_venation.png; sourceTree = "<group>"; };
-		5BAFEC2A17C3E12500B3BAA9 /* Number_flower_parts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Number_flower_parts.png; sourceTree = "<group>"; };
-		5BAFEC2B17C3E12500B3BAA9 /* Petiole_present.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Petiole_present.png; sourceTree = "<group>"; };
-		5BAFEC2C17C3E12500B3BAA9 /* Plant_height.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Plant_height.png; sourceTree = "<group>"; };
-		5BAFEC2D17C3E12500B3BAA9 /* Stem_shape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stem_shape.png; sourceTree = "<group>"; };
-		5BAFEC2E17C3E12500B3BAA9 /* Stem_texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stem_texture.png; sourceTree = "<group>"; };
-		5BAFEC3117C3E12500B3BAA9 /* Distribution-bunches.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Distribution-bunches.png"; sourceTree = "<group>"; };
-		5BAFEC3217C3E12500B3BAA9 /* Distribution-patches.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Distribution-patches.png"; sourceTree = "<group>"; };
-		5BAFEC3317C3E12500B3BAA9 /* Distribution-singular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Distribution-singular.png"; sourceTree = "<group>"; };
-		5BAFEC3517C3E12500B3BAA9 /* Flower_arrangement-Corymb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_arrangement-Corymb.png"; sourceTree = "<group>"; };
-		5BAFEC3617C3E12500B3BAA9 /* Flower_arrangement-Cyme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_arrangement-Cyme.png"; sourceTree = "<group>"; };
-		5BAFEC3717C3E12500B3BAA9 /* Flower_arrangement-Head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_arrangement-Head.png"; sourceTree = "<group>"; };
-		5BAFEC3817C3E12500B3BAA9 /* Flower_arrangement-Panicle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_arrangement-Panicle.png"; sourceTree = "<group>"; };
-		5BAFEC3917C3E12500B3BAA9 /* Flower_arrangement-Raceme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_arrangement-Raceme.png"; sourceTree = "<group>"; };
-		5BAFEC3A17C3E12500B3BAA9 /* Flower_arrangement-Solitary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_arrangement-Solitary.png"; sourceTree = "<group>"; };
-		5BAFEC3B17C3E12500B3BAA9 /* Flower_arrangement-Spike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_arrangement-Spike.png"; sourceTree = "<group>"; };
-		5BAFEC3C17C3E12500B3BAA9 /* Flower_arrangement-Umbel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_arrangement-Umbel.png"; sourceTree = "<group>"; };
-		5BAFEC3E17C3E12500B3BAA9 /* Flower_color-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-Black.png"; sourceTree = "<group>"; };
-		5BAFEC3F17C3E12500B3BAA9 /* Flower_color-Blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-Blue.png"; sourceTree = "<group>"; };
-		5BAFEC4017C3E12500B3BAA9 /* Flower_color-Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-Green.png"; sourceTree = "<group>"; };
-		5BAFEC4117C3E12500B3BAA9 /* Flower_color-Indigo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-Indigo.png"; sourceTree = "<group>"; };
-		5BAFEC4217C3E12500B3BAA9 /* Flower_color-Orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-Orange.png"; sourceTree = "<group>"; };
-		5BAFEC4317C3E12500B3BAA9 /* Flower_color-Pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-Pink.png"; sourceTree = "<group>"; };
-		5BAFEC4417C3E12500B3BAA9 /* Flower_color-Purple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-Purple.png"; sourceTree = "<group>"; };
-		5BAFEC4517C3E12500B3BAA9 /* Flower_color-Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-Red.png"; sourceTree = "<group>"; };
-		5BAFEC4617C3E12500B3BAA9 /* Flower_color-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-White.png"; sourceTree = "<group>"; };
-		5BAFEC4717C3E12500B3BAA9 /* Flower_color-Yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-Yellow.png"; sourceTree = "<group>"; };
-		5BAFEC4917C3E12500B3BAA9 /* Flower_symmetry-bilateral.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_symmetry-bilateral.png"; sourceTree = "<group>"; };
-		5BAFEC4A17C3E12500B3BAA9 /* Flower_symmetry-radial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_symmetry-radial.png"; sourceTree = "<group>"; };
-		5BAFEC4C17C3E12500B3BAA9 /* Growth_form-sprawling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Growth_form-sprawling.png"; sourceTree = "<group>"; };
-		5BAFEC4D17C3E12500B3BAA9 /* Growth_form-upright_branching.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Growth_form-upright_branching.png"; sourceTree = "<group>"; };
-		5BAFEC4E17C3E12500B3BAA9 /* Growth_form-upright_few_to_no_branches.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Growth_form-upright_few_to_no_branches.png"; sourceTree = "<group>"; };
-		5BAFEC5017C3E12500B3BAA9 /* Leaf_arrangement-Alternate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_arrangement-Alternate.png"; sourceTree = "<group>"; };
-		5BAFEC5117C3E12500B3BAA9 /* Leaf_arrangement-Basal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_arrangement-Basal.png"; sourceTree = "<group>"; };
-		5BAFEC5217C3E12500B3BAA9 /* Leaf_arrangement-Opposite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_arrangement-Opposite.png"; sourceTree = "<group>"; };
-		5BAFEC5317C3E12500B3BAA9 /* Leaf_arrangement-Whorled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_arrangement-Whorled.png"; sourceTree = "<group>"; };
-		5BAFEC5517C3E12500B3BAA9 /* Leaf_margin-coarsely_toothed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_margin-coarsely_toothed.png"; sourceTree = "<group>"; };
-		5BAFEC5617C3E12500B3BAA9 /* Leaf_margin-doubly_toothed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_margin-doubly_toothed.png"; sourceTree = "<group>"; };
-		5BAFEC5717C3E12500B3BAA9 /* Leaf_margin-entire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_margin-entire.png"; sourceTree = "<group>"; };
-		5BAFEC5817C3E12500B3BAA9 /* Leaf_margin-finely_toothed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_margin-finely_toothed.png"; sourceTree = "<group>"; };
-		5BAFEC5917C3E12500B3BAA9 /* Leaf_margin-lobed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_margin-lobed.png"; sourceTree = "<group>"; };
-		5BAFEC5A17C3E12500B3BAA9 /* Leaf_margin-wavy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_margin-wavy.png"; sourceTree = "<group>"; };
-		5BAFEC5B17C3E12500B3BAA9 /* Leaf_margin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_margin.png; sourceTree = "<group>"; };
-		5BAFEC5D17C3E12500B3BAA9 /* Leaf_shape-Cordiform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-Cordiform.png"; sourceTree = "<group>"; };
-		5BAFEC5E17C3E12500B3BAA9 /* Leaf_shape-Divided.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-Divided.png"; sourceTree = "<group>"; };
-		5BAFEC5F17C3E12500B3BAA9 /* Leaf_shape-Elliptic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-Elliptic.png"; sourceTree = "<group>"; };
-		5BAFEC6017C3E12500B3BAA9 /* Leaf_shape-Lanceolate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-Lanceolate.png"; sourceTree = "<group>"; };
-		5BAFEC6117C3E12500B3BAA9 /* Leaf_shape-Linear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-Linear.png"; sourceTree = "<group>"; };
-		5BAFEC6217C3E12500B3BAA9 /* Leaf_shape-Lobed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-Lobed.png"; sourceTree = "<group>"; };
-		5BAFEC6317C3E12500B3BAA9 /* Leaf_shape-Oblong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-Oblong.png"; sourceTree = "<group>"; };
-		5BAFEC6417C3E12500B3BAA9 /* Leaf_shape-Obovate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-Obovate.png"; sourceTree = "<group>"; };
-		5BAFEC6517C3E12500B3BAA9 /* Leaf_shape-Orbicular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-Orbicular.png"; sourceTree = "<group>"; };
-		5BAFEC6617C3E12500B3BAA9 /* Leaf_shape-Ovate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-Ovate.png"; sourceTree = "<group>"; };
-		5BAFEC6717C3E12500B3BAA9 /* Leaf_shape-Reniform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-Reniform.png"; sourceTree = "<group>"; };
-		5BAFEC6817C3E12500B3BAA9 /* Leaf_shape-Spatulate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-Spatulate.png"; sourceTree = "<group>"; };
-		5BAFEC6A17C3E12500B3BAA9 /* Leaf_type-Bipinnate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_type-Bipinnate.png"; sourceTree = "<group>"; };
-		5BAFEC6B17C3E12500B3BAA9 /* Leaf_type-Palmate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_type-Palmate.png"; sourceTree = "<group>"; };
-		5BAFEC6C17C3E12500B3BAA9 /* Leaf_type-Pinnate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_type-Pinnate.png"; sourceTree = "<group>"; };
-		5BAFEC6D17C3E12500B3BAA9 /* Leaf_type-Simple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_type-Simple.png"; sourceTree = "<group>"; };
-		5BAFEC6E17C3E12500B3BAA9 /* Leaf_type-Trifoliate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_type-Trifoliate.png"; sourceTree = "<group>"; };
-		5BAFEC7017C3E12500B3BAA9 /* Leaf_venation-Branched.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_venation-Branched.png"; sourceTree = "<group>"; };
-		5BAFEC7117C3E12500B3BAA9 /* Leaf_venation-Parallel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_venation-Parallel.png"; sourceTree = "<group>"; };
-		5BAFEC7317C3E12500B3BAA9 /* Stem_shape-ridged.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stem_shape-ridged.png"; sourceTree = "<group>"; };
-		5BAFEC7417C3E12500B3BAA9 /* Stem_shape-round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stem_shape-round.png"; sourceTree = "<group>"; };
-		5BAFEC7517C3E12500B3BAA9 /* Stem_shape-square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stem_shape-square.png"; sourceTree = "<group>"; };
-		5BAFEC7717C3E12500B3BAA9 /* Stem_texture-fuzzy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stem_texture-fuzzy.png"; sourceTree = "<group>"; };
-		5BAFEC7817C3E12500B3BAA9 /* Stem_texture-hairless.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stem_texture-hairless.png"; sourceTree = "<group>"; };
-		5BAFEC7917C3E12500B3BAA9 /* Stem_texture-hairy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stem_texture-hairy.png"; sourceTree = "<group>"; };
-		5BAFEC7A17C3E12500B3BAA9 /* Stem_texture-prickly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stem_texture-prickly.png"; sourceTree = "<group>"; };
-		5BAFEC7C17C3E12500B3BAA9 /* Distribution_TurorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Distribution_TurorialLarge.png; sourceTree = "<group>"; };
-		5BAFEC7D17C3E12500B3BAA9 /* Flower_arrangement_TurorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flower_arrangement_TurorialLarge.png; sourceTree = "<group>"; };
-		5BAFEC7E17C3E12500B3BAA9 /* Flower_color_TurorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flower_color_TurorialLarge.png; sourceTree = "<group>"; };
-		5BAFEC7F17C3E12500B3BAA9 /* Flower_symmetry_TurorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flower_symmetry_TurorialLarge.png; sourceTree = "<group>"; };
-		5BAFEC8017C3E12500B3BAA9 /* Growth_form_TurorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Growth_form_TurorialLarge.png; sourceTree = "<group>"; };
-		5BAFEC8117C3E12500B3BAA9 /* Leaf_margin_TurorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_margin_TurorialLarge.png; sourceTree = "<group>"; };
-		5BAFEC8217C3E12500B3BAA9 /* Leaf_shape_TurorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_shape_TurorialLarge.png; sourceTree = "<group>"; };
-		5BAFEC8317C3E12500B3BAA9 /* Leaf_venation_TurorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_venation_TurorialLarge.png; sourceTree = "<group>"; };
-		5BAFEC8417C3E12500B3BAA9 /* Number_of_flower_parts_TurorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Number_of_flower_parts_TurorialLarge.png; sourceTree = "<group>"; };
-		5BAFEC8517C3E12500B3BAA9 /* Petiole_present_TutorialSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Petiole_present_TutorialSmall.png; sourceTree = "<group>"; };
-		5BAFEC8617C3E12500B3BAA9 /* Plant_height_TurorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Plant_height_TurorialLarge.png; sourceTree = "<group>"; };
-		5BAFEC8717C3E12500B3BAA9 /* Stem_shape_TurorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stem_shape_TurorialLarge.png; sourceTree = "<group>"; };
-		5BAFEC8817C3E12500B3BAA9 /* Plant_height ruler.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plant_height ruler.png"; sourceTree = "<group>"; };
-		5BAFEC8917C3E12500B3BAA9 /* Plant_height.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Plant_height.png; sourceTree = "<group>"; };
-		5BAFEC8A17C3E12500B3BAA9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		5BAFEC8B17C3E12500B3BAA9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		5BAFEC8C17C3E12500B3BAA9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		5BAFEC8D17C3E12500B3BAA9 /* Flower_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flower_color.png; sourceTree = "<group>"; };
-		5BAFEC8F17C3E12500B3BAA9 /* defaultIdentificationNoPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultIdentificationNoPhoto.png; sourceTree = "<group>"; };
-		5BAFEC9017C3E12500B3BAA9 /* japanese_maple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = japanese_maple.jpg; sourceTree = "<group>"; };
-		5BAFEC9117C3E12500B3BAA9 /* japanese_maple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = japanese_maple.png; sourceTree = "<group>"; };
-		5BAFEC9217C3E12500B3BAA9 /* red_maple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = red_maple.jpg; sourceTree = "<group>"; };
-		5BAFEC9317C3E12500B3BAA9 /* red_maple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_maple.png; sourceTree = "<group>"; };
-		5BAFEC9417C3E12500B3BAA9 /* red_maple2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = red_maple2.jpg; sourceTree = "<group>"; };
-		5BAFEC9517C3E12500B3BAA9 /* red_maple2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_maple2.png; sourceTree = "<group>"; };
-		5BAFEC9617C3E12500B3BAA9 /* iPhoneTutorialPhoto.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPhoneTutorialPhoto.JPG; sourceTree = "<group>"; };
-		5BAFEC9717C3E12500B3BAA9 /* page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page.png; sourceTree = "<group>"; };
-		5BAFEC9817C3E12500B3BAA9 /* SwitchNoBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwitchNoBig.png; sourceTree = "<group>"; };
-		5BAFEC9917C3E12500B3BAA9 /* SwitchNoSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwitchNoSmall.png; sourceTree = "<group>"; };
-		5BAFEC9A17C3E12500B3BAA9 /* SwitchYesBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwitchYesBig.png; sourceTree = "<group>"; };
-		5BAFEC9B17C3E12500B3BAA9 /* SwitchYesSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwitchYesSmall.png; sourceTree = "<group>"; };
-		5BAFEC9C17C3E12500B3BAA9 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
-		5BAFEC9D17C3E12500B3BAA9 /* test320.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test320.png; sourceTree = "<group>"; };
-		5BAFEC9E17C3E12500B3BAA9 /* tutorialPhoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tutorialPhoto.jpg; sourceTree = "<group>"; };
 		5BBC88B417BECD4A00E524FF /* ProjectComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectComponent.h; sourceTree = "<group>"; };
 		5BBC88B517BECD4A00E524FF /* ProjectComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectComponent.m; sourceTree = "<group>"; };
 		5BF30D8F17A1C6B10071E7EA /* AudioDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDataViewController.h; sourceTree = "<group>"; };
@@ -436,6 +321,143 @@
 		718F371F17B97CB100297EBA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		719D192317BA9D20002A2B24 /* RegisterNewAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterNewAccountViewController.h; sourceTree = "<group>"; };
 		719D192417BA9D20002A2B24 /* RegisterNewAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterNewAccountViewController.m; sourceTree = "<group>"; };
+		71F5809417C40A3200C063DF /* 03-arrow-north.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "03-arrow-north.png"; sourceTree = "<group>"; };
+		71F5809517C40A3200C063DF /* 05-shuffle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "05-shuffle.png"; sourceTree = "<group>"; };
+		71F5809617C40A3200C063DF /* 06-arrow-south.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "06-arrow-south.png"; sourceTree = "<group>"; };
+		71F5809717C40A3200C063DF /* 17-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "17-check.png"; sourceTree = "<group>"; };
+		71F5809817C40A3200C063DF /* 17-checkGREEN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "17-checkGREEN.png"; sourceTree = "<group>"; };
+		71F5809917C40A3200C063DF /* 19-circle-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "19-circle-check.png"; sourceTree = "<group>"; };
+		71F5809A17C40A3200C063DF /* 19-circle-checkGREEN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "19-circle-checkGREEN.png"; sourceTree = "<group>"; };
+		71F5809B17C40A3200C063DF /* 29-circle-pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "29-circle-pause.png"; sourceTree = "<group>"; };
+		71F5809C17C40A3200C063DF /* 298-circlex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "298-circlex.png"; sourceTree = "<group>"; };
+		71F5809D17C40A3200C063DF /* 298-circlex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "298-circlex@2x.png"; sourceTree = "<group>"; };
+		71F5809E17C40A3200C063DF /* 30-circle-play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "30-circle-play.png"; sourceTree = "<group>"; };
+		71F5809F17C40A3200C063DF /* 35-circle-stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "35-circle-stop.png"; sourceTree = "<group>"; };
+		71F580A017C40A3200C063DF /* 37-circle-x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37-circle-x.png"; sourceTree = "<group>"; };
+		71F580A117C40A3200C063DF /* 37-circle-xRED.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37-circle-xRED.png"; sourceTree = "<group>"; };
+		71F580A217C40A3200C063DF /* 60-x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "60-x.png"; sourceTree = "<group>"; };
+		71F580A317C40A3200C063DF /* 60-xRED.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "60-xRED.png"; sourceTree = "<group>"; };
+		71F580A417C40A3200C063DF /* 86-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera.png"; sourceTree = "<group>"; };
+		71F580A517C40A3200C063DF /* carouselBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carouselBackground.png; sourceTree = "<group>"; };
+		71F580A817C40A3200C063DF /* Distribution.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Distribution.png; sourceTree = "<group>"; };
+		71F580A917C40A3200C063DF /* Flower_arrangement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flower_arrangement.png; sourceTree = "<group>"; };
+		71F580AA17C40A3200C063DF /* Flower_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flower_color.png; sourceTree = "<group>"; };
+		71F580AB17C40A3200C063DF /* Flower_symmetry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flower_symmetry.png; sourceTree = "<group>"; };
+		71F580AC17C40A3200C063DF /* Flowering_month.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flowering_month.png; sourceTree = "<group>"; };
+		71F580AD17C40A3200C063DF /* Growth_form.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Growth_form.png; sourceTree = "<group>"; };
+		71F580AE17C40A3200C063DF /* Is_this_plant_cool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Is_this_plant_cool.png; sourceTree = "<group>"; };
+		71F580AF17C40A3200C063DF /* Leaf_arrangement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_arrangement.png; sourceTree = "<group>"; };
+		71F580B017C40A3200C063DF /* Leaf_margin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_margin.png; sourceTree = "<group>"; };
+		71F580B117C40A3200C063DF /* Leaf_shape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_shape.png; sourceTree = "<group>"; };
+		71F580B217C40A3200C063DF /* Leaf_type.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_type.png; sourceTree = "<group>"; };
+		71F580B317C40A3200C063DF /* Leaf_venation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_venation.png; sourceTree = "<group>"; };
+		71F580B417C40A3200C063DF /* Number_flower_parts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Number_flower_parts.png; sourceTree = "<group>"; };
+		71F580B517C40A3200C063DF /* Petiole_present.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Petiole_present.png; sourceTree = "<group>"; };
+		71F580B617C40A3200C063DF /* Plant_height.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Plant_height.png; sourceTree = "<group>"; };
+		71F580B717C40A3200C063DF /* Stem_shape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stem_shape.png; sourceTree = "<group>"; };
+		71F580B817C40A3200C063DF /* Stem_texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stem_texture.png; sourceTree = "<group>"; };
+		71F580BB17C40A3200C063DF /* Distribution-bunches.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Distribution-bunches.png"; sourceTree = "<group>"; };
+		71F580BC17C40A3200C063DF /* Distribution-patches.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Distribution-patches.png"; sourceTree = "<group>"; };
+		71F580BD17C40A3200C063DF /* Distribution-singular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Distribution-singular.png"; sourceTree = "<group>"; };
+		71F580BF17C40A3200C063DF /* Flower_arrangement-corymb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_arrangement-corymb.png"; sourceTree = "<group>"; };
+		71F580C017C40A3200C063DF /* Flower_arrangement-cyme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_arrangement-cyme.png"; sourceTree = "<group>"; };
+		71F580C117C40A3200C063DF /* Flower_arrangement-head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_arrangement-head.png"; sourceTree = "<group>"; };
+		71F580C217C40A3200C063DF /* Flower_arrangement-panicle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_arrangement-panicle.png"; sourceTree = "<group>"; };
+		71F580C317C40A3200C063DF /* Flower_arrangement-raceme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_arrangement-raceme.png"; sourceTree = "<group>"; };
+		71F580C417C40A3200C063DF /* Flower_arrangement-solitary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_arrangement-solitary.png"; sourceTree = "<group>"; };
+		71F580C517C40A3200C063DF /* Flower_arrangement-spike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_arrangement-spike.png"; sourceTree = "<group>"; };
+		71F580C617C40A3200C063DF /* Flower_arrangement-umbel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_arrangement-umbel.png"; sourceTree = "<group>"; };
+		71F580C817C40A3200C063DF /* Flower_color-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-black.png"; sourceTree = "<group>"; };
+		71F580C917C40A3200C063DF /* Flower_color-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-blue.png"; sourceTree = "<group>"; };
+		71F580CA17C40A3200C063DF /* Flower_color-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-green.png"; sourceTree = "<group>"; };
+		71F580CB17C40A3200C063DF /* Flower_color-indigo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-indigo.png"; sourceTree = "<group>"; };
+		71F580CC17C40A3200C063DF /* Flower_color-orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-orange.png"; sourceTree = "<group>"; };
+		71F580CD17C40A3200C063DF /* Flower_color-pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-pink.png"; sourceTree = "<group>"; };
+		71F580CE17C40A3200C063DF /* Flower_color-purple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-purple.png"; sourceTree = "<group>"; };
+		71F580CF17C40A3200C063DF /* Flower_color-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-red.png"; sourceTree = "<group>"; };
+		71F580D017C40A3200C063DF /* Flower_color-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-white.png"; sourceTree = "<group>"; };
+		71F580D117C40A3200C063DF /* Flower_color-yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_color-yellow.png"; sourceTree = "<group>"; };
+		71F580D317C40A3200C063DF /* Flower_symmetry-bilateral.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_symmetry-bilateral.png"; sourceTree = "<group>"; };
+		71F580D417C40A3200C063DF /* Flower_symmetry-radial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flower_symmetry-radial.png"; sourceTree = "<group>"; };
+		71F580D717C40A3200C063DF /* Growth_form-sprawling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Growth_form-sprawling.png"; sourceTree = "<group>"; };
+		71F580D817C40A3200C063DF /* Growth_form-upright_branching.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Growth_form-upright_branching.png"; sourceTree = "<group>"; };
+		71F580DB17C40A3200C063DF /* Leaf_arrangement-alternate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_arrangement-alternate.png"; sourceTree = "<group>"; };
+		71F580DC17C40A3200C063DF /* Leaf_arrangement-basal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_arrangement-basal.png"; sourceTree = "<group>"; };
+		71F580DD17C40A3200C063DF /* Leaf_arrangement-opposite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_arrangement-opposite.png"; sourceTree = "<group>"; };
+		71F580DE17C40A3200C063DF /* Leaf_arrangement-whorled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_arrangement-whorled.png"; sourceTree = "<group>"; };
+		71F580E017C40A3200C063DF /* Leaf_margin-coarsely_toothed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_margin-coarsely_toothed.png"; sourceTree = "<group>"; };
+		71F580E117C40A3200C063DF /* Leaf_margin-doubly_toothed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_margin-doubly_toothed.png"; sourceTree = "<group>"; };
+		71F580E217C40A3200C063DF /* Leaf_margin-entire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_margin-entire.png"; sourceTree = "<group>"; };
+		71F580E317C40A3200C063DF /* Leaf_margin-finely_toothed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_margin-finely_toothed.png"; sourceTree = "<group>"; };
+		71F580E417C40A3200C063DF /* Leaf_margin-lobed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_margin-lobed.png"; sourceTree = "<group>"; };
+		71F580E517C40A3200C063DF /* Leaf_margin-wavy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_margin-wavy.png"; sourceTree = "<group>"; };
+		71F580E617C40A3200C063DF /* Leaf_margin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_margin.png; sourceTree = "<group>"; };
+		71F580E817C40A3200C063DF /* Leaf_shape-cordiform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-cordiform.png"; sourceTree = "<group>"; };
+		71F580E917C40A3200C063DF /* Leaf_shape-divided.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-divided.png"; sourceTree = "<group>"; };
+		71F580EA17C40A3200C063DF /* Leaf_shape-elliptic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-elliptic.png"; sourceTree = "<group>"; };
+		71F580EB17C40A3200C063DF /* Leaf_shape-lanceolate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-lanceolate.png"; sourceTree = "<group>"; };
+		71F580EC17C40A3200C063DF /* Leaf_shape-linear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-linear.png"; sourceTree = "<group>"; };
+		71F580ED17C40A3200C063DF /* Leaf_shape-lobed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-lobed.png"; sourceTree = "<group>"; };
+		71F580EE17C40A3200C063DF /* Leaf_shape-oblong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-oblong.png"; sourceTree = "<group>"; };
+		71F580EF17C40A3200C063DF /* Leaf_shape-obovate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-obovate.png"; sourceTree = "<group>"; };
+		71F580F017C40A3200C063DF /* Leaf_shape-orbicular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-orbicular.png"; sourceTree = "<group>"; };
+		71F580F117C40A3200C063DF /* Leaf_shape-ovate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-ovate.png"; sourceTree = "<group>"; };
+		71F580F217C40A3200C063DF /* Leaf_shape-reniform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-reniform.png"; sourceTree = "<group>"; };
+		71F580F317C40A3200C063DF /* Leaf_shape-spatulate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_shape-spatulate.png"; sourceTree = "<group>"; };
+		71F580F517C40A3200C063DF /* Leaf_type-bipinnate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_type-bipinnate.png"; sourceTree = "<group>"; };
+		71F580F617C40A3200C063DF /* Leaf_type-palmate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_type-palmate.png"; sourceTree = "<group>"; };
+		71F580F717C40A3200C063DF /* Leaf_type-pinnate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_type-pinnate.png"; sourceTree = "<group>"; };
+		71F580F817C40A3200C063DF /* Leaf_type-simple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_type-simple.png"; sourceTree = "<group>"; };
+		71F580F917C40A3200C063DF /* Leaf_type-trifoliate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_type-trifoliate.png"; sourceTree = "<group>"; };
+		71F580FB17C40A3200C063DF /* Leaf_venation-branched.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_venation-branched.png"; sourceTree = "<group>"; };
+		71F580FC17C40A3200C063DF /* Leaf_venation-parallel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Leaf_venation-parallel.png"; sourceTree = "<group>"; };
+		71F580FE17C40A3200C063DF /* Number_flower_parts-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Number_flower_parts-3.png"; sourceTree = "<group>"; };
+		71F580FF17C40A3200C063DF /* Number_flower_parts-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Number_flower_parts-4.png"; sourceTree = "<group>"; };
+		71F5810017C40A3200C063DF /* Number_flower_parts-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Number_flower_parts-5.png"; sourceTree = "<group>"; };
+		71F5810117C40A3200C063DF /* Number_flower_parts-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Number_flower_parts-6.png"; sourceTree = "<group>"; };
+		71F5810217C40A3200C063DF /* Number_flower_parts-more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Number_flower_parts-more.png"; sourceTree = "<group>"; };
+		71F5810617C40A3200C063DF /* Stem_shape-ridged.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stem_shape-ridged.png"; sourceTree = "<group>"; };
+		71F5810717C40A3200C063DF /* Stem_shape-round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stem_shape-round.png"; sourceTree = "<group>"; };
+		71F5810817C40A3200C063DF /* Stem_shape-square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stem_shape-square.png"; sourceTree = "<group>"; };
+		71F5810A17C40A3200C063DF /* Stem_texture-fuzzy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stem_texture-fuzzy.png"; sourceTree = "<group>"; };
+		71F5810B17C40A3200C063DF /* Stem_texture-hairless.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stem_texture-hairless.png"; sourceTree = "<group>"; };
+		71F5810C17C40A3200C063DF /* Stem_texture-hairy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stem_texture-hairy.png"; sourceTree = "<group>"; };
+		71F5810D17C40A3200C063DF /* Stem_texture-prickly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stem_texture-prickly.png"; sourceTree = "<group>"; };
+		71F5810F17C40A3200C063DF /* Distribution_TutorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Distribution_TutorialLarge.png; sourceTree = "<group>"; };
+		71F5811017C40A3200C063DF /* Flower_arrangement_TutorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flower_arrangement_TutorialLarge.png; sourceTree = "<group>"; };
+		71F5811117C40A3200C063DF /* Flower_color_TutorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flower_color_TutorialLarge.png; sourceTree = "<group>"; };
+		71F5811217C40A3200C063DF /* Flower_symmetry_TutorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flower_symmetry_TutorialLarge.png; sourceTree = "<group>"; };
+		71F5811317C40A3200C063DF /* Growth_form_TutorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Growth_form_TutorialLarge.png; sourceTree = "<group>"; };
+		71F5811417C40A3200C063DF /* Leaf_margin_TutorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_margin_TutorialLarge.png; sourceTree = "<group>"; };
+		71F5811517C40A3200C063DF /* Leaf_shape_TutorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_shape_TutorialLarge.png; sourceTree = "<group>"; };
+		71F5811617C40A3200C063DF /* Leaf_venation_TutorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_venation_TutorialLarge.png; sourceTree = "<group>"; };
+		71F5811717C40A3200C063DF /* Number_of_flower_parts_TutorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Number_of_flower_parts_TutorialLarge.png; sourceTree = "<group>"; };
+		71F5811817C40A3200C063DF /* Petiole_present_TutorialSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Petiole_present_TutorialSmall.png; sourceTree = "<group>"; };
+		71F5811917C40A3200C063DF /* Plant_height_TutorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Plant_height_TutorialLarge.png; sourceTree = "<group>"; };
+		71F5811A17C40A3200C063DF /* Plant_height_TutorialSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Plant_height_TutorialSmall.png; sourceTree = "<group>"; };
+		71F5811B17C40A3200C063DF /* Stem_shape_TutorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stem_shape_TutorialLarge.png; sourceTree = "<group>"; };
+		71F5811C17C40A3200C063DF /* Plant_height ruler.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plant_height ruler.png"; sourceTree = "<group>"; };
+		71F5811E17C40A3200C063DF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		71F5811F17C40A3200C063DF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		71F5812017C40A3200C063DF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		71F5812117C40A3200C063DF /* Flower_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flower_color.png; sourceTree = "<group>"; };
+		71F5812317C40A3200C063DF /* defaultIdentificationNoPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultIdentificationNoPhoto.png; sourceTree = "<group>"; };
+		71F5812417C40A3200C063DF /* japanese_maple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = japanese_maple.jpg; sourceTree = "<group>"; };
+		71F5812517C40A3200C063DF /* japanese_maple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = japanese_maple.png; sourceTree = "<group>"; };
+		71F5812617C40A3200C063DF /* red_maple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = red_maple.jpg; sourceTree = "<group>"; };
+		71F5812717C40A3200C063DF /* red_maple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_maple.png; sourceTree = "<group>"; };
+		71F5812817C40A3200C063DF /* red_maple2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = red_maple2.jpg; sourceTree = "<group>"; };
+		71F5812917C40A3200C063DF /* red_maple2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_maple2.png; sourceTree = "<group>"; };
+		71F5812A17C40A3200C063DF /* iPhoneTutorialPhoto.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPhoneTutorialPhoto.JPG; sourceTree = "<group>"; };
+		71F5812B17C40A3200C063DF /* page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page.png; sourceTree = "<group>"; };
+		71F5812C17C40A3200C063DF /* SwitchNoBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwitchNoBig.png; sourceTree = "<group>"; };
+		71F5812D17C40A3200C063DF /* SwitchNoSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwitchNoSmall.png; sourceTree = "<group>"; };
+		71F5812E17C40A3200C063DF /* SwitchYesBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwitchYesBig.png; sourceTree = "<group>"; };
+		71F5812F17C40A3200C063DF /* SwitchYesSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwitchYesSmall.png; sourceTree = "<group>"; };
+		71F5813017C40A3200C063DF /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
+		71F5813117C40A3200C063DF /* test320.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test320.png; sourceTree = "<group>"; };
+		71F5813217C40A3200C063DF /* tutorialPhoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tutorialPhoto.jpg; sourceTree = "<group>"; };
+		71F581BF17C416BB00C063DF /* Growth_form-upright_few_to_no_branches.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Growth_form-upright_few_to_no_branches.png"; sourceTree = "<group>"; };
 		71FF69A31794819200E2B411 /* FieldResearchNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldResearchNavigationController.h; sourceTree = "<group>"; };
 		71FF69A41794819200E2B411 /* FieldResearchNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FieldResearchNavigationController.m; sourceTree = "<group>"; };
 		71FF69A71794819200E2B411 /* ObservationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservationViewController.h; sourceTree = "<group>"; };
@@ -500,281 +522,6 @@
 				5B82BD8817972005008CB441 /* iCarousel.m */,
 			);
 			name = iCarousel;
-			sourceTree = "<group>";
-		};
-		5BAFEC0917C3E12500B3BAA9 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFEC0A17C3E12500B3BAA9 /* 03-arrow-north.png */,
-				5BAFEC0B17C3E12500B3BAA9 /* 05-shuffle.png */,
-				5BAFEC0C17C3E12500B3BAA9 /* 06-arrow-south.png */,
-				5BAFEC0D17C3E12500B3BAA9 /* 17-check.png */,
-				5BAFEC0E17C3E12500B3BAA9 /* 17-checkGREEN.png */,
-				5BAFEC0F17C3E12500B3BAA9 /* 19-circle-check.png */,
-				5BAFEC1017C3E12500B3BAA9 /* 19-circle-checkGREEN.png */,
-				5BAFEC1117C3E12500B3BAA9 /* 29-circle-pause.png */,
-				5BAFEC1217C3E12500B3BAA9 /* 298-circlex.png */,
-				5BAFEC1317C3E12500B3BAA9 /* 298-circlex@2x.png */,
-				5BAFEC1417C3E12500B3BAA9 /* 30-circle-play.png */,
-				5BAFEC1517C3E12500B3BAA9 /* 35-circle-stop.png */,
-				5BAFEC1617C3E12500B3BAA9 /* 37-circle-x.png */,
-				5BAFEC1717C3E12500B3BAA9 /* 37-circle-xRED.png */,
-				5BAFEC1817C3E12500B3BAA9 /* 60-x.png */,
-				5BAFEC1917C3E12500B3BAA9 /* 60-xRED.png */,
-				5BAFEC1A17C3E12500B3BAA9 /* 86-camera.png */,
-				5BAFEC1B17C3E12500B3BAA9 /* carouselBackground.png */,
-				5BAFEC1C17C3E12500B3BAA9 /* Components */,
-				5BAFEC8A17C3E12500B3BAA9 /* Default-568h@2x.png */,
-				5BAFEC8B17C3E12500B3BAA9 /* Default.png */,
-				5BAFEC8C17C3E12500B3BAA9 /* Default@2x.png */,
-				5BAFEC8D17C3E12500B3BAA9 /* Flower_color.png */,
-				5BAFEC8E17C3E12500B3BAA9 /* Identifications */,
-				5BAFEC9617C3E12500B3BAA9 /* iPhoneTutorialPhoto.JPG */,
-				5BAFEC9717C3E12500B3BAA9 /* page.png */,
-				5BAFEC9817C3E12500B3BAA9 /* SwitchNoBig.png */,
-				5BAFEC9917C3E12500B3BAA9 /* SwitchNoSmall.png */,
-				5BAFEC9A17C3E12500B3BAA9 /* SwitchYesBig.png */,
-				5BAFEC9B17C3E12500B3BAA9 /* SwitchYesSmall.png */,
-				5BAFEC9C17C3E12500B3BAA9 /* test.png */,
-				5BAFEC9D17C3E12500B3BAA9 /* test320.png */,
-				5BAFEC9E17C3E12500B3BAA9 /* tutorialPhoto.jpg */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		5BAFEC1C17C3E12500B3BAA9 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFEC1D17C3E12500B3BAA9 /* ComponentPNG */,
-				5BAFEC2F17C3E12500B3BAA9 /* ComponentPossibilityPNG */,
-				5BAFEC7B17C3E12500B3BAA9 /* ComponentTutorial */,
-				5BAFEC8817C3E12500B3BAA9 /* Plant_height ruler.png */,
-				5BAFEC8917C3E12500B3BAA9 /* Plant_height.png */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		5BAFEC1D17C3E12500B3BAA9 /* ComponentPNG */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFEC1E17C3E12500B3BAA9 /* Distribution.png */,
-				5BAFEC1F17C3E12500B3BAA9 /* Flower_arrangement.png */,
-				5BAFEC2017C3E12500B3BAA9 /* Flower_color.png */,
-				5BAFEC2117C3E12500B3BAA9 /* Flower_symmetry.png */,
-				5BAFEC2217C3E12500B3BAA9 /* Flowering_month.png */,
-				5BAFEC2317C3E12500B3BAA9 /* Growth_form.png */,
-				5BAFEC2417C3E12500B3BAA9 /* Is_this_plant_cool.png */,
-				5BAFEC2517C3E12500B3BAA9 /* Leaf_arrangement.png */,
-				5BAFEC2617C3E12500B3BAA9 /* Leaf_margin.png */,
-				5BAFEC2717C3E12500B3BAA9 /* Leaf_shape.png */,
-				5BAFEC2817C3E12500B3BAA9 /* Leaf_type.png */,
-				5BAFEC2917C3E12500B3BAA9 /* Leaf_venation.png */,
-				5BAFEC2A17C3E12500B3BAA9 /* Number_flower_parts.png */,
-				5BAFEC2B17C3E12500B3BAA9 /* Petiole_present.png */,
-				5BAFEC2C17C3E12500B3BAA9 /* Plant_height.png */,
-				5BAFEC2D17C3E12500B3BAA9 /* Stem_shape.png */,
-				5BAFEC2E17C3E12500B3BAA9 /* Stem_texture.png */,
-			);
-			path = ComponentPNG;
-			sourceTree = "<group>";
-		};
-		5BAFEC2F17C3E12500B3BAA9 /* ComponentPossibilityPNG */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFEC3017C3E12500B3BAA9 /* Distribution */,
-				5BAFEC3417C3E12500B3BAA9 /* Flower_arrangement */,
-				5BAFEC3D17C3E12500B3BAA9 /* Flower_color */,
-				5BAFEC4817C3E12500B3BAA9 /* Flower_symmetry */,
-				5BAFEC4B17C3E12500B3BAA9 /* Growth_form */,
-				5BAFEC4F17C3E12500B3BAA9 /* Leaf_arrangement */,
-				5BAFEC5417C3E12500B3BAA9 /* Leaf_margin */,
-				5BAFEC5C17C3E12500B3BAA9 /* Leaf_shape */,
-				5BAFEC6917C3E12500B3BAA9 /* Leaf_type */,
-				5BAFEC6F17C3E12500B3BAA9 /* Leaf_venation */,
-				5BAFEC7217C3E12500B3BAA9 /* Stem_shape */,
-				5BAFEC7617C3E12500B3BAA9 /* Stem_texture */,
-			);
-			path = ComponentPossibilityPNG;
-			sourceTree = "<group>";
-		};
-		5BAFEC3017C3E12500B3BAA9 /* Distribution */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFEC3117C3E12500B3BAA9 /* Distribution-bunches.png */,
-				5BAFEC3217C3E12500B3BAA9 /* Distribution-patches.png */,
-				5BAFEC3317C3E12500B3BAA9 /* Distribution-singular.png */,
-			);
-			path = Distribution;
-			sourceTree = "<group>";
-		};
-		5BAFEC3417C3E12500B3BAA9 /* Flower_arrangement */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFEC3517C3E12500B3BAA9 /* Flower_arrangement-Corymb.png */,
-				5BAFEC3617C3E12500B3BAA9 /* Flower_arrangement-Cyme.png */,
-				5BAFEC3717C3E12500B3BAA9 /* Flower_arrangement-Head.png */,
-				5BAFEC3817C3E12500B3BAA9 /* Flower_arrangement-Panicle.png */,
-				5BAFEC3917C3E12500B3BAA9 /* Flower_arrangement-Raceme.png */,
-				5BAFEC3A17C3E12500B3BAA9 /* Flower_arrangement-Solitary.png */,
-				5BAFEC3B17C3E12500B3BAA9 /* Flower_arrangement-Spike.png */,
-				5BAFEC3C17C3E12500B3BAA9 /* Flower_arrangement-Umbel.png */,
-			);
-			path = Flower_arrangement;
-			sourceTree = "<group>";
-		};
-		5BAFEC3D17C3E12500B3BAA9 /* Flower_color */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFEC3E17C3E12500B3BAA9 /* Flower_color-Black.png */,
-				5BAFEC3F17C3E12500B3BAA9 /* Flower_color-Blue.png */,
-				5BAFEC4017C3E12500B3BAA9 /* Flower_color-Green.png */,
-				5BAFEC4117C3E12500B3BAA9 /* Flower_color-Indigo.png */,
-				5BAFEC4217C3E12500B3BAA9 /* Flower_color-Orange.png */,
-				5BAFEC4317C3E12500B3BAA9 /* Flower_color-Pink.png */,
-				5BAFEC4417C3E12500B3BAA9 /* Flower_color-Purple.png */,
-				5BAFEC4517C3E12500B3BAA9 /* Flower_color-Red.png */,
-				5BAFEC4617C3E12500B3BAA9 /* Flower_color-White.png */,
-				5BAFEC4717C3E12500B3BAA9 /* Flower_color-Yellow.png */,
-			);
-			path = Flower_color;
-			sourceTree = "<group>";
-		};
-		5BAFEC4817C3E12500B3BAA9 /* Flower_symmetry */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFEC4917C3E12500B3BAA9 /* Flower_symmetry-bilateral.png */,
-				5BAFEC4A17C3E12500B3BAA9 /* Flower_symmetry-radial.png */,
-			);
-			path = Flower_symmetry;
-			sourceTree = "<group>";
-		};
-		5BAFEC4B17C3E12500B3BAA9 /* Growth_form */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFEC4C17C3E12500B3BAA9 /* Growth_form-sprawling.png */,
-				5BAFEC4D17C3E12500B3BAA9 /* Growth_form-upright_branching.png */,
-				5BAFEC4E17C3E12500B3BAA9 /* Growth_form-upright_few_to_no_branches.png */,
-			);
-			path = Growth_form;
-			sourceTree = "<group>";
-		};
-		5BAFEC4F17C3E12500B3BAA9 /* Leaf_arrangement */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFEC5017C3E12500B3BAA9 /* Leaf_arrangement-Alternate.png */,
-				5BAFEC5117C3E12500B3BAA9 /* Leaf_arrangement-Basal.png */,
-				5BAFEC5217C3E12500B3BAA9 /* Leaf_arrangement-Opposite.png */,
-				5BAFEC5317C3E12500B3BAA9 /* Leaf_arrangement-Whorled.png */,
-			);
-			path = Leaf_arrangement;
-			sourceTree = "<group>";
-		};
-		5BAFEC5417C3E12500B3BAA9 /* Leaf_margin */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFEC5517C3E12500B3BAA9 /* Leaf_margin-coarsely_toothed.png */,
-				5BAFEC5617C3E12500B3BAA9 /* Leaf_margin-doubly_toothed.png */,
-				5BAFEC5717C3E12500B3BAA9 /* Leaf_margin-entire.png */,
-				5BAFEC5817C3E12500B3BAA9 /* Leaf_margin-finely_toothed.png */,
-				5BAFEC5917C3E12500B3BAA9 /* Leaf_margin-lobed.png */,
-				5BAFEC5A17C3E12500B3BAA9 /* Leaf_margin-wavy.png */,
-				5BAFEC5B17C3E12500B3BAA9 /* Leaf_margin.png */,
-			);
-			path = Leaf_margin;
-			sourceTree = "<group>";
-		};
-		5BAFEC5C17C3E12500B3BAA9 /* Leaf_shape */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFEC5D17C3E12500B3BAA9 /* Leaf_shape-Cordiform.png */,
-				5BAFEC5E17C3E12500B3BAA9 /* Leaf_shape-Divided.png */,
-				5BAFEC5F17C3E12500B3BAA9 /* Leaf_shape-Elliptic.png */,
-				5BAFEC6017C3E12500B3BAA9 /* Leaf_shape-Lanceolate.png */,
-				5BAFEC6117C3E12500B3BAA9 /* Leaf_shape-Linear.png */,
-				5BAFEC6217C3E12500B3BAA9 /* Leaf_shape-Lobed.png */,
-				5BAFEC6317C3E12500B3BAA9 /* Leaf_shape-Oblong.png */,
-				5BAFEC6417C3E12500B3BAA9 /* Leaf_shape-Obovate.png */,
-				5BAFEC6517C3E12500B3BAA9 /* Leaf_shape-Orbicular.png */,
-				5BAFEC6617C3E12500B3BAA9 /* Leaf_shape-Ovate.png */,
-				5BAFEC6717C3E12500B3BAA9 /* Leaf_shape-Reniform.png */,
-				5BAFEC6817C3E12500B3BAA9 /* Leaf_shape-Spatulate.png */,
-			);
-			path = Leaf_shape;
-			sourceTree = "<group>";
-		};
-		5BAFEC6917C3E12500B3BAA9 /* Leaf_type */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFEC6A17C3E12500B3BAA9 /* Leaf_type-Bipinnate.png */,
-				5BAFEC6B17C3E12500B3BAA9 /* Leaf_type-Palmate.png */,
-				5BAFEC6C17C3E12500B3BAA9 /* Leaf_type-Pinnate.png */,
-				5BAFEC6D17C3E12500B3BAA9 /* Leaf_type-Simple.png */,
-				5BAFEC6E17C3E12500B3BAA9 /* Leaf_type-Trifoliate.png */,
-			);
-			path = Leaf_type;
-			sourceTree = "<group>";
-		};
-		5BAFEC6F17C3E12500B3BAA9 /* Leaf_venation */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFEC7017C3E12500B3BAA9 /* Leaf_venation-Branched.png */,
-				5BAFEC7117C3E12500B3BAA9 /* Leaf_venation-Parallel.png */,
-			);
-			path = Leaf_venation;
-			sourceTree = "<group>";
-		};
-		5BAFEC7217C3E12500B3BAA9 /* Stem_shape */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFEC7317C3E12500B3BAA9 /* Stem_shape-ridged.png */,
-				5BAFEC7417C3E12500B3BAA9 /* Stem_shape-round.png */,
-				5BAFEC7517C3E12500B3BAA9 /* Stem_shape-square.png */,
-			);
-			path = Stem_shape;
-			sourceTree = "<group>";
-		};
-		5BAFEC7617C3E12500B3BAA9 /* Stem_texture */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFEC7717C3E12500B3BAA9 /* Stem_texture-fuzzy.png */,
-				5BAFEC7817C3E12500B3BAA9 /* Stem_texture-hairless.png */,
-				5BAFEC7917C3E12500B3BAA9 /* Stem_texture-hairy.png */,
-				5BAFEC7A17C3E12500B3BAA9 /* Stem_texture-prickly.png */,
-			);
-			path = Stem_texture;
-			sourceTree = "<group>";
-		};
-		5BAFEC7B17C3E12500B3BAA9 /* ComponentTutorial */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFEC7C17C3E12500B3BAA9 /* Distribution_TurorialLarge.png */,
-				5BAFEC7D17C3E12500B3BAA9 /* Flower_arrangement_TurorialLarge.png */,
-				5BAFEC7E17C3E12500B3BAA9 /* Flower_color_TurorialLarge.png */,
-				5BAFEC7F17C3E12500B3BAA9 /* Flower_symmetry_TurorialLarge.png */,
-				5BAFEC8017C3E12500B3BAA9 /* Growth_form_TurorialLarge.png */,
-				5BAFEC8117C3E12500B3BAA9 /* Leaf_margin_TurorialLarge.png */,
-				5BAFEC8217C3E12500B3BAA9 /* Leaf_shape_TurorialLarge.png */,
-				5BAFEC8317C3E12500B3BAA9 /* Leaf_venation_TurorialLarge.png */,
-				5BAFEC8417C3E12500B3BAA9 /* Number_of_flower_parts_TurorialLarge.png */,
-				5BAFEC8517C3E12500B3BAA9 /* Petiole_present_TutorialSmall.png */,
-				5BAFEC8617C3E12500B3BAA9 /* Plant_height_TurorialLarge.png */,
-				5BAFEC8717C3E12500B3BAA9 /* Stem_shape_TurorialLarge.png */,
-			);
-			path = ComponentTutorial;
-			sourceTree = "<group>";
-		};
-		5BAFEC8E17C3E12500B3BAA9 /* Identifications */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFEC8F17C3E12500B3BAA9 /* defaultIdentificationNoPhoto.png */,
-				5BAFEC9017C3E12500B3BAA9 /* japanese_maple.jpg */,
-				5BAFEC9117C3E12500B3BAA9 /* japanese_maple.png */,
-				5BAFEC9217C3E12500B3BAA9 /* red_maple.jpg */,
-				5BAFEC9317C3E12500B3BAA9 /* red_maple.png */,
-				5BAFEC9417C3E12500B3BAA9 /* red_maple2.jpg */,
-				5BAFEC9517C3E12500B3BAA9 /* red_maple2.png */,
-			);
-			path = Identifications;
 			sourceTree = "<group>";
 		};
 		5BF30D8D17A1C63C0071E7EA /* DataViewControllers */ = {
@@ -908,6 +655,318 @@
 			name = InterpretationViewControllers;
 			sourceTree = "<group>";
 		};
+		71F5809317C40A3200C063DF /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				71F5809417C40A3200C063DF /* 03-arrow-north.png */,
+				71F5809517C40A3200C063DF /* 05-shuffle.png */,
+				71F5809617C40A3200C063DF /* 06-arrow-south.png */,
+				71F5809717C40A3200C063DF /* 17-check.png */,
+				71F5809817C40A3200C063DF /* 17-checkGREEN.png */,
+				71F5809917C40A3200C063DF /* 19-circle-check.png */,
+				71F5809A17C40A3200C063DF /* 19-circle-checkGREEN.png */,
+				71F5809B17C40A3200C063DF /* 29-circle-pause.png */,
+				71F5809C17C40A3200C063DF /* 298-circlex.png */,
+				71F5809D17C40A3200C063DF /* 298-circlex@2x.png */,
+				71F5809E17C40A3200C063DF /* 30-circle-play.png */,
+				71F5809F17C40A3200C063DF /* 35-circle-stop.png */,
+				71F580A017C40A3200C063DF /* 37-circle-x.png */,
+				71F580A117C40A3200C063DF /* 37-circle-xRED.png */,
+				71F580A217C40A3200C063DF /* 60-x.png */,
+				71F580A317C40A3200C063DF /* 60-xRED.png */,
+				71F580A417C40A3200C063DF /* 86-camera.png */,
+				71F580A517C40A3200C063DF /* carouselBackground.png */,
+				71F580A617C40A3200C063DF /* Components */,
+				71F5811E17C40A3200C063DF /* Default-568h@2x.png */,
+				71F5811F17C40A3200C063DF /* Default.png */,
+				71F5812017C40A3200C063DF /* Default@2x.png */,
+				71F5812117C40A3200C063DF /* Flower_color.png */,
+				71F5812217C40A3200C063DF /* Identifications */,
+				71F5812A17C40A3200C063DF /* iPhoneTutorialPhoto.JPG */,
+				71F5812B17C40A3200C063DF /* page.png */,
+				71F5812C17C40A3200C063DF /* SwitchNoBig.png */,
+				71F5812D17C40A3200C063DF /* SwitchNoSmall.png */,
+				71F5812E17C40A3200C063DF /* SwitchYesBig.png */,
+				71F5812F17C40A3200C063DF /* SwitchYesSmall.png */,
+				71F5813017C40A3200C063DF /* test.png */,
+				71F5813117C40A3200C063DF /* test320.png */,
+				71F5813217C40A3200C063DF /* tutorialPhoto.jpg */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		71F580A617C40A3200C063DF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				71F580A717C40A3200C063DF /* ComponentPNG */,
+				71F580B917C40A3200C063DF /* ComponentPossibilityPNG */,
+				71F5810E17C40A3200C063DF /* ComponentTutorial */,
+				71F5811C17C40A3200C063DF /* Plant_height ruler.png */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		71F580A717C40A3200C063DF /* ComponentPNG */ = {
+			isa = PBXGroup;
+			children = (
+				71F580A817C40A3200C063DF /* Distribution.png */,
+				71F580A917C40A3200C063DF /* Flower_arrangement.png */,
+				71F580AA17C40A3200C063DF /* Flower_color.png */,
+				71F580AB17C40A3200C063DF /* Flower_symmetry.png */,
+				71F580AC17C40A3200C063DF /* Flowering_month.png */,
+				71F580AD17C40A3200C063DF /* Growth_form.png */,
+				71F580AE17C40A3200C063DF /* Is_this_plant_cool.png */,
+				71F580AF17C40A3200C063DF /* Leaf_arrangement.png */,
+				71F580B017C40A3200C063DF /* Leaf_margin.png */,
+				71F580B117C40A3200C063DF /* Leaf_shape.png */,
+				71F580B217C40A3200C063DF /* Leaf_type.png */,
+				71F580B317C40A3200C063DF /* Leaf_venation.png */,
+				71F580B417C40A3200C063DF /* Number_flower_parts.png */,
+				71F580B517C40A3200C063DF /* Petiole_present.png */,
+				71F580B617C40A3200C063DF /* Plant_height.png */,
+				71F580B717C40A3200C063DF /* Stem_shape.png */,
+				71F580B817C40A3200C063DF /* Stem_texture.png */,
+			);
+			path = ComponentPNG;
+			sourceTree = "<group>";
+		};
+		71F580B917C40A3200C063DF /* ComponentPossibilityPNG */ = {
+			isa = PBXGroup;
+			children = (
+				71F580BA17C40A3200C063DF /* Distribution */,
+				71F580BE17C40A3200C063DF /* Flower_arrangement */,
+				71F580C717C40A3200C063DF /* Flower_color */,
+				71F580D217C40A3200C063DF /* Flower_symmetry */,
+				71F580D517C40A3200C063DF /* Flowering_month */,
+				71F580D617C40A3200C063DF /* Growth_form */,
+				71F580DA17C40A3200C063DF /* Leaf_arrangement */,
+				71F580DF17C40A3200C063DF /* Leaf_margin */,
+				71F580E717C40A3200C063DF /* Leaf_shape */,
+				71F580F417C40A3200C063DF /* Leaf_type */,
+				71F580FA17C40A3200C063DF /* Leaf_venation */,
+				71F580FD17C40A3200C063DF /* Number_flower_parts */,
+				71F5810317C40A3200C063DF /* Petiole_present */,
+				71F5810417C40A3200C063DF /* Plant_height */,
+				71F5810517C40A3200C063DF /* Stem_shape */,
+				71F5810917C40A3200C063DF /* Stem_texture */,
+			);
+			path = ComponentPossibilityPNG;
+			sourceTree = "<group>";
+		};
+		71F580BA17C40A3200C063DF /* Distribution */ = {
+			isa = PBXGroup;
+			children = (
+				71F580BB17C40A3200C063DF /* Distribution-bunches.png */,
+				71F580BC17C40A3200C063DF /* Distribution-patches.png */,
+				71F580BD17C40A3200C063DF /* Distribution-singular.png */,
+			);
+			path = Distribution;
+			sourceTree = "<group>";
+		};
+		71F580BE17C40A3200C063DF /* Flower_arrangement */ = {
+			isa = PBXGroup;
+			children = (
+				71F580BF17C40A3200C063DF /* Flower_arrangement-corymb.png */,
+				71F580C017C40A3200C063DF /* Flower_arrangement-cyme.png */,
+				71F580C117C40A3200C063DF /* Flower_arrangement-head.png */,
+				71F580C217C40A3200C063DF /* Flower_arrangement-panicle.png */,
+				71F580C317C40A3200C063DF /* Flower_arrangement-raceme.png */,
+				71F580C417C40A3200C063DF /* Flower_arrangement-solitary.png */,
+				71F580C517C40A3200C063DF /* Flower_arrangement-spike.png */,
+				71F580C617C40A3200C063DF /* Flower_arrangement-umbel.png */,
+			);
+			path = Flower_arrangement;
+			sourceTree = "<group>";
+		};
+		71F580C717C40A3200C063DF /* Flower_color */ = {
+			isa = PBXGroup;
+			children = (
+				71F580C817C40A3200C063DF /* Flower_color-black.png */,
+				71F580C917C40A3200C063DF /* Flower_color-blue.png */,
+				71F580CA17C40A3200C063DF /* Flower_color-green.png */,
+				71F580CB17C40A3200C063DF /* Flower_color-indigo.png */,
+				71F580CC17C40A3200C063DF /* Flower_color-orange.png */,
+				71F580CD17C40A3200C063DF /* Flower_color-pink.png */,
+				71F580CE17C40A3200C063DF /* Flower_color-purple.png */,
+				71F580CF17C40A3200C063DF /* Flower_color-red.png */,
+				71F580D017C40A3200C063DF /* Flower_color-white.png */,
+				71F580D117C40A3200C063DF /* Flower_color-yellow.png */,
+			);
+			path = Flower_color;
+			sourceTree = "<group>";
+		};
+		71F580D217C40A3200C063DF /* Flower_symmetry */ = {
+			isa = PBXGroup;
+			children = (
+				71F580D317C40A3200C063DF /* Flower_symmetry-bilateral.png */,
+				71F580D417C40A3200C063DF /* Flower_symmetry-radial.png */,
+			);
+			path = Flower_symmetry;
+			sourceTree = "<group>";
+		};
+		71F580D517C40A3200C063DF /* Flowering_month */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Flowering_month;
+			sourceTree = "<group>";
+		};
+		71F580D617C40A3200C063DF /* Growth_form */ = {
+			isa = PBXGroup;
+			children = (
+				71F581BF17C416BB00C063DF /* Growth_form-upright_few_to_no_branches.png */,
+				71F580D717C40A3200C063DF /* Growth_form-sprawling.png */,
+				71F580D817C40A3200C063DF /* Growth_form-upright_branching.png */,
+			);
+			path = Growth_form;
+			sourceTree = "<group>";
+		};
+		71F580DA17C40A3200C063DF /* Leaf_arrangement */ = {
+			isa = PBXGroup;
+			children = (
+				71F580DB17C40A3200C063DF /* Leaf_arrangement-alternate.png */,
+				71F580DC17C40A3200C063DF /* Leaf_arrangement-basal.png */,
+				71F580DD17C40A3200C063DF /* Leaf_arrangement-opposite.png */,
+				71F580DE17C40A3200C063DF /* Leaf_arrangement-whorled.png */,
+			);
+			path = Leaf_arrangement;
+			sourceTree = "<group>";
+		};
+		71F580DF17C40A3200C063DF /* Leaf_margin */ = {
+			isa = PBXGroup;
+			children = (
+				71F580E017C40A3200C063DF /* Leaf_margin-coarsely_toothed.png */,
+				71F580E117C40A3200C063DF /* Leaf_margin-doubly_toothed.png */,
+				71F580E217C40A3200C063DF /* Leaf_margin-entire.png */,
+				71F580E317C40A3200C063DF /* Leaf_margin-finely_toothed.png */,
+				71F580E417C40A3200C063DF /* Leaf_margin-lobed.png */,
+				71F580E517C40A3200C063DF /* Leaf_margin-wavy.png */,
+				71F580E617C40A3200C063DF /* Leaf_margin.png */,
+			);
+			path = Leaf_margin;
+			sourceTree = "<group>";
+		};
+		71F580E717C40A3200C063DF /* Leaf_shape */ = {
+			isa = PBXGroup;
+			children = (
+				71F580E817C40A3200C063DF /* Leaf_shape-cordiform.png */,
+				71F580E917C40A3200C063DF /* Leaf_shape-divided.png */,
+				71F580EA17C40A3200C063DF /* Leaf_shape-elliptic.png */,
+				71F580EB17C40A3200C063DF /* Leaf_shape-lanceolate.png */,
+				71F580EC17C40A3200C063DF /* Leaf_shape-linear.png */,
+				71F580ED17C40A3200C063DF /* Leaf_shape-lobed.png */,
+				71F580EE17C40A3200C063DF /* Leaf_shape-oblong.png */,
+				71F580EF17C40A3200C063DF /* Leaf_shape-obovate.png */,
+				71F580F017C40A3200C063DF /* Leaf_shape-orbicular.png */,
+				71F580F117C40A3200C063DF /* Leaf_shape-ovate.png */,
+				71F580F217C40A3200C063DF /* Leaf_shape-reniform.png */,
+				71F580F317C40A3200C063DF /* Leaf_shape-spatulate.png */,
+			);
+			path = Leaf_shape;
+			sourceTree = "<group>";
+		};
+		71F580F417C40A3200C063DF /* Leaf_type */ = {
+			isa = PBXGroup;
+			children = (
+				71F580F517C40A3200C063DF /* Leaf_type-bipinnate.png */,
+				71F580F617C40A3200C063DF /* Leaf_type-palmate.png */,
+				71F580F717C40A3200C063DF /* Leaf_type-pinnate.png */,
+				71F580F817C40A3200C063DF /* Leaf_type-simple.png */,
+				71F580F917C40A3200C063DF /* Leaf_type-trifoliate.png */,
+			);
+			path = Leaf_type;
+			sourceTree = "<group>";
+		};
+		71F580FA17C40A3200C063DF /* Leaf_venation */ = {
+			isa = PBXGroup;
+			children = (
+				71F580FB17C40A3200C063DF /* Leaf_venation-branched.png */,
+				71F580FC17C40A3200C063DF /* Leaf_venation-parallel.png */,
+			);
+			path = Leaf_venation;
+			sourceTree = "<group>";
+		};
+		71F580FD17C40A3200C063DF /* Number_flower_parts */ = {
+			isa = PBXGroup;
+			children = (
+				71F580FE17C40A3200C063DF /* Number_flower_parts-3.png */,
+				71F580FF17C40A3200C063DF /* Number_flower_parts-4.png */,
+				71F5810017C40A3200C063DF /* Number_flower_parts-5.png */,
+				71F5810117C40A3200C063DF /* Number_flower_parts-6.png */,
+				71F5810217C40A3200C063DF /* Number_flower_parts-more.png */,
+			);
+			path = Number_flower_parts;
+			sourceTree = "<group>";
+		};
+		71F5810317C40A3200C063DF /* Petiole_present */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Petiole_present;
+			sourceTree = "<group>";
+		};
+		71F5810417C40A3200C063DF /* Plant_height */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Plant_height;
+			sourceTree = "<group>";
+		};
+		71F5810517C40A3200C063DF /* Stem_shape */ = {
+			isa = PBXGroup;
+			children = (
+				71F5810617C40A3200C063DF /* Stem_shape-ridged.png */,
+				71F5810717C40A3200C063DF /* Stem_shape-round.png */,
+				71F5810817C40A3200C063DF /* Stem_shape-square.png */,
+			);
+			path = Stem_shape;
+			sourceTree = "<group>";
+		};
+		71F5810917C40A3200C063DF /* Stem_texture */ = {
+			isa = PBXGroup;
+			children = (
+				71F5810A17C40A3200C063DF /* Stem_texture-fuzzy.png */,
+				71F5810B17C40A3200C063DF /* Stem_texture-hairless.png */,
+				71F5810C17C40A3200C063DF /* Stem_texture-hairy.png */,
+				71F5810D17C40A3200C063DF /* Stem_texture-prickly.png */,
+			);
+			path = Stem_texture;
+			sourceTree = "<group>";
+		};
+		71F5810E17C40A3200C063DF /* ComponentTutorial */ = {
+			isa = PBXGroup;
+			children = (
+				71F5810F17C40A3200C063DF /* Distribution_TutorialLarge.png */,
+				71F5811017C40A3200C063DF /* Flower_arrangement_TutorialLarge.png */,
+				71F5811117C40A3200C063DF /* Flower_color_TutorialLarge.png */,
+				71F5811217C40A3200C063DF /* Flower_symmetry_TutorialLarge.png */,
+				71F5811317C40A3200C063DF /* Growth_form_TutorialLarge.png */,
+				71F5811417C40A3200C063DF /* Leaf_margin_TutorialLarge.png */,
+				71F5811517C40A3200C063DF /* Leaf_shape_TutorialLarge.png */,
+				71F5811617C40A3200C063DF /* Leaf_venation_TutorialLarge.png */,
+				71F5811717C40A3200C063DF /* Number_of_flower_parts_TutorialLarge.png */,
+				71F5811817C40A3200C063DF /* Petiole_present_TutorialSmall.png */,
+				71F5811917C40A3200C063DF /* Plant_height_TutorialLarge.png */,
+				71F5811A17C40A3200C063DF /* Plant_height_TutorialSmall.png */,
+				71F5811B17C40A3200C063DF /* Stem_shape_TutorialLarge.png */,
+			);
+			path = ComponentTutorial;
+			sourceTree = "<group>";
+		};
+		71F5812217C40A3200C063DF /* Identifications */ = {
+			isa = PBXGroup;
+			children = (
+				71F5812317C40A3200C063DF /* defaultIdentificationNoPhoto.png */,
+				71F5812417C40A3200C063DF /* japanese_maple.jpg */,
+				71F5812517C40A3200C063DF /* japanese_maple.png */,
+				71F5812617C40A3200C063DF /* red_maple.jpg */,
+				71F5812717C40A3200C063DF /* red_maple.png */,
+				71F5812817C40A3200C063DF /* red_maple2.jpg */,
+				71F5812917C40A3200C063DF /* red_maple2.png */,
+			);
+			path = Identifications;
+			sourceTree = "<group>";
+		};
 		AAAC4F25178F1767001AB1D8 = {
 			isa = PBXGroup;
 			children = (
@@ -947,7 +1006,7 @@
 		AAAC4F39178F1767001AB1D8 /* FieldResearchTool */ = {
 			isa = PBXGroup;
 			children = (
-				5BAFEC0917C3E12500B3BAA9 /* Assets */,
+				71F5809317C40A3200C063DF /* Assets */,
 				5BFED1B61794830700648062 /* DataObjects */,
 				718AAD291794773000AFE6DB /* InterpretationViewControllers */,
 				718AAD00179463F200AFE6DB /* ObservationViewControllers */,
@@ -1068,126 +1127,143 @@
 				717AF35417AC36C200DA2077 /* ObservationProfileViewController.xib in Resources */,
 				5B64934017B17F2500D8C1C7 /* InterpretationDiscussionViewController.xib in Resources */,
 				5B64934517B18D3600D8C1C7 /* InterpretationDiscussionPostViewController.xib in Resources */,
-				5BAFEC9F17C3E12500B3BAA9 /* 03-arrow-north.png in Resources */,
-				5BAFECA017C3E12500B3BAA9 /* 05-shuffle.png in Resources */,
-				5BAFECA117C3E12500B3BAA9 /* 06-arrow-south.png in Resources */,
-				5BAFECA217C3E12500B3BAA9 /* 17-check.png in Resources */,
-				5BAFECA317C3E12500B3BAA9 /* 17-checkGREEN.png in Resources */,
-				5BAFECA417C3E12500B3BAA9 /* 19-circle-check.png in Resources */,
-				5BAFECA517C3E12500B3BAA9 /* 19-circle-checkGREEN.png in Resources */,
-				5BAFECA617C3E12500B3BAA9 /* 29-circle-pause.png in Resources */,
-				5BAFECA717C3E12500B3BAA9 /* 298-circlex.png in Resources */,
-				5BAFECA817C3E12500B3BAA9 /* 298-circlex@2x.png in Resources */,
-				5BAFECA917C3E12500B3BAA9 /* 30-circle-play.png in Resources */,
-				5BAFECAA17C3E12500B3BAA9 /* 35-circle-stop.png in Resources */,
-				5BAFECAB17C3E12500B3BAA9 /* 37-circle-x.png in Resources */,
-				5BAFECAC17C3E12500B3BAA9 /* 37-circle-xRED.png in Resources */,
-				5BAFECAD17C3E12500B3BAA9 /* 60-x.png in Resources */,
-				5BAFECAE17C3E12500B3BAA9 /* 60-xRED.png in Resources */,
-				5BAFECAF17C3E12500B3BAA9 /* 86-camera.png in Resources */,
-				5BAFECB017C3E12500B3BAA9 /* carouselBackground.png in Resources */,
-				5BAFECB117C3E12500B3BAA9 /* Distribution.png in Resources */,
-				5BAFECB217C3E12500B3BAA9 /* Flower_arrangement.png in Resources */,
-				5BAFECB317C3E12500B3BAA9 /* Flower_color.png in Resources */,
-				5BAFECB417C3E12500B3BAA9 /* Flower_symmetry.png in Resources */,
-				5BAFECB517C3E12500B3BAA9 /* Flowering_month.png in Resources */,
-				5BAFECB617C3E12500B3BAA9 /* Growth_form.png in Resources */,
-				5BAFECB717C3E12500B3BAA9 /* Is_this_plant_cool.png in Resources */,
-				5BAFECB817C3E12500B3BAA9 /* Leaf_arrangement.png in Resources */,
-				5BAFECB917C3E12500B3BAA9 /* Leaf_margin.png in Resources */,
-				5BAFECBA17C3E12500B3BAA9 /* Leaf_shape.png in Resources */,
-				5BAFECBB17C3E12500B3BAA9 /* Leaf_type.png in Resources */,
-				5BAFECBC17C3E12500B3BAA9 /* Leaf_venation.png in Resources */,
-				5BAFECBD17C3E12500B3BAA9 /* Number_flower_parts.png in Resources */,
-				5BAFECBE17C3E12500B3BAA9 /* Petiole_present.png in Resources */,
-				5BAFECBF17C3E12500B3BAA9 /* Plant_height.png in Resources */,
-				5BAFECC017C3E12500B3BAA9 /* Stem_shape.png in Resources */,
-				5BAFECC117C3E12500B3BAA9 /* Stem_texture.png in Resources */,
-				5BAFECC217C3E12500B3BAA9 /* Distribution-bunches.png in Resources */,
-				5BAFECC317C3E12500B3BAA9 /* Distribution-patches.png in Resources */,
-				5BAFECC417C3E12500B3BAA9 /* Distribution-singular.png in Resources */,
-				5BAFECC517C3E12500B3BAA9 /* Flower_arrangement-Corymb.png in Resources */,
-				5BAFECC617C3E12500B3BAA9 /* Flower_arrangement-Cyme.png in Resources */,
-				5BAFECC717C3E12500B3BAA9 /* Flower_arrangement-Head.png in Resources */,
-				5BAFECC817C3E12500B3BAA9 /* Flower_arrangement-Panicle.png in Resources */,
-				5BAFECC917C3E12500B3BAA9 /* Flower_arrangement-Raceme.png in Resources */,
-				5BAFECCA17C3E12500B3BAA9 /* Flower_arrangement-Solitary.png in Resources */,
-				5BAFECCB17C3E12500B3BAA9 /* Flower_arrangement-Spike.png in Resources */,
-				5BAFECCC17C3E12500B3BAA9 /* Flower_arrangement-Umbel.png in Resources */,
-				5BAFECCD17C3E12500B3BAA9 /* Flower_color-Black.png in Resources */,
-				5BAFECCE17C3E12500B3BAA9 /* Flower_color-Blue.png in Resources */,
-				5BAFECCF17C3E12500B3BAA9 /* Flower_color-Green.png in Resources */,
-				5BAFECD017C3E12500B3BAA9 /* Flower_color-Indigo.png in Resources */,
-				5BAFECD117C3E12500B3BAA9 /* Flower_color-Orange.png in Resources */,
-				5BAFECD217C3E12500B3BAA9 /* Flower_color-Pink.png in Resources */,
-				5BAFECD317C3E12500B3BAA9 /* Flower_color-Purple.png in Resources */,
-				5BAFECD417C3E12500B3BAA9 /* Flower_color-Red.png in Resources */,
-				5BAFECD517C3E12500B3BAA9 /* Flower_color-White.png in Resources */,
-				5BAFECD617C3E12500B3BAA9 /* Flower_color-Yellow.png in Resources */,
-				5BAFECD717C3E12500B3BAA9 /* Flower_symmetry-bilateral.png in Resources */,
-				5BAFECD817C3E12500B3BAA9 /* Flower_symmetry-radial.png in Resources */,
-				5BAFECD917C3E12500B3BAA9 /* Growth_form-sprawling.png in Resources */,
-				5BAFECDA17C3E12500B3BAA9 /* Growth_form-upright_branching.png in Resources */,
-				5BAFECDB17C3E12500B3BAA9 /* Growth_form-upright_few_to_no_branches.png in Resources */,
-				5BAFECDC17C3E12500B3BAA9 /* Leaf_arrangement-Alternate.png in Resources */,
-				5BAFECDD17C3E12500B3BAA9 /* Leaf_arrangement-Basal.png in Resources */,
-				5BAFECDE17C3E12500B3BAA9 /* Leaf_arrangement-Opposite.png in Resources */,
-				5BAFECDF17C3E12500B3BAA9 /* Leaf_arrangement-Whorled.png in Resources */,
-				5BAFECE017C3E12500B3BAA9 /* Leaf_margin-coarsely_toothed.png in Resources */,
-				5BAFECE117C3E12500B3BAA9 /* Leaf_margin-doubly_toothed.png in Resources */,
-				5BAFECE217C3E12500B3BAA9 /* Leaf_margin-entire.png in Resources */,
-				5BAFECE317C3E12500B3BAA9 /* Leaf_margin-finely_toothed.png in Resources */,
-				5BAFECE417C3E12500B3BAA9 /* Leaf_margin-lobed.png in Resources */,
-				5BAFECE517C3E12500B3BAA9 /* Leaf_margin-wavy.png in Resources */,
-				5BAFECE617C3E12500B3BAA9 /* Leaf_margin.png in Resources */,
-				5BAFECE717C3E12500B3BAA9 /* Leaf_shape-Cordiform.png in Resources */,
-				5BAFECE817C3E12500B3BAA9 /* Leaf_shape-Divided.png in Resources */,
-				5BAFECE917C3E12500B3BAA9 /* Leaf_shape-Elliptic.png in Resources */,
-				5BAFECEA17C3E12500B3BAA9 /* Leaf_shape-Lanceolate.png in Resources */,
-				5BAFECEB17C3E12500B3BAA9 /* Leaf_shape-Linear.png in Resources */,
-				5BAFECEC17C3E12500B3BAA9 /* Leaf_shape-Lobed.png in Resources */,
-				5BAFECED17C3E12500B3BAA9 /* Leaf_shape-Oblong.png in Resources */,
-				5BAFECEE17C3E12500B3BAA9 /* Leaf_shape-Obovate.png in Resources */,
-				5BAFECEF17C3E12500B3BAA9 /* Leaf_shape-Orbicular.png in Resources */,
-				5BAFECF017C3E12500B3BAA9 /* Leaf_shape-Ovate.png in Resources */,
-				5BAFECF117C3E12500B3BAA9 /* Leaf_shape-Reniform.png in Resources */,
-				5BAFECF217C3E12500B3BAA9 /* Leaf_shape-Spatulate.png in Resources */,
-				5BAFECF317C3E12500B3BAA9 /* Leaf_type-Bipinnate.png in Resources */,
-				5BAFECF417C3E12500B3BAA9 /* Leaf_type-Palmate.png in Resources */,
-				5BAFECF517C3E12500B3BAA9 /* Leaf_type-Pinnate.png in Resources */,
-				5BAFECF617C3E12500B3BAA9 /* Leaf_type-Simple.png in Resources */,
-				5BAFECF717C3E12500B3BAA9 /* Leaf_type-Trifoliate.png in Resources */,
-				5BAFECF817C3E12500B3BAA9 /* Leaf_venation-Branched.png in Resources */,
-				5BAFECF917C3E12500B3BAA9 /* Leaf_venation-Parallel.png in Resources */,
-				5BAFECFA17C3E12500B3BAA9 /* Stem_shape-ridged.png in Resources */,
-				5BAFECFB17C3E12500B3BAA9 /* Stem_shape-round.png in Resources */,
-				5BAFECFC17C3E12500B3BAA9 /* Stem_shape-square.png in Resources */,
-				5BAFECFD17C3E12500B3BAA9 /* Stem_texture-fuzzy.png in Resources */,
-				5BAFECFE17C3E12500B3BAA9 /* Stem_texture-hairless.png in Resources */,
-				5BAFECFF17C3E12500B3BAA9 /* Stem_texture-hairy.png in Resources */,
-				5BAFED0017C3E12500B3BAA9 /* Stem_texture-prickly.png in Resources */,
-				5BAFED0A17C3E12500B3BAA9 /* Petiole_present_TutorialSmall.png in Resources */,
-				5BAFED0D17C3E12500B3BAA9 /* Plant_height ruler.png in Resources */,
-				5BAFED0E17C3E12500B3BAA9 /* Plant_height.png in Resources */,
-				5BAFED0F17C3E12500B3BAA9 /* Default-568h@2x.png in Resources */,
-				5BAFED1017C3E12500B3BAA9 /* Default.png in Resources */,
-				5BAFED1117C3E12500B3BAA9 /* Default@2x.png in Resources */,
-				5BAFED1317C3E12500B3BAA9 /* defaultIdentificationNoPhoto.png in Resources */,
-				5BAFED1417C3E12500B3BAA9 /* japanese_maple.jpg in Resources */,
-				5BAFED1517C3E12500B3BAA9 /* japanese_maple.png in Resources */,
-				5BAFED1617C3E12500B3BAA9 /* red_maple.jpg in Resources */,
-				5BAFED1717C3E12500B3BAA9 /* red_maple.png in Resources */,
-				5BAFED1817C3E12500B3BAA9 /* red_maple2.jpg in Resources */,
-				5BAFED1917C3E12500B3BAA9 /* red_maple2.png in Resources */,
-				5BAFED1A17C3E12500B3BAA9 /* iPhoneTutorialPhoto.JPG in Resources */,
-				5BAFED1B17C3E12500B3BAA9 /* page.png in Resources */,
-				5BAFED1C17C3E12500B3BAA9 /* SwitchNoBig.png in Resources */,
-				5BAFED1D17C3E12500B3BAA9 /* SwitchNoSmall.png in Resources */,
-				5BAFED1E17C3E12500B3BAA9 /* SwitchYesBig.png in Resources */,
-				5BAFED1F17C3E12500B3BAA9 /* SwitchYesSmall.png in Resources */,
-				5BAFED2017C3E12500B3BAA9 /* test.png in Resources */,
-				5BAFED2117C3E12500B3BAA9 /* test320.png in Resources */,
-				5BAFED2217C3E12500B3BAA9 /* tutorialPhoto.jpg in Resources */,
+				71F5813317C40A3200C063DF /* 03-arrow-north.png in Resources */,
+				71F5813417C40A3200C063DF /* 05-shuffle.png in Resources */,
+				71F5813517C40A3200C063DF /* 06-arrow-south.png in Resources */,
+				71F5813617C40A3200C063DF /* 17-check.png in Resources */,
+				71F5813717C40A3200C063DF /* 17-checkGREEN.png in Resources */,
+				71F5813817C40A3200C063DF /* 19-circle-check.png in Resources */,
+				71F5813917C40A3200C063DF /* 19-circle-checkGREEN.png in Resources */,
+				71F5813A17C40A3200C063DF /* 29-circle-pause.png in Resources */,
+				71F5813B17C40A3200C063DF /* 298-circlex.png in Resources */,
+				71F5813C17C40A3200C063DF /* 298-circlex@2x.png in Resources */,
+				71F5813D17C40A3200C063DF /* 30-circle-play.png in Resources */,
+				71F5813E17C40A3200C063DF /* 35-circle-stop.png in Resources */,
+				71F5813F17C40A3200C063DF /* 37-circle-x.png in Resources */,
+				71F5814017C40A3200C063DF /* 37-circle-xRED.png in Resources */,
+				71F5814117C40A3200C063DF /* 60-x.png in Resources */,
+				71F5814217C40A3200C063DF /* 60-xRED.png in Resources */,
+				71F5814317C40A3200C063DF /* 86-camera.png in Resources */,
+				71F5814417C40A3200C063DF /* carouselBackground.png in Resources */,
+				71F5814517C40A3200C063DF /* Distribution.png in Resources */,
+				71F5814617C40A3200C063DF /* Flower_arrangement.png in Resources */,
+				71F5814717C40A3200C063DF /* Flower_color.png in Resources */,
+				71F5814817C40A3200C063DF /* Flower_symmetry.png in Resources */,
+				71F5814917C40A3200C063DF /* Flowering_month.png in Resources */,
+				71F5814A17C40A3200C063DF /* Growth_form.png in Resources */,
+				71F5814B17C40A3200C063DF /* Is_this_plant_cool.png in Resources */,
+				71F5814C17C40A3200C063DF /* Leaf_arrangement.png in Resources */,
+				71F5814D17C40A3200C063DF /* Leaf_margin.png in Resources */,
+				71F5814E17C40A3200C063DF /* Leaf_shape.png in Resources */,
+				71F5814F17C40A3200C063DF /* Leaf_type.png in Resources */,
+				71F5815017C40A3200C063DF /* Leaf_venation.png in Resources */,
+				71F5815117C40A3200C063DF /* Number_flower_parts.png in Resources */,
+				71F5815217C40A3200C063DF /* Petiole_present.png in Resources */,
+				71F5815317C40A3200C063DF /* Plant_height.png in Resources */,
+				71F5815417C40A3200C063DF /* Stem_shape.png in Resources */,
+				71F5815517C40A3200C063DF /* Stem_texture.png in Resources */,
+				71F5815617C40A3200C063DF /* Distribution-bunches.png in Resources */,
+				71F5815717C40A3200C063DF /* Distribution-patches.png in Resources */,
+				71F5815817C40A3200C063DF /* Distribution-singular.png in Resources */,
+				71F5815917C40A3200C063DF /* Flower_arrangement-corymb.png in Resources */,
+				71F5815A17C40A3200C063DF /* Flower_arrangement-cyme.png in Resources */,
+				71F5815B17C40A3200C063DF /* Flower_arrangement-head.png in Resources */,
+				71F5815C17C40A3200C063DF /* Flower_arrangement-panicle.png in Resources */,
+				71F5815D17C40A3200C063DF /* Flower_arrangement-raceme.png in Resources */,
+				71F5815E17C40A3200C063DF /* Flower_arrangement-solitary.png in Resources */,
+				71F5815F17C40A3200C063DF /* Flower_arrangement-spike.png in Resources */,
+				71F5816017C40A3200C063DF /* Flower_arrangement-umbel.png in Resources */,
+				71F5816117C40A3200C063DF /* Flower_color-black.png in Resources */,
+				71F5816217C40A3200C063DF /* Flower_color-blue.png in Resources */,
+				71F5816317C40A3200C063DF /* Flower_color-green.png in Resources */,
+				71F5816417C40A3200C063DF /* Flower_color-indigo.png in Resources */,
+				71F5816517C40A3200C063DF /* Flower_color-orange.png in Resources */,
+				71F5816617C40A3200C063DF /* Flower_color-pink.png in Resources */,
+				71F5816717C40A3200C063DF /* Flower_color-purple.png in Resources */,
+				71F5816817C40A3200C063DF /* Flower_color-red.png in Resources */,
+				71F5816917C40A3200C063DF /* Flower_color-white.png in Resources */,
+				71F5816A17C40A3200C063DF /* Flower_color-yellow.png in Resources */,
+				71F5816B17C40A3200C063DF /* Flower_symmetry-bilateral.png in Resources */,
+				71F5816C17C40A3200C063DF /* Flower_symmetry-radial.png in Resources */,
+				71F5816D17C40A3200C063DF /* Growth_form-sprawling.png in Resources */,
+				71F5816E17C40A3200C063DF /* Growth_form-upright_branching.png in Resources */,
+				71F5817017C40A3200C063DF /* Leaf_arrangement-alternate.png in Resources */,
+				71F5817117C40A3200C063DF /* Leaf_arrangement-basal.png in Resources */,
+				71F5817217C40A3200C063DF /* Leaf_arrangement-opposite.png in Resources */,
+				71F5817317C40A3200C063DF /* Leaf_arrangement-whorled.png in Resources */,
+				71F5817417C40A3200C063DF /* Leaf_margin-coarsely_toothed.png in Resources */,
+				71F5817517C40A3200C063DF /* Leaf_margin-doubly_toothed.png in Resources */,
+				71F5817617C40A3200C063DF /* Leaf_margin-entire.png in Resources */,
+				71F5817717C40A3200C063DF /* Leaf_margin-finely_toothed.png in Resources */,
+				71F5817817C40A3200C063DF /* Leaf_margin-lobed.png in Resources */,
+				71F5817917C40A3200C063DF /* Leaf_margin-wavy.png in Resources */,
+				71F5817A17C40A3200C063DF /* Leaf_margin.png in Resources */,
+				71F5817B17C40A3200C063DF /* Leaf_shape-cordiform.png in Resources */,
+				71F5817C17C40A3200C063DF /* Leaf_shape-divided.png in Resources */,
+				71F5817D17C40A3200C063DF /* Leaf_shape-elliptic.png in Resources */,
+				71F5817E17C40A3200C063DF /* Leaf_shape-lanceolate.png in Resources */,
+				71F5817F17C40A3200C063DF /* Leaf_shape-linear.png in Resources */,
+				71F5818017C40A3200C063DF /* Leaf_shape-lobed.png in Resources */,
+				71F5818117C40A3200C063DF /* Leaf_shape-oblong.png in Resources */,
+				71F5818217C40A3200C063DF /* Leaf_shape-obovate.png in Resources */,
+				71F5818317C40A3200C063DF /* Leaf_shape-orbicular.png in Resources */,
+				71F5818417C40A3200C063DF /* Leaf_shape-ovate.png in Resources */,
+				71F5818517C40A3200C063DF /* Leaf_shape-reniform.png in Resources */,
+				71F5818617C40A3200C063DF /* Leaf_shape-spatulate.png in Resources */,
+				71F5818717C40A3200C063DF /* Leaf_type-bipinnate.png in Resources */,
+				71F5818817C40A3200C063DF /* Leaf_type-palmate.png in Resources */,
+				71F5818917C40A3200C063DF /* Leaf_type-pinnate.png in Resources */,
+				71F5818A17C40A3200C063DF /* Leaf_type-simple.png in Resources */,
+				71F5818B17C40A3200C063DF /* Leaf_type-trifoliate.png in Resources */,
+				71F5818C17C40A3200C063DF /* Leaf_venation-branched.png in Resources */,
+				71F5818D17C40A3200C063DF /* Leaf_venation-parallel.png in Resources */,
+				71F5818E17C40A3200C063DF /* Number_flower_parts-3.png in Resources */,
+				71F5818F17C40A3200C063DF /* Number_flower_parts-4.png in Resources */,
+				71F5819017C40A3200C063DF /* Number_flower_parts-5.png in Resources */,
+				71F5819117C40A3200C063DF /* Number_flower_parts-6.png in Resources */,
+				71F5819217C40A3200C063DF /* Number_flower_parts-more.png in Resources */,
+				71F5819317C40A3200C063DF /* Stem_shape-ridged.png in Resources */,
+				71F5819417C40A3200C063DF /* Stem_shape-round.png in Resources */,
+				71F5819517C40A3200C063DF /* Stem_shape-square.png in Resources */,
+				71F5819617C40A3200C063DF /* Stem_texture-fuzzy.png in Resources */,
+				71F5819717C40A3200C063DF /* Stem_texture-hairless.png in Resources */,
+				71F5819817C40A3200C063DF /* Stem_texture-hairy.png in Resources */,
+				71F5819917C40A3200C063DF /* Stem_texture-prickly.png in Resources */,
+				71F5819A17C40A3200C063DF /* Distribution_TutorialLarge.png in Resources */,
+				71F5819B17C40A3200C063DF /* Flower_arrangement_TutorialLarge.png in Resources */,
+				71F5819C17C40A3200C063DF /* Flower_color_TutorialLarge.png in Resources */,
+				71F5819D17C40A3200C063DF /* Flower_symmetry_TutorialLarge.png in Resources */,
+				71F5819E17C40A3200C063DF /* Growth_form_TutorialLarge.png in Resources */,
+				71F5819F17C40A3200C063DF /* Leaf_margin_TutorialLarge.png in Resources */,
+				71F581A017C40A3200C063DF /* Leaf_shape_TutorialLarge.png in Resources */,
+				71F581A117C40A3200C063DF /* Leaf_venation_TutorialLarge.png in Resources */,
+				71F581A217C40A3200C063DF /* Number_of_flower_parts_TutorialLarge.png in Resources */,
+				71F581A317C40A3200C063DF /* Petiole_present_TutorialSmall.png in Resources */,
+				71F581A417C40A3200C063DF /* Plant_height_TutorialLarge.png in Resources */,
+				71F581A517C40A3200C063DF /* Plant_height_TutorialSmall.png in Resources */,
+				71F581A617C40A3200C063DF /* Stem_shape_TutorialLarge.png in Resources */,
+				71F581A717C40A3200C063DF /* Plant_height ruler.png in Resources */,
+				71F581A917C40A3200C063DF /* Default-568h@2x.png in Resources */,
+				71F581AA17C40A3200C063DF /* Default.png in Resources */,
+				71F581AB17C40A3200C063DF /* Default@2x.png in Resources */,
+				71F581AC17C40A3200C063DF /* Flower_color.png in Resources */,
+				71F581AD17C40A3200C063DF /* defaultIdentificationNoPhoto.png in Resources */,
+				71F581AE17C40A3200C063DF /* japanese_maple.jpg in Resources */,
+				71F581AF17C40A3200C063DF /* japanese_maple.png in Resources */,
+				71F581B017C40A3200C063DF /* red_maple.jpg in Resources */,
+				71F581B117C40A3200C063DF /* red_maple.png in Resources */,
+				71F581B217C40A3200C063DF /* red_maple2.jpg in Resources */,
+				71F581B317C40A3200C063DF /* red_maple2.png in Resources */,
+				71F581B417C40A3200C063DF /* iPhoneTutorialPhoto.JPG in Resources */,
+				71F581B517C40A3200C063DF /* page.png in Resources */,
+				71F581B617C40A3200C063DF /* SwitchNoBig.png in Resources */,
+				71F581B717C40A3200C063DF /* SwitchNoSmall.png in Resources */,
+				71F581B817C40A3200C063DF /* SwitchYesBig.png in Resources */,
+				71F581B917C40A3200C063DF /* SwitchYesSmall.png in Resources */,
+				71F581BA17C40A3200C063DF /* test.png in Resources */,
+				71F581BB17C40A3200C063DF /* test320.png in Resources */,
+				71F581BC17C40A3200C063DF /* tutorialPhoto.jpg in Resources */,
+				71F581C017C416BB00C063DF /* Growth_form-upright_few_to_no_branches.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
