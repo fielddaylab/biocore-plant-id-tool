@@ -276,21 +276,44 @@
                 checkmark = (UIImageView *)[optionalCheckmarkImageViews objectAtIndex:indexPath.row];
             }
             
-            cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
-            
-            cell.detailTextLabel.text = @"Not Interpreted";
+
             
             UserObservationComponentData *data = [self findDataForComponent:com];
             if(data){
+                cell = [tableView dequeueReusableCellWithIdentifier:@"Data"];
+                if (!cell) {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Data"];
+                }
                 [cell addSubview:checkmark];
             }
+            
+            cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
+            cell.detailTextLabel.text = @"Not Interpreted";
             
             
             if ([data.wasJudged boolValue]) {
                 
+                if([com.filter boolValue]){
+                    cell = [tableView dequeueReusableCellWithIdentifier:@"Judgement"];
+                    if (!cell) {
+                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Judgement"];
+                        ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
+                        [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
+                        cell.accessoryView = boolSwitch;
+                    }
+                    [cell addSubview:checkmark];
+                    cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
+                    
+                    ComponentSwitch *boolSwitch = (ComponentSwitch *)cell.accessoryView;
+                    if(data && [data.isFiltered boolValue]){
+                        [boolSwitch setOn:YES animated:NO];
+                    }
+                    boolSwitch.data = data;
+                    
+                }
+                
                 NSArray *judgementSet = [data.userObservationComponentDataJudgement allObjects];
                 UserObservationComponentDataJudgement *judgement = judgementSet[0];
-                
                 
                 if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_BOOLEAN]){
                     cell.detailTextLabel.text = judgement.boolValue == [NSNumber numberWithInt:1] ?[NSString stringWithFormat:@"True"] : [NSString stringWithFormat:@"False"];
@@ -308,15 +331,7 @@
                     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", judgement.longText];
                 }
                 
-                if([com.filter boolValue]){
-                    ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
-                    [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
-                    if(data && [data.isFiltered boolValue]){
-                        [boolSwitch setOn:YES animated:NO];
-                    }
-                    boolSwitch.data = data;
-                    cell.accessoryView = boolSwitch;
-                }
+
                 
             }
             
@@ -452,6 +467,7 @@
 -(void)projectIdentificationsResponseReady{
     projectIdentifications = [NSMutableArray arrayWithArray:[AppModel sharedAppModel].allProjectIdentifications];
     [self rankIdentifications];
+    //[self performSelectorInBackground:@selector(rankIdentifications) withObject:self];
     [self.table reloadData];
 }
 
@@ -474,6 +490,7 @@
         }
     }
     [self rankIdentifications];
+    //[self performSelectorInBackground:@selector(rankIdentifications) withObject:self];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -798,6 +815,7 @@
         [dataToFilter removeObject:data];
     }
     [self rankIdentifications];
+    //[self performSelectorInBackground:@selector(rankIdentifications) withObject:self];
     data.isFiltered = [NSNumber numberWithBool:boolSwitch.isOn];
     [[AppModel sharedAppModel] save];
 }
