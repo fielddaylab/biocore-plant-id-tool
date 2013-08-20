@@ -19,6 +19,8 @@
     
     NSMutableArray *likelyChoices;
     NSMutableArray *unlikelyChoices;
+    NSMutableArray *likelyImages;
+    NSMutableArray *unlikelyImages;
     
 }
 
@@ -44,17 +46,29 @@
     
     likelyChoices = [[NSMutableArray alloc]init];
     unlikelyChoices = [[NSMutableArray alloc]init];
+    likelyImages = [[NSMutableArray alloc] init];
+    unlikelyImages = [[NSMutableArray alloc] init];
     
     ProjectIdentification *identification;
     for (int i = 0; i < [projectIdentifications count]; i ++) {
         
         identification = [projectIdentifications objectAtIndex:i];
+        NSString *identificationTitleString = identification.title;
+        NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
+        identificationTitleString = [[identificationTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
+        
+        UIImage *defaultImage = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:[NSString stringWithFormat:@"%@-default",identificationTitleString]] scaledToSize:CGRectMake(0, 0, 80, 80).size];
+        if (defaultImage == nil) {
+            defaultImage = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"defaultIdentificationNoPhoto"] scaledToSize:CGRectMake(0, 0, 80, 80).size];
+        }
         
         if ([identification.score floatValue] > .8) {
             [likelyChoices addObject:identification];
+            [likelyImages addObject:defaultImage];
         }
         else{
             [unlikelyChoices addObject:identification];
+            [unlikelyImages addObject:defaultImage];
         }
     }
     
@@ -102,13 +116,16 @@
     
     
     ProjectIdentification *identification;
+    UIImage *defaultImage;
     
     switch (indexPath.section) {
         case 0:
             identification = [likelyChoices objectAtIndex:indexPath.row];
+            defaultImage = [likelyImages objectAtIndex:indexPath.row];
             break;
         case 1:
             identification = [unlikelyChoices objectAtIndex:indexPath.row];
+            defaultImage = [unlikelyImages objectAtIndex:indexPath.row];
             break;
         default:
             break;
@@ -117,15 +134,8 @@
     //Image
     UIImageView *cellImage = (UIImageView *)[cell viewWithTag:0];
     
-    NSString *identificationTitleString = identification.title;
-    NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
-    identificationTitleString = [[identificationTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
 
-    cellImage.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:[NSString stringWithFormat:@"%@-default",identificationTitleString]] scaledToSize:CGRectMake(0, 0, 80, 80).size];
-    
-    if ([[MediaManager sharedMediaManager]getImageNamed:[NSString stringWithFormat:@"%@-default", identificationTitleString]] == nil){
-        cellImage.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"defaultIdentificationNoPhoto"] scaledToSize:CGRectMake(0, 0, 80, 80).size];
-    }
+    cellImage.image = defaultImage;
     
     //Scientific Name
     UILabel *labelText = (UILabel *)[cell viewWithTag: 1];
