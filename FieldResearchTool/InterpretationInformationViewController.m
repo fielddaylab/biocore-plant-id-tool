@@ -92,7 +92,7 @@
     self.navigationItem.titleView = label;
     
     webView.delegate = self;
-    NSString *myHTML = [NSString stringWithFormat:@"<html><div id='Description'>%@</div></html>", identification.identificationDescription];
+    NSString *myHTML = [NSString stringWithFormat:@"<html><div id='Description'><font face='helvetica neue'>%@</font></div></html>", identification.identificationDescription];
     webView.scrollView.scrollEnabled = NO;
     webView.opaque = NO;
     webView.backgroundColor = [UIColor clearColor];
