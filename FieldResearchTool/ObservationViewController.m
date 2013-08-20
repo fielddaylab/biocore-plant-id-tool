@@ -276,17 +276,29 @@
                 checkmark = (UIImageView *)[optionalCheckmarkImageViews objectAtIndex:indexPath.row];
             }
             
-            cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
-            
-            cell.detailTextLabel.text = @"Not Interpreted";
+
             
             UserObservationComponentData *data = [self findDataForComponent:com];
             if(data){
+                cell = [tableView dequeueReusableCellWithIdentifier:@"Data"];
+                if (!cell) {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Data"];
+                }
                 [cell addSubview:checkmark];
             }
             
+            cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
+            cell.detailTextLabel.text = @"Not Interpreted";
+            
             
             if ([data.wasJudged boolValue]) {
+                
+                cell = [tableView dequeueReusableCellWithIdentifier:@"Judgement"];
+                if (!cell) {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Judgement"];
+                }
+                [cell addSubview:checkmark];
+                cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
                 
                 NSArray *judgementSet = [data.userObservationComponentDataJudgement allObjects];
                 UserObservationComponentDataJudgement *judgement = judgementSet[0];
