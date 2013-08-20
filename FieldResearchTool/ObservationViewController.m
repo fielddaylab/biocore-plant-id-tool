@@ -293,16 +293,25 @@
             
             if ([data.wasJudged boolValue]) {
                 
-                cell = [tableView dequeueReusableCellWithIdentifier:@"Judgement"];
-                if (!cell) {
-                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Judgement"];
+                if([com.filter boolValue]){
+                    cell = [tableView dequeueReusableCellWithIdentifier:@"Judgement"];
+                    if (!cell) {
+                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Judgement"];
+                    }
+                    [cell addSubview:checkmark];
+                    cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
+                    
+                    ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
+                    [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
+                    if(data && [data.isFiltered boolValue]){
+                        [boolSwitch setOn:YES animated:NO];
+                    }
+                    boolSwitch.data = data;
+                    cell.accessoryView = boolSwitch;
                 }
-                [cell addSubview:checkmark];
-                cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
                 
                 NSArray *judgementSet = [data.userObservationComponentDataJudgement allObjects];
                 UserObservationComponentDataJudgement *judgement = judgementSet[0];
-                
                 
                 if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_BOOLEAN]){
                     cell.detailTextLabel.text = judgement.boolValue == [NSNumber numberWithInt:1] ?[NSString stringWithFormat:@"True"] : [NSString stringWithFormat:@"False"];
@@ -320,15 +329,7 @@
                     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", judgement.longText];
                 }
                 
-                if([com.filter boolValue]){
-                    ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
-                    [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
-                    if(data && [data.isFiltered boolValue]){
-                        [boolSwitch setOn:YES animated:NO];
-                    }
-                    boolSwitch.data = data;
-                    cell.accessoryView = boolSwitch;
-                }
+
                 
             }
             
