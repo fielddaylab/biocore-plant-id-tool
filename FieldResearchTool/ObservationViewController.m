@@ -467,6 +467,7 @@
 -(void)projectIdentificationsResponseReady{
     projectIdentifications = [NSMutableArray arrayWithArray:[AppModel sharedAppModel].allProjectIdentifications];
     [self rankIdentifications];
+    //[self performSelectorInBackground:@selector(rankIdentifications) withObject:self];
     [self.table reloadData];
 }
 
@@ -489,6 +490,7 @@
         }
     }
     [self rankIdentifications];
+    //[self performSelectorInBackground:@selector(rankIdentifications) withObject:self];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -813,6 +815,7 @@
         [dataToFilter removeObject:data];
     }
     [self rankIdentifications];
+    //[self performSelectorInBackground:@selector(rankIdentifications) withObject:self];
     data.isFiltered = [NSNumber numberWithBool:boolSwitch.isOn];
     [[AppModel sharedAppModel] save];
 }
