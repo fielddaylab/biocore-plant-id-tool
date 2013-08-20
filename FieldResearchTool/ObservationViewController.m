@@ -297,17 +297,19 @@
                     cell = [tableView dequeueReusableCellWithIdentifier:@"Judgement"];
                     if (!cell) {
                         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Judgement"];
+                        ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
+                        [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
+                        cell.accessoryView = boolSwitch;
                     }
                     [cell addSubview:checkmark];
                     cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
                     
-                    ComponentSwitch *boolSwitch = [[ComponentSwitch alloc]initWithFrame:CGRectZero];
-                    [boolSwitch addTarget:self action:@selector(toggleFilter:) forControlEvents:UIControlEventValueChanged];
+                    ComponentSwitch *boolSwitch = (ComponentSwitch *)cell.accessoryView;
                     if(data && [data.isFiltered boolValue]){
                         [boolSwitch setOn:YES animated:NO];
                     }
                     boolSwitch.data = data;
-                    cell.accessoryView = boolSwitch;
+                    
                 }
                 
                 NSArray *judgementSet = [data.userObservationComponentDataJudgement allObjects];
