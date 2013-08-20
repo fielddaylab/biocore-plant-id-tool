@@ -203,9 +203,6 @@
 		AAAC4F3E178F1767001AB1D8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AAAC4F3C178F1767001AB1D8 /* InfoPlist.strings */; };
 		AAAC4F40178F1767001AB1D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F3F178F1767001AB1D8 /* main.m */; };
 		AAAC4F44178F1767001AB1D8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F43178F1767001AB1D8 /* AppDelegate.m */; };
-		AAAC4F46178F1767001AB1D8 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AAAC4F45178F1767001AB1D8 /* Default.png */; };
-		AAAC4F48178F1767001AB1D8 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAAC4F47178F1767001AB1D8 /* Default@2x.png */; };
-		AAAC4F4A178F1767001AB1D8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAAC4F49178F1767001AB1D8 /* Default-568h@2x.png */; };
 		AAAC4F4D178F1767001AB1D8 /* FieldResearchTool.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F4B178F1767001AB1D8 /* FieldResearchTool.xcdatamodeld */; };
 		AAAC4F55178F3158001AB1D8 /* IncrementalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F54178F3158001AB1D8 /* IncrementalStore.m */; };
 		AAAC4F58178F31D6001AB1D8 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F57178F31D6001AB1D8 /* APIClient.m */; };
@@ -465,9 +462,6 @@
 		AAAC4F41178F1767001AB1D8 /* FieldResearchTool-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FieldResearchTool-Prefix.pch"; sourceTree = "<group>"; };
 		AAAC4F42178F1767001AB1D8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AAAC4F43178F1767001AB1D8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AAAC4F45178F1767001AB1D8 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		AAAC4F47178F1767001AB1D8 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		AAAC4F49178F1767001AB1D8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		AAAC4F4C178F1767001AB1D8 /* FieldResearchTool.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FieldResearchTool.xcdatamodel; sourceTree = "<group>"; };
 		AAAC4F53178F3157001AB1D8 /* IncrementalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncrementalStore.h; sourceTree = "<group>"; };
 		AAAC4F54178F3158001AB1D8 /* IncrementalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncrementalStore.m; sourceTree = "<group>"; };
@@ -995,11 +989,11 @@
 				AAAC4F3B178F1767001AB1D8 /* FieldResearchTool-Info.plist */,
 				5B82BD991797478C008CB441 /* plantData.tsv */,
 				AAAC4F3C178F1767001AB1D8 /* InfoPlist.strings */,
+				7153523C17C3CB90007BAD27 /* Default-568h@2x.png */,
+				7153523D17C3CB90007BAD27 /* Default.png */,
+				7153523E17C3CB90007BAD27 /* Default@2x.png */,
 				AAAC4F3F178F1767001AB1D8 /* main.m */,
 				AAAC4F41178F1767001AB1D8 /* FieldResearchTool-Prefix.pch */,
-				AAAC4F45178F1767001AB1D8 /* Default.png */,
-				AAAC4F47178F1767001AB1D8 /* Default@2x.png */,
-				AAAC4F49178F1767001AB1D8 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1071,9 +1065,6 @@
 			files = (
 				7153516917C2BC9F007BAD27 /* InterpretationChoiceTableViewCell.xib in Resources */,
 				AAAC4F3E178F1767001AB1D8 /* InfoPlist.strings in Resources */,
-				AAAC4F46178F1767001AB1D8 /* Default.png in Resources */,
-				AAAC4F48178F1767001AB1D8 /* Default@2x.png in Resources */,
-				AAAC4F4A178F1767001AB1D8 /* Default-568h@2x.png in Resources */,
 				718AAD231794771300AFE6DB /* InterpretationChoiceViewController.xib in Resources */,
 				718AAD281794772300AFE6DB /* InterpretationSplitViewController.xib in Resources */,
 				71FF69C11794819300E2B411 /* ObservationViewController.xib in Resources */,
