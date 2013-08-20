@@ -34,7 +34,7 @@
 - (void)loadView{
     [super loadView];
     if (!isOneToOne) {
-        [self.view addSubview:[[UIImageView alloc] initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"carouselBackground"]]];
+        [self.view addSubview:[[UIImageView alloc] initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"carouselBackground"]]];//Dafuq is this? - Nick
     }
     else{
         self.view.backgroundColor = [UIColor lightGrayColor];
@@ -64,14 +64,21 @@
     
     [self.view addSubview:boolSwitch];
     
-    imageView = [[UIImageView alloc]initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"test.png"]];
+    imageView = [[UIImageView alloc]initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"test.png"]];//why use test?
+    
+    NSString *tutorialImageString = projectComponent.title;
+    NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    tutorialImageString = [[tutorialImageString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
+    tutorialImageString = [tutorialImageString stringByAppendingString:@"_TutorialSmall"];
+    
+
     if (!isOneToOne) {
         imageView.frame = CGRectMake(-75, 10, rectView.size.width, rectView.size.height);
-        imageView.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, rectView.size.height *.7, rectView.size.height *.7).size];
+        imageView.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:tutorialImageString] scaledToSize:CGRectMake(0, 0, rectView.size.height *.7, rectView.size.height *.7).size];
     }
     else{
         imageView.frame = CGRectMake(rectView.size.width * .1, boolSwitch.frame.origin.y, 100, 100);
-        imageView.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"Flower_color.png"] scaledToSize:CGRectMake(0, 0, 100, 100).size];
+        imageView.image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:tutorialImageString] scaledToSize:CGRectMake(0, 0, 100, 100).size];
     }
     imageView.contentMode = UIViewContentModeCenter;
     [self.view addSubview:imageView];
