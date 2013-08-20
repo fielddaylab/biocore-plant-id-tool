@@ -273,7 +273,6 @@
 		718AAD281794772300AFE6DB /* InterpretationSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD261794772300AFE6DB /* InterpretationSplitViewController.xib */; };
 		718F372017B97CB100297EBA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718F371F17B97CB100297EBA /* LoginViewController.m */; };
 		719D192517BA9D20002A2B24 /* RegisterNewAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 719D192417BA9D20002A2B24 /* RegisterNewAccountViewController.m */; };
-<<<<<<< HEAD
 		719D192917BC0DFC002A2B24 /* 298-circlex.png in Resources */ = {isa = PBXBuildFile; fileRef = 719D192717BC0DFC002A2B24 /* 298-circlex.png */; };
 		719D192A17BC0DFC002A2B24 /* 298-circlex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 719D192817BC0DFC002A2B24 /* 298-circlex@2x.png */; };
 		71AA565D17B2EFFC00EECCC5 /* 05-shuffle.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AA560017B2EFFC00EECCC5 /* 05-shuffle.png */; };
@@ -317,8 +316,6 @@
 		71FE7C8717C3DD7F00D868E2 /* Plant_height_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71FE7C7B17C3DD7F00D868E2 /* Plant_height_TutorialLarge.png */; };
 		71FE7C8817C3DD7F00D868E2 /* Stem_shape_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71FE7C7C17C3DD7F00D868E2 /* Stem_shape_TutorialLarge.png */; };
 		71FE7C8A17C3E19900D868E2 /* Plant_height_TutorialSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 71FE7C8917C3E19900D868E2 /* Plant_height_TutorialSmall.png */; };
-=======
->>>>>>> c895f14ca844894b6cac5482177fd87e209a983a
 		71FF69BE1794819300E2B411 /* FieldResearchNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF69A41794819200E2B411 /* FieldResearchNavigationController.m */; };
 		71FF69C01794819300E2B411 /* ObservationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF69A81794819200E2B411 /* ObservationViewController.m */; };
 		71FF69C11794819300E2B411 /* ObservationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71FF69A91794819200E2B411 /* ObservationViewController.xib */; };
