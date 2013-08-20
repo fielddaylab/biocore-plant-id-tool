@@ -20,8 +20,6 @@
 @synthesize allProjectIdentifications;
 @synthesize currentUserObservation;
 @synthesize currentUser;
-@synthesize likelyIdentificationImages;
-@synthesize unlikelyIdentificationImages;
 
 + (id)sharedAppModel
 {
