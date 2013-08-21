@@ -19,7 +19,8 @@
     
     NSMutableArray *likelyChoices;
     NSMutableArray *unlikelyChoices;
-    
+    NSMutableArray *likelyImages;
+    NSMutableArray *unlikelyImages;
 }
 
 @end
@@ -33,7 +34,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        likelyImages = [[NSMutableArray alloc] init];
+        unlikelyImages = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -49,14 +51,28 @@
     for (int i = 0; i < [projectIdentifications count]; i ++) {
         
         identification = [projectIdentifications objectAtIndex:i];
+        UIImage *defaultImage = [self loadDefaultImageForIdentification:identification];
         if ([identification.score floatValue] > .8) {
             [likelyChoices addObject:identification];
+            [likelyImages addObject:defaultImage];
         }
         else{
             [unlikelyChoices addObject:identification];
+            [unlikelyImages addObject:defaultImage];
         }
     }
     
+}
+
+-(UIImage *)loadDefaultImageForIdentification:(ProjectIdentification *)identification{
+    NSString *identificationTitleString = identification.title;
+    NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    identificationTitleString = [[identificationTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
+    UIImage *defaultImage = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:[NSString stringWithFormat:@"%@-default",identificationTitleString]] scaledToSize:CGRectMake(0, 0, 80, 80).size];
+    if ([[MediaManager sharedMediaManager] getImageNamed:[NSString stringWithFormat:@"%@-default",identificationTitleString]] == nil) {
+        defaultImage = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"defaultIdentificationNoPhoto"] scaledToSize:CGRectMake(0, 0, 80, 80).size];
+    }
+    return defaultImage;
 }
 
 
@@ -108,13 +124,11 @@
     switch (indexPath.section) {
         case 0:
             identification = [likelyChoices objectAtIndex:indexPath.row];
-            defaultImage = [[AppModel sharedAppModel].likelyIdentificationImages objectAtIndex:indexPath.row];
-            
+            defaultImage = [likelyImages objectAtIndex:indexPath.row];
             break;
         case 1:
             identification = [unlikelyChoices objectAtIndex:indexPath.row];
-            defaultImage = [[AppModel sharedAppModel].unlikelyIdentificationImages objectAtIndex:indexPath.row];
-            
+            defaultImage = [unlikelyImages objectAtIndex:indexPath.row];
             break;
         default:
             break;

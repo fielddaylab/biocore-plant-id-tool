@@ -227,26 +227,26 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //update the title of the view
-    int identifications = [projectIdentifications count];
-    if(dataToFilter.count > 0){
-        identifications = 0;
-        for (int i = 0; i < projectIdentifications.count; i++) {
-            ProjectIdentification *iden = [projectIdentifications objectAtIndex:i];
-            if([iden.score floatValue] >= .8){
-                identifications++;
-            }
-        }
-    }
-    
-    if (observation.userObservationIdentifications.count < 1) {
-        self.title = identifications != 1 ?[NSString stringWithFormat:@"%d possible matches", identifications] : [NSString stringWithFormat:@"%d possible match", 1];
-    }
-    else{
-        NSArray *userIdentificationArray = [observation.userObservationIdentifications allObjects];
-        UserObservationIdentification *userIdentification = [userIdentificationArray objectAtIndex:0];
-        ProjectIdentification *projectIdentification = userIdentification.projectIdentification;
-        self.title = projectIdentification.alternateName;
-    }
+//    int identifications = [projectIdentifications count];
+//    if(dataToFilter.count > 0){
+//        identifications = 0;
+//        for (int i = 0; i < projectIdentifications.count; i++) {
+//            ProjectIdentification *iden = [projectIdentifications objectAtIndex:i];
+//            if([iden.score floatValue] >= .8){
+//                identifications++;
+//            }
+//        }
+//    }
+//    
+//    if (observation.userObservationIdentifications.count < 1) {
+//        self.title = identifications != 1 ?[NSString stringWithFormat:@"%d possible matches", identifications] : [NSString stringWithFormat:@"%d possible match", 1];
+//    }
+//    else{
+//        NSArray *userIdentificationArray = [observation.userObservationIdentifications allObjects];
+//        UserObservationIdentification *userIdentification = [userIdentificationArray objectAtIndex:0];
+//        ProjectIdentification *projectIdentification = userIdentification.projectIdentification;
+//        self.title = projectIdentification.alternateName;
+//    }
     
     
     //Make the identifier unique to that row so cell pictures don't get reused in funky ways.
@@ -490,7 +490,6 @@
         }
     }
     [self rankIdentifications];
-    //[self performSelectorInBackground:@selector(rankIdentifications) withObject:self];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -506,33 +505,6 @@
     }
     return nil;
 }
-
--(void)loadIdentificationImages{
-    [AppModel sharedAppModel].likelyIdentificationImages = [[NSMutableArray alloc] init];
-    [AppModel sharedAppModel].unlikelyIdentificationImages = [[NSMutableArray alloc] init];
-    for (int i = 0; i < projectIdentifications.count; i++) {
-        ProjectIdentification *identification = [projectIdentifications objectAtIndex:i];
-        UIImage *defaultImage = [self loadDefaultImageForIdentification:identification];
-        if ([identification.score floatValue] > .8) {
-            [[AppModel sharedAppModel].likelyIdentificationImages addObject:defaultImage];
-        }
-        else{
-            [[AppModel sharedAppModel].unlikelyIdentificationImages addObject:defaultImage];
-        }
-    }
-}
-
--(UIImage *)loadDefaultImageForIdentification:(ProjectIdentification *)identification{
-    NSString *identificationTitleString = identification.title;
-    NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
-    identificationTitleString = [[identificationTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
-    UIImage *defaultImage = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:[NSString stringWithFormat:@"%@-default",identificationTitleString]] scaledToSize:CGRectMake(0, 0, 80, 80).size];
-    if ([[MediaManager sharedMediaManager] getImageNamed:[NSString stringWithFormat:@"%@-default",identificationTitleString]] == nil) {
-        defaultImage = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"defaultIdentificationNoPhoto"] scaledToSize:CGRectMake(0, 0, 80, 80).size];
-    }
-    return defaultImage;
-}
-
 
 
 -(void)rankIdentifications{
@@ -573,13 +545,23 @@
     }
     
     //scale score to be 0 to 1
-    for (int i = 0; i < allProjectIdentifications.count; i++) {
-        ProjectIdentification *identification = [allProjectIdentifications objectAtIndex:i];
-        float score = [identification.score floatValue];
-        float scaledScore = score / [dataToFilter count];
-        float roundedScore = floorf(scaledScore * 100 + 0.5) / 100;
-        identification.score = [NSNumber numberWithFloat:roundedScore];
+    int possibleIdentifications = projectIdentifications.count;
+    if (dataToFilter.count > 0) {
+        possibleIdentifications = 0;
+        for (int i = 0; i < allProjectIdentifications.count; i++) {
+            ProjectIdentification *identification = [allProjectIdentifications objectAtIndex:i];
+            float score = [identification.score floatValue];
+            float scaledScore = score / [dataToFilter count];
+            float roundedScore = floorf(scaledScore * 100 + 0.5) / 100;
+            identification.score = [NSNumber numberWithFloat:roundedScore];
+            if ([identification.score floatValue] > .8) {
+                possibleIdentifications++;
+            }
+        }
     }
+
+    
+    self.title = possibleIdentifications != 1 ?[NSString stringWithFormat:@"%d possible matches", possibleIdentifications] : [NSString stringWithFormat:@"%d possible match", 1];
     
     //sort array
     NSSortDescriptor *scoreDescriptor = [[NSSortDescriptor alloc] initWithKey:@"score" ascending:NO];
@@ -595,8 +577,6 @@
     //    }
     
     projectIdentifications = [NSArray arrayWithArray:sortedIdentifications];
-    [self.table reloadData];
-    [self performSelectorInBackground:@selector(loadIdentificationImages) withObject:self];
     [[AppModel sharedAppModel]save];
 }
 
