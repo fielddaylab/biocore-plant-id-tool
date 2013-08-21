@@ -48,6 +48,7 @@
     NSMutableArray *metadata;
     NSMutableArray *requiredCheckmarkImageViews;
     NSMutableArray *optionalCheckmarkImageViews;
+    UIActivityIndicatorView *spinner;
 }
 
 @end
@@ -81,7 +82,6 @@
         locationManager.distanceFilter = kCLDistanceFilterNone;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         [locationManager startUpdatingLocation];
-        
     }
     return self;
 }
@@ -104,6 +104,11 @@
     
     UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle: @"Back" style: UIBarButtonItemStyleBordered target: nil action: nil];
     [[self navigationItem] setBackBarButtonItem: newBackButton];
+    
+    
+    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
+               UIActivityIndicatorViewStyleWhiteLarge];
+    [self.view addSubview:spinner];
     
     if(newObservation){
         [[AppModel sharedAppModel]getAllProjectComponentsWithHandler:@selector(handleFetchAllProjectComponentsForProjectName:) target:[AppModel sharedAppModel]];
@@ -187,6 +192,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     observation.identificationString = self.title;
+    [[AppModel sharedAppModel] save];
 }
 
 - (void)didReceiveMemoryWarning
@@ -224,30 +230,7 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //update the title of the view
-    //    int identifications = [projectIdentifications count];
-    //    if(dataToFilter.count > 0){
-    //        identifications = 0;
-    //        for (int i = 0; i < projectIdentifications.count; i++) {
-    //            ProjectIdentification *iden = [projectIdentifications objectAtIndex:i];
-    //            if([iden.score floatValue] >= .8){
-    //                identifications++;
-    //            }
-    //        }
-    //    }
-    //
-    //    if (observation.userObservationIdentifications.count < 1) {
-    //        self.title = identifications != 1 ?[NSString stringWithFormat:@"%d possible matches", identifications] : [NSString stringWithFormat:@"%d possible match", 1];
-    //    }
-    //    else{
-    //        NSArray *userIdentificationArray = [observation.userObservationIdentifications allObjects];
-    //        UserObservationIdentification *userIdentification = [userIdentificationArray objectAtIndex:0];
-    //        ProjectIdentification *projectIdentification = userIdentification.projectIdentification;
-    //        self.title = projectIdentification.alternateName;
-    //    }
-    
-    
+{    
     //Make the identifier unique to that row so cell pictures don't get reused in funky ways.
     NSString *CellIdentifier = [NSString stringWithFormat:@"%d", indexPath.section];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -387,7 +370,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 0 || indexPath.section == 1){
-        
         ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]init];
         
         ProjectComponent *projectComponent;
@@ -482,8 +464,9 @@
 
 -(void)projectIdentificationsResponseReady{
     projectIdentifications = [NSMutableArray arrayWithArray:[AppModel sharedAppModel].allProjectIdentifications];
-    [self rankIdentifications];
-    //[self performSelectorInBackground:@selector(rankIdentifications) withObject:self];
+    //[self rankIdentifications];
+    [spinner startAnimating];
+    [self performSelector:@selector(rankIdentifications) withObject:nil afterDelay:.1];
     [self.table reloadData];
 }
 
@@ -505,9 +488,11 @@
             [dataToFilter addObject:currData];
         }
     }
-    [self rankIdentifications];
-    
     [self.navigationController popViewControllerAnimated:YES];
+
+    [spinner startAnimating];
+    [self performSelector:@selector(rankIdentifications) withObject:nil afterDelay:.1];
+    //[self rankIdentifications];
 }
 
 -(UserObservationComponentData *)filterHasProjectComponentTitle:(NSString *)title{
@@ -593,7 +578,7 @@
     //    }
     
     projectIdentifications = [NSArray arrayWithArray:sortedIdentifications];
-    [[AppModel sharedAppModel]save];
+    [spinner stopAnimating];
 }
 
 -(float)getNumberScoreForData:(UserObservationComponentData *)data withIdentification:(ProjectIdentification *)identification{
@@ -810,10 +795,12 @@
     else{
         [dataToFilter removeObject:data];
     }
-    [self rankIdentifications];
-    //[self performSelectorInBackground:@selector(rankIdentifications) withObject:self];
+    //[self rankIdentifications];
+    [spinner startAnimating];
+    [self performSelector:@selector(rankIdentifications) withObject:nil afterDelay:.1];
     data.isFiltered = [NSNumber numberWithBool:boolSwitch.isOn];
     [[AppModel sharedAppModel] save];
+
 }
 
 -(UserObservationComponentData *)findDataForComponent:(ProjectComponent *)com{
@@ -871,6 +858,7 @@
     UserObservationIdentification *userIdentification = [[AppModel sharedAppModel] createNewUserObservationIdentificationWithProjectIdentification:projectIdentification withAttributes:attributes];
     NSSet *userIdentifications = [NSSet setWithObject:userIdentification];
     observation.userObservationIdentifications = userIdentifications;
+    self.title = projectIdentification.alternateName;
     [AppModel sharedAppModel].currentUserObservation = observation;
     [[AppModel sharedAppModel] save];
     [self.navigationController popToViewController:self animated:YES];
