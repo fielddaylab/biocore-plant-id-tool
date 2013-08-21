@@ -196,7 +196,7 @@
 #pragma mark - arrow button pressed
 -(void)arrowButtonPressed{
     if (judgementIsHidden) {
-        arrowButton.frame = CGRectMake((viewRect.size.width / 2.0f) - (arrowImage.size.width / 2.0f), viewRect.size.height - arrowImage.size.height - (viewRect.size.height * (1.0f/3.0f)), arrowImage.size.width, arrowImage.size.height);
+        arrowButton.frame = CGRectMake((viewRect.size.width / 2.0f) - (arrowImage.size.width / 2.0f), viewRect.size.height - arrowImage.size.height - (viewRect.size.height * (.43f)), arrowImage.size.width, arrowImage.size.height);
         [arrowButton setImage:[[MediaManager sharedMediaManager] getImageNamed:@"06-arrow-south.png"] forState:UIControlStateNormal];
         [self.judgementDelegate enableJudgementView];
         judgementIsHidden = NO;
