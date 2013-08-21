@@ -152,6 +152,10 @@
 - (int)loadButtons{
     ProjectIdentificationDiscussion *discussion;
     int heightOfAllButtons = 0;
+    
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+    [identificationInformation sortUsingDescriptors:[NSArray arrayWithObject:sort]];
+    
     for (int i = 0; i < identificationInformation.count; i++) {
         
         discussion = [identificationInformation objectAtIndex:i];

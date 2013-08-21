@@ -230,6 +230,9 @@
         }
     }
     
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"enumValue" ascending:YES];
+    [possibilities sortUsingDescriptors:[NSArray arrayWithObject:sort]];
+    
     [carousel reloadData];
 }
 
