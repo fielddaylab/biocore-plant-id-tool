@@ -108,7 +108,7 @@
     
     spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
                UIActivityIndicatorViewStyleWhiteLarge];
-    [self.view addSubview:spinner];
+    spinner.hidesWhenStopped = YES;
     
     if(newObservation){
         [[AppModel sharedAppModel]getAllProjectComponentsWithHandler:@selector(handleFetchAllProjectComponentsForProjectName:) target:[AppModel sharedAppModel]];
@@ -465,6 +465,7 @@
 -(void)projectIdentificationsResponseReady{
     projectIdentifications = [NSMutableArray arrayWithArray:[AppModel sharedAppModel].allProjectIdentifications];
     //[self rankIdentifications];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     [spinner startAnimating];
     [self performSelector:@selector(rankIdentifications) withObject:nil afterDelay:.1];
     [self.table reloadData];
@@ -489,7 +490,7 @@
         }
     }
     [self.navigationController popViewControllerAnimated:YES];
-
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     [spinner startAnimating];
     [self performSelector:@selector(rankIdentifications) withObject:nil afterDelay:.1];
     //[self rankIdentifications];
@@ -579,6 +580,7 @@
     
     projectIdentifications = [NSArray arrayWithArray:sortedIdentifications];
     [spinner stopAnimating];
+    self.navigationItem.RightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"ID" style:UIBarButtonItemStyleBordered target:self action:@selector(pushInterpretationViewController)];
 }
 
 -(float)getNumberScoreForData:(UserObservationComponentData *)data withIdentification:(ProjectIdentification *)identification{
@@ -796,6 +798,7 @@
         [dataToFilter removeObject:data];
     }
     //[self rankIdentifications];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     [spinner startAnimating];
     [self performSelector:@selector(rankIdentifications) withObject:nil afterDelay:.1];
     data.isFiltered = [NSNumber numberWithBool:boolSwitch.isOn];
