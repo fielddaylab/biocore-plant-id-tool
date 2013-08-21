@@ -13,8 +13,6 @@
 #import "AppModel.h"
 #import "MediaManager.h"
 
-
-
 @interface InterpretationChoiceViewController (){
     
     NSMutableArray *likelyChoices;
@@ -48,20 +46,49 @@
     unlikelyChoices = [[NSMutableArray alloc]init];
     
     ProjectIdentification *identification;
-    for (int i = 0; i < [projectIdentifications count]; i ++) {
-        
+//    for (int i = 0; i < [projectIdentifications count]; i ++) {
+//        
+//        identification = [projectIdentifications objectAtIndex:i];
+//        UIImage *defaultImage = [self loadDefaultImageForIdentification:identification];
+//        if ([identification.score floatValue] > .8) {
+//            [likelyChoices addObject:identification];
+//            [likelyImages addObject:defaultImage];
+//        }
+//        else{
+//            [unlikelyChoices addObject:identification];
+//            [unlikelyImages addObject:defaultImage];
+//        }
+//    }
+    
+    for (int i = 0; i < [projectIdentifications count]; i++) {
         identification = [projectIdentifications objectAtIndex:i];
-        UIImage *defaultImage = [self loadDefaultImageForIdentification:identification];
-        if ([identification.score floatValue] > .8) {
+        if ([identification.score floatValue] > .8){
             [likelyChoices addObject:identification];
-            [likelyImages addObject:defaultImage];
         }
         else{
             [unlikelyChoices addObject:identification];
-            [unlikelyImages addObject:defaultImage];
         }
     }
 
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+    [likelyChoices sortUsingDescriptors:[NSArray arrayWithObject:sort]];
+    [unlikelyChoices sortUsingDescriptors:[NSArray arrayWithObject:sort]];
+    
+    for (int i = 0; i < [likelyChoices count]; i ++) {
+        identification = [likelyImages objectAtIndex:i];
+        UIImage *defaultImage = [self loadDefaultImageForIdentification:identification];
+        [likelyImages addObject:defaultImage];
+    }
+    
+    for (int i = 0; i < [unlikelyChoices count]; i ++) {
+        identification = [unlikelyChoices objectAtIndex:i];
+        UIImage *defaultImage = [self loadDefaultImageForIdentification:identification];
+        [unlikelyImages addObject:defaultImage];
+    }
+    
+    
+    
+    
 }
 
 -(UIImage *)loadDefaultImageForIdentification:(ProjectIdentification *)identification{
