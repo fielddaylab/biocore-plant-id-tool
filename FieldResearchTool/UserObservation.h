@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSDate * created;
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSNumber * longitude;
+@property (nonatomic, retain) NSNumber * locationAccuracy;
 @property (nonatomic, retain) NSDate * updated;
 @property (nonatomic, retain) NSString * identificationString;
 @property (nonatomic, retain) User *user;

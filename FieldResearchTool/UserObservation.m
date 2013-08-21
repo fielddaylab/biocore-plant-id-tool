@@ -17,6 +17,7 @@
 @dynamic created;
 @dynamic latitude;
 @dynamic longitude;
+@dynamic locationAccuracy;
 @dynamic updated;
 @dynamic identificationString;
 @dynamic user;

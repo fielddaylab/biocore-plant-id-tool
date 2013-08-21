@@ -115,6 +115,7 @@
         observation = [[AppModel sharedAppModel] createNewUserObservationWithAttributes:attributes];
         observation.latitude = [NSNumber numberWithFloat:locationManager.location.coordinate.latitude];
         observation.longitude = [NSNumber numberWithFloat:locationManager.location.coordinate.longitude];
+        observation.locationAccuracy = [NSNumber numberWithFloat:locationManager.location.horizontalAccuracy];
         observation.created = [NSDate date];
         observation.updated = [NSDate date];
         [AppModel sharedAppModel].currentUserObservation = observation;
@@ -153,8 +154,6 @@
         
         [[AppModel sharedAppModel]getAllProjectIdentificationsWithHandler:@selector(handleFetchProjectIdentifications:) target:[AppModel sharedAppModel]];
     }
-    
-    
     
 }
 
