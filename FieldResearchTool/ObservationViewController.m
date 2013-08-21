@@ -170,6 +170,7 @@
             [alert show];
         }
         else{
+            observation.identificationString = self.title;
             [self.navigationController popViewControllerAnimated:YES];
         }
         
@@ -185,13 +186,13 @@
 {
     if (alertView.tag == 0) {
         if (buttonIndex == 0) {
+            observation.identificationString = self.title;
             [self.navigationController popViewControllerAnimated:YES];
         }
     }
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
-    observation.identificationString = self.title;
     [[AppModel sharedAppModel] save];
 }
 

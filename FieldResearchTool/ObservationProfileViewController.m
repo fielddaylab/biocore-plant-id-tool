@@ -164,6 +164,7 @@
         if (!currObservation.identificationString) {
             [tempObservations removeObject:currObservation];
             [[AppModel sharedAppModel] deleteObject:currObservation];
+            NSLog(@"Removed empty observation!");
         }
     }
     
