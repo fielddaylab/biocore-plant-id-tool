@@ -229,6 +229,7 @@
             [possibilities addObject:possibility];
         }
     }
+    
     [carousel reloadData];
 }
 

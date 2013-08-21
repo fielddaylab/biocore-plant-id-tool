@@ -81,7 +81,7 @@
         locationManager.distanceFilter = kCLDistanceFilterNone;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         [locationManager startUpdatingLocation];
-
+        
     }
     return self;
 }
@@ -90,7 +90,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     metadata = [[NSMutableArray alloc]initWithArray:[self getMetadata]];
-
+    
     [table reloadData];
 }
 
@@ -101,7 +101,7 @@
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(popToObservationScreen)];
     self.navigationItem.RightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"ID" style:UIBarButtonItemStyleBordered target:self action:@selector(pushInterpretationViewController)];
-
+    
     UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle: @"Back" style: UIBarButtonItemStyleBordered target: nil action: nil];
     [[self navigationItem] setBackBarButtonItem: newBackButton];
     
@@ -226,26 +226,26 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //update the title of the view
-//    int identifications = [projectIdentifications count];
-//    if(dataToFilter.count > 0){
-//        identifications = 0;
-//        for (int i = 0; i < projectIdentifications.count; i++) {
-//            ProjectIdentification *iden = [projectIdentifications objectAtIndex:i];
-//            if([iden.score floatValue] >= .8){
-//                identifications++;
-//            }
-//        }
-//    }
-//    
-//    if (observation.userObservationIdentifications.count < 1) {
-//        self.title = identifications != 1 ?[NSString stringWithFormat:@"%d possible matches", identifications] : [NSString stringWithFormat:@"%d possible match", 1];
-//    }
-//    else{
-//        NSArray *userIdentificationArray = [observation.userObservationIdentifications allObjects];
-//        UserObservationIdentification *userIdentification = [userIdentificationArray objectAtIndex:0];
-//        ProjectIdentification *projectIdentification = userIdentification.projectIdentification;
-//        self.title = projectIdentification.alternateName;
-//    }
+    //    int identifications = [projectIdentifications count];
+    //    if(dataToFilter.count > 0){
+    //        identifications = 0;
+    //        for (int i = 0; i < projectIdentifications.count; i++) {
+    //            ProjectIdentification *iden = [projectIdentifications objectAtIndex:i];
+    //            if([iden.score floatValue] >= .8){
+    //                identifications++;
+    //            }
+    //        }
+    //    }
+    //
+    //    if (observation.userObservationIdentifications.count < 1) {
+    //        self.title = identifications != 1 ?[NSString stringWithFormat:@"%d possible matches", identifications] : [NSString stringWithFormat:@"%d possible match", 1];
+    //    }
+    //    else{
+    //        NSArray *userIdentificationArray = [observation.userObservationIdentifications allObjects];
+    //        UserObservationIdentification *userIdentification = [userIdentificationArray objectAtIndex:0];
+    //        ProjectIdentification *projectIdentification = userIdentification.projectIdentification;
+    //        self.title = projectIdentification.alternateName;
+    //    }
     
     
     //Make the identifier unique to that row so cell pictures don't get reused in funky ways.
@@ -275,7 +275,7 @@
                 checkmark = (UIImageView *)[optionalCheckmarkImageViews objectAtIndex:indexPath.row];
             }
             
-
+            
             
             UserObservationComponentData *data = [self findDataForComponent:com];
             if(data){
@@ -330,7 +330,6 @@
                     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", judgement.longText];
                 }
                 
-
                 
             }
             
@@ -378,8 +377,6 @@
                 }
             }
             
-
-            
         }break;
         default:
             break;
@@ -405,7 +402,7 @@
         containerView.projectComponent = projectComponent;
         containerView.newObservation = newObservation;
         containerView.dismissDelegate = self;
-    
+        
         
         [self.navigationController pushViewController:containerView animated:YES];
     }
@@ -433,25 +430,45 @@
 #pragma mark - Asynchronous responses
 
 -(void)projectComponentsResponseReady{
+
     projectComponents = [NSMutableArray arrayWithArray:[AppModel sharedAppModel].currentProjectComponents];
-    UIImage *checkmarkImage = [[MediaManager sharedMediaManager] getImageNamed:@"17-checkGREEN"];
-    for (int i = 0; i < projectComponents.count; i++) {
+    
+    for (int i = 0; i < [projectComponents count]; i++) {
         ProjectComponent *com = [projectComponents objectAtIndex:i];
+        if([com.required boolValue]){
+            [requiredComponents addObject:com];
+        }
+        else{
+            [optionalComponents addObject:com];
+        }
+    }
+    
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+    [requiredComponents sortUsingDescriptors:[NSArray arrayWithObject:sort]];
+    [optionalComponents sortUsingDescriptors:[NSArray arrayWithObject:sort]];
+    
+    UIImage *checkmarkImage = [[MediaManager sharedMediaManager] getImageNamed:@"17-checkGREEN"];
+    
+    for (int i = 0; i < [requiredComponents count]; i++){
+        ProjectComponent *com = [requiredComponents objectAtIndex:i];
         UIImage *componentImage = [self loadImageForComponent:com];
         UIImageView *checkmark = [[UIImageView alloc] initWithFrame:CGRectMake(35, 19, 25, 25)];
         checkmark.image = checkmarkImage;
         
-        if([com.required boolValue]){
-            [requiredComponents addObject:com];
-            [requiredComImages addObject:componentImage];
-            [requiredCheckmarkImageViews addObject:checkmark];
-        }
-        else{
-            [optionalComponents addObject:com];
-            [optionalComImages addObject:componentImage];
-            [optionalCheckmarkImageViews addObject:checkmark];
-        }
+        [requiredComImages addObject:componentImage];
+        [requiredCheckmarkImageViews addObject:checkmark];
     }
+    
+    for (int i = 0; i < [optionalComponents count]; i++){
+        ProjectComponent *com = [optionalComponents objectAtIndex:i];
+        UIImage *componentImage = [self loadImageForComponent:com];
+        UIImageView *checkmark = [[UIImageView alloc] initWithFrame:CGRectMake(35, 19, 25, 25)];
+        checkmark.image = checkmarkImage;
+        
+        [optionalComImages addObject:componentImage];
+        [optionalCheckmarkImageViews addObject:checkmark];
+    }
+    
     [self.table reloadData];
 }
 
@@ -558,7 +575,7 @@
             }
         }
     }
-
+    
     
     self.title = possibleIdentifications != 1 ?[NSString stringWithFormat:@"%d possible matches", possibleIdentifications] : [NSString stringWithFormat:@"%d possible match", 1];
     
@@ -827,7 +844,7 @@
     [metadataToSend addObject:dateString];
     
     //Location
-    NSLog(@"Lat: %f , LONG: %f",locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude);    
+    NSLog(@"Lat: %f , LONG: %f",locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude);
     [metadataToSend addObject:[NSString stringWithFormat:@"Lat: %f, Long: %f", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude]];
     
     //Weather

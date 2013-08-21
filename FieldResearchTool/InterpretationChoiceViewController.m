@@ -61,7 +61,7 @@
             [unlikelyImages addObject:defaultImage];
         }
     }
-    
+
 }
 
 -(UIImage *)loadDefaultImageForIdentification:(ProjectIdentification *)identification{
