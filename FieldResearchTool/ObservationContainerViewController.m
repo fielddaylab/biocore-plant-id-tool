@@ -31,6 +31,7 @@
     UIViewController *judgementViewControllerToDisplay;
     BOOL isOneToOne;
     UIActivityIndicatorView *saveSpinner;
+    UIBarButtonItem *nextButton;
 }
 
 @end
@@ -42,6 +43,7 @@
 @synthesize saveJudgementDelegate;
 @synthesize prevData;
 @synthesize newObservation;
+@synthesize nextDelegate;
 
 - (void)saveObservationData:(id)sender {
     
@@ -92,10 +94,7 @@
     saveSpinner.hidesWhenStopped = YES;
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(popToComponentScreen)];
-    
-    saveButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData:)];
-    [self.navigationItem setRightBarButtonItem:saveButton];
-    
+        
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, (self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height) * (.57f));
     
     NSLog(@"Frame X: %f Frame Y: %f Frame Width: %f Frame Height: %f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
@@ -115,6 +114,7 @@
             photoDataViewController.judgementDelegate = self;
             photoDataViewController.saveDelegate = self;
             dataViewControllerToDisplay = photoDataViewController;
+            self.nextDelegate = (id)photoDataViewController;
         }
             break;
         case DATA_NUMBER:{
@@ -206,6 +206,15 @@
             break;
         default:
             break;
+    }
+    
+    saveButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveObservationData:)];
+    nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(photoNextButonWasPressed)];
+    if ([dataViewControllerToDisplay isKindOfClass:[PhotoDataViewController class]] && !prevData) {
+        [self.navigationItem setRightBarButtonItem:nextButton];
+    }
+    else{
+        [self.navigationItem setRightBarButtonItem:saveButton];
     }
     
     [self pushOnViewControllers];
@@ -532,11 +541,25 @@
 
 #pragma mark toggle save button
 -(void)enableSaveButton{
+    if (self.navigationItem.rightBarButtonItem != saveButton) {
+        self.navigationItem.rightBarButtonItem = saveButton;
+    }
     saveButton.enabled = YES;
 }
 
 -(void)disableSaveButton{
     saveButton.enabled = NO;
+}
+
+-(void)setNextAsRightButton{
+    self.navigationItem.rightBarButtonItem = nextButton;
+}
+
+#pragma mark photo next button was pressed
+-(void)photoNextButonWasPressed{
+    if (self.nextDelegate) {
+        [self.nextDelegate photoNextButtonWasPressed];
+    }
 }
 
 @end

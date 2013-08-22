@@ -22,3 +22,9 @@
 -(UserObservationComponentData *)saveUserDataAndJudgement;
 
 @end
+
+@protocol PhotoNextButtonWasPressed <NSObject>
+
+-(void)photoNextButtonWasPressed;
+
+@end

@@ -16,11 +16,11 @@
 
 
 
-@interface PhotoDataViewController ()<SaveObservationDelegate>{
+@interface PhotoDataViewController ()<SaveObservationDelegate, PhotoNextButtonWasPressed>{
     UIImageView *showPictureView;
-    UIImageView *cameraImageView;
+    //UIImageView *cameraImageView;
     UIView *recorderView;
-    UIButton *retakeButton;
+    //UIButton *retakeButton;
     UIButton *arrowButton;
     UIButton *deleteImageButton;
     CGRect viewRect;
@@ -72,22 +72,24 @@
         //[self arrowButtonPressed];
     }
     
-    deleteImageImage = [[MediaManager sharedMediaManager] getImageNamed:@"298-circlex"];
-    deleteImageButton = [[UIButton alloc] initWithFrame:CGRectMake(312 - deleteImageImage.size.width, 8, deleteImageImage.size.width, deleteImageImage.size.height)];
-    [deleteImageButton setImage:deleteImageImage forState:UIControlStateNormal];
-    [deleteImageButton addTarget:self
-                   action:@selector(deleteImagePressed)
-         forControlEvents:UIControlEventTouchUpInside];
+//    deleteImageImage = [[MediaManager sharedMediaManager] getImageNamed:@"298-circlex"];
+//    deleteImageButton = [[UIButton alloc] initWithFrame:CGRectMake(312 - deleteImageImage.size.width, 8, deleteImageImage.size.width, deleteImageImage.size.height)];
+//    [deleteImageButton setImage:deleteImageImage forState:UIControlStateNormal];
+//    [deleteImageButton addTarget:self
+//                   action:@selector(deleteImagePressed)
+//         forControlEvents:UIControlEventTouchUpInside];
     
-    retakeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    retakeButton.frame = viewRect;
-    if (newObservation) {
-        [retakeButton addTarget:self action:@selector(startRecord) forControlEvents:UIControlEventTouchUpInside];
-    }
-
-    UIImage *cameraImage = [[MediaManager sharedMediaManager] getImageNamed:@"86-camera.png"];
-    cameraImageView = [[UIImageView alloc] initWithImage:cameraImage];
-    cameraImageView.frame = CGRectMake((viewRect.size.width / 2.0f) - (cameraImage.size.width / 2.0f), (viewRect.size.height / 2.0f) - (cameraImage.size.height / 2.0f), cameraImage.size.width, cameraImage.size.height);
+//    deleteImageImage = [[MediaManager sharedMediaManager] getImageNamed:@"298-circlex"];
+//    deleteImageButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 20, 320, 44)];
+    deleteImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    deleteImageButton.backgroundColor = [UIColor colorWithRed:172 green:172 blue:172 alpha:.75];
+    [deleteImageButton setTitle:@"Retake Photo!" forState:UIControlStateNormal];
+    
+    [deleteImageButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [deleteImageButton setTitleColor:[UIColor colorWithRed:69 green:69 blue:69 alpha:1.0] forState:UIControlStateHighlighted];
+    
+    [deleteImageButton addTarget:self action:@selector(deleteImagePressed) forControlEvents:UIControlEventTouchUpInside];
+    deleteImageButton.frame = CGRectMake(0, 0, 320, 44);
     
     arrowImage = [[MediaManager sharedMediaManager] getImageNamed:@"03-arrow-north.png"];
     arrowButton = [[UIButton alloc] initWithFrame:CGRectMake((viewRect.size.width / 2.0f) - (arrowImage.size.width / 2.0f) - 5, viewRect.size.height - arrowImage.size.height - 10 - 5, arrowImage.size.width + 10, arrowImage.size.height + 10)];
@@ -95,9 +97,7 @@
     [arrowButton addTarget:self action:@selector(arrowButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     
     if(!prevData){
-        cameraImageView.hidden = NO;
         deleteImageButton.hidden = YES;
-        retakeButton.enabled = YES;
         arrowButton.hidden = YES;
         [self.saveDelegate disableSaveButton];
     }
@@ -108,18 +108,13 @@
         else{
             deleteImageButton.hidden = YES;
         }
-        cameraImageView.hidden = YES;
-        
-        retakeButton.enabled = NO;
         arrowButton.hidden = NO;
     }
     
     
 
     [self.view addSubview:showPictureView];
-    [self.view addSubview:cameraImageView];
     [self.view addSubview:deleteImageButton];
-    [self.view addSubview:retakeButton];
     [self.view addSubview:arrowButton];
     
 }
@@ -161,10 +156,8 @@
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     
     showPictureView.image = chosenImage;
-    cameraImageView.hidden = YES;
     
     deleteImageButton.hidden = NO;
-    retakeButton.enabled = NO;
     arrowButton.hidden = NO;
     [self.saveDelegate enableSaveButton];
     
@@ -180,8 +173,6 @@
 #pragma mark - deleteImagePressed
 -(void)deleteImagePressed{
     deleteImageButton.hidden = YES;
-    retakeButton.enabled = YES;
-    cameraImageView.hidden = NO;
     arrowButton.hidden = YES;
     showPictureView.image = tutorialPhoto;
     if(!judgementIsHidden){
@@ -191,6 +182,7 @@
         judgementIsHidden = YES;
     }
     [self.saveDelegate disableSaveButton];
+    [self.saveDelegate setNextAsRightButton];
 }
 
 #pragma mark - arrow button pressed
@@ -242,6 +234,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark photo next button was pressed
+-(void)photoNextButtonWasPressed{
+    [self startRecord];
 }
 
 @end
