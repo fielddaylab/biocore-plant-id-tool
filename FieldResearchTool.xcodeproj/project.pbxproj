@@ -3118,6 +3118,7 @@
 				AAAC4F2B178F1767001AB1D8 /* Frameworks */,
 				AAAC4F2C178F1767001AB1D8 /* Resources */,
 				394F89CA843346C6A1881112 /* Copy Pods Resources */,
+				AB50469217C6A48500DA042E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -4015,6 +4016,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		AB50469217C6A48500DA042E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APP_ID=\"52161ee9a7928a5a46000002\"\nAPI_KEY=\"8l7mkecxukjhlpvwx4qgj3sqoub0itoa\"\nsource ${SRCROOT}/FieldResearchTool/CrittercismSDK/dsym_upload.sh";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -4161,6 +4175,7 @@
 					"\"$(SRCROOT)/FieldResearchTool/CrittercismSDK\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4177,6 +4192,7 @@
 					"\"$(SRCROOT)/FieldResearchTool/CrittercismSDK\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
