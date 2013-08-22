@@ -563,7 +563,7 @@
     }
     
     
-    self.title = possibleIdentifications != 1 ?[NSString stringWithFormat:@"%d possible matches", possibleIdentifications] : [NSString stringWithFormat:@"%d possible match", 1];
+    self.title = possibleIdentifications != 1 ?[NSString stringWithFormat:@"%d matches", possibleIdentifications] : [NSString stringWithFormat:@"%d match", 1];
     
     //sort array
     NSSortDescriptor *scoreDescriptor = [[NSSortDescriptor alloc] initWithKey:@"score" ascending:NO];
