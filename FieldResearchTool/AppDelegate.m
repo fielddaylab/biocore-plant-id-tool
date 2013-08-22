@@ -23,6 +23,7 @@
 #import "ProjectIdentificationDiscussion.h"
 #import "FieldResearchNavigationController.h"
 #import "LoginViewController.h"
+#import "Crittercism.h"
 
 @implementation AppDelegate
 
@@ -32,6 +33,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Crittercism enableWithAppID:@"52161ee9a7928a5a46000002"];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     LoginViewController *loginViewController = [[LoginViewController alloc] initWithFrame:[UIScreen mainScreen].bounds];
     FieldResearchNavigationController *navVC = [[FieldResearchNavigationController alloc] initWithRootViewController:loginViewController];

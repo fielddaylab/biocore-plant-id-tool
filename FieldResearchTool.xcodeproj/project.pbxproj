@@ -227,6 +227,8 @@
 		AAAC4F5D178F3EEE001AB1D8 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F5C178F3EEE001AB1D8 /* RootViewController.m */; };
 		AAAC4F60178F43A8001AB1D8 /* AccordionController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F5F178F43A8001AB1D8 /* AccordionController.m */; };
 		AAAC4F63178F445A001AB1D8 /* AccordionSection.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F62178F445A001AB1D8 /* AccordionSection.m */; };
+		AB5A5B4517C65725004CC809 /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = AB5A5B4317C65725004CC809 /* dsym_upload.sh */; };
+		AB5A5B4617C65725004CC809 /* libCrittercism_v4_0_6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB5A5B4417C65725004CC809 /* libCrittercism_v4_0_6.a */; };
 		AF90CA6408C44EE2A1B9A890 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B46BAE74A3264E519E21B16B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -510,6 +512,11 @@
 		AAAC4F61178F445A001AB1D8 /* AccordionSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccordionSection.h; sourceTree = "<group>"; };
 		AAAC4F62178F445A001AB1D8 /* AccordionSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccordionSection.m; sourceTree = "<group>"; };
 		AAAC4F64178F472C001AB1D8 /* AccordionControllerVCProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccordionControllerVCProtocol.h; sourceTree = "<group>"; };
+		AB5A5B4017C65725004CC809 /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
+		AB5A5B4117C65725004CC809 /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
+		AB5A5B4217C65725004CC809 /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
+		AB5A5B4317C65725004CC809 /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
+		AB5A5B4417C65725004CC809 /* libCrittercism_v4_0_6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v4_0_6.a; sourceTree = "<group>"; };
 		B46BAE74A3264E519E21B16B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -529,6 +536,7 @@
 				AAAC4F36178F1767001AB1D8 /* CoreGraphics.framework in Frameworks */,
 				AAAC4F38178F1767001AB1D8 /* CoreData.framework in Frameworks */,
 				AF90CA6408C44EE2A1B9A890 /* libPods.a in Frameworks */,
+				AB5A5B4617C65725004CC809 /* libCrittercism_v4_0_6.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1036,6 +1044,7 @@
 		AAAC4F39178F1767001AB1D8 /* FieldResearchTool */ = {
 			isa = PBXGroup;
 			children = (
+				AB5A5B3F17C65725004CC809 /* CrittercismSDK */,
 				71F5809317C40A3200C063DF /* Assets */,
 				5BFED1B61794830700648062 /* DataObjects */,
 				718AAD291794773000AFE6DB /* InterpretationViewControllers */,
@@ -1091,6 +1100,18 @@
 				AAAC4F4B178F1767001AB1D8 /* FieldResearchTool.xcdatamodeld */,
 			);
 			name = "Incremental Store Models";
+			sourceTree = "<group>";
+		};
+		AB5A5B3F17C65725004CC809 /* CrittercismSDK */ = {
+			isa = PBXGroup;
+			children = (
+				AB5A5B4017C65725004CC809 /* CRFilter.h */,
+				AB5A5B4117C65725004CC809 /* Crittercism.h */,
+				AB5A5B4217C65725004CC809 /* CrittercismDelegate.h */,
+				AB5A5B4317C65725004CC809 /* dsym_upload.sh */,
+				AB5A5B4417C65725004CC809 /* libCrittercism_v4_0_6.a */,
+			);
+			path = CrittercismSDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1304,6 +1325,7 @@
 				71F581E517C4205400C063DF /* Flowering_month-Sept.png in Resources */,
 				71F581E817C5438500C063DF /* Growth_form-upright_few_branches.png in Resources */,
 				71F581E917C5438500C063DF /* Growth_form-upright_no_branches.png in Resources */,
+				AB5A5B4517C65725004CC809 /* dsym_upload.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1481,6 +1503,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FieldResearchTool/FieldResearchTool-Prefix.pch";
 				INFOPLIST_FILE = "FieldResearchTool/FieldResearchTool-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/FieldResearchTool/CrittercismSDK\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1493,6 +1519,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FieldResearchTool/FieldResearchTool-Prefix.pch";
 				INFOPLIST_FILE = "FieldResearchTool/FieldResearchTool-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/FieldResearchTool/CrittercismSDK\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
