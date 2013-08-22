@@ -24,6 +24,7 @@
 
 -(void)enableSaveButton;
 -(void)disableSaveButton;
+-(void)setNextAsRightButton;
 
 @end
 

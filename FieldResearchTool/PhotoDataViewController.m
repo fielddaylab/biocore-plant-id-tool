@@ -16,7 +16,7 @@
 
 
 
-@interface PhotoDataViewController ()<SaveObservationDelegate>{
+@interface PhotoDataViewController ()<SaveObservationDelegate, PhotoNextButtonWasPressed>{
     UIImageView *showPictureView;
     UIImageView *cameraImageView;
     UIView *recorderView;
@@ -203,6 +203,7 @@
         judgementIsHidden = YES;
     }
     [self.saveDelegate disableSaveButton];
+    [self.saveDelegate setNextAsRightButton];
 }
 
 #pragma mark - arrow button pressed
@@ -254,6 +255,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark photo next button was pressed
+-(void)photoNextButtonWasPressed{
+    [self startRecord];
 }
 
 @end

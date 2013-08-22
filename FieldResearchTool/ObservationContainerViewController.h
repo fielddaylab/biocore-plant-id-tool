@@ -17,7 +17,6 @@
 
 @end
 
-
 @interface ObservationContainerViewController : UIViewController
 
 @property (strong, nonatomic) ProjectComponent *projectComponent;
@@ -27,6 +26,7 @@
 @property (nonatomic, weak) id<ObservationContainerViewControllerDelegate> dismissDelegate;
 @property (nonatomic, weak) id<SaveObservationDelegate> saveObservationDelegate;
 @property (nonatomic, weak) id<SaveJudgementDelegate> saveJudgementDelegate;
+@property (nonatomic, weak) id<PhotoNextButtonWasPressed> nextDelegate;
 
 @end
 
