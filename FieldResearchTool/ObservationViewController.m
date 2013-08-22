@@ -473,6 +473,8 @@
 
 - (void)dismissContainerViewAndSetProjectComponentObserved:(UserObservationComponentData *)data{
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    [spinner startAnimating];
     dataToFilter = [[NSMutableArray alloc]init];
     requiredFieldsFilledOut = 0;
     NSArray *dataSet = [observation.userObservationComponentData allObjects];
@@ -490,8 +492,6 @@
         }
     }
     [self.navigationController popViewControllerAnimated:YES];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
-    [spinner startAnimating];
     [self performSelector:@selector(rankIdentifications) withObject:nil afterDelay:.1];
     //[self rankIdentifications];
 }
