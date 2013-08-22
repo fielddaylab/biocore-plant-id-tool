@@ -458,7 +458,6 @@
     NSString *projectComponentTitleString = com.title;
     NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
     projectComponentTitleString = [[projectComponentTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
-    projectComponentTitleString = [projectComponentTitleString stringByAppendingString:@".png"];
     return [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:projectComponentTitleString] scaledToSize:CGRectMake(0, 0, 40, 40).size];
 }
 

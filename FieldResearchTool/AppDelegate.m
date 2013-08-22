@@ -288,13 +288,10 @@
             NSString *projectComponentTitleString = projectComponentName;
             NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
             projectComponentTitleString = [[projectComponentTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
-            projectComponentTitleString = [projectComponentTitleString stringByAppendingString:@".png"];
             
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:projectComponentTitleString];
-            
-            //NSString *filePath = [[NSBundle mainBundle] pathForResource:projectComponentTitleString ofType:@"png"];
-            
+                        
             NSMutableDictionary *mediaAttributes = [[NSMutableDictionary alloc]init];
             [mediaAttributes setObject:[NSDate date] forKey:@"created"];
             [mediaAttributes setObject:[NSDate date] forKey:@"updated"];
