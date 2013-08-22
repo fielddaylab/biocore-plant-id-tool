@@ -1516,6 +1516,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 03237ECF5C5F485597FD7DAA /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: UW Division of Information Technology";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FieldResearchTool/FieldResearchTool-Prefix.pch";
 				INFOPLIST_FILE = "FieldResearchTool/FieldResearchTool-Info.plist";
@@ -1524,6 +1526,8 @@
 					"\"$(SRCROOT)/FieldResearchTool/CrittercismSDK\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8411B94E-1D39-4C3D-8623-5C178280CE7B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
