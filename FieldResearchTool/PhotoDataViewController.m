@@ -72,12 +72,24 @@
         //[self arrowButtonPressed];
     }
     
-    deleteImageImage = [[MediaManager sharedMediaManager] getImageNamed:@"298-circlex"];
-    deleteImageButton = [[UIButton alloc] initWithFrame:CGRectMake(312 - deleteImageImage.size.width, 8, deleteImageImage.size.width, deleteImageImage.size.height)];
-    [deleteImageButton setImage:deleteImageImage forState:UIControlStateNormal];
-    [deleteImageButton addTarget:self
-                   action:@selector(deleteImagePressed)
-         forControlEvents:UIControlEventTouchUpInside];
+//    deleteImageImage = [[MediaManager sharedMediaManager] getImageNamed:@"298-circlex"];
+//    deleteImageButton = [[UIButton alloc] initWithFrame:CGRectMake(312 - deleteImageImage.size.width, 8, deleteImageImage.size.width, deleteImageImage.size.height)];
+//    [deleteImageButton setImage:deleteImageImage forState:UIControlStateNormal];
+//    [deleteImageButton addTarget:self
+//                   action:@selector(deleteImagePressed)
+//         forControlEvents:UIControlEventTouchUpInside];
+    
+//    deleteImageImage = [[MediaManager sharedMediaManager] getImageNamed:@"298-circlex"];
+//    deleteImageButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 20, 320, 44)];
+    deleteImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    deleteImageButton.backgroundColor = [UIColor colorWithRed:172 green:172 blue:172 alpha:.75];
+    [deleteImageButton setTitle:@"Retake Photo!" forState:UIControlStateNormal];
+    
+    [deleteImageButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [deleteImageButton setTitleColor:[UIColor colorWithRed:69 green:69 blue:69 alpha:1.0] forState:UIControlStateHighlighted];
+    
+    [deleteImageButton addTarget:self action:@selector(deleteImagePressed) forControlEvents:UIControlEventTouchUpInside];
+    deleteImageButton.frame = CGRectMake(0, 0, 320, 44);
     
     retakeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     retakeButton.frame = viewRect;
