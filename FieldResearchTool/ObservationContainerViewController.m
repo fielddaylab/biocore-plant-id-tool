@@ -30,6 +30,7 @@
     UIViewController *dataViewControllerToDisplay;
     UIViewController *judgementViewControllerToDisplay;
     BOOL isOneToOne;
+    UIActivityIndicatorView *saveSpinner;
 }
 
 @end
@@ -43,6 +44,9 @@
 @synthesize newObservation;
 
 - (void)saveObservationData:(id)sender {
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveSpinner];
+    [saveSpinner startAnimating];
     
     if ([prevData.wasJudged boolValue]) {
         NSArray *judgementSet = [prevData.userObservationComponentDataJudgement allObjects];
@@ -68,14 +72,24 @@
     // Our delegate method is optional, so we should
     // check that the delegate implements it
     if ([self.dismissDelegate respondsToSelector:@selector(dismissContainerViewAndSetProjectComponentObserved:)]) {
-        [self.dismissDelegate dismissContainerViewAndSetProjectComponentObserved:userData];
+        //[self.dismissDelegate dismissContainerViewAndSetProjectComponentObserved:userData];
+        [self performSelector:@selector(dismissContainerView:) withObject:userData afterDelay:3];
     }
+    
+    //[saveSpinner stopAnimating];
+}
+
+-(void)dismissContainerView:(UserObservationComponentData *)userData{
+    [self.dismissDelegate dismissContainerViewAndSetProjectComponentObserved:userData];
 }
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    saveSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    saveSpinner.hidesWhenStopped = YES;
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(popToComponentScreen)];
     
