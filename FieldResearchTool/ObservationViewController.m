@@ -459,7 +459,6 @@
     NSString *projectComponentTitleString = com.title;
     NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
     projectComponentTitleString = [[projectComponentTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
-    projectComponentTitleString = [projectComponentTitleString stringByAppendingString:@".png"];
     return [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:projectComponentTitleString] scaledToSize:CGRectMake(0, 0, 40, 40).size];
 }
 
@@ -474,6 +473,8 @@
 
 - (void)dismissContainerViewAndSetProjectComponentObserved:(UserObservationComponentData *)data{
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    [spinner startAnimating];
     dataToFilter = [[NSMutableArray alloc]init];
     requiredFieldsFilledOut = 0;
     NSArray *dataSet = [observation.userObservationComponentData allObjects];
@@ -491,8 +492,6 @@
         }
     }
     [self.navigationController popViewControllerAnimated:YES];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
-    [spinner startAnimating];
     [self performSelector:@selector(rankIdentifications) withObject:nil afterDelay:.1];
     //[self rankIdentifications];
 }
@@ -564,7 +563,7 @@
     }
     
     
-    self.title = possibleIdentifications != 1 ?[NSString stringWithFormat:@"%d possible matches", possibleIdentifications] : [NSString stringWithFormat:@"%d possible match", 1];
+    self.title = possibleIdentifications != 1 ?[NSString stringWithFormat:@"%d matches", possibleIdentifications] : [NSString stringWithFormat:@"%d match", 1];
     
     //sort array
     NSSortDescriptor *scoreDescriptor = [[NSSortDescriptor alloc] initWithKey:@"score" ascending:NO];

@@ -40,26 +40,29 @@
         self.view.backgroundColor = [UIColor lightGrayColor];
     }
     
-    UILabel *descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, rectView.size.height * .04, rectView.size.width, 22)];
-    descriptionLabel.backgroundColor = [UIColor clearColor];
-    descriptionLabel.textAlignment = NSTextAlignmentCenter;
-    descriptionLabel.font = [descriptionLabel.font fontWithSize:16];
+    UITextView *descriptionTextField = [[UITextView alloc]initWithFrame:CGRectMake(0, rectView.size.height * .02, rectView.size.width, 60)];
+    descriptionTextField.backgroundColor = [UIColor clearColor];
+    descriptionTextField.textAlignment = NSTextAlignmentCenter;
+    descriptionTextField.font = [descriptionTextField.font fontWithSize:16];
+    
+    descriptionTextField.editable = NO;
+    
     if ([projectComponent.prompt isEqualToString:@""]) {
-        descriptionLabel.text = [NSString stringWithFormat:@"Choose a value for %@.", projectComponent.title];
+        descriptionTextField.text = [NSString stringWithFormat:@"Enter a number for %@.", projectComponent.title];
     }
     else{
-        descriptionLabel.text = projectComponent.prompt;
+        descriptionTextField.text = projectComponent.prompt;
     }
     
-    descriptionLabel.tag = 2;
-    [self.view addSubview:descriptionLabel];
+    descriptionTextField.tag = 2;
+    [self.view addSubview:descriptionTextField];
     
     boolSwitch = [[UISwitch alloc]initWithFrame:CGRectZero];
     if (!isOneToOne) {
         boolSwitch.frame = CGRectMake(rectView.size.width *.6 , rectView.size.height *.5 - boolSwitch.frame.size.height*.5 + 10, 0, 0);
     }
     else{
-        boolSwitch.frame = CGRectMake(rectView.size.width *.6 , descriptionLabel.frame.size.height + 60, 0, 0);
+        boolSwitch.frame = CGRectMake(rectView.size.width *.6 , descriptionTextField.frame.size.height + 60, 0, 0);
     }
     
     [self.view addSubview:boolSwitch];

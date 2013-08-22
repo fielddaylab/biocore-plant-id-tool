@@ -118,7 +118,7 @@
                 [imageGallery setFrame:CGRectMake(i * 320, 0, 320, PICTURE_OFFSET)];
             }
             else{
-                imageGallery = [[UIImageView alloc] initWithImage:[[MediaManager sharedMediaManager] getImageNamed:mediaObject.mediaURL]];
+                imageGallery = [[UIImageView alloc] initWithImage:[[MediaManager sharedMediaManager] getImageNamed:[NSString stringWithFormat:@"%@.jpg",mediaObject.mediaURL]]];
                 [imageGallery setFrame:CGRectMake(i * 320, 0, 320, PICTURE_OFFSET)];
             }
             [scrollGallery addSubview:imageGallery];
