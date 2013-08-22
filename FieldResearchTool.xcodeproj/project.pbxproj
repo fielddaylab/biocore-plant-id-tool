@@ -10,6 +10,7 @@
 		5B03BBE9179EE495005AD632 /* MediaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBE8179EE495005AD632 /* MediaManager.m */; };
 		5B0458591795A11600B93A4D /* AppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0458581795A11600B93A4D /* AppModel.m */; };
 		5B04D63B17B579D20008C250 /* UIImage+Rotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B04D63A17B579D20008C250 /* UIImage+Rotation.m */; };
+		5B0F661B17C6B9C70006DD44 /* Abutilon_theophrasti-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B0F661A17C6B9C70006DD44 /* Abutilon_theophrasti-default.jpg */; };
 		5B1DAC6D17B05C0F00A30136 /* UserObservationComponentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1DAC6C17B05C0F00A30136 /* UserObservationComponentData.m */; };
 		5B4D2DF717AC3C5B0071304F /* ProjectIdentificationDiscussion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF617AC3C5B0071304F /* ProjectIdentificationDiscussion.m */; };
 		5B4D2DFA17AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF917AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m */; };
@@ -902,6 +903,7 @@
 		5B0458581795A11600B93A4D /* AppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppModel.m; sourceTree = "<group>"; };
 		5B04D63917B579D20008C250 /* UIImage+Rotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Rotation.h"; sourceTree = "<group>"; };
 		5B04D63A17B579D20008C250 /* UIImage+Rotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Rotation.m"; sourceTree = "<group>"; };
+		5B0F661A17C6B9C70006DD44 /* Abutilon_theophrasti-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Abutilon_theophrasti-default.jpg"; sourceTree = "<group>"; };
 		5B1B065617A6C90A002B47A0 /* SaveObservationAndJudgementDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveObservationAndJudgementDelegate.h; sourceTree = "<group>"; };
 		5B1DAC6B17B05C0F00A30136 /* UserObservationComponentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationComponentData.h; sourceTree = "<group>"; };
 		5B1DAC6C17B05C0F00A30136 /* UserObservationComponentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationComponentData.m; sourceTree = "<group>"; };
@@ -2332,6 +2334,7 @@
 			isa = PBXGroup;
 			children = (
 				71F5871617C57A1400C063DF /* Abutilon_theophrasti-calyx-mi.jpg */,
+				5B0F661A17C6B9C70006DD44 /* Abutilon_theophrasti-default.jpg */,
 				71F5871717C57A1400C063DF /* Abutilon_theophrasti-flower-mi.jpg */,
 				71F5871817C57A1400C063DF /* Abutilon_theophrasti-fruit-mi.jpg */,
 				71F5871917C57A1400C063DF /* Abutilon_theophrasti-leaf-in.jpg */,
@@ -3980,6 +3983,7 @@
 				71F58C3E17C57A1900C063DF /* Zizia_aurea-leaf1-mi.jpg in Resources */,
 				71F58C3F17C57A1900C063DF /* Zizia_aurea-leaf2-mi.jpg in Resources */,
 				AB50469017C69F2E00DA042E /* dsym_upload.sh in Resources */,
+				5B0F661B17C6B9C70006DD44 /* Abutilon_theophrasti-default.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
