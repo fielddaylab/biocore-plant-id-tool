@@ -34,22 +34,40 @@
 -(void)loadView{
     [super loadView];
     
-    UILabel *descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, viewRect.size.height * .04, viewRect.size.width, 22)];
-    descriptionLabel.backgroundColor = [UIColor clearColor];
-    descriptionLabel.textAlignment = NSTextAlignmentCenter;
-    descriptionLabel.font = [descriptionLabel.font fontWithSize:16];
+//    UILabel *descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, viewRect.size.height * .04, viewRect.size.width, 22)];
+//    descriptionLabel.backgroundColor = [UIColor clearColor];
+//    descriptionLabel.textAlignment = NSTextAlignmentCenter;
+//    descriptionLabel.font = [descriptionLabel.font fontWithSize:16];
+//    if ([projectComponent.prompt isEqualToString:@""]) {
+//        descriptionLabel.text = [NSString stringWithFormat:@"Enter a description for %@.", projectComponent.title];
+//    }
+//    else{
+//        descriptionLabel.text = projectComponent.prompt;
+//    }
+//    
+//    descriptionLabel.tag = 2;
+//    [self.view addSubview:descriptionLabel];
+    
+    UITextView *descriptionTextField = [[UITextView alloc]initWithFrame:CGRectMake(0, viewRect.size.height * .02, viewRect.size.width, 60)];
+    descriptionTextField.backgroundColor = [UIColor clearColor];
+    descriptionTextField.textAlignment = NSTextAlignmentCenter;
+    descriptionTextField.font = [descriptionTextField.font fontWithSize:16];
+    
+    descriptionTextField.editable = NO;
+    
     if ([projectComponent.prompt isEqualToString:@""]) {
-        descriptionLabel.text = [NSString stringWithFormat:@"Enter a description for %@.", projectComponent.title];
+        descriptionTextField.text = [NSString stringWithFormat:@"Enter a number for %@.", projectComponent.title];
     }
     else{
-        descriptionLabel.text = projectComponent.prompt;
+        descriptionTextField.text = projectComponent.prompt;
     }
     
-    descriptionLabel.tag = 2;
-    [self.view addSubview:descriptionLabel];
+    descriptionTextField.tag = 2;
+    [self.view addSubview:descriptionTextField];
+
     
     textField = [[UITextField alloc] init];
-    textField.frame = CGRectMake(viewRect.size.width *.05, descriptionLabel.frame.size.height + 20, viewRect.size.width *.9, 40);
+    textField.frame = CGRectMake(viewRect.size.width *.05, descriptionTextField.frame.size.height + 20, viewRect.size.width *.9, 40);
     textField.borderStyle = UITextBorderStyleRoundedRect;
     textField.font = [UIFont systemFontOfSize:15];
     textField.placeholder = @"enter description";
