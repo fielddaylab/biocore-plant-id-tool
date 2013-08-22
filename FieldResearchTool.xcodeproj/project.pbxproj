@@ -888,6 +888,8 @@
 		AAAC4F5D178F3EEE001AB1D8 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F5C178F3EEE001AB1D8 /* RootViewController.m */; };
 		AAAC4F60178F43A8001AB1D8 /* AccordionController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F5F178F43A8001AB1D8 /* AccordionController.m */; };
 		AAAC4F63178F445A001AB1D8 /* AccordionSection.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F62178F445A001AB1D8 /* AccordionSection.m */; };
+		AB50469017C69F2E00DA042E /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = AB50468E17C69F2E00DA042E /* dsym_upload.sh */; };
+		AB50469117C69F2E00DA042E /* libCrittercism_v4_0_6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB50468F17C69F2E00DA042E /* libCrittercism_v4_0_6.a */; };
 		AF90CA6408C44EE2A1B9A890 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B46BAE74A3264E519E21B16B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -1832,6 +1834,11 @@
 		AAAC4F61178F445A001AB1D8 /* AccordionSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccordionSection.h; sourceTree = "<group>"; };
 		AAAC4F62178F445A001AB1D8 /* AccordionSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccordionSection.m; sourceTree = "<group>"; };
 		AAAC4F64178F472C001AB1D8 /* AccordionControllerVCProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccordionControllerVCProtocol.h; sourceTree = "<group>"; };
+		AB50468B17C69F2E00DA042E /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
+		AB50468C17C69F2E00DA042E /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
+		AB50468D17C69F2E00DA042E /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
+		AB50468E17C69F2E00DA042E /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
+		AB50468F17C69F2E00DA042E /* libCrittercism_v4_0_6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v4_0_6.a; sourceTree = "<group>"; };
 		B46BAE74A3264E519E21B16B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1851,6 +1858,7 @@
 				AAAC4F36178F1767001AB1D8 /* CoreGraphics.framework in Frameworks */,
 				AAAC4F38178F1767001AB1D8 /* CoreData.framework in Frameworks */,
 				AF90CA6408C44EE2A1B9A890 /* libPods.a in Frameworks */,
+				AB50469117C69F2E00DA042E /* libCrittercism_v4_0_6.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3028,6 +3036,7 @@
 		AAAC4F39178F1767001AB1D8 /* FieldResearchTool */ = {
 			isa = PBXGroup;
 			children = (
+				AB50468A17C69F2E00DA042E /* CrittercismSDK */,
 				71F5809317C40A3200C063DF /* Assets */,
 				5BFED1B61794830700648062 /* DataObjects */,
 				718AAD291794773000AFE6DB /* InterpretationViewControllers */,
@@ -3083,6 +3092,18 @@
 				AAAC4F4B178F1767001AB1D8 /* FieldResearchTool.xcdatamodeld */,
 			);
 			name = "Incremental Store Models";
+			sourceTree = "<group>";
+		};
+		AB50468A17C69F2E00DA042E /* CrittercismSDK */ = {
+			isa = PBXGroup;
+			children = (
+				AB50468B17C69F2E00DA042E /* CRFilter.h */,
+				AB50468C17C69F2E00DA042E /* Crittercism.h */,
+				AB50468D17C69F2E00DA042E /* CrittercismDelegate.h */,
+				AB50468E17C69F2E00DA042E /* dsym_upload.sh */,
+				AB50468F17C69F2E00DA042E /* libCrittercism_v4_0_6.a */,
+			);
+			path = CrittercismSDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3957,6 +3978,7 @@
 				71F58C3D17C57A1900C063DF /* Zizia_aurea-inflorescence-mi.jpg in Resources */,
 				71F58C3E17C57A1900C063DF /* Zizia_aurea-leaf1-mi.jpg in Resources */,
 				71F58C3F17C57A1900C063DF /* Zizia_aurea-leaf2-mi.jpg in Resources */,
+				AB50469017C69F2E00DA042E /* dsym_upload.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4134,6 +4156,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FieldResearchTool/FieldResearchTool-Prefix.pch";
 				INFOPLIST_FILE = "FieldResearchTool/FieldResearchTool-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/FieldResearchTool/CrittercismSDK\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -4146,6 +4172,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FieldResearchTool/FieldResearchTool-Prefix.pch";
 				INFOPLIST_FILE = "FieldResearchTool/FieldResearchTool-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/FieldResearchTool/CrittercismSDK\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
