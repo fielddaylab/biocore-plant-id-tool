@@ -49,7 +49,7 @@
     descriptionTextField.editable = NO;
     
     if ([projectComponent.prompt isEqualToString:@""]) {
-        descriptionTextField.text = [NSString stringWithFormat:@"Enter a number for %@.", projectComponent.title];
+        descriptionTextField.text = [NSString stringWithFormat:@"Enter a description for %@.", projectComponent.title];
     }
     else{
         descriptionTextField.text = projectComponent.prompt;
