@@ -25,6 +25,8 @@
 @property (nonatomic, strong) NSArray *allProjectIdentifications;
 @property (nonatomic, strong) UserObservation *currentUserObservation;
 @property (nonatomic, strong) User *currentUser;
+@property (nonatomic, strong) NSMutableDictionary *identificationImages;
+@property (nonatomic) BOOL imagesLoaded;
 
 + (AppModel *)sharedAppModel;
 
@@ -57,5 +59,8 @@
 //delete
 -(void)deleteObject:(NSManagedObject *)objectToDelete;
 -(void)deleteObjects:(NSArray *)objectsToDelete;
+
+//load
+-(void)loadIdentificationImages;
 
 @end

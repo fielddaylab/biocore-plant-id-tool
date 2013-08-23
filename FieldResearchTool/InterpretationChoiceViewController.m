@@ -49,7 +49,7 @@
     for (int i = 0; i < [projectIdentifications count]; i ++) {
         
         identification = [projectIdentifications objectAtIndex:i];
-        UIImage *defaultImage = [self loadDefaultImageForIdentification:identification];
+        UIImage *defaultImage = (UIImage *)[[AppModel sharedAppModel].identificationImages objectForKey:identification.title];
         if ([identification.score floatValue] > .8) {
             [likelyChoices addObject:identification];
             [likelyImages addObject:defaultImage];
@@ -61,19 +61,6 @@
     }
     
 }
-
--(UIImage *)loadDefaultImageForIdentification:(ProjectIdentification *)identification{
-    NSString *identificationTitleString = identification.title;
-    NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
-    identificationTitleString = [[identificationTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
-    UIImage *defaultImage = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:[NSString stringWithFormat:@"%@-default.jpg",identificationTitleString]] scaledToSize:CGRectMake(0, 0, 80, 80).size];
-    if ([[MediaManager sharedMediaManager] getImageNamed:[NSString stringWithFormat:@"%@-default.jpg",identificationTitleString]] == nil) {
-        defaultImage = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"defaultIdentificationNoPhoto"] scaledToSize:CGRectMake(0, 0, 80, 80).size];
-    }
-    return defaultImage;
-}
-
-
 
 - (void) viewDidAppear:(BOOL)animated{
     [self.table reloadData];

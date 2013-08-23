@@ -290,7 +290,6 @@
 		71F5817717C40A3200C063DF /* Leaf_margin-finely_toothed.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580E317C40A3200C063DF /* Leaf_margin-finely_toothed.png */; };
 		71F5817817C40A3200C063DF /* Leaf_margin-lobed.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580E417C40A3200C063DF /* Leaf_margin-lobed.png */; };
 		71F5817917C40A3200C063DF /* Leaf_margin-wavy.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580E517C40A3200C063DF /* Leaf_margin-wavy.png */; };
-		71F5817A17C40A3200C063DF /* Leaf_margin.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580E617C40A3200C063DF /* Leaf_margin.png */; };
 		71F5817B17C40A3200C063DF /* Leaf_shape-cordiform.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580E817C40A3200C063DF /* Leaf_shape-cordiform.png */; };
 		71F5817C17C40A3200C063DF /* Leaf_shape-divided.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580E917C40A3200C063DF /* Leaf_shape-divided.png */; };
 		71F5817D17C40A3200C063DF /* Leaf_shape-elliptic.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F580EA17C40A3200C063DF /* Leaf_shape-elliptic.png */; };
@@ -3714,7 +3713,6 @@
 				71F5817717C40A3200C063DF /* Leaf_margin-finely_toothed.png in Resources */,
 				71F5817817C40A3200C063DF /* Leaf_margin-lobed.png in Resources */,
 				71F5817917C40A3200C063DF /* Leaf_margin-wavy.png in Resources */,
-				71F5817A17C40A3200C063DF /* Leaf_margin.png in Resources */,
 				71F5817B17C40A3200C063DF /* Leaf_shape-cordiform.png in Resources */,
 				71F5817C17C40A3200C063DF /* Leaf_shape-divided.png in Resources */,
 				71F5817D17C40A3200C063DF /* Leaf_shape-elliptic.png in Resources */,
