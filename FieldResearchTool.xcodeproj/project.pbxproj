@@ -10,7 +10,166 @@
 		5B03BBE9179EE495005AD632 /* MediaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B03BBE8179EE495005AD632 /* MediaManager.m */; };
 		5B0458591795A11600B93A4D /* AppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0458581795A11600B93A4D /* AppModel.m */; };
 		5B04D63B17B579D20008C250 /* UIImage+Rotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B04D63A17B579D20008C250 /* UIImage+Rotation.m */; };
-		5B0F661B17C6B9C70006DD44 /* Abutilon_theophrasti-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B0F661A17C6B9C70006DD44 /* Abutilon_theophrasti-default.jpg */; };
+		5B152D4717C7CF3C00970D87 /* Abutilon_theophrasti-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CAC17C7CF3B00970D87 /* Abutilon_theophrasti-default.jpg */; };
+		5B152D4817C7CF3C00970D87 /* Achillea_millefolium-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CAD17C7CF3B00970D87 /* Achillea_millefolium-default.jpg */; };
+		5B152D4917C7CF3C00970D87 /* Agastache_foeniculum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CAE17C7CF3B00970D87 /* Agastache_foeniculum-default.jpg */; };
+		5B152D4A17C7CF3C00970D87 /* Alliaria_basal-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CAF17C7CF3B00970D87 /* Alliaria_basal-default.jpg */; };
+		5B152D4B17C7CF3C00970D87 /* Alliaria_petiolata-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CB017C7CF3B00970D87 /* Alliaria_petiolata-default.jpg */; };
+		5B152D4C17C7CF3C00970D87 /* Allium_cernuum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CB117C7CF3B00970D87 /* Allium_cernuum-default.jpg */; };
+		5B152D4D17C7CF3C00970D87 /* Allium_stellatum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CB217C7CF3B00970D87 /* Allium_stellatum-default.jpg */; };
+		5B152D4E17C7CF3C00970D87 /* Amaranthus_retroflexus-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CB317C7CF3B00970D87 /* Amaranthus_retroflexus-default.jpg */; };
+		5B152D4F17C7CF3C00970D87 /* Ambrosia_artemisiifolia-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CB417C7CF3B00970D87 /* Ambrosia_artemisiifolia-default.jpg */; };
+		5B152D5017C7CF3C00970D87 /* Ambrosia_trifida-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CB517C7CF3B00970D87 /* Ambrosia_trifida-default.jpg */; };
+		5B152D5117C7CF3C00970D87 /* Amorpha_canescens-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CB617C7CF3B00970D87 /* Amorpha_canescens-default.jpg */; };
+		5B152D5217C7CF3C00970D87 /* Anemone_cylindrica-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CB717C7CF3B00970D87 /* Anemone_cylindrica-default.jpg */; };
+		5B152D5317C7CF3C00970D87 /* Arctium_minus-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CB817C7CF3B00970D87 /* Arctium_minus-default.jpg */; };
+		5B152D5417C7CF3C00970D87 /* Arnoglossum_atriplicifolium-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CB917C7CF3B00970D87 /* Arnoglossum_atriplicifolium-default.jpg */; };
+		5B152D5517C7CF3C00970D87 /* Arnoglossum_plantagineum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CBA17C7CF3B00970D87 /* Arnoglossum_plantagineum-default.jpg */; };
+		5B152D5617C7CF3C00970D87 /* Arnoglossum_reniforme-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CBB17C7CF3B00970D87 /* Arnoglossum_reniforme-default.jpg */; };
+		5B152D5717C7CF3C00970D87 /* Artemisia_ludoviciana-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CBC17C7CF3B00970D87 /* Artemisia_ludoviciana-default.jpg */; };
+		5B152D5817C7CF3C00970D87 /* Ascelpias_meadii-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CBD17C7CF3B00970D87 /* Ascelpias_meadii-default.jpg */; };
+		5B152D5917C7CF3C00970D87 /* Asclepias_amplexicaulis-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CBE17C7CF3B00970D87 /* Asclepias_amplexicaulis-default.jpg */; };
+		5B152D5A17C7CF3C00970D87 /* Asclepias_hirtella-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CBF17C7CF3B00970D87 /* Asclepias_hirtella-default.jpg */; };
+		5B152D5B17C7CF3C00970D87 /* Asclepias_incarnata-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CC017C7CF3B00970D87 /* Asclepias_incarnata-default.jpg */; };
+		5B152D5C17C7CF3C00970D87 /* Asclepias_meadii-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CC117C7CF3B00970D87 /* Asclepias_meadii-default.jpg */; };
+		5B152D5D17C7CF3C00970D87 /* Asclepias_purpurascens-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CC217C7CF3B00970D87 /* Asclepias_purpurascens-default.jpg */; };
+		5B152D5E17C7CF3C00970D87 /* Asclepias_sullivantii-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CC317C7CF3B00970D87 /* Asclepias_sullivantii-default.jpg */; };
+		5B152D5F17C7CF3C00970D87 /* Asclepias_syriaca-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CC417C7CF3B00970D87 /* Asclepias_syriaca-default.jpg */; };
+		5B152D6017C7CF3C00970D87 /* Asclepias_tuberosa-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CC517C7CF3B00970D87 /* Asclepias_tuberosa-default.jpg */; };
+		5B152D6117C7CF3C00970D87 /* Aster_drummondii-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CC617C7CF3B00970D87 /* Aster_drummondii-default.jpg */; };
+		5B152D6217C7CF3C00970D87 /* Aster_laevis-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CC717C7CF3B00970D87 /* Aster_laevis-default.jpg */; };
+		5B152D6317C7CF3C00970D87 /* Aster_lanceolatus-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CC817C7CF3B00970D87 /* Aster_lanceolatus-default.jpg */; };
+		5B152D6417C7CF3C00970D87 /* Aster_novae-angliae-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CC917C7CF3B00970D87 /* Aster_novae-angliae-default.jpg */; };
+		5B152D6517C7CF3C00970D87 /* Aster_oolentangiensis-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CCA17C7CF3B00970D87 /* Aster_oolentangiensis-default.jpg */; };
+		5B152D6617C7CF3C00970D87 /* Aster_sericeus-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CCB17C7CF3B00970D87 /* Aster_sericeus-default.jpg */; };
+		5B152D6717C7CF3C00970D87 /* Astragalus_canadensis-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CCC17C7CF3B00970D87 /* Astragalus_canadensis-default.jpg */; };
+		5B152D6817C7CF3C00970D87 /* Cerastium_nutans-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CCD17C7CF3B00970D87 /* Cerastium_nutans-default.jpg */; };
+		5B152D6917C7CF3C00970D87 /* Cirsium_arvense-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CCE17C7CF3B00970D87 /* Cirsium_arvense-default.jpg */; };
+		5B152D6A17C7CF3C00970D87 /* Cornus_amomum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CCF17C7CF3B00970D87 /* Cornus_amomum-default.jpg */; };
+		5B152D6B17C7CF3C00970D87 /* Cornus_stolonifera-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CD017C7CF3B00970D87 /* Cornus_stolonifera-default.jpg */; };
+		5B152D6C17C7CF3C00970D87 /* Dalea_candida-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CD117C7CF3B00970D87 /* Dalea_candida-default.jpg */; };
+		5B152D6D17C7CF3C00970D87 /* Dalea_purpurea-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CD217C7CF3B00970D87 /* Dalea_purpurea-default.jpg */; };
+		5B152D6E17C7CF3C00970D87 /* Daucus_carota-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CD317C7CF3B00970D87 /* Daucus_carota-default.jpg */; };
+		5B152D6F17C7CF3C00970D87 /* Desmodium_canadense-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CD417C7CF3B00970D87 /* Desmodium_canadense-default.jpg */; };
+		5B152D7017C7CF3C00970D87 /* Desmodium_illinoense-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CD517C7CF3B00970D87 /* Desmodium_illinoense-default.jpg */; };
+		5B152D7117C7CF3C00970D87 /* Dodecatheon_meadia-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CD617C7CF3B00970D87 /* Dodecatheon_meadia-default.jpg */; };
+		5B152D7217C7CF3C00970D87 /* Echinacea_pallida-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CD717C7CF3B00970D87 /* Echinacea_pallida-default.jpg */; };
+		5B152D7317C7CF3C00970D87 /* Echinacea_purpurea-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CD817C7CF3B00970D87 /* Echinacea_purpurea-default.jpg */; };
+		5B152D7417C7CF3C00970D87 /* Erigeron_strigosus-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CD917C7CF3B00970D87 /* Erigeron_strigosus-default.jpg */; };
+		5B152D7517C7CF3C00970D87 /* Eryngium_yuccifolium-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CDA17C7CF3B00970D87 /* Eryngium_yuccifolium-default.jpg */; };
+		5B152D7617C7CF3C00970D87 /* Eupatorium_altissimum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CDB17C7CF3B00970D87 /* Eupatorium_altissimum-default.jpg */; };
+		5B152D7817C7CF3C00970D87 /* Eupatorium_perfoliatum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CDD17C7CF3B00970D87 /* Eupatorium_perfoliatum-default.jpg */; };
+		5B152D7917C7CF3C00970D87 /* Eupatorium_rugosum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CDE17C7CF3B00970D87 /* Eupatorium_rugosum-default.jpg */; };
+		5B152D7A17C7CF3C00970D87 /* Eupatorium_sessilifolium-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CDF17C7CF3B00970D87 /* Eupatorium_sessilifolium-default.jpg */; };
+		5B152D7B17C7CF3C00970D87 /* Euphorbia_corollata-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CE017C7CF3B00970D87 /* Euphorbia_corollata-default.jpg */; };
+		5B152D7C17C7CF3C00970D87 /* Euphorbia_esula-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CE117C7CF3B00970D87 /* Euphorbia_esula-default.jpg */; };
+		5B152D7D17C7CF3C00970D87 /* Galium_trifidum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CE217C7CF3B00970D87 /* Galium_trifidum-default.jpg */; };
+		5B152D7E17C7CF3C00970D87 /* Gentiana_alba-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CE317C7CF3B00970D87 /* Gentiana_alba-default.jpg */; };
+		5B152D7F17C7CF3C00970D87 /* Gentiana_andrewsii-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CE417C7CF3B00970D87 /* Gentiana_andrewsii-default.jpg */; };
+		5B152D8017C7CF3C00970D87 /* Geum_triflorum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CE517C7CF3B00970D87 /* Geum_triflorum-default.jpg */; };
+		5B152D8117C7CF3C00970D87 /* Hasteola_suaveolens-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CE617C7CF3B00970D87 /* Hasteola_suaveolens-default.jpg */; };
+		5B152D8217C7CF3C00970D87 /* Helianthus_grosseserratus-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CE717C7CF3B00970D87 /* Helianthus_grosseserratus-default.jpg */; };
+		5B152D8317C7CF3C00970D87 /* Helianthus_pauciflorus-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CE817C7CF3B00970D87 /* Helianthus_pauciflorus-default.jpg */; };
+		5B152D8417C7CF3C00970D87 /* Heliopsis_helianthoides-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CE917C7CF3B00970D87 /* Heliopsis_helianthoides-default.jpg */; };
+		5B152D8517C7CF3C00970D87 /* Hesperis_matronalis-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CEA17C7CF3B00970D87 /* Hesperis_matronalis-default.jpg */; };
+		5B152D8617C7CF3C00970D87 /* Heuchera_richardsonii-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CEB17C7CF3B00970D87 /* Heuchera_richardsonii-default.jpg */; };
+		5B152D8717C7CF3C00970D87 /* Hypericum_perforatum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CEC17C7CF3B00970D87 /* Hypericum_perforatum-default.jpg */; };
+		5B152D8817C7CF3C00970D87 /* Hypericum_punctatum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CED17C7CF3B00970D87 /* Hypericum_punctatum-default.jpg */; };
+		5B152D8917C7CF3C00970D87 /* Hypericum_pyramidatum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CEE17C7CF3B00970D87 /* Hypericum_pyramidatum-default.jpg */; };
+		5B152D8A17C7CF3C00970D87 /* Impatiens_capensis-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CEF17C7CF3B00970D87 /* Impatiens_capensis-default.jpg */; };
+		5B152D8B17C7CF3C00970D87 /* Kuhnia_eupatorioides-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CF017C7CF3B00970D87 /* Kuhnia_eupatorioides-default.jpg */; };
+		5B152D8C17C7CF3C00970D87 /* Lactuca_canadensis-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CF117C7CF3B00970D87 /* Lactuca_canadensis-default.jpg */; };
+		5B152D8D17C7CF3C00970D87 /* Leonurus_cardiaca-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CF217C7CF3B00970D87 /* Leonurus_cardiaca-default.jpg */; };
+		5B152D8E17C7CF3C00970D87 /* Lepidium_densiflorum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CF317C7CF3B00970D87 /* Lepidium_densiflorum-default.jpg */; };
+		5B152D8F17C7CF3C00970D87 /* Lespedeza_capitata-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CF417C7CF3B00970D87 /* Lespedeza_capitata-default.jpg */; };
+		5B152D9017C7CF3C00970D87 /* Lespedeza_virginica-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CF517C7CF3B00970D87 /* Lespedeza_virginica-default.jpg */; };
+		5B152D9117C7CF3C00970D87 /* Leucanthemum_vulgare-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CF617C7CF3B00970D87 /* Leucanthemum_vulgare-default.jpg */; };
+		5B152D9217C7CF3C00970D87 /* Liatris_aspera-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CF717C7CF3B00970D87 /* Liatris_aspera-default.jpg */; };
+		5B152D9317C7CF3C00970D87 /* Liatris_cylindracea-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CF817C7CF3B00970D87 /* Liatris_cylindracea-default.jpg */; };
+		5B152D9417C7CF3C00970D87 /* Liatris_ligulistylis-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CF917C7CF3C00970D87 /* Liatris_ligulistylis-default.jpg */; };
+		5B152D9517C7CF3C00970D87 /* Liatris_punctata-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CFA17C7CF3C00970D87 /* Liatris_punctata-default.jpg */; };
+		5B152D9617C7CF3C00970D87 /* Liatris_pycnostachya-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CFB17C7CF3C00970D87 /* Liatris_pycnostachya-default.jpg */; };
+		5B152D9717C7CF3C00970D87 /* Linaria_vulgaris-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CFC17C7CF3C00970D87 /* Linaria_vulgaris-default.jpg */; };
+		5B152D9817C7CF3C00970D87 /* Lithospermum_canescens-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CFD17C7CF3C00970D87 /* Lithospermum_canescens-default.jpg */; };
+		5B152D9917C7CF3C00970D87 /* Lupinus_perennis-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CFE17C7CF3C00970D87 /* Lupinus_perennis-default.jpg */; };
+		5B152D9A17C7CF3C00970D87 /* Matricaria_discoidea-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152CFF17C7CF3C00970D87 /* Matricaria_discoidea-default.jpg */; };
+		5B152D9B17C7CF3C00970D87 /* Medicago_lupulina-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D0017C7CF3C00970D87 /* Medicago_lupulina-default.jpg */; };
+		5B152D9C17C7CF3C00970D87 /* Medicago_sativa-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D0117C7CF3C00970D87 /* Medicago_sativa-default.jpg */; };
+		5B152D9D17C7CF3C00970D87 /* Melilotus_albus-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D0217C7CF3C00970D87 /* Melilotus_albus-default.jpg */; };
+		5B152D9E17C7CF3C00970D87 /* Melilotus_officinalis-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D0317C7CF3C00970D87 /* Melilotus_officinalis-default.jpg */; };
+		5B152D9F17C7CF3C00970D87 /* Monarda_fistulosa-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D0417C7CF3C00970D87 /* Monarda_fistulosa-default.jpg */; };
+		5B152DA017C7CF3C00970D87 /* Morus_alba-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D0517C7CF3C00970D87 /* Morus_alba-default.jpg */; };
+		5B152DA117C7CF3C00970D87 /* Nepeta_cataria-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D0617C7CF3C00970D87 /* Nepeta_cataria-default.jpg */; };
+		5B152DA217C7CF3C00970D87 /* Oenothera_biennis-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D0717C7CF3C00970D87 /* Oenothera_biennis-default.jpg */; };
+		5B152DA317C7CF3C00970D87 /* Oxalis_corniculata-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D0817C7CF3C00970D87 /* Oxalis_corniculata-default.jpg */; };
+		5B152DA417C7CF3C00970D87 /* Parthenium_cauline-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D0917C7CF3C00970D87 /* Parthenium_cauline-default.jpg */; };
+		5B152DA517C7CF3C00970D87 /* Parthenium_integrifolium-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D0A17C7CF3C00970D87 /* Parthenium_integrifolium-default.jpg */; };
+		5B152DA617C7CF3C00970D87 /* Pastinaca_sativa-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D0B17C7CF3C00970D87 /* Pastinaca_sativa-default.jpg */; };
+		5B152DA717C7CF3C00970D87 /* Penstemon_digitalis-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D0C17C7CF3C00970D87 /* Penstemon_digitalis-default.jpg */; };
+		5B152DA817C7CF3C00970D87 /* Phlox_pilosa-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D0D17C7CF3C00970D87 /* Phlox_pilosa-default.jpg */; };
+		5B152DA917C7CF3C00970D87 /* Plantago_lanceolata-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D0E17C7CF3C00970D87 /* Plantago_lanceolata-default.jpg */; };
+		5B152DAA17C7CF3C00970D87 /* Plantago_major-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D0F17C7CF3C00970D87 /* Plantago_major-default.jpg */; };
+		5B152DAB17C7CF3C00970D87 /* Plantago_rugelii-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D1017C7CF3C00970D87 /* Plantago_rugelii-default.jpg */; };
+		5B152DAC17C7CF3C00970D87 /* Polygonum_hydropiper-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D1117C7CF3C00970D87 /* Polygonum_hydropiper-default.jpg */; };
+		5B152DAD17C7CF3C00970D87 /* Portulaca_oleracea-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D1217C7CF3C00970D87 /* Portulaca_oleracea-default.jpg */; };
+		5B152DAE17C7CF3C00970D87 /* Potentilla_arguta-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D1317C7CF3C00970D87 /* Potentilla_arguta-default.jpg */; };
+		5B152DAF17C7CF3C00970D87 /* Potentilla_recta-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D1417C7CF3C00970D87 /* Potentilla_recta-default.jpg */; };
+		5B152DB017C7CF3C00970D87 /* Potentilla_simplex-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D1517C7CF3C00970D87 /* Potentilla_simplex-default.jpg */; };
+		5B152DB117C7CF3C00970D87 /* Prunella_vulgaris-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D1617C7CF3C00970D87 /* Prunella_vulgaris-default.jpg */; };
+		5B152DB217C7CF3C00970D87 /* Pycnanthemum_virginianum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D1717C7CF3C00970D87 /* Pycnanthemum_virginianum-default.jpg */; };
+		5B152DB317C7CF3C00970D87 /* Ratibida_pinnata-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D1817C7CF3C00970D87 /* Ratibida_pinnata-default.jpg */; };
+		5B152DB417C7CF3C00970D87 /* Robinia_pseudoacacia-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D1917C7CF3C00970D87 /* Robinia_pseudoacacia-default.jpg */; };
+		5B152DB517C7CF3C00970D87 /* Rosa_multiflora-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D1A17C7CF3C00970D87 /* Rosa_multiflora-default.jpg */; };
+		5B152DB617C7CF3C00970D87 /* Rudbeckia_hirta-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D1B17C7CF3C00970D87 /* Rudbeckia_hirta-default.jpg */; };
+		5B152DB717C7CF3C00970D87 /* Ruellia_humilis-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D1C17C7CF3C00970D87 /* Ruellia_humilis-default.jpg */; };
+		5B152DB817C7CF3C00970D87 /* Rumex_crispus-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D1D17C7CF3C00970D87 /* Rumex_crispus-default.jpg */; };
+		5B152DB917C7CF3C00970D87 /* Senna_hebecarpa-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D1E17C7CF3C00970D87 /* Senna_hebecarpa-default.jpg */; };
+		5B152DBA17C7CF3C00970D87 /* Silene_latifolia-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D1F17C7CF3C00970D87 /* Silene_latifolia-default.jpg */; };
+		5B152DBB17C7CF3C00970D87 /* Silphium_integrifolium-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D2017C7CF3C00970D87 /* Silphium_integrifolium-default.jpg */; };
+		5B152DBC17C7CF3C00970D87 /* Silphium_laciniatum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D2117C7CF3C00970D87 /* Silphium_laciniatum-default.jpg */; };
+		5B152DBD17C7CF3C00970D87 /* Silphium_perfoliatum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D2217C7CF3C00970D87 /* Silphium_perfoliatum-default.jpg */; };
+		5B152DBE17C7CF3C00970D87 /* Silphium_terebinthinaceum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D2317C7CF3C00970D87 /* Silphium_terebinthinaceum-default.jpg */; };
+		5B152DBF17C7CF3C00970D87 /* Sinapis_arvensis-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D2417C7CF3C00970D87 /* Sinapis_arvensis-default.jpg */; };
+		5B152DC017C7CF3C00970D87 /* Sisymbrium_officinale-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D2517C7CF3C00970D87 /* Sisymbrium_officinale-default.jpg */; };
+		5B152DC117C7CF3C00970D87 /* Solidago_canadensis-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D2617C7CF3C00970D87 /* Solidago_canadensis-default.jpg */; };
+		5B152DC217C7CF3C00970D87 /* Solidago_juncea-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D2717C7CF3C00970D87 /* Solidago_juncea-default.jpg */; };
+		5B152DC317C7CF3C00970D87 /* Solidago_riddellii-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D2817C7CF3C00970D87 /* Solidago_riddellii-default.jpg */; };
+		5B152DC417C7CF3C00970D87 /* Solidago_rigida-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D2917C7CF3C00970D87 /* Solidago_rigida-default.jpg */; };
+		5B152DC517C7CF3C00970D87 /* Solidago_speciosa-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D2A17C7CF3C00970D87 /* Solidago_speciosa-default.jpg */; };
+		5B152DC617C7CF3C00970D87 /* Sonchus_oleraceus-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D2B17C7CF3C00970D87 /* Sonchus_oleraceus-default.jpg */; };
+		5B152DC717C7CF3C00970D87 /* Symphyotrichum_ericoides-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D2C17C7CF3C00970D87 /* Symphyotrichum_ericoides-default.jpg */; };
+		5B152DC817C7CF3C00970D87 /* Symphyotrichum_pilosum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D2D17C7CF3C00970D87 /* Symphyotrichum_pilosum-default.jpg */; };
+		5B152DC917C7CF3C00970D87 /* Taenidia_integerrima-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D2E17C7CF3C00970D87 /* Taenidia_integerrima-default.jpg */; };
+		5B152DCA17C7CF3C00970D87 /* Taraxacum_officinale-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D2F17C7CF3C00970D87 /* Taraxacum_officinale-default.jpg */; };
+		5B152DCB17C7CF3C00970D87 /* Tephrosia_virginiana-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D3017C7CF3C00970D87 /* Tephrosia_virginiana-default.jpg */; };
+		5B152DCC17C7CF3C00970D87 /* Thalictrum_dasycarpum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D3117C7CF3C00970D87 /* Thalictrum_dasycarpum-default.jpg */; };
+		5B152DCD17C7CF3C00970D87 /* Thlaspi_arvense-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D3217C7CF3C00970D87 /* Thlaspi_arvense-default.jpg */; };
+		5B152DCE17C7CF3C00970D87 /* Toxicodendron_radicans-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D3317C7CF3C00970D87 /* Toxicodendron_radicans-default.jpg */; };
+		5B152DCF17C7CF3C00970D87 /* Tradescantia_ohiensis-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D3417C7CF3C00970D87 /* Tradescantia_ohiensis-default.jpg */; };
+		5B152DD017C7CF3C00970D87 /* Trifolium_pratense-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D3517C7CF3C00970D87 /* Trifolium_pratense-default.jpg */; };
+		5B152DD117C7CF3C00970D87 /* Trifolium_repens-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D3617C7CF3C00970D87 /* Trifolium_repens-default.jpg */; };
+		5B152DD217C7CF3C00970D87 /* Urtica_dioica-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D3717C7CF3C00970D87 /* Urtica_dioica-default.jpg */; };
+		5B152DD317C7CF3C00970D87 /* Verbascum_thapsus-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D3817C7CF3C00970D87 /* Verbascum_thapsus-default.jpg */; };
+		5B152DD417C7CF3C00970D87 /* Verbena_hastata-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D3917C7CF3C00970D87 /* Verbena_hastata-default.jpg */; };
+		5B152DD517C7CF3C00970D87 /* Verbena_stricta-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D3A17C7CF3C00970D87 /* Verbena_stricta-default.jpg */; };
+		5B152DD617C7CF3C00970D87 /* Verbena_urticifolia-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D3B17C7CF3C00970D87 /* Verbena_urticifolia-default.jpg */; };
+		5B152DD717C7CF3C00970D87 /* Veronicastrum_virginicum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D3C17C7CF3C00970D87 /* Veronicastrum_virginicum-default.jpg */; };
+		5B152DD817C7CF3C00970D87 /* Viola_labradorica-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D3D17C7CF3C00970D87 /* Viola_labradorica-default.jpg */; };
+		5B152DD917C7CF3C00970D87 /* Viola_pedata-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D3E17C7CF3C00970D87 /* Viola_pedata-default.jpg */; };
+		5B152DDA17C7CF3C00970D87 /* Viola_pedatifida-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D3F17C7CF3C00970D87 /* Viola_pedatifida-default.jpg */; };
+		5B152DDB17C7CF3C00970D87 /* Viola_pubescens-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D4017C7CF3C00970D87 /* Viola_pubescens-default.jpg */; };
+		5B152DDC17C7CF3C00970D87 /* Viola_sagittata-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D4117C7CF3C00970D87 /* Viola_sagittata-default.jpg */; };
+		5B152DDD17C7CF3C00970D87 /* Viola_sororia-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D4217C7CF3C00970D87 /* Viola_sororia-default.jpg */; };
+		5B152DDE17C7CF3C00970D87 /* Vitis_aestivalis-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D4317C7CF3C00970D87 /* Vitis_aestivalis-default.jpg */; };
+		5B152DDF17C7CF3C00970D87 /* Vitis_riparia-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D4417C7CF3C00970D87 /* Vitis_riparia-default.jpg */; };
+		5B152DE017C7CF3C00970D87 /* Zizia_aptera-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D4517C7CF3C00970D87 /* Zizia_aptera-default.jpg */; };
+		5B152DE117C7CF3C00970D87 /* Zizia_aurea-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D4617C7CF3C00970D87 /* Zizia_aurea-default.jpg */; };
+		5B152DE717C7D11B00970D87 /* Eutrochium_maculatum-flower-il.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152DE217C7D11B00970D87 /* Eutrochium_maculatum-flower-il.jpg */; };
+		5B152DE817C7D11B00970D87 /* Eutrochium_maculatum-illustration-us.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152DE317C7D11B00970D87 /* Eutrochium_maculatum-illustration-us.jpg */; };
+		5B152DE917C7D11B00970D87 /* Eutrochium_maculatum-leaf-il.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152DE417C7D11B00970D87 /* Eutrochium_maculatum-leaf-il.jpg */; };
+		5B152DEA17C7D11B00970D87 /* Eutrochium_maculatum-plant-go.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152DE517C7D11B00970D87 /* Eutrochium_maculatum-plant-go.jpg */; };
+		5B152DEB17C7D11B00970D87 /* Eutrochium_maculatum-stem-il.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152DE617C7D11B00970D87 /* Eutrochium_maculatum-stem-il.jpg */; };
+		5B152DED17C7D18700970D87 /* Eutrochium_maculatum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152DEC17C7D18700970D87 /* Eutrochium_maculatum-default.jpg */; };
 		5B1DAC6D17B05C0F00A30136 /* UserObservationComponentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1DAC6C17B05C0F00A30136 /* UserObservationComponentData.m */; };
 		5B4D2DF717AC3C5B0071304F /* ProjectIdentificationDiscussion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF617AC3C5B0071304F /* ProjectIdentificationDiscussion.m */; };
 		5B4D2DFA17AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF917AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m */; };
@@ -400,11 +559,6 @@
 		71F58A6817C57A1800C063DF /* Eupatorium_altissimum-flower-il.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71F587D317C57A1400C063DF /* Eupatorium_altissimum-flower-il.jpg */; };
 		71F58A6917C57A1800C063DF /* Eupatorium_altissimum-plant-il.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71F587D417C57A1400C063DF /* Eupatorium_altissimum-plant-il.jpg */; };
 		71F58A6A17C57A1800C063DF /* Eupatorium_altissimum-stem-il.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71F587D517C57A1400C063DF /* Eupatorium_altissimum-stem-il.jpg */; };
-		71F58A6B17C57A1800C063DF /* Eupatorium_maculatum-flower-il.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71F587D617C57A1400C063DF /* Eupatorium_maculatum-flower-il.jpg */; };
-		71F58A6C17C57A1800C063DF /* Eupatorium_maculatum-illustration-us.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71F587D717C57A1400C063DF /* Eupatorium_maculatum-illustration-us.jpg */; };
-		71F58A6D17C57A1800C063DF /* Eupatorium_maculatum-leaf-il.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71F587D817C57A1400C063DF /* Eupatorium_maculatum-leaf-il.jpg */; };
-		71F58A6E17C57A1800C063DF /* Eupatorium_maculatum-plant-go.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71F587D917C57A1400C063DF /* Eupatorium_maculatum-plant-go.jpg */; };
-		71F58A6F17C57A1800C063DF /* Eupatorium_maculatum-stem-il.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71F587DA17C57A1400C063DF /* Eupatorium_maculatum-stem-il.jpg */; };
 		71F58A7017C57A1800C063DF /* Eupatorium_perfoliatum-flower-il.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71F587DB17C57A1500C063DF /* Eupatorium_perfoliatum-flower-il.jpg */; };
 		71F58A7117C57A1800C063DF /* Eupatorium_perfoliatum-leaf-il.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71F587DC17C57A1500C063DF /* Eupatorium_perfoliatum-leaf-il.jpg */; };
 		71F58A7217C57A1800C063DF /* Eupatorium_perfoliatum-plant-il.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71F587DD17C57A1500C063DF /* Eupatorium_perfoliatum-plant-il.jpg */; };
@@ -903,7 +1057,166 @@
 		5B0458581795A11600B93A4D /* AppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppModel.m; sourceTree = "<group>"; };
 		5B04D63917B579D20008C250 /* UIImage+Rotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Rotation.h"; sourceTree = "<group>"; };
 		5B04D63A17B579D20008C250 /* UIImage+Rotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Rotation.m"; sourceTree = "<group>"; };
-		5B0F661A17C6B9C70006DD44 /* Abutilon_theophrasti-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Abutilon_theophrasti-default.jpg"; sourceTree = "<group>"; };
+		5B152CAC17C7CF3B00970D87 /* Abutilon_theophrasti-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Abutilon_theophrasti-default.jpg"; sourceTree = "<group>"; };
+		5B152CAD17C7CF3B00970D87 /* Achillea_millefolium-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Achillea_millefolium-default.jpg"; sourceTree = "<group>"; };
+		5B152CAE17C7CF3B00970D87 /* Agastache_foeniculum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Agastache_foeniculum-default.jpg"; sourceTree = "<group>"; };
+		5B152CAF17C7CF3B00970D87 /* Alliaria_basal-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Alliaria_basal-default.jpg"; sourceTree = "<group>"; };
+		5B152CB017C7CF3B00970D87 /* Alliaria_petiolata-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Alliaria_petiolata-default.jpg"; sourceTree = "<group>"; };
+		5B152CB117C7CF3B00970D87 /* Allium_cernuum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Allium_cernuum-default.jpg"; sourceTree = "<group>"; };
+		5B152CB217C7CF3B00970D87 /* Allium_stellatum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Allium_stellatum-default.jpg"; sourceTree = "<group>"; };
+		5B152CB317C7CF3B00970D87 /* Amaranthus_retroflexus-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Amaranthus_retroflexus-default.jpg"; sourceTree = "<group>"; };
+		5B152CB417C7CF3B00970D87 /* Ambrosia_artemisiifolia-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Ambrosia_artemisiifolia-default.jpg"; sourceTree = "<group>"; };
+		5B152CB517C7CF3B00970D87 /* Ambrosia_trifida-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Ambrosia_trifida-default.jpg"; sourceTree = "<group>"; };
+		5B152CB617C7CF3B00970D87 /* Amorpha_canescens-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Amorpha_canescens-default.jpg"; sourceTree = "<group>"; };
+		5B152CB717C7CF3B00970D87 /* Anemone_cylindrica-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Anemone_cylindrica-default.jpg"; sourceTree = "<group>"; };
+		5B152CB817C7CF3B00970D87 /* Arctium_minus-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Arctium_minus-default.jpg"; sourceTree = "<group>"; };
+		5B152CB917C7CF3B00970D87 /* Arnoglossum_atriplicifolium-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Arnoglossum_atriplicifolium-default.jpg"; sourceTree = "<group>"; };
+		5B152CBA17C7CF3B00970D87 /* Arnoglossum_plantagineum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Arnoglossum_plantagineum-default.jpg"; sourceTree = "<group>"; };
+		5B152CBB17C7CF3B00970D87 /* Arnoglossum_reniforme-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Arnoglossum_reniforme-default.jpg"; sourceTree = "<group>"; };
+		5B152CBC17C7CF3B00970D87 /* Artemisia_ludoviciana-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Artemisia_ludoviciana-default.jpg"; sourceTree = "<group>"; };
+		5B152CBD17C7CF3B00970D87 /* Ascelpias_meadii-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Ascelpias_meadii-default.jpg"; sourceTree = "<group>"; };
+		5B152CBE17C7CF3B00970D87 /* Asclepias_amplexicaulis-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Asclepias_amplexicaulis-default.jpg"; sourceTree = "<group>"; };
+		5B152CBF17C7CF3B00970D87 /* Asclepias_hirtella-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Asclepias_hirtella-default.jpg"; sourceTree = "<group>"; };
+		5B152CC017C7CF3B00970D87 /* Asclepias_incarnata-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Asclepias_incarnata-default.jpg"; sourceTree = "<group>"; };
+		5B152CC117C7CF3B00970D87 /* Asclepias_meadii-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Asclepias_meadii-default.jpg"; sourceTree = "<group>"; };
+		5B152CC217C7CF3B00970D87 /* Asclepias_purpurascens-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Asclepias_purpurascens-default.jpg"; sourceTree = "<group>"; };
+		5B152CC317C7CF3B00970D87 /* Asclepias_sullivantii-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Asclepias_sullivantii-default.jpg"; sourceTree = "<group>"; };
+		5B152CC417C7CF3B00970D87 /* Asclepias_syriaca-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Asclepias_syriaca-default.jpg"; sourceTree = "<group>"; };
+		5B152CC517C7CF3B00970D87 /* Asclepias_tuberosa-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Asclepias_tuberosa-default.jpg"; sourceTree = "<group>"; };
+		5B152CC617C7CF3B00970D87 /* Aster_drummondii-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Aster_drummondii-default.jpg"; sourceTree = "<group>"; };
+		5B152CC717C7CF3B00970D87 /* Aster_laevis-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Aster_laevis-default.jpg"; sourceTree = "<group>"; };
+		5B152CC817C7CF3B00970D87 /* Aster_lanceolatus-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Aster_lanceolatus-default.jpg"; sourceTree = "<group>"; };
+		5B152CC917C7CF3B00970D87 /* Aster_novae-angliae-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Aster_novae-angliae-default.jpg"; sourceTree = "<group>"; };
+		5B152CCA17C7CF3B00970D87 /* Aster_oolentangiensis-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Aster_oolentangiensis-default.jpg"; sourceTree = "<group>"; };
+		5B152CCB17C7CF3B00970D87 /* Aster_sericeus-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Aster_sericeus-default.jpg"; sourceTree = "<group>"; };
+		5B152CCC17C7CF3B00970D87 /* Astragalus_canadensis-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Astragalus_canadensis-default.jpg"; sourceTree = "<group>"; };
+		5B152CCD17C7CF3B00970D87 /* Cerastium_nutans-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Cerastium_nutans-default.jpg"; sourceTree = "<group>"; };
+		5B152CCE17C7CF3B00970D87 /* Cirsium_arvense-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Cirsium_arvense-default.jpg"; sourceTree = "<group>"; };
+		5B152CCF17C7CF3B00970D87 /* Cornus_amomum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Cornus_amomum-default.jpg"; sourceTree = "<group>"; };
+		5B152CD017C7CF3B00970D87 /* Cornus_stolonifera-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Cornus_stolonifera-default.jpg"; sourceTree = "<group>"; };
+		5B152CD117C7CF3B00970D87 /* Dalea_candida-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Dalea_candida-default.jpg"; sourceTree = "<group>"; };
+		5B152CD217C7CF3B00970D87 /* Dalea_purpurea-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Dalea_purpurea-default.jpg"; sourceTree = "<group>"; };
+		5B152CD317C7CF3B00970D87 /* Daucus_carota-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Daucus_carota-default.jpg"; sourceTree = "<group>"; };
+		5B152CD417C7CF3B00970D87 /* Desmodium_canadense-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Desmodium_canadense-default.jpg"; sourceTree = "<group>"; };
+		5B152CD517C7CF3B00970D87 /* Desmodium_illinoense-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Desmodium_illinoense-default.jpg"; sourceTree = "<group>"; };
+		5B152CD617C7CF3B00970D87 /* Dodecatheon_meadia-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Dodecatheon_meadia-default.jpg"; sourceTree = "<group>"; };
+		5B152CD717C7CF3B00970D87 /* Echinacea_pallida-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Echinacea_pallida-default.jpg"; sourceTree = "<group>"; };
+		5B152CD817C7CF3B00970D87 /* Echinacea_purpurea-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Echinacea_purpurea-default.jpg"; sourceTree = "<group>"; };
+		5B152CD917C7CF3B00970D87 /* Erigeron_strigosus-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Erigeron_strigosus-default.jpg"; sourceTree = "<group>"; };
+		5B152CDA17C7CF3B00970D87 /* Eryngium_yuccifolium-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eryngium_yuccifolium-default.jpg"; sourceTree = "<group>"; };
+		5B152CDB17C7CF3B00970D87 /* Eupatorium_altissimum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eupatorium_altissimum-default.jpg"; sourceTree = "<group>"; };
+		5B152CDD17C7CF3B00970D87 /* Eupatorium_perfoliatum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eupatorium_perfoliatum-default.jpg"; sourceTree = "<group>"; };
+		5B152CDE17C7CF3B00970D87 /* Eupatorium_rugosum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eupatorium_rugosum-default.jpg"; sourceTree = "<group>"; };
+		5B152CDF17C7CF3B00970D87 /* Eupatorium_sessilifolium-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eupatorium_sessilifolium-default.jpg"; sourceTree = "<group>"; };
+		5B152CE017C7CF3B00970D87 /* Euphorbia_corollata-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Euphorbia_corollata-default.jpg"; sourceTree = "<group>"; };
+		5B152CE117C7CF3B00970D87 /* Euphorbia_esula-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Euphorbia_esula-default.jpg"; sourceTree = "<group>"; };
+		5B152CE217C7CF3B00970D87 /* Galium_trifidum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Galium_trifidum-default.jpg"; sourceTree = "<group>"; };
+		5B152CE317C7CF3B00970D87 /* Gentiana_alba-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Gentiana_alba-default.jpg"; sourceTree = "<group>"; };
+		5B152CE417C7CF3B00970D87 /* Gentiana_andrewsii-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Gentiana_andrewsii-default.jpg"; sourceTree = "<group>"; };
+		5B152CE517C7CF3B00970D87 /* Geum_triflorum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Geum_triflorum-default.jpg"; sourceTree = "<group>"; };
+		5B152CE617C7CF3B00970D87 /* Hasteola_suaveolens-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Hasteola_suaveolens-default.jpg"; sourceTree = "<group>"; };
+		5B152CE717C7CF3B00970D87 /* Helianthus_grosseserratus-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Helianthus_grosseserratus-default.jpg"; sourceTree = "<group>"; };
+		5B152CE817C7CF3B00970D87 /* Helianthus_pauciflorus-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Helianthus_pauciflorus-default.jpg"; sourceTree = "<group>"; };
+		5B152CE917C7CF3B00970D87 /* Heliopsis_helianthoides-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Heliopsis_helianthoides-default.jpg"; sourceTree = "<group>"; };
+		5B152CEA17C7CF3B00970D87 /* Hesperis_matronalis-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Hesperis_matronalis-default.jpg"; sourceTree = "<group>"; };
+		5B152CEB17C7CF3B00970D87 /* Heuchera_richardsonii-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Heuchera_richardsonii-default.jpg"; sourceTree = "<group>"; };
+		5B152CEC17C7CF3B00970D87 /* Hypericum_perforatum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Hypericum_perforatum-default.jpg"; sourceTree = "<group>"; };
+		5B152CED17C7CF3B00970D87 /* Hypericum_punctatum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Hypericum_punctatum-default.jpg"; sourceTree = "<group>"; };
+		5B152CEE17C7CF3B00970D87 /* Hypericum_pyramidatum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Hypericum_pyramidatum-default.jpg"; sourceTree = "<group>"; };
+		5B152CEF17C7CF3B00970D87 /* Impatiens_capensis-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Impatiens_capensis-default.jpg"; sourceTree = "<group>"; };
+		5B152CF017C7CF3B00970D87 /* Kuhnia_eupatorioides-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Kuhnia_eupatorioides-default.jpg"; sourceTree = "<group>"; };
+		5B152CF117C7CF3B00970D87 /* Lactuca_canadensis-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Lactuca_canadensis-default.jpg"; sourceTree = "<group>"; };
+		5B152CF217C7CF3B00970D87 /* Leonurus_cardiaca-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Leonurus_cardiaca-default.jpg"; sourceTree = "<group>"; };
+		5B152CF317C7CF3B00970D87 /* Lepidium_densiflorum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Lepidium_densiflorum-default.jpg"; sourceTree = "<group>"; };
+		5B152CF417C7CF3B00970D87 /* Lespedeza_capitata-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Lespedeza_capitata-default.jpg"; sourceTree = "<group>"; };
+		5B152CF517C7CF3B00970D87 /* Lespedeza_virginica-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Lespedeza_virginica-default.jpg"; sourceTree = "<group>"; };
+		5B152CF617C7CF3B00970D87 /* Leucanthemum_vulgare-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Leucanthemum_vulgare-default.jpg"; sourceTree = "<group>"; };
+		5B152CF717C7CF3B00970D87 /* Liatris_aspera-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Liatris_aspera-default.jpg"; sourceTree = "<group>"; };
+		5B152CF817C7CF3B00970D87 /* Liatris_cylindracea-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Liatris_cylindracea-default.jpg"; sourceTree = "<group>"; };
+		5B152CF917C7CF3C00970D87 /* Liatris_ligulistylis-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Liatris_ligulistylis-default.jpg"; sourceTree = "<group>"; };
+		5B152CFA17C7CF3C00970D87 /* Liatris_punctata-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Liatris_punctata-default.jpg"; sourceTree = "<group>"; };
+		5B152CFB17C7CF3C00970D87 /* Liatris_pycnostachya-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Liatris_pycnostachya-default.jpg"; sourceTree = "<group>"; };
+		5B152CFC17C7CF3C00970D87 /* Linaria_vulgaris-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Linaria_vulgaris-default.jpg"; sourceTree = "<group>"; };
+		5B152CFD17C7CF3C00970D87 /* Lithospermum_canescens-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Lithospermum_canescens-default.jpg"; sourceTree = "<group>"; };
+		5B152CFE17C7CF3C00970D87 /* Lupinus_perennis-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Lupinus_perennis-default.jpg"; sourceTree = "<group>"; };
+		5B152CFF17C7CF3C00970D87 /* Matricaria_discoidea-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Matricaria_discoidea-default.jpg"; sourceTree = "<group>"; };
+		5B152D0017C7CF3C00970D87 /* Medicago_lupulina-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Medicago_lupulina-default.jpg"; sourceTree = "<group>"; };
+		5B152D0117C7CF3C00970D87 /* Medicago_sativa-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Medicago_sativa-default.jpg"; sourceTree = "<group>"; };
+		5B152D0217C7CF3C00970D87 /* Melilotus_albus-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Melilotus_albus-default.jpg"; sourceTree = "<group>"; };
+		5B152D0317C7CF3C00970D87 /* Melilotus_officinalis-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Melilotus_officinalis-default.jpg"; sourceTree = "<group>"; };
+		5B152D0417C7CF3C00970D87 /* Monarda_fistulosa-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Monarda_fistulosa-default.jpg"; sourceTree = "<group>"; };
+		5B152D0517C7CF3C00970D87 /* Morus_alba-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Morus_alba-default.jpg"; sourceTree = "<group>"; };
+		5B152D0617C7CF3C00970D87 /* Nepeta_cataria-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Nepeta_cataria-default.jpg"; sourceTree = "<group>"; };
+		5B152D0717C7CF3C00970D87 /* Oenothera_biennis-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Oenothera_biennis-default.jpg"; sourceTree = "<group>"; };
+		5B152D0817C7CF3C00970D87 /* Oxalis_corniculata-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Oxalis_corniculata-default.jpg"; sourceTree = "<group>"; };
+		5B152D0917C7CF3C00970D87 /* Parthenium_cauline-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Parthenium_cauline-default.jpg"; sourceTree = "<group>"; };
+		5B152D0A17C7CF3C00970D87 /* Parthenium_integrifolium-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Parthenium_integrifolium-default.jpg"; sourceTree = "<group>"; };
+		5B152D0B17C7CF3C00970D87 /* Pastinaca_sativa-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Pastinaca_sativa-default.jpg"; sourceTree = "<group>"; };
+		5B152D0C17C7CF3C00970D87 /* Penstemon_digitalis-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Penstemon_digitalis-default.jpg"; sourceTree = "<group>"; };
+		5B152D0D17C7CF3C00970D87 /* Phlox_pilosa-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Phlox_pilosa-default.jpg"; sourceTree = "<group>"; };
+		5B152D0E17C7CF3C00970D87 /* Plantago_lanceolata-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Plantago_lanceolata-default.jpg"; sourceTree = "<group>"; };
+		5B152D0F17C7CF3C00970D87 /* Plantago_major-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Plantago_major-default.jpg"; sourceTree = "<group>"; };
+		5B152D1017C7CF3C00970D87 /* Plantago_rugelii-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Plantago_rugelii-default.jpg"; sourceTree = "<group>"; };
+		5B152D1117C7CF3C00970D87 /* Polygonum_hydropiper-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Polygonum_hydropiper-default.jpg"; sourceTree = "<group>"; };
+		5B152D1217C7CF3C00970D87 /* Portulaca_oleracea-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Portulaca_oleracea-default.jpg"; sourceTree = "<group>"; };
+		5B152D1317C7CF3C00970D87 /* Potentilla_arguta-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Potentilla_arguta-default.jpg"; sourceTree = "<group>"; };
+		5B152D1417C7CF3C00970D87 /* Potentilla_recta-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Potentilla_recta-default.jpg"; sourceTree = "<group>"; };
+		5B152D1517C7CF3C00970D87 /* Potentilla_simplex-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Potentilla_simplex-default.jpg"; sourceTree = "<group>"; };
+		5B152D1617C7CF3C00970D87 /* Prunella_vulgaris-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Prunella_vulgaris-default.jpg"; sourceTree = "<group>"; };
+		5B152D1717C7CF3C00970D87 /* Pycnanthemum_virginianum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Pycnanthemum_virginianum-default.jpg"; sourceTree = "<group>"; };
+		5B152D1817C7CF3C00970D87 /* Ratibida_pinnata-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Ratibida_pinnata-default.jpg"; sourceTree = "<group>"; };
+		5B152D1917C7CF3C00970D87 /* Robinia_pseudoacacia-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Robinia_pseudoacacia-default.jpg"; sourceTree = "<group>"; };
+		5B152D1A17C7CF3C00970D87 /* Rosa_multiflora-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Rosa_multiflora-default.jpg"; sourceTree = "<group>"; };
+		5B152D1B17C7CF3C00970D87 /* Rudbeckia_hirta-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Rudbeckia_hirta-default.jpg"; sourceTree = "<group>"; };
+		5B152D1C17C7CF3C00970D87 /* Ruellia_humilis-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Ruellia_humilis-default.jpg"; sourceTree = "<group>"; };
+		5B152D1D17C7CF3C00970D87 /* Rumex_crispus-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Rumex_crispus-default.jpg"; sourceTree = "<group>"; };
+		5B152D1E17C7CF3C00970D87 /* Senna_hebecarpa-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Senna_hebecarpa-default.jpg"; sourceTree = "<group>"; };
+		5B152D1F17C7CF3C00970D87 /* Silene_latifolia-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Silene_latifolia-default.jpg"; sourceTree = "<group>"; };
+		5B152D2017C7CF3C00970D87 /* Silphium_integrifolium-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Silphium_integrifolium-default.jpg"; sourceTree = "<group>"; };
+		5B152D2117C7CF3C00970D87 /* Silphium_laciniatum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Silphium_laciniatum-default.jpg"; sourceTree = "<group>"; };
+		5B152D2217C7CF3C00970D87 /* Silphium_perfoliatum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Silphium_perfoliatum-default.jpg"; sourceTree = "<group>"; };
+		5B152D2317C7CF3C00970D87 /* Silphium_terebinthinaceum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Silphium_terebinthinaceum-default.jpg"; sourceTree = "<group>"; };
+		5B152D2417C7CF3C00970D87 /* Sinapis_arvensis-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Sinapis_arvensis-default.jpg"; sourceTree = "<group>"; };
+		5B152D2517C7CF3C00970D87 /* Sisymbrium_officinale-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Sisymbrium_officinale-default.jpg"; sourceTree = "<group>"; };
+		5B152D2617C7CF3C00970D87 /* Solidago_canadensis-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Solidago_canadensis-default.jpg"; sourceTree = "<group>"; };
+		5B152D2717C7CF3C00970D87 /* Solidago_juncea-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Solidago_juncea-default.jpg"; sourceTree = "<group>"; };
+		5B152D2817C7CF3C00970D87 /* Solidago_riddellii-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Solidago_riddellii-default.jpg"; sourceTree = "<group>"; };
+		5B152D2917C7CF3C00970D87 /* Solidago_rigida-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Solidago_rigida-default.jpg"; sourceTree = "<group>"; };
+		5B152D2A17C7CF3C00970D87 /* Solidago_speciosa-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Solidago_speciosa-default.jpg"; sourceTree = "<group>"; };
+		5B152D2B17C7CF3C00970D87 /* Sonchus_oleraceus-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Sonchus_oleraceus-default.jpg"; sourceTree = "<group>"; };
+		5B152D2C17C7CF3C00970D87 /* Symphyotrichum_ericoides-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Symphyotrichum_ericoides-default.jpg"; sourceTree = "<group>"; };
+		5B152D2D17C7CF3C00970D87 /* Symphyotrichum_pilosum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Symphyotrichum_pilosum-default.jpg"; sourceTree = "<group>"; };
+		5B152D2E17C7CF3C00970D87 /* Taenidia_integerrima-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Taenidia_integerrima-default.jpg"; sourceTree = "<group>"; };
+		5B152D2F17C7CF3C00970D87 /* Taraxacum_officinale-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Taraxacum_officinale-default.jpg"; sourceTree = "<group>"; };
+		5B152D3017C7CF3C00970D87 /* Tephrosia_virginiana-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Tephrosia_virginiana-default.jpg"; sourceTree = "<group>"; };
+		5B152D3117C7CF3C00970D87 /* Thalictrum_dasycarpum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Thalictrum_dasycarpum-default.jpg"; sourceTree = "<group>"; };
+		5B152D3217C7CF3C00970D87 /* Thlaspi_arvense-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Thlaspi_arvense-default.jpg"; sourceTree = "<group>"; };
+		5B152D3317C7CF3C00970D87 /* Toxicodendron_radicans-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Toxicodendron_radicans-default.jpg"; sourceTree = "<group>"; };
+		5B152D3417C7CF3C00970D87 /* Tradescantia_ohiensis-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Tradescantia_ohiensis-default.jpg"; sourceTree = "<group>"; };
+		5B152D3517C7CF3C00970D87 /* Trifolium_pratense-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Trifolium_pratense-default.jpg"; sourceTree = "<group>"; };
+		5B152D3617C7CF3C00970D87 /* Trifolium_repens-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Trifolium_repens-default.jpg"; sourceTree = "<group>"; };
+		5B152D3717C7CF3C00970D87 /* Urtica_dioica-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Urtica_dioica-default.jpg"; sourceTree = "<group>"; };
+		5B152D3817C7CF3C00970D87 /* Verbascum_thapsus-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Verbascum_thapsus-default.jpg"; sourceTree = "<group>"; };
+		5B152D3917C7CF3C00970D87 /* Verbena_hastata-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Verbena_hastata-default.jpg"; sourceTree = "<group>"; };
+		5B152D3A17C7CF3C00970D87 /* Verbena_stricta-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Verbena_stricta-default.jpg"; sourceTree = "<group>"; };
+		5B152D3B17C7CF3C00970D87 /* Verbena_urticifolia-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Verbena_urticifolia-default.jpg"; sourceTree = "<group>"; };
+		5B152D3C17C7CF3C00970D87 /* Veronicastrum_virginicum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Veronicastrum_virginicum-default.jpg"; sourceTree = "<group>"; };
+		5B152D3D17C7CF3C00970D87 /* Viola_labradorica-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Viola_labradorica-default.jpg"; sourceTree = "<group>"; };
+		5B152D3E17C7CF3C00970D87 /* Viola_pedata-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Viola_pedata-default.jpg"; sourceTree = "<group>"; };
+		5B152D3F17C7CF3C00970D87 /* Viola_pedatifida-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Viola_pedatifida-default.jpg"; sourceTree = "<group>"; };
+		5B152D4017C7CF3C00970D87 /* Viola_pubescens-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Viola_pubescens-default.jpg"; sourceTree = "<group>"; };
+		5B152D4117C7CF3C00970D87 /* Viola_sagittata-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Viola_sagittata-default.jpg"; sourceTree = "<group>"; };
+		5B152D4217C7CF3C00970D87 /* Viola_sororia-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Viola_sororia-default.jpg"; sourceTree = "<group>"; };
+		5B152D4317C7CF3C00970D87 /* Vitis_aestivalis-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Vitis_aestivalis-default.jpg"; sourceTree = "<group>"; };
+		5B152D4417C7CF3C00970D87 /* Vitis_riparia-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Vitis_riparia-default.jpg"; sourceTree = "<group>"; };
+		5B152D4517C7CF3C00970D87 /* Zizia_aptera-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Zizia_aptera-default.jpg"; sourceTree = "<group>"; };
+		5B152D4617C7CF3C00970D87 /* Zizia_aurea-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Zizia_aurea-default.jpg"; sourceTree = "<group>"; };
+		5B152DE217C7D11B00970D87 /* Eutrochium_maculatum-flower-il.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eutrochium_maculatum-flower-il.jpg"; sourceTree = "<group>"; };
+		5B152DE317C7D11B00970D87 /* Eutrochium_maculatum-illustration-us.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eutrochium_maculatum-illustration-us.jpg"; sourceTree = "<group>"; };
+		5B152DE417C7D11B00970D87 /* Eutrochium_maculatum-leaf-il.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eutrochium_maculatum-leaf-il.jpg"; sourceTree = "<group>"; };
+		5B152DE517C7D11B00970D87 /* Eutrochium_maculatum-plant-go.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eutrochium_maculatum-plant-go.jpg"; sourceTree = "<group>"; };
+		5B152DE617C7D11B00970D87 /* Eutrochium_maculatum-stem-il.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eutrochium_maculatum-stem-il.jpg"; sourceTree = "<group>"; };
+		5B152DEC17C7D18700970D87 /* Eutrochium_maculatum-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eutrochium_maculatum-default.jpg"; sourceTree = "<group>"; };
 		5B1B065617A6C90A002B47A0 /* SaveObservationAndJudgementDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveObservationAndJudgementDelegate.h; sourceTree = "<group>"; };
 		5B1DAC6B17B05C0F00A30136 /* UserObservationComponentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationComponentData.h; sourceTree = "<group>"; };
 		5B1DAC6C17B05C0F00A30136 /* UserObservationComponentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationComponentData.m; sourceTree = "<group>"; };
@@ -1335,11 +1648,6 @@
 		71F587D317C57A1400C063DF /* Eupatorium_altissimum-flower-il.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eupatorium_altissimum-flower-il.jpg"; sourceTree = "<group>"; };
 		71F587D417C57A1400C063DF /* Eupatorium_altissimum-plant-il.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eupatorium_altissimum-plant-il.jpg"; sourceTree = "<group>"; };
 		71F587D517C57A1400C063DF /* Eupatorium_altissimum-stem-il.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eupatorium_altissimum-stem-il.jpg"; sourceTree = "<group>"; };
-		71F587D617C57A1400C063DF /* Eupatorium_maculatum-flower-il.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eupatorium_maculatum-flower-il.jpg"; sourceTree = "<group>"; };
-		71F587D717C57A1400C063DF /* Eupatorium_maculatum-illustration-us.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eupatorium_maculatum-illustration-us.jpg"; sourceTree = "<group>"; };
-		71F587D817C57A1400C063DF /* Eupatorium_maculatum-leaf-il.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eupatorium_maculatum-leaf-il.jpg"; sourceTree = "<group>"; };
-		71F587D917C57A1400C063DF /* Eupatorium_maculatum-plant-go.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eupatorium_maculatum-plant-go.jpg"; sourceTree = "<group>"; };
-		71F587DA17C57A1400C063DF /* Eupatorium_maculatum-stem-il.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eupatorium_maculatum-stem-il.jpg"; sourceTree = "<group>"; };
 		71F587DB17C57A1500C063DF /* Eupatorium_perfoliatum-flower-il.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eupatorium_perfoliatum-flower-il.jpg"; sourceTree = "<group>"; };
 		71F587DC17C57A1500C063DF /* Eupatorium_perfoliatum-leaf-il.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eupatorium_perfoliatum-leaf-il.jpg"; sourceTree = "<group>"; };
 		71F587DD17C57A1500C063DF /* Eupatorium_perfoliatum-plant-il.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Eupatorium_perfoliatum-plant-il.jpg"; sourceTree = "<group>"; };
@@ -1867,6 +2175,168 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B152CAB17C7CF3B00970D87 /* Default Images */ = {
+			isa = PBXGroup;
+			children = (
+				5B152CAC17C7CF3B00970D87 /* Abutilon_theophrasti-default.jpg */,
+				5B152CAD17C7CF3B00970D87 /* Achillea_millefolium-default.jpg */,
+				5B152CAE17C7CF3B00970D87 /* Agastache_foeniculum-default.jpg */,
+				5B152CAF17C7CF3B00970D87 /* Alliaria_basal-default.jpg */,
+				5B152CB017C7CF3B00970D87 /* Alliaria_petiolata-default.jpg */,
+				5B152CB117C7CF3B00970D87 /* Allium_cernuum-default.jpg */,
+				5B152CB217C7CF3B00970D87 /* Allium_stellatum-default.jpg */,
+				5B152CB317C7CF3B00970D87 /* Amaranthus_retroflexus-default.jpg */,
+				5B152CB417C7CF3B00970D87 /* Ambrosia_artemisiifolia-default.jpg */,
+				5B152CB517C7CF3B00970D87 /* Ambrosia_trifida-default.jpg */,
+				5B152CB617C7CF3B00970D87 /* Amorpha_canescens-default.jpg */,
+				5B152CB717C7CF3B00970D87 /* Anemone_cylindrica-default.jpg */,
+				5B152CB817C7CF3B00970D87 /* Arctium_minus-default.jpg */,
+				5B152CB917C7CF3B00970D87 /* Arnoglossum_atriplicifolium-default.jpg */,
+				5B152CBA17C7CF3B00970D87 /* Arnoglossum_plantagineum-default.jpg */,
+				5B152CBB17C7CF3B00970D87 /* Arnoglossum_reniforme-default.jpg */,
+				5B152CBC17C7CF3B00970D87 /* Artemisia_ludoviciana-default.jpg */,
+				5B152CBD17C7CF3B00970D87 /* Ascelpias_meadii-default.jpg */,
+				5B152CBE17C7CF3B00970D87 /* Asclepias_amplexicaulis-default.jpg */,
+				5B152CBF17C7CF3B00970D87 /* Asclepias_hirtella-default.jpg */,
+				5B152CC017C7CF3B00970D87 /* Asclepias_incarnata-default.jpg */,
+				5B152CC117C7CF3B00970D87 /* Asclepias_meadii-default.jpg */,
+				5B152CC217C7CF3B00970D87 /* Asclepias_purpurascens-default.jpg */,
+				5B152CC317C7CF3B00970D87 /* Asclepias_sullivantii-default.jpg */,
+				5B152CC417C7CF3B00970D87 /* Asclepias_syriaca-default.jpg */,
+				5B152CC517C7CF3B00970D87 /* Asclepias_tuberosa-default.jpg */,
+				5B152CC617C7CF3B00970D87 /* Aster_drummondii-default.jpg */,
+				5B152CC717C7CF3B00970D87 /* Aster_laevis-default.jpg */,
+				5B152CC817C7CF3B00970D87 /* Aster_lanceolatus-default.jpg */,
+				5B152CC917C7CF3B00970D87 /* Aster_novae-angliae-default.jpg */,
+				5B152CCA17C7CF3B00970D87 /* Aster_oolentangiensis-default.jpg */,
+				5B152CCB17C7CF3B00970D87 /* Aster_sericeus-default.jpg */,
+				5B152CCC17C7CF3B00970D87 /* Astragalus_canadensis-default.jpg */,
+				5B152CCD17C7CF3B00970D87 /* Cerastium_nutans-default.jpg */,
+				5B152CCE17C7CF3B00970D87 /* Cirsium_arvense-default.jpg */,
+				5B152CCF17C7CF3B00970D87 /* Cornus_amomum-default.jpg */,
+				5B152CD017C7CF3B00970D87 /* Cornus_stolonifera-default.jpg */,
+				5B152CD117C7CF3B00970D87 /* Dalea_candida-default.jpg */,
+				5B152CD217C7CF3B00970D87 /* Dalea_purpurea-default.jpg */,
+				5B152CD317C7CF3B00970D87 /* Daucus_carota-default.jpg */,
+				5B152CD417C7CF3B00970D87 /* Desmodium_canadense-default.jpg */,
+				5B152CD517C7CF3B00970D87 /* Desmodium_illinoense-default.jpg */,
+				5B152CD617C7CF3B00970D87 /* Dodecatheon_meadia-default.jpg */,
+				5B152CD717C7CF3B00970D87 /* Echinacea_pallida-default.jpg */,
+				5B152CD817C7CF3B00970D87 /* Echinacea_purpurea-default.jpg */,
+				5B152CD917C7CF3B00970D87 /* Erigeron_strigosus-default.jpg */,
+				5B152CDA17C7CF3B00970D87 /* Eryngium_yuccifolium-default.jpg */,
+				5B152CDB17C7CF3B00970D87 /* Eupatorium_altissimum-default.jpg */,
+				5B152DEC17C7D18700970D87 /* Eutrochium_maculatum-default.jpg */,
+				5B152CDD17C7CF3B00970D87 /* Eupatorium_perfoliatum-default.jpg */,
+				5B152CDE17C7CF3B00970D87 /* Eupatorium_rugosum-default.jpg */,
+				5B152CDF17C7CF3B00970D87 /* Eupatorium_sessilifolium-default.jpg */,
+				5B152CE017C7CF3B00970D87 /* Euphorbia_corollata-default.jpg */,
+				5B152CE117C7CF3B00970D87 /* Euphorbia_esula-default.jpg */,
+				5B152CE217C7CF3B00970D87 /* Galium_trifidum-default.jpg */,
+				5B152CE317C7CF3B00970D87 /* Gentiana_alba-default.jpg */,
+				5B152CE417C7CF3B00970D87 /* Gentiana_andrewsii-default.jpg */,
+				5B152CE517C7CF3B00970D87 /* Geum_triflorum-default.jpg */,
+				5B152CE617C7CF3B00970D87 /* Hasteola_suaveolens-default.jpg */,
+				5B152CE717C7CF3B00970D87 /* Helianthus_grosseserratus-default.jpg */,
+				5B152CE817C7CF3B00970D87 /* Helianthus_pauciflorus-default.jpg */,
+				5B152CE917C7CF3B00970D87 /* Heliopsis_helianthoides-default.jpg */,
+				5B152CEA17C7CF3B00970D87 /* Hesperis_matronalis-default.jpg */,
+				5B152CEB17C7CF3B00970D87 /* Heuchera_richardsonii-default.jpg */,
+				5B152CEC17C7CF3B00970D87 /* Hypericum_perforatum-default.jpg */,
+				5B152CED17C7CF3B00970D87 /* Hypericum_punctatum-default.jpg */,
+				5B152CEE17C7CF3B00970D87 /* Hypericum_pyramidatum-default.jpg */,
+				5B152CEF17C7CF3B00970D87 /* Impatiens_capensis-default.jpg */,
+				5B152CF017C7CF3B00970D87 /* Kuhnia_eupatorioides-default.jpg */,
+				5B152CF117C7CF3B00970D87 /* Lactuca_canadensis-default.jpg */,
+				5B152CF217C7CF3B00970D87 /* Leonurus_cardiaca-default.jpg */,
+				5B152CF317C7CF3B00970D87 /* Lepidium_densiflorum-default.jpg */,
+				5B152CF417C7CF3B00970D87 /* Lespedeza_capitata-default.jpg */,
+				5B152CF517C7CF3B00970D87 /* Lespedeza_virginica-default.jpg */,
+				5B152CF617C7CF3B00970D87 /* Leucanthemum_vulgare-default.jpg */,
+				5B152CF717C7CF3B00970D87 /* Liatris_aspera-default.jpg */,
+				5B152CF817C7CF3B00970D87 /* Liatris_cylindracea-default.jpg */,
+				5B152CF917C7CF3C00970D87 /* Liatris_ligulistylis-default.jpg */,
+				5B152CFA17C7CF3C00970D87 /* Liatris_punctata-default.jpg */,
+				5B152CFB17C7CF3C00970D87 /* Liatris_pycnostachya-default.jpg */,
+				5B152CFC17C7CF3C00970D87 /* Linaria_vulgaris-default.jpg */,
+				5B152CFD17C7CF3C00970D87 /* Lithospermum_canescens-default.jpg */,
+				5B152CFE17C7CF3C00970D87 /* Lupinus_perennis-default.jpg */,
+				5B152CFF17C7CF3C00970D87 /* Matricaria_discoidea-default.jpg */,
+				5B152D0017C7CF3C00970D87 /* Medicago_lupulina-default.jpg */,
+				5B152D0117C7CF3C00970D87 /* Medicago_sativa-default.jpg */,
+				5B152D0217C7CF3C00970D87 /* Melilotus_albus-default.jpg */,
+				5B152D0317C7CF3C00970D87 /* Melilotus_officinalis-default.jpg */,
+				5B152D0417C7CF3C00970D87 /* Monarda_fistulosa-default.jpg */,
+				5B152D0517C7CF3C00970D87 /* Morus_alba-default.jpg */,
+				5B152D0617C7CF3C00970D87 /* Nepeta_cataria-default.jpg */,
+				5B152D0717C7CF3C00970D87 /* Oenothera_biennis-default.jpg */,
+				5B152D0817C7CF3C00970D87 /* Oxalis_corniculata-default.jpg */,
+				5B152D0917C7CF3C00970D87 /* Parthenium_cauline-default.jpg */,
+				5B152D0A17C7CF3C00970D87 /* Parthenium_integrifolium-default.jpg */,
+				5B152D0B17C7CF3C00970D87 /* Pastinaca_sativa-default.jpg */,
+				5B152D0C17C7CF3C00970D87 /* Penstemon_digitalis-default.jpg */,
+				5B152D0D17C7CF3C00970D87 /* Phlox_pilosa-default.jpg */,
+				5B152D0E17C7CF3C00970D87 /* Plantago_lanceolata-default.jpg */,
+				5B152D0F17C7CF3C00970D87 /* Plantago_major-default.jpg */,
+				5B152D1017C7CF3C00970D87 /* Plantago_rugelii-default.jpg */,
+				5B152D1117C7CF3C00970D87 /* Polygonum_hydropiper-default.jpg */,
+				5B152D1217C7CF3C00970D87 /* Portulaca_oleracea-default.jpg */,
+				5B152D1317C7CF3C00970D87 /* Potentilla_arguta-default.jpg */,
+				5B152D1417C7CF3C00970D87 /* Potentilla_recta-default.jpg */,
+				5B152D1517C7CF3C00970D87 /* Potentilla_simplex-default.jpg */,
+				5B152D1617C7CF3C00970D87 /* Prunella_vulgaris-default.jpg */,
+				5B152D1717C7CF3C00970D87 /* Pycnanthemum_virginianum-default.jpg */,
+				5B152D1817C7CF3C00970D87 /* Ratibida_pinnata-default.jpg */,
+				5B152D1917C7CF3C00970D87 /* Robinia_pseudoacacia-default.jpg */,
+				5B152D1A17C7CF3C00970D87 /* Rosa_multiflora-default.jpg */,
+				5B152D1B17C7CF3C00970D87 /* Rudbeckia_hirta-default.jpg */,
+				5B152D1C17C7CF3C00970D87 /* Ruellia_humilis-default.jpg */,
+				5B152D1D17C7CF3C00970D87 /* Rumex_crispus-default.jpg */,
+				5B152D1E17C7CF3C00970D87 /* Senna_hebecarpa-default.jpg */,
+				5B152D1F17C7CF3C00970D87 /* Silene_latifolia-default.jpg */,
+				5B152D2017C7CF3C00970D87 /* Silphium_integrifolium-default.jpg */,
+				5B152D2117C7CF3C00970D87 /* Silphium_laciniatum-default.jpg */,
+				5B152D2217C7CF3C00970D87 /* Silphium_perfoliatum-default.jpg */,
+				5B152D2317C7CF3C00970D87 /* Silphium_terebinthinaceum-default.jpg */,
+				5B152D2417C7CF3C00970D87 /* Sinapis_arvensis-default.jpg */,
+				5B152D2517C7CF3C00970D87 /* Sisymbrium_officinale-default.jpg */,
+				5B152D2617C7CF3C00970D87 /* Solidago_canadensis-default.jpg */,
+				5B152D2717C7CF3C00970D87 /* Solidago_juncea-default.jpg */,
+				5B152D2817C7CF3C00970D87 /* Solidago_riddellii-default.jpg */,
+				5B152D2917C7CF3C00970D87 /* Solidago_rigida-default.jpg */,
+				5B152D2A17C7CF3C00970D87 /* Solidago_speciosa-default.jpg */,
+				5B152D2B17C7CF3C00970D87 /* Sonchus_oleraceus-default.jpg */,
+				5B152D2C17C7CF3C00970D87 /* Symphyotrichum_ericoides-default.jpg */,
+				5B152D2D17C7CF3C00970D87 /* Symphyotrichum_pilosum-default.jpg */,
+				5B152D2E17C7CF3C00970D87 /* Taenidia_integerrima-default.jpg */,
+				5B152D2F17C7CF3C00970D87 /* Taraxacum_officinale-default.jpg */,
+				5B152D3017C7CF3C00970D87 /* Tephrosia_virginiana-default.jpg */,
+				5B152D3117C7CF3C00970D87 /* Thalictrum_dasycarpum-default.jpg */,
+				5B152D3217C7CF3C00970D87 /* Thlaspi_arvense-default.jpg */,
+				5B152D3317C7CF3C00970D87 /* Toxicodendron_radicans-default.jpg */,
+				5B152D3417C7CF3C00970D87 /* Tradescantia_ohiensis-default.jpg */,
+				5B152D3517C7CF3C00970D87 /* Trifolium_pratense-default.jpg */,
+				5B152D3617C7CF3C00970D87 /* Trifolium_repens-default.jpg */,
+				5B152D3717C7CF3C00970D87 /* Urtica_dioica-default.jpg */,
+				5B152D3817C7CF3C00970D87 /* Verbascum_thapsus-default.jpg */,
+				5B152D3917C7CF3C00970D87 /* Verbena_hastata-default.jpg */,
+				5B152D3A17C7CF3C00970D87 /* Verbena_stricta-default.jpg */,
+				5B152D3B17C7CF3C00970D87 /* Verbena_urticifolia-default.jpg */,
+				5B152D3C17C7CF3C00970D87 /* Veronicastrum_virginicum-default.jpg */,
+				5B152D3D17C7CF3C00970D87 /* Viola_labradorica-default.jpg */,
+				5B152D3E17C7CF3C00970D87 /* Viola_pedata-default.jpg */,
+				5B152D3F17C7CF3C00970D87 /* Viola_pedatifida-default.jpg */,
+				5B152D4017C7CF3C00970D87 /* Viola_pubescens-default.jpg */,
+				5B152D4117C7CF3C00970D87 /* Viola_sagittata-default.jpg */,
+				5B152D4217C7CF3C00970D87 /* Viola_sororia-default.jpg */,
+				5B152D4317C7CF3C00970D87 /* Vitis_aestivalis-default.jpg */,
+				5B152D4417C7CF3C00970D87 /* Vitis_riparia-default.jpg */,
+				5B152D4517C7CF3C00970D87 /* Zizia_aptera-default.jpg */,
+				5B152D4617C7CF3C00970D87 /* Zizia_aurea-default.jpg */,
+			);
+			path = "Default Images";
+			sourceTree = "<group>";
+		};
 		5B82BD8A17972011008CB441 /* iCarousel */ = {
 			isa = PBXGroup;
 			children = (
@@ -2010,6 +2480,7 @@
 		71F5809317C40A3200C063DF /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				5B152CAB17C7CF3B00970D87 /* Default Images */,
 				71F5871517C57A1400C063DF /* Plant Photos for the App */,
 				71F5809417C40A3200C063DF /* 03-arrow-north.png */,
 				71F5809517C40A3200C063DF /* 05-shuffle.png */,
@@ -2334,7 +2805,6 @@
 			isa = PBXGroup;
 			children = (
 				71F5871617C57A1400C063DF /* Abutilon_theophrasti-calyx-mi.jpg */,
-				5B0F661A17C6B9C70006DD44 /* Abutilon_theophrasti-default.jpg */,
 				71F5871717C57A1400C063DF /* Abutilon_theophrasti-flower-mi.jpg */,
 				71F5871817C57A1400C063DF /* Abutilon_theophrasti-fruit-mi.jpg */,
 				71F5871917C57A1400C063DF /* Abutilon_theophrasti-leaf-in.jpg */,
@@ -2526,11 +2996,6 @@
 				71F587D317C57A1400C063DF /* Eupatorium_altissimum-flower-il.jpg */,
 				71F587D417C57A1400C063DF /* Eupatorium_altissimum-plant-il.jpg */,
 				71F587D517C57A1400C063DF /* Eupatorium_altissimum-stem-il.jpg */,
-				71F587D617C57A1400C063DF /* Eupatorium_maculatum-flower-il.jpg */,
-				71F587D717C57A1400C063DF /* Eupatorium_maculatum-illustration-us.jpg */,
-				71F587D817C57A1400C063DF /* Eupatorium_maculatum-leaf-il.jpg */,
-				71F587D917C57A1400C063DF /* Eupatorium_maculatum-plant-go.jpg */,
-				71F587DA17C57A1400C063DF /* Eupatorium_maculatum-stem-il.jpg */,
 				71F587DB17C57A1500C063DF /* Eupatorium_perfoliatum-flower-il.jpg */,
 				71F587DC17C57A1500C063DF /* Eupatorium_perfoliatum-leaf-il.jpg */,
 				71F587DD17C57A1500C063DF /* Eupatorium_perfoliatum-plant-il.jpg */,
@@ -2547,6 +3012,11 @@
 				71F587E817C57A1500C063DF /* Euphorbia_esula-leaf-go.jpg */,
 				71F587E917C57A1500C063DF /* Euphorbia_esula-plant-go.jpg */,
 				71F587EA17C57A1500C063DF /* Euphorbia_esula-stem-go.jpg */,
+				5B152DE217C7D11B00970D87 /* Eutrochium_maculatum-flower-il.jpg */,
+				5B152DE317C7D11B00970D87 /* Eutrochium_maculatum-illustration-us.jpg */,
+				5B152DE417C7D11B00970D87 /* Eutrochium_maculatum-leaf-il.jpg */,
+				5B152DE517C7D11B00970D87 /* Eutrochium_maculatum-plant-go.jpg */,
+				5B152DE617C7D11B00970D87 /* Eutrochium_maculatum-stem-il.jpg */,
 				71F587EB17C57A1500C063DF /* Galium_trifidum-fruit-go.jpg */,
 				71F587EC17C57A1500C063DF /* Galium_trifidum-leaf-go.jpg */,
 				71F587ED17C57A1500C063DF /* Galium_trifidum-plant-go.jpg */,
@@ -3513,11 +3983,6 @@
 				71F58A6817C57A1800C063DF /* Eupatorium_altissimum-flower-il.jpg in Resources */,
 				71F58A6917C57A1800C063DF /* Eupatorium_altissimum-plant-il.jpg in Resources */,
 				71F58A6A17C57A1800C063DF /* Eupatorium_altissimum-stem-il.jpg in Resources */,
-				71F58A6B17C57A1800C063DF /* Eupatorium_maculatum-flower-il.jpg in Resources */,
-				71F58A6C17C57A1800C063DF /* Eupatorium_maculatum-illustration-us.jpg in Resources */,
-				71F58A6D17C57A1800C063DF /* Eupatorium_maculatum-leaf-il.jpg in Resources */,
-				71F58A6E17C57A1800C063DF /* Eupatorium_maculatum-plant-go.jpg in Resources */,
-				71F58A6F17C57A1800C063DF /* Eupatorium_maculatum-stem-il.jpg in Resources */,
 				71F58A7017C57A1800C063DF /* Eupatorium_perfoliatum-flower-il.jpg in Resources */,
 				71F58A7117C57A1800C063DF /* Eupatorium_perfoliatum-leaf-il.jpg in Resources */,
 				71F58A7217C57A1800C063DF /* Eupatorium_perfoliatum-plant-il.jpg in Resources */,
@@ -3983,7 +4448,166 @@
 				71F58C3E17C57A1900C063DF /* Zizia_aurea-leaf1-mi.jpg in Resources */,
 				71F58C3F17C57A1900C063DF /* Zizia_aurea-leaf2-mi.jpg in Resources */,
 				AB50469017C69F2E00DA042E /* dsym_upload.sh in Resources */,
-				5B0F661B17C6B9C70006DD44 /* Abutilon_theophrasti-default.jpg in Resources */,
+				5B152D4717C7CF3C00970D87 /* Abutilon_theophrasti-default.jpg in Resources */,
+				5B152D4817C7CF3C00970D87 /* Achillea_millefolium-default.jpg in Resources */,
+				5B152D4917C7CF3C00970D87 /* Agastache_foeniculum-default.jpg in Resources */,
+				5B152D4A17C7CF3C00970D87 /* Alliaria_basal-default.jpg in Resources */,
+				5B152D4B17C7CF3C00970D87 /* Alliaria_petiolata-default.jpg in Resources */,
+				5B152D4C17C7CF3C00970D87 /* Allium_cernuum-default.jpg in Resources */,
+				5B152D4D17C7CF3C00970D87 /* Allium_stellatum-default.jpg in Resources */,
+				5B152D4E17C7CF3C00970D87 /* Amaranthus_retroflexus-default.jpg in Resources */,
+				5B152D4F17C7CF3C00970D87 /* Ambrosia_artemisiifolia-default.jpg in Resources */,
+				5B152D5017C7CF3C00970D87 /* Ambrosia_trifida-default.jpg in Resources */,
+				5B152D5117C7CF3C00970D87 /* Amorpha_canescens-default.jpg in Resources */,
+				5B152D5217C7CF3C00970D87 /* Anemone_cylindrica-default.jpg in Resources */,
+				5B152D5317C7CF3C00970D87 /* Arctium_minus-default.jpg in Resources */,
+				5B152D5417C7CF3C00970D87 /* Arnoglossum_atriplicifolium-default.jpg in Resources */,
+				5B152D5517C7CF3C00970D87 /* Arnoglossum_plantagineum-default.jpg in Resources */,
+				5B152D5617C7CF3C00970D87 /* Arnoglossum_reniforme-default.jpg in Resources */,
+				5B152D5717C7CF3C00970D87 /* Artemisia_ludoviciana-default.jpg in Resources */,
+				5B152D5817C7CF3C00970D87 /* Ascelpias_meadii-default.jpg in Resources */,
+				5B152D5917C7CF3C00970D87 /* Asclepias_amplexicaulis-default.jpg in Resources */,
+				5B152D5A17C7CF3C00970D87 /* Asclepias_hirtella-default.jpg in Resources */,
+				5B152D5B17C7CF3C00970D87 /* Asclepias_incarnata-default.jpg in Resources */,
+				5B152D5C17C7CF3C00970D87 /* Asclepias_meadii-default.jpg in Resources */,
+				5B152D5D17C7CF3C00970D87 /* Asclepias_purpurascens-default.jpg in Resources */,
+				5B152D5E17C7CF3C00970D87 /* Asclepias_sullivantii-default.jpg in Resources */,
+				5B152D5F17C7CF3C00970D87 /* Asclepias_syriaca-default.jpg in Resources */,
+				5B152D6017C7CF3C00970D87 /* Asclepias_tuberosa-default.jpg in Resources */,
+				5B152D6117C7CF3C00970D87 /* Aster_drummondii-default.jpg in Resources */,
+				5B152D6217C7CF3C00970D87 /* Aster_laevis-default.jpg in Resources */,
+				5B152D6317C7CF3C00970D87 /* Aster_lanceolatus-default.jpg in Resources */,
+				5B152D6417C7CF3C00970D87 /* Aster_novae-angliae-default.jpg in Resources */,
+				5B152D6517C7CF3C00970D87 /* Aster_oolentangiensis-default.jpg in Resources */,
+				5B152D6617C7CF3C00970D87 /* Aster_sericeus-default.jpg in Resources */,
+				5B152D6717C7CF3C00970D87 /* Astragalus_canadensis-default.jpg in Resources */,
+				5B152D6817C7CF3C00970D87 /* Cerastium_nutans-default.jpg in Resources */,
+				5B152D6917C7CF3C00970D87 /* Cirsium_arvense-default.jpg in Resources */,
+				5B152D6A17C7CF3C00970D87 /* Cornus_amomum-default.jpg in Resources */,
+				5B152D6B17C7CF3C00970D87 /* Cornus_stolonifera-default.jpg in Resources */,
+				5B152D6C17C7CF3C00970D87 /* Dalea_candida-default.jpg in Resources */,
+				5B152D6D17C7CF3C00970D87 /* Dalea_purpurea-default.jpg in Resources */,
+				5B152D6E17C7CF3C00970D87 /* Daucus_carota-default.jpg in Resources */,
+				5B152D6F17C7CF3C00970D87 /* Desmodium_canadense-default.jpg in Resources */,
+				5B152D7017C7CF3C00970D87 /* Desmodium_illinoense-default.jpg in Resources */,
+				5B152D7117C7CF3C00970D87 /* Dodecatheon_meadia-default.jpg in Resources */,
+				5B152D7217C7CF3C00970D87 /* Echinacea_pallida-default.jpg in Resources */,
+				5B152D7317C7CF3C00970D87 /* Echinacea_purpurea-default.jpg in Resources */,
+				5B152D7417C7CF3C00970D87 /* Erigeron_strigosus-default.jpg in Resources */,
+				5B152D7517C7CF3C00970D87 /* Eryngium_yuccifolium-default.jpg in Resources */,
+				5B152D7617C7CF3C00970D87 /* Eupatorium_altissimum-default.jpg in Resources */,
+				5B152D7817C7CF3C00970D87 /* Eupatorium_perfoliatum-default.jpg in Resources */,
+				5B152D7917C7CF3C00970D87 /* Eupatorium_rugosum-default.jpg in Resources */,
+				5B152D7A17C7CF3C00970D87 /* Eupatorium_sessilifolium-default.jpg in Resources */,
+				5B152D7B17C7CF3C00970D87 /* Euphorbia_corollata-default.jpg in Resources */,
+				5B152D7C17C7CF3C00970D87 /* Euphorbia_esula-default.jpg in Resources */,
+				5B152D7D17C7CF3C00970D87 /* Galium_trifidum-default.jpg in Resources */,
+				5B152D7E17C7CF3C00970D87 /* Gentiana_alba-default.jpg in Resources */,
+				5B152D7F17C7CF3C00970D87 /* Gentiana_andrewsii-default.jpg in Resources */,
+				5B152D8017C7CF3C00970D87 /* Geum_triflorum-default.jpg in Resources */,
+				5B152D8117C7CF3C00970D87 /* Hasteola_suaveolens-default.jpg in Resources */,
+				5B152D8217C7CF3C00970D87 /* Helianthus_grosseserratus-default.jpg in Resources */,
+				5B152D8317C7CF3C00970D87 /* Helianthus_pauciflorus-default.jpg in Resources */,
+				5B152D8417C7CF3C00970D87 /* Heliopsis_helianthoides-default.jpg in Resources */,
+				5B152D8517C7CF3C00970D87 /* Hesperis_matronalis-default.jpg in Resources */,
+				5B152D8617C7CF3C00970D87 /* Heuchera_richardsonii-default.jpg in Resources */,
+				5B152D8717C7CF3C00970D87 /* Hypericum_perforatum-default.jpg in Resources */,
+				5B152D8817C7CF3C00970D87 /* Hypericum_punctatum-default.jpg in Resources */,
+				5B152D8917C7CF3C00970D87 /* Hypericum_pyramidatum-default.jpg in Resources */,
+				5B152D8A17C7CF3C00970D87 /* Impatiens_capensis-default.jpg in Resources */,
+				5B152D8B17C7CF3C00970D87 /* Kuhnia_eupatorioides-default.jpg in Resources */,
+				5B152D8C17C7CF3C00970D87 /* Lactuca_canadensis-default.jpg in Resources */,
+				5B152D8D17C7CF3C00970D87 /* Leonurus_cardiaca-default.jpg in Resources */,
+				5B152D8E17C7CF3C00970D87 /* Lepidium_densiflorum-default.jpg in Resources */,
+				5B152D8F17C7CF3C00970D87 /* Lespedeza_capitata-default.jpg in Resources */,
+				5B152D9017C7CF3C00970D87 /* Lespedeza_virginica-default.jpg in Resources */,
+				5B152D9117C7CF3C00970D87 /* Leucanthemum_vulgare-default.jpg in Resources */,
+				5B152D9217C7CF3C00970D87 /* Liatris_aspera-default.jpg in Resources */,
+				5B152D9317C7CF3C00970D87 /* Liatris_cylindracea-default.jpg in Resources */,
+				5B152D9417C7CF3C00970D87 /* Liatris_ligulistylis-default.jpg in Resources */,
+				5B152D9517C7CF3C00970D87 /* Liatris_punctata-default.jpg in Resources */,
+				5B152D9617C7CF3C00970D87 /* Liatris_pycnostachya-default.jpg in Resources */,
+				5B152D9717C7CF3C00970D87 /* Linaria_vulgaris-default.jpg in Resources */,
+				5B152D9817C7CF3C00970D87 /* Lithospermum_canescens-default.jpg in Resources */,
+				5B152D9917C7CF3C00970D87 /* Lupinus_perennis-default.jpg in Resources */,
+				5B152D9A17C7CF3C00970D87 /* Matricaria_discoidea-default.jpg in Resources */,
+				5B152D9B17C7CF3C00970D87 /* Medicago_lupulina-default.jpg in Resources */,
+				5B152D9C17C7CF3C00970D87 /* Medicago_sativa-default.jpg in Resources */,
+				5B152D9D17C7CF3C00970D87 /* Melilotus_albus-default.jpg in Resources */,
+				5B152D9E17C7CF3C00970D87 /* Melilotus_officinalis-default.jpg in Resources */,
+				5B152D9F17C7CF3C00970D87 /* Monarda_fistulosa-default.jpg in Resources */,
+				5B152DA017C7CF3C00970D87 /* Morus_alba-default.jpg in Resources */,
+				5B152DA117C7CF3C00970D87 /* Nepeta_cataria-default.jpg in Resources */,
+				5B152DA217C7CF3C00970D87 /* Oenothera_biennis-default.jpg in Resources */,
+				5B152DA317C7CF3C00970D87 /* Oxalis_corniculata-default.jpg in Resources */,
+				5B152DA417C7CF3C00970D87 /* Parthenium_cauline-default.jpg in Resources */,
+				5B152DA517C7CF3C00970D87 /* Parthenium_integrifolium-default.jpg in Resources */,
+				5B152DA617C7CF3C00970D87 /* Pastinaca_sativa-default.jpg in Resources */,
+				5B152DA717C7CF3C00970D87 /* Penstemon_digitalis-default.jpg in Resources */,
+				5B152DA817C7CF3C00970D87 /* Phlox_pilosa-default.jpg in Resources */,
+				5B152DA917C7CF3C00970D87 /* Plantago_lanceolata-default.jpg in Resources */,
+				5B152DAA17C7CF3C00970D87 /* Plantago_major-default.jpg in Resources */,
+				5B152DAB17C7CF3C00970D87 /* Plantago_rugelii-default.jpg in Resources */,
+				5B152DAC17C7CF3C00970D87 /* Polygonum_hydropiper-default.jpg in Resources */,
+				5B152DAD17C7CF3C00970D87 /* Portulaca_oleracea-default.jpg in Resources */,
+				5B152DAE17C7CF3C00970D87 /* Potentilla_arguta-default.jpg in Resources */,
+				5B152DAF17C7CF3C00970D87 /* Potentilla_recta-default.jpg in Resources */,
+				5B152DB017C7CF3C00970D87 /* Potentilla_simplex-default.jpg in Resources */,
+				5B152DB117C7CF3C00970D87 /* Prunella_vulgaris-default.jpg in Resources */,
+				5B152DB217C7CF3C00970D87 /* Pycnanthemum_virginianum-default.jpg in Resources */,
+				5B152DB317C7CF3C00970D87 /* Ratibida_pinnata-default.jpg in Resources */,
+				5B152DB417C7CF3C00970D87 /* Robinia_pseudoacacia-default.jpg in Resources */,
+				5B152DB517C7CF3C00970D87 /* Rosa_multiflora-default.jpg in Resources */,
+				5B152DB617C7CF3C00970D87 /* Rudbeckia_hirta-default.jpg in Resources */,
+				5B152DB717C7CF3C00970D87 /* Ruellia_humilis-default.jpg in Resources */,
+				5B152DB817C7CF3C00970D87 /* Rumex_crispus-default.jpg in Resources */,
+				5B152DB917C7CF3C00970D87 /* Senna_hebecarpa-default.jpg in Resources */,
+				5B152DBA17C7CF3C00970D87 /* Silene_latifolia-default.jpg in Resources */,
+				5B152DBB17C7CF3C00970D87 /* Silphium_integrifolium-default.jpg in Resources */,
+				5B152DBC17C7CF3C00970D87 /* Silphium_laciniatum-default.jpg in Resources */,
+				5B152DBD17C7CF3C00970D87 /* Silphium_perfoliatum-default.jpg in Resources */,
+				5B152DBE17C7CF3C00970D87 /* Silphium_terebinthinaceum-default.jpg in Resources */,
+				5B152DBF17C7CF3C00970D87 /* Sinapis_arvensis-default.jpg in Resources */,
+				5B152DC017C7CF3C00970D87 /* Sisymbrium_officinale-default.jpg in Resources */,
+				5B152DC117C7CF3C00970D87 /* Solidago_canadensis-default.jpg in Resources */,
+				5B152DC217C7CF3C00970D87 /* Solidago_juncea-default.jpg in Resources */,
+				5B152DC317C7CF3C00970D87 /* Solidago_riddellii-default.jpg in Resources */,
+				5B152DC417C7CF3C00970D87 /* Solidago_rigida-default.jpg in Resources */,
+				5B152DC517C7CF3C00970D87 /* Solidago_speciosa-default.jpg in Resources */,
+				5B152DC617C7CF3C00970D87 /* Sonchus_oleraceus-default.jpg in Resources */,
+				5B152DC717C7CF3C00970D87 /* Symphyotrichum_ericoides-default.jpg in Resources */,
+				5B152DC817C7CF3C00970D87 /* Symphyotrichum_pilosum-default.jpg in Resources */,
+				5B152DC917C7CF3C00970D87 /* Taenidia_integerrima-default.jpg in Resources */,
+				5B152DCA17C7CF3C00970D87 /* Taraxacum_officinale-default.jpg in Resources */,
+				5B152DCB17C7CF3C00970D87 /* Tephrosia_virginiana-default.jpg in Resources */,
+				5B152DCC17C7CF3C00970D87 /* Thalictrum_dasycarpum-default.jpg in Resources */,
+				5B152DCD17C7CF3C00970D87 /* Thlaspi_arvense-default.jpg in Resources */,
+				5B152DCE17C7CF3C00970D87 /* Toxicodendron_radicans-default.jpg in Resources */,
+				5B152DCF17C7CF3C00970D87 /* Tradescantia_ohiensis-default.jpg in Resources */,
+				5B152DD017C7CF3C00970D87 /* Trifolium_pratense-default.jpg in Resources */,
+				5B152DD117C7CF3C00970D87 /* Trifolium_repens-default.jpg in Resources */,
+				5B152DD217C7CF3C00970D87 /* Urtica_dioica-default.jpg in Resources */,
+				5B152DD317C7CF3C00970D87 /* Verbascum_thapsus-default.jpg in Resources */,
+				5B152DD417C7CF3C00970D87 /* Verbena_hastata-default.jpg in Resources */,
+				5B152DD517C7CF3C00970D87 /* Verbena_stricta-default.jpg in Resources */,
+				5B152DD617C7CF3C00970D87 /* Verbena_urticifolia-default.jpg in Resources */,
+				5B152DD717C7CF3C00970D87 /* Veronicastrum_virginicum-default.jpg in Resources */,
+				5B152DD817C7CF3C00970D87 /* Viola_labradorica-default.jpg in Resources */,
+				5B152DD917C7CF3C00970D87 /* Viola_pedata-default.jpg in Resources */,
+				5B152DDA17C7CF3C00970D87 /* Viola_pedatifida-default.jpg in Resources */,
+				5B152DDB17C7CF3C00970D87 /* Viola_pubescens-default.jpg in Resources */,
+				5B152DDC17C7CF3C00970D87 /* Viola_sagittata-default.jpg in Resources */,
+				5B152DDD17C7CF3C00970D87 /* Viola_sororia-default.jpg in Resources */,
+				5B152DDE17C7CF3C00970D87 /* Vitis_aestivalis-default.jpg in Resources */,
+				5B152DDF17C7CF3C00970D87 /* Vitis_riparia-default.jpg in Resources */,
+				5B152DE017C7CF3C00970D87 /* Zizia_aptera-default.jpg in Resources */,
+				5B152DE117C7CF3C00970D87 /* Zizia_aurea-default.jpg in Resources */,
+				5B152DE717C7D11B00970D87 /* Eutrochium_maculatum-flower-il.jpg in Resources */,
+				5B152DE817C7D11B00970D87 /* Eutrochium_maculatum-illustration-us.jpg in Resources */,
+				5B152DE917C7D11B00970D87 /* Eutrochium_maculatum-leaf-il.jpg in Resources */,
+				5B152DEA17C7D11B00970D87 /* Eutrochium_maculatum-plant-go.jpg in Resources */,
+				5B152DEB17C7D11B00970D87 /* Eutrochium_maculatum-stem-il.jpg in Resources */,
+				5B152DED17C7D18700970D87 /* Eutrochium_maculatum-default.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
