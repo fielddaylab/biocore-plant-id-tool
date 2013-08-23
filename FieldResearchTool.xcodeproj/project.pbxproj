@@ -4655,7 +4655,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "APP_ID=\"52161ee9a7928a5a46000002\"\nAPI_KEY=\"8l7mkecxukjhlpvwx4qgj3sqoub0itoa\"\nsource ${SRCROOT}/FieldResearchTool/CrittercismSDK/dsym_upload.sh";
+			shellScript = "#APP_ID=\"52161ee9a7928a5a46000002\"\n#API_KEY=\"8l7mkecxukjhlpvwx4qgj3sqoub0itoa\"\n#source ${SRCROOT}/FieldResearchTool/CrittercismSDK/dsym_upload.sh";
 		};
 /* End PBXShellScriptBuildPhase section */
 
