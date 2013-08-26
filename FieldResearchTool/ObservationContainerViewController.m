@@ -75,7 +75,7 @@
     // check that the delegate implements it
     if ([self.dismissDelegate respondsToSelector:@selector(dismissContainerViewAndSetProjectComponentObserved:)]) {
         //[self.dismissDelegate dismissContainerViewAndSetProjectComponentObserved:userData];
-        [self performSelector:@selector(dismissContainerView:) withObject:userData afterDelay:3];
+        [self performSelector:@selector(dismissContainerView:) withObject:userData afterDelay:0];
     }
     
     //[saveSpinner stopAnimating];
