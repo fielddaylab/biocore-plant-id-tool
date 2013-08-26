@@ -21,6 +21,6 @@
 @interface InterpretationInformationViewController : UIViewController <UIWebViewDelegate>
 
 @property (nonatomic, strong) ProjectIdentification *identification;
-@property (nonatomic, strong) id<CreateUserIdentificationDelegate> delegate;
+@property (nonatomic, weak) id<CreateUserIdentificationDelegate> delegate;
 
 @end

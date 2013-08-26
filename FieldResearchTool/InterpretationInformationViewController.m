@@ -114,12 +114,14 @@
             UIImageView *imageGallery;
             
             if ([mediaObject.mediaURL isEqualToString:@""]){
-                imageGallery = [[UIImageView alloc] initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"defaultIdentificationNoPhoto.png"]];
-                [imageGallery setFrame:CGRectMake(i * 320, 0, 320, PICTURE_OFFSET)];
+                UIImage *defaultImage = [[MediaManager sharedMediaManager] getImageNamed:@"defaultIdentificationNoPhoto.png"];
+                imageGallery = [[UIImageView alloc] initWithFrame:CGRectMake(i * 320, 0, 320, PICTURE_OFFSET)];
+                imageGallery.image = defaultImage;
             }
             else{
-                imageGallery = [[UIImageView alloc] initWithImage:[[MediaManager sharedMediaManager] getImageNamed:[NSString stringWithFormat:@"%@.jpg",mediaObject.mediaURL]]];
-                [imageGallery setFrame:CGRectMake(i * 320, 0, 320, PICTURE_OFFSET)];
+                UIImage *image = [[MediaManager sharedMediaManager] getImageNamed:[NSString stringWithFormat:@"%@.jpg",mediaObject.mediaURL]];
+                imageGallery = [[UIImageView alloc] initWithFrame:CGRectMake(i * 320, 0, 320, PICTURE_OFFSET)];
+                imageGallery.image = image;
             }
             [scrollGallery addSubview:imageGallery];
         }
@@ -182,6 +184,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)dealloc{
+    webView.delegate = nil;
+    scrollGallery.delegate = nil;
+    scrollView.delegate = nil;
 }
 
 

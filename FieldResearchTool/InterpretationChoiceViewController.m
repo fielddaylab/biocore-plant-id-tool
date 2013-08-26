@@ -129,8 +129,9 @@
     
     if ([AppModel sharedAppModel].imagesLoaded) {
         //Image
-        UIImageView *cellImage = (UIImageView *)[cell viewWithTag:0];
-        cellImage.image = defaultImage;
+//        UIImageView *cellImage = (UIImageView *)[cell viewWithTag:0];
+//        cellImage.image = defaultImage;
+        cell.imageView.image = defaultImage;
     }
 
     
