@@ -32,10 +32,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        likelyImages = [[NSMutableArray alloc] init];
-        unlikelyImages = [[NSMutableArray alloc] init];
-        likelyChoices = [[NSMutableArray alloc]init];
-        unlikelyChoices = [[NSMutableArray alloc]init];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadDefaultImagesIntoMemory) name:@"LoadDefaultImages" object:nil];
     }
     return self;
@@ -49,6 +45,8 @@
 {
     [super viewDidLoad];
     
+    likelyChoices = [[NSMutableArray alloc]init];
+    unlikelyChoices = [[NSMutableArray alloc]init];
     for (int i = 0; i < [projectIdentifications count]; i ++) {
         
         ProjectIdentification *identification = [projectIdentifications objectAtIndex:i];
@@ -64,6 +62,7 @@
         [self loadDefaultImagesIntoMemory];
     }
     
+    NSLog(@"CHOICE VC ViewDidLoad");
 }
 
 - (void) viewDidAppear:(BOOL)animated{
@@ -213,6 +212,8 @@
 
 #pragma mark load default images into memory
 -(void)loadDefaultImagesIntoMemory{
+    likelyImages = [[NSMutableArray alloc] init];
+    unlikelyImages = [[NSMutableArray alloc] init];
     for (int i = 0; i < [projectIdentifications count]; i ++) {
         ProjectIdentification *identification = [projectIdentifications objectAtIndex:i];
         UIImage *defaultImage = (UIImage *)[[AppModel sharedAppModel].identificationImages objectForKey:identification.title];
@@ -223,6 +224,7 @@
             [unlikelyImages addObject:defaultImage];
         }
     }
+    [table reloadData];
 }
 
 @end

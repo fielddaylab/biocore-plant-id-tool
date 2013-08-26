@@ -134,6 +134,8 @@
         [self.view addSubview:pageControl];
     }
     
+    NSLog(@"INFORMATION VC ViewDidLoad");
+    
 }
 
 - (void) pushDiscussionViewController:(id) sender{
