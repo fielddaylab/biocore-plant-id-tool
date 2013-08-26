@@ -202,10 +202,13 @@
 }
 
 - (void)pushInterpretationViewController{
-    InterpretationChoiceViewController *vc = [[InterpretationChoiceViewController alloc]initWithNibName:@"InterpretationChoiceViewController" bundle:nil];
-    vc.projectIdentifications = projectIdentifications;
-    vc.dataToFilter = dataToFilter;
-    [self.navigationController pushViewController:vc animated:YES];
+    if ([AppModel sharedAppModel].imagesLoaded) {
+        InterpretationChoiceViewController *vc = [[InterpretationChoiceViewController alloc]initWithNibName:@"InterpretationChoiceViewController" bundle:nil];
+        vc.projectIdentifications = projectIdentifications;
+        vc.dataToFilter = dataToFilter;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+
 }
 
 #pragma mark - Table View
@@ -464,6 +467,7 @@
 
 -(void)projectIdentificationsResponseReady{
     projectIdentifications = [NSMutableArray arrayWithArray:[AppModel sharedAppModel].allProjectIdentifications];
+    //[[AppModel sharedAppModel] loadIdentificationImages];
     //[self rankIdentifications];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     [spinner startAnimating];
@@ -876,5 +880,6 @@
     [[AppModel sharedAppModel] save];
     [self.navigationController popToViewController:self animated:YES];
 }
+
 
 @end

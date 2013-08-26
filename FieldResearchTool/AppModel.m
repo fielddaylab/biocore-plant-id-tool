@@ -11,6 +11,8 @@
 #import "ObservationJudgementType.h"
 #import "ProjectComponent.h"
 #import "UserObservationIdentification.h"
+#import "ProjectIdentification.h"
+#import "MediaManager.h"
 
 @implementation AppModel
 
@@ -20,6 +22,8 @@
 @synthesize allProjectIdentifications;
 @synthesize currentUserObservation;
 @synthesize currentUser;
+@synthesize identificationImages;
+@synthesize imagesLoaded;
 
 + (id)sharedAppModel
 {
@@ -47,7 +51,7 @@
 -(void)getAllProjectsWithHandler:(SEL)handler target:(id)target{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [coreData fetchAllEntities:@"Project" withHandler:@selector(handleFetchOfAllProjects:) target:target];
+            [coreData fetchAllEntities:@"Project" withHandler:handler target:target];
         });
     });
 }
@@ -55,7 +59,7 @@
 -(void)getAllProjectComponentsWithHandler:(SEL)handler target:(id)target{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [coreData fetchAllEntities:@"ProjectComponent" withAttribute:@"project.name" equalTo:currentProject.name withHandler:@selector(handleFetchAllProjectComponentsForProjectName:) target:target];
+            [coreData fetchAllEntities:@"ProjectComponent" withAttribute:@"project.name" equalTo:currentProject.name withHandler:handler target:target];
         });
     });
 }
@@ -68,7 +72,7 @@
 -(void)getAllProjectIdentificationsWithHandler:(SEL)handler target:(id)target{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [coreData fetchAllEntities:@"ProjectIdentification" withAttribute:@"project.name" equalTo:currentProject.name withHandler:@selector(handleFetchProjectIdentifications:) target:target];
+            [coreData fetchAllEntities:@"ProjectIdentification" withAttribute:@"project.name" equalTo:currentProject.name withHandler:handler target:target];
         });
     });
 
@@ -82,7 +86,7 @@
 -(void)getProjectIdentificationsWithAttributes:(NSDictionary *)attributeNamesAndValues withHandler:(SEL)handler target:(id)target{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [coreData fetchEntities:@"ProjectIdentification" withAttributes:attributeNamesAndValues withHandler:@selector(handleFetchProjectIdentifications:) target:target];
+            [coreData fetchEntities:@"ProjectIdentification" withAttributes:attributeNamesAndValues withHandler:handler target:target];
         });
     });
 }
@@ -276,6 +280,35 @@
 
 -(void)deleteObjects:(NSArray *)objectsToDelete{
     [coreData deleteObjects:objectsToDelete];
+}
+
+-(void)loadIdentificationImages{
+    NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(loadImages) object:nil];
+    [thread start];
+}
+
+-(void)loadImages{
+    NSLog(@"LOADING IMAGES...");
+    imagesLoaded = NO;
+    [AppModel sharedAppModel].identificationImages = [[NSMutableDictionary alloc] init];
+    for (int i = 0; i < allProjectIdentifications.count; i++) {
+        ProjectIdentification *identification = [allProjectIdentifications objectAtIndex:i];
+        UIImage *identificationImage = [self loadDefaultImageForIdentification:identification];
+        [self->identificationImages setObject:identificationImage forKey:identification.title];
+    }
+    NSLog(@"IMAGES LOADED!");
+    imagesLoaded = YES;
+}
+
+-(UIImage *)loadDefaultImageForIdentification:(ProjectIdentification *)identification{
+    NSString *identificationTitleString = identification.title;
+    NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    identificationTitleString = [[identificationTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
+    UIImage *defaultImage = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:[NSString stringWithFormat:@"%@-default.jpg",identificationTitleString]] scaledToSize:CGRectMake(0, 0, 80, 80).size];
+    if ([[MediaManager sharedMediaManager] getImageNamed:[NSString stringWithFormat:@"%@-default.jpg",identificationTitleString]] == nil) {
+        defaultImage = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"defaultIdentificationNoPhoto"] scaledToSize:CGRectMake(0, 0, 80, 80).size];
+    }
+    return defaultImage;
 }
 
 @end
