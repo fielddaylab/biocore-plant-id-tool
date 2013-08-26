@@ -34,30 +34,34 @@
     if (self) {
         likelyImages = [[NSMutableArray alloc] init];
         unlikelyImages = [[NSMutableArray alloc] init];
+        likelyChoices = [[NSMutableArray alloc]init];
+        unlikelyChoices = [[NSMutableArray alloc]init];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadDefaultImagesIntoMemory) name:@"LoadDefaultImages" object:nil];
     }
     return self;
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"LoadDefaultImages" object:nil];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    likelyChoices = [[NSMutableArray alloc]init];
-    unlikelyChoices = [[NSMutableArray alloc]init];
-    
-    ProjectIdentification *identification;
     for (int i = 0; i < [projectIdentifications count]; i ++) {
         
-        identification = [projectIdentifications objectAtIndex:i];
-        UIImage *defaultImage = (UIImage *)[[AppModel sharedAppModel].identificationImages objectForKey:identification.title];
+        ProjectIdentification *identification = [projectIdentifications objectAtIndex:i];
         if ([identification.score floatValue] > .8) {
             [likelyChoices addObject:identification];
-            [likelyImages addObject:defaultImage];
         }
         else{
             [unlikelyChoices addObject:identification];
-            [unlikelyImages addObject:defaultImage];
         }
+    }
+    
+    if ([AppModel sharedAppModel].imagesLoaded) {
+        [self loadDefaultImagesIntoMemory];
     }
     
 }
@@ -109,21 +113,27 @@
     switch (indexPath.section) {
         case 0:
             identification = [likelyChoices objectAtIndex:indexPath.row];
-            defaultImage = [likelyImages objectAtIndex:indexPath.row];
+            if ([AppModel sharedAppModel].imagesLoaded) {
+                defaultImage = [likelyImages objectAtIndex:indexPath.row];
+            }
+            
             break;
         case 1:
             identification = [unlikelyChoices objectAtIndex:indexPath.row];
-            defaultImage = [unlikelyImages objectAtIndex:indexPath.row];
+            if ([AppModel sharedAppModel].imagesLoaded) {
+                defaultImage = [unlikelyImages objectAtIndex:indexPath.row];
+            }
             break;
         default:
             break;
     }
     
-    //Image
-    UIImageView *cellImage = (UIImageView *)[cell viewWithTag:0];
-    
+    if ([AppModel sharedAppModel].imagesLoaded) {
+        //Image
+        UIImageView *cellImage = (UIImageView *)[cell viewWithTag:0];
+        cellImage.image = defaultImage;
+    }
 
-    cellImage.image = defaultImage;
     
     //Scientific Name
     UILabel *labelText = (UILabel *)[cell viewWithTag: 1];
@@ -199,7 +209,20 @@
             return @"Error :'[";
             break;
     }
-    
+}
+
+#pragma mark load default images into memory
+-(void)loadDefaultImagesIntoMemory{
+    for (int i = 0; i < [projectIdentifications count]; i ++) {
+        ProjectIdentification *identification = [projectIdentifications objectAtIndex:i];
+        UIImage *defaultImage = (UIImage *)[[AppModel sharedAppModel].identificationImages objectForKey:identification.title];
+        if ([identification.score floatValue] > .8) {
+            [likelyImages addObject:defaultImage];
+        }
+        else{
+            [unlikelyImages addObject:defaultImage];
+        }
+    }
 }
 
 @end

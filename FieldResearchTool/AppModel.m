@@ -296,6 +296,7 @@
         UIImage *identificationImage = [self loadDefaultImageForIdentification:identification];
         [self->identificationImages setObject:identificationImage forKey:identification.title];
     }
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"LoadDefaultImages" object:nil]];
     NSLog(@"IMAGES LOADED!");
     imagesLoaded = YES;
 }

@@ -202,12 +202,10 @@
 }
 
 - (void)pushInterpretationViewController{
-    if ([AppModel sharedAppModel].imagesLoaded) {
-        InterpretationChoiceViewController *vc = [[InterpretationChoiceViewController alloc]initWithNibName:@"InterpretationChoiceViewController" bundle:nil];
-        vc.projectIdentifications = projectIdentifications;
-        vc.dataToFilter = dataToFilter;
-        [self.navigationController pushViewController:vc animated:YES];
-    }
+    InterpretationChoiceViewController *vc = [[InterpretationChoiceViewController alloc]initWithNibName:@"InterpretationChoiceViewController" bundle:nil];
+    vc.projectIdentifications = projectIdentifications;
+    vc.dataToFilter = dataToFilter;
+    [self.navigationController pushViewController:vc animated:YES];
 
 }
 
