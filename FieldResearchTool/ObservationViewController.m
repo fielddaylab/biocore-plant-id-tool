@@ -49,7 +49,6 @@
     NSMutableArray *requiredCheckmarkImageViews;
     NSMutableArray *optionalCheckmarkImageViews;
     UIActivityIndicatorView *spinner;
-    NSString *matches;
 }
 
 @end
@@ -83,6 +82,10 @@
         locationManager.distanceFilter = kCLDistanceFilterNone;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         [locationManager startUpdatingLocation];
+        
+        UIBarButtonItem *temporaryBarButtonItem = [[UIBarButtonItem alloc] init];
+        temporaryBarButtonItem.title = @"Back";
+        self.navigationItem.backBarButtonItem = temporaryBarButtonItem;
     }
     return self;
 }
@@ -112,7 +115,7 @@
         
         //get the location here
         NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-        [attributes setValue:matches forKey:@"identificationString"];
+        [attributes setValue:self.title forKey:@"identificationString"];
         observation = [[AppModel sharedAppModel] createNewUserObservationWithAttributes:attributes];
         observation.latitude = [NSNumber numberWithFloat:locationManager.location.coordinate.latitude];
         observation.longitude = [NSNumber numberWithFloat:locationManager.location.coordinate.longitude];
@@ -166,7 +169,7 @@
             [alert show];
         }
         else{
-            observation.identificationString = matches;
+            observation.identificationString = self.title;
             [self.navigationController popViewControllerAnimated:YES];
         }
         
@@ -182,7 +185,7 @@
 {
     if (alertView.tag == 0) {
         if (buttonIndex == 0) {
-            observation.identificationString = matches;
+            observation.identificationString = self.title;
             [self.navigationController popViewControllerAnimated:YES];
         }
     }
@@ -242,7 +245,7 @@
     
     switch (indexPath.section) {
         case 0:{
-            cell.textLabel.text = matches;
+            cell.textLabel.text = @"Identify!";
             cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:22.0f];
             cell.textLabel.textAlignment = NSTextAlignmentCenter;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -477,10 +480,10 @@
     [spinner startAnimating];
     [self performSelector:@selector(rankIdentifications) withObject:nil afterDelay:.1];
     if (!observation.identificationString) {
-        matches = projectIdentifications.count != 1 ?[NSString stringWithFormat:@"%d matches", projectIdentifications.count] : [NSString stringWithFormat:@"%d match", 1];
+        self.title = projectIdentifications.count != 1 ?[NSString stringWithFormat:@"%d matches", projectIdentifications.count] : [NSString stringWithFormat:@"%d match", 1];
     }
     else{
-        matches = observation.identificationString;
+        self.title = observation.identificationString;
     }
 
     [self.table reloadData];
@@ -579,7 +582,7 @@
     
     
     if (observation.userObservationIdentifications.count == 0) {
-        matches = possibleIdentifications != 1 ?[NSString stringWithFormat:@"%d matches", possibleIdentifications] : [NSString stringWithFormat:@"%d match", 1];
+        self.title = possibleIdentifications != 1 ?[NSString stringWithFormat:@"%d matches", possibleIdentifications] : [NSString stringWithFormat:@"%d match", 1];
     }
 
     
@@ -880,7 +883,7 @@
     UserObservationIdentification *userIdentification = [[AppModel sharedAppModel] createNewUserObservationIdentificationWithProjectIdentification:projectIdentification withAttributes:attributes];
     NSSet *userIdentifications = [NSSet setWithObject:userIdentification];
     observation.userObservationIdentifications = userIdentifications;
-    matches = projectIdentification.alternateName;
+    self.title = projectIdentification.alternateName;
     [AppModel sharedAppModel].currentUserObservation = observation;
     [[AppModel sharedAppModel] save];
     [self.navigationController popToViewController:self animated:YES];
@@ -896,7 +899,7 @@
     [self.navigationController popToViewController:self animated:YES];
     [spinner startAnimating];
     [self performSelector:@selector(rankIdentifications) withObject:nil afterDelay:.1];
-    matches = projectIdentifications.count != 1 ?[NSString stringWithFormat:@"%d matches", projectIdentifications.count] : [NSString stringWithFormat:@"%d match", 1];
+    self.title = projectIdentifications.count != 1 ?[NSString stringWithFormat:@"%d matches", projectIdentifications.count] : [NSString stringWithFormat:@"%d match", 1];
     [self.table reloadData];
 }
 
