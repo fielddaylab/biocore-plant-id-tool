@@ -214,7 +214,13 @@
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {
-    chosenPossibility = [possibilities objectAtIndex:index];
+    ProjectComponentPossibility *poss = [possibilities objectAtIndex:index];
+    if ([chosenPossibility isEqual:poss]) {
+        chosenPossibility = nil;
+    }
+    else{
+        chosenPossibility = [possibilities objectAtIndex:index];
+    }
     [self.carousel reloadData];
 }
 
