@@ -56,23 +56,21 @@
 - (void) viewDidLoad
 {
 	[super viewDidLoad];
+    
 	[[AppModel sharedAppModel] getProjectIdentificationDiscussionsWithHandler:@selector(handleDiscussionRetrieval:) target:self];
 
-	//Placeholder for now. Aligns text correctly, and we'll need for later Identifying
 	NSArray *userIdentificationSet = [[AppModel sharedAppModel].currentUserObservation.userObservationIdentifications allObjects];
 	if(userIdentificationSet.count < 1)
-		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"ID" style:UIBarButtonItemStyleDone target:self action:@selector(makeIdentification)];
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"ID" style:UIBarButtonItemStyleDone target:self action:@selector(makeIdentification)];
 	else
 	{
 		UserObservationIdentification *userIdentification = [userIdentificationSet objectAtIndex:0];
-		ProjectIdentification *idToCompare = userIdentification.projectIdentification;
-		if([idToCompare.title isEqualToString:self.identification.title])
+		if([userIdentification.projectIdentification.title isEqualToString:self.identification.title])
 			self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"UN-ID" style:UIBarButtonSystemItemTrash target:self action:@selector(removeUserObservationIdentification)];
 		else
 			self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"ID" style:UIBarButtonItemStyleDone target:self action:@selector(makeIdentification)];
 	}
 
-	//Create navigation bar titles
 	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44)];
 	label.backgroundColor = [UIColor clearColor];
 	label.numberOfLines = 2;
@@ -83,17 +81,17 @@
 	label.text = [NSString stringWithFormat:@"%@\n%@", self.identification.alternateName, self.identification.title];
 	self.navigationItem.titleView = label;
 
-	self.webView = [[UIWebView alloc]    initWithFrame:CGRectMake(0,              0, 320, [UIScreen mainScreen].bounds.size.height - PICTURE_OFFSET - 64)];
-	self.webView.delegate = self;
+	self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,320,[UIScreen mainScreen].bounds.size.height-PICTURE_OFFSET-64)];
+	self.webView.backgroundColor = [UIColor clearColor];
 	self.webView.scrollView.scrollEnabled = NO;
 	self.webView.opaque = NO;
-	self.webView.backgroundColor = [UIColor clearColor];
+	self.webView.delegate = self;
 	[self.webView loadHTMLString:[NSString stringWithFormat:@"<html><div id='Description' style=\"font-family:'helvetica neue';\">%@</div></html>", self.identification.identificationDescription] baseURL:nil];
 
 	NSMutableArray *mediaArray = [NSMutableArray arrayWithArray:[self.identification.media allObjects]];
 
-	self.scrollGallery = [[UIScrollView alloc] initWithFrame:CGRectMake(0,              0, 320, PICTURE_OFFSET)];
-	self.scrollGallery.contentSize = CGSizeMake(320 * [mediaArray count], PICTURE_OFFSET);
+	self.scrollGallery = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,320,PICTURE_OFFSET)];
+	self.scrollGallery.contentSize = CGSizeMake(320*[mediaArray count],PICTURE_OFFSET);
 	self.scrollGallery.delegate = self;
 	self.scrollGallery.pagingEnabled = YES;
 	[self.scrollGallery setShowsHorizontalScrollIndicator:NO];
@@ -106,13 +104,13 @@
 		if([mediaObject.mediaURL isEqualToString:@""])
 		{
 			UIImage *defaultImage = [[MediaManager sharedMediaManager] getImageNamed:@"defaultIdentificationNoPhoto.png"];
-			imageGallery = [[UIImageView alloc] initWithFrame:CGRectMake(i * 320, 0, 320, PICTURE_OFFSET)];
+			imageGallery = [[UIImageView alloc] initWithFrame:CGRectMake(i*320,0,320,PICTURE_OFFSET)];
 			imageGallery.image = defaultImage;
 		}
 		else
 		{
 			UIImage *image = [[MediaManager sharedMediaManager] getImageNamed:[NSString stringWithFormat:@"%@.jpg",mediaObject.mediaURL]];
-			imageGallery = [[UIImageView alloc] initWithFrame:CGRectMake(i * 320, 0, 320, PICTURE_OFFSET)];
+			imageGallery = [[UIImageView alloc] initWithFrame:CGRectMake(i*320,0,320,PICTURE_OFFSET)];
 			imageGallery.image = image;
 		}
 
@@ -124,38 +122,32 @@
 	if(mediaArray.count > 1)
 	{
 		self.pageControl = [[UIPageControl alloc]init];
-		self.pageControl.frame = CGRectMake((self.scrollGallery.frame.size.width / 2.0f) - (mediaArray.count * 10.0f / 2.0f), self.scrollGallery.frame.size.height - 10, (mediaArray.count * 10.0f), 5.0f);
+		self.pageControl.frame = CGRectMake((self.scrollGallery.frame.size.width/2.0f)-(mediaArray.count*10.0f/2.0f),self.scrollGallery.frame.size.height-10,(mediaArray.count*10.0f),5.0f);
 		self.pageControl.numberOfPages = mediaArray.count;
 		self.pageControl.currentPage = 0;
 		[self.view addSubview:self.pageControl];
 	}
-
-	NSLog(@"INFORMATION VC ViewDidLoad");
-
-
 }
 
 - (void) webViewDidFinishLoad:(UIWebView *)webViewThatLoaded
 {
 	NSString *output = [webViewThatLoaded stringByEvaluatingJavaScriptFromString:@"document.getElementById(\"Description\").offsetHeight;"];
 	NSLog(@"height: %@", output);
-	int webViewHeight;
-	webViewHeight = 15;//initialize to 15 because there is a slight offset with HTML
-	webViewHeight += [output intValue];
+	int webViewHeight = 15+[output intValue];
 	self.webView.frame = CGRectMake(self.webView.frame.origin.x, self.webView.frame.origin.y, self.webView.frame.size.width, webViewHeight);
 
-	self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, PICTURE_OFFSET, 320, [UIScreen mainScreen].bounds.size.height - PICTURE_OFFSET - 64)];
+	self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,PICTURE_OFFSET,320,[UIScreen mainScreen].bounds.size.height-PICTURE_OFFSET-64)];
 	[self.identificationInformation sortUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]]];
 	ProjectIdentificationDiscussion *discussion;
 	int heightOfAllButtons = 0;
-	for (int i = 0; i < self.identificationInformation.count; i++)
+	for(int i = 0; i < self.identificationInformation.count; i++)
 	{
 		discussion = [self.identificationInformation objectAtIndex:i];
 
 		UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 		[button setTitle:discussion.title forState:UIControlStateNormal];
 		[button setTag:i];
-		[button setFrame:CGRectMake(0, webViewHeight + 44*i, 320, 44)];//change webView bounds to some height determined by delegate javascript document.height kind of thing?
+		[button setFrame:CGRectMake(0, webViewHeight + 44*i, 320, 44)];
 		[button addTarget:self action:@selector(pushDiscussionViewController:) forControlEvents:UIControlEventTouchUpInside];
 
 		[self.scrollView addSubview:button];
@@ -178,6 +170,8 @@
 
 - (void) dealloc
 {
+    while([self.scrollGallery.subviews count] > 0)
+        [(UIView *)[self.scrollGallery.subviews objectAtIndex:0] removeFromSuperview];
 	self.webView.delegate = nil;
 	self.scrollGallery.delegate = nil;
 	self.scrollView.delegate = nil;
