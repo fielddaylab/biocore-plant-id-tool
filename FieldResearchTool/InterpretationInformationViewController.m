@@ -43,8 +43,6 @@
 - (void) viewDidLoad
 {
 	[super viewDidLoad];
-
-
 	[[AppModel sharedAppModel] getProjectIdentificationDiscussionsWithHandler:@selector(handleDiscussionRetrieval:) target:self];
 
 	//Placeholder for now. Aligns text correctly, and we'll need for later Identifying
@@ -120,6 +118,7 @@
 	}
 
 	NSLog(@"INFORMATION VC ViewDidLoad");
+
 
 }
 

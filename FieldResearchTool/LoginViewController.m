@@ -232,7 +232,7 @@
     [self.navigationController pushViewController:newObservation animated:YES];
     
     //load the identification images ascyncronously so we dont have to do it later
-    //[[AppModel sharedAppModel]getAllProjectIdentificationsWithHandler:@selector(handleIdentificationImageCall:) target:self];
+    [[AppModel sharedAppModel]getAllProjectIdentificationsWithHandler:@selector(handleIdentificationImageCall:) target:self];
 }
 
 -(void)handleIdentificationImageCall:(NSArray *)identifications{
