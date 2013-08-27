@@ -215,6 +215,14 @@
 		718AAD281794772300AFE6DB /* InterpretationSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718AAD261794772300AFE6DB /* InterpretationSplitViewController.xib */; };
 		718F372017B97CB100297EBA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718F371F17B97CB100297EBA /* LoginViewController.m */; };
 		719D192517BA9D20002A2B24 /* RegisterNewAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 719D192417BA9D20002A2B24 /* RegisterNewAccountViewController.m */; };
+		71BCAA2D17CD12DC002BBD5F /* Abundance.png in Resources */ = {isa = PBXBuildFile; fileRef = 71BCAA2B17CD12DC002BBD5F /* Abundance.png */; };
+		71BCAA2E17CD12DC002BBD5F /* Cell_name.png in Resources */ = {isa = PBXBuildFile; fileRef = 71BCAA2C17CD12DC002BBD5F /* Cell_name.png */; };
+		71BCAA3517CD26A8002BBD5F /* Flowering_month_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71BCAA2F17CD26A8002BBD5F /* Flowering_month_TutorialLarge.png */; };
+		71BCAA3617CD26A8002BBD5F /* Leaf_arrangement_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71BCAA3017CD26A8002BBD5F /* Leaf_arrangement_TutorialLarge.png */; };
+		71BCAA3717CD26A8002BBD5F /* Leaf_type_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71BCAA3117CD26A8002BBD5F /* Leaf_type_TutorialLarge.png */; };
+		71BCAA3817CD26A8002BBD5F /* Number_flower_parts_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71BCAA3217CD26A8002BBD5F /* Number_flower_parts_TutorialLarge.png */; };
+		71BCAA3917CD26A8002BBD5F /* Petiole_present_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71BCAA3317CD26A8002BBD5F /* Petiole_present_TutorialLarge.png */; };
+		71BCAA3A17CD26A8002BBD5F /* Stem_texture_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71BCAA3417CD26A8002BBD5F /* Stem_texture_TutorialLarge.png */; };
 		71E471DD17CB973500160312 /* Abutilon_theophrasti-calyx-mi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71E46F4817CB973200160312 /* Abutilon_theophrasti-calyx-mi.jpg */; };
 		71E471DE17CB973500160312 /* Abutilon_theophrasti-flower-mi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71E46F4917CB973200160312 /* Abutilon_theophrasti-flower-mi.jpg */; };
 		71E471DF17CB973500160312 /* Abutilon_theophrasti-fruit-mi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71E46F4A17CB973200160312 /* Abutilon_theophrasti-fruit-mi.jpg */; };
@@ -1302,6 +1310,14 @@
 		718F371F17B97CB100297EBA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		719D192317BA9D20002A2B24 /* RegisterNewAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterNewAccountViewController.h; sourceTree = "<group>"; };
 		719D192417BA9D20002A2B24 /* RegisterNewAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterNewAccountViewController.m; sourceTree = "<group>"; };
+		71BCAA2B17CD12DC002BBD5F /* Abundance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Abundance.png; sourceTree = "<group>"; };
+		71BCAA2C17CD12DC002BBD5F /* Cell_name.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_name.png; sourceTree = "<group>"; };
+		71BCAA2F17CD26A8002BBD5F /* Flowering_month_TutorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flowering_month_TutorialLarge.png; sourceTree = "<group>"; };
+		71BCAA3017CD26A8002BBD5F /* Leaf_arrangement_TutorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_arrangement_TutorialLarge.png; sourceTree = "<group>"; };
+		71BCAA3117CD26A8002BBD5F /* Leaf_type_TutorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf_type_TutorialLarge.png; sourceTree = "<group>"; };
+		71BCAA3217CD26A8002BBD5F /* Number_flower_parts_TutorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Number_flower_parts_TutorialLarge.png; sourceTree = "<group>"; };
+		71BCAA3317CD26A8002BBD5F /* Petiole_present_TutorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Petiole_present_TutorialLarge.png; sourceTree = "<group>"; };
+		71BCAA3417CD26A8002BBD5F /* Stem_texture_TutorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stem_texture_TutorialLarge.png; sourceTree = "<group>"; };
 		71E46F4817CB973200160312 /* Abutilon_theophrasti-calyx-mi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Abutilon_theophrasti-calyx-mi.jpg"; sourceTree = "<group>"; };
 		71E46F4917CB973200160312 /* Abutilon_theophrasti-flower-mi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Abutilon_theophrasti-flower-mi.jpg"; sourceTree = "<group>"; };
 		71E46F4A17CB973200160312 /* Abutilon_theophrasti-fruit-mi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Abutilon_theophrasti-fruit-mi.jpg"; sourceTree = "<group>"; };
@@ -3198,6 +3214,8 @@
 		71F580A717C40A3200C063DF /* ComponentPNG */ = {
 			isa = PBXGroup;
 			children = (
+				71BCAA2B17CD12DC002BBD5F /* Abundance.png */,
+				71BCAA2C17CD12DC002BBD5F /* Cell_name.png */,
 				71F580A817C40A3200C063DF /* Distribution.png */,
 				71F580A917C40A3200C063DF /* Flower_arrangement.png */,
 				71F580AA17C40A3200C063DF /* Flower_color.png */,
@@ -3419,6 +3437,12 @@
 		71F5810E17C40A3200C063DF /* ComponentTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				71BCAA2F17CD26A8002BBD5F /* Flowering_month_TutorialLarge.png */,
+				71BCAA3017CD26A8002BBD5F /* Leaf_arrangement_TutorialLarge.png */,
+				71BCAA3117CD26A8002BBD5F /* Leaf_type_TutorialLarge.png */,
+				71BCAA3217CD26A8002BBD5F /* Number_flower_parts_TutorialLarge.png */,
+				71BCAA3317CD26A8002BBD5F /* Petiole_present_TutorialLarge.png */,
+				71BCAA3417CD26A8002BBD5F /* Stem_texture_TutorialLarge.png */,
 				71F5810F17C40A3200C063DF /* Distribution_TutorialLarge.png */,
 				71F5811017C40A3200C063DF /* Flower_arrangement_TutorialLarge.png */,
 				71F5811117C40A3200C063DF /* Flower_color_TutorialLarge.png */,
@@ -4603,6 +4627,14 @@
 				71E4746F17CB973500160312 /* Zizia_aurea-inflorescence-mi.jpg in Resources */,
 				71E4747017CB973500160312 /* Zizia_aurea-leaf1-mi.jpg in Resources */,
 				71E4747117CB973500160312 /* Zizia_aurea-leaf2-mi.jpg in Resources */,
+				71BCAA2D17CD12DC002BBD5F /* Abundance.png in Resources */,
+				71BCAA2E17CD12DC002BBD5F /* Cell_name.png in Resources */,
+				71BCAA3517CD26A8002BBD5F /* Flowering_month_TutorialLarge.png in Resources */,
+				71BCAA3617CD26A8002BBD5F /* Leaf_arrangement_TutorialLarge.png in Resources */,
+				71BCAA3717CD26A8002BBD5F /* Leaf_type_TutorialLarge.png in Resources */,
+				71BCAA3817CD26A8002BBD5F /* Number_flower_parts_TutorialLarge.png in Resources */,
+				71BCAA3917CD26A8002BBD5F /* Petiole_present_TutorialLarge.png in Resources */,
+				71BCAA3A17CD26A8002BBD5F /* Stem_texture_TutorialLarge.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
