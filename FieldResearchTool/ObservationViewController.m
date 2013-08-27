@@ -49,6 +49,7 @@
     NSMutableArray *requiredCheckmarkImageViews;
     NSMutableArray *optionalCheckmarkImageViews;
     UIActivityIndicatorView *spinner;
+    NSString *matches;
 }
 
 @end
@@ -90,7 +91,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     metadata = [[NSMutableArray alloc]initWithArray:[self getMetadata]];
-    
     [table reloadData];
 }
 
@@ -99,11 +99,7 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(popToObservationScreen)];
-    self.navigationItem.RightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"ID" style:UIBarButtonItemStyleBordered target:self action:@selector(pushInterpretationViewController)];
-    
-    UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle: @"Back" style: UIBarButtonItemStyleBordered target: nil action: nil];
-    [[self navigationItem] setBackBarButtonItem: newBackButton];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(popToObservationScreen)];
     
     
     spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
@@ -116,7 +112,7 @@
         
         //get the location here
         NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
-        [attributes setValue:self.title forKey:@"identificationString"];
+        [attributes setValue:matches forKey:@"identificationString"];
         observation = [[AppModel sharedAppModel] createNewUserObservationWithAttributes:attributes];
         observation.latitude = [NSNumber numberWithFloat:locationManager.location.coordinate.latitude];
         observation.longitude = [NSNumber numberWithFloat:locationManager.location.coordinate.longitude];
@@ -170,7 +166,7 @@
             [alert show];
         }
         else{
-            observation.identificationString = self.title;
+            observation.identificationString = matches;
             [self.navigationController popViewControllerAnimated:YES];
         }
         
@@ -186,7 +182,7 @@
 {
     if (alertView.tag == 0) {
         if (buttonIndex == 0) {
-            observation.identificationString = self.title;
+            observation.identificationString = matches;
             [self.navigationController popViewControllerAnimated:YES];
         }
     }
@@ -201,29 +197,23 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)pushInterpretationViewController{
-    InterpretationChoiceViewController *vc = [[InterpretationChoiceViewController alloc]initWithNibName:@"InterpretationChoiceViewController" bundle:nil];
-    vc.projectIdentifications = projectIdentifications;
-    vc.dataToFilter = dataToFilter;
-    [self.navigationController pushViewController:vc animated:YES];
-
-}
-
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
         case 0:
-            return [requiredComponents count];
+            return 1;
         case 1:
-            return [optionalComponents count];
+            return [requiredComponents count];
         case 2:
+            return [optionalComponents count];
+        case 3:
             return 3;
         default:
             return 0;
@@ -245,11 +235,16 @@
     UIImageView *checkmark;
     
     switch (indexPath.section) {
+        case 0:{
+            cell.textLabel.text = matches;
+            cell.textLabel.textAlignment = NSTextAlignmentCenter;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+            break;
+        case 1:
+        case 2:{
             
-        case 0:
-        case 1:{
-            
-            if (indexPath.section == 0) {
+            if (indexPath.section == 1) {
                 com = (ProjectComponent *)[requiredComponents objectAtIndex:indexPath.row];
                 comImage = (UIImage *)[requiredComImages objectAtIndex:indexPath.row];
                 checkmark = (UIImageView *)[requiredCheckmarkImageViews objectAtIndex:indexPath.row];
@@ -321,7 +316,7 @@
             cell.imageView.image = comImage;
             
         }break;
-        case 2:{
+        case 3:{
             
             cell.userInteractionEnabled = NO;
             
@@ -371,11 +366,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.section == 0 || indexPath.section == 1){
+    if (indexPath.section == 0) {
+        InterpretationChoiceViewController *vc = [[InterpretationChoiceViewController alloc]initWithNibName:@"InterpretationChoiceViewController" bundle:nil];
+        vc.projectIdentifications = projectIdentifications;
+        vc.dataToFilter = dataToFilter;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if(indexPath.section == 1 || indexPath.section == 2){
         ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]init];
         
         ProjectComponent *projectComponent;
-        if(indexPath.section == 0){
+        if(indexPath.section == 1){
             projectComponent = [requiredComponents objectAtIndex:indexPath.row];
         }
         else{
@@ -397,15 +398,15 @@
 
 {
     switch (section) {
-        case 0:
+        case 1:
             return @"Required Components";
             break;
-        case 1:
-            return @"Optional Components";
         case 2:
+            return @"Optional Components";
+        case 3:
             return @"Metadata";
         default:
-            return @"Error :'[";
+            return @"";
             break;
     }
     
@@ -465,11 +466,16 @@
 
 -(void)projectIdentificationsResponseReady{
     projectIdentifications = [NSMutableArray arrayWithArray:[AppModel sharedAppModel].allProjectIdentifications];
-    //[[AppModel sharedAppModel] loadIdentificationImages];
-    //[self rankIdentifications];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     [spinner startAnimating];
     [self performSelector:@selector(rankIdentifications) withObject:nil afterDelay:.1];
+    if (!observation.identificationString) {
+        matches = projectIdentifications.count != 1 ?[NSString stringWithFormat:@"%d matches", projectIdentifications.count] : [NSString stringWithFormat:@"%d match", 1];
+    }
+    else{
+        matches = observation.identificationString;
+    }
+
     [self.table reloadData];
 }
 
@@ -565,7 +571,10 @@
     }
     
     
-    self.title = possibleIdentifications != 1 ?[NSString stringWithFormat:@"%d matches", possibleIdentifications] : [NSString stringWithFormat:@"%d match", 1];
+    if (observation.userObservationIdentifications.count == 0) {
+        matches = possibleIdentifications != 1 ?[NSString stringWithFormat:@"%d matches", possibleIdentifications] : [NSString stringWithFormat:@"%d match", 1];
+    }
+
     
     //sort array
     NSSortDescriptor *scoreDescriptor = [[NSSortDescriptor alloc] initWithKey:@"score" ascending:NO];
@@ -582,7 +591,8 @@
     
     projectIdentifications = [NSArray arrayWithArray:sortedIdentifications];
     [spinner stopAnimating];
-    self.navigationItem.RightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"ID" style:UIBarButtonItemStyleBordered target:self action:@selector(pushInterpretationViewController)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(popToObservationScreen)];
+    [table reloadData];
 }
 
 -(float)getNumberScoreForData:(UserObservationComponentData *)data withIdentification:(ProjectIdentification *)identification{
@@ -863,7 +873,7 @@
     UserObservationIdentification *userIdentification = [[AppModel sharedAppModel] createNewUserObservationIdentificationWithProjectIdentification:projectIdentification withAttributes:attributes];
     NSSet *userIdentifications = [NSSet setWithObject:userIdentification];
     observation.userObservationIdentifications = userIdentifications;
-    self.title = projectIdentification.alternateName;
+    matches = projectIdentification.alternateName;
     [AppModel sharedAppModel].currentUserObservation = observation;
     [[AppModel sharedAppModel] save];
     [self.navigationController popToViewController:self animated:YES];
@@ -877,6 +887,10 @@
     [[AppModel sharedAppModel] deleteObject:userIdentificationToDelete];
     [[AppModel sharedAppModel] save];
     [self.navigationController popToViewController:self animated:YES];
+    [spinner startAnimating];
+    [self performSelector:@selector(rankIdentifications) withObject:nil afterDelay:.1];
+    matches = projectIdentifications.count != 1 ?[NSString stringWithFormat:@"%d matches", projectIdentifications.count] : [NSString stringWithFormat:@"%d match", 1];
+    [self.table reloadData];
 }
 
 

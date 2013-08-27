@@ -27,6 +27,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"My Observations";
+        UIBarButtonItem *temporaryBarButtonItem = [[UIBarButtonItem alloc] init];
+        temporaryBarButtonItem.title = @"Back";
+        self.navigationItem.backBarButtonItem = temporaryBarButtonItem;
     }
     return self;
 }
