@@ -220,6 +220,12 @@
     [usernameTextField setText:@""];
     [passwordTextField setText:@""];
     [self.navigationController pushViewController:newObservation animated:YES];
+    [[AppModel sharedAppModel]getAllProjectIdentificationsWithHandler:@selector(handleIdentificationImageCall:) target:self];
+}
+
+-(void)handleIdentificationImageCall:(NSArray *)identifications{
+    [AppModel sharedAppModel].allProjectIdentifications = identifications;
+    [[AppModel sharedAppModel] loadIdentificationImages];
 }
 
 @end
