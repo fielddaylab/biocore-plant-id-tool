@@ -994,7 +994,6 @@
 		71F581A917C40A3200C063DF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5811E17C40A3200C063DF /* Default-568h@2x.png */; };
 		71F581AA17C40A3200C063DF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5811F17C40A3200C063DF /* Default.png */; };
 		71F581AB17C40A3200C063DF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5812017C40A3200C063DF /* Default@2x.png */; };
-		71F581AC17C40A3200C063DF /* Flower_color.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5812117C40A3200C063DF /* Flower_color.png */; };
 		71F581AD17C40A3200C063DF /* defaultIdentificationNoPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5812317C40A3200C063DF /* defaultIdentificationNoPhoto.png */; };
 		71F581AE17C40A3200C063DF /* japanese_maple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71F5812417C40A3200C063DF /* japanese_maple.jpg */; };
 		71F581AF17C40A3200C063DF /* japanese_maple.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F5812517C40A3200C063DF /* japanese_maple.png */; };
@@ -2083,7 +2082,6 @@
 		71F5811E17C40A3200C063DF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		71F5811F17C40A3200C063DF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		71F5812017C40A3200C063DF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		71F5812117C40A3200C063DF /* Flower_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flower_color.png; sourceTree = "<group>"; };
 		71F5812317C40A3200C063DF /* defaultIdentificationNoPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultIdentificationNoPhoto.png; sourceTree = "<group>"; };
 		71F5812417C40A3200C063DF /* japanese_maple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = japanese_maple.jpg; sourceTree = "<group>"; };
 		71F5812517C40A3200C063DF /* japanese_maple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = japanese_maple.png; sourceTree = "<group>"; };
@@ -3172,7 +3170,6 @@
 				71F5811E17C40A3200C063DF /* Default-568h@2x.png */,
 				71F5811F17C40A3200C063DF /* Default.png */,
 				71F5812017C40A3200C063DF /* Default@2x.png */,
-				71F5812117C40A3200C063DF /* Flower_color.png */,
 				71F5812217C40A3200C063DF /* Identifications */,
 				71F5812A17C40A3200C063DF /* iPhoneTutorialPhoto.JPG */,
 				71F5812B17C40A3200C063DF /* page.png */,
@@ -3761,7 +3758,6 @@
 				71F581A917C40A3200C063DF /* Default-568h@2x.png in Resources */,
 				71F581AA17C40A3200C063DF /* Default.png in Resources */,
 				71F581AB17C40A3200C063DF /* Default@2x.png in Resources */,
-				71F581AC17C40A3200C063DF /* Flower_color.png in Resources */,
 				71F581AD17C40A3200C063DF /* defaultIdentificationNoPhoto.png in Resources */,
 				71F581AE17C40A3200C063DF /* japanese_maple.jpg in Resources */,
 				71F581AF17C40A3200C063DF /* japanese_maple.png in Resources */,
