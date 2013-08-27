@@ -69,18 +69,8 @@
     }
     else{
         showPictureView.image = tutorialPhoto;
-        //[self arrowButtonPressed];
     }
     
-//    deleteImageImage = [[MediaManager sharedMediaManager] getImageNamed:@"298-circlex"];
-//    deleteImageButton = [[UIButton alloc] initWithFrame:CGRectMake(312 - deleteImageImage.size.width, 8, deleteImageImage.size.width, deleteImageImage.size.height)];
-//    [deleteImageButton setImage:deleteImageImage forState:UIControlStateNormal];
-//    [deleteImageButton addTarget:self
-//                   action:@selector(deleteImagePressed)
-//         forControlEvents:UIControlEventTouchUpInside];
-    
-//    deleteImageImage = [[MediaManager sharedMediaManager] getImageNamed:@"298-circlex"];
-//    deleteImageButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 20, 320, 44)];
     deleteImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
     deleteImageButton.backgroundColor = [UIColor colorWithRed:172 green:172 blue:172 alpha:.75];
     [deleteImageButton setTitle:@"Retake Photo!" forState:UIControlStateNormal];
