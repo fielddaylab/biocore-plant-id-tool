@@ -7,6 +7,7 @@
 //
 
 #import "InterpretationChoiceViewController.h"
+
 #import "ProjectIdentification.h"
 #import "InterpretationInformationViewController.h"
 #import "ObservationViewController.h"
@@ -38,7 +39,7 @@
 }
 
 -(void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"LoadDefaultImages" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad
@@ -188,16 +189,13 @@
 {
     switch (section) {
         case 0:
-            
             if ([tableView.dataSource tableView:tableView numberOfRowsInSection:section] == 0) {
                 return nil;
             } else {
                 return [NSString stringWithFormat:@"%d Likely Options", [likelyChoices count]];
             }
-            
             break;
         case 1:
-            
             if ([tableView.dataSource tableView:tableView numberOfRowsInSection:section] == 0) {
                 return nil;
             } else {
