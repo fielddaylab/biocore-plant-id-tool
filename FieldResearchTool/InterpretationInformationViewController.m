@@ -24,9 +24,22 @@
 	UIPageControl *pageControl;
 }
 
+@property (nonatomic, strong) NSMutableArray *identificationInformation;
+@property (nonatomic, strong) UIScrollView *scrollGallery;
+@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, strong) UIPageControl *pageControl;
+
 @end
 
 @implementation InterpretationInformationViewController
+
+@synthesize identificationInformation;
+@synthesize scrollGallery;
+@synthesize scrollView;
+@synthesize webView;
+@synthesize pageControl;
+
 @synthesize identification;
 @synthesize delegate;
 
@@ -34,7 +47,7 @@
 {
 	if(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])
 	{
-		identificationInformation = [[NSMutableArray alloc] init];
+		self.identificationInformation = [[NSMutableArray alloc] init];
 	}
 
 	return self;
@@ -53,7 +66,7 @@
 	{
 		UserObservationIdentification *userIdentification = [userIdentificationSet objectAtIndex:0];
 		ProjectIdentification *idToCompare = userIdentification.projectIdentification;
-		if([idToCompare.title isEqualToString:identification.title])
+		if([idToCompare.title isEqualToString:self.identification.title])
 			self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"UN-ID" style:UIBarButtonSystemItemTrash target:self action:@selector(removeUserObservationIdentification)];
 		else
 			self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"ID" style:UIBarButtonItemStyleDone target:self action:@selector(makeIdentification)];
@@ -67,23 +80,23 @@
 	label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
 	label.textAlignment = NSTextAlignmentCenter;
 	label.textColor = [UIColor whiteColor];
-	label.text = [NSString stringWithFormat:@"%@\n%@", identification.alternateName, identification.title];
+	label.text = [NSString stringWithFormat:@"%@\n%@", self.identification.alternateName, self.identification.title];
 	self.navigationItem.titleView = label;
 
-	webView = [[UIWebView alloc]    initWithFrame:CGRectMake(0,              0, 320, [UIScreen mainScreen].bounds.size.height - PICTURE_OFFSET - 64)];
-	webView.delegate = self;
-	webView.scrollView.scrollEnabled = NO;
-	webView.opaque = NO;
-	webView.backgroundColor = [UIColor clearColor];
-	[webView loadHTMLString:[NSString stringWithFormat:@"<html><div id='Description' style=\"font-family:'helvetica neue';\">%@</div></html>", identification.identificationDescription] baseURL:nil];
+	self.webView = [[UIWebView alloc]    initWithFrame:CGRectMake(0,              0, 320, [UIScreen mainScreen].bounds.size.height - PICTURE_OFFSET - 64)];
+	self.webView.delegate = self;
+	self.webView.scrollView.scrollEnabled = NO;
+	self.webView.opaque = NO;
+	self.webView.backgroundColor = [UIColor clearColor];
+	[self.webView loadHTMLString:[NSString stringWithFormat:@"<html><div id='Description' style=\"font-family:'helvetica neue';\">%@</div></html>", self.identification.identificationDescription] baseURL:nil];
 
-	NSMutableArray *mediaArray = [NSMutableArray arrayWithArray:[identification.media allObjects]];
+	NSMutableArray *mediaArray = [NSMutableArray arrayWithArray:[self.identification.media allObjects]];
 
-	scrollGallery = [[UIScrollView alloc] initWithFrame:CGRectMake(0,              0, 320, PICTURE_OFFSET)];
-	scrollGallery.contentSize = CGSizeMake(320 * [mediaArray count], PICTURE_OFFSET);
-	scrollGallery.delegate = self;
-	scrollGallery.pagingEnabled = YES;
-	[scrollGallery setShowsHorizontalScrollIndicator:NO];
+	self.scrollGallery = [[UIScrollView alloc] initWithFrame:CGRectMake(0,              0, 320, PICTURE_OFFSET)];
+	self.scrollGallery.contentSize = CGSizeMake(320 * [mediaArray count], PICTURE_OFFSET);
+	self.scrollGallery.delegate = self;
+	self.scrollGallery.pagingEnabled = YES;
+	[self.scrollGallery setShowsHorizontalScrollIndicator:NO];
 
 	for(int i = 0; i < [mediaArray count]; i++)
 	{
@@ -103,18 +116,18 @@
 			imageGallery.image = image;
 		}
 
-		[scrollGallery addSubview:imageGallery];
+		[self.scrollGallery addSubview:imageGallery];
 	}
 
-	[self.view addSubview:scrollGallery];
+	[self.view addSubview:self.scrollGallery];
 
 	if(mediaArray.count > 1)
 	{
-		pageControl = [[UIPageControl alloc]init];
-		pageControl.frame = CGRectMake((scrollGallery.frame.size.width / 2.0f) - (mediaArray.count * 10.0f / 2.0f), scrollGallery.frame.size.height - 10, (mediaArray.count * 10.0f), 5.0f);
-		pageControl.numberOfPages = mediaArray.count;
-		pageControl.currentPage = 0;
-		[self.view addSubview:pageControl];
+		self.pageControl = [[UIPageControl alloc]init];
+		self.pageControl.frame = CGRectMake((self.scrollGallery.frame.size.width / 2.0f) - (mediaArray.count * 10.0f / 2.0f), self.scrollGallery.frame.size.height - 10, (mediaArray.count * 10.0f), 5.0f);
+		self.pageControl.numberOfPages = mediaArray.count;
+		self.pageControl.currentPage = 0;
+		[self.view addSubview:self.pageControl];
 	}
 
 	NSLog(@"INFORMATION VC ViewDidLoad");
@@ -129,15 +142,15 @@
 	int webViewHeight;
 	webViewHeight = 15;//initialize to 15 because there is a slight offset with HTML
 	webViewHeight += [output intValue];
-	webView.frame = CGRectMake(webView.frame.origin.x, webView.frame.origin.y, webView.frame.size.width, webViewHeight);
+	self.webView.frame = CGRectMake(self.webView.frame.origin.x, self.webView.frame.origin.y, self.webView.frame.size.width, webViewHeight);
 
-	scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, PICTURE_OFFSET, 320, [UIScreen mainScreen].bounds.size.height - PICTURE_OFFSET - 64)];
-	[identificationInformation sortUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]]];
+	self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, PICTURE_OFFSET, 320, [UIScreen mainScreen].bounds.size.height - PICTURE_OFFSET - 64)];
+	[self.identificationInformation sortUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]]];
 	ProjectIdentificationDiscussion *discussion;
 	int heightOfAllButtons = 0;
-	for (int i = 0; i < identificationInformation.count; i++)
+	for (int i = 0; i < self.identificationInformation.count; i++)
 	{
-		discussion = [identificationInformation objectAtIndex:i];
+		discussion = [self.identificationInformation objectAtIndex:i];
 
 		UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 		[button setTitle:discussion.title forState:UIControlStateNormal];
@@ -145,35 +158,35 @@
 		[button setFrame:CGRectMake(0, webViewHeight + 44*i, 320, 44)];//change webView bounds to some height determined by delegate javascript document.height kind of thing?
 		[button addTarget:self action:@selector(pushDiscussionViewController:) forControlEvents:UIControlEventTouchUpInside];
 
-		[scrollView addSubview:button];
+		[self.scrollView addSubview:button];
 		heightOfAllButtons += 44;
 	}
 
-	scrollView.contentSize = CGSizeMake(320, webView.frame.size.height + heightOfAllButtons);
-	[scrollView addSubview:webView];
-	[self.view addSubview:scrollView];
+	self.scrollView.contentSize = CGSizeMake(320, self.webView.frame.size.height + heightOfAllButtons);
+	[self.scrollView addSubview:self.webView];
+	[self.view addSubview:self.scrollView];
 }
 
 - (void) pushDiscussionViewController:(id)sender
 {
 	UIButton *button = (UIButton *)sender;
 	InterpretationDiscussionViewController *discussionViewController = [[InterpretationDiscussionViewController alloc] initWithNibName:@"InterpretationDiscussionViewController" bundle:nil];
-	discussionViewController.discussion = [identificationInformation objectAtIndex:button.tag];
-	discussionViewController.identification = identification;
+	discussionViewController.discussion = [self.identificationInformation objectAtIndex:button.tag];
+	discussionViewController.identification = self.identification;
 	[self.navigationController pushViewController:discussionViewController animated:YES];
 }
 
 - (void) dealloc
 {
-	webView.delegate = nil;
-	scrollGallery.delegate = nil;
-	scrollView.delegate = nil;
+	self.webView.delegate = nil;
+	self.scrollGallery.delegate = nil;
+	self.scrollView.delegate = nil;
 }
 
 #pragma mark handle the discussion retrieval
 - (void) handleDiscussionRetrieval:(NSArray *)discussions
 {
-	identificationInformation = [NSMutableArray arrayWithArray:discussions];
+	self.identificationInformation = [NSMutableArray arrayWithArray:discussions];
 }
 
 #pragma mark make identification
@@ -197,10 +210,10 @@
 #pragma mark scrollview delegate methods
 - (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-	CGFloat pageWidth = scrollGallery.frame.size.width;
-	float fractionalPage = scrollGallery.contentOffset.x / pageWidth;
+	CGFloat pageWidth = self.scrollGallery.frame.size.width;
+	float fractionalPage = self.scrollGallery.contentOffset.x / pageWidth;
 	NSInteger page = lround(fractionalPage);
-	pageControl.currentPage = page;
+	self.pageControl.currentPage = page;
 }
 
 @end

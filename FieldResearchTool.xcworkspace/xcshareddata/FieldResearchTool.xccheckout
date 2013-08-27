@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>1B231FC7-4985-45C8-8960-2DB6E86058EC</string>
+	<string>3CCF46EF-4704-4898-ACE4-3B067959CF80</string>
 	<key>IDESourceControlProjectName</key>
 	<string>FieldResearchTool</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>07BF6A6A-41DB-4381-B6CA-19A831248FFD</key>
-		<string>https://github.com/UWMLI/FieldResearchTool.git</string>
+		<key>4515DE0A-4C74-440B-A61D-0FFFE337A4EE</key>
+		<string>ssh://github.com/UWMLI/FieldResearchTool.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>FieldResearchTool.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>07BF6A6A-41DB-4381-B6CA-19A831248FFD</key>
+		<key>4515DE0A-4C74-440B-A61D-0FFFE337A4EE</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/UWMLI/FieldResearchTool.git</string>
+	<string>ssh://github.com/UWMLI/FieldResearchTool.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>07BF6A6A-41DB-4381-B6CA-19A831248FFD</string>
+	<string>4515DE0A-4C74-440B-A61D-0FFFE337A4EE</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>07BF6A6A-41DB-4381-B6CA-19A831248FFD</string>
+			<string>4515DE0A-4C74-440B-A61D-0FFFE337A4EE</string>
 			<key>IDESourceControlWCCName</key>
-			<string>FieldResearch</string>
+			<string>FieldResearchTool</string>
 		</dict>
 	</array>
 </dict>
