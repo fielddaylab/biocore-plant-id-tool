@@ -53,6 +53,7 @@
 
 //replace this method with code to find the image
 -(UIImage *)getImageNamed:(NSString *)imageName{
+    //keep in mind this will cache the image, dont know when it will be deallocated
     return [UIImage imageNamed:imageName];
 }
 

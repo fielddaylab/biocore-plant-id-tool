@@ -103,13 +103,18 @@
 
 		if([mediaObject.mediaURL isEqualToString:@""])
 		{
-			UIImage *defaultImage = [[MediaManager sharedMediaManager] getImageNamed:@"defaultIdentificationNoPhoto.png"];
+            //Must use imageWithContentsOfFile because the [UIImage imageNamed] will cache the image which causes the memory a leak in memory
+            NSBundle *bundle = [NSBundle bundleWithIdentifier:@"org.arisgames.FieldResearchTool"];
+            NSString *imagePath = [bundle pathForResource:@"defaultIdentificationNoPhoto" ofType:@"png"];
+            UIImage* image = [UIImage imageWithContentsOfFile:imagePath];
 			imageGallery = [[UIImageView alloc] initWithFrame:CGRectMake(i*320,0,320,PICTURE_OFFSET)];
-			imageGallery.image = defaultImage;
+			imageGallery.image = image;
 		}
 		else
 		{
-			UIImage *image = [[MediaManager sharedMediaManager] getImageNamed:[NSString stringWithFormat:@"%@.jpg",mediaObject.mediaURL]];
+            NSBundle *bundle = [NSBundle bundleWithIdentifier:@"org.arisgames.FieldResearchTool"];
+            NSString *imagePath = [bundle pathForResource:[NSString stringWithFormat:@"%@",mediaObject.mediaURL] ofType:@"jpg"];
+            UIImage* image = [UIImage imageWithContentsOfFile:imagePath];
 			imageGallery = [[UIImageView alloc] initWithFrame:CGRectMake(i*320,0,320,PICTURE_OFFSET)];
 			imageGallery.image = image;
 		}
