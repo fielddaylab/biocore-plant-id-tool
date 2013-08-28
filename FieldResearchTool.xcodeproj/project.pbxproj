@@ -166,6 +166,8 @@
 		5B152DE117C7CF3C00970D87 /* Zizia_aurea-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152D4617C7CF3C00970D87 /* Zizia_aurea-default.jpg */; };
 		5B152DED17C7D18700970D87 /* Eutrochium_maculatum-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B152DEC17C7D18700970D87 /* Eutrochium_maculatum-default.jpg */; };
 		5B1DAC6D17B05C0F00A30136 /* UserObservationComponentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1DAC6C17B05C0F00A30136 /* UserObservationComponentData.m */; };
+		5B47E8F617CE4F7900A9C777 /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B47E8F417CE4F7900A9C777 /* LoadingViewController.m */; };
+		5B47E8F717CE4F7900A9C777 /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B47E8F517CE4F7900A9C777 /* LoadingViewController.xib */; };
 		5B4D2DF717AC3C5B0071304F /* ProjectIdentificationDiscussion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF617AC3C5B0071304F /* ProjectIdentificationDiscussion.m */; };
 		5B4D2DFA17AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DF917AC3C6C0071304F /* ProjectIdentificationDiscussionPost.m */; };
 		5B4D2DFD17AC49920071304F /* UserObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D2DFC17AC49920071304F /* UserObservation.m */; };
@@ -1221,6 +1223,9 @@
 		5B1B065617A6C90A002B47A0 /* SaveObservationAndJudgementDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveObservationAndJudgementDelegate.h; sourceTree = "<group>"; };
 		5B1DAC6B17B05C0F00A30136 /* UserObservationComponentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObservationComponentData.h; sourceTree = "<group>"; };
 		5B1DAC6C17B05C0F00A30136 /* UserObservationComponentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObservationComponentData.m; sourceTree = "<group>"; };
+		5B47E8F317CE4F7900A9C777 /* LoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingViewController.h; sourceTree = "<group>"; };
+		5B47E8F417CE4F7900A9C777 /* LoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
+		5B47E8F517CE4F7900A9C777 /* LoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
 		5B4D2DF517AC3C5B0071304F /* ProjectIdentificationDiscussion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentificationDiscussion.h; sourceTree = "<group>"; };
 		5B4D2DF617AC3C5B0071304F /* ProjectIdentificationDiscussion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentificationDiscussion.m; sourceTree = "<group>"; };
 		5B4D2DF817AC3C6C0071304F /* ProjectIdentificationDiscussionPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentificationDiscussionPost.h; sourceTree = "<group>"; };
@@ -3538,6 +3543,9 @@
 				5BF30D8D17A1C63C0071E7EA /* DataViewControllers */,
 				718F371E17B97CB100297EBA /* LoginViewController.h */,
 				718F371F17B97CB100297EBA /* LoginViewController.m */,
+				5B47E8F317CE4F7900A9C777 /* LoadingViewController.h */,
+				5B47E8F417CE4F7900A9C777 /* LoadingViewController.m */,
+				5B47E8F517CE4F7900A9C777 /* LoadingViewController.xib */,
 				719D192317BA9D20002A2B24 /* RegisterNewAccountViewController.h */,
 				719D192417BA9D20002A2B24 /* RegisterNewAccountViewController.m */,
 				5B0458571795A11600B93A4D /* AppModel.h */,
@@ -4635,6 +4643,7 @@
 				71BCAA3817CD26A8002BBD5F /* Number_flower_parts_TutorialLarge.png in Resources */,
 				71BCAA3917CD26A8002BBD5F /* Petiole_present_TutorialLarge.png in Resources */,
 				71BCAA3A17CD26A8002BBD5F /* Stem_texture_TutorialLarge.png in Resources */,
+				5B47E8F717CE4F7900A9C777 /* LoadingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4743,6 +4752,7 @@
 				718F372017B97CB100297EBA /* LoginViewController.m in Sources */,
 				719D192517BA9D20002A2B24 /* RegisterNewAccountViewController.m in Sources */,
 				5BBC88B617BECD4A00E524FF /* ProjectComponent.m in Sources */,
+				5B47E8F617CE4F7900A9C777 /* LoadingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

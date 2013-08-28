@@ -9,6 +9,7 @@
 #import "RegisterNewAccountViewController.h"
 #import "AppModel.h"
 #import "ObservationProfileViewController.h"
+#import "LoadingViewController.h"
 
 @interface RegisterNewAccountViewController (){
     CGRect viewRect;
@@ -202,7 +203,13 @@
         
         User *user = [[AppModel sharedAppModel]createNewUserWithAttributes:attributes];
         [AppModel sharedAppModel].currentUser = user;
-        [[AppModel sharedAppModel] getAllProjectsWithHandler:@selector(handleFetchOfAllProjects:) target:self];
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"fetchData"]) {
+            LoadingViewController *loadingVC = [[LoadingViewController alloc] initWithNibName:@"LoadingViewController" bundle:nil];
+            [self.navigationController pushViewController:loadingVC animated:YES];
+        }
+        else{
+            [[AppModel sharedAppModel] getAllProjectsWithHandler:@selector(handleFetchOfAllProjects:) target:self];
+        }
         
     }
     else{
