@@ -225,6 +225,8 @@
 		71BCAA3817CD26A8002BBD5F /* Number_flower_parts_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71BCAA3217CD26A8002BBD5F /* Number_flower_parts_TutorialLarge.png */; };
 		71BCAA3917CD26A8002BBD5F /* Petiole_present_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71BCAA3317CD26A8002BBD5F /* Petiole_present_TutorialLarge.png */; };
 		71BCAA3A17CD26A8002BBD5F /* Stem_texture_TutorialLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 71BCAA3417CD26A8002BBD5F /* Stem_texture_TutorialLarge.png */; };
+		71BCAA4117CE6318002BBD5F /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 71BCAA3F17CE6318002BBD5F /* icon.png */; };
+		71BCAA4217CE6318002BBD5F /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71BCAA4017CE6318002BBD5F /* icon@2x.png */; };
 		71E471DD17CB973500160312 /* Abutilon_theophrasti-calyx-mi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71E46F4817CB973200160312 /* Abutilon_theophrasti-calyx-mi.jpg */; };
 		71E471DE17CB973500160312 /* Abutilon_theophrasti-flower-mi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71E46F4917CB973200160312 /* Abutilon_theophrasti-flower-mi.jpg */; };
 		71E471DF17CB973500160312 /* Abutilon_theophrasti-fruit-mi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71E46F4A17CB973200160312 /* Abutilon_theophrasti-fruit-mi.jpg */; };
@@ -1323,6 +1325,8 @@
 		71BCAA3217CD26A8002BBD5F /* Number_flower_parts_TutorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Number_flower_parts_TutorialLarge.png; sourceTree = "<group>"; };
 		71BCAA3317CD26A8002BBD5F /* Petiole_present_TutorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Petiole_present_TutorialLarge.png; sourceTree = "<group>"; };
 		71BCAA3417CD26A8002BBD5F /* Stem_texture_TutorialLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stem_texture_TutorialLarge.png; sourceTree = "<group>"; };
+		71BCAA3F17CE6318002BBD5F /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		71BCAA4017CE6318002BBD5F /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		71E46F4817CB973200160312 /* Abutilon_theophrasti-calyx-mi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Abutilon_theophrasti-calyx-mi.jpg"; sourceTree = "<group>"; };
 		71E46F4917CB973200160312 /* Abutilon_theophrasti-flower-mi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Abutilon_theophrasti-flower-mi.jpg"; sourceTree = "<group>"; };
 		71E46F4A17CB973200160312 /* Abutilon_theophrasti-fruit-mi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Abutilon_theophrasti-fruit-mi.jpg"; sourceTree = "<group>"; };
@@ -3167,6 +3171,8 @@
 		71F5809317C40A3200C063DF /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				71BCAA3F17CE6318002BBD5F /* icon.png */,
+				71BCAA4017CE6318002BBD5F /* icon@2x.png */,
 				71E46F4717CB973200160312 /* Plant Photos for the App */,
 				5B152CAB17C7CF3B00970D87 /* Default Images */,
 				71F5809417C40A3200C063DF /* 03-arrow-north.png */,
@@ -4644,6 +4650,8 @@
 				71BCAA3917CD26A8002BBD5F /* Petiole_present_TutorialLarge.png in Resources */,
 				71BCAA3A17CD26A8002BBD5F /* Stem_texture_TutorialLarge.png in Resources */,
 				5B47E8F717CE4F7900A9C777 /* LoadingViewController.xib in Resources */,
+				71BCAA4117CE6318002BBD5F /* icon.png in Resources */,
+				71BCAA4217CE6318002BBD5F /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
