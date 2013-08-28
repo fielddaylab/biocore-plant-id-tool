@@ -38,7 +38,7 @@
 {
     [super viewDidLoad];
     
-    // Do any additional setup after loading the view from its nib.
+    [self.navigationController.navigationBar setHidden:NO];
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(makeNewObservation)];
     [self.navigationItem setRightBarButtonItem:addButton];
     
