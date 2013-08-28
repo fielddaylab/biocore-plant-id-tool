@@ -162,8 +162,7 @@
         //get a reference to the label in the recycled view
         label = (UILabel *)[view viewWithTag:1];
         label.textColor = [UIColor blackColor];
-        UIImageView *imageView = (UIImageView *)view;
-        [imageView.layer setBorderWidth:0.0f];
+        [view.layer setBorderWidth:0.0f];
     }
     
     //set item label
@@ -198,9 +197,8 @@
     if(chosenPossibility){
         if([componentPossibility.enumValue isEqualToString:chosenPossibility.enumValue]){
             label.textColor = [UIColor whiteColor];
-            UIImageView *imageView = (UIImageView *)view;
-            [imageView.layer setBorderColor: [[UIColor blackColor] CGColor]];
-            [imageView.layer setBorderWidth: 2.0];
+            [view.layer setBorderColor: [[UIColor blackColor] CGColor]];
+            [view.layer setBorderWidth: 2.0];
         }
     }
     
