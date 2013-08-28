@@ -245,9 +245,13 @@
     
     switch (indexPath.section) {
         case 0:{
-            cell.textLabel.text = @"Identify!";
-            cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:22.0f];
-            cell.textLabel.textAlignment = NSTextAlignmentCenter;
+            if (observation.userObservationIdentifications.count == 0) {
+                cell.textLabel.text = @"Identify!";
+            }
+            else{
+                cell.textLabel.text = @"Change Identification";
+            }
+            cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18.0f];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
             break;

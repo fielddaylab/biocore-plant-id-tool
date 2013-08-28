@@ -194,7 +194,7 @@
     
     if(chosenPossibility){
         if([componentPossibility.enumValue isEqualToString:chosenPossibility.enumValue]){
-            label.textColor = [UIColor redColor];
+            label.textColor = [UIColor whiteColor];
         }
     }
     
