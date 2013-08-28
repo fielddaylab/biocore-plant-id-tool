@@ -4825,6 +4825,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FieldResearchTool/FieldResearchTool-Prefix.pch";
 				INFOPLIST_FILE = "FieldResearchTool/FieldResearchTool-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/FieldResearchTool/CrittercismSDK\"",
@@ -4839,9 +4840,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 03237ECF5C5F485597FD7DAA /* Pods.xcconfig */;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: UW Division of Information Technology";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FieldResearchTool/FieldResearchTool-Prefix.pch";
 				INFOPLIST_FILE = "FieldResearchTool/FieldResearchTool-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/FieldResearchTool/CrittercismSDK\"",
