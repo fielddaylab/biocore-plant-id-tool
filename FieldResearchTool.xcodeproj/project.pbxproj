@@ -203,6 +203,9 @@
 		5BF30DCF17A1C6D40071E7EA /* NumberJudgementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF30DC517A1C6D40071E7EA /* NumberJudgementViewController.m */; };
 		5BF30DD117A1C6D40071E7EA /* TextJudgementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF30DC817A1C6D40071E7EA /* TextJudgementViewController.m */; };
 		5BFED1BA1794A49000648062 /* CoreDataWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFED1B91794A49000648062 /* CoreDataWrapper.m */; };
+		710F8C9B17CE82730026878C /* LoadingScreen-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 710F8C9817CE82730026878C /* LoadingScreen-568h@2x.png */; };
+		710F8C9C17CE82730026878C /* LoadingScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 710F8C9917CE82730026878C /* LoadingScreen.png */; };
+		710F8C9D17CE82730026878C /* LoadingScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 710F8C9A17CE82730026878C /* LoadingScreen@2x.png */; };
 		7153516917C2BC9F007BAD27 /* InterpretationChoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B9A26E317C28ED3007A3A55 /* InterpretationChoiceTableViewCell.xib */; };
 		715A69D417B95DED00D7A992 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 715A69D317B95DED00D7A992 /* CoreLocation.framework */; };
 		71699ED517B2C8B400BEDF13 /* ProjectIdentification.m in Sources */ = {isa = PBXBuildFile; fileRef = 71699ED417B2C8B400BEDF13 /* ProjectIdentification.m */; };
@@ -1296,6 +1299,9 @@
 		5BF30DC817A1C6D40071E7EA /* TextJudgementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextJudgementViewController.m; sourceTree = "<group>"; };
 		5BFED1B81794A49000648062 /* CoreDataWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataWrapper.h; sourceTree = "<group>"; };
 		5BFED1B91794A49000648062 /* CoreDataWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataWrapper.m; sourceTree = "<group>"; };
+		710F8C9817CE82730026878C /* LoadingScreen-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoadingScreen-568h@2x.png"; sourceTree = "<group>"; };
+		710F8C9917CE82730026878C /* LoadingScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoadingScreen.png; sourceTree = "<group>"; };
+		710F8C9A17CE82730026878C /* LoadingScreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoadingScreen@2x.png"; sourceTree = "<group>"; };
 		715A69D317B95DED00D7A992 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		71699ED317B2C8B400BEDF13 /* ProjectIdentification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectIdentification.h; sourceTree = "<group>"; };
 		71699ED417B2C8B400BEDF13 /* ProjectIdentification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectIdentification.m; sourceTree = "<group>"; };
@@ -3171,6 +3177,9 @@
 		71F5809317C40A3200C063DF /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				710F8C9817CE82730026878C /* LoadingScreen-568h@2x.png */,
+				710F8C9917CE82730026878C /* LoadingScreen.png */,
+				710F8C9A17CE82730026878C /* LoadingScreen@2x.png */,
 				71BCAA3F17CE6318002BBD5F /* icon.png */,
 				71BCAA4017CE6318002BBD5F /* icon@2x.png */,
 				71E46F4717CB973200160312 /* Plant Photos for the App */,
@@ -4652,6 +4661,9 @@
 				5B47E8F717CE4F7900A9C777 /* LoadingViewController.xib in Resources */,
 				71BCAA4117CE6318002BBD5F /* icon.png in Resources */,
 				71BCAA4217CE6318002BBD5F /* icon@2x.png in Resources */,
+				710F8C9B17CE82730026878C /* LoadingScreen-568h@2x.png in Resources */,
+				710F8C9C17CE82730026878C /* LoadingScreen.png in Resources */,
+				710F8C9D17CE82730026878C /* LoadingScreen@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
