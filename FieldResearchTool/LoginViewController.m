@@ -5,6 +5,7 @@
 //  Created by Nick Heindl on 8/12/13.
 //  Copyright (c) 2013 UW Mobile Learning Incubator. All rights reserved.
 //
+//Not Needed for biocore.
 
 #import "LoginViewController.h"
 #import "AppModel.h"
