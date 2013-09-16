@@ -76,13 +76,7 @@
         requiredCheckmarkImageViews = [[NSMutableArray alloc] init];
         optionalCheckmarkImageViews = [[NSMutableArray alloc] init];
         requiredFieldsFilledOut = 0;
-        
-        locationManager = [[CLLocationManager alloc] init];
-        locationManager.delegate = self;
-        locationManager.distanceFilter = kCLDistanceFilterNone;
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        [locationManager startUpdatingLocation];
-        
+
         UIBarButtonItem *temporaryBarButtonItem = [[UIBarButtonItem alloc] init];
         temporaryBarButtonItem.title = @"Back";
         self.navigationItem.backBarButtonItem = temporaryBarButtonItem;
@@ -117,9 +111,6 @@
         NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
         [attributes setValue:self.title forKey:@"identificationString"];
         observation = [[AppModel sharedAppModel] createNewUserObservationWithAttributes:attributes];
-        observation.latitude = [NSNumber numberWithFloat:locationManager.location.coordinate.latitude];
-        observation.longitude = [NSNumber numberWithFloat:locationManager.location.coordinate.longitude];
-        observation.locationAccuracy = [NSNumber numberWithFloat:locationManager.location.horizontalAccuracy];
         observation.created = [NSDate date];
         observation.updated = [NSDate date];
         [AppModel sharedAppModel].currentUserObservation = observation;
@@ -217,7 +208,7 @@
         case 2:
             return [optionalComponents count];
         case 3:
-            return 3;
+            return 2; //Metadata
         default:
             return 0;
     };
@@ -345,11 +336,7 @@
                     cell.detailTextLabel.text = [metadata objectAtIndex:1];
                     
                 }
-                else if(indexPath.row == 2){
-                    cell.textLabel.text = @"Location";
-                    cell.detailTextLabel.text = [metadata objectAtIndex:2];
-                    
-                }
+
             }
             else{
                 if(indexPath.row == 0){
@@ -364,11 +351,7 @@
                                                                                timeStyle:NSDateFormatterFullStyle];
                     
                 }
-                else if(indexPath.row == 2){
-                    cell.textLabel.text = @"Location";
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"Lat: %f, Long: %f", [observation.latitude floatValue], [observation.longitude floatValue]];
-                    
-                }
+
             }
             
         }break;
@@ -858,20 +841,9 @@
                                                           timeStyle:NSDateFormatterFullStyle];
     NSLog(@"%@",dateString);
     [metadataToSend addObject:dateString];
-    
-    //Location
-    NSLog(@"Lat: %f , LONG: %f",locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude);
-    [metadataToSend addObject:[NSString stringWithFormat:@"Lat: %f, Long: %f", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude]];
-    
-    //Weather
+
     
     return metadataToSend;
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
-    [locationManager stopUpdatingLocation];
-    [table reloadData];
 }
 
 #pragma mark make an identification
