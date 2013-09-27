@@ -44,9 +44,7 @@
     
     //Group navbar buttons here to get rectangle style
     self.navigationItem.hidesBackButton = YES;
-    
-    //PHIL HACK (commented out)
-    //[self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleBordered target:self action:@selector(logout)]];
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleBordered target:self action:@selector(logout)]];
     
     sectionDateFormatter = [[NSDateFormatter alloc] init];
     [sectionDateFormatter setDateStyle:NSDateFormatterLongStyle];
@@ -55,12 +53,22 @@
     cellDateFormatter = [[NSDateFormatter alloc] init];
     [cellDateFormatter setDateStyle:NSDateFormatterNoStyle];
     [cellDateFormatter setTimeStyle:NSDateFormatterShortStyle];
-
+    
+    //PHIL HACK
+    UIView *darkAbyss = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,self.view.bounds.size.height)];
+    darkAbyss.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:darkAbyss]; 
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [[AppModel sharedAppModel] getUserObservationsForCurrentUserWithHandler:@selector(handleFetchOfUserObservations:) target:self];
 
+}
+
+//PHIL HACK
+- (void) viewDidAppear:(BOOL)animated
+{
+    [self makeNewObservation];
 }
 
 - (void)didReceiveMemoryWarning

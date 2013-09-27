@@ -96,7 +96,11 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(popToObservationScreen)];
+    //PHIL HACK
+    self.navigationItem.hidesBackButton = YES; 
+    
+    //PHIL HACK (commented out)
+    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(popToObservationScreen)];
     
     
     spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
@@ -588,7 +592,9 @@
     
     projectIdentifications = [NSArray arrayWithArray:sortedIdentifications];
     [spinner stopAnimating];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(popToObservationScreen)];
+    
+    //PHIL HACK (commented out)
+    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(popToObservationScreen)];
     [table reloadData];
 }
 
