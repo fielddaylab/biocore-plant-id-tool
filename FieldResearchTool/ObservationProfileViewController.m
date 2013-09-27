@@ -55,7 +55,7 @@
     [cellDateFormatter setTimeStyle:NSDateFormatterShortStyle];
     
     //PHIL HACK
-    UIView *darkAbyss = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,self.view.bounds.size.height)];
+    UIView *darkAbyss = [[UIView alloc] initWithFrame:CGRectMake(0,0,9999,9999)]; 
     darkAbyss.backgroundColor = [UIColor blackColor];
     [self.view addSubview:darkAbyss]; 
 }

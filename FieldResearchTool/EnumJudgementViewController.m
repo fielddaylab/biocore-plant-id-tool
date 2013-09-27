@@ -52,13 +52,10 @@
 -(void)loadView{
     [super loadView];
 
-    if (!isOneToOne) {
+    if(!isOneToOne)
         [self.view addSubview:[[UIImageView alloc] initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"carouselBackground"]]];
-    }
-    else{
+    else
         self.view.backgroundColor = [UIColor lightGrayColor];
-    }
-    
     
     //create carousel
     if (!isOneToOne) {

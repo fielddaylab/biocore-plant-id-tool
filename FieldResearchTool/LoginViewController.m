@@ -15,7 +15,7 @@
 #import "RegisterNewAccountViewController.h"
 
 
-//PHIL ADDED THIS FOR HACK
+//PHIL HACK
 #import "LoadingViewController.h"
 
 
@@ -93,7 +93,7 @@
     
     
     //PHIL HACK
-    UIView *darkAbyss = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,self.view.bounds.size.height)];
+    UIView *darkAbyss = [[UIView alloc] initWithFrame:CGRectMake(0,0,9999,9999)];
     darkAbyss.backgroundColor = [UIColor blackColor];
     [self.view addSubview:darkAbyss];
 }
