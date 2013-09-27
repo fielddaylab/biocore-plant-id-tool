@@ -15,6 +15,10 @@
 #import "RegisterNewAccountViewController.h"
 
 
+//PHIL ADDED THIS FOR HACK
+#import "LoadingViewController.h"
+
+
 @interface LoginViewController (){
     CGRect viewRect;
     NSString *username;
@@ -42,9 +46,14 @@
     self.view.frame = viewRect;
 }
 
+//PHIL HACK
+- (void) viewDidAppear:(BOOL)animated
+{
+    [self fakeRegister]; 
+}
+
 - (void)loadView
 {
-    
     [super loadView];
         
     self.navigationItem.title = @"Login";
@@ -239,6 +248,40 @@
 -(void)handleIdentificationImageCall:(NSArray *)identifications{
     [AppModel sharedAppModel].allProjectIdentifications = identifications;
     [[AppModel sharedAppModel] loadIdentificationImages];
+}
+
+
+
+
+
+
+
+//PHIL HACK
+
+- (void) fakeRegister
+{
+    [[AppModel sharedAppModel] getUserForName:@"aaa" withHandler:@selector(handleFakeRegistration:) target:self];
+}
+
+- (void) handleFakeRegistration:(NSArray *)users
+{
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setObject:[NSDate date] forKey:@"created"];
+    [attributes setObject:[NSDate date] forKey:@"updated"];
+    [attributes setObject:@"aaa" forKey:@"name"];
+    [attributes setObject:@"aaa" forKey:@"password"];
+
+    User *user = [[AppModel sharedAppModel] createNewUserWithAttributes:attributes];
+    [AppModel sharedAppModel].currentUser = user;
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"fetchData"])
+    {
+        LoadingViewController *loadingVC = [[LoadingViewController alloc] initWithNibName:@"LoadingViewController" bundle:nil];
+        [self.navigationController pushViewController:loadingVC animated:YES];
+    }
+    else
+    {
+        [[AppModel sharedAppModel] getAllProjectsWithHandler:@selector(handleFetchOfAllProjects:) target:self];
+    }
 }
 
 @end
