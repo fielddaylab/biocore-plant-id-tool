@@ -44,7 +44,9 @@
     
     //Group navbar buttons here to get rectangle style
     self.navigationItem.hidesBackButton = YES;
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleBordered target:self action:@selector(logout)]];
+    
+    //PHIL HACK (commented out)
+    //[self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleBordered target:self action:@selector(logout)]];
     
     sectionDateFormatter = [[NSDateFormatter alloc] init];
     [sectionDateFormatter setDateStyle:NSDateFormatterLongStyle];

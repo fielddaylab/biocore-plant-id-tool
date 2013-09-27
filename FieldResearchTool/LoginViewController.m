@@ -90,6 +90,12 @@
     [self.view addSubview:registerButton];
     
     alert = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@"Please enter a valid username and password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    
+    
+    //PHIL HACK
+    UIView *darkAbyss = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,self.view.bounds.size.height)];
+    darkAbyss.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:darkAbyss];
 }
 
 - (void)didReceiveMemoryWarning
