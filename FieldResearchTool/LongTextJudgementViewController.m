@@ -207,10 +207,13 @@
 
 #pragma mark save judgement data
 -(UserObservationComponentDataJudgement *)saveJudgementData:(UserObservationComponentData *)userData{
+    //PHIL HACK (Commented out)
+    /*
     if(!userData){
         NSLog(@"ERROR: Observation data passed in was nil");
         return nil;
     }
+     */ 
     
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
     [attributes setObject:[NSDate date] forKey:@"created"];

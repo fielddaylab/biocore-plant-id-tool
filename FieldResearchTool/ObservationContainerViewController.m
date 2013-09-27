@@ -45,6 +45,22 @@
 @synthesize newObservation;
 @synthesize nextDelegate;
 
+//PHIL HACK
+-(UserObservationComponentData *)createBSData{
+    
+    BOOL switchValue = NO;
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
+    [attributes setObject:[NSDate date] forKey:@"created"];
+    [attributes setObject:[NSDate date] forKey:@"updated"];
+    [attributes setObject:[NSNumber numberWithBool:switchValue] forKey:@"boolValue"];
+    [attributes setObject:projectComponent forKey:@"projectComponent"];
+    
+    UserObservationComponentData *data = [[AppModel sharedAppModel] createNewObservationDataWithAttributes:attributes];
+    return data;
+}
+
+
+
 - (void)saveObservationData:(id)sender {
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveSpinner];
@@ -62,11 +78,15 @@
     
     UserObservationComponentData *userData;
     if (!isOneToOne) {
-        userData = [self.saveObservationDelegate saveObservationData];
+        //PHIL HACK
+        //userData = [self.saveObservationDelegate saveObservationData];
+        userData = [self createBSData];
         [self.saveJudgementDelegate saveJudgementData:userData];
     }
     else{
-        userData = [self.saveJudgementDelegate saveUserDataAndJudgement];
+        //PHIL HACK
+        //userData = [self.saveJudgementDelegate saveUserDataAndJudgement]; 
+        userData = [self createBSData]; 
     }
     [[AppModel sharedAppModel] save];
     
@@ -124,7 +144,6 @@
         }
             break;
         case DATA_BOOLEAN:{
-            
             BooleanDataViewController *booleanDataViewController = [[BooleanDataViewController alloc]initWithFrame:frame];
             booleanDataViewController.prevData = prevData;
             booleanDataViewController.projectComponent = projectComponent;

@@ -160,6 +160,9 @@
                 dataType = DATA_NUMBER;
             }
             
+            //PHIL HACK
+            dataType = DATA_NONE;
+            
             //figure out the judgement type
             ObservationJudgementType judgementType;
             videoRegex = @"(.*\\{JUDGEMENT_VIDEO\\}.*)";
@@ -217,6 +220,7 @@
             projectComponent.created = [NSDate date];
             projectComponent.updated = [NSDate date];
             projectComponent.observationDataType = [NSNumber numberWithInt:dataType];
+            projectComponent.observationDataType = [NSNumber numberWithInt:DATA_NONE]; //PHIL HACK
             projectComponent.observationJudgementType = [NSNumber numberWithInt:judgementType];
             projectComponent.required = [NSNumber numberWithBool:isRequired];
             projectComponent.title = projectComponentName;

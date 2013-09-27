@@ -18,4 +18,5 @@ typedef enum ObservationDataType
     DATA_NUMBER,
     DATA_BOOLEAN,
     DATA_ENUMERATOR,
+    DATA_NONE //PHIL HACK
 } ObservationDataType;

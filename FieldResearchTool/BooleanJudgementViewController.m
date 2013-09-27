@@ -122,10 +122,13 @@
 
 -(UserObservationComponentDataJudgement *)saveJudgementData:(UserObservationComponentData *)userData{
     
+    //PHIL HACK (Commented out)
+    /*
     if(!userData){
         NSLog(@"ERROR: Observation data passed in was nil");
         return nil;
     }
+     */
     
     BOOL switchValue = boolSwitch.isOn;
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
