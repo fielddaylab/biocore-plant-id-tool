@@ -199,7 +199,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -207,11 +207,11 @@
     switch (section) {
         case 0:
             return 1;
+//        case 1:
+//            return [requiredComponents count];
         case 1:
-            return [requiredComponents count];
-        case 2:
             return [optionalComponents count];
-        case 3:
+        case 2:
             return 2; //Metadata
         default:
             return 0;
@@ -250,19 +250,18 @@
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
             break;
-        case 1:
-        case 2:{
+        case 1:{
             
-            if (indexPath.section == 1) {
-                com = (ProjectComponent *)[requiredComponents objectAtIndex:indexPath.row];
-                comImage = (UIImage *)[requiredComImages objectAtIndex:indexPath.row];
-                checkmark = (UIImageView *)[requiredCheckmarkImageViews objectAtIndex:indexPath.row];
-            }
-            else{
+//            if (indexPath.section == 1) {
+//                com = (ProjectComponent *)[requiredComponents objectAtIndex:indexPath.row];
+//                comImage = (UIImage *)[requiredComImages objectAtIndex:indexPath.row];
+//                checkmark = (UIImageView *)[requiredCheckmarkImageViews objectAtIndex:indexPath.row];
+//            }
+//            else{
                 com = (ProjectComponent *)[optionalComponents objectAtIndex:indexPath.row];
                 comImage = (UIImage *)[optionalComImages objectAtIndex:indexPath.row];
                 checkmark = (UIImageView *)[optionalCheckmarkImageViews objectAtIndex:indexPath.row];
-            }
+//            }
             
             
             
@@ -325,7 +324,7 @@
             cell.imageView.image = comImage;
             
         }break;
-        case 3:{
+        case 2:{
             
             cell.userInteractionEnabled = NO;
             
@@ -400,12 +399,11 @@
 {
     switch (section) {
         case 1:
-            return @"Required Components";
+            return @"Identification Components";
             break;
         case 2:
-            return @"Optional Components";
-        case 3:
             return @"Metadata";
+            break;
         default:
             return @"";
             break;

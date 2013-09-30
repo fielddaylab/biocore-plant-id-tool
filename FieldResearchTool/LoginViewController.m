@@ -266,7 +266,7 @@
 
 - (void) fakeRegister
 {
-    [[AppModel sharedAppModel] getUserForName:@"aaa" withHandler:@selector(handleFakeRegistration:) target:self];
+    [[AppModel sharedAppModel] getUserForName:@"BiocoreStudent" withHandler:@selector(handleFakeRegistration:) target:self];
 }
 
 - (void) handleFakeRegistration:(NSArray *)users
@@ -274,8 +274,8 @@
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc]init];
     [attributes setObject:[NSDate date] forKey:@"created"];
     [attributes setObject:[NSDate date] forKey:@"updated"];
-    [attributes setObject:@"aaa" forKey:@"name"];
-    [attributes setObject:@"aaa" forKey:@"password"];
+    [attributes setObject:@"BiocoreStudent" forKey:@"name"];
+    [attributes setObject:@"BiocoreStudent" forKey:@"password"];
 
     User *user = [[AppModel sharedAppModel] createNewUserWithAttributes:attributes];
     [AppModel sharedAppModel].currentUser = user;
