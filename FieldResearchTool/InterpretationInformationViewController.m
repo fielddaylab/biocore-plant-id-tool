@@ -90,8 +90,8 @@
 
 	NSMutableArray *mediaArray = [NSMutableArray arrayWithArray:[self.identification.media allObjects]];
 
-	self.scrollGallery = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,320,PICTURE_OFFSET)];
-	self.scrollGallery.contentSize = CGSizeMake(320*[mediaArray count],PICTURE_OFFSET);
+	self.scrollGallery = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,[UIScreen mainScreen].bounds.size.width,PICTURE_OFFSET*([UIScreen mainScreen].bounds.size.width/320))];
+	self.scrollGallery.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width*[mediaArray count],PICTURE_OFFSET*([UIScreen mainScreen].bounds.size.width/320));
 	self.scrollGallery.delegate = self;
 	self.scrollGallery.pagingEnabled = YES;
 	[self.scrollGallery setShowsHorizontalScrollIndicator:NO];
@@ -107,7 +107,7 @@
             NSBundle *bundle = [NSBundle bundleWithIdentifier:@"org.arisgames.FieldResearchTool"];
             NSString *imagePath = [bundle pathForResource:@"defaultIdentificationNoPhoto" ofType:@"png"];
             UIImage* image = [UIImage imageWithContentsOfFile:imagePath];
-			imageGallery = [[UIImageView alloc] initWithFrame:CGRectMake(i*320,0,320,PICTURE_OFFSET)];
+			imageGallery = [[UIImageView alloc] initWithFrame:CGRectMake(i*[UIScreen mainScreen].bounds.size.width,0,[UIScreen mainScreen].bounds.size.width,PICTURE_OFFSET*([UIScreen mainScreen].bounds.size.width/320))];
 			imageGallery.image = image;
 		}
 		else
@@ -115,7 +115,7 @@
             NSBundle *bundle = [NSBundle bundleWithIdentifier:@"org.arisgames.FieldResearchTool"];
             NSString *imagePath = [bundle pathForResource:[NSString stringWithFormat:@"%@",mediaObject.mediaURL] ofType:@"jpg"];
             UIImage* image = [UIImage imageWithContentsOfFile:imagePath];
-			imageGallery = [[UIImageView alloc] initWithFrame:CGRectMake(i*320,0,320,PICTURE_OFFSET)];
+			imageGallery = [[UIImageView alloc] initWithFrame:CGRectMake(i*[UIScreen mainScreen].bounds.size.width,0,[UIScreen mainScreen].bounds.size.width,PICTURE_OFFSET*([UIScreen mainScreen].bounds.size.width/320))];
 			imageGallery.image = image;
 		}
 
