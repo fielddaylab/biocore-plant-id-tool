@@ -372,16 +372,16 @@
         vc.dataToFilter = dataToFilter;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    else if(indexPath.section == 1 || indexPath.section == 2){
+    else if(indexPath.section == 1){// || indexPath.section == 2){
         ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]init];
         
         ProjectComponent *projectComponent;
-        if(indexPath.section == 1){
-            projectComponent = [requiredComponents objectAtIndex:indexPath.row];
-        }
-        else{
+//        if(indexPath.section == 1){
+//            projectComponent = [requiredComponents objectAtIndex:indexPath.row];
+//        }
+//        else{
             projectComponent = [optionalComponents objectAtIndex:indexPath.row];
-        }
+//        }
         UserObservationComponentData *prevData = [self findDataForComponent:projectComponent];
         containerView.prevData = prevData;
         containerView.projectComponent = projectComponent;
