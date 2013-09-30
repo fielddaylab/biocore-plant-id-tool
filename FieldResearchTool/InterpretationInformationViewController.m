@@ -81,7 +81,7 @@
 	label.text = [NSString stringWithFormat:@"%@\n%@", self.identification.alternateName, self.identification.title];
 	self.navigationItem.titleView = label;
 
-	self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,320,[UIScreen mainScreen].bounds.size.height-PICTURE_OFFSET-64)];
+	self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,[UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height-(PICTURE_OFFSET*([UIScreen mainScreen].bounds.size.width/320))-64)];
 	self.webView.backgroundColor = [UIColor clearColor];
 	self.webView.scrollView.scrollEnabled = NO;
 	self.webView.opaque = NO;
@@ -127,7 +127,10 @@
 	if(mediaArray.count > 1)
 	{
 		self.pageControl = [[UIPageControl alloc]init];
-		self.pageControl.frame = CGRectMake((self.scrollGallery.frame.size.width/2.0f)-(mediaArray.count*10.0f/2.0f),self.scrollGallery.frame.size.height-10,(mediaArray.count*10.0f),5.0f);
+		self.pageControl.frame = CGRectMake(160,self.scrollGallery.frame.size.height-10,0,5.0f);
+        
+        NSLog(@"scroll: %f", self.scrollGallery.frame.size.width);
+        
 		self.pageControl.numberOfPages = mediaArray.count;
 		self.pageControl.currentPage = 0;
 		[self.view addSubview:self.pageControl];
@@ -141,7 +144,7 @@
 	int webViewHeight = 15+[output intValue];
 	self.webView.frame = CGRectMake(self.webView.frame.origin.x, self.webView.frame.origin.y, self.webView.frame.size.width, webViewHeight);
 
-	self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,PICTURE_OFFSET,320,[UIScreen mainScreen].bounds.size.height-PICTURE_OFFSET-64)];
+	self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,PICTURE_OFFSET*([UIScreen mainScreen].bounds.size.width/320), [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-(PICTURE_OFFSET*([UIScreen mainScreen].bounds.size.width/320))-64)];
 	[self.identificationInformation sortUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]]];
 	ProjectIdentificationDiscussion *discussion;
 	int heightOfAllButtons = 0;
@@ -152,7 +155,7 @@
 		UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 		[button setTitle:discussion.title forState:UIControlStateNormal];
 		[button setTag:i];
-		[button setFrame:CGRectMake(0, webViewHeight + 44*i, 320, 44)];
+		[button setFrame:CGRectMake(0, webViewHeight + 44*i, [UIScreen mainScreen].bounds.size.width, 44)];
 		[button addTarget:self action:@selector(pushDiscussionViewController:) forControlEvents:UIControlEventTouchUpInside];
 
 		[self.scrollView addSubview:button];
