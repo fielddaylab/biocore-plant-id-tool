@@ -8,7 +8,7 @@
 
 #import "LoadingViewController.h"
 #import "AppModel.h"
-#import "IncrementalStore.h"
+//#import "IncrementalStore.h"
 #import "Project.h"
 #import "ProjectComponent.h"
 #import "ProjectIdentification.h"

@@ -87,6 +87,7 @@
 
 - (IBAction)takeVideo:(UIButton *)sender {
     
+    /*
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
     picker.allowsEditing = YES;
@@ -94,7 +95,7 @@
     picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
     
     [self presentViewController:picker animated:YES completion:NULL];
-    
+    */
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
@@ -110,7 +111,6 @@
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
 }
-
 
 //- (IBAction)takeVideo:(UIButton *)sender {
 //    
@@ -160,18 +160,4 @@
 //    
 //}
 
-
-//
-//
-//
-
-//
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 @end
-

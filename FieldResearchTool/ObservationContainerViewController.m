@@ -101,10 +101,10 @@
     //[saveSpinner stopAnimating];
 }
 
--(void)dismissContainerView:(UserObservationComponentData *)userData{
+-(void)dismissContainerView:(UserObservationComponentData *)userData
+{
     [self.dismissDelegate dismissContainerViewAndSetProjectComponentObserved:userData];
 }
-
 
 - (void)viewDidLoad
 {
@@ -118,7 +118,8 @@
     
     NSLog(@"Frame X: %f Frame Y: %f Frame Width: %f Frame Height: %f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
     
-    switch ([projectComponent.observationDataType intValue]) {
+    switch([projectComponent.observationDataType intValue])
+    {
         case DATA_AUDIO:
             //set up view controller here
             break;

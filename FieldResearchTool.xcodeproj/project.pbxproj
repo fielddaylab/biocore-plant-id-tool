@@ -1051,18 +1051,12 @@
 		AAAC4F40178F1767001AB1D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F3F178F1767001AB1D8 /* main.m */; };
 		AAAC4F44178F1767001AB1D8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F43178F1767001AB1D8 /* AppDelegate.m */; };
 		AAAC4F4D178F1767001AB1D8 /* FieldResearchTool.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F4B178F1767001AB1D8 /* FieldResearchTool.xcdatamodeld */; };
-		AAAC4F55178F3158001AB1D8 /* IncrementalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F54178F3158001AB1D8 /* IncrementalStore.m */; };
-		AAAC4F58178F31D6001AB1D8 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F57178F31D6001AB1D8 /* APIClient.m */; };
 		AAAC4F5D178F3EEE001AB1D8 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F5C178F3EEE001AB1D8 /* RootViewController.m */; };
 		AAAC4F60178F43A8001AB1D8 /* AccordionController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F5F178F43A8001AB1D8 /* AccordionController.m */; };
 		AAAC4F63178F445A001AB1D8 /* AccordionSection.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F62178F445A001AB1D8 /* AccordionSection.m */; };
-		AB50469017C69F2E00DA042E /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = AB50468E17C69F2E00DA042E /* dsym_upload.sh */; };
-		AB50469117C69F2E00DA042E /* libCrittercism_v4_0_6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB50468F17C69F2E00DA042E /* libCrittercism_v4_0_6.a */; };
-		AF90CA6408C44EE2A1B9A890 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B46BAE74A3264E519E21B16B /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		03237ECF5C5F485597FD7DAA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		5B03BBE7179EE495005AD632 /* MediaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaManager.h; sourceTree = "<group>"; };
 		5B03BBE8179EE495005AD632 /* MediaManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaManager.m; sourceTree = "<group>"; };
 		5B03BC3E179EF8F8005AD632 /* MediaType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaType.h; sourceTree = "<group>"; };
@@ -2161,10 +2155,6 @@
 		AAAC4F42178F1767001AB1D8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AAAC4F43178F1767001AB1D8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		AAAC4F4C178F1767001AB1D8 /* FieldResearchTool.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FieldResearchTool.xcdatamodel; sourceTree = "<group>"; };
-		AAAC4F53178F3157001AB1D8 /* IncrementalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncrementalStore.h; sourceTree = "<group>"; };
-		AAAC4F54178F3158001AB1D8 /* IncrementalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncrementalStore.m; sourceTree = "<group>"; };
-		AAAC4F56178F31D6001AB1D8 /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
-		AAAC4F57178F31D6001AB1D8 /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
 		AAAC4F5B178F3EEE001AB1D8 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		AAAC4F5C178F3EEE001AB1D8 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		AAAC4F5E178F43A8001AB1D8 /* AccordionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccordionController.h; sourceTree = "<group>"; };
@@ -2172,11 +2162,6 @@
 		AAAC4F61178F445A001AB1D8 /* AccordionSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccordionSection.h; sourceTree = "<group>"; };
 		AAAC4F62178F445A001AB1D8 /* AccordionSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccordionSection.m; sourceTree = "<group>"; };
 		AAAC4F64178F472C001AB1D8 /* AccordionControllerVCProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccordionControllerVCProtocol.h; sourceTree = "<group>"; };
-		AB50468B17C69F2E00DA042E /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
-		AB50468C17C69F2E00DA042E /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
-		AB50468D17C69F2E00DA042E /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
-		AB50468E17C69F2E00DA042E /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
-		AB50468F17C69F2E00DA042E /* libCrittercism_v4_0_6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v4_0_6.a; sourceTree = "<group>"; };
 		B46BAE74A3264E519E21B16B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -2195,8 +2180,6 @@
 				AAAC4F34178F1767001AB1D8 /* Foundation.framework in Frameworks */,
 				AAAC4F36178F1767001AB1D8 /* CoreGraphics.framework in Frameworks */,
 				AAAC4F38178F1767001AB1D8 /* CoreData.framework in Frameworks */,
-				AF90CA6408C44EE2A1B9A890 /* libPods.a in Frameworks */,
-				AB50469117C69F2E00DA042E /* libCrittercism_v4_0_6.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3516,7 +3499,6 @@
 				AAAC4F39178F1767001AB1D8 /* FieldResearchTool */,
 				AAAC4F30178F1767001AB1D8 /* Frameworks */,
 				AAAC4F2F178F1767001AB1D8 /* Products */,
-				03237ECF5C5F485597FD7DAA /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3549,7 +3531,6 @@
 		AAAC4F39178F1767001AB1D8 /* FieldResearchTool */ = {
 			isa = PBXGroup;
 			children = (
-				AB50468A17C69F2E00DA042E /* CrittercismSDK */,
 				71F5809317C40A3200C063DF /* Assets */,
 				5BFED1B61794830700648062 /* DataObjects */,
 				718AAD291794773000AFE6DB /* InterpretationViewControllers */,
@@ -3601,25 +3582,9 @@
 		AAAC4F59178F33D9001AB1D8 /* Incremental Store Models */ = {
 			isa = PBXGroup;
 			children = (
-				AAAC4F53178F3157001AB1D8 /* IncrementalStore.h */,
-				AAAC4F54178F3158001AB1D8 /* IncrementalStore.m */,
-				AAAC4F56178F31D6001AB1D8 /* APIClient.h */,
-				AAAC4F57178F31D6001AB1D8 /* APIClient.m */,
 				AAAC4F4B178F1767001AB1D8 /* FieldResearchTool.xcdatamodeld */,
 			);
 			name = "Incremental Store Models";
-			sourceTree = "<group>";
-		};
-		AB50468A17C69F2E00DA042E /* CrittercismSDK */ = {
-			isa = PBXGroup;
-			children = (
-				AB50468B17C69F2E00DA042E /* CRFilter.h */,
-				AB50468C17C69F2E00DA042E /* Crittercism.h */,
-				AB50468D17C69F2E00DA042E /* CrittercismDelegate.h */,
-				AB50468E17C69F2E00DA042E /* dsym_upload.sh */,
-				AB50468F17C69F2E00DA042E /* libCrittercism_v4_0_6.a */,
-			);
-			path = CrittercismSDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3629,11 +3594,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AAAC4F50178F1767001AB1D8 /* Build configuration list for PBXNativeTarget "FieldResearchTool" */;
 			buildPhases = (
-				1EC771369D0E4102A98DF449 /* Check Pods Manifest.lock */,
 				AAAC4F2A178F1767001AB1D8 /* Sources */,
 				AAAC4F2B178F1767001AB1D8 /* Frameworks */,
 				AAAC4F2C178F1767001AB1D8 /* Resources */,
-				394F89CA843346C6A1881112 /* Copy Pods Resources */,
 				AB50469217C6A48500DA042E /* ShellScript */,
 			);
 			buildRules = (
@@ -3832,8 +3795,6 @@
 				71F581E517C4205400C063DF /* Flowering_month-Sept.png in Resources */,
 				71F581E817C5438500C063DF /* Growth_form-upright_few_branches.png in Resources */,
 				71F581E917C5438500C063DF /* Growth_form-upright_no_branches.png in Resources */,
-				AB50469017C69F2E00DA042E /* dsym_upload.sh in Resources */,
-				AB50469017C69F2E00DA042E /* dsym_upload.sh in Resources */,
 				5B152D4717C7CF3C00970D87 /* Abutilon_theophrasti-default.jpg in Resources */,
 				5B152D4817C7CF3C00970D87 /* Achillea_millefolium-default.jpg in Resources */,
 				5B152D4917C7CF3C00970D87 /* Agastache_foeniculum-default.jpg in Resources */,
@@ -4670,36 +4631,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1EC771369D0E4102A98DF449 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		394F89CA843346C6A1881112 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		AB50469217C6A48500DA042E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4723,8 +4654,6 @@
 				AAAC4F40178F1767001AB1D8 /* main.m in Sources */,
 				AAAC4F44178F1767001AB1D8 /* AppDelegate.m in Sources */,
 				AAAC4F4D178F1767001AB1D8 /* FieldResearchTool.xcdatamodeld in Sources */,
-				AAAC4F55178F3158001AB1D8 /* IncrementalStore.m in Sources */,
-				AAAC4F58178F31D6001AB1D8 /* APIClient.m in Sources */,
 				AAAC4F5D178F3EEE001AB1D8 /* RootViewController.m in Sources */,
 				AAAC4F60178F43A8001AB1D8 /* AccordionController.m in Sources */,
 				AAAC4F63178F445A001AB1D8 /* AccordionSection.m in Sources */,
@@ -4850,7 +4779,6 @@
 		};
 		AAAC4F51178F1767001AB1D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 03237ECF5C5F485597FD7DAA /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FieldResearchTool/FieldResearchTool-Prefix.pch";
@@ -4868,7 +4796,6 @@
 		};
 		AAAC4F52178F1767001AB1D8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 03237ECF5C5F485597FD7DAA /* Pods.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: UW Division of Information Technology";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
