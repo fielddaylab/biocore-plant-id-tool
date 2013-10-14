@@ -1043,6 +1043,7 @@
 		71FF69DB1795C08600E2B411 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FF69DA1795C08600E2B411 /* AVFoundation.framework */; };
 		71FF69DD1795DD8000E2B411 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FF69DC1795DD8000E2B411 /* ImageIO.framework */; };
 		71FF69DF1795DDA900E2B411 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FF69DE1795DDA900E2B411 /* CoreMedia.framework */; };
+		890F0CB1180C82860025FF96 /* DynamicMediaAndCarouselCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 890F0CB0180C82860025FF96 /* DynamicMediaAndCarouselCell.m */; };
 		AAAC4F32178F1767001AB1D8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC4F31178F1767001AB1D8 /* UIKit.framework */; };
 		AAAC4F34178F1767001AB1D8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC4F33178F1767001AB1D8 /* Foundation.framework */; };
 		AAAC4F36178F1767001AB1D8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAC4F35178F1767001AB1D8 /* CoreGraphics.framework */; };
@@ -1056,8 +1057,6 @@
 		AAAC4F5D178F3EEE001AB1D8 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F5C178F3EEE001AB1D8 /* RootViewController.m */; };
 		AAAC4F60178F43A8001AB1D8 /* AccordionController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F5F178F43A8001AB1D8 /* AccordionController.m */; };
 		AAAC4F63178F445A001AB1D8 /* AccordionSection.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC4F62178F445A001AB1D8 /* AccordionSection.m */; };
-		AB50469017C69F2E00DA042E /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = AB50468E17C69F2E00DA042E /* dsym_upload.sh */; };
-		AB50469117C69F2E00DA042E /* libCrittercism_v4_0_6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB50468F17C69F2E00DA042E /* libCrittercism_v4_0_6.a */; };
 		AF90CA6408C44EE2A1B9A890 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B46BAE74A3264E519E21B16B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -2149,6 +2148,8 @@
 		71FF69DA1795C08600E2B411 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		71FF69DC1795DD8000E2B411 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		71FF69DE1795DDA900E2B411 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		890F0CAF180C82860025FF96 /* DynamicMediaAndCarouselCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicMediaAndCarouselCell.h; sourceTree = "<group>"; };
+		890F0CB0180C82860025FF96 /* DynamicMediaAndCarouselCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicMediaAndCarouselCell.m; sourceTree = "<group>"; };
 		AAAC4F2E178F1767001AB1D8 /* FieldResearchTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FieldResearchTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAC4F31178F1767001AB1D8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AAAC4F33178F1767001AB1D8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -2172,11 +2173,6 @@
 		AAAC4F61178F445A001AB1D8 /* AccordionSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccordionSection.h; sourceTree = "<group>"; };
 		AAAC4F62178F445A001AB1D8 /* AccordionSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccordionSection.m; sourceTree = "<group>"; };
 		AAAC4F64178F472C001AB1D8 /* AccordionControllerVCProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccordionControllerVCProtocol.h; sourceTree = "<group>"; };
-		AB50468B17C69F2E00DA042E /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
-		AB50468C17C69F2E00DA042E /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
-		AB50468D17C69F2E00DA042E /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
-		AB50468E17C69F2E00DA042E /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
-		AB50468F17C69F2E00DA042E /* libCrittercism_v4_0_6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v4_0_6.a; sourceTree = "<group>"; };
 		B46BAE74A3264E519E21B16B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -2196,7 +2192,6 @@
 				AAAC4F36178F1767001AB1D8 /* CoreGraphics.framework in Frameworks */,
 				AAAC4F38178F1767001AB1D8 /* CoreData.framework in Frameworks */,
 				AF90CA6408C44EE2A1B9A890 /* libPods.a in Frameworks */,
-				AB50469117C69F2E00DA042E /* libCrittercism_v4_0_6.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3549,7 +3544,6 @@
 		AAAC4F39178F1767001AB1D8 /* FieldResearchTool */ = {
 			isa = PBXGroup;
 			children = (
-				AB50468A17C69F2E00DA042E /* CrittercismSDK */,
 				71F5809317C40A3200C063DF /* Assets */,
 				5BFED1B61794830700648062 /* DataObjects */,
 				718AAD291794773000AFE6DB /* InterpretationViewControllers */,
@@ -3558,6 +3552,8 @@
 				5BF30D8D17A1C63C0071E7EA /* DataViewControllers */,
 				718F371E17B97CB100297EBA /* LoginViewController.h */,
 				718F371F17B97CB100297EBA /* LoginViewController.m */,
+				890F0CAF180C82860025FF96 /* DynamicMediaAndCarouselCell.h */,
+				890F0CB0180C82860025FF96 /* DynamicMediaAndCarouselCell.m */,
 				5B47E8F317CE4F7900A9C777 /* LoadingViewController.h */,
 				5B47E8F417CE4F7900A9C777 /* LoadingViewController.m */,
 				5B47E8F517CE4F7900A9C777 /* LoadingViewController.xib */,
@@ -3608,18 +3604,6 @@
 				AAAC4F4B178F1767001AB1D8 /* FieldResearchTool.xcdatamodeld */,
 			);
 			name = "Incremental Store Models";
-			sourceTree = "<group>";
-		};
-		AB50468A17C69F2E00DA042E /* CrittercismSDK */ = {
-			isa = PBXGroup;
-			children = (
-				AB50468B17C69F2E00DA042E /* CRFilter.h */,
-				AB50468C17C69F2E00DA042E /* Crittercism.h */,
-				AB50468D17C69F2E00DA042E /* CrittercismDelegate.h */,
-				AB50468E17C69F2E00DA042E /* dsym_upload.sh */,
-				AB50468F17C69F2E00DA042E /* libCrittercism_v4_0_6.a */,
-			);
-			path = CrittercismSDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3832,8 +3816,6 @@
 				71F581E517C4205400C063DF /* Flowering_month-Sept.png in Resources */,
 				71F581E817C5438500C063DF /* Growth_form-upright_few_branches.png in Resources */,
 				71F581E917C5438500C063DF /* Growth_form-upright_no_branches.png in Resources */,
-				AB50469017C69F2E00DA042E /* dsym_upload.sh in Resources */,
-				AB50469017C69F2E00DA042E /* dsym_upload.sh in Resources */,
 				5B152D4717C7CF3C00970D87 /* Abutilon_theophrasti-default.jpg in Resources */,
 				5B152D4817C7CF3C00970D87 /* Achillea_millefolium-default.jpg in Resources */,
 				5B152D4917C7CF3C00970D87 /* Agastache_foeniculum-default.jpg in Resources */,
@@ -4720,6 +4702,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				890F0CB1180C82860025FF96 /* DynamicMediaAndCarouselCell.m in Sources */,
 				AAAC4F40178F1767001AB1D8 /* main.m in Sources */,
 				AAAC4F44178F1767001AB1D8 /* AppDelegate.m in Sources */,
 				AAAC4F4D178F1767001AB1D8 /* FieldResearchTool.xcdatamodeld in Sources */,

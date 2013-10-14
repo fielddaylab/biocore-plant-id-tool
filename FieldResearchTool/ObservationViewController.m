@@ -30,8 +30,10 @@
 #import "MediaManager.h"
 #import "InterpretationInformationViewController.h"
 
+#import "DynamicMediaAndCarouselCell.h"
+
 #define ENUM_SCORE 1.0
-#define NIL_SCORE 1.0
+#define NIL_SCORE  1.0
 #define BOOL_SCORE 1.0
 
 @interface ObservationViewController ()<UIAlertViewDelegate, CreateUserIdentificationDelegate>{
@@ -81,6 +83,7 @@
         locationManager.delegate = self;
         locationManager.distanceFilter = kCLDistanceFilterNone;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+#warning ONLY observe location once. Start and Stop instantly. Waste of battery
         [locationManager startUpdatingLocation];
         
         UIBarButtonItem *temporaryBarButtonItem = [[UIBarButtonItem alloc] init];
@@ -90,13 +93,11 @@
     return self;
 }
 
-
 - (void)viewDidAppear:(BOOL)animated
 {
     metadata = [[NSMutableArray alloc]initWithArray:[self getMetadata]];
     [table reloadData];
 }
-
 
 - (void)viewDidLoad
 {
@@ -206,7 +207,12 @@
 {
     return 4;
 }
-
+/*
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 200;
+}
+*/
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
@@ -229,9 +235,14 @@
     //Make the identifier unique to that row so cell pictures don't get reused in funky ways.
     NSString *CellIdentifier = [NSString stringWithFormat:@"%d", indexPath.section];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
     if(cell == nil){
         if (indexPath.section == 0) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        else if(indexPath.section != 3)
+        {
+            cell = [[DynamicMediaAndCarouselCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
         else{
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
@@ -269,8 +280,6 @@
                 checkmark = (UIImageView *)[optionalCheckmarkImageViews objectAtIndex:indexPath.row];
             }
             
-            
-            
             UserObservationComponentData *data = [self findDataForComponent:com];
             if(data){
                 cell = [tableView dequeueReusableCellWithIdentifier:@"Data"];
@@ -280,9 +289,12 @@
                 [cell addSubview:checkmark];
             }
             
-            cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
-            cell.detailTextLabel.text = @"Not Interpreted";
+            //cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
+            //cell.detailTextLabel.text = @"Not Interpreted";
             
+             DynamicMediaAndCarouselCell * dynamicCell = (DynamicMediaAndCarouselCell *)cell;
+             dynamicCell.titleText = [NSString stringWithFormat:@"%@", com.title];
+             dynamicCell.detailText = @"Not Interpreted";
             
             if ([data.wasJudged boolValue]) {
                 
@@ -307,7 +319,7 @@
                 
                 NSArray *judgementSet = [data.userObservationComponentDataJudgement allObjects];
                 UserObservationComponentDataJudgement *judgement = judgementSet[0];
-                
+#warning make method in Judgement
                 if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_BOOLEAN]){
                     cell.detailTextLabel.text = judgement.boolValue == [NSNumber numberWithInt:1] ?[NSString stringWithFormat:@"True"] : [NSString stringWithFormat:@"False"];
                 }
@@ -327,7 +339,7 @@
                 
             }
             
-            cell.imageView.image = comImage;
+            dynamicCell.titleImage = comImage;
             
         }break;
         case 3:{
@@ -376,6 +388,14 @@
             break;
     }
     return cell;
+}
+
+-(void)tableView:(UITableView *) tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.section == 1 || indexPath.section == 2)
+    {
+        [(DynamicMediaAndCarouselCell *)cell updateFrames];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
