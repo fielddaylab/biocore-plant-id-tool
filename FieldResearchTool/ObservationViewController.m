@@ -36,7 +36,7 @@
 #define NIL_SCORE  1.0
 #define BOOL_SCORE 1.0
 
-@interface ObservationViewController ()<UIAlertViewDelegate, CreateUserIdentificationDelegate>{
+@interface ObservationViewController ()<UIAlertViewDelegate, CreateUserIdentificationDelegate, DynamicCellDelegate>{
     NSMutableArray *projectComponents;
     NSMutableArray *projectIdentifications;
     NSMutableArray *requiredComImages;
@@ -51,6 +51,8 @@
     NSMutableArray *requiredCheckmarkImageViews;
     NSMutableArray *optionalCheckmarkImageViews;
     UIActivityIndicatorView *spinner;
+    
+    NSIndexPath *selectedPath;
 }
 
 @end
@@ -78,6 +80,7 @@
         requiredCheckmarkImageViews = [[NSMutableArray alloc] init];
         optionalCheckmarkImageViews = [[NSMutableArray alloc] init];
         requiredFieldsFilledOut = 0;
+        selectedPath = [NSIndexPath indexPathForRow:-1 inSection:-1];
         
         locationManager = [[CLLocationManager alloc] init];
         locationManager.delegate = self;
@@ -207,12 +210,36 @@
 {
     return 4;
 }
-/*
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 200;
+    switch (indexPath.section) {
+        case 1:
+        case 2:
+            if(indexPath.section == selectedPath.section && indexPath.row == selectedPath.row)
+                return CAROUCELL_EXPANDED_CELL_HEIGHT;
+            else
+                return CAROUCELL_DEFAULT_CELL_HEIGHT;
+        default:
+            return 44;
+    };
 }
-*/
+
+- (void) didExpandOrCollapseCell:(UITableViewCell *)cell
+{
+    NSIndexPath *prevSelectedCell = selectedPath;
+    NSIndexPath *pathOfCell = [table indexPathForCell:cell];
+    if(pathOfCell.section == selectedPath.section && pathOfCell.row == selectedPath.row)
+        selectedPath = [NSIndexPath indexPathForRow:-1 inSection:-1];
+    else
+        selectedPath = pathOfCell;
+
+    NSMutableArray *thingsToUpdate = [NSMutableArray arrayWithObject:pathOfCell];
+    if(prevSelectedCell.section != -1 && prevSelectedCell.row != -1 && !(prevSelectedCell.section == pathOfCell.section && prevSelectedCell.row == pathOfCell.row))
+       [thingsToUpdate addObject:prevSelectedCell];
+    [table reloadRowsAtIndexPaths:thingsToUpdate withRowAnimation:UITableViewRowAnimationFade];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
@@ -243,6 +270,7 @@
         else if(indexPath.section != 3)
         {
             cell = [[DynamicMediaAndCarouselCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            ((DynamicMediaAndCarouselCell *)cell).delegate = self;
         }
         else{
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
@@ -280,6 +308,13 @@
                 checkmark = (UIImageView *)[optionalCheckmarkImageViews objectAtIndex:indexPath.row];
             }
             
+            DynamicMediaAndCarouselCell * dynamicCell = (DynamicMediaAndCarouselCell *)cell;
+            dynamicCell.titleText = [NSString stringWithFormat:@"%@", com.title];
+            dynamicCell.detailText = @"Not Interpreted";
+            dynamicCell.expanded = indexPath.section == selectedPath.section && indexPath.row == selectedPath.row;
+            [dynamicCell observationView:com];
+            [dynamicCell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            
             UserObservationComponentData *data = [self findDataForComponent:com];
             if(data){
                 cell = [tableView dequeueReusableCellWithIdentifier:@"Data"];
@@ -292,9 +327,6 @@
             //cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
             //cell.detailTextLabel.text = @"Not Interpreted";
             
-             DynamicMediaAndCarouselCell * dynamicCell = (DynamicMediaAndCarouselCell *)cell;
-             dynamicCell.titleText = [NSString stringWithFormat:@"%@", com.title];
-             dynamicCell.detailText = @"Not Interpreted";
             
             if ([data.wasJudged boolValue]) {
                 

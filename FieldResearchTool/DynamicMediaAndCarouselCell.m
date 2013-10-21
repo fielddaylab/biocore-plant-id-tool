@@ -8,9 +8,11 @@
 
 #import "DynamicMediaAndCarouselCell.h"
 
+#import "EnumJudgementViewController.h"
+#import "ProjectComponent.h"
+
 @interface DynamicMediaAndCarouselCell()
 {
-    BOOL expanded;
     UIImageView *imageView;
     UILabel *titleLabel;
     UILabel *detailLabel;
@@ -30,38 +32,47 @@
 
 @implementation DynamicMediaAndCarouselCell
 
+@synthesize delegate, expanded;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self)
     {
+        self.clipsToBounds = YES;
+        self.autoresizingMask |= (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+        
         imageView = [[UIImageView alloc] initWithFrame:CGRectMake(CAROUCELL_PADDING_XY, CAROUCELL_PADDING_XY, CAROUCELL_IMAGE_HEIGHT, CAROUCELL_IMAGE_HEIGHT)];
-        imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+   //     imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         [self.contentView addSubview:imageView];
         
         titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageView.frame.origin.x + imageView.frame.size.width + CAROUCELL_IMAGE_TEXT_PADDING, CAROUCELL_PADDING_XY, self.contentView.frame.size.width - (imageView.frame.origin.x + imageView.frame.size.width + CAROUCELL_IMAGE_TEXT_PADDING) - (CAROUCELL_BUTTON_WIDTH + CAROUCELL_PADDING_XY), CAROUCELL_TITLE_LABEL_HEIGHT)];
         titleLabel.backgroundColor = [UIColor clearColor];
-        titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+   //     titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         [self.contentView addSubview:titleLabel];
         
-        detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageView.frame.origin.x + imageView.frame.size.width + CAROUCELL_IMAGE_TEXT_PADDING, titleLabel.frame.origin.x + titleLabel.frame.size.height, self.contentView.frame.size.width - (imageView.frame.origin.x + imageView.frame.size.width + CAROUCELL_IMAGE_TEXT_PADDING) - (CAROUCELL_BUTTON_WIDTH + CAROUCELL_PADDING_XY), CAROUCELL_DETAIL_LABEL_HEIGHT)];
+        detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageView.frame.origin.x + imageView.frame.size.width + CAROUCELL_IMAGE_TEXT_PADDING, titleLabel.frame.origin.y + titleLabel.frame.size.height, self.contentView.frame.size.width - (imageView.frame.origin.x + imageView.frame.size.width + CAROUCELL_IMAGE_TEXT_PADDING) - (CAROUCELL_BUTTON_WIDTH + CAROUCELL_PADDING_XY), CAROUCELL_DETAIL_LABEL_HEIGHT)];
         detailLabel.backgroundColor = [UIColor clearColor];
-        detailLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        detailLabel.font = [UIFont systemFontOfSize:titleLabel.font.pointSize - 4];
+   //     detailLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         detailLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         [self.contentView addSubview:detailLabel];
         
-        expandButton = [[UIButton alloc] initWithFrame:CGRectMake(titleLabel.frame.size.width, CAROUCELL_PADDING_XY, CAROUCELL_BUTTON_WIDTH, titleLabel.frame.size.height)];
-        expandButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        expandButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        expandButton.frame = CGRectMake(titleLabel.frame.origin.x + titleLabel.frame.size.width, CAROUCELL_PADDING_XY, CAROUCELL_BUTTON_WIDTH, titleLabel.frame.size.height);
+   //     expandButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [expandButton addTarget:self action:@selector(expandButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [expandButton setTitle:@"Info" forState:UIControlStateNormal];
-        self.accessoryView = expandButton;
+        [expandButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.contentView addSubview: expandButton];
         
         infoPlaceholderView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 2 * CAROUCELL_PADDING_XY + imageView.frame.size.height, self.contentView.frame.size.width, CAROUCELL_MEDIA_HEIGHT)];
+        infoPlaceholderView.clipsToBounds = YES;
         infoPlaceholderView.contentMode = UIViewContentModeScaleAspectFill;
         infoPlaceholderView.image = [UIImage imageNamed:@"red_maple2.png"];
-        infoPlaceholderView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    //    infoPlaceholderView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         infoPlaceholderView.hidden = !expanded;
         [self.contentView addSubview:infoPlaceholderView];
     }
@@ -70,10 +81,11 @@
 
 - (void)updateFrames
 {
+    infoPlaceholderView.hidden = !expanded;
     imageView.frame = CGRectMake(CAROUCELL_PADDING_XY, CAROUCELL_PADDING_XY, CAROUCELL_IMAGE_HEIGHT, CAROUCELL_IMAGE_HEIGHT);
     titleLabel.frame = CGRectMake(imageView.frame.origin.x + imageView.frame.size.width + CAROUCELL_IMAGE_TEXT_PADDING, CAROUCELL_PADDING_XY, self.contentView.frame.size.width - (imageView.frame.origin.x + imageView.frame.size.width + CAROUCELL_IMAGE_TEXT_PADDING) - (CAROUCELL_BUTTON_WIDTH + CAROUCELL_PADDING_XY), CAROUCELL_TITLE_LABEL_HEIGHT);
-    detailLabel.frame = CGRectMake(imageView.frame.origin.x + imageView.frame.size.width + CAROUCELL_IMAGE_TEXT_PADDING, titleLabel.frame.origin.x + titleLabel.frame.size.height, self.contentView.frame.size.width - (imageView.frame.origin.x + imageView.frame.size.width + CAROUCELL_IMAGE_TEXT_PADDING) - (CAROUCELL_BUTTON_WIDTH + CAROUCELL_PADDING_XY), CAROUCELL_DETAIL_LABEL_HEIGHT);
-    expandButton.frame = CGRectMake(titleLabel.frame.size.width, CAROUCELL_PADDING_XY, CAROUCELL_BUTTON_WIDTH, titleLabel.frame.size.height);
+    detailLabel.frame = CGRectMake(imageView.frame.origin.x + imageView.frame.size.width + CAROUCELL_IMAGE_TEXT_PADDING, titleLabel.frame.origin.y + titleLabel.frame.size.height, self.contentView.frame.size.width - (imageView.frame.origin.x + imageView.frame.size.width + CAROUCELL_IMAGE_TEXT_PADDING) - (CAROUCELL_BUTTON_WIDTH + CAROUCELL_PADDING_XY), CAROUCELL_DETAIL_LABEL_HEIGHT);
+    expandButton.frame = CGRectMake(titleLabel.frame.origin.x + titleLabel.frame.size.width, CAROUCELL_PADDING_XY, CAROUCELL_BUTTON_WIDTH, titleLabel.frame.size.height);
     infoPlaceholderView.frame = CGRectMake(0, 2 * CAROUCELL_PADDING_XY + imageView.frame.size.height, self.contentView.frame.size.width, CAROUCELL_MEDIA_HEIGHT);
     observationView.frame = [self observationViewFrame];
 }
@@ -87,13 +99,10 @@
 
 - (void)expandButtonPressed:(UIButton *) sender
 {
-    expanded = !expanded;
-    infoPlaceholderView.hidden = !expanded;
-    observationView.frame = [self observationViewFrame];
+    [delegate didExpandOrCollapseCell:self];
 }
 
 #pragma mark - Getters/Setters
-- (BOOL)expanded { return expanded; };
 - (void)setTitleImage:(UIImage *) image { imageView.image = image; }
 
 - (void)setTitleText:(NSString *) title
@@ -115,15 +124,19 @@
     detailLabel.frame = frame;
 }
 
-- (void)observationView:(UIView *) observView
+- (void)observationView:(ProjectComponent *) component
 {
     [observationView removeFromSuperview];
     
-    observationView = observView;
-
-    observationView.frame = [self observationViewFrame];
-    observationView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    EnumJudgementViewController *enumJudgementViewController = [[EnumJudgementViewController alloc]initWithFrame:[self observationViewFrame]];
+    enumJudgementViewController.prevData = nil;
+    enumJudgementViewController.projectComponent = component;
+    enumJudgementViewController.isOneToOne = NO;
+    observationView = enumJudgementViewController.view;
+    observationView.clipsToBounds = YES;
     [self.contentView addSubview:observationView];
+
+    //observationView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 }
 
 #pragma mark - Frame Helpers
