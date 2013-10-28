@@ -7,6 +7,7 @@
 //
 
 #import "EnumJudgementViewController.h"
+
 #import "iCarousel.h"
 #import "ProjectComponentPossibility.h"
 #import "AppModel.h"
@@ -15,65 +16,67 @@
 #import "UserObservationComponentData.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface EnumJudgementViewController () <iCarouselDataSource, iCarouselDelegate, UIActionSheetDelegate, SaveJudgementDelegate>{
+@interface EnumJudgementViewController () <iCarouselDataSource, iCarouselDelegate, UIActionSheetDelegate, SaveJudgementDelegate>
+{
+    BOOL wrap;
+    UILabel *descriptionLabel;
+    iCarousel *carousel;
+    NSMutableArray *possibilities;
     ProjectComponentPossibility *chosenPossibility;
-    CGRect viewRect;
+    CGRect initRect;
+    float singleViewWidth;
 }
-
-@property (nonatomic, retain) iCarousel *carousel;
-@property (nonatomic, assign) BOOL wrap;
-@property (nonatomic, strong) NSMutableArray *possibilities;
 
 @end
 
 @implementation EnumJudgementViewController
 
-@synthesize carousel;
-@synthesize wrap;
-@synthesize possibilities;
 @synthesize prevData;
 @synthesize projectComponent;
 @synthesize isOneToOne;
 
-
-- (void)dealloc
+-(id)initWithFrame:(CGRect)frame
 {
-	carousel.delegate = nil;
-	carousel.dataSource = nil;
-}
-
--(id)initWithFrame:(CGRect)frame{
     self = [super init];
-    viewRect = frame;
-    wrap = YES;
+    initRect = frame;
+    wrap = NO;
     return self;
 }
 
--(void)loadView{
-    [super loadView];
+- (void)dealloc
+{
+	//carousel.delegate = nil;
+	//carousel.dataSource = nil;
+}
 
-    if (!isOneToOne) {
+-(void)loadView
+{
+    self.view = [[UIView alloc] initWithFrame:initRect];
+
+ /*   if (!isOneToOne)
         [self.view addSubview:[[UIImageView alloc] initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"carouselBackground"]]];
-    }
-    else{
+    else */
         self.view.backgroundColor = [UIColor lightGrayColor];
-    }
     
+    descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height * .04, self.view.bounds.size.width, 22)];
+    descriptionLabel.backgroundColor = [UIColor clearColor];
+    descriptionLabel.textAlignment = NSTextAlignmentCenter;
+    descriptionLabel.font = [descriptionLabel.font fontWithSize:16];
+    descriptionLabel.tag = 2;
+    [self.view addSubview:descriptionLabel];
     
     //create carousel
-    if (!isOneToOne) {
+    if (!isOneToOne)
         carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];//44 navbar height.
-    }
-    else{
+    else
         carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, -50, self.view.bounds.size.width, self.view.bounds.size.height)];//44 navbar height.
-    }
 
-
-    carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+   // carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     carousel.type = iCarouselTypeLinear;
     carousel.delegate = self;
     carousel.dataSource = self;
-        
+    carousel.clipsToBounds = YES;
+
     //add carousel to view
     [self.view addSubview:carousel];
     chosenPossibility = nil;
@@ -83,34 +86,26 @@
     [[AppModel sharedAppModel] getProjectComponentPossibilitiesWithAttributes:attributes withHandler:@selector(handlePossibilityResponse:) target:self];
 }
 
-
--(void)viewWillAppear:(BOOL)animated{
-    self.view.frame = viewRect;
-    
-    UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height * .04, self.view.bounds.size.width, 22)];
-    descriptionLabel.backgroundColor = [UIColor clearColor];
-    descriptionLabel.textAlignment = NSTextAlignmentCenter;
-    descriptionLabel.font = [descriptionLabel.font fontWithSize:16];
-    if ([projectComponent.prompt isEqualToString:@""]) {
+-(void)viewWillAppear:(BOOL)animated
+{
+    if ([projectComponent.prompt isEqualToString:@""])
         descriptionLabel.text = @"Choose the best match.";
-    }
-    else{
+    else
         descriptionLabel.text = projectComponent.prompt;
-    }
     
-    descriptionLabel.tag = 2;
-    [self.view addSubview:descriptionLabel];
-        
-    if(prevData){
-        if([prevData.wasJudged boolValue]){
+    if(prevData)
+    {
+        if([prevData.wasJudged boolValue])
+        {
             NSArray *judgementSet = [prevData.userObservationComponentDataJudgement allObjects];
-            if(!judgementSet || judgementSet.count < 1){
+            if(!judgementSet || judgementSet.count < 1)
                 NSLog(@"ERROR: Judgement set was nil or had 0 data members");
-            }
+            
             UserObservationComponentDataJudgement *judgement = [judgementSet objectAtIndex:0];
-            if(!judgement){
+            
+            if(!judgement)
                 NSLog(@"ERROR: judgement was nil");
-            }
+            
             ProjectComponentPossibility *prevPossibility = judgement.projectComponentPossibility;
             chosenPossibility = prevPossibility;
         }
@@ -127,7 +122,6 @@
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
-    //NSLog(@"ENUM: possibility count: %lu", (unsigned long)possibilities.count);
     return [possibilities count];
 }
 
@@ -138,17 +132,19 @@
     //create new view if no view is available for recycling
     if (view == nil)
     {
-        if (!isOneToOne) {
+        if (!isOneToOne)
+        {
             view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width * .45, self.view.bounds.size.height * .65)];
             label = [[UILabel alloc] initWithFrame:CGRectMake(0, view.bounds.size.height * .65, self.view.bounds.size.width * .45, self.view.bounds.size.height * .65)];
         }
-        else{
+        else
+        {
             view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width * .25, self.view.bounds.size.height * .35)];
             label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width * .25, self.view.bounds.size.height * .35)];
             view.backgroundColor = [UIColor whiteColor];
         }
-
         
+        singleViewWidth = view.frame.size.width;
         
         view.contentMode = UIViewContentModeBottom;
         label.backgroundColor = [UIColor clearColor];
@@ -174,14 +170,11 @@
     label.text = componentPossibility.enumValue;
     NSLog(@"label.text: %@", label.text);
     
-    
-    
     //Probably should make a class that handles all of these
     //This parses component
     NSString *projectComponentTitleString = projectComponent.title;
     NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@" "];
     projectComponentTitleString = [[projectComponentTitleString componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @"_"];
-    
     
     ProjectComponentPossibility *pos = possibilities[index];
     
@@ -194,8 +187,10 @@
     ((UIImageView *)view).image = [[MediaManager sharedMediaManager] imageWithImage:[[MediaManager sharedMediaManager] getImageNamed:projectComponentTitleString] scaledToSize:CGRectMake(0, 0, self.view.bounds.size.height *.6, self.view.bounds.size.height *.6).size];
     
     
-    if(chosenPossibility){
-        if([componentPossibility.enumValue isEqualToString:chosenPossibility.enumValue]){
+    if(chosenPossibility)
+    {
+        if([componentPossibility.enumValue isEqualToString:chosenPossibility.enumValue])
+        {
             label.textColor = [UIColor whiteColor];
             [view.layer setBorderColor: [[UIColor blackColor] CGColor]];
             [view.layer setBorderWidth: 2.0];
@@ -208,28 +203,27 @@
 - (CGFloat)carousel:(iCarousel *)_carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
 {
     if (option == iCarouselOptionSpacing)
-    {
         return value * 1.1f;
-    }
+    
     return value;
 }
 
 #pragma mark - iCarousel taps
 
-- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
+- (void)carousel:(iCarousel *)aCarousel didSelectItemAtIndex:(NSInteger)index
 {
     ProjectComponentPossibility *poss = [possibilities objectAtIndex:index];
-    if ([chosenPossibility isEqual:poss]) {
+    if ([chosenPossibility isEqual:poss])
         chosenPossibility = nil;
-    }
-    else{
+    else
         chosenPossibility = [possibilities objectAtIndex:index];
-    }
-    [self.carousel reloadData];
+    
+    [aCarousel reloadData];
 }
 
 #pragma mark handle possibility response
--(void)handlePossibilityResponse:(NSArray *)componentPossibilities{
+-(void)handlePossibilityResponse:(NSArray *)componentPossibilities
+{
     //remove the nil value if it has one
     possibilities = [[NSMutableArray alloc] init];
     for (int i = 0; i < componentPossibilities.count; i++) {
@@ -244,12 +238,17 @@
     [possibilities sortUsingDescriptors:[NSArray arrayWithObject:sort]];
     
     [carousel reloadData];
+    
+    if(!chosenPossibility)
+        [carousel scrollToItemAtIndex:[possibilities count]/2 animated:NO];
 }
 
 #pragma mark save observation and judgement delegates
 
--(UserObservationComponentDataJudgement *)saveJudgementData:(UserObservationComponentData *)userData{
-    if(!userData){
+-(UserObservationComponentDataJudgement *)saveJudgementData:(UserObservationComponentData *)userData
+{
+    if(!userData)
+    {
         NSLog(@"ERROR: Observation data passed in was nil");
         return nil;
     }
@@ -258,7 +257,8 @@
     [attributes setObject:[NSDate date] forKey:@"created"];
     [attributes setObject:[NSDate date] forKey:@"updated"];
     
-    if(chosenPossibility){
+    if(chosenPossibility)
+    {
         [attributes setObject:chosenPossibility.enumValue forKey:@"enumValue"];
         UserObservationComponentDataJudgement *judgement = [[AppModel sharedAppModel] createNewJudgementWithData:userData withProjectComponentPossibility:chosenPossibility withAttributes:attributes];
         return judgement;
@@ -268,10 +268,10 @@
     return nil;
 }
 
--(UserObservationComponentData *)saveUserDataAndJudgement{
+-(UserObservationComponentData *)saveUserDataAndJudgement
+{
     NSLog(@"ERROR: Enum cannot be a one to one. Returning nil");
     return nil;
 }
-
 
 @end

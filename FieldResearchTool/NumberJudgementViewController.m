@@ -38,12 +38,12 @@
 
 -(void)loadView{
     [super loadView];
-    if (!isOneToOne) {
+ /*   if (!isOneToOne) {
         [self.view addSubview:[[UIImageView alloc] initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"carouselBackground"]]];
     }
-    else{
+    else{ */
         self.view.backgroundColor = [UIColor lightGrayColor];
-    }
+   // }
     
     UITextView *descriptionTextField = [[UITextView alloc]initWithFrame:CGRectMake(0, viewRect.size.height * .02, viewRect.size.width, 60)];
     descriptionTextField.backgroundColor = [UIColor clearColor];

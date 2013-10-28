@@ -34,12 +34,12 @@
 
 -(void)loadView{
     [super loadView];
-    if (!isOneToOne) {
+ /*   if (!isOneToOne) {
         [self.view addSubview:[[UIImageView alloc] initWithImage:[[MediaManager sharedMediaManager] getImageNamed:@"carouselBackground"]]];
     }
-    else{
+    else{ */
         self.view.backgroundColor = [UIColor lightGrayColor];
-    }
+  //  }
     
 //    UILabel *descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, viewRect.size.height * .04, viewRect.size.width, 22)];
 //    descriptionLabel.backgroundColor = [UIColor clearColor];

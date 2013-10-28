@@ -33,19 +33,23 @@
 -(id)initWithFrame:(CGRect)frame{
     self = [super init];
     viewRect = frame;
+
     return self;
-}
-
-
--(void)viewWillAppear:(BOOL)animated{
-    self.view.frame = viewRect;
 }
 
 - (void)loadView
 {
+    self.view = [[UIView alloc] initWithFrame:viewRect];
     
-    [super loadView];
-        
+    float yOffset = 0.0;
+    float extraTableHeight = 0.0;
+    if (!(floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1))
+    {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+        yOffset = 64;
+        extraTableHeight = 20;
+    }
+    
     self.navigationItem.title = @"Login";
         
     self.view.backgroundColor = [UIColor lightGrayColor];
@@ -53,10 +57,10 @@
     UIButton *dismissButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [dismissButton addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchUpInside];
     [dismissButton setTitle:@"" forState:UIControlStateNormal];
-    dismissButton.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+    dismissButton.frame = CGRectMake(0, yOffset, self.view.bounds.size.width, self.view.bounds.size.height);
     [self.view addSubview:dismissButton];
     
-    table = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 100) style:UITableViewStyleGrouped];
+    table = [[UITableView alloc]initWithFrame:CGRectMake(0, yOffset, 320, 100 + extraTableHeight) style:UITableViewStyleGrouped];
     table.scrollEnabled = NO;
     
     table.delegate = self;
@@ -70,13 +74,13 @@
     UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [loginButton addTarget:self action:@selector(attemptLogin) forControlEvents:UIControlEventTouchUpInside];
     [loginButton setTitle:@"Login!" forState:UIControlStateNormal];
-    loginButton.frame = CGRectMake(10.0, table.bounds.size.height, 300.0, 40.0);
+    loginButton.frame = CGRectMake(10.0, table.frame.size.height + table.frame.origin.y, 300.0, 40.0);
     [self.view addSubview:loginButton];
     
     UIButton *registerButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [registerButton addTarget:self action:@selector(registerNewAccount) forControlEvents:UIControlEventTouchUpInside];
     [registerButton setTitle:@"Join now!" forState:UIControlStateNormal];
-    registerButton.frame = CGRectMake(10.0, table.bounds.size.height + loginButton.bounds.size.height, 300.0, 40.0);
+    registerButton.frame = CGRectMake(10.0, table.bounds.size.height+ table.frame.origin.y + loginButton.bounds.size.height, 300.0, 40.0);
     [self.view addSubview:registerButton];
     
     alert = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@"Please enter a valid username and password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];

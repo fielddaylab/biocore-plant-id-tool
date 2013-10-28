@@ -63,8 +63,6 @@
 @synthesize newObservation;
 @synthesize prevObservation;
 
-
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -108,7 +106,6 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(popToObservationScreen)];
     
-    
     spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
                UIActivityIndicatorViewStyleWhiteLarge];
     spinner.hidesWhenStopped = YES;
@@ -134,7 +131,8 @@
         NSArray *dataSet = [observation.userObservationComponentData allObjects];
         UIImage *checkmarkImage = [[MediaManager sharedMediaManager] getImageNamed:@"17-checkGREEN"];
         //create the identifications
-        if(dataSet){
+        if(dataSet)
+        {
             for (int i = 0; i < dataSet.count; i++) {
                 UserObservationComponentData *data = [dataSet objectAtIndex:i];
                 if ([data.wasJudged boolValue] && [data.isFiltered boolValue]) {
@@ -165,7 +163,8 @@
     
 }
 
--(void)popToObservationScreen{
+-(void)popToObservationScreen
+{
     if (requiredFieldsFilledOut == requiredComponents.count) {
         if (newObservation) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Save and Lock" message:@"Once you save this observation it cannot be changed." delegate:self cancelButtonTitle:@"Save" otherButtonTitles:@"Keep Editing", nil];
@@ -195,7 +194,8 @@
     }
 }
 
--(void)viewWillDisappear:(BOOL)animated{
+-(void)viewWillDisappear:(BOOL)animated
+{
     [[AppModel sharedAppModel] save];
 }
 
@@ -227,17 +227,24 @@
 
 - (void) didExpandOrCollapseCell:(UITableViewCell *)cell
 {
+    BOOL expanded = NO;
     NSIndexPath *prevSelectedCell = selectedPath;
     NSIndexPath *pathOfCell = [table indexPathForCell:cell];
-    if(pathOfCell.section == selectedPath.section && pathOfCell.row == selectedPath.row)
+    if(pathOfCell.section == prevSelectedCell.section && pathOfCell.row == prevSelectedCell.row)
         selectedPath = [NSIndexPath indexPathForRow:-1 inSection:-1];
     else
+    {
+        expanded = YES;
         selectedPath = pathOfCell;
+    }
 
     NSMutableArray *thingsToUpdate = [NSMutableArray arrayWithObject:pathOfCell];
     if(prevSelectedCell.section != -1 && prevSelectedCell.row != -1 && !(prevSelectedCell.section == pathOfCell.section && prevSelectedCell.row == pathOfCell.row))
        [thingsToUpdate addObject:prevSelectedCell];
     [table reloadRowsAtIndexPaths:thingsToUpdate withRowAnimation:UITableViewRowAnimationFade];
+    
+    if(expanded)
+        [table scrollToRowAtIndexPath: selectedPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -309,10 +316,12 @@
             }
             
             DynamicMediaAndCarouselCell * dynamicCell = (DynamicMediaAndCarouselCell *)cell;
+            
             dynamicCell.titleText = [NSString stringWithFormat:@"%@", com.title];
             dynamicCell.detailText = @"Not Interpreted";
             dynamicCell.expanded = indexPath.section == selectedPath.section && indexPath.row == selectedPath.row;
-            [dynamicCell observationView:com];
+
+            [dynamicCell observationViewFromComponent:com andPreviousData: [self findDataForComponent:com]];
             [dynamicCell setSelectionStyle:UITableViewCellSelectionStyleNone];
             
             UserObservationComponentData *data = [self findDataForComponent:com];
@@ -323,10 +332,6 @@
                 }
                 [cell addSubview:checkmark];
             }
-            
-            //cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
-            //cell.detailTextLabel.text = @"Not Interpreted";
-            
             
             if ([data.wasJudged boolValue]) {
                 
@@ -339,7 +344,7 @@
                         cell.accessoryView = boolSwitch;
                     }
                     [cell addSubview:checkmark];
-                    cell.textLabel.text = [NSString stringWithFormat:@"%@", com.title];
+                    dynamicCell.detailText = [NSString stringWithFormat:@"%@", com.title];
                     
                     ComponentSwitch *boolSwitch = (ComponentSwitch *)cell.accessoryView;
                     if(data && [data.isFiltered boolValue]){
@@ -352,23 +357,16 @@
                 NSArray *judgementSet = [data.userObservationComponentDataJudgement allObjects];
                 UserObservationComponentDataJudgement *judgement = judgementSet[0];
 #warning make method in Judgement
-                if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_BOOLEAN]){
-                    cell.detailTextLabel.text = judgement.boolValue == [NSNumber numberWithInt:1] ?[NSString stringWithFormat:@"True"] : [NSString stringWithFormat:@"False"];
-                }
-                else if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_NUMBER]){
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", judgement.number];
-                }
-                else if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_ENUMERATOR]){
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", judgement.enumValue];
-                }
-                else if (com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_TEXT]){
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", judgement.text];
-                }
-                else if (com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_LONG_TEXT]){
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", judgement.longText];
-                }
-                
-                
+                if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_BOOLEAN])
+                    dynamicCell.detailText = judgement.boolValue == [NSNumber numberWithInt:1] ?[NSString stringWithFormat:@"True"] : [NSString stringWithFormat:@"False"];
+                else if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_NUMBER])
+                    dynamicCell.detailText = [NSString stringWithFormat:@"%@", judgement.number];
+                else if(com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_ENUMERATOR])
+                    dynamicCell.detailText = [NSString stringWithFormat:@"%@", judgement.enumValue];
+                else if (com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_TEXT])
+                    dynamicCell.detailText = [NSString stringWithFormat:@"%@", judgement.text];
+                else if (com.observationJudgementType == [NSNumber numberWithInt:JUDGEMENT_LONG_TEXT])
+                    dynamicCell.detailText = [NSString stringWithFormat:@"%@", judgement.longText];
             }
             
             dynamicCell.titleImage = comImage;
@@ -392,26 +390,22 @@
                 else if(indexPath.row == 2){
                     cell.textLabel.text = @"Location";
                     cell.detailTextLabel.text = [metadata objectAtIndex:2];
-                    
                 }
             }
             else{
                 if(indexPath.row == 0){
                     cell.textLabel.text = @"Author";
                     cell.detailTextLabel.text = observation.user.name;
-                    
                 }
                 else if(indexPath.row == 1){
                     cell.textLabel.text = @"Date";
                     cell.detailTextLabel.text = [NSDateFormatter localizedStringFromDate:observation.updated
                                                                                dateStyle:NSDateFormatterShortStyle
                                                                                timeStyle:NSDateFormatterFullStyle];
-                    
                 }
                 else if(indexPath.row == 2){
                     cell.textLabel.text = @"Location";
                     cell.detailTextLabel.text = [NSString stringWithFormat:@"Lat: %f, Long: %f", [observation.latitude floatValue], [observation.longitude floatValue]];
-                    
                 }
             }
             
@@ -425,9 +419,7 @@
 -(void)tableView:(UITableView *) tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 1 || indexPath.section == 2)
-    {
         [(DynamicMediaAndCarouselCell *)cell updateFrames];
-    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -438,25 +430,23 @@
         vc.dataToFilter = dataToFilter;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    else if(indexPath.section == 1 || indexPath.section == 2){
+ /*   else if(indexPath.section == 1 || indexPath.section == 2){
         ObservationContainerViewController *containerView = [[ObservationContainerViewController alloc]init];
         
         ProjectComponent *projectComponent;
-        if(indexPath.section == 1){
+        if(indexPath.section == 1)
             projectComponent = [requiredComponents objectAtIndex:indexPath.row];
-        }
-        else{
+        else
             projectComponent = [optionalComponents objectAtIndex:indexPath.row];
-        }
+        
         UserObservationComponentData *prevData = [self findDataForComponent:projectComponent];
         containerView.prevData = prevData;
         containerView.projectComponent = projectComponent;
         containerView.newObservation = newObservation;
         containerView.dismissDelegate = self;
         
-        
         [self.navigationController pushViewController:containerView animated:YES];
-    }
+    } */
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
@@ -958,6 +948,5 @@
     self.title = projectIdentifications.count != 1 ?[NSString stringWithFormat:@"%d matches", projectIdentifications.count] : [NSString stringWithFormat:@"%d match", 1];
     [self.table reloadData];
 }
-
 
 @end
